@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Shaadi | Futuristic AI Wedding Planner</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-gold: #ffcc33;
+            --deep-purple: #0f0f1a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #e0e0e0;
+            --primary-pink: #ff4d94;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--deep-purple);
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 50%, #1b1b3a 0%, #0f0f1a 100%);
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            backdrop-filter: blur(15px);
+            background: rgba(15, 15, 26, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 204, 51, 0.5);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--neon-gold); }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #fff, var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #aaa;
+        }
+
+        /* Content Blocks */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-gold);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .content-card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-card h2 { color: var(--neon-gold); font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin-bottom: 20px; }
+        
+        ul { list-style: none; padding: 0; }
+        ul li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        ul li::before { content: '✨'; position: absolute; left: 0; color: var(--neon-gold); }
+
+        /* Adsense Placeholder */
+        .ad-space {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 40px auto;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            border-radius: 10px;
+        }
+
+        /* Futuristic Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 204, 51, 0.2);
+        }
+
+        input, textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            margin: 15px 0;
+            color: white;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus { border-color: var(--neon-gold); outline: none; }
+
+        .btn {
+            background: var(--neon-gold);
+            color: #000;
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover { box-shadow: 0 0 20px rgba(255, 204, 51, 0.4); transform: scale(1.02); }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav { display: none; }
+        }
+    </style>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">SMART SHAADI</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#tips">Tips</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Aapki Dream Indian Wedding Plan Karein, Smart Shaadi AI ke Saath!</h1>
+            <p>Smart Shaadi aapka personal futuristic AI wedding planner hai. Budgeting, markets, aur vendors - ab sab kuch stress-free manage karein ek hi jagah par.</p>
+            <a href="#contact" style="text-decoration: none;"><button class="btn" style="width: auto; padding: 15px 40px;">ABHI START KAREIN</button></a>
+        </div>
+    </section>
+
+    <div class="ad-space">AdSense Banner - Top Slot</div>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">Humare Baare Mein</h2>
+            <div class="content-card">
+                <p>Smart Shaadi ek revolutionary AI-powered platform hai jo couples ko unki dream wedding plan karne mein madad karta hai. Humara mission hai Indian shaadi ki planning ko aasan, mazedaar, aur budget-friendly banana. Hamara Gemini AI model aapki har query ka jawab dene ke liye taiyaar hai.</p>
+                <p>Humari expertise:</p>
+                <ul>
+                    <li>✨ Personalised Budgeting aur Expense Tracking.</li>
+                    <li>✨ India ke top wedding markets (Chandni Chowk, Johari Bazar, Santa Cruz) ki exclusive jaankari.</li>
+                    <li>✨ Wedding vendors (caterers, decorators, photographers) ki recommendations.</li>
+                    <li>✨ Customized wedding itineraries aur checklists.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2 class="section-title">Humari Services</h2>
+            <div class="content-card">
+                <h2>Detailed Planning Assistance</h2>
+                <p>ShaadiAI har step par aapke saath hai. Humare AI ki madad se aap apne preferences ke hisaab se best options explore kar sakte hain:</p>
+                <ul>
+                    <li>✨ **Venue & Catering:** Aapke budget ke anusaar sabse behtareen venues.</li>
+                    <li>✨ **Decor & Themes:** Futuristic aur unique decoration ideas.</li>
+                    <li>✨ **Photography:** Top-rated cinematographers jo aapke moments capture karenge.</li>
+                    <li>✨ **Outfits:** Designer wear ke liye expert market recommendations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="ad-space">AdSense Banner - Middle Slot</div>
+
+        <section id="tips">
+            <h2 class="section-title">Shaadi Planning Tips</h2>
+            <div class="content-card">
+                <h2>Budget-Friendly Smart Tips</h2>
+                <ul>
+                    <li>✨ **Early Booking:** Vendors ko jaldi book karke discounts paayein.</li>
+                    <li>✨ **Weekday Weddings:** Saste venues aur better services.</li>
+                    <li>✨ **Digital Invites:** Paperless invitations se environment aur paise dono bachayein.</li>
+                    <li>✨ **Local Markets:** Chandni Chowk aur Johari Bazar jaise options explore karein.</li>
+                </ul>
+                <h2 style="margin-top: 30px;">Top Markets Checklist</h2>
+                <p>Shopping ke liye best places:</p>
+                <ul>
+                    <li>**Delhi:** Chandni Chowk, Lajpat Nagar, Karol Bagh.</li>
+                    <li>**Mumbai:** Santa Cruz, Dadar, Linking Road.</li>
+                    <li>**Jaipur:** Johari Bazar, Bapu Bazar, MI Road.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Initialize Planning</h2>
+            <div class="contact-form">
+                <p style="text-align: center; color: #aaa;">Apni details share karein, humara AI turant aapse contact karega.</p>
+                <form action="YOUR_N8N_WEBHOOK_URL" method="POST">
+                    <input type="text" name="name" placeholder="Aapka Naam" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="date" placeholder="Shaadi Ki Date (DD/MM/YYYY)" required>
+                    <textarea name="message" placeholder="Aapki Special Requirements?"></textarea>
+                    <button type="submit" class="btn">GENERATE PLAN</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SMART SHAADI | Powered by Gemini AI</p>
+        <p style="font-size: 0.8rem; opacity: 0.5;"><a href="#" style="color: white;">Privacy Policy</a> | <a href="#" style="color: white;">Terms</a></p>
+    </footer>
+
+    <script type="module">
+      import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/index.js'
+      Typebot.initBubble({
+        typebot: "YOUR-TYPEBOT-ID",
+        previewMessage: { text: "Namaste! Smart Shaadi AI Online ✨", avatarUrl: "https://cdn-icons-png.flaticon.com/512/2907/2907253.png" },
+        theme: {
+            button: { backgroundColor: "#ffcc33", iconColor: "#000" },
+            chatWindow: { backgroundColor: "#0f0f1a" }
+        }
+      });
+    </script>
+</body>
+</html>
