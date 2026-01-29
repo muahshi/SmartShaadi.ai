@@ -1,43 +1,81 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y6QPBQ6QZE');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Magazine | Smart Shaadi AI Blogs</title>
+    <title>Wedding Magazine | Smart Shaadi Blogs</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; }
-        header { background: rgba(15, 15, 26, 0.95); padding: 20px; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); text-decoration: none; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .section-title { color: var(--gold); font-family: 'Orbitron'; text-align: center; margin-bottom: 40px; }
-        .blog-list { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .blog-card { background: var(--glass); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; }
-        .blog-card:hover { border-color: var(--gold); }
-        .category { color: var(--gold); font-size: 0.8rem; font-weight: bold; }
-        .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; margin-top: 10px; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
+        header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
+        .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        .section-title { color: var(--gold); font-family: 'Orbitron'; font-size: 2rem; text-align: center; margin: 40px 0; }
+        
+        /* Magazine Card Style */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .mag-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .mag-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .mag-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid rgba(255,204,51,0.2); }
+        .mag-content { padding: 20px; }
+        .cat-tag { color: var(--gold); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; border-bottom: 1px solid transparent; }
+        .blog-link:hover { border-bottom-color: var(--gold); }
+
+        footer { margin-top: 60px; padding: 40px 20px; border-top: 1px solid #333; text-align: center; background: rgba(0,0,0,0.3); }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: var(--gold); margin: 0 12px; text-decoration: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <header><a href="index.html" class="logo">SMART SHAADI</a></header>
-    <main class="container">
-        <h1 class="section-title">Wedding Magazine ✨</h1>
-        <div class="blog-list">
-            <div class="blog-card">
-                <span class="category">MARKET GUIDE</span>
-                <h3>Delhi's Best Wedding Markets 2026</h3>
-                <p>Chandni Chowk se lekar Shahpur Jat tak ki poori detail.</p>
-                <a href="blog-market.html" class="blog-link">Pura Padhein →</a>
+
+<header><a href="index.html" class="logo">SMART SHAADI</a></header>
+
+<main class="container">
+    <h1 class="section-title">Wedding Magazine</h1>
+
+    <div class="blog-grid">
+        <article class="mag-card">
+            <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=500" alt="Market" class="mag-img">
+            <div class="mag-content">
+                <span class="cat-tag">Market Guide</span>
+                <h3 style="margin: 10px 0;">Delhi's Best Wedding Markets 2026</h3>
+                <p style="font-size: 0.9rem; color: #bbb;">Chandni Chowk se lekar Shahpur Jat tak, shopping ki poori ABCD.</p>
+                <a href="blog-market.html" class="blog-link">Read Full Guide →</a>
             </div>
-            <div class="blog-card">
-                <span class="category">BUDGET TIPS</span>
-                <h3>Smart Budgeting with AI Strategy</h3>
-                <p>Kam kharche mein royal shaadi kaise karein?</p>
-                <a href="blog-budget.html" class="blog-link">Pura Padhein →</a>
+        </article>
+
+        <article class="mag-card">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500" alt="Budget" class="mag-img">
+            <div class="mag-content">
+                <span class="cat-tag">Budget Strategy</span>
+                <h3 style="margin: 10px 0;">Smart Budgeting with AI Strategy</h3>
+                <p style="font-size: 0.9rem; color: #bbb;">Paise kahan bachayein? AI ke sath banayein perfect budget plan.</p>
+                <a href="blog-budget.html" class="blog-link">Read Full Guide →</a>
             </div>
-            </div>
-    </main>
+        </article>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html">Home</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </div>
+    <p>&copy; 2026 Smart Shaadi AI.</p>
+</footer>
+
 </body>
 </html>
-
