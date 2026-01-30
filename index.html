@@ -11,92 +11,114 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Shaadi | AI Wedding Command Center</title>
-    
+
+    <title>Smart Shaadi | Best AI Wedding Planner & Budget Guide India</title>
+    <meta name="description" content="Plan your dream wedding with Smart Shaadi AI. Get expert tips on budget, top markets like Chandni Chowk, and custom 2-day itineraries.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Smart Shaadi AI">
+    <meta name="language" content="hi-IN">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Smart Shaadi | AI Wedding Planner 2026 💍">
+    <meta property="og:description" content="Budget | Style | Happiness - AI powered Indian wedding planning & market guides.">
+    <meta property="og:url" content="https://muahshi.github.io/SmartShaadi.ai/">
+    <meta property="og:image" content="https://muahshi.github.io/SmartShaadi.ai/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Smart Shaadi AI">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Shaadi | AI Wedding Planner India">
+    <meta name="twitter:description" content="AI powered wedding planning for Indian weddings.">
+    <meta name="twitter:image" content="https://muahshi.github.io/SmartShaadi.ai/og-image.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --cyan: #00f2ff; }
+        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
         header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-
-        /* Dashboard Glow Box (Cyberpunk Style) */
-        .dash-preview { background: #0a0a14; border: 2px solid var(--cyan); border-radius: 20px; padding: 25px; margin-top: 40px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
         .hero-box { background: var(--glass); border-radius: 30px; padding: 50px 20px; text-align: center; border: 1px solid rgba(255,204,51,0.2); margin-top: 20px; }
-        
-        .cta-btn { background: var(--gold); color: #000; padding: 18px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-block; font-family: 'Orbitron'; cursor: pointer; border: none; }
-        
-        /* Stats & Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .cta-btn { background: var(--gold); color: #000; padding: 18px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 1.1rem; transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,204,51,0.2); }
+
         .section-title { color: var(--gold); font-family: 'Orbitron'; font-size: 1.5rem; margin-top: 40px; border-left: 4px solid var(--gold); padding-left: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .card:hover { border-color: var(--gold); }
+        .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 10px; }
 
-        /* Smart Calculations UI */
-        .calc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
-        .calc-box { border: 1px solid rgba(0,242,255,0.3); padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); }
-        .progress-bar { height: 6px; background: #222; border-radius: 10px; margin-top: 8px; overflow: hidden; }
-        .fill { height: 100%; background: var(--cyan); transition: 1s ease-in-out; }
+        .mag-btn { background: transparent; color: var(--gold); border: 2px solid var(--gold); padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 30px; }
+        .mag-btn:hover { background: var(--gold); color: #000; }
 
-        /* Footer & Buttons */
         .share-section { text-align: center; margin-top: 50px; padding: 20px; background: rgba(37, 211, 102, 0.1); border-radius: 20px; border: 1px dashed #25D366; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; font-weight: bold; gap: 10px; }
+        .whatsapp-btn { background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; font-weight: bold; gap: 10px; transition: 0.3s; }
+        .whatsapp-btn:hover { background: #128C7E; transform: scale(1.05); }
+
         footer { margin-top: 60px; padding: 40px 20px; border-top: 1px solid #333; text-align: center; background: rgba(0,0,0,0.3); }
         .footer-links a { color: var(--gold); margin: 0 12px; text-decoration: none; font-size: 0.9rem; }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Smart Shaadi AI",
+      "url": "https://muahshi.github.io/SmartShaadi.ai/",
+      "description": "AI powered Indian wedding planner with budgeting, market guides and smart itineraries.",
+      "inLanguage": ["hi-IN", "en-IN"]
+    }
+    </script>
 </head>
+
 <body>
-
 <header><a href="index.html" class="logo">SMART SHAADI</a></header>
-
 <main class="container">
-    <section id="landing-view">
-        <div class="hero-box">
-            <h1 style="font-family:'Orbitron'; color:var(--gold);">AI WEDDING PLANNING 2026</h1>
-            <p>Form bhariye aur apna personalized futuristic dashboard unlock kijiye.</p>
-            <a href="https://care-123.app.n8n.cloud/form/e754ee79-6e88-4e3e-a90e-1f7adcac26bc" class="cta-btn">START FREE PLANNING</a>
-        </div>
-    </section>
-
-    <section id="transformed-ui" style="display:none;">
-        <div class="dash-preview">
-            <h3 style="font-family:'Orbitron'; color:var(--cyan); margin:0;">● COMMAND_CENTER_v1.0</h3>
-            <h2 style="font-family:'Orbitron'; margin:10px 0;">MY <span style="color:var(--gold)">SHAADI</span> ROADMAP</h2>
-            
-            <div class="calc-grid">
-                <div class="calc-box"><small style="color:var(--cyan)">COUPLE</small><div id="d-name" style="font-family:'Orbitron'">---</div></div>
-                <div class="calc-box"><small style="color:var(--cyan)">CITY</small><div id="d-city" style="font-family:'Orbitron'">---</div></div>
-                <div class="calc-box"><small style="color:var(--cyan)">BUDGET</small><div id="d-budget" style="font-family:'Orbitron'; color:var(--gold)">---</div></div>
-                <div class="calc-box"><small style="color:var(--cyan)">DATE</small><div id="d-date" style="font-family:'Orbitron'">---</div></div>
-            </div>
-
-            <div class="calc-box" style="border-color:var(--gold); margin-top:10px;">
-                <div style="display:flex; justify-content:space-between;"><small>Venue & Catering (50%)</small><span id="c-venue">₹0</span></div>
-                <div class="progress-bar"><div class="fill" style="width:50%"></div></div>
-                
-                <div style="display:flex; justify-content:space-between; margin-top:10px;"><small>Decor & Photography (25%)</small><span id="c-decor">₹0</span></div>
-                <div class="progress-bar"><div class="fill" style="width:25%; background:var(--gold)"></div></div>
-            </div>
-
-            <div style="text-align:center; margin-top:30px;">
-                <a href="https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat" class="cta-btn" style="background:var(--cyan); width:90%;">TALK TO AI PLANNER 🤖</a>
-            </div>
-        </div>
+    <section class="hero-box">
+        <h1 style="font-family:'Orbitron'; color:var(--gold); margin-bottom:15px;">AI WEDDING PLANNING 2026</h1>
+        <p>Technology aur Tradition ka perfect mel. Hamara AI aapki dream wedding ko budget ke andar plan karne mein madad karega.</p>
+        <a href="https://care-123.app.n8n.cloud/form/e754ee79-6e88-4e3e-a90e-1f7adcac26bc" class="cta-btn">START FREE PLANNING</a>
+        <p style="margin-top:15px;">
+            <a href="https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat" style="color:var(--gold); text-decoration:none;">
+                Already a member? Chat with AI →
+            </a>
+        </p>
     </section>
 
     <h2 class="section-title">Latest Wedding Guides</h2>
     <div class="grid">
         <article class="card">
+            <span style="font-size:0.8rem;color:#888;">MARKET GUIDE</span>
             <h3>Delhi's Best Wedding Markets 2026</h3>
-            <p style="font-size:0.9rem;color:#bbb;">Chandni Chowk analytics and budget shopping guides.</p>
-            <a href="blog-market.html" style="color:var(--gold); text-decoration:none; font-weight:bold;">Explore Guide →</a>
+            <p style="font-size:0.9rem;color:#bbb;">Chandni Chowk se lekar Shahpur Jat tak, janiye kahan se karein sasti aur achhi shopping.</p>
+            <a href="blog-market.html" class="blog-link">Read Full Guide →</a>
         </article>
+
         <article class="card">
-            <h3>Smart Budgeting with AI</h3>
-            <p style="font-size:0.9rem;color:#bbb;">Paise kahan bachayein aur kahan kharch karein?</p>
-            <a href="blog-budget.html" style="color:var(--gold); text-decoration:none; font-weight:bold;">Read Strategy →</a>
+            <span style="font-size:0.8rem;color:#888;">BUDGET TIPS</span>
+            <h3>Smart Budgeting with AI Strategy</h3>
+            <p style="font-size:0.9rem;color:#bbb;">Paise kahan bachayein aur kahan kharch karein? AI ke sath banayein perfect budget plan.</p>
+            <a href="blog-budget.html" class="blog-link">Read Full Guide →</a>
         </article>
+    </div>
+
+    <div style="text-align:center;">
+        <a href="blogs.html" class="mag-btn">View All Magazine Articles 📖</a>
+    </div>
+
+    <h2 class="section-title">Why Smart Shaadi?</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>📊 Precision Planning</h3>
+            <p>Hamara algorithm aapke budget ko analyze karke best vendors suggest karta hai.</p>
+        </div>
+        <div class="card">
+            <h3>✨ Unique Themes</h3>
+            <p>2026 ke sabse trendy wedding themes aur decor ideas sirf ek click par.</p>
+        </div>
     </div>
 
     <section class="share-section">
@@ -110,36 +132,12 @@
 
 <footer>
     <div class="footer-links">
-        <a href="blogs.html">Blog</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a>
+        <a href="blogs.html">Blog</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> |
+        <a href="contact.html">Contact Us</a>
     </div>
-    <p>&copy; 2026 Smart Shaadi AI. Crafted for the Royal Indian Weddings.</p>
+    <p>&copy; 2026 Smart Shaadi AI. Made with ❤️ for Indian Weddings.</p>
 </footer>
-
-<script>
-    window.onload = function() {
-        const params = new URLSearchParams(window.location.search);
-        if (params.has('submitted')) {
-            // Hide Landing, Show Dashboard
-            document.getElementById('landing-view').style.display = 'none';
-            document.getElementById('transformed-ui').style.display = 'block';
-
-            // Extract Data from URL
-            const name = params.get('name') || "User";
-            const budget = parseInt(params.get('budget')) || 0;
-            const city = params.get('city') || "Not Set";
-            const date = params.get('date') || "Nov 2026";
-
-            // Update UI
-            document.getElementById('d-name').innerText = name.toUpperCase();
-            document.getElementById('d-city').innerText = city;
-            document.getElementById('d-budget').innerText = "₹" + budget.toLocaleString();
-            document.getElementById('d-date').innerText = date;
-
-            // Simple Calculation logic for the Dashboard
-            document.getElementById('c-venue').innerText = "₹" + (budget * 0.5).toLocaleString();
-            document.getElementById('c-decor').innerText = "₹" + (budget * 0.25).toLocaleString();
-        }
-    }
-</script>
 </body>
 </html>
