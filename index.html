@@ -15,28 +15,10 @@
     <title>Smart Shaadi | Best AI Wedding Planner & Budget Guide India</title>
     <meta name="description" content="Plan your dream wedding with Smart Shaadi AI. Get expert tips on budget, top markets like Chandni Chowk, and custom 2-day itineraries.">
 
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Smart Shaadi AI">
-    <meta name="language" content="hi-IN">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Smart Shaadi | AI Wedding Planner 2026 💍">
-    <meta property="og:description" content="Budget | Style | Happiness - AI powered Indian wedding planning & market guides.">
-    <meta property="og:url" content="https://muahshi.github.io/SmartShaadi.ai/">
-    <meta property="og:image" content="https://muahshi.github.io/SmartShaadi.ai/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Smart Shaadi AI">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Smart Shaadi | AI Wedding Planner India">
-    <meta name="twitter:description" content="AI powered wedding planning for Indian weddings.">
-    <meta name="twitter:image" content="https://muahshi.github.io/SmartShaadi.ai/og-image.jpg">
-
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); }
+        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --cyan: #00f2ff; }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
         header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
@@ -51,27 +33,23 @@
         .card:hover { border-color: var(--gold); }
         .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 10px; }
 
+        /* 🌟 NEW: Trust Stats Styling */
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; text-align: center; }
+        .trust-card { background: #1a1a2e; padding: 20px 10px; border-radius: 20px; border: 1px solid rgba(255,204,51,0.1); }
+        .trust-number { display: block; font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); margin-bottom: 5px; }
+        .trust-text { font-size: 0.8rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 🌟 NEW: Dashboard Preview Styling */
+        .dash-preview { background: linear-gradient(145deg, #0a0a14, #1a1a2e); border: 2px solid var(--cyan); border-radius: 20px; padding: 25px; margin-top: 40px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.15); }
+        .dash-ui-mockup { border: 1px solid rgba(0, 242, 255, 0.3); border-radius: 10px; padding: 15px; margin-top: 15px; background: rgba(0,0,0,0.4); }
+
         .mag-btn { background: transparent; color: var(--gold); border: 2px solid var(--gold); padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 30px; }
-        .mag-btn:hover { background: var(--gold); color: #000; }
-
         .share-section { text-align: center; margin-top: 50px; padding: 20px; background: rgba(37, 211, 102, 0.1); border-radius: 20px; border: 1px dashed #25D366; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; font-weight: bold; gap: 10px; transition: 0.3s; }
-        .whatsapp-btn:hover { background: #128C7E; transform: scale(1.05); }
-
+        .whatsapp-btn { background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; font-weight: bold; gap: 10px; }
+        
         footer { margin-top: 60px; padding: 40px 20px; border-top: 1px solid #333; text-align: center; background: rgba(0,0,0,0.3); }
         .footer-links a { color: var(--gold); margin: 0 12px; text-decoration: none; font-size: 0.9rem; }
     </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Smart Shaadi AI",
-      "url": "https://muahshi.github.io/SmartShaadi.ai/",
-      "description": "AI powered Indian wedding planner with budgeting, market guides and smart itineraries.",
-      "inLanguage": ["hi-IN", "en-IN"]
-    }
-    </script>
 </head>
 
 <body>
@@ -96,7 +74,6 @@
             <p style="font-size:0.9rem;color:#bbb;">Chandni Chowk se lekar Shahpur Jat tak, janiye kahan se karein sasti aur achhi shopping.</p>
             <a href="blog-market.html" class="blog-link">Read Full Guide →</a>
         </article>
-
         <article class="card">
             <span style="font-size:0.8rem;color:#888;">BUDGET TIPS</span>
             <h3>Smart Budgeting with AI Strategy</h3>
@@ -105,21 +82,48 @@
         </article>
     </div>
 
-    <div style="text-align:center;">
-        <a href="blogs.html" class="mag-btn">View All Magazine Articles 📖</a>
-    </div>
+    <div style="text-align:center;"><a href="blogs.html" class="mag-btn">View All Magazine Articles 📖</a></div>
 
     <h2 class="section-title">Why Smart Shaadi?</h2>
     <div class="grid">
-        <div class="card">
-            <h3>📊 Precision Planning</h3>
-            <p>Hamara algorithm aapke budget ko analyze karke best vendors suggest karta hai.</p>
+        <div class="card"><h3>📊 Precision Planning</h3><p>Hamara algorithm aapke budget ko analyze karke best vendors suggest karta hai.</p></div>
+        <div class="card"><h3>✨ Unique Themes</h3><p>2026 ke sabse trendy wedding themes aur decor ideas sirf ek click par.</p></div>
+    </div>
+
+    <h2 class="section-title" style="text-align:center; border-left:none; padding:0;">WHY BRIDES TRUST US?</h2>
+    <div class="trust-grid">
+        <div class="trust-card">
+            <span class="trust-number">2k+</span>
+            <span class="trust-text">Weddings<br>Planned</span>
         </div>
-        <div class="card">
-            <h3>✨ Unique Themes</h3>
-            <p>2026 ke sabse trendy wedding themes aur decor ideas sirf ek click par.</p>
+        <div class="trust-card">
+            <span class="trust-number">100%</span>
+            <span class="trust-text">AI<br>Precision</span>
+        </div>
+        <div class="trust-card">
+            <span class="trust-number">24/7</span>
+            <span class="trust-text">Chat<br>Support</span>
         </div>
     </div>
+
+    <section class="dash-preview">
+        <h3 style="font-family:'Orbitron'; color:white; margin:0; font-size:1.1rem; display:flex; align-items:center; gap:10px;">
+            <span style="color:var(--cyan)">●</span> SMART SHAADI AI DASHBOARD
+        </h3>
+        <div class="dash-ui-mockup">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                <div style="border:1px solid rgba(0,242,255,0.2); padding:10px; border-radius:5px;">
+                    <small style="color:var(--cyan); font-size:0.6rem;">WEDDING CALENDAR</small>
+                    <div style="font-size:0.8rem; margin-top:5px;">📅 Nov 2026</div>
+                </div>
+                <div style="border:1px solid rgba(0,242,255,0.2); padding:10px; border-radius:5px;">
+                    <small style="color:var(--cyan); font-size:0.6rem;">BUDGET TRACKER</small>
+                    <div style="height:5px; background:#333; margin-top:8px; border-radius:10px;"><div style="width:65%; background:var(--cyan); height:100%;"></div></div>
+                </div>
+            </div>
+            <p style="font-size:0.7rem; color:#888; margin-top:15px; text-align:center;">Analyze markets, manage vendors, and chat with AI in one place.</p>
+        </div>
+    </section>
 
     <section class="share-section">
         <p style="margin-bottom:15px;color:#25D366;font-weight:bold;">Pasand aaya? Doston ke saath share karein! 🌸</p>
@@ -132,12 +136,9 @@
 
 <footer>
     <div class="footer-links">
-        <a href="blogs.html">Blog</a> |
-        <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="contact.html">Contact Us</a>
+        <a href="blogs.html">Blog</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="contact.html">Contact</a>
     </div>
-    <p>&copy; 2026 Smart Shaadi AI. Made with ❤️ for Indian Weddings.</p>
+    <p>&copy; 2026 Smart Shaadi AI. Crafted for the Royal Indian Weddings.</p>
 </footer>
 </body>
 </html>
