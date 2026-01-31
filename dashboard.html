@@ -2,94 +2,71 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wedding Dashboard | Smart Shaadi AI</title>
+    <title>AI Wedding Dashboard | Smart Shaadi</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #ffcc33; --dark: #0f0f1a; --cyan: #00f2ff; --glass: rgba(255, 255, 255, 0.05); }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; padding: 0; }
-        header { background: rgba(15, 15, 26, 0.95); padding: 20px; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); text-decoration: none; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-
-        /* Cyber Dashboard Look */
-        .db-card { background: #0a0a14; border: 2px solid var(--cyan); border-radius: 20px; padding: 30px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); margin-top: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; text-align: center; }
+        .db-card { max-width: 600px; margin: 50px auto; padding: 30px; border: 2px solid var(--cyan); border-radius: 20px; background: #0a0a14; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
         .item { background: var(--glass); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
         .label { color: var(--cyan); font-size: 0.7rem; font-family: 'Orbitron'; text-transform: uppercase; }
-        .value { font-size: 1.1rem; font-weight: bold; margin-top: 5px; color: #fff; }
-
-        /* Calculation Box */
-        .calc-box { margin-top: 20px; padding: 20px; background: rgba(255, 204, 51, 0.1); border-radius: 15px; border: 1px dashed var(--gold); }
-        .progress-bar { height: 8px; background: #222; border-radius: 10px; margin: 10px 0; overflow: hidden; }
-        .fill { height: 100%; background: var(--cyan); transition: 1s; }
-
-        /* Chatbot Button */
-        .chat-btn { background: var(--gold); color: black; width: 100%; padding: 20px; border-radius: 50px; font-family: 'Orbitron'; font-weight: 800; border: none; cursor: pointer; margin-top: 30px; font-size: 1.1rem; display: block; text-align: center; text-decoration: none; box-shadow: 0 0 15px rgba(255, 204, 51, 0.4); }
-        #bot-frame { display: none; margin-top: 20px; height: 500px; border-radius: 20px; overflow: hidden; border: 1px solid var(--cyan); }
-        
-        footer { text-align: center; padding: 40px; color: #888; font-size: 0.8rem; }
+        .value { font-size: 1.1rem; font-weight: bold; margin-top: 5px; }
+        .loader { color: var(--gold); font-family: 'Orbitron'; margin: 20px; }
     </style>
 </head>
 <body>
 
-<header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
-
-<main class="container">
-    <div class="db-card">
-        <h2 style="font-family:'Orbitron'; margin:0; color:var(--gold);">WEDDING <span style="color:white">COMMAND CENTER</span></h2>
-        <p style="color:#888;">Latest Entry Fetched: <span id="user-name" style="color:var(--cyan)">Explorer</span></p>
-
+<div class="db-card">
+    <h2 style="font-family:'Orbitron'; color:var(--gold);">LIVE <span style="color:white">DASHBOARD</span></h2>
+    <div id="loading" class="loader">FETCHING DATA FROM GOOGLE SHEETS...</div>
+    
+    <div id="content" style="display:none;">
+        <p>Welcome, <span id="user-name" style="color:var(--cyan)">Explorer</span>!</p>
         <div class="grid">
-            <div class="item"><div class="label">Wedding Date</div><div class="value" id="val-date">---</div></div>
-            <div class="item"><div class="label">Guest Count</div><div class="value" id="val-guests">---</div></div>
-            <div class="item"><div class="label">Total Budget</div><div class="value" id="val-total" style="color:var(--gold)">₹0</div></div>
-            <div class="item"><div class="label">City</div><div class="value" id="val-city">---</div></div>
+            <div class="item"><div class="label">Wedding Date</div><div id="val-date" class="value">--</div></div>
+            <div class="item"><div class="label">City</div><div id="val-city" class="value">--</div></div>
+            <div class="item"><div class="label">Total Budget</div><div id="val-total" class="value" style="color:var(--gold)">₹0</div></div>
+            <div class="item"><div class="label">Guests</div><div id="val-guests" class="value">--</div></div>
         </div>
-
-        <div class="calc-box">
-            <div class="label" style="color:var(--gold)">AI Budget Allocation</div>
-            <div style="margin-top:15px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.8rem;"><span>Venue & Catering (50%)</span><span id="calc-venue">₹0</span></div>
-                <div class="progress-bar"><div class="fill" style="width: 50%;"></div></div>
-            </div>
-            <div style="margin-top:15px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.8rem;"><span>Decor & Outfits (30%)</span><span id="calc-decor">₹0</span></div>
-                <div class="progress-bar"><div class="fill" style="width: 30%; background:var(--gold);"></div></div>
-            </div>
-        </div>
-
-        <a href="javascript:void(0)" onclick="openBot()" class="chat-btn">LET'S START CHAT WITH AI ✨</a>
         
-        <div id="bot-frame">
-            <iframe src="https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat" width="100%" height="100%" frameborder="0"></iframe>
+        <div style="background:rgba(255,204,51,0.1); padding:15px; border-radius:10px; border:1px dashed var(--gold);">
+            <p style="font-size:0.8rem; margin:0;">AI Advice: <span id="ai-tip">Planning your dream wedding...</span></p>
         </div>
-    </div>
-</main>
 
-<footer>© 2026 Smart Shaadi AI | Crafted for Royal Indian Weddings</footer>
+        <button onclick="window.open('https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat')" 
+                style="margin-top:20px; width:100%; padding:15px; background:var(--gold); border:none; border-radius:10px; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">
+            CHAT WITH AI BOT ✨
+        </button>
+    </div>
+</div>
 
 <script>
-    // URL se data uthane ka logic
-    const params = new URLSearchParams(window.location.search);
-    const budget = parseInt(params.get('budget')) || 0;
-    
-    document.getElementById('user-name').innerText = params.get('name') || "Explorer";
-    document.getElementById('val-date').innerText = params.get('date') || "Nov 2026";
-    document.getElementById('val-guests').innerText = params.get('guests') || "---";
-    document.getElementById('val-total').innerText = "₹" + budget.toLocaleString();
-    document.getElementById('val-city').innerText = params.get('city') || "Delhi NCR";
+    async function fetchLatestData() {
+        const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
+        const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions`;
+        
+        try {
+            const res = await fetch(base);
+            const text = await res.text();
+            const json = JSON.parse(text.substr(47).slice(0, -2));
+            const rows = json.table.rows;
+            const latest = rows[rows.length - 1].c; // Sabse niche wali row
 
-    // Calculations
-    document.getElementById('calc-venue').innerText = "₹" + (budget * 0.5).toLocaleString();
-    document.getElementById('calc-decor').innerText = "₹" + (budget * 0.3).toLocaleString();
+            // Mapping (Columns ke hisab se)
+            document.getElementById('user-name').innerText = latest[0].v; // Couple Names
+            document.getElementById('val-date').innerText = latest[1].v; // Date
+            document.getElementById('val-total').innerText = "₹" + parseInt(latest[2].v).toLocaleString(); // Budget
+            document.getElementById('val-guests').innerText = latest[3].v; // Guests
+            document.getElementById('val-city').innerText = latest[4].v; // City/Venue Type
 
-    function openBot() {
-        document.getElementById('bot-frame').style.display = 'block';
-        window.scrollTo(0, document.body.scrollHeight);
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        } catch (e) {
+            document.getElementById('loading').innerText = "Error: Please make sure the sheet is public!";
+        }
     }
+    window.onload = fetchLatestData;
 </script>
-
 </body>
 </html>
-
