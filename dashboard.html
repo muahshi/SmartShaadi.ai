@@ -6,27 +6,30 @@
     <title>Smart Shaadi AI | Command Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --glass: rgba(0, 242, 255, 0.03); --card-bg: #10141d; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .dashboard-frame { width: 95%; max-width: 500px; background: var(--card-bg); border: 3px solid var(--cyan); border-radius: 30px; padding: 25px; box-shadow: 0 0 40px rgba(0, 242, 255, 0.2), inset 0 0 20px rgba(0, 242, 255, 0.1); position: relative; }
-        .header { text-align: left; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .header h1 { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--gold); margin: 0; letter-spacing: 2px; }
+        :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px 0; }
+        .dashboard-frame { width: 95%; max-width: 500px; background: var(--card-bg); border: 3px solid var(--cyan); border-radius: 30px; padding: 25px; box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); position: relative; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 15px; margin-bottom: 20px; }
+        .header h1 { font-family: 'Orbitron'; font-size: 1.1rem; color: var(--gold); margin: 0; letter-spacing: 2px; }
         .system-status { font-size: 0.6rem; color: var(--cyan); font-family: 'Orbitron'; background: rgba(0, 242, 255, 0.1); padding: 5px 10px; border-radius: 50px; border: 1px solid var(--cyan); }
         .welcome-text { font-size: 0.9rem; margin-bottom: 20px; color: #bbb; }
         .welcome-text span { color: var(--cyan); font-weight: bold; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 15px; }
-        .label { font-size: 0.6rem; font-family: 'Orbitron'; color: var(--cyan); text-transform: uppercase; }
-        .value { font-size: 1rem; font-weight: 700; margin-top: 5px; color: #fff; }
-        .ai-section { margin-top: 25px; background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 20px; padding: 20px; }
-        .ai-title { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; text-align: center; }
-        .budget-item { margin-bottom: 15px; }
-        .budget-info { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 5px; }
-        .progress-bg { height: 6px; background: #222; border-radius: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--gold)); border-radius: 10px; width: 0%; transition: 1.5s ease-out; }
-        .chat-btn { margin-top: 25px; background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 18px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 204, 51, 0.3); }
-        #loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--card-bg); border-radius: 30px; display: flex; justify-content: center; align-items: center; z-index: 10; font-family: 'Orbitron'; color: var(--cyan); flex-direction: column; }
-        .spinner { border: 4px solid rgba(0, 242, 255, 0.1); border-left-color: var(--cyan); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin-bottom: 10px; }
+        .label { font-size: 0.55rem; font-family: 'Orbitron'; color: var(--cyan); text-transform: uppercase; }
+        .value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; color: #fff; }
+        
+        /* Scrollable AI Section */
+        .ai-section { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 20px; padding: 15px; max-height: 350px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
+        .ai-title { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; text-align: center; position: sticky; top: 0; background: #000; padding: 5px; z-index: 2; }
+        .budget-item { margin-bottom: 12px; border-bottom: 1px solid rgba(255,204,51,0.05); padding-bottom: 8px; }
+        .budget-info { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; }
+        .progress-bg { height: 4px; background: #222; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--gold)); width: 0%; transition: 1.5s ease-out; }
+        
+        .chat-btn { margin-top: 20px; background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 15px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.85rem; cursor: pointer; }
+        #loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--card-bg); border-radius: 30px; display: flex; justify-content: center; align-items: center; z-index: 10; color: var(--cyan); flex-direction: column; font-family: 'Orbitron'; }
+        .spinner { border: 3px solid rgba(0, 242, 255, 0.1); border-left-color: var(--cyan); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; margin-bottom: 10px; }
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
@@ -35,7 +38,7 @@
     <div class="dashboard-frame">
         <div id="loading-overlay">
             <div class="spinner"></div>
-            <p id="loading-text">SYNCING LATEST DATA...</p>
+            <p id="loading-text">SYNCING PLANNER...</p>
         </div>
 
         <div class="header">
@@ -43,7 +46,7 @@
             <div class="system-status">● LIVE_FEED</div>
         </div>
 
-        <div class="welcome-text">Welcome, <span id="user-name">Explorer</span>!</div>
+        <div class="welcome-text">Mubarak ho, <span id="user-name">Explorer</span>!</div>
 
         <div class="grid">
             <div class="card"><div class="label">Wedding Date</div><div class="value" id="val-date">--/--/--</div></div>
@@ -52,21 +55,9 @@
             <div class="card"><div class="label">City/Venue</div><div class="value" id="val-city">---</div></div>
         </div>
 
-        <div class="ai-section">
-            <div class="ai-title">AI BUDGET OPTIMIZATION</div>
-            <div class="budget-item">
-                <div class="budget-info"><span>Venue & Catering (50%)</span><span id="calc-venue">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-venue" style="width: 0%"></div></div>
+        <div class="ai-section" id="budget-list">
+            <div class="ai-title">FULL BUDGET BREAKDOWN</div>
             </div>
-            <div class="budget-item">
-                <div class="budget-info"><span>Decor & Outfits (30%)</span><span id="calc-decor">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-decor" style="width: 0%"></div></div>
-            </div>
-            <div class="budget-item">
-                <div class="budget-info"><span>Photo & Video (20%)</span><span id="calc-other">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-other" style="width: 0%"></div></div>
-            </div>
-        </div>
 
         <button class="chat-btn" onclick="window.location.href='https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat'">
             START AI CONSULTATION 💍
@@ -74,51 +65,66 @@
     </div>
 
     <script>
+        // List from your image
+        const budgetLogic = [
+            { name: "Venue", pc: 35 },
+            { name: "Food & Catering", pc: 10 },
+            { name: "Hotel & Stay", pc: 10 },
+            { name: "Jewellery", pc: 10 },
+            { name: "Clothes & Apparel", pc: 5 },
+            { name: "Decoration", pc: 5 },
+            { name: "Travel", pc: 5 },
+            { name: "Gifts", pc: 5 },
+            { name: "Honeymoon", pc: 5 },
+            { name: "Ceremony", pc: 5 },
+            { name: "Photographer", pc: 3 },
+            { name: "Miscellaneous", pc: 2 }
+        ];
+
+        let retryCount = 0;
+
         async function fetchLatestData() {
             const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
-            // Cache Buster (?t=) added to force refresh from Google Servers every time
             const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
             
             try {
                 const res = await fetch(base);
                 const text = await res.text();
-                // Extracting JSON from Google's response wrapper
                 const json = JSON.parse(text.substring(47, text.length - 2));
-                const rows = json.table.rows;
-                
-                if (!rows || rows.length === 0) throw new Error("No data found");
-
-                const latest = rows[rows.length - 1].c;
-
-                // Value Assignment
-                document.getElementById('user-name').innerText = latest[0]?.v || "Explorer";
-                document.getElementById('val-date').innerText = latest[1]?.f || latest[1]?.v || "Not Set";
-                
+                const latest = json.table.rows[json.table.rows.length - 1].c;
                 const budget = parseInt(latest[2]?.v) || 0;
+
+                if (budget === 0 && retryCount < 5) {
+                    retryCount++;
+                    setTimeout(fetchLatestData, 2000);
+                    return;
+                }
+
+                // Header Info
+                document.getElementById('user-name').innerText = latest[0]?.v || "Couple";
+                document.getElementById('val-date').innerText = latest[1]?.f || "TBD";
                 document.getElementById('val-total').innerText = "₹" + budget.toLocaleString('en-IN');
                 document.getElementById('val-guests').innerText = latest[3]?.v || "---";
-                document.getElementById('val-city').innerText = latest[4]?.v || "Delhi NCR";
+                document.getElementById('val-city').innerText = latest[4]?.v || "Delhi";
 
-                // AI Budget Calculation
-                document.getElementById('calc-venue').innerText = "₹" + (budget * 0.50).toLocaleString('en-IN');
-                document.getElementById('calc-decor').innerText = "₹" + (budget * 0.30).toLocaleString('en-IN');
-                document.getElementById('calc-other').innerText = "₹" + (budget * 0.20).toLocaleString('en-IN');
-
-                // Animation for Progress Bars
-                setTimeout(() => {
-                    document.getElementById('bar-venue').style.width = "50%";
-                    document.getElementById('bar-decor').style.width = "30%";
-                    document.getElementById('bar-other').style.width = "20%";
-                }, 500);
+                // Generate 12 Items
+                const container = document.getElementById('budget-list');
+                budgetLogic.forEach((item, index) => {
+                    const amount = Math.round(budget * (item.pc / 100));
+                    const html = `
+                        <div class="budget-item">
+                            <div class="budget-info"><span>${item.name} (${item.pc}%)</span><span>₹${amount.toLocaleString('en-IN')}</span></div>
+                            <div class="progress-bg"><div class="progress-fill" id="bar-${index}" style="width: 0%"></div></div>
+                        </div>`;
+                    container.innerHTML += html;
+                    
+                    setTimeout(() => {
+                        document.getElementById(`bar-${index}`).style.width = item.pc + "%";
+                    }, 600 + (index * 100));
+                });
 
                 document.getElementById('loading-overlay').style.display = 'none';
-
-            } catch (e) {
-                console.error("Fetch Error:", e);
-                document.getElementById('loading-text').innerHTML = "<span style='color:red'>SYNCING WITH CLOUD...</span>";
-                // Agar fail ho toh 3 seconds mein dobara koshish karega
-                setTimeout(fetchLatestData, 3000);
-            }
+            } catch (e) { console.error(e); setTimeout(fetchLatestData, 3000); }
         }
         window.onload = fetchLatestData;
     </script>
