@@ -15,11 +15,6 @@
 
     <meta name="description" content="Udaipur aur Goa bhool jao! Discover 7 hidden destination wedding places in India for 2026 — budget friendly, offbeat & Instagram worthy.">
 
-    <meta property="og:title" content="7 Hidden Destination Wedding Spots in India 2026 💍">
-    <meta property="og:description" content="2026 ka naya wedding trend – offbeat, intimate aur budget-smart destination weddings in India.">
-    <meta property="og:image" content="https://muahshi.github.io/SmartShaadi.ai/og-image.jpg">
-    <meta property="og:url" content="https://muahshi.github.io/SmartShaadi.ai/blog-destinations.html">
-
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -34,6 +29,7 @@
             color: #e0e0e0;
             margin: 0;
             line-height: 1.7;
+            overflow-x: hidden;
         }
         header {
             background: rgba(15, 15, 26, 0.95);
@@ -43,37 +39,56 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
         .logo {
             font-family: 'Orbitron';
             font-size: 1.8rem;
             color: var(--gold);
             text-decoration: none;
+            letter-spacing: 2px;
         }
         .container {
             max-width: 820px;
             margin: auto;
             padding: 40px 20px;
         }
-        .featured-img {
+        
+        /* Image Styling */
+        .dest-img {
             width: 100%;
-            height: 360px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 22px;
-            border: 1px solid var(--gold);
-            margin-bottom: 30px;
+            border-radius: 15px 15px 0 0;
+            border-bottom: 2px solid var(--gold);
         }
+
         h1, h2, h3 {
             color: var(--gold);
             font-family: 'Orbitron';
         }
+
+        /* Animation class */
         .content-box {
             background: var(--glass);
-            padding: 30px;
             border-radius: 22px;
             border: 1px solid rgba(255,255,255,0.12);
-            margin-bottom: 25px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
+
+        .content-box.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-padding {
+            padding: 25px;
+        }
+
         .highlight {
             color: var(--gold);
             font-weight: 600;
@@ -84,7 +99,14 @@
             color: var(--gold);
             font-weight: bold;
             text-decoration: none;
-            border-bottom: 1px dashed var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .cta:hover {
+            background: var(--gold);
+            color: var(--dark);
         }
     </style>
 </head>
@@ -97,116 +119,82 @@
 
 <main class="container">
 
-    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200" alt="Hidden Destination Wedding India" class="featured-img">
+    <h1 style="text-align: center; margin-bottom: 40px;">7 Hidden Destination Wedding Places in India for 2026 💍</h1>
 
-    <h1>7 Hidden Destination Wedding Places in India for 2026 💍</h1>
-
-    <p>
+    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 50px;">
         Agar aap <span class="highlight">Udaipur, Goa aur Jaipur</span> jaise over-crowded wedding destinations se bore ho chuke ho,  
         toh 2026 ka naya trend aapke liye hai — <span class="highlight">Offbeat, Intimate & Budget-Smart Weddings</span>.
     </p>
 
-    <!-- 1 -->
     <div class="content-box">
-        <h2>1. Gokarna, Karnataka (The New Goa)</h2>
-        <p>
-            Gokarna un couples ke liye perfect hai jo beach wedding chahte hain bina Goa ke heavy crowd aur cost ke.
-        </p>
-        <p>
-            <b>Best months:</b> October – March<br>
-            <b>Ideal guests:</b> 80–120<br>
-            <b>Budget:</b> ₹18–25 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Gokarna">
+        <div class="text-padding">
+            <h2>1. Gokarna, Karnataka (The New Goa)</h2>
+            <p>Gokarna un couples ke liye perfect hai jo beach wedding chahte hain bina Goa ke heavy crowd aur cost ke.</p>
+            <p class="highlight">Budget: ₹18–25 lakhs | Best: Oct – March</p>
+        </div>
     </div>
 
-    <!-- 2 -->
     <div class="content-box">
-        <h2>2. Mandu, Madhya Pradesh (Royal on Budget)</h2>
-        <p>
-            Mandu ka heritage architecture Rajasthan jaise vibes deta hai — par almost 40% kam kharcha.
-        </p>
-        <p>
-            <b>Best months:</b> November – February<br>
-            <b>Ideal guests:</b> 100–150<br>
-            <b>Budget:</b> ₹15–22 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Mandu">
+        <div class="text-padding">
+            <h2>2. Mandu, Madhya Pradesh (Royal on Budget)</h2>
+            <p>Mandu ka heritage architecture Rajasthan jaise vibes deta hai — par almost 40% kam kharcha.</p>
+            <p class="highlight">Budget: ₹15–22 lakhs | Best: Nov – Feb</p>
+        </div>
     </div>
 
-    <!-- 3 -->
     <div class="content-box">
-        <h2>3. Bir Billing, Himachal (Adventure Wedding)</h2>
-        <p>
-            Mountains, clouds aur paragliding backdrop — Bir Billing 2026 ka fastest growing wedding hotspot ban raha hai.
-        </p>
-        <p>
-            <b>Best months:</b> March – June<br>
-            <b>Ideal guests:</b> 60–100<br>
-            <b>Budget:</b> ₹14–20 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Bir Billing">
+        <div class="text-padding">
+            <h2>3. Bir Billing, Himachal (Adventure Wedding)</h2>
+            <p>Mountains, clouds aur paragliding backdrop — Bir Billing 2026 ka naya hotspot hai.</p>
+            <p class="highlight">Budget: ₹14–20 lakhs | Best: March – June</p>
+        </div>
     </div>
 
-    <!-- 4 -->
     <div class="content-box">
-        <h2>4. Jawai, Rajasthan (Leopard Luxury)</h2>
-        <p>
-            Ultra-luxury + wildlife experience. Jawai elite couples ka naya favourite ban raha hai.
-        </p>
-        <p>
-            <b>Best months:</b> October – March<br>
-            <b>Ideal guests:</b> 50–80<br>
-            <b>Budget:</b> ₹30–45 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1534171472159-edb6d1e0b63c?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Jawai">
+        <div class="text-padding">
+            <h2>4. Jawai, Rajasthan (Leopard Luxury)</h2>
+            <p>Ultra-luxury + wildlife experience. Jawai elite couples ka naya favourite ban raha hai.</p>
+            <p class="highlight">Budget: ₹30–45 lakhs | Best: Oct – March</p>
+        </div>
     </div>
 
-    <!-- 5 -->
     <div class="content-box">
-        <h2>5. Chikmagalur, Karnataka (Coffee Estate Wedding)</h2>
-        <p>
-            Green hills aur private estates ke beech minimalistic yet premium wedding experience.
-        </p>
-        <p>
-            <b>Best months:</b> September – February<br>
-            <b>Ideal guests:</b> 80–120<br>
-            <b>Budget:</b> ₹16–24 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1510141671043-34e40283c743?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Chikmagalur">
+        <div class="text-padding">
+            <h2>5. Chikmagalur, Karnataka (Coffee Estate Wedding)</h2>
+            <p>Green hills aur private estates ke beech minimalistic yet premium wedding experience.</p>
+            <p class="highlight">Budget: ₹16–24 lakhs | Best: Sept – Feb</p>
+        </div>
     </div>
 
-    <!-- 6 -->
     <div class="content-box">
-        <h2>6. Ziro Valley, Arunachal (Ultra Offbeat)</h2>
-        <p>
-            Instagram-viral landscapes aur pure privacy. Perfect for couples who want something no one else has done.
-        </p>
-        <p>
-            <b>Best months:</b> October – April<br>
-            <b>Ideal guests:</b> 40–70<br>
-            <b>Budget:</b> ₹20–28 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1544085311-11a028465b03?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Ziro Valley">
+        <div class="text-padding">
+            <h2>6. Ziro Valley, Arunachal (Ultra Offbeat)</h2>
+            <p>Instagram-viral landscapes aur pure privacy. Kuch aisa jo kisi ne pehle na kiya ho.</p>
+            <p class="highlight">Budget: ₹20–28 lakhs | Best: Oct – April</p>
+        </div>
     </div>
 
-    <!-- 7 -->
     <div class="content-box">
-        <h2>7. Mahabaleshwar, Maharashtra (Hilltop Romance)</h2>
-        <p>
-            Misty hills, strawberries aur sunset vows — perfect balance of accessibility and beauty.
-        </p>
-        <p>
-            <b>Best months:</b> November – March<br>
-            <b>Ideal guests:</b> 100–150<br>
-            <b>Budget:</b> ₹18–26 lakhs
-        </p>
+        <img src="https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80" class="dest-img" alt="Mahabaleshwar">
+        <div class="text-padding">
+            <h2>7. Mahabaleshwar, Maharashtra (Hilltop Romance)</h2>
+            <p>Misty hills, strawberries aur sunset vows — perfect balance of accessibility and beauty.</p>
+            <p class="highlight">Budget: ₹18–26 lakhs | Best: Nov – March</p>
+        </div>
     </div>
 
-    <!-- AI TIP -->
-    <div class="content-box">
-        <h2>Smart AI Budget Tip 💡</h2>
-        <p>
-            Agar aap <span class="highlight">off-season dates</span> aur <span class="highlight">weekday weddings</span> choose karte ho,
-            toh destination wedding ka total cost <b>25–35%</b> tak kam ho sakta hai.
-        </p>
-        <a href="https://muahshi.github.io/SmartShaadi.ai/" class="cta">
-            Try Smart Shaadi AI Planner →
-        </a>
+    <div class="content-box" style="border: 2px solid var(--gold); opacity: 1; transform: none;">
+        <div class="text-padding">
+            <h2>Smart AI Budget Tip 💡</h2>
+            <p>Off-season dates choose karke aap <b>25–35%</b> tak bacha sakte hain.</p>
+            <a href="https://muahshi.github.io/SmartShaadi.ai/" class="cta">Try Smart Shaadi AI Planner →</a>
+        </div>
     </div>
 
 </main>
@@ -215,54 +203,21 @@
     <p>&copy; 2026 Smart Shaadi AI · <a href="blogs.html" style="color:#ffcc33;text-decoration:none;">Back to Magazine</a></p>
 </footer>
 
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "India mein destination wedding ka average budget kitna hota hai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "India mein destination wedding ka average budget ₹15 lakh se ₹35 lakh ke beech hota hai, jo location, guest count aur season par depend karta hai."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Destination wedding ke liye sabse sasta season kaunsa hota hai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "July, August aur weekday dates destination wedding ke liye sabse saste hote hain, jisme couples 25–35% tak cost bacha sakte hain."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "India mein hidden destination wedding places kaunse hain?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Gokarna, Mandu, Bir Billing, Chikmagalur, Jawai aur Ziro Valley jaise offbeat locations India ke popular hidden destination wedding places hain."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Destination wedding mein kitne guests ideal hote hain?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Destination weddings ke liye 50–150 guests ideal hote hain, jisse event intimate, manageable aur budget-friendly rehta hai."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kya destination wedding India mein legally allowed hai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Haan, India mein destination weddings completely legal hain. Sirf venue permissions aur local regulations follow karna hota hai."
-      }
-    }
-  ]
-}
-    </script>
-    
+<script>
+    // Intersection Observer for Scroll Animation (Safe for AdSense)
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.content-box').forEach(box => {
+        observer.observe(box);
+    });
+</script>
+
 </body>
 </html>
