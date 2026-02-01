@@ -56,15 +56,15 @@
             <div class="ai-title">AI BUDGET OPTIMIZATION</div>
             <div class="budget-item">
                 <div class="budget-info"><span>Venue & Catering (50%)</span><span id="calc-venue">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-venue" style="width: 50%"></div></div>
+                <div class="progress-bg"><div class="progress-fill" id="bar-venue" style="width: 0%"></div></div>
             </div>
             <div class="budget-item">
                 <div class="budget-info"><span>Decor & Outfits (30%)</span><span id="calc-decor">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-decor" style="width: 30%"></div></div>
+                <div class="progress-bg"><div class="progress-fill" id="bar-decor" style="width: 0%"></div></div>
             </div>
             <div class="budget-item">
                 <div class="budget-info"><span>Photo & Video (20%)</span><span id="calc-other">₹0</span></div>
-                <div class="progress-bg"><div class="progress-fill" id="bar-other" style="width: 20%"></div></div>
+                <div class="progress-bg"><div class="progress-fill" id="bar-other" style="width: 0%"></div></div>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
     <script>
         async function fetchLatestData() {
             const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
-            // Cache Buster (?t=) added to force refresh from Google Servers
+            // Cache Buster (?t=) added to force refresh from Google Servers every time
             const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
             
             try {
@@ -90,7 +90,7 @@
 
                 const latest = rows[rows.length - 1].c;
 
-                // Value Assignment with Fallbacks
+                // Value Assignment
                 document.getElementById('user-name').innerText = latest[0]?.v || "Explorer";
                 document.getElementById('val-date').innerText = latest[1]?.f || latest[1]?.v || "Not Set";
                 
@@ -112,10 +112,12 @@
                 }, 500);
 
                 document.getElementById('loading-overlay').style.display = 'none';
+
             } catch (e) {
-                console.error(e);
-                document.getElementById('loading-text').innerHTML = "<span style='color:red'>RETRYING SYNC...</span>";
-                setTimeout(fetchLatestData, 3000); // Auto-retry after 3 seconds if fails
+                console.error("Fetch Error:", e);
+                document.getElementById('loading-text').innerHTML = "<span style='color:red'>SYNCING WITH CLOUD...</span>";
+                // Agar fail ho toh 3 seconds mein dobara koshish karega
+                setTimeout(fetchLatestData, 3000);
             }
         }
         window.onload = fetchLatestData;
