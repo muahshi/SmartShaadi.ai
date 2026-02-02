@@ -19,12 +19,11 @@
         .label { font-size: 0.55rem; font-family: 'Orbitron'; color: var(--cyan); text-transform: uppercase; }
         .value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; color: #fff; }
         
-        /* Scrollable AI Section */
-        .ai-section { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 20px; padding: 15px; max-height: 350px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
-        .ai-title { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; text-align: center; position: sticky; top: 0; background: #000; padding: 5px; z-index: 2; }
-        .budget-item { margin-bottom: 12px; border-bottom: 1px solid rgba(255,204,51,0.05); padding-bottom: 8px; }
-        .budget-info { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 5px; }
-        .progress-bg { height: 4px; background: #222; border-radius: 10px; overflow: hidden; }
+        .ai-section { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 20px; padding: 15px; max-height: 400px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
+        .ai-title { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; text-align: center; position: sticky; top: 0; background: #10141d; padding: 5px; z-index: 2; }
+        .budget-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,204,51,0.05); padding-bottom: 10px; }
+        .budget-info { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 6px; }
+        .progress-bg { height: 6px; background: #222; border-radius: 10px; overflow: hidden; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--gold)); width: 0%; transition: 1.5s ease-out; }
         
         .chat-btn { margin-top: 20px; background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 15px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.85rem; cursor: pointer; }
@@ -38,7 +37,7 @@
     <div class="dashboard-frame">
         <div id="loading-overlay">
             <div class="spinner"></div>
-            <p id="loading-text">SYNCING PLANNER...</p>
+            <p id="loading-text">AI OPTIMIZING PLAN...</p>
         </div>
 
         <div class="header">
@@ -56,8 +55,8 @@
         </div>
 
         <div class="ai-section" id="budget-list">
-            <div class="ai-title">FULL BUDGET BREAKDOWN</div>
-            </div>
+            <div class="ai-title">AI STRATEGIC BREAKDOWN</div>
+        </div>
 
         <button class="chat-btn" onclick="window.location.href='https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat'">
             START AI CONSULTATION 💍
@@ -65,20 +64,14 @@
     </div>
 
     <script>
-        // List from your image
+        // SMART AI LOGIC: Groups 12 items into 6 Strategic Clusters
         const budgetLogic = [
-            { name: "Venue", pc: 35 },
-            { name: "Food & Catering", pc: 10 },
-            { name: "Hotel & Stay", pc: 10 },
-            { name: "Jewellery", pc: 10 },
-            { name: "Clothes & Apparel", pc: 5 },
-            { name: "Decoration", pc: 5 },
-            { name: "Travel", pc: 5 },
-            { name: "Gifts", pc: 5 },
-            { name: "Honeymoon", pc: 5 },
-            { name: "Ceremony", pc: 5 },
-            { name: "Photographer", pc: 3 },
-            { name: "Miscellaneous", pc: 2 }
+            { name: "Venue & Catering (The Core)", pc: 45 },
+            { name: "Jewellery & Apparel (The Look)", pc: 20 },
+            { name: "Decor & Photography (Memories)", pc: 15 },
+            { name: "Guest Stay & Travel (Logistics)", pc: 12 },
+            { name: "Gifts & Honeymoon (Extras)", pc: 6 },
+            { name: "Miscellaneous (Buffer)", pc: 2 }
         ];
 
         let retryCount = 0;
@@ -100,27 +93,28 @@
                     return;
                 }
 
-                // Header Info
                 document.getElementById('user-name').innerText = latest[0]?.v || "Couple";
                 document.getElementById('val-date').innerText = latest[1]?.f || "TBD";
                 document.getElementById('val-total').innerText = "₹" + budget.toLocaleString('en-IN');
                 document.getElementById('val-guests').innerText = latest[3]?.v || "---";
-                document.getElementById('val-city').innerText = latest[4]?.v || "Delhi";
+                document.getElementById('val-city').innerText = latest[4]?.v || "Not Set";
 
-                // Generate 12 Items
                 const container = document.getElementById('budget-list');
                 budgetLogic.forEach((item, index) => {
                     const amount = Math.round(budget * (item.pc / 100));
                     const html = `
                         <div class="budget-item">
-                            <div class="budget-info"><span>${item.name} (${item.pc}%)</span><span>₹${amount.toLocaleString('en-IN')}</span></div>
+                            <div class="budget-info">
+                                <strong>${item.name}</strong>
+                                <span>₹${amount.toLocaleString('en-IN')}</span>
+                            </div>
                             <div class="progress-bg"><div class="progress-fill" id="bar-${index}" style="width: 0%"></div></div>
                         </div>`;
                     container.innerHTML += html;
                     
                     setTimeout(() => {
                         document.getElementById(`bar-${index}`).style.width = item.pc + "%";
-                    }, 600 + (index * 100));
+                    }, 500 + (index * 150));
                 });
 
                 document.getElementById('loading-overlay').style.display = 'none';
