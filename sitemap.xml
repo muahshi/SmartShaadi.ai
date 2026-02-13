@@ -1,149 +1,23 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Y6QPBQ6QZE');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Magazine | Smart Shaadi AI Blogs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --pink: #ff4d94; --red: #ff4747; --blue: #5ac8fa; --green: #2ecc71; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
-        header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
-        .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        .section-title { color: var(--gold); font-family: 'Orbitron'; font-size: 2.2rem; text-align: center; margin: 40px 0; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .mag-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; display: flex; flex-direction: column; height: 100%; }
-        .mag-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .mag-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid rgba(255,204,51,0.2); background: #222; }
-        .mag-content { padding: 20px; flex-grow: 1; }
-        .cat-tag { display: inline-block; padding: 4px 12px; border-radius: 5px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; margin-bottom: 12px; }
-        .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; }
-        footer { margin-top: 60px; padding: 40px 20px; border-top: 1px solid #333; text-align: center; }
-    </style>
-</head>
-<body>
-<header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
-<main class="container">
-    <h1 class="section-title">Wedding Magazine</h1>
-    <div class="blog-grid">
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Guest List Cost" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--red); color:white;">Budget Tool</span>
-                <h3>Guest List Ka Kharcha? Calculator Inside</h3>
-                <p>Per plate catering cost estimate karein aur ₹1.5 Lakh tak bachayein.</p>
-                <a href="blog-guest-cost.html" class="blog-link">Calculate Cost →</a>
-            </div>
-        </article>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/</loc><lastmod>2026-02-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/index.html</loc><lastmod>2026-02-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blogs.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
 
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80" alt="Checklist" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--green); color:white;">Planning</span>
-                <h3>Shaadi Ki Complete Checklist (PDF + AI)</h3>
-                <a href="blog-wedding-checklist.html" class="blog-link">Get Checklist →</a>
-            </div>
-        </article>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-guest-cost.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-wedding-checklist.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-planner-vs-diy.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-middle-class-truth.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-budget-calculator.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-5-lakh-wedding.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-future-ai.html</loc><lastmod>2026-02-13</lastmod><priority>0.9</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-ai-hacks.html</loc><lastmod>2026-02-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-destinations.html</loc><lastmod>2026-02-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-photography-2026.html</loc><lastmod>2026-02-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-chandni-chowk-shopping-2026.html</loc><lastmod>2026-02-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/blog-market.html</loc><lastmod>2026-02-13</lastmod><priority>0.7</priority></url>
 
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" alt="Calculator" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--gold); color:black;">Tools</span>
-                <h3>Indian Wedding Budget Calculator (2026)</h3>
-                <a href="blog-budget-calculator.html" class="blog-link">Calculate Now →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" alt="DIY" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--blue); color:white;">Debate</span>
-                <h3>Wedding Planner vs DIY Shaadi</h3>
-                <a href="blog-planner-vs-diy.html" class="blog-link">Read More →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800" alt="Budget" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--pink); color:white;">Low Budget</span>
-                <h3>5 Lakh Me Shaadi Kaise Kare?</h3>
-                <a href="blog-5-lakh-wedding.html" class="blog-link">Read Guide →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" alt="Reality" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--red); color:white;">Truth</span>
-                <h3>Middle Class Wedding Cost – Reality</h3>
-                <a href="blog-middle-class-truth.html" class="blog-link">Read Truth →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800" alt="AI" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--blue); color:white;">Tech</span>
-                <h3>How AI Is Changing Weddings</h3>
-                <a href="blog-future-ai.html" class="blog-link">Explore →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" alt="Hacks" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag">Hacks</span>
-                <h3>5 Smart AI Hacks for 2026</h3>
-                <a href="blog-ai-hacks.html" class="blog-link">Read Hacks →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800" alt="Destinations" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag">Travel</span>
-                <h3>7 Hidden Destination Spots</h3>
-                <a href="blog-destinations.html" class="blog-link">See Locations →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800" alt="Photography" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag">Style</span>
-                <h3>10 Wedding Photo Trends 2026</h3>
-                <a href="blog-photography-2026.html" class="blog-link">Check Trends →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800" alt="Shopping" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag">Shopping</span>
-                <h3>Chandni Chowk Shopping 2026</h3>
-                <a href="blog-chandni-chowk-shopping-2026.html" class="blog-link">Read Guide →</a>
-            </div>
-        </article>
-
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" alt="Market" class="mag-img">
-            <div class="mag-content">
-                <span class="cat-tag">Analysis</span>
-                <h3>Wedding Market Trends</h3>
-                <a href="blog-market.html" class="blog-link">Read More →</a>
-            </div>
-        </article>
-    </div>
-</main>
-<footer><p>&copy; 2026 Smart Shaadi AI.</p></footer>
-</body>
-</html>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/contact.html</loc><lastmod>2026-02-13</lastmod><priority>0.5</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/privacy-policy.html</loc><lastmod>2026-02-13</lastmod><priority>0.4</priority></url>
+  <url><loc>https://muahshi.github.io/SmartShaadi.ai/terms.html</loc><lastmod>2026-02-13</lastmod><priority>0.4</priority></url>
+</urlset>
