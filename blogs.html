@@ -1,52 +1,195 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y6QPBQ6QZE');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Magazine | Smart Shaadi AI Blogs</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --green: #2ecc71; --blue: #5ac8fa; --red: #ff4747; --purple: #a29bfe; }
+        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --green: #2ecc71; --blue: #5ac8fa; --red: #ff4747; --purple: #a29bfe; --pink: #ff4d94; }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
         header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        .section-title { color: var(--gold); font-family: 'Orbitron'; font-size: 2.2rem; text-align: center; margin: 40px 0; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .mag-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; display: flex; flex-direction: column; height: 100%; }
-        .mag-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .mag-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid rgba(255,204,51,0.2); }
-        .mag-content { padding: 20px; flex-grow: 1; }
-        .cat-tag { display: inline-block; padding: 4px 12px; border-radius: 5px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; margin-bottom: 12px; }
-        .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .section-title { color: var(--gold); font-family: 'Orbitron'; font-size: 2.5rem; text-align: center; margin: 50px 0; letter-spacing: 2px; }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Full Card Clickable Style */
+        .mag-card { 
+            background: var(--glass); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            display: flex; 
+            flex-direction: column; 
+            height: 100%; 
+            text-decoration: none; /* Link underline remove */
+            color: inherit;
+            position: relative;
+        }
+
+        .mag-card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(255,204,51,0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mag-img-container { position: relative; overflow: hidden; height: 220px; }
+        .mag-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .mag-card:hover .mag-img { transform: scale(1.1); }
+
+        .mag-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .cat-tag { align-self: flex-start; padding: 5px 15px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        
+        h3 { font-family: 'Orbitron'; font-size: 1.2rem; margin: 0 0 15px 0; color: #fff; line-height: 1.4; transition: color 0.3s; }
+        .mag-card:hover h3 { color: var(--gold); }
+        
+        p { font-size: 0.9rem; color: #bbb; margin-bottom: 20px; flex-grow: 1; }
+        
+        .read-more-btn { color: var(--gold); font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+        .read-more-btn::after { content: '→'; transition: transform 0.3s; }
+        .mag-card:hover .read-more-btn::after { transform: translateX(5px); }
+
+        footer { margin-top: 80px; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; background: #080810; }
+        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem; margin-bottom: 15px; display: block; }
     </style>
 </head>
 <body>
+
 <header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
+
 <main class="container">
     <h1 class="section-title">Wedding Magazine</h1>
+    
     <div class="blog-grid">
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Saving Money" class="mag-img">
+        
+        <a href="blog-wedding-saving-tips.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Saving Tips" class="mag-img">
+            </div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--green); color:white;">Saving Guide</span>
                 <h3>Shaadi Me Paisa Kaise Bachaye? 15 Tips</h3>
                 <p>Off-season dates se lekar AI tools tak, lakhon bachane ke hacks.</p>
-                <a href="blog-wedding-saving-tips.html" class="blog-link">Read Tips →</a>
+                <div class="read-more-btn">Read Full Article</div>
             </div>
-        </article>
+        </a>
 
-        <article class="mag-card">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="AI Planner" class="mag-img">
+        <a href="blog-ai-wedding-planner.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="AI Planner" class="mag-img">
+            </div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--purple); color:black;">AI Tool</span>
-                <h3>AI Wedding Planner India</h3>
-                <a href="blog-ai-wedding-planner.html" class="blog-link">Use AI Tool →</a>
+                <h3>AI Wedding Planner India - Free Tool</h3>
+                <p>Manual planning chhodein. AI se apni shaadi ko efficient banayein.</p>
+                <div class="read-more-btn">Plan with AI</div>
             </div>
-        </article>
+        </a>
 
-        </div>
+        <a href="blog-court-vs-traditional.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1544161513-0179fe746fd5?auto=format&fit=crop&w=800&q=80" alt="Court Marriage" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--blue); color:white;">Cost Battle</span>
+                <h3>Court Marriage vs Traditional Cost</h3>
+                <p>Paisa bachana hai ya dikhawa? Dekhiye asli comparison India mein.</p>
+                <div class="read-more-btn">See Comparison</div>
+            </div>
+        </a>
+
+        <a href="blog-guest-cost.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Guest List" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--red); color:white;">Calculator</span>
+                <h3>Guest List Ka Kharcha? Calculator</h3>
+                <p>Per plate catering cost estimate karein aur ₹1.5 Lakh tak bachayein.</p>
+                <div class="read-more-btn">Calculate Now</div>
+            </div>
+        </a>
+
+        <a href="blog-wedding-checklist.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80" alt="Checklist" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--green); color:white;">Planning</span>
+                <h3>Shaadi Ki Complete Checklist (PDF)</h3>
+                <p>Ek bhi cheez na choote! Step-by-step planning guide for 2026.</p>
+                <div class="read-more-btn">Download PDF</div>
+            </div>
+        </a>
+
+        <a href="blog-budget-calculator.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" alt="Calculator" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--gold); color:black;">Tools</span>
+                <h3>Indian Wedding Budget Calculator 2026</h3>
+                <p>Apna budget enter karein aur instant AI breakdown paayein.</p>
+                <div class="read-more-btn">Use Tool</div>
+            </div>
+        </a>
+
+        <a href="blog-5-lakh-wedding.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800" alt="Budget" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--pink); color:white;">Low Budget</span>
+                <h3>5 Lakh Me Shaadi Kaise Kare?</h3>
+                <p>Grand shaadi, small budget. Hamari expert planning guide.</p>
+                <div class="read-more-btn">Read Plan</div>
+            </div>
+        </a>
+
+        <a href="blog-middle-class-truth.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" alt="Reality" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--red); color:white;">Truth</span>
+                <h3>Middle Class Wedding Cost – Full Truth</h3>
+                <p>Hidden expenses aur social pressure ka asli sach.</p>
+                <div class="read-more-btn">Reveal Truth</div>
+            </div>
+        </a>
+
+        <a href="blog-budget-2026.html" class="mag-card">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" alt="Budget 2026" class="mag-img">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--gold); color:black;">Finance</span>
+                <h3>Wedding Budget 2026 - New Rules</h3>
+                <p>Inflation aur trends ke beech naye budget rules.</p>
+                <div class="read-more-btn">Learn More</div>
+            </div>
+        </a>
+
+    </div>
 </main>
-<footer><p>&copy; 2026 Smart Shaadi AI.</p></footer>
+
+<footer>
+    <span class="footer-logo">SMART SHAADI AI</span>
+    <p>Transforming Complexity into Efficiency through AI & Automation.<br> 
+    Mubashir Hasan | AI Systems Architect</p>
+    <p style="font-size: 0.8rem; margin-top: 20px; color: #555;">&copy; 2026 Smart Shaadi AI. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
