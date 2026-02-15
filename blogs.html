@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --green: #2ecc71; --blue: #5ac8fa; --red: #ff4747; --purple: #a29bfe; --pink: #ff4d94; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; padding-bottom: 50px; line-height: 1.6; }
         header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; }
         .logo { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
@@ -22,7 +22,6 @@
         
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        /* Full Card Clickable Style */
         .mag-card { 
             background: var(--glass); 
             border-radius: 20px; 
@@ -32,9 +31,8 @@
             display: flex; 
             flex-direction: column; 
             height: 100%; 
-            text-decoration: none; /* Link underline remove */
+            text-decoration: none;
             color: inherit;
-            position: relative;
         }
 
         .mag-card:hover { 
@@ -44,24 +42,21 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .mag-img-container { position: relative; overflow: hidden; height: 220px; }
+        .mag-img-container { position: relative; overflow: hidden; height: 200px; background: #222; }
         .mag-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .mag-card:hover .mag-img { transform: scale(1.1); }
 
         .mag-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .cat-tag { align-self: flex-start; padding: 5px 15px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        .cat-tag { align-self: flex-start; padding: 4px 12px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }
         
-        h3 { font-family: 'Orbitron'; font-size: 1.2rem; margin: 0 0 15px 0; color: #fff; line-height: 1.4; transition: color 0.3s; }
-        .mag-card:hover h3 { color: var(--gold); }
-        
-        p { font-size: 0.9rem; color: #bbb; margin-bottom: 20px; flex-grow: 1; }
+        h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin: 0 0 12px 0; color: #fff; line-height: 1.4; }
+        p { font-size: 0.85rem; color: #bbb; margin-bottom: 20px; flex-grow: 1; }
         
         .read-more-btn { color: var(--gold); font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
         .read-more-btn::after { content: '→'; transition: transform 0.3s; }
         .mag-card:hover .read-more-btn::after { transform: translateX(5px); }
 
         footer { margin-top: 80px; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; background: #080810; }
-        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem; margin-bottom: 15px; display: block; }
     </style>
 </head>
 <body>
@@ -73,110 +68,162 @@
     
     <div class="blog-grid">
         
-        <a href="blog-wedding-saving-tips.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Saving Tips" class="mag-img">
+        <a href="blog-destination-wedding-cost.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--blue); color:white;">Premium</span>
+                <h3>Destination Wedding Cost Breakdown</h3>
+                <p>Goa aur Udaipur shaadi ka asli budget aur hidden costs ka sach.</p>
+                <div class="read-more-btn">Read Full Guide</div>
             </div>
+        </a>
+
+        <a href="blog-wedding-saving-tips.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--green); color:white;">Saving Guide</span>
                 <h3>Shaadi Me Paisa Kaise Bachaye? 15 Tips</h3>
-                <p>Off-season dates se lekar AI tools tak, lakhon bachane ke hacks.</p>
-                <div class="read-more-btn">Read Full Article</div>
+                <p>Off-season dates aur AI tools se lakhon bachane ke practical hacks.</p>
+                <div class="read-more-btn">Read Tips</div>
             </div>
         </a>
 
         <a href="blog-ai-wedding-planner.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="AI Planner" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--purple); color:black;">AI Tool</span>
-                <h3>AI Wedding Planner India - Free Tool</h3>
+                <h3>AI Wedding Planner India</h3>
                 <p>Manual planning chhodein. AI se apni shaadi ko efficient banayein.</p>
                 <div class="read-more-btn">Plan with AI</div>
             </div>
         </a>
 
         <a href="blog-court-vs-traditional.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1544161513-0179fe746fd5?auto=format&fit=crop&w=800&q=80" alt="Court Marriage" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1544161513-0179fe746fd5?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--blue); color:white;">Cost Battle</span>
+                <span class="cat-tag" style="background:var(--blue); color:white;">Comparison</span>
                 <h3>Court Marriage vs Traditional Cost</h3>
-                <p>Paisa bachana hai ya dikhawa? Dekhiye asli comparison India mein.</p>
+                <p>Paisa bachana hai ya dikhawa? Dekhiye asli cost comparison.</p>
                 <div class="read-more-btn">See Comparison</div>
             </div>
         </a>
 
         <a href="blog-guest-cost.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Guest List" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--red); color:white;">Calculator</span>
-                <h3>Guest List Ka Kharcha? Calculator</h3>
-                <p>Per plate catering cost estimate karein aur ₹1.5 Lakh tak bachayein.</p>
+                <h3>Guest List Cost Calculator</h3>
+                <p>Per plate catering cost estimate karein aur ₹1.5 Lakh bachayein.</p>
                 <div class="read-more-btn">Calculate Now</div>
             </div>
         </a>
 
-        <a href="blog-wedding-checklist.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80" alt="Checklist" class="mag-img">
-            </div>
+        <a href="blog-5-lakh-wedding.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--green); color:white;">Planning</span>
-                <h3>Shaadi Ki Complete Checklist (PDF)</h3>
-                <p>Ek bhi cheez na choote! Step-by-step planning guide for 2026.</p>
-                <div class="read-more-btn">Download PDF</div>
+                <span class="cat-tag" style="background:var(--pink); color:white;">Low Budget</span>
+                <h3>5 Lakh Me Shaadi Kaise Kare?</h3>
+                <p>Budget mein reh kar ek grand shaadi plan karne ka roadmap.</p>
+                <div class="read-more-btn">See Plan</div>
+            </div>
+        </a>
+
+        <a href="blog-wedding-checklist.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--green); color:white;">Essential</span>
+                <h3>Complete Wedding Checklist 2026</h3>
+                <p>Ek bhi task miss nahi hoga! Hamari PDF checklist download karein.</p>
+                <div class="read-more-btn">Get Checklist</div>
             </div>
         </a>
 
         <a href="blog-budget-calculator.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" alt="Calculator" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--gold); color:black;">Tools</span>
-                <h3>Indian Wedding Budget Calculator 2026</h3>
-                <p>Apna budget enter karein aur instant AI breakdown paayein.</p>
+                <span class="cat-tag" style="background:var(--gold); color:black;">Finance</span>
+                <h3>Indian Wedding Budget Calculator</h3>
+                <p>AI se apni shaadi ka poora kharcha 2 minute mein calculate karein.</p>
                 <div class="read-more-btn">Use Tool</div>
             </div>
         </a>
 
-        <a href="blog-5-lakh-wedding.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800" alt="Budget" class="mag-img">
-            </div>
+        <a href="blog-ai-hacks.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--pink); color:white;">Low Budget</span>
-                <h3>5 Lakh Me Shaadi Kaise Kare?</h3>
-                <p>Grand shaadi, small budget. Hamari expert planning guide.</p>
-                <div class="read-more-btn">Read Plan</div>
+                <span class="cat-tag" style="background:var(--purple); color:black;">Tech</span>
+                <h3>5 AI Hacks for Smart Weddings</h3>
+                <p>Chatbots aur AI generators se wedding efficiency badhayein.</p>
+                <div class="read-more-btn">Read Hacks</div>
             </div>
         </a>
 
         <a href="blog-middle-class-truth.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" alt="Reality" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--red); color:white;">Truth</span>
-                <h3>Middle Class Wedding Cost – Full Truth</h3>
-                <p>Hidden expenses aur social pressure ka asli sach.</p>
-                <div class="read-more-btn">Reveal Truth</div>
+                <span class="cat-tag" style="background:var(--red); color:white;">Insight</span>
+                <h3>Middle Class Wedding: The Real Truth</h3>
+                <p>Dikhawa vs Reality – Indian parents ke liye financial advice.</p>
+                <div class="read-more-btn">Read Truth</div>
+            </div>
+        </a>
+
+        <a href="blog-chandni-chowk-shopping-2026.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--pink); color:white;">Shopping</span>
+                <h3>Chandni Chowk Shopping Guide 2026</h3>
+                <p>Saste aur trendy lehengas ke liye best shops ki list.</p>
+                <div class="read-more-btn">Read Guide</div>
+            </div>
+        </a>
+
+        <a href="blog-future-ai.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--purple); color:black;">Future</span>
+                <h3>The Future of Weddings & AI</h3>
+                <p>Technological revolution kaise shaadiyon ko badal rahi hai.</p>
+                <div class="read-more-btn">Explore Future</div>
+            </div>
+        </a>
+
+        <a href="blog-planner-vs-diy.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--blue); color:white;">Guide</span>
+                <h3>Wedding Planner vs DIY Shaadi</h3>
+                <p>Kya aapko ek wedding planner ki zaroorat hai? Janiye pros & cons.</p>
+                <div class="read-more-btn">Compare Now</div>
+            </div>
+        </a>
+
+        <a href="blog-photography-2026.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--gold); color:black;">Style</span>
+                <h3>Wedding Photography Trends 2026</h3>
+                <p>Drone shots se le kar cinematic reels tak, kya chal raha hai trend.</p>
+                <div class="read-more-btn">Check Trends</div>
+            </div>
+        </a>
+
+        <a href="blog-market.html" class="mag-card">
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=800" class="mag-img"></div>
+            <div class="mag-content">
+                <span class="cat-tag">Business</span>
+                <h3>India's Wedding Market Analysis</h3>
+                <p>50 billion dollar industry ka future aur naye business models.</p>
+                <div class="read-more-btn">Read Analysis</div>
             </div>
         </a>
 
         <a href="blog-budget-2026.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" alt="Budget 2026" class="mag-img">
-            </div>
+            <div class="mag-img-container"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800" class="mag-img"></div>
             <div class="mag-content">
-                <span class="cat-tag" style="background:var(--gold); color:black;">Finance</span>
-                <h3>Wedding Budget 2026 - New Rules</h3>
-                <p>Inflation aur trends ke beech naye budget rules.</p>
+                <span class="cat-tag" style="background:var(--gold); color:black;">Rules</span>
+                <h3>New Wedding Budget Rules 2026</h3>
+                <p>Inflation ke zamane mein budget control karne ke naye niyam.</p>
                 <div class="read-more-btn">Learn More</div>
             </div>
         </a>
@@ -185,7 +232,7 @@
 </main>
 
 <footer>
-    <span class="footer-logo">SMART SHAADI AI</span>
+    <span style="font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem; display: block; margin-bottom: 15px;">SMART SHAADI AI</span>
     <p>Transforming Complexity into Efficiency through AI & Automation.<br> 
     Mubashir Hasan | AI Systems Architect</p>
     <p style="font-size: 0.8rem; margin-top: 20px; color: #555;">&copy; 2026 Smart Shaadi AI. All rights reserved.</p>
