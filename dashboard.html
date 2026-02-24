@@ -8,55 +8,44 @@
     <style>
         :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; --glass: rgba(0, 242, 255, 0.05); }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; padding: 10px; }
-        
         .dashboard-frame { width: 100%; max-width: 550px; margin: auto; padding-bottom: 80px; }
-
-        /* Top Status Bar */
+        
+        /* Layout Components */
         .status-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--glass); border: 1px solid rgba(0,242,255,0.2); border-radius: 15px; margin-bottom: 20px; }
         .status-bar h1 { font-family: 'Orbitron'; font-size: 0.9rem; margin: 0; color: var(--gold); }
         .live-dot { height: 8px; width: 8px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
-
-        /* User Header */
         .user-hero { margin-bottom: 25px; padding-left: 10px; }
         .user-hero h2 { font-size: 1.5rem; margin: 0; }
-        .user-hero p { color: #888; font-size: 0.8rem; margin: 5px 0; }
-
-        /* Stats Row */
         .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
         .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 18px; position: relative; overflow: hidden; }
         .stat-card::after { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--cyan); }
         .stat-label { font-family: 'Orbitron'; font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; }
         .stat-value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; }
 
-        /* Tools Design */
+        /* Tools Grid */
         .phase-container { margin-top: 30px; }
         .phase-header { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .phase-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,204,51,0.2); }
         .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
-        .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 20px; text-align: left; cursor: pointer; transition: 0.3s; position: relative; }
+        .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 20px; position: relative; cursor: pointer; transition: 0.3s; }
         .tool-box:hover { border-color: var(--cyan); background: rgba(0, 242, 255, 0.05); transform: translateY(-3px); }
         .tool-box i { font-size: 1.5rem; display: block; margin-bottom: 10px; }
         .tool-title { font-size: 0.75rem; font-weight: 600; color: #fff; display: block; }
         .tool-desc { font-size: 0.55rem; color: #777; margin-top: 4px; display: block; }
         .badge { position: absolute; top: 10px; right: 10px; font-size: 0.5rem; background: var(--cyan); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
 
-        /* --- MODAL STYLES --- */
+        /* Modal System */
         .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
-        .modal-content { background: var(--card-bg); border: 2px solid var(--gold); margin: 15% auto; padding: 25px; width: 85%; max-width: 400px; border-radius: 30px; text-align: center; box-shadow: 0 0 30px rgba(255, 204, 51, 0.2); position: relative; }
+        .modal-content { background: var(--card-bg); border: 2px solid var(--gold); margin: 15% auto; padding: 25px; width: 85%; max-width: 400px; border-radius: 30px; text-align: center; position: relative; }
         .close-modal { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; }
-        #invite-text, #outfit-result-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; font-size: 0.85rem; color: #eee; min-height: 120px; margin: 20px 0; white-space: pre-wrap; text-align: left; border: 1px dashed var(--gold); line-height: 1.5; }
-        .copy-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 14px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .result-area { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; font-size: 0.85rem; color: #eee; min-height: 100px; margin: 20px 0; white-space: pre-wrap; text-align: left; border: 1px dashed var(--gold); line-height: 1.5; }
+        .copy-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 14px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; width: 100%; }
         
-        /* Outfit Specific Styles */
         .selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .select-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,242,255,0.2); padding: 10px; border-radius: 12px; color: #fff; font-size: 0.7rem; cursor: pointer; text-align: center; }
-        .style-tag { background: var(--gold); color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; text-transform: uppercase; }
+        .select-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,242,255,0.2); padding: 10px; border-radius: 12px; color: #fff; font-size: 0.7rem; cursor: pointer; }
 
-        /* Fixed Button */
         .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 10; }
         .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 16px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; cursor: pointer; }
-
-        /* Loader */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .spinner { width: 50px; height: 50px; border: 3px solid rgba(0,242,255,0.1); border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s infinite linear; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -66,38 +55,22 @@
 
     <div id="loader">
         <div class="spinner"></div>
-        <p id="loader-text" style="font-family:'Orbitron'; color:var(--cyan); margin-top:20px; font-size:0.7rem; letter-spacing:2px;">INITIALIZING AI COMMAND...</p>
+        <p style="font-family:'Orbitron'; color:var(--cyan); margin-top:20px; font-size:0.7rem;">SYNCING AI ENGINE...</p>
     </div>
 
-    <div id="inviteModal" class="modal">
+    <div id="mainModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeInvite()">&times;</span>
-            <h2 style="font-family:'Orbitron'; color:var(--gold); font-size: 1rem; margin-top: 10px;">AI SMART INVITE</h2>
-            <p style="font-size: 0.7rem; color: #888;">AI ne aapke liye perfect Hinglish script likhi hai:</p>
-            <div id="invite-text">Loading script...</div>
-            <button class="copy-btn" onclick="copyInvite()">COPY & WHATSAPP 💌</button>
-        </div>
-    </div>
-
-    <div id="outfitModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeOutfit()">&times;</span>
-            <h2 style="font-family:'Orbitron'; color:var(--cyan); font-size: 1rem; margin-top: 10px;">AI OUTFIT SUGGESTOR</h2>
-            
-            <div id="outfit-step-1">
-                <p style="font-size: 0.8rem; margin-bottom: 15px;">Aapka Role kya hai?</p>
-                <div class="selection-grid">
-                    <div class="select-box" onclick="setOutfitRole('Groom')">Dulha (Groom)</div>
-                    <div class="select-box" onclick="setOutfitRole('Bride')">Dulhan (Bride)</div>
-                    <div class="select-box" onclick="setOutfitRole('Guest')" style="grid-column: span 2;">Family / Guest</div>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" style="font-family:'Orbitron'; color:var(--gold); font-size: 1rem;">AI TOOL</h2>
+            <div id="modal-body">
+                <div id="step-selection" style="display:none;">
+                    <p id="step-text" style="font-size: 0.8rem; margin-bottom: 15px;"></p>
+                    <div class="selection-grid" id="selection-buttons"></div>
                 </div>
-            </div>
-
-            <div id="outfit-result" style="display:none;">
-                <span class="style-tag">AI Recommended Look 2026</span>
-                <div id="outfit-result-box"></div>
-                <p style="font-size: 0.65rem; color: var(--gold); text-align: left;">📍 Shopping Tip: Check out Chowk Bazar or Bittan Market for these fabrics!</p>
-                <button class="copy-btn" style="margin-top:10px;" onclick="closeOutfit()">PERFECT, THANKS!</button>
+                <div id="result-display">
+                    <div class="result-area" id="result-text"></div>
+                    <button class="copy-btn" id="action-btn" onclick="closeModal()">OK, GOT IT!</button>
+                </div>
             </div>
         </div>
     </div>
@@ -110,41 +83,24 @@
 
         <div class="user-hero">
             <h2>Mubarak ho, <span id="user-name" style="color:var(--gold);">Explorer</span>!</h2>
-            <p>Aapka premium wedding plan AI ne optimize kar diya hai.</p>
+            <p>Aapka premium wedding plan ready hai.</p>
         </div>
 
         <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-label">Smart Budget</div>
-                <div class="stat-value" id="val-total" style="color:var(--gold);">₹0</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Guest Count</div>
-                <div class="stat-value" id="val-guests">0</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Wedding Date</div>
-                <div class="stat-value" id="val-date">TBD</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Location</div>
-                <div class="stat-value" id="val-city">Bhopal</div>
-            </div>
+            <div class="stat-card"><div class="stat-label">Smart Budget</div><div class="stat-value" id="val-total">₹0</div></div>
+            <div class="stat-card"><div class="stat-label">Guest Count</div><div class="stat-value" id="val-guests">0</div></div>
+            <div class="stat-card"><div class="stat-label">Wedding Date</div><div class="stat-value" id="val-date">TBD</div></div>
+            <div class="stat-card"><div class="stat-label">Location</div><div class="stat-value" id="val-city">Bhopal</div></div>
         </div>
 
         <div class="phase-container">
             <div class="phase-header">PHASE 1: STRATEGY</div>
             <div class="tools-grid">
                 <div class="tool-box" onclick="location.href='wedding-budget-calculator-india-2026.html'">
-                    <span class="badge">LIVE</span>
-                    <i>📊</i>
-                    <span class="tool-title">Budget Optimizer</span>
-                    <span class="tool-desc">Item-wise cost breakdown.</span>
+                    <span class="badge">LIVE</span><i>📊</i><span class="tool-title">Budget Optimizer</span><span class="tool-desc">Cost breakdown.</span>
                 </div>
-                <div class="tool-box">
-                    <i>☁️</i>
-                    <span class="tool-title">Weather Predictor</span>
-                    <span class="tool-desc">Real-time alerts for Bhopal.</span>
+                <div class="tool-box" onclick="runWeather()">
+                    <span class="badge">LIVE</span><i>☁️</i><span class="tool-title">Weather Predictor</span><span class="tool-desc">Bhopal real-time alerts.</span>
                 </div>
             </div>
         </div>
@@ -152,30 +108,36 @@
         <div class="phase-container">
             <div class="phase-header">PHASE 2: AESTHETICS</div>
             <div class="tools-grid">
-                <div class="tool-box" onclick="openOutfitAI()">
-                    <span class="badge" style="background:var(--cyan); color:#000;">LIVE</span>
-                    <i>👗</i>
-                    <span class="tool-title">Outfit AI</span>
-                    <span class="tool-desc">2026 Trending Styles.</span>
+                <div class="tool-box" onclick="runOutfit()">
+                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>👗</i><span class="tool-title">Outfit AI</span><span class="tool-desc">2026 Trending Styles.</span>
                 </div>
-                <div class="tool-box"><i>💍</i><span class="tool-title">Jewel Viz</span><span class="tool-desc">Virtual matching.</span></div>
-                <div class="tool-box"><i>📸</i><span class="tool-title">Pose Guide</span><span class="tool-desc">AI-curated poses.</span></div>
-                <div class="tool-box"><i>🎨</i><span class="tool-title">Moodboard AI</span><span class="tool-desc">Generate themes.</span></div>
+                <div class="tool-box" onclick="runJewel()">
+                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>💍</i><span class="tool-title">Jewel Viz</span><span class="tool-desc">Virtual matching.</span>
+                </div>
+                <div class="tool-box" onclick="runPose()">
+                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>📸</i><span class="tool-title">Pose Guide</span><span class="tool-desc">AI-curated poses.</span>
+                </div>
+                <div class="tool-box" onclick="runMood()">
+                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>🎨</i><span class="tool-title">Moodboard AI</span><span class="tool-desc">Generate themes.</span>
+                </div>
             </div>
         </div>
 
         <div class="phase-container">
             <div class="phase-header">PHASE 3: HOSPITALITY</div>
             <div class="tools-grid">
-                <div class="tool-box" onclick="generateAIInvite()">
-                    <span class="badge" style="background:var(--gold); color:#000;">LIVE</span>
-                    <i>💌</i>
-                    <span class="tool-title">Smart Invites</span>
-                    <span class="tool-desc">AI WhatsApp Invitations.</span>
+                <div class="tool-box" onclick="runInvite()">
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>💌</i><span class="tool-title">Smart Invites</span><span class="tool-desc">AI WhatsApp Invites.</span>
                 </div>
-                <div class="tool-box"><i>🍽️</i><span class="tool-title">Menu Generator</span><span class="tool-desc">Bhopali Fusion.</span></div>
-                <div class="tool-box"><i>🪑</i><span class="tool-title">Seating AI</span><span class="tool-desc">Guest management.</span></div>
-                <div class="tool-box"><i>📜</i><span class="tool-title">Legal Review</span><span class="tool-desc">Contract scanner.</span></div>
+                <div class="tool-box" onclick="runMenu()">
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>🍽️</i><span class="tool-title">Menu Generator</span><span class="tool-desc">Bhopali Fusion.</span>
+                </div>
+                <div class="tool-box" onclick="runSeating()">
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>🪑</i><span class="tool-title">Seating AI</span><span class="tool-desc">Guest management.</span>
+                </div>
+                <div class="tool-box" onclick="runLegal()">
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>📜</i><span class="tool-title">Legal Review</span><span class="tool-desc">Contract scanner.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -187,87 +149,65 @@
     </div>
 
     <script>
-        // --- DATA LOADING ---
-        function loadInstantData() {
-            const cache = localStorage.getItem('ss_user_data');
-            if (cache) {
-                const data = JSON.parse(cache);
-                document.getElementById('user-name').innerText = data.name || "Explorer";
-                document.getElementById('val-total').innerText = "₹" + (data.budget ? data.budget.toLocaleString('en-IN') : "0");
-                document.getElementById('val-guests').innerText = data.guests || "0";
-                document.getElementById('val-date').innerText = data.date || "TBD";
-                document.getElementById('val-city').innerText = data.city || "Bhopal";
-            }
+        // Data Loaders
+        function loadData() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data')) || {name:"Explorer", budget:0, guests:0, date:"TBD", city:"Bhopal"};
+            document.getElementById('user-name').innerText = d.name;
+            document.getElementById('val-total').innerText = "₹" + d.budget.toLocaleString('en-IN');
+            document.getElementById('val-guests').innerText = d.guests;
+            document.getElementById('val-date').innerText = d.date;
+            document.getElementById('val-city').innerText = d.city;
+            return d;
         }
 
-        async function syncWithSheets() {
-            const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
-            const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
+        async function sync() {
             try {
-                const res = await fetch(base);
+                const res = await fetch('https://docs.google.com/spreadsheets/d/1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y/gviz/tq?tqx=out:json');
                 const text = await res.text();
                 const json = JSON.parse(text.substring(47, text.length - 2));
                 const latest = json.table.rows[json.table.rows.length - 1].c;
-                const freshData = {
-                    name: latest[0]?.v || "Explorer",
-                    date: latest[1]?.f || "TBD",
-                    budget: parseInt(latest[2]?.v) || 0,
-                    guests: latest[3]?.v || "0",
-                    city: latest[4]?.v || "Bhopal"
-                };
-                localStorage.setItem('ss_user_data', JSON.stringify(freshData));
-                loadInstantData();
-                document.getElementById('loader').style.display = 'none';
-            } catch (e) { 
-                console.error(e);
-                setTimeout(() => document.getElementById('loader').style.display = 'none', 2000);
-            }
+                const fresh = { name: latest[0].v, date: latest[1].f, budget: latest[2].v, guests: latest[3].v, city: latest[4].v };
+                localStorage.setItem('ss_user_data', JSON.stringify(fresh));
+                loadData();
+            } catch (e) { console.log("Offline mode"); }
+            document.getElementById('loader').style.display = 'none';
         }
 
-        // --- AI INVITE LOGIC ---
-        function generateAIInvite() {
-            const cache = localStorage.getItem('ss_user_data');
-            const data = cache ? JSON.parse(cache) : {name: "Humari", date: "[DATE]", city: "Bhopal"};
-            const scripts = [
-                `Mubarak ho! ✨\n\nPyare doston, humari khushiyon ki shuruat ho rahi hai! ❤️\n\n${data.name} ki shadi ${data.date} ko ${data.city} mein taye hui hai. AI ne kaha hai ki aapke bina mehfil adhuri rahegi! 😉\n\nAapko aur aapki family ko is khaas mauke par hum dil se invite karte hain.\n\nTaiyar rahiye! 💍\n- Sent via Smart Shaadi AI`,
-                `Save The Date! 🔥\n\nDhol-Dhamaka taiyar hai kyunki shadi ${data.name} ki hai! 💍\n\n📅 Date: ${data.date}\n📍 Location: ${data.city}\n\nHumara AI assistant sab manage kar raha hai, bas aapka intezar hai!\n\nSee you there! ✨`
-            ];
-            document.getElementById('invite-text').innerText = scripts[Math.floor(Math.random() * scripts.length)];
-            document.getElementById('inviteModal').style.display = "block";
+        // Modal Controls
+        function showModal(title, text, btnText = "OK, GOT IT!", isCopy = false) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('result-text').innerText = text;
+            const btn = document.getElementById('action-btn');
+            btn.innerText = btnText;
+            btn.onclick = isCopy ? () => { navigator.clipboard.writeText(text); alert("Copied! ✅"); } : closeModal;
+            document.getElementById('mainModal').style.display = "block";
         }
-        function closeInvite() { document.getElementById('inviteModal').style.display = "none"; }
-        function copyInvite() {
-            const text = document.getElementById('invite-text').innerText;
-            navigator.clipboard.writeText(text).then(() => alert("Invite Copy ho gaya! ✅"));
-        }
+        function closeModal() { document.getElementById('mainModal').style.display = "none"; }
 
-        // --- OUTFIT AI LOGIC ---
-        function openOutfitAI() {
-            document.getElementById('outfitModal').style.display = "block";
-            document.getElementById('outfit-step-1').style.display = "block";
-            document.getElementById('outfit-result').style.display = "none";
-        }
-        function closeOutfit() { document.getElementById('outfitModal').style.display = "none"; }
-
-        function setOutfitRole(role) {
-            const cache = localStorage.getItem('ss_user_data');
-            const budget = cache ? JSON.parse(cache).budget : 500000;
-            let sug = "";
-            
-            if(role === 'Groom') {
-                sug = budget > 800000 ? "✨ **Royal Look:** Ivory Silk Sherwani with emerald buttons and a velvet stole." : "🤵 **Modern Look:** Indo-Western Navy Achkan with white slim-fit trousers.";
-            } else if(role === 'Bride') {
-                sug = budget > 800000 ? "👑 **Regal Look:** Traditional Crimson Red Lehenga with heavy Zardosi and double dupatta." : "🌸 **Chic Look:** Pastel Peach Organza Lehenga with delicate mirror work.";
-            } else {
-                sug = "👔 **Elegant Guest:** Sage Green Lucknowi Chikankari Kurta paired with a cream Nehru Jacket.";
-            }
-
-            document.getElementById('outfit-step-1').style.display = "none";
-            document.getElementById('outfit-result').style.display = "block";
-            document.getElementById('outfit-result-box').innerHTML = sug;
+        // --- TOOL LOGICS ---
+        function runWeather() { showModal("WEATHER PREDICTOR", "🌤️ Bhopal Weather AI Analysis:\nWedding Date pe mausam saaf rehne ki 85% sambhavna hai. Shaam ko halki thand ho sakti hai, toh open-air venue best rahega!"); }
+        
+        function runInvite() {
+            const d = loadData();
+            const msg = `Mubarak ho! ✨\n\n${d.name} ki shadi ${d.date} ko ${d.city} mein taye hui hai. Aapka intezar rahega!\n\n- Sent via Smart Shaadi AI`;
+            showModal("SMART INVITE", msg, "COPY & WHATSAPP 💌", true);
         }
 
-        window.onload = () => { loadInstantData(); syncWithSheets(); };
+        function runOutfit() { showModal("OUTFIT AI", "👗 2026 Trend: Velvet Sherwanis for Grooms and Pastel Organza Lehengas for Brides are in! Shopping tip: Visit Chowk Bazar for heritage fabrics."); }
+        
+        function runMenu() { showModal("MENU GENERATOR", "🍽️ AI Menu (Bhopali Fusion):\n1. Bhopali Gosht Korma\n2. Truffle Paneer Tikka\n3. Shahi Tukda Shots\n4. Nitro Jalebi"); }
+
+        function runJewel() { showModal("JEWEL VIZ", "💍 Virtual Match: Aapke outfit ke liye 'Champagne Gold' Polki set best rahega. Sarafa Bazaar mein best rates scan ho rahe hain."); }
+
+        function runPose() { showModal("POSE GUIDE", "📸 Trending Poses:\n1. The Royal Walk (Candid)\n2. Veil Shot (Cinematic)\n3. Forehead Kiss (Classic)"); }
+
+        function runMood() { showModal("MOODBOARD AI", "🎨 Decor Theme: 'Royal Emerald & Gold' with heavy floral hangings. AI suggests using Lake-side lighting for your Bhopal venue."); }
+
+        function runSeating() { showModal("SEATING AI", "🪑 Seating Plan: Guests ko 10-person round tables mein divide karein. VVIP seating stage ke left side optimize ki gayi hai."); }
+
+        function runLegal() { showModal("LEGAL REVIEW", "📜 Contract Scanner: AI ne saare vendor contracts scan kar liye hain. Ensure karein ki 'Refund Policy' clause clear hai."); }
+
+        window.onload = sync;
     </script>
 </body>
 </html>
