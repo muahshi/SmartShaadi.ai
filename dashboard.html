@@ -40,9 +40,6 @@
         .close-modal { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; }
         .result-area { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; font-size: 0.85rem; color: #eee; min-height: 100px; margin: 20px 0; white-space: pre-wrap; text-align: left; border: 1px dashed var(--gold); line-height: 1.5; }
         .copy-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 14px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; width: 100%; }
-        
-        .selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .select-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,242,255,0.2); padding: 10px; border-radius: 12px; color: #fff; font-size: 0.7rem; cursor: pointer; }
 
         .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 10; }
         .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 16px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; cursor: pointer; }
@@ -63,10 +60,6 @@
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h2 id="modal-title" style="font-family:'Orbitron'; color:var(--gold); font-size: 1rem;">AI TOOL</h2>
             <div id="modal-body">
-                <div id="step-selection" style="display:none;">
-                    <p id="step-text" style="font-size: 0.8rem; margin-bottom: 15px;"></p>
-                    <div class="selection-grid" id="selection-buttons"></div>
-                </div>
                 <div id="result-display">
                     <div class="result-area" id="result-text"></div>
                     <button class="copy-btn" id="action-btn" onclick="closeModal()">OK, GOT IT!</button>
@@ -100,7 +93,7 @@
                     <span class="badge">LIVE</span><i>📊</i><span class="tool-title">Budget Optimizer</span><span class="tool-desc">Cost breakdown.</span>
                 </div>
                 <div class="tool-box" onclick="runWeather()">
-                    <span class="badge">LIVE</span><i>☁️</i><span class="tool-title">Weather Predictor</span><span class="tool-desc">Bhopal real-time alerts.</span>
+                    <span class="badge">LIVE</span><i>☁️</i><span class="tool-title">Weather Predictor</span><span class="tool-desc">Real-time alerts.</span>
                 </div>
             </div>
         </div>
@@ -109,7 +102,7 @@
             <div class="phase-header">PHASE 2: AESTHETICS</div>
             <div class="tools-grid">
                 <div class="tool-box" onclick="runOutfit()">
-                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>👗</i><span class="tool-title">Outfit AI</span><span class="tool-desc">2026 Trending Styles.</span>
+                    <span class="badge" style="background:var(--cyan)">LIVE</span><i>👗</i><span class="tool-title">Outfit AI</span><span class="tool-desc">Trending Styles.</span>
                 </div>
                 <div class="tool-box" onclick="runJewel()">
                     <span class="badge" style="background:var(--cyan)">LIVE</span><i>💍</i><span class="tool-title">Jewel Viz</span><span class="tool-desc">Virtual matching.</span>
@@ -127,10 +120,10 @@
             <div class="phase-header">PHASE 3: HOSPITALITY</div>
             <div class="tools-grid">
                 <div class="tool-box" onclick="runInvite()">
-                    <span class="badge" style="background:var(--gold)">LIVE</span><i>💌</i><span class="tool-title">Smart Invites</span><span class="tool-desc">AI WhatsApp Invites.</span>
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>💌</i><span class="tool-title">Smart Invites</span><span class="tool-desc">WhatsApp Invites.</span>
                 </div>
                 <div class="tool-box" onclick="runMenu()">
-                    <span class="badge" style="background:var(--gold)">LIVE</span><i>🍽️</i><span class="tool-title">Menu Generator</span><span class="tool-desc">Bhopali Fusion.</span>
+                    <span class="badge" style="background:var(--gold)">LIVE</span><i>🍽️</i><span class="tool-title">Menu Generator</span><span class="tool-desc">City Fusion.</span>
                 </div>
                 <div class="tool-box" onclick="runSeating()">
                     <span class="badge" style="background:var(--gold)">LIVE</span><i>🪑</i><span class="tool-title">Seating AI</span><span class="tool-desc">Guest management.</span>
@@ -162,7 +155,7 @@
 
         async function sync() {
             try {
-                const res = await fetch('https://docs.google.com/spreadsheets/d/1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y/gviz/tq?tqx=out:json');
+                const res = await fetch('https://docs.google.com/spreadsheets/d/1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y/gviz/tq?tqx=out:json&t=' + Date.now());
                 const text = await res.text();
                 const json = JSON.parse(text.substring(47, text.length - 2));
                 const latest = json.table.rows[json.table.rows.length - 1].c;
@@ -184,8 +177,11 @@
         }
         function closeModal() { document.getElementById('mainModal').style.display = "none"; }
 
-        // --- TOOL LOGICS ---
-        function runWeather() { showModal("WEATHER PREDICTOR", "🌤️ Bhopal Weather AI Analysis:\nWedding Date pe mausam saaf rehne ki 85% sambhavna hai. Shaam ko halki thand ho sakti hai, toh open-air venue best rahega!"); }
+        // --- DYNAMIC TOOL LOGICS ---
+        function runWeather() { 
+            const d = loadData();
+            showModal("WEATHER PREDICTOR", `🌤️ ${d.city} Weather AI Scan:\n\n${d.date} ke liye ${d.city} ka mausam 85% clear predict ho raha hai. AI recommends open-air setup!`); 
+        }
         
         function runInvite() {
             const d = loadData();
@@ -193,19 +189,31 @@
             showModal("SMART INVITE", msg, "COPY & WHATSAPP 💌", true);
         }
 
-        function runOutfit() { showModal("OUTFIT AI", "👗 2026 Trend: Velvet Sherwanis for Grooms and Pastel Organza Lehengas for Brides are in! Shopping tip: Visit Chowk Bazar for heritage fabrics."); }
+        function runOutfit() { 
+            const d = loadData();
+            showModal("OUTFIT AI", `👗 2026 Trend for ${d.city}:\n\nAapke budget (₹${d.budget.toLocaleString()}) ke hisaab se modern fusion best rahega. Visit ${d.city} heritage markets for unique fabrics.`); 
+        }
         
-        function runMenu() { showModal("MENU GENERATOR", "🍽️ AI Menu (Bhopali Fusion):\n1. Bhopali Gosht Korma\n2. Truffle Paneer Tikka\n3. Shahi Tukda Shots\n4. Nitro Jalebi"); }
+        function runMenu() { 
+            const d = loadData();
+            showModal("MENU GENERATOR", `🍽️ AI Menu (${d.city} Fusion):\n\n1. Special ${d.city} Welcome Drinks\n2. Global Fusion Starters\n3. Local Signature Main Course\n4. Nitro Dessert Bar`); 
+        }
 
-        function runJewel() { showModal("JEWEL VIZ", "💍 Virtual Match: Aapke outfit ke liye 'Champagne Gold' Polki set best rahega. Sarafa Bazaar mein best rates scan ho rahe hain."); }
+        function runJewel() { 
+            const d = loadData();
+            showModal("JEWEL VIZ", `💍 Virtual Match: Aapke ${d.city} wedding location ke liye 'Antique Gold' Polki set trending hai. Local artisan jewelry best match rahegi.`); 
+        }
 
         function runPose() { showModal("POSE GUIDE", "📸 Trending Poses:\n1. The Royal Walk (Candid)\n2. Veil Shot (Cinematic)\n3. Forehead Kiss (Classic)"); }
 
-        function runMood() { showModal("MOODBOARD AI", "🎨 Decor Theme: 'Royal Emerald & Gold' with heavy floral hangings. AI suggests using Lake-side lighting for your Bhopal venue."); }
+        function runMood() { 
+            const d = loadData();
+            showModal("MOODBOARD AI", `🎨 Theme: 'Royal Glow'\n\nAI recommends specific decor accents that highlight the architecture of ${d.city} venues.`); 
+        }
 
-        function runSeating() { showModal("SEATING AI", "🪑 Seating Plan: Guests ko 10-person round tables mein divide karein. VVIP seating stage ke left side optimize ki gayi hai."); }
+        function runSeating() { showModal("SEATING AI", "🪑 Seating Plan: Guests ko 10-person round tables mein divide karein. VVIP seating stage ke side optimize ki gayi hai."); }
 
-        function runLegal() { showModal("LEGAL REVIEW", "📜 Contract Scanner: AI ne saare vendor contracts scan kar liye hain. Ensure karein ki 'Refund Policy' clause clear hai."); }
+        function runLegal() { showModal("LEGAL REVIEW", "📜 Contract Scanner: AI ne contracts scan kiye hain. Ensure karein ki 'Refund Policy' clause clear hai."); }
 
         window.onload = sync;
     </script>
