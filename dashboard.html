@@ -9,7 +9,7 @@
         :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; --glass: rgba(0, 242, 255, 0.05); }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; padding: 10px; }
         
-        .dashboard-frame { width: 100%; max-width: 550px; margin: auto; padding-bottom: 50px; }
+        .dashboard-frame { width: 100%; max-width: 550px; margin: auto; padding-bottom: 80px; }
 
         /* Top Status Bar */
         .status-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--glass); border: 1px solid rgba(0,242,255,0.2); border-radius: 15px; margin-bottom: 20px; }
@@ -21,18 +21,17 @@
         .user-hero h2 { font-size: 1.5rem; margin: 0; }
         .user-hero p { color: #888; font-size: 0.8rem; margin: 5px 0; }
 
-        /* Stats Row - Instant Update */
+        /* Stats Row */
         .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
         .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 18px; position: relative; overflow: hidden; }
         .stat-card::after { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--cyan); }
         .stat-label { font-family: 'Orbitron'; font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; }
         .stat-value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; }
 
-        /* Phase Categorization for Tools */
+        /* Tools Design */
         .phase-container { margin-top: 30px; }
         .phase-header { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .phase-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,204,51,0.2); }
-
         .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
         .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 20px; text-align: left; cursor: pointer; transition: 0.3s; position: relative; }
         .tool-box:hover { border-color: var(--cyan); background: rgba(0, 242, 255, 0.05); transform: translateY(-3px); }
@@ -41,11 +40,19 @@
         .tool-desc { font-size: 0.55rem; color: #777; margin-top: 4px; display: block; }
         .badge { position: absolute; top: 10px; right: 10px; font-size: 0.5rem; background: var(--cyan); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
 
-        /* AI Consultant Fixed Button */
-        .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 10; }
-        .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 16px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* --- MODAL STYLES --- */
+        .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
+        .modal-content { background: var(--card-bg); border: 2px solid var(--gold); margin: 15% auto; padding: 25px; width: 85%; max-width: 400px; border-radius: 30px; text-align: center; box-shadow: 0 0 30px rgba(255, 204, 51, 0.2); position: relative; }
+        .close-modal { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; }
+        #invite-text { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; font-size: 0.85rem; color: #eee; min-height: 120px; margin: 20px 0; white-space: pre-wrap; text-align: left; border: 1px dashed var(--gold); line-height: 1.5; }
+        .copy-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 14px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .copy-btn:active { transform: scale(0.95); }
 
-        /* Loading Animation */
+        /* Fixed Button */
+        .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 10; }
+        .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 16px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; cursor: pointer; }
+
+        /* Loader */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .spinner { width: 50px; height: 50px; border: 3px solid rgba(0,242,255,0.1); border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s infinite linear; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -56,6 +63,16 @@
     <div id="loader">
         <div class="spinner"></div>
         <p id="loader-text" style="font-family:'Orbitron'; color:var(--cyan); margin-top:20px; font-size:0.7rem; letter-spacing:2px;">INITIALIZING AI COMMAND...</p>
+    </div>
+
+    <div id="inviteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeInvite()">&times;</span>
+            <h2 style="font-family:'Orbitron'; color:var(--gold); font-size: 1rem; margin-top: 10px;">AI SMART INVITE</h2>
+            <p style="font-size: 0.7rem; color: #888;">AI ne aapke liye perfect Hinglish script likhi hai:</p>
+            <div id="invite-text">Loading script...</div>
+            <button class="copy-btn" onclick="copyInvite()">COPY & WHATSAPP 💌</button>
+        </div>
     </div>
 
     <div class="dashboard-frame">
@@ -108,52 +125,25 @@
         <div class="phase-container">
             <div class="phase-header">PHASE 2: AESTHETICS</div>
             <div class="tools-grid">
-                <div class="tool-box">
-                    <i>👗</i>
-                    <span class="tool-title">Outfit AI</span>
-                    <span class="tool-desc">2026 Trending Styles.</span>
-                </div>
-                <div class="tool-box">
-                    <i>💍</i>
-                    <span class="tool-title">Jewel Viz</span>
-                    <span class="tool-desc">Virtual jewellery matching.</span>
-                </div>
-                <div class="tool-box">
-                    <i>📸</i>
-                    <span class="tool-title">Pose Guide</span>
-                    <span class="tool-desc">AI-curated wedding poses.</span>
-                </div>
-                <div class="tool-box">
-                    <i>🎨</i>
-                    <span class="tool-title">Moodboard AI</span>
-                    <span class="tool-desc">Generate decor themes.</span>
-                </div>
+                <div class="tool-box"><i>👗</i><span class="tool-title">Outfit AI</span><span class="tool-desc">2026 Trending Styles.</span></div>
+                <div class="tool-box"><i>💍</i><span class="tool-title">Jewel Viz</span><span class="tool-desc">Virtual matching.</span></div>
+                <div class="tool-box"><i>📸</i><span class="tool-title">Pose Guide</span><span class="tool-desc">AI-curated poses.</span></div>
+                <div class="tool-box"><i>🎨</i><span class="tool-title">Moodboard AI</span><span class="tool-desc">Generate themes.</span></div>
             </div>
         </div>
 
         <div class="phase-container">
             <div class="phase-header">PHASE 3: HOSPITALITY</div>
             <div class="tools-grid">
-                <div class="tool-box">
+                <div class="tool-box" onclick="generateAIInvite()">
+                    <span class="badge" style="background:var(--gold)">NEW</span>
                     <i>💌</i>
                     <span class="tool-title">Smart Invites</span>
                     <span class="tool-desc">AI WhatsApp Invitations.</span>
                 </div>
-                <div class="tool-box">
-                    <i>🍽️</i>
-                    <span class="tool-title">Menu Generator</span>
-                    <span class="tool-desc">Bhopali & Fusion Menu.</span>
-                </div>
-                <div class="tool-box">
-                    <i>🪑</i>
-                    <span class="tool-title">Seating AI</span>
-                    <span class="tool-desc">Optimize guest seating.</span>
-                </div>
-                <div class="tool-box">
-                    <i>📜</i>
-                    <span class="tool-title">Legal Review</span>
-                    <span class="tool-desc">Scan vendor contracts.</span>
-                </div>
+                <div class="tool-box"><i>🍽️</i><span class="tool-title">Menu Generator</span><span class="tool-desc">Bhopali Fusion.</span></div>
+                <div class="tool-box"><i>🪑</i><span class="tool-title">Seating AI</span><span class="tool-desc">Guest management.</span></div>
+                <div class="tool-box"><i>📜</i><span class="tool-title">Legal Review</span><span class="tool-desc">Contract scanner.</span></div>
             </div>
         </div>
     </div>
@@ -165,7 +155,7 @@
     </div>
 
     <script>
-        // 1. INSTANT DATA LOADING (LocalStorage)
+        // --- DATA LOADING ---
         function loadInstantData() {
             const cache = localStorage.getItem('ss_user_data');
             if (cache) {
@@ -178,17 +168,14 @@
             }
         }
 
-        // 2. GOOGLE SHEETS SYNC (Background)
         async function syncWithSheets() {
             const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
-            const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
-            
+            const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx:out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
             try {
                 const res = await fetch(base);
                 const text = await res.text();
                 const json = JSON.parse(text.substring(47, text.length - 2));
                 const latest = json.table.rows[json.table.rows.length - 1].c;
-                
                 const freshData = {
                     name: latest[0]?.v || "Explorer",
                     date: latest[1]?.f || "TBD",
@@ -196,31 +183,41 @@
                     guests: latest[3]?.v || "0",
                     city: latest[4]?.v || "Bhopal"
                 };
-
-                // Update UI & Cache
                 localStorage.setItem('ss_user_data', JSON.stringify(freshData));
                 loadInstantData();
-                
                 document.getElementById('loader').style.display = 'none';
             } catch (e) { 
-                console.error("Sync Error", e);
-                // Even if fetch fails, hide loader after 3s to show cached data
-                setTimeout(() => document.getElementById('loader').style.display = 'none', 3000);
+                console.error(e);
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 2000);
             }
         }
 
-        // Interactive Loader Text
-        const phrases = ["ANALYZING BUDGET...", "OPTIMIZING VENDORS...", "CURATING AI TOOLS...", "FINALIZING PLAN..."];
-        let i = 0;
-        setInterval(() => {
-            document.getElementById('loader-text').innerText = phrases[i % phrases.length];
-            i++;
-        }, 800);
+        // --- AI INVITE LOGIC ---
+        function generateAIInvite() {
+            const cache = localStorage.getItem('ss_user_data');
+            const data = cache ? JSON.parse(cache) : {name: "Humari", date: "[DATE]", city: "Bhopal"};
+            
+            const scripts = [
+                `Mubarak ho! ✨\n\nPyare doston, humari khushiyon ki shuruat ho rahi hai! ❤️\n\n${data.name} ki shadi ${data.date} ko ${data.city} mein taye hui hai. AI ne kaha hai ki aapke bina mehfil adhuri rahegi! 😉\n\nAapko aur aapki family ko is khaas mauke par hum dil se invite karte hain.\n\nTaiyar rahiye! 💍\n- Sent via Smart Shaadi AI`,
+                
+                `Save The Date! 🔥\n\nDhol-Dhamaka taiyar hai kyunki shadi ${data.name} ki hai! 💍\n\n📅 Date: ${data.date}\n📍 Location: ${data.city}\n\nHum chahte hain ki aap is din hamare saath rahein aur dher saari yaadein banayein. Humara AI assistant sab manage kar raha hai, bas aapka intezar hai!\n\nSee you there! ✨`
+            ];
 
-        window.onload = () => {
-            loadInstantData();
-            syncWithSheets();
-        };
+            const randomScript = scripts[Math.floor(Math.random() * scripts.length)];
+            document.getElementById('invite-text').innerText = randomScript;
+            document.getElementById('inviteModal').style.display = "block";
+        }
+
+        function closeInvite() { document.getElementById('inviteModal').style.display = "none"; }
+
+        function copyInvite() {
+            const text = document.getElementById('invite-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Invite Copy ho gaya! Ab WhatsApp par paste karein. ✅");
+            });
+        }
+
+        window.onload = () => { loadInstantData(); syncWithSheets(); };
     </script>
 </body>
 </html>
