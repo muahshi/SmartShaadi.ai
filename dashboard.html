@@ -3,93 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Shaadi AI | Command Center</title>
+    <title>AI Command Center | Smart Shaadi</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; }
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px 0; }
-        .dashboard-frame { width: 95%; max-width: 500px; background: var(--card-bg); border: 3px solid var(--cyan); border-radius: 30px; padding: 25px; box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); position: relative; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 15px; margin-bottom: 20px; }
-        .header h1 { font-family: 'Orbitron'; font-size: 1.1rem; color: var(--gold); margin: 0; letter-spacing: 2px; }
-        .system-status { font-size: 0.6rem; color: var(--cyan); font-family: 'Orbitron'; background: rgba(0, 242, 255, 0.1); padding: 5px 10px; border-radius: 50px; border: 1px solid var(--cyan); }
-        .welcome-text { font-size: 0.9rem; margin-bottom: 20px; color: #bbb; }
-        .welcome-text span { color: var(--cyan); font-weight: bold; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 15px; transition: 0.3s; }
+        :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; --glass: rgba(0, 242, 255, 0.05); }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; padding: 10px; }
         
-        /* New Style for Calculator Shortcut */
-        .tool-card { cursor: pointer; border: 1px solid var(--cyan); background: rgba(0, 242, 255, 0.05); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .tool-card:hover { background: rgba(0, 242, 255, 0.1); transform: scale(1.02); }
+        .dashboard-frame { width: 100%; max-width: 550px; margin: auto; padding-bottom: 50px; }
 
-        .label { font-size: 0.55rem; font-family: 'Orbitron'; color: var(--cyan); text-transform: uppercase; }
-        .value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; color: #fff; }
-        
-        .ai-section { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 20px; padding: 15px; max-height: 400px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; }
-        .ai-title { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin-bottom: 15px; text-align: center; position: sticky; top: 0; background: #10141d; padding: 5px; z-index: 2; }
-        .budget-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,204,51,0.05); padding-bottom: 10px; }
-        .budget-info { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 6px; }
-        .progress-bg { height: 6px; background: #222; border-radius: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--gold)); width: 0%; transition: 1.5s ease-out; }
-        
-        .chat-btn { margin-top: 20px; background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 15px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.85rem; cursor: pointer; }
-        #loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--card-bg); border-radius: 30px; display: flex; justify-content: center; align-items: center; z-index: 10; color: var(--cyan); flex-direction: column; font-family: 'Orbitron'; }
-        .spinner { border: 3px solid rgba(0, 242, 255, 0.1); border-left-color: var(--cyan); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; margin-bottom: 10px; }
+        /* Top Status Bar */
+        .status-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--glass); border: 1px solid rgba(0,242,255,0.2); border-radius: 15px; margin-bottom: 20px; }
+        .status-bar h1 { font-family: 'Orbitron'; font-size: 0.9rem; margin: 0; color: var(--gold); }
+        .live-dot { height: 8px; width: 8px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
+
+        /* User Header */
+        .user-hero { margin-bottom: 25px; padding-left: 10px; }
+        .user-hero h2 { font-size: 1.5rem; margin: 0; }
+        .user-hero p { color: #888; font-size: 0.8rem; margin: 5px 0; }
+
+        /* Stats Row - Instant Update */
+        .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 18px; position: relative; overflow: hidden; }
+        .stat-card::after { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--cyan); }
+        .stat-label { font-family: 'Orbitron'; font-size: 0.5rem; color: var(--cyan); text-transform: uppercase; }
+        .stat-value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; }
+
+        /* Phase Categorization for Tools */
+        .phase-container { margin-top: 30px; }
+        .phase-header { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .phase-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,204,51,0.2); }
+
+        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
+        .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 20px; text-align: left; cursor: pointer; transition: 0.3s; position: relative; }
+        .tool-box:hover { border-color: var(--cyan); background: rgba(0, 242, 255, 0.05); transform: translateY(-3px); }
+        .tool-box i { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+        .tool-title { font-size: 0.75rem; font-weight: 600; color: #fff; display: block; }
+        .tool-desc { font-size: 0.55rem; color: #777; margin-top: 4px; display: block; }
+        .badge { position: absolute; top: 10px; right: 10px; font-size: 0.5rem; background: var(--cyan); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+
+        /* AI Consultant Fixed Button */
+        .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 10; }
+        .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 16px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; font-size: 0.8rem; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        /* Loading Animation */
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .spinner { width: 50px; height: 50px; border: 3px solid rgba(0,242,255,0.1); border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s infinite linear; }
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
+    <div id="loader">
+        <div class="spinner"></div>
+        <p id="loader-text" style="font-family:'Orbitron'; color:var(--cyan); margin-top:20px; font-size:0.7rem; letter-spacing:2px;">INITIALIZING AI COMMAND...</p>
+    </div>
+
     <div class="dashboard-frame">
-        <div id="loading-overlay">
-            <div class="spinner"></div>
-            <p id="loading-text">AI OPTIMIZING PLAN...</p>
+        <div class="status-bar">
+            <h1><span class="live-dot"></span> SMART SHAADI AI</h1>
+            <div style="font-size: 0.6rem; color: #666;">VER: 2.0.6</div>
         </div>
 
-        <div class="header">
-            <h1>SMART SHAADI AI</h1>
-            <div class="system-status">● LIVE_FEED</div>
+        <div class="user-hero">
+            <h2>Mubarak ho, <span id="user-name" style="color:var(--gold);">Explorer</span>!</h2>
+            <p>Aapka premium wedding plan AI ne optimize kar diya hai.</p>
         </div>
 
-        <div class="welcome-text">Mubarak ho, <span id="user-name">Explorer</span>!</div>
-
-        <div class="grid">
-            <div class="card"><div class="label">Wedding Date</div><div class="value" id="val-date">--/--/--</div></div>
-            <div class="card"><div class="label">Total Budget</div><div class="value" id="val-total" style="color:var(--gold)">₹0</div></div>
-            <div class="card"><div class="label">Guest Count</div><div class="value" id="val-guests">---</div></div>
-            <div class="card"><div class="label">City/Venue</div><div class="value" id="val-city">---</div></div>
-        </div>
-
-        <div class="label" style="margin-bottom: 8px; text-align: center; color: var(--gold); letter-spacing: 1px;">AI Financial Tools</div>
-        <div class="card tool-card" onclick="window.location.href='wedding-budget-calculator-india-2026.html'">
-            <div>
-                <div class="label">Premium Access</div>
-                <div class="value" style="font-size: 0.8rem;">Budget Estimator 2026</div>
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-label">Smart Budget</div>
+                <div class="stat-value" id="val-total" style="color:var(--gold);">₹0</div>
             </div>
-            <div style="color: var(--cyan); font-weight: bold; font-family: 'Orbitron';">GO →</div>
+            <div class="stat-card">
+                <div class="stat-label">Guest Count</div>
+                <div class="stat-value" id="val-guests">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Wedding Date</div>
+                <div class="stat-value" id="val-date">TBD</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Location</div>
+                <div class="stat-value" id="val-city">Bhopal</div>
+            </div>
         </div>
 
-        <div class="ai-section" id="budget-list">
-            <div class="ai-title">AI STRATEGIC BREAKDOWN</div>
+        <div class="phase-container">
+            <div class="phase-header">PHASE 1: STRATEGY</div>
+            <div class="tools-grid">
+                <div class="tool-box" onclick="location.href='wedding-budget-calculator-india-2026.html'">
+                    <span class="badge">LIVE</span>
+                    <i>📊</i>
+                    <span class="tool-title">Budget Optimizer</span>
+                    <span class="tool-desc">Item-wise cost breakdown.</span>
+                </div>
+                <div class="tool-box">
+                    <i>☁️</i>
+                    <span class="tool-title">Weather Predictor</span>
+                    <span class="tool-desc">Real-time alerts for Bhopal.</span>
+                </div>
+            </div>
         </div>
 
+        <div class="phase-container">
+            <div class="phase-header">PHASE 2: AESTHETICS</div>
+            <div class="tools-grid">
+                <div class="tool-box">
+                    <i>👗</i>
+                    <span class="tool-title">Outfit AI</span>
+                    <span class="tool-desc">2026 Trending Styles.</span>
+                </div>
+                <div class="tool-box">
+                    <i>💍</i>
+                    <span class="tool-title">Jewel Viz</span>
+                    <span class="tool-desc">Virtual jewellery matching.</span>
+                </div>
+                <div class="tool-box">
+                    <i>📸</i>
+                    <span class="tool-title">Pose Guide</span>
+                    <span class="tool-desc">AI-curated wedding poses.</span>
+                </div>
+                <div class="tool-box">
+                    <i>🎨</i>
+                    <span class="tool-title">Moodboard AI</span>
+                    <span class="tool-desc">Generate decor themes.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-container">
+            <div class="phase-header">PHASE 3: HOSPITALITY</div>
+            <div class="tools-grid">
+                <div class="tool-box">
+                    <i>💌</i>
+                    <span class="tool-title">Smart Invites</span>
+                    <span class="tool-desc">AI WhatsApp Invitations.</span>
+                </div>
+                <div class="tool-box">
+                    <i>🍽️</i>
+                    <span class="tool-title">Menu Generator</span>
+                    <span class="tool-desc">Bhopali & Fusion Menu.</span>
+                </div>
+                <div class="tool-box">
+                    <i>🪑</i>
+                    <span class="tool-title">Seating AI</span>
+                    <span class="tool-desc">Optimize guest seating.</span>
+                </div>
+                <div class="tool-box">
+                    <i>📜</i>
+                    <span class="tool-title">Legal Review</span>
+                    <span class="tool-desc">Scan vendor contracts.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-cta">
         <button class="chat-btn" onclick="window.location.href='https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat'">
-            START AI CONSULTATION 💍
+            LAUNCH AI CONSULTANT 💍
         </button>
     </div>
 
     <script>
-        const budgetLogic = [
-            { name: "Venue & Catering (The Core)", pc: 45 },
-            { name: "Jewellery & Apparel (The Look)", pc: 20 },
-            { name: "Decor & Photography (Memories)", pc: 15 },
-            { name: "Guest Stay & Travel (Logistics)", pc: 12 },
-            { name: "Gifts & Honeymoon (Extras)", pc: 6 },
-            { name: "Miscellaneous (Buffer)", pc: 2 }
-        ];
+        // 1. INSTANT DATA LOADING (LocalStorage)
+        function loadInstantData() {
+            const cache = localStorage.getItem('ss_user_data');
+            if (cache) {
+                const data = JSON.parse(cache);
+                document.getElementById('user-name').innerText = data.name;
+                document.getElementById('val-total').innerText = "₹" + data.budget.toLocaleString('en-IN');
+                document.getElementById('val-guests').innerText = data.guests;
+                document.getElementById('val-date').innerText = data.date;
+                document.getElementById('val-city').innerText = data.city;
+            }
+        }
 
-        let retryCount = 0;
-
-        async function fetchLatestData() {
+        // 2. GOOGLE SHEETS SYNC (Background)
+        async function syncWithSheets() {
             const sheetId = '1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y';
             const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Wedding_Submissions&t=${Date.now()}`;
             
@@ -98,42 +188,39 @@
                 const text = await res.text();
                 const json = JSON.parse(text.substring(47, text.length - 2));
                 const latest = json.table.rows[json.table.rows.length - 1].c;
-                const budget = parseInt(latest[2]?.v) || 0;
+                
+                const freshData = {
+                    name: latest[0]?.v || "Explorer",
+                    date: latest[1]?.f || "TBD",
+                    budget: parseInt(latest[2]?.v) || 0,
+                    guests: latest[3]?.v || "0",
+                    city: latest[4]?.v || "Bhopal"
+                };
 
-                if (budget === 0 && retryCount < 5) {
-                    retryCount++;
-                    setTimeout(fetchLatestData, 2000);
-                    return;
-                }
-
-                document.getElementById('user-name').innerText = latest[0]?.v || "Couple";
-                document.getElementById('val-date').innerText = latest[1]?.f || "TBD";
-                document.getElementById('val-total').innerText = "₹" + budget.toLocaleString('en-IN');
-                document.getElementById('val-guests').innerText = latest[3]?.v || "---";
-                document.getElementById('val-city').innerText = latest[4]?.v || "Not Set";
-
-                const container = document.getElementById('budget-list');
-                budgetLogic.forEach((item, index) => {
-                    const amount = Math.round(budget * (item.pc / 100));
-                    const html = `
-                        <div class="budget-item">
-                            <div class="budget-info">
-                                <strong>${item.name}</strong>
-                                <span>₹${amount.toLocaleString('en-IN')}</span>
-                            </div>
-                            <div class="progress-bg"><div class="progress-fill" id="bar-${index}" style="width: 0%"></div></div>
-                        </div>`;
-                    container.innerHTML += html;
-                    
-                    setTimeout(() => {
-                        document.getElementById(`bar-${index}`).style.width = item.pc + "%";
-                    }, 500 + (index * 150));
-                });
-
-                document.getElementById('loading-overlay').style.display = 'none';
-            } catch (e) { console.error(e); setTimeout(fetchLatestData, 3000); }
+                // Update UI & Cache
+                localStorage.setItem('ss_user_data', JSON.stringify(freshData));
+                loadInstantData();
+                
+                document.getElementById('loader').style.display = 'none';
+            } catch (e) { 
+                console.error("Sync Error", e);
+                // Even if fetch fails, hide loader after 3s to show cached data
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 3000);
+            }
         }
-        window.onload = fetchLatestData;
+
+        // Interactive Loader Text
+        const phrases = ["ANALYZING BUDGET...", "OPTIMIZING VENDORS...", "CURATING AI TOOLS...", "FINALIZING PLAN..."];
+        let i = 0;
+        setInterval(() => {
+            document.getElementById('loader-text').innerText = phrases[i % phrases.length];
+            i++;
+        }, 800);
+
+        window.onload = () => {
+            loadInstantData();
+            syncWithSheets();
+        };
     </script>
 </body>
 </html>
