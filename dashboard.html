@@ -15,7 +15,12 @@
         .welcome-text { font-size: 0.9rem; margin-bottom: 20px; color: #bbb; }
         .welcome-text span { color: var(--cyan); font-weight: bold; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 15px; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 15px; transition: 0.3s; }
+        
+        /* New Style for Calculator Shortcut */
+        .tool-card { cursor: pointer; border: 1px solid var(--cyan); background: rgba(0, 242, 255, 0.05); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .tool-card:hover { background: rgba(0, 242, 255, 0.1); transform: scale(1.02); }
+
         .label { font-size: 0.55rem; font-family: 'Orbitron'; color: var(--cyan); text-transform: uppercase; }
         .value { font-size: 0.9rem; font-weight: 700; margin-top: 5px; color: #fff; }
         
@@ -54,6 +59,15 @@
             <div class="card"><div class="label">City/Venue</div><div class="value" id="val-city">---</div></div>
         </div>
 
+        <div class="label" style="margin-bottom: 8px; text-align: center; color: var(--gold); letter-spacing: 1px;">AI Financial Tools</div>
+        <div class="card tool-card" onclick="window.location.href='wedding-budget-calculator-india-2026.html'">
+            <div>
+                <div class="label">Premium Access</div>
+                <div class="value" style="font-size: 0.8rem;">Budget Estimator 2026</div>
+            </div>
+            <div style="color: var(--cyan); font-weight: bold; font-family: 'Orbitron';">GO →</div>
+        </div>
+
         <div class="ai-section" id="budget-list">
             <div class="ai-title">AI STRATEGIC BREAKDOWN</div>
         </div>
@@ -64,7 +78,6 @@
     </div>
 
     <script>
-        // SMART AI LOGIC: Groups 12 items into 6 Strategic Clusters
         const budgetLogic = [
             { name: "Venue & Catering (The Core)", pc: 45 },
             { name: "Jewellery & Apparel (The Look)", pc: 20 },
