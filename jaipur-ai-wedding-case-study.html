@@ -3,57 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: The Future of Jaipur Weddings | Smart Shaadi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Sahil & Soha: A Jaipur Heritage Tale | Smart Shaadi AI Case Study</title>
+    <meta name="description" content="Discover how Sahil and Soha optimized their ₹6.5L Jaipur wedding using AI. Real insights on budget, weather-link planning, and local heritage aesthetics.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --accent: #ffcc33; --text: #333; --bg: #ffffff; }
-        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; margin: 0; background: var(--bg); }
+        :root { --gold: #ffcc33; --dark: #080a0f; --accent: #00f2ff; --gray: #f8f9fa; }
+        body { font-family: 'Inter', sans-serif; color: #333; line-height: 1.8; margin: 0; background: #fff; }
         
-        /* Hero Section Like the Photography Blog */
-        .hero { background: #080a0f; color: white; padding: 100px 20px; text-align: center; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; color: var(--accent); }
-        .hero p { font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: auto; }
+        /* Header & Hero */
+        header { background: var(--dark); padding: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { color: var(--gold); font-weight: bold; font-size: 1.5rem; text-decoration: none; letter-spacing: 1px; }
+        
+        .hero { background: var(--dark); color: white; padding: 80px 20px 120px 20px; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--gold); margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: auto; font-weight: 300; }
 
-        .container { max-width: 900px; margin: auto; padding: 50px 20px; }
+        .container { max-width: 850px; margin: auto; padding: 0 20px; position: relative; }
         
-        /* Local SEO Elements (Invisible to User, Clear to Google) */
-        .case-header { text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #888; font-size: 0.8rem; margin-bottom: 10px; display: block; }
-        
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-top: 50px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
-        
-        .experience-box { background: #f9f9f9; border-left: 5px solid var(--accent); padding: 30px; margin: 40px 0; font-style: italic; }
-        
-        /* Comparison Table Style */
-        .comparison { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .comparison th { text-align: left; padding: 15px; background: #f0f0f0; border-bottom: 2px solid #ddd; }
-        .comparison td { padding: 15px; border-bottom: 1px solid #eee; }
+        /* Stats Dashboard Bar */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; background: #111; color: white; padding: 30px; border-radius: 20px; margin: -60px auto 50px auto; box-shadow: 0 30px 60px rgba(0,0,0,0.3); border: 1px solid rgba(255,204,51,0.2); }
+        .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .stat-item:last-child { border-right: none; }
+        .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); display: block; margin-bottom: 8px; }
+        .stat-value { font-size: 1.2rem; font-weight: 600; }
 
-        .internal-link { color: var(--accent); text-decoration: none; font-weight: bold; border-bottom: 1px solid var(--accent); transition: 0.3s; }
-        .internal-link:hover { background: var(--accent); color: white; }
+        /* Blog Image */
+        .main-img { width: 100%; border-radius: 15px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        footer { text-align: center; padding: 50px; background: #080a0f; color: white; margin-top: 50px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--dark); margin-top: 60px; margin-bottom: 25px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #444; }
+        
+        p { margin-bottom: 25px; font-size: 1.05rem; color: #444; }
+        .internal-link { color: var(--dark); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--gold); transition: 0.2s; }
+        .internal-link:hover { background: var(--gold); }
+
+        /* Comparison Table */
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: var(--gray); border-radius: 12px; overflow: hidden; }
+        .comparison-table th { background: var(--dark); color: white; padding: 20px; text-align: left; font-size: 0.9rem; letter-spacing: 1px; }
+        .comparison-table td { padding: 20px; border-bottom: 1px solid #ddd; }
+        .highlight { color: #b8860b; font-weight: 600; }
+
+        /* FAQ Section */
+        .faq-section { background: #fdfaf0; padding: 40px; border-radius: 20px; margin-top: 80px; }
+        .faq-item { margin-bottom: 25px; }
+        .faq-item h4 { margin-bottom: 10px; color: var(--dark); font-size: 1.1rem; }
+
+        /* Professional Footer */
+        footer { background: var(--dark); color: white; padding: 80px 20px 40px 20px; text-align: center; margin-top: 100px; }
+        .footer-links { margin-bottom: 30px; }
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 15px; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--gold); }
+        .cta-button { display: inline-block; background: var(--gold); color: black; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-bottom: 40px; transition: 0.3s; }
+        .cta-button:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
 
+    <header>
+        <a href="index.html" class="logo">SMART SHAADI AI</a>
+    </header>
+
     <section class="hero">
-        <span class="case-header">Case Study #21: Jaipur Heritage</span>
-        <h1>The Future of Royal Weddings in Jaipur</h1>
-        <p>Jaipur ke Amber Fort ke niche, AI ne kaise badla ek purana wedding tradition. Aditi aur Rahul ki bachat aur efficiency ki poori kahani.</p>
+        <h1>Sahil & Soha: A Jaipur Heritage Tale</h1>
+        <p>Jaipur ke royal backdrop mein AI ne kaise ₹6.5 Lakh ke budget mein ek dream wedding ko execute kiya.</p>
     </section>
 
     <div class="container">
         
-        <p>Jab baat <strong>Jaipur Weddings</strong> ki aati hai, toh log sirf grandeur (bhadak) dekhte hain, par uske pichhe ka stress koi nahi dekhta. Aditi aur Rahul, ek modern couple jo IT mein kaam karte hain, unhe chahiye thi ek "Smart Wedding".</p>
-
-        <div class="experience-box">
-            "Humne Rajasthan ke traditional touch ko nahi chhoda, lekin planning humne <a href="index.html" class="internal-link">Smart Shaadi AI Dashboard</a> se ki. AI ne hamari budgeting mein jo 'hidden gaps' pakde, usse hamare ₹3 Lakhs bach gaye." - Aditi
+        <div class="stats-grid">
+            <div class="stat-item"><span class="stat-label">Smart Budget</span><span class="stat-value">₹6,50,000</span></div>
+            <div class="stat-item"><span class="stat-label">Guest Count</span><span class="stat-value">300 Pax</span></div>
+            <div class="stat-item"><span class="stat-label">City</span><span class="stat-value">Jaipur</span></div>
+            <div class="stat-item"><span class="stat-label">Strategy</span><span class="stat-value">Heritage</span></div>
         </div>
 
-        <h2>Bhopal vs Jaipur: Planning Logic</h2>
-        <p>Aapne hamara <a href="blog-wedding-photography-2026.html" class="internal-link">Bhopal Case Study</a> toh padha hi hoga. Jaipur mein logic thoda alag tha. Yahan humidity kam hai par garmi zyada, isliye AI ne menu mein 'Chilled Rabri' aur 'Thandai Shots' suggest kiye.</p>
+        <img src="https://images.unsplash.com/photo-1595814433015-e6f5cd69614e?q=80&w=1000&auto=format&fit=crop" alt="Jaipur Heritage Wedding" class="main-img">
 
-        <table class="comparison">
+        <h2>The Data Behind The Magic</h2>
+        <p>Jab baat Jaipur ki aati hai, toh log aksar karodon ke kharche ki baat karte hain. Lekin Sahil aur Soha ne hamare <a href="blog-budget-calculator.html" class="internal-link">AI Budget Optimizer</a> ka use karke ye prove kiya ki efficiency hi asli 'Luxury' hai. Unhone Jaipur ki garmi aur logistics ko automation ke saath manage kiya.</p>
+
+        <h3>Phase 1: Weather-Driven Decisions</h3>
+        <p>Hamare AI ne July 1st ke liye 85% saaf mausam predict kiya tha, jiski wajah se unhone mehnge indoor halls ke bajaye ek beautiful 'Open-air Heritage Venue' chuna. Is ek decision ne unke venue cost mein 25% ki bachat ki.</p>
+
+        <h2>Bhopal vs Jaipur: Planning Logic</h2>
+        <p>Aapne hamara <a href="blog-wedding-venue-cost-2026.html" class="internal-link">Bhopal Case Study</a> toh padha hi hoga. Jaipur mein logic thoda alag tha—yahan humidity kam hai par garmi zyada, isliye AI ne menu mein 'Chilled Rabri' aur 'Thandai Shots' suggest kiye.</p>
+
+        <table class="comparison-table">
             <thead>
                 <tr>
                     <th>Element</th>
@@ -63,30 +100,45 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Outfit</td>
-                    <td>Pastel Lehengas (Johari Bazar special)</td>
-                    <td>Dark Velvet Sherwani</td>
+                    <td><strong>Outfit</strong></td>
+                    <td class="highlight">Pastel Lehengas (Johari Bazar)</td>
+                    <td>Dark Velvet Sherwanis</td>
                 </tr>
                 <tr>
-                    <td>AI Lighting</td>
+                    <td><strong>AI Lighting</strong></td>
                     <td>Warm Diffused Sun-screens</td>
-                    <td>Amber Heritage Glow</td>
+                    <td class="highlight">Amber Heritage Glow</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>Local SEO: Kyun Zaroori Hai?</h2>
-        <p>Blog mein humne "Amber Fort", "Johari Bazar", aur "Heritage Jaipur" words isliye dale hain taaki jab koi Google par Jaipur ki shadi ke baare mein search kare, toh hamara page top par aaye. Isse aapko organic traffic milta hai bina ads chalaye.</p>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>1. Kya ₹6.5 Lakh mein Jaipur mein destination wedding possible hai?</h4>
+                <p>Ji haan, Sahil & Soha ne 300 guests ke saath ise possible kiya. AI automation fuzool kharchon (leakages) ko rokta hai aur vendors ke saath better negotiation mein madad karta hai.</p>
+            </div>
+            <div class="faq-item">
+                <h4>2. Smart Shaadi AI Jaipur ke vendors kaise select karta hai?</h4>
+                <p>Hamara system Johari Bazar se lekar Amber road tak ke top-rated vendors ke data ko analyze karta hai, taaki aapko best price-to-quality ratio mile.</p>
+            </div>
+        </div>
 
-        <div style="text-align:center; margin-top:50px;">
-            <p>Ready to automate your big day?</p>
-            <a href="wedding-budget-calculator-india-2026.html" style="background:var(--accent); color:black; padding:15px 30px; text-decoration:none; font-weight:bold; border-radius:5px;">TRY BUDGET OPTIMIZER</a>
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="index.html" class="cta-button">START YOUR AI PLANNING</a>
         </div>
 
     </div>
 
     <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="blogs.html">All Blogs</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
         <p>© 2026 Smart Shaadi AI | Transforming Complexity into Efficiency.</p>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Designed & Developed by Mubashir Hasan - AI Systems Architect</p>
     </footer>
 
 </body>
