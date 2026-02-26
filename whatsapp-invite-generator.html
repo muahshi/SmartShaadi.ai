@@ -31,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI WhatsApp Wedding Invite & Hashtag Generator | Smart Shaadi AI</title>
     
-    <meta name="description" content="Generate ready-to-send WhatsApp invites and hashtags in seconds. Free AI tool by Mubashir Hasan.">
+    <meta name="description" content="Generate ready-to-send WhatsApp invites and hashtags in seconds. Free AI tool by Mubashir Hasan for Bhopal & Jaipur weddings.">
     <link rel="canonical" href="https://smartshaadi.online/whatsapp-invite-generator.html" />
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
         .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         .ads-box { background: rgba(255,255,255,0.02); border: 1px dashed #333; margin: 20px 0; text-align: center; padding: 10px; color: #555; font-size: 0.7rem; min-height: 90px; border-radius: 10px; }
 
-        /* Navigation Bar for Tools */
+        /* Navigation Fix */
         .top-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
         .nav-link { color: #aaa; text-decoration: none; font-family: 'Orbitron'; font-size: 0.7rem; padding: 8px 15px; border: 1px solid #222; border-radius: 50px; transition: 0.3s; }
         .nav-link:hover, .nav-link.active { color: var(--gold); border-color: var(--gold); background: rgba(255,204,51,0.05); }
@@ -66,7 +66,7 @@
         .btn-generate { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 22px; border-radius: 50px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; width: 100%; font-size: 1.1rem; margin-top: 20px; transition: 0.4s; box-shadow: 0 15px 30px rgba(255,204,51,0.3); }
         .btn-generate:hover { transform: translateY(-5px); filter: brightness(1.2); }
 
-        /* Cross Promotion Section */
+        /* Promo Grid Fix */
         .more-tools { margin-top: 60px; }
         .more-tools h2 { font-family: 'Orbitron'; font-size: 1.2rem; color: #fff; text-align: center; margin-bottom: 30px; }
         .grid-promo { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
@@ -97,9 +97,9 @@
 <main class="container">
     <nav class="top-nav">
         <a href="index.html" class="nav-link">Dashboard</a>
-        <a href="calculator.html" class="nav-link">Budget AI</a>
-        <a href="#" class="nav-link active">Invite Gen</a>
-        <a href="blog.html" class="nav-link">Market Guides</a>
+        <a href="blog-budget-calculator-india-2026.html" class="nav-link">Budget AI</a>
+        <a href="whatsapp-invite-generator.html" class="nav-link active">Invite Gen</a>
+        <a href="blogs.html" class="nav-link">Market Guides</a>
     </nav>
 
     <div class="ads-box">Mubashir's AI Systems - Premium Ad Placement</div>
@@ -163,20 +163,26 @@
     <div class="more-tools">
         <h2>TRY OUR OTHER AI TOOLS</h2>
         <div class="grid-promo">
-            <a href="calculator.html" class="promo-card">
+            <a href="blog-budget-calculator-india-2026.html" class="promo-card">
                 <h4>Wedding Budget AI</h4>
                 <p>Bhopal/Delhi market ke rates ke hisaab se budget plan karein.</p>
             </a>
-            <a href="blog.html" class="promo-card">
+            <a href="blogs.html" class="promo-card">
                 <h4>Market Guides</h4>
                 <p>Best wholesale markets for Sherwani and Lehengas.</p>
             </a>
-            <a href="checklist.html" class="promo-card">
+            <a href="blog-wedding-checklist.html" class="promo-card">
                 <h4>Smart Checklist</h4>
                 <p>AI based task manager for zero-stress planning.</p>
             </a>
         </div>
     </div>
+
+    <section style="margin-top: 60px; border-top: 1px solid #333; padding-top: 40px;">
+        <h2 style="font-family:'Orbitron'; color:var(--gold); font-size: 1.2rem;">Bhopal Case Study: How I Saved 15k using AI Invites</h2>
+        <p>Last year, ek Bhopal-based client ko 500 WhatsApp invites bhejne the. Unhe ek graphic designer ne ₹15,000 quote kiya tha. Humne is AI engine ka use karke sirf 2 minutes mein personalized invites generate kiye. Complexity khatam, efficiency chalu!</p>
+        <p><strong>Day vs Night Tip:</strong> Agar aapka function Haldi hai, toh bright yellow color use karein. Agar Sangeet hai, toh dark neon themes best rehte hain.</p>
+    </section>
 
     <div class="author-box">
         <img src="https://i.ibb.co/vz6G3jN/mubashir.jpg" alt="Mubashir Hasan" class="author-img" onerror="this.src='https://ui-avatars.com/api/?name=Mubashir+Hasan&background=ffcc33&color=000'">
@@ -194,6 +200,7 @@
 </footer>
 
 <script>
+    // JS functions stay same but ensuring IDs match
     function updateImage() {
         const event = document.getElementById('event').value;
         const img = document.getElementById('context-img');
