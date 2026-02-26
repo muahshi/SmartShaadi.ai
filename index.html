@@ -15,18 +15,23 @@
     <title>Smart Shaadi | Global AI Wedding Planner & Luxury Guide 2026</title>
     <meta name="description" content="Plan your destination wedding with Smart Shaadi AI. Expert insights on luxury budgeting, premium Indian markets, and custom 2-day itineraries.">
 
-    <!-- ✅ FIXED CANONICAL -->
     <link rel="canonical" href="https://smartshaadi.online/">
 
     <meta name="robots" content="index, follow">
     <meta name="author" content="Smart Shaadi AI">
 
-    <!-- ✅ FIXED OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Smart Shaadi | Global AI Wedding Planner 💍">
     <meta property="og:description" content="Elegance | Strategy | Perfection - AI-powered luxury wedding planning.">
     <meta property="og:url" content="https://smartshaadi.online/">
     <meta property="og:image" content="https://smartshaadi.online/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Shaadi | Global AI Wedding Planner 💍">
+    <meta name="twitter:description" content="Elegance | Strategy | Perfection - AI-powered luxury wedding planning.">
+    <meta name="twitter:image" content="https://smartshaadi.online/og-image.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -54,7 +59,6 @@
         .blog-link { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 10px; }
         .mag-btn { background: transparent; color: var(--gold); border: 2px solid var(--gold); padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 30px; }
 
-        /* --- DASHBOARD UPGRADE STYLES --- */
         .dashboard-wrapper { display: flex; gap: 20px; margin-top: 30px; background: rgba(255,255,255,0.02); border-radius: 25px; border: 1px solid rgba(255,204,51,0.1); overflow: hidden; min-height: 500px; }
         .dash-sidebar { width: 220px; background: rgba(0,0,0,0.3); padding: 20px 10px; border-right: 1px solid rgba(255,204,51,0.1); }
         .dash-nav-item { display: block; width: 100%; padding: 12px 15px; margin-bottom: 8px; border: none; background: transparent; color: #aaa; text-align: left; cursor: pointer; border-radius: 10px; font-family: 'Orbitron'; font-size: 0.75rem; transition: 0.3s; }
@@ -229,7 +233,7 @@
         </div>
     </div>
 
-    <section class="share-section">
+    <section class="share-section" style="text-align:center; margin-top:40px;">
         <p style="margin-bottom:15px;color:var(--gold);font-weight:bold;">Love our tool? Share it with your circle! 🥂</p>
         <button id="copyLink" onclick="copyURL()" style="color:white; background:#333; padding:10px 20px; border-radius:20px; font-size:0.9rem; border:none; cursor:pointer;">Copy Invite Link 🔗</button>
     </section>
@@ -247,7 +251,6 @@
 </footer>
 
 <script>
-    // --- CORE DASHBOARD LOGIC ---
     document.addEventListener('DOMContentLoaded', () => {
         loadData();
         updateOverview();
@@ -256,13 +259,11 @@
     function showPane(paneId) {
         document.querySelectorAll('.dash-pane').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.dash-nav-item').forEach(b => b.classList.remove('active'));
-        
         document.getElementById('pane-' + paneId).classList.add('active');
         event.currentTarget.classList.add('active');
         updateOverview();
     }
 
-    // Storage
     let weddingData = {
         budget: 0,
         type: 'local',
@@ -290,19 +291,15 @@
         updateOverview();
     }
 
-    // 1. Overview Updater
     function updateOverview() {
         const confGuests = weddingData.guests.filter(g => g.rsvp === 'Confirmed');
         const caterTotal = confGuests.reduce((sum, g) => sum + Number(g.plate), 0);
         const cheapestV = weddingData.venues.sort((a,b) => a.cost - b.cost)[0];
-
         document.getElementById('stat-budget').innerText = '₹' + Number(weddingData.budget).toLocaleString();
         document.getElementById('stat-guests').innerText = weddingData.guests.length;
         document.getElementById('stat-rsvp').innerText = confGuests.length;
         document.getElementById('stat-catering').innerText = '₹' + caterTotal.toLocaleString();
         document.getElementById('stat-venue').innerText = cheapestV ? cheapestV.name : '-';
-        
-        // Simple Task Logic
         let tasks = 5;
         if(weddingData.budget > 0) tasks--;
         if(weddingData.guests.length > 0) tasks--;
@@ -310,15 +307,12 @@
         document.getElementById('stat-tasks').innerText = tasks;
     }
 
-    // 2. Budget Logic
     function runBudgetCalc() {
         weddingData.budget = document.getElementById('bd-total').value || 0;
         weddingData.type = document.getElementById('bd-type').value;
-        
         const split = { Venue: 30, Catering: 25, Decor: 15, Photo: 10, Music: 5, Misc: 15 };
         const container = document.getElementById('budget-bars');
         container.innerHTML = '';
-
         for (let item in split) {
             let amt = (weddingData.budget * split[item]) / 100;
             container.innerHTML += `
@@ -327,7 +321,6 @@
                     <div class="progress-bg"><div class="progress-fill" style="width:${split[item]}%"></div></div>
                 </div>`;
         }
-        
         const sim = document.getElementById('savings-sim');
         if(weddingData.budget > 0) {
             sim.style.display = 'block';
@@ -336,12 +329,10 @@
         saveData();
     }
 
-    // 3. Guest Logic
     function addGuestEntry() {
         const name = document.getElementById('gs-name').value;
         const plate = document.getElementById('gs-plate').value;
         if(!name || !plate) return;
-
         weddingData.guests.push({
             name,
             side: document.getElementById('gs-side').value,
@@ -349,7 +340,6 @@
             plate: plate,
             rsvp: document.getElementById('gs-rsvp').value
         });
-        
         document.getElementById('gs-name').value = '';
         document.getElementById('gs-plate').value = '';
         renderGuestTable();
@@ -387,28 +377,24 @@
         document.getElementById('rsvp-catering-total').innerText = '₹' + catering.toLocaleString();
     }
 
-    // 4. Timeline Logic
     function generateTimeline() {
         weddingData.date = document.getElementById('tl-date').value;
         if(!weddingData.date) return;
-        
         const list = document.getElementById('timeline-list');
         list.innerHTML = `
-            <div class='guest-item'><span>6 Months: Book Venue</span></div>
-            <div class='guest-item'><span>3 Months: Shopping & Invites</span></div>
-            <div class='guest-item'><span>1 Month: Decor Finalization</span></div>
-            <div class='guest-item'><span>1 Week: Guest Logistics</span></div>
+            <div style='padding:10px; border-bottom:1px solid #333;'><span>6 Months: Book Venue</span></div>
+            <div style='padding:10px; border-bottom:1px solid #333;'><span>3 Months: Shopping & Invites</span></div>
+            <div style='padding:10px; border-bottom:1px solid #333;'><span>1 Month: Decor Finalization</span></div>
+            <div style='padding:10px;'><span>1 Week: Guest Logistics</span></div>
         `;
         saveData();
     }
 
-    // 5. Venue Logic
     function addVenueEntry() {
         const name = document.getElementById('vn-name').value;
         const cost = document.getElementById('vn-cost').value;
         const cap = document.getElementById('vn-cap').value;
         if(!name || !cost) return;
-
         weddingData.venues.push({ name, cost: Number(cost), cap });
         renderVenues();
         saveData();
