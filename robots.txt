@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://muahshi.github.io/SmartShaadi.ai/sitemap.xml
+Sitemap: https://smartshaadi.online/sitemap.xml
