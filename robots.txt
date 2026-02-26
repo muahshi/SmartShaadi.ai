@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://smartshaadi.online/sitemap.xml
-
-# updated 26 feb force refresh
