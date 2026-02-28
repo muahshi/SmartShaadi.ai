@@ -28,14 +28,15 @@
         body { background-color: var(--bg-dark); color: #d1d1d1; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.8; background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #0a0a0f 100%); background-attachment: fixed; }
         .serif-font { font-family: 'Playfair Display', serif; }
         .gold-text { color: var(--primary-gold); text-shadow: 0 0 15px rgba(255, 204, 51, 0.4); }
-        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 204, 51, 0.08); border-radius: 2.5rem; padding: 3rem; margin-bottom: 2.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); transition: 0.3s; }
-        .glass-card:hover { border-color: var(--primary-gold); background: rgba(255, 255, 255, 0.04); }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 204, 51, 0.08); border-radius: 2.5rem; padding: 3rem; margin-bottom: 2.5rem; transition: 0.3s; }
+        .glass-card:hover { border-color: var(--primary-gold); background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); }
         h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: white; line-height: 1.1; margin-bottom: 2rem; font-weight: 700; }
-        h2 { font-size: 2.2rem; color: #fff; margin-top: 4rem; margin-bottom: 1.5rem; border-left: 6px solid var(--primary-gold); padding-left: 20px; }
-        .premium-cta { background: linear-gradient(135deg, #ffcc33 0%, #d4af37 100%); color: #000; padding: 1.2rem 2.5rem; border-radius: 100px; font-weight: 800; display: inline-block; transition: 0.4s; box-shadow: 0 10px 30px rgba(255, 204, 51, 0.3); }
+        h2 { font-size: 2.2rem; color: #fff; margin-top: 4rem; margin-bottom: 1.5rem; border-left: 6px solid var(--primary-gold); padding-left: 20px; font-family: 'Playfair Display', serif; }
+        .premium-cta { background: linear-gradient(135deg, #ffcc33 0%, #d4af37 100%); color: #000; padding: 1.2rem 2.5rem; border-radius: 100px; font-weight: 800; display: inline-block; transition: 0.4s; box-shadow: 0 10px 30px rgba(255, 204, 51, 0.3); font-family: 'Orbitron'; }
+        .premium-cta:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 204, 51, 0.5); }
         .custom-table-container { border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); margin: 2rem 0; }
         .custom-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .custom-table th { background: rgba(255, 204, 51, 0.15); color: var(--primary-gold); padding: 1.5rem; }
+        .custom-table th { background: rgba(255, 204, 51, 0.15); color: var(--primary-gold); padding: 1.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
         .custom-table td { padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
@@ -44,103 +45,131 @@
 <nav class="sticky top-0 z-[100] w-full px-8 py-5 bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <a href="index.html" class="text-2xl font-bold tracking-tighter gold-text" style="font-family: 'Orbitron';">SmartShaadi<span class="text-white">.ai</span></a>
-        <div class="space-x-6">
-            <a href="index.html" class="text-white hover:gold-text transition-colors">Home</a>
-            <a href="blog-wedding-decoration-cost-2026.html" class="text-white hover:gold-text transition-colors">Decor</a>
+        <div class="hidden md:flex space-x-8">
+            <a href="index.html" class="text-sm font-semibold text-white hover:gold-text transition-colors">Home</a>
+            <a href="blogs.html" class="text-sm font-semibold text-white hover:gold-text transition-colors">Magazine</a>
+            <a href="blog-wedding-venue-cost-2026.html" class="text-sm font-semibold text-white hover:gold-text transition-colors">Venues</a>
         </div>
     </div>
 </nav>
 
 <article class="max-w-4xl mx-auto px-6 py-16">
     <header class="text-center border-b border-white/10 pb-12 mb-12">
-        <span class="text-primary-gold uppercase tracking-[0.3em] text-[12px] font-bold mb-4 block">Premium Industry Audit 2026</span>
-        <h1 class="serif-font">Wedding Catering Cost Per Plate India 2026: <br><span class="italic gold-text">A Budget-First Audit</span></h1>
+        <span class="text-primary-gold uppercase tracking-[0.3em] text-[12px] font-bold mb-4 block">Food & Beverage Audit 2026</span>
+        <h1 class="serif-font">Wedding Catering Cost Per Plate India 2026: <br><span class="italic gold-text">A Tech-Driven Deep Dive</span></h1>
         
         <div class="flex justify-center items-center gap-4 mt-8">
-            <img src="https://smartshaadi.online/author.jpg" alt="Mubashir Hasan" class="w-14 h-14 rounded-full border-2 border-primary-gold p-1">
+            <div class="w-14 h-14 rounded-full border-2 border-primary-gold p-1 overflow-hidden">
+                <img src="https://smartshaadi.online/author.jpg" alt="Mubashir Hasan" class="w-full h-full object-cover rounded-full">
+            </div>
             <div class="text-left">
                 <span class="block text-white font-bold text-lg">Mubashir Hasan</span>
-                <span class="text-xs text-slate-500 font-medium">AI Automation Architect • Updated: Feb 26, 2026</span>
+                <span class="text-xs text-slate-500 font-medium italic">AI Systems Architect • 15 Min Read</span>
             </div>
         </div>
     </header>
 
     <div class="prose prose-invert max-w-none">
-        <p class="text-xl serif-font text-white/80 italic mb-8 border-l-4 border-primary-gold pl-6">
-            "2026 mein catering sirf khana nahi, ek 'Logistical Strategy' hai. Sahi calculation aapko lakhs bacha sakta hai."
+        <p class="text-xl serif-font text-white/80 italic mb-10 border-l-4 border-primary-gold pl-6 leading-relaxed">
+            "2026 mein shaadi ki catering sirf menu design nahi, balki ek 'Efficiency Audit' hai. Aaj ka intelligent host taste ke saath-saath inventory management par focus karta hai."
         </p>
 
-        <p class="mb-8">Shaadi ka 40% budget sirf catering mein jata hai. Raw material inflation aur labor rates ke chalte 2026 mein **Wedding Catering Cost Per Plate India** ka benchmark badal chuka hai. Is guide mein hum depth mein dekhenge ki aap kaise quality barkarar rakhte hue paise bacha sakte hain.</p>
+        <p class="mb-8">India ki wedding industry 2026 mein ek naye peak par hai. Raw materials aur premium labor ki wajah se **Wedding Catering Cost Per Plate India** pichle do saalon mein 22% badh chuki hai. Is guide mein hum catering ke un hidden aspects ko decode karenge jo aapke lakhon rupaye bacha sakte hain.</p>
 
         <div class="glass-card bg-[#ffcc33]/5 border-primary-gold/30">
-            <h3 class="text-white serif-font mb-4">📍 Bhopal Local Insights: The Cost Realities</h3>
-            <p class="text-slate-300">Bhopal ke **Hoshangabad Road aur Kolar** venues mein catering costs pichle saal se 18% upar hain. Humne dekha ki **Misrod** ke aas-paas ke vendors ₹1,200 mein jo quality de rahe hain, wahi Arera Colony mein ₹1,800 hai. 
-            <br><br><b>Pro Tip:</b> Agar aap Bhopal mein plan kar rahe hain, toh seasonal "Bhopali Cuisine" live counters add karke exotic dishes ka kharcha kam karein.</p>
+            <h3 class="text-white serif-font mb-4 text-2xl italic">📍 Bhopal Case Study: Local vs Outsourced</h3>
+            <p class="text-slate-300">Bhopal ke **Hoshangabad Road** ke bade marriage lawns mein humne ek pattern dekha: Log Indore ya Delhi se caterers bula rahe hain, jis se transport cost 15% badh jati hai. 
+            <br><br><b>Local Hack:</b> Bhopal ke local vendors (jaise Koh-e-fiza side ke experts) ab high-end fusion menus provide kar rahe hain jo ₹1,100 - ₹1,300 mein wahi quality dete hain jo bahar ke vendors ₹2,000 mein dete hain.
+            <br><br><span class="text-primary-gold font-bold text-xs tracking-widest uppercase italic">Local SEO Tip: Best Budget Catering in Misrod and Kolar Road Bhopal.</span></p>
         </div>
 
-        <h2>Catering Price Table 2026 (Expected Rates)</h2>
+        <h2>2026 Per Plate Pricing Audit</h2>
         <div class="custom-table-container">
             <table class="custom-table">
                 <thead>
                     <tr>
-                        <th>Menu Type</th>
-                        <th>Veg Rate (₹)</th>
-                        <th>Non-Veg Rate (₹)</th>
-                        <th>What's Included?</th>
+                        <th>Menu Category</th>
+                        <th>Veg (₹)</th>
+                        <th>Non-Veg (₹)</th>
+                        <th>AI Inventory Rating</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><b>Standard</b></td><td>₹900 - ₹1,200</td><td>₹1,300 - ₹1,600</td><td>8 Starters, Main, 2 Desserts</td></tr>
-                    <tr><td><b>Premium</b></td><td>₹1,500 - ₹2,300</td><td>₹2,000 - ₹3,000</td><td>Live Pasta, Teppanyaki, 4 Desserts</td></tr>
-                    <tr><td><b>Luxury</b></td><td>₹3,000 - ₹5,500</td><td>₹4,000 - ₹7,000+</td><td>International, Silver Plated</td></tr>
+                    <tr><td><b>Budget Efficiency</b></td><td>₹850 - ₹1,100</td><td>₹1,100 - ₹1,400</td><td>High Savings</td></tr>
+                    <tr><td><b>Premium Fusion</b></td><td>₹1,400 - ₹2,100</td><td>₹1,900 - ₹2,800</td><td>Balanced</td></tr>
+                    <tr><td><b>Ultra Luxury</b></td><td>₹2,800 - ₹5,000+</td><td>₹3,500 - ₹6,500+</td><td>Experience First</td></tr>
                 </tbody>
             </table>
         </div>
 
-        
-
-        <h2>Day vs Night: The Mathematical Savings</h2>
-        <p>Timing ka impact sirf ambiance par nahi, plate cost par bhi hota hai:</p>
+        <h2>Day vs Night: The Efficiency Math</h2>
+        <p>Log aksar timing ko sirf look ke liye chunte hain, par financial data kuch aur hi kehta hai:</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
-            <div class="glass-card !mb-0 border-l-4 border-blue-400">
-                <h4 class="gold-text font-bold mb-2">Day Lunch (Saving: ~15%)</h4>
-                <p class="text-sm">Lighter menu, less lighting fuel, fewer dessert varieties. Guests eat 20% less appetizers in heat.</p>
+            <div class="glass-card !mb-0 border-l-4 border-blue-400 bg-blue-400/5">
+                <h4 class="text-blue-400 font-bold mb-2 italic">Day Lunch (The Saver)</h4>
+                <ul class="text-sm space-y-2 list-disc pl-4">
+                    <li>Alcohol consumption: 40% Less</li>
+                    <li>Dessert variety: Minimal needed</li>
+                    <li>Labor shift: Standard rates</li>
+                    <li class="font-bold">Avg. Saving: ₹200/Plate</li>
+                </ul>
             </div>
-            <div class="glass-card !mb-0 border-l-4 border-pink-400">
-                <h4 class="gold-text font-bold mb-2">Night Dinner (Premium)</h4>
-                <p class="text-sm">Heavy appetizers, multiple live stations, extensive dessert bar. High fuel and late-night labor costs.</p>
+            <div class="glass-card !mb-0 border-l-4 border-pink-400 bg-pink-400/5">
+                <h4 class="text-pink-400 font-bold mb-2 italic">Night Dinner (The Experience)</h4>
+                <ul class="text-sm space-y-2 list-disc pl-4">
+                    <li>Live counters: Must-have (4+)</li>
+                    <li>Fuel/Power: High (Night surcharge)</li>
+                    <li>Staff: Overtime after 12 AM</li>
+                    <li class="font-bold text-red-400">Avg. Premium: ₹350/Plate</li>
+                </ul>
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-transparent via-white/5 to-transparent p-10 rounded-3xl border border-white/10 my-16 text-center">
-            <h3 class="text-white mb-4">Don't Overpay for Plates!</h3>
-            <p class="mb-6">Hamara AI algorithm aapke guest list ko analyze karke 'Actual Plate Requirement' batata hai, jisse wastage 30% kam ho jati hai.</p>
-            <a href="https://care-123.app.n8n.cloud/form/e754ee79-6e88-4e3e-a90e-1fadcac26bc" class="premium-cta">Calculate My Plates Now</a>
+        <div class="bg-gradient-to-r from-[#1a1a2e] to-[#0a0a0f] p-12 rounded-[3rem] border border-primary-gold/40 my-16 text-center">
+            <h3 class="text-white serif-font text-3xl mb-4 italic">Stop Blind Catering Estimates!</h3>
+            <p class="text-slate-400 mb-8">Mubashir's AI Engine can calculate your exact food inventory based on RSVP data.</p>
+            <a href="https://care-123.app.n8n.cloud/form/e754ee79-6e88-4e3e-a90e-1fadcac26bc" class="premium-cta">Calculate Plates with AI</a>
         </div>
 
-        <h2>Hidden Costs: Avoid These Bill Surprises</h2>
-        <ul class="space-y-4 text-slate-400">
-            <li><b class="text-white">GST (18%):</b> Quotation mein hamesha "Plus GST" check karein.</li>
-            <li><b class="text-white">Waiter Ratio:</b> 1:15 se zyada waiters ka charge extra ho sakta hai.</li>
-            <li><b class="text-white">Mineral Water:</b> Per bottle cost ki jagah dispenser system se 50% bachat karein.</li>
+        <h2>Hidden Costs: The 2026 Checklist</h2>
+        <p>Caterers aksar basic quote sasta dikhate hain par in cheezon mein "Surprise Bills" dete hain:</p>
+        <ul class="space-y-6">
+            <li class="bg-white/5 p-6 rounded-2xl border-l-4 border-primary-gold">
+                <b class="text-white">Crockery & Cutlery Premium:</b> Agar aapko 'Bone China' ya 'Gold-Finish' cutlery chahiye, toh ₹50-₹100 extra per plate lagta hai.
+            </li>
+            <li class="bg-white/5 p-6 rounded-2xl border-l-4 border-primary-gold">
+                <b class="text-white">The 18% GST Factor:</b> Hamesha confirm karein ki quote "All-Inclusive" hai ya nahi.
+            </li>
         </ul>
 
-        <div class="mt-12 p-8 border border-primary-gold/20 rounded-2xl bg-white/5">
-            <h4 class="text-white font-bold mb-4">Read Related Guides:</h4>
-            <ul class="list-disc pl-5 text-primary-gold">
-                <li><a href="blog-wedding-decoration-cost-2026.html" class="underline">Decoration Cost Guide 2026</a></li>
-                <li><a href="blog-ai-wedding-planner-reasons.html" class="underline">Why AI Planning is Essential</a></li>
-            </ul>
+        <div class="mt-16 p-10 border border-white/10 rounded-3xl bg-white/2">
+            <h4 class="text-white font-bold mb-6 italic serif-font text-xl">Next Steps in Your Planning:</h4>
+            <div class="flex flex-col md:flex-row gap-6">
+                <a href="blog-wedding-venue-cost-2026.html" class="flex-1 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-primary-gold transition-all text-sm">
+                    <span class="block gold-text font-bold mb-1">Step 1: Venue Audit</span>
+                    Check 2026 Venue Prices →
+                </a>
+                <a href="blog-wedding-decoration-cost-2026.html" class="flex-1 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-primary-gold transition-all text-sm">
+                    <span class="block gold-text font-bold mb-1">Step 2: Decor Math</span>
+                    Analyze Decor Costs →
+                </a>
+            </div>
         </div>
     </div>
 </article>
 
-<footer class="bg-black py-16 border-t border-white/10">
+<footer class="bg-black py-20 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <span class="text-2xl font-bold gold-text block mb-6" style="font-family: 'Orbitron';">SmartShaadi.ai</span>
-        <p class="text-slate-500 text-sm mb-4">Mubashir Hasan | AI Automation & Systems Architect</p>
-        <p class="text-slate-700 text-[10px] uppercase tracking-widest font-semibold italic">Transforming Complexity into Efficiency through AI & Automation.</p>
-        <p class="text-[10px] text-slate-800 mt-10">© 2026 Smart Shaadi AI. Domain: smartshaadi.online</p>
+        <span class="text-3xl font-bold tracking-tighter gold-text block mb-6" style="font-family: 'Orbitron';">SmartShaadi<span class="text-white">.ai</span></span>
+        <p class="text-slate-500 text-sm max-w-lg mx-auto mb-8">
+            <b>Mubashir Hasan</b> | AI Automation & Systems Architect<br>
+            Transforming Complexity into Efficiency through AI & Automation.
+        </p>
+        <div class="flex justify-center space-x-6 text-[10px] uppercase tracking-widest font-bold text-slate-700">
+            <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy</a>
+            <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+            <span>© 2026 Smart Shaadi AI</span>
+        </div>
     </div>
 </footer>
 
