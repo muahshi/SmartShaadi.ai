@@ -29,8 +29,8 @@
         .mag-card { background: var(--glass); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,204,51,0.1); transition: 0.4s; display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; }
         .mag-card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); background: rgba(255, 255, 255, 0.08); }
         
-        .mag-img-container { height: 200px; overflow: hidden; background: #222; position: relative; }
-        .mag-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .mag-img-container { height: 220px; overflow: hidden; background: #1a1a1a; position: relative; width: 100%; border-bottom: 1px solid rgba(255,204,51,0.1); }
+        .mag-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; display: block; }
         .mag-card:hover .mag-img { transform: scale(1.1); }
         
         .mag-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -41,9 +41,6 @@
         .read-more-btn { color: var(--gold); font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; font-family: 'Orbitron'; }
         
         footer { margin-top: 80px; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; background: #080810; }
-        
-        /* Fixed broken image placeholder */
-        .mag-img-container::before { content: "Loading Image..."; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #444; font-size: 0.8rem; z-index: -1; }
     </style>
 </head>
 <body>
@@ -55,6 +52,18 @@
     <span class="section-subtitle">Efficiency, Automation & Strategic Planning</span>
     
     <div class="blog-grid">
+
+        <a href="blog-bhopal-vs-jaipur-wedding-cost.html" class="mag-card" style="border: 1px solid var(--gold); background: rgba(255, 204, 51, 0.05);">
+            <div class="mag-img-container">
+                <img src="https://images.pexels.com/photos/20516429/pexels-photo-20516429.jpeg?auto=compress&cs=tinysrgb&w=800" class="mag-img" alt="Bhopal Wedding Lake View">
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--gold); color:black;">TRENDING 2026</span>
+                <h3>Bhopal vs Jaipur: Cost Battle</h3>
+                <p>Kyun smart founders Jaipur chhod kar Bhopal ki lakeside luxury ko 50% kam budget mein choose kar rahe hain?</p>
+                <div class="read-more-btn">Read Comparison 💍</div>
+            </div>
+        </a>
 
         <a href="whatsapp-invite-generator.html" class="mag-card" style="border: 1px solid var(--green); background: rgba(46, 204, 113, 0.05);">
             <div class="mag-img-container">
