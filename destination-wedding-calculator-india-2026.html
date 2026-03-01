@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y6QPBQ6QZE');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Destination Wedding Cost Calculator India 2026 – City Wise Planner</title>
+    <meta name="description" content="Calculate your Destination Wedding Cost in India for 2026. Compare Goa, Udaipur, and Jaipur rates. Get a detailed budget breakdown for luxury or budget weddings.">
+    <meta name="keywords" content="Destination Wedding Cost India 2026, Wedding Budget Calculator, Goa Wedding Cost, Udaipur Wedding Planner, Smart Shaadi AI">
+    <link rel="canonical" href="https://smartshaadi.online/destination-wedding-calculator.html" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Destination Wedding Cost Calculator India 2026">
+    <meta property="og:description" content="Plan your dream wedding with AI-driven cost estimates for 12+ Indian cities. Save 20% on planning.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200">
+    <meta property="og:url" content="https://smartshaadi.online/destination-wedding-calculator.html">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --gold: #ffcc33; 
+            --dark: #0f0f1a; 
+            --glass: rgba(255, 255, 255, 0.05); 
+            --cyan: #00f2ff; 
+            --purple: #a29bfe; 
+            --red: #ff4747; 
+            --green: #2ecc71; 
+        }
+
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        header { background: rgba(15, 15, 26, 0.95); padding: 20px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .hero-section { text-align: center; margin-bottom: 50px; }
+        h1 { font-family: 'Orbitron'; color: var(--gold); font-size: 2.2rem; margin-bottom: 10px; text-transform: uppercase; }
+        .intro-text { color: #bbb; max-width: 700px; margin: 0 auto; font-size: 1rem; }
+
+        /* Ads Space */
+        .ads-placeholder { background: var(--glass); border: 1px dashed #444; margin: 20px 0; padding: 20px; text-align: center; color: #666; font-size: 0.8rem; border-radius: 10px; }
+
+        /* Card Styles */
+        .calculator-card { background: var(--glass); border: 1px solid rgba(255,204,51,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--gold); font-family: 'Orbitron'; font-size: 0.8rem; }
+        
+        select, input[type="text"], input[type="number"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #1a1a2e; color: #fff; outline: none; transition: 0.3s; }
+        select:focus { border-color: var(--cyan); }
+
+        /* Range Slider */
+        .slider-container { display: flex; align-items: center; gap: 15px; }
+        input[type="range"] { flex-grow: 1; accent-color: var(--gold); cursor: pointer; }
+        .guest-count-display { font-family: 'Orbitron'; color: var(--cyan); font-size: 1.2rem; min-width: 50px; }
+
+        /* Toggles & Checkboxes */
+        .type-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .type-btn { padding: 10px; border: 1px solid #444; background: #1a1a2e; color: #888; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; font-size: 0.9rem; font-weight: bold; }
+        .type-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+        .check-item { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
+        .check-item:hover { border-color: #555; }
+        .check-item input { accent-color: var(--gold); }
+
+        /* Result Section */
+        #resultArea { display: none; margin-top: 40px; animation: fadeIn 0.8s ease; }
+        .total-box { background: linear-gradient(135deg, #1a1a2e, #0f0f1a); border: 2px solid var(--gold); border-radius: 15px; padding: 30px; text-align: center; margin-bottom: 30px; position: relative; overflow: hidden; }
+        .total-box::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,204,51,0.1) 0%, transparent 70%); pointer-events: none; }
+        .total-price { font-size: 3rem; font-family: 'Orbitron'; color: var(--gold); margin: 10px 0; }
+        
+        .breakdown-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(0,0,0,0.2); border-radius: 10px; overflow: hidden; }
+        .breakdown-table th, .breakdown-table td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        .breakdown-table th { background: rgba(255,255,255,0.05); color: var(--cyan); font-family: 'Orbitron'; font-size: 0.75rem; }
+
+        /* Buttons */
+        .btn-calc { width: 100%; padding: 18px; background: var(--gold); color: #000; border: none; border-radius: 12px; font-family: 'Orbitron'; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(255,204,51,0.3); }
+        .btn-calc:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255,204,51,0.5); }
+        
+        .action-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .btn-sec { padding: 12px; border: 1px solid #555; background: var(--glass); color: #fff; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Orbitron'; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-whatsapp { background: #25d366; color: white; border: none; }
+
+        /* FAQ Section */
+        .faq-section { margin-top: 60px; }
+        .faq-item { background: var(--glass); padding: 20px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .faq-item h3 { margin: 0 0 10px 0; font-size: 1.1rem; color: #fff; }
+        .faq-item p { margin: 0; font-size: 0.9rem; color: #bbb; }
+
+        /* Lead Gen Form */
+        .lead-form { background: linear-gradient(to right, #1a1a2e, #252545); padding: 30px; border-radius: 15px; margin-top: 40px; border: 1px solid var(--cyan); }
+        .lead-form h2 { font-family: 'Orbitron'; color: var(--cyan); font-size: 1.5rem; margin-top: 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { margin-top: 80px; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; background: #080810; }
+
+        /* Responsive Mobile */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .total-price { font-size: 2rem; }
+            .action-btns { grid-template-columns: 1fr; }
+            .sticky-calc { position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 999; }
+        }
+    </style>
+</head>
+<body>
+
+<header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
+
+<main class="container">
+    <div class="hero-section">
+        <h1>India Destination Wedding Cost Calculator 2026</h1>
+        <p class="intro-text">Analyze real-time venue, catering, and decor rates for 12+ premium wedding destinations in India. Transform complexity into efficiency with our AI-backed 2026 budget audit tool.</p>
+    </div>
+
+    <div class="ads-placeholder">ADVERTISEMENT SPACE - GOOGLE ADSENSE READY</div>
+
+    <div class="calculator-card">
+        <div class="input-group">
+            <label>Select Your Dream Destination</label>
+            <select id="citySelect">
+                <option value="Goa">Goa (Beach Wedding Vibes)</option>
+                <option value="Udaipur">Udaipur (Lakeside Palace)</option>
+                <option value="Jaipur">Jaipur (Royal Heritage)</option>
+                <option value="Kerala">Kerala (Backwaters & Greenery)</option>
+                <option value="Andaman">Andaman (Island Luxury)</option>
+                <option value="Jodhpur">Jodhpur (Desert Majesty)</option>
+                <option value="Rishikesh">Rishikesh (Ganga Side Spiritual)</option>
+                <option value="Mussoorie">Mussoorie (Hills & Clouds)</option>
+                <option value="Shimla">Shimla (Snowy Peaks)</option>
+                <option value="Alibaug">Alibaug (Coastal Gateway)</option>
+                <option value="Mahabalipuram">Mahabalipuram (Temple Architecture)</option>
+                <option value="Pushkar">Pushkar (Boho Chic Desert)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Estimated Guest Count: <span class="guest-count-display" id="guestVal">150</span></label>
+            <div class="slider-container">
+                <span>50</span>
+                <input type="range" id="guestCount" min="50" max="500" step="10" value="150" oninput="updateGuestDisplay(this.value)">
+                <span>500</span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Wedding Execution Type</label>
+            <div class="type-toggle">
+                <div class="type-btn" data-val="Budget" onclick="setType('Budget', this)">Budget</div>
+                <div class="type-btn active" data-val="Premium" onclick="setType('Premium', this)">Premium</div>
+                <div class="type-btn" data-val="Luxury" onclick="setType('Luxury', this)">Luxury</div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Select Functions to Include</label>
+            <div class="checkbox-grid">
+                <label class="check-item"><input type="checkbox" class="func-check" value="Haldi"> Haldi</label>
+                <label class="check-item"><input type="checkbox" class="func-check" value="Mehndi"> Mehndi</label>
+                <label class="check-item"><input type="checkbox" class="func-check" value="Sangeet"> Sangeet</label>
+                <label class="check-item"><input type="checkbox" checked disabled> Wedding</label>
+                <label class="check-item"><input type="checkbox" class="func-check" value="Reception"> Reception</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Planned Wedding Month (Peak Season Audit)</label>
+            <select id="monthSelect">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November (Peak Season)</option>
+                <option value="12">December (Peak Season)</option>
+            </select>
+        </div>
+
+        <button class="btn-calc" onclick="calculateBudget()">CALCULATE 2026 ESTIMATE</button>
+    </div>
+
+    <div id="resultArea">
+        <div class="total-box">
+            <span style="font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan);">TOTAL ESTIMATED BUDGET</span>
+            <div class="total-price" id="finalTotal">₹0</div>
+            <p id="summaryText" style="margin-top: 10px; font-weight: bold;"></p>
+        </div>
+
+        <div class="ads-placeholder">IN-FEED AD PLACEMENT</div>
+
+        <h3 style="font-family: 'Orbitron'; color: var(--gold);">Cost Breakdown Audit</h3>
+        <table class="breakdown-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Allocation (%)</th>
+                    <th>Estimated Cost</th>
+                </tr>
+            </thead>
+            <tbody id="breakdownBody">
+                </tbody>
+        </table>
+
+        <div class="action-btns">
+            <button class="btn-sec" onclick="window.print()">Download Budget PDF 🖨️</button>
+            <button class="btn-sec btn-whatsapp" onclick="shareWhatsApp()">Share on WhatsApp 📲</button>
+        </div>
+        <button class="btn-sec" style="width: 100%; margin-top: 10px;" onclick="savePlan()">Save Plan Locally 💾</button>
+
+        <div class="lead-form">
+            <h2>Get Verified Vendor Quotes</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 20px;">Receive AI-shortlisted venue and catering quotes for your specific budget.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <input type="text" id="leadName" placeholder="Your Name">
+                <input type="text" id="leadWhatsApp" placeholder="WhatsApp Number">
+            </div>
+            <button class="btn-calc" style="background: var(--cyan); margin-top: 15px;" onclick="submitLead()">Send Me Quotes</button>
+        </div>
+    </div>
+
+    <div class="ads-placeholder">ADVERTISEMENT SPACE</div>
+
+    <section style="margin-top: 60px; border-top: 1px solid #333; padding-top: 40px;">
+        <h2 style="font-family: 'Orbitron'; color: var(--gold);">Strategic Planning Tips</h2>
+        <p>Before you lock your venue, read our <a href="/blog-destination-wedding-guide.html" style="color: var(--cyan);">Complete Destination Wedding Guide</a>. Choosing a venue is only 35% of the battle; using our <a href="/wedding-budget-planner.html" style="color: var(--cyan);">Wedding Budget Planner</a> can help you track hidden costs like electricity mandates and transportation logistics.</p>
+        
+        <div class="faq-section">
+            <h2 style="font-family: 'Orbitron'; color: var(--gold); text-align: center;">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How much does a destination wedding cost in India?</h3>
+                <p>For 2026, a standard destination wedding with 150 guests ranges from ₹15 Lakhs (Budget) to ₹60 Lakhs+ (Luxury) depending on the city and hotel category.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is Goa cheaper than Udaipur?</h3>
+                <p>Generally, yes. Udaipur's lakeside palace venues have higher base rentals compared to Goa's beach resorts, making Goa a more budget-friendly option for luxury.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Best budget destination wedding city?</h3>
+                <p>Rishikesh and Pushkar are emerging as top budget destinations for 2026, offering unique landscapes at 40% lower costs than Jaipur or Jodhpur.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is peak wedding season in India?</h3>
+                <p>Peak season runs from November to February. Expect a 10-20% hike in venue rates and catering during these months.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span style="font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem;">SMART SHAADI AI</span>
+    <p>Transforming Complexity into Efficiency through AI & Automation.<br> 
+    <strong>Mubashir Hasan</strong> | AI Systems Architect</p>
+    <div style="margin: 20px 0;">
+        <a href="privacy-policy.html" style="color: #666; text-decoration: none; margin: 0 10px;">Privacy</a>
+        <a href="terms.html" style="color: #666; text-decoration: none; margin: 0 10px;">Terms</a>
+    </div>
+    <p style="font-size: 0.7rem; color: #555;">&copy; 2026 Smart Shaadi AI. All rights reserved.</p>
+</footer>
+
+<script>
+    // Database
+    const weddingData = {
+        Goa: { base: 2500000, perGuest: 12000 },
+        Udaipur: { base: 4500000, perGuest: 18000 },
+        Jaipur: { base: 3000000, perGuest: 14000 },
+        Kerala: { base: 2200000, perGuest: 10000 },
+        Andaman: { base: 2800000, perGuest: 15000 },
+        Jodhpur: { base: 3200000, perGuest: 15000 },
+        Rishikesh: { base: 1800000, perGuest: 9000 },
+        Mussoorie: { base: 2000000, perGuest: 10000 },
+        Shimla: { base: 2100000, perGuest: 11000 },
+        Alibaug: { base: 2600000, perGuest: 13000 },
+        Mahabalipuram: { base: 2300000, perGuest: 11000 },
+        Pushkar: { base: 2400000, perGuest: 12000 }
+    };
+
+    const multipliers = { Budget: 1, Premium: 1.4, Luxury: 1.8 };
+    const funcCosts = { Haldi: 300000, Mehndi: 400000, Sangeet: 800000, Reception: 700000 };
+    let selectedType = "Premium";
+
+    function updateGuestDisplay(val) {
+        document.getElementById('guestVal').innerText = val;
+    }
+
+    function setType(type, btn) {
+        selectedType = type;
+        document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function calculateBudget() {
+        const city = document.getElementById('citySelect').value;
+        const guests = parseInt(document.getElementById('guestCount').value);
+        const month = parseInt(document.getElementById('monthSelect').value);
+        
+        let subtotal = weddingData[city].base + (guests * weddingData[city].perGuest);
+        
+        // Add functions
+        document.querySelectorAll('.func-check:checked').forEach(cb => {
+            subtotal += funcCosts[cb.value];
+        });
+
+        // Apply type multiplier
+        let total = subtotal * multipliers[selectedType];
+
+        // Peak Season (Nov-Feb)
+        if ([11, 12, 1, 2].includes(month)) {
+            total *= 1.10;
+        }
+
+        displayResults(total, city, guests);
+    }
+
+    function displayResults(total, city, guests) {
+        document.getElementById('resultArea').style.display = 'block';
+        document.getElementById('finalTotal').innerText = "₹" + Math.round(total).toLocaleString('en-IN');
+        document.getElementById('summaryText').innerText = `${selectedType} Wedding in ${city} for ${guests} Guests`;
+
+        const breakdown = [
+            { cat: "Venue & Setup", pct: 35 },
+            { cat: "Catering", pct: 30 },
+            { cat: "Decor", pct: 15 },
+            { cat: "Photography", pct: 8 },
+            { cat: "Logistics", pct: 7 },
+            { cat: "Misc", pct: 5 }
+        ];
+
+        let html = "";
+        breakdown.forEach(item => {
+            let cost = (total * item.pct) / 100;
+            html += `<tr>
+                <td>${item.cat}</td>
+                <td>${item.pct}%</td>
+                <td>₹${Math.round(cost).toLocaleString('en-IN')}</td>
+            </tr>`;
+        });
+        document.getElementById('breakdownBody').innerHTML = html;
+        
+        // Scroll to results
+        document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function savePlan() {
+        const plan = {
+            city: document.getElementById('citySelect').value,
+            guests: document.getElementById('guestCount').value,
+            type: selectedType,
+            total: document.getElementById('finalTotal').innerText
+        };
+        localStorage.setItem('savedWeddingPlan', JSON.stringify(plan));
+        alert("Plan Saved! Calculations will reload when you visit again.");
+    }
+
+    function shareWhatsApp() {
+        const total = document.getElementById('finalTotal').innerText;
+        const city = document.getElementById('citySelect').value;
+        const text = `Hey! I just calculated my 2026 Destination Wedding budget for ${city} on SmartShaadi AI. Total Estimate: ${total}. Check it out here: ${window.location.href}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
+    }
+
+    function submitLead() {
+        const name = document.getElementById('leadName').value;
+        const phone = document.getElementById('leadWhatsApp').value;
+        if(!name || !phone) return alert("Please fill contact details");
+        
+        localStorage.setItem('lead_capture', JSON.stringify({name, phone, date: new Date()}));
+        alert("Details sent to our AI Architect. You will receive quotes on WhatsApp shortly.");
+    }
+
+    // Load saved data
+    window.onload = () => {
+        const saved = localStorage.getItem('savedWeddingPlan');
+        if(saved) {
+            const data = JSON.parse(saved);
+            document.getElementById('citySelect').value = data.city;
+            document.getElementById('guestCount').value = data.guests;
+            updateGuestDisplay(data.guests);
+            console.log("Welcome back! Last estimate was " + data.total);
+        }
+    };
+</script>
+
+</body>
+</html>
