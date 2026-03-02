@@ -40,7 +40,14 @@
         p { font-size: 0.85rem; color: #bbb; margin-bottom: 15px; flex-grow: 1; }
         .read-more-btn { color: var(--gold); font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; font-family: 'Orbitron'; }
         
+        /* Floating Tags */
+        .float-tag { position: absolute; top: 10px; right: 10px; color: #000; padding: 5px 10px; border-radius: 5px; font-family: 'Orbitron'; font-size: 0.6rem; font-weight: bold; z-index: 5; }
+        
         footer { margin-top: 80px; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; background: #080810; }
+
+        @keyframes pulse-cyan { 0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(0, 242, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); } }
+        @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(255, 204, 51, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 204, 51, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 204, 51, 0); } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); } 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); } }
     </style>
 </head>
 <body>
@@ -53,10 +60,23 @@
     
     <div class="blog-grid">
 
+        <a href="wedding-vendor-negotiation-bot.html" class="mag-card" style="border: 2px solid var(--cyan); background: linear-gradient(145deg, rgba(0, 242, 255, 0.1), rgba(15, 15, 26, 1));">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Vendor Negotiation Bot">
+                <div class="float-tag" style="background: var(--cyan); animation: pulse-cyan 2s infinite;">AI POWERED</div>
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--cyan); color:black;">NEGOTIATION TECH</span>
+                <h3>Wedding Vendor Negotiation Bot 2026</h3>
+                <p>Quotes mil rahe hain par budget match nahi ho raha? Generate AI-driven scripts to negotiate with photographers & venues like a pro.</p>
+                <div class="read-more-btn" style="color:var(--cyan);">Get Free Scripts 📲</div>
+            </div>
+        </a>
+
         <a href="destination-wedding-calculator-india-2026.html" class="mag-card" style="border: 2px solid var(--gold); background: linear-gradient(145deg, rgba(255, 204, 51, 0.1), rgba(15, 15, 26, 1));">
             <div class="mag-img-container">
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Destination Wedding Calculator 2026">
-                <div style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; padding: 5px 10px; border-radius: 5px; font-family: 'Orbitron'; font-size: 0.6rem; font-weight: bold; animation: pulse 2s infinite;">HOT TOOL</div>
+                <div class="float-tag" style="background: var(--gold); animation: pulse-gold 2s infinite;">HOT TOOL</div>
             </div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--gold); color:black;">PREMIUM TOOL</span>
@@ -66,15 +86,42 @@
             </div>
         </a>
 
+        <a href="whatsapp-invite-generator.html" class="mag-card" style="border: 1px solid var(--green); background: rgba(46, 204, 113, 0.05);">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="WhatsApp Invite Generator">
+                <div class="float-tag" style="background: var(--green); animation: pulse-green 2s infinite;">SMART TOOL</div>
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--green); color:black;">NEW AI TOOL</span>
+                <h3>WhatsApp Wedding Invite Generator</h3>
+                <p>Generate 3 unique invite variations, smart hashtags, and QR codes for your wedding in 30 seconds.</p>
+                <div class="read-more-btn" style="color:var(--green);">Open Tool 📲</div>
+            </div>
+        </a>
+
         <a href="blog-wedding-jewelry-audit-2026.html" class="mag-card" style="border: 1px solid var(--cyan); background: rgba(0, 242, 255, 0.08);">
             <div class="mag-img-container">
                 <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Wedding Jewelry Audit 2026">
+                <div class="float-tag" style="background: var(--cyan);">ASSET AUDIT</div>
             </div>
             <div class="mag-content">
                 <span class="cat-tag" style="background:var(--cyan); color:black;">ASSET AUDIT</span>
                 <h3>Wedding Jewelry Audit 2026</h3>
                 <p>Gold rates vs AI Precision Design. Janiye kaise Bhopal Sarafa market aur tech ka use karke ₹2L+ bachayein.</p>
                 <div class="read-more-btn">Open Audit Tool 💎</div>
+            </div>
+        </a>
+
+        <a href="blog-indore-vs-bhopal-wedding-cost.html" class="mag-card" style="border: 1px solid var(--cyan); background: rgba(0, 242, 255, 0.05);">
+            <div class="mag-img-container">
+                <img src="https://images.unsplash.com/photo-1549416878-b9ca35c2d47b?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Indore vs Bhopal Wedding Cost">
+                <div class="float-tag" style="background: var(--cyan);">NEW</div>
+            </div>
+            <div class="mag-content">
+                <span class="cat-tag" style="background:var(--cyan); color:black;">NEW COMPARISON</span>
+                <h3>Indore vs Bhopal: Cost Battle</h3>
+                <p>Mini Mumbai ya City of Lakes? Janiye 2026 mein kahan shaadi karna padega sasta aur kahan milegi luxury.</p>
+                <div class="read-more-btn">Read Cost Audit 📊</div>
             </div>
         </a>
 
@@ -114,18 +161,6 @@
             </div>
         </a>
 
-        <a href="blog-indore-vs-bhopal-wedding-cost.html" class="mag-card" style="border: 1px solid var(--cyan); background: rgba(0, 242, 255, 0.05);">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1549416878-b9ca35c2d47b?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Indore vs Bhopal Wedding Cost">
-            </div>
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--cyan); color:black;">NEW COMPARISON</span>
-                <h3>Indore vs Bhopal: Cost Battle</h3>
-                <p>Mini Mumbai ya City of Lakes? Janiye 2026 mein kahan shaadi karna padega sasta aur kahan milegi luxury.</p>
-                <div class="read-more-btn">Read Cost Audit 📊</div>
-            </div>
-        </a>
-
         <a href="blog-bhopal-vs-jaipur-wedding-cost.html" class="mag-card" style="border: 1px solid var(--gold); background: rgba(255, 204, 51, 0.05);">
             <div class="mag-img-container">
                 <img src="https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Bhopal Wedding Lake View">
@@ -135,18 +170,6 @@
                 <h3>Bhopal vs Jaipur: Cost Battle</h3>
                 <p>Kyun smart founders Jaipur chhod kar Bhopal ki lakeside luxury ko 50% kam budget mein choose kar rahe hain?</p>
                 <div class="read-more-btn">Read Comparison 💍</div>
-            </div>
-        </a>
-
-        <a href="whatsapp-invite-generator.html" class="mag-card" style="border: 1px solid var(--green); background: rgba(46, 204, 113, 0.05);">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="WhatsApp Invite Generator">
-            </div>
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--green); color:black;">NEW AI TOOL</span>
-                <h3>WhatsApp Wedding Invite Generator</h3>
-                <p>Generate 3 unique invite variations, smart hashtags, and QR codes for your wedding in 30 seconds.</p>
-                <div class="read-more-btn">Open Tool 📲</div>
             </div>
         </a>
 
@@ -342,18 +365,6 @@
             </div>
         </a>
 
-        <a href="blog-ai-wedding-planner.html" class="mag-card">
-            <div class="mag-img-container">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Planner">
-            </div>
-            <div class="mag-content">
-                <span class="cat-tag" style="background:var(--purple); color:black;">Tool</span>
-                <h3>AI Wedding Planner India 2026</h3>
-                <p>Manual planning chhodein, automation apnayein.</p>
-                <div class="read-more-btn">Plan with AI</div>
-            </div>
-        </a>
-
         <a href="blog-future-ai.html" class="mag-card">
             <div class="mag-img-container">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" class="mag-img" alt="Future Tech">
@@ -387,14 +398,6 @@
     <strong>Mubashir Hasan</strong> | AI Systems Architect</p>
     <p style="font-size: 0.7rem; color: #555;">&copy; 2026 Smart Shaadi AI. All rights reserved.</p>
 </footer>
-
-<style>
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 51, 0.7); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 204, 51, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 204, 51, 0); }
-}
-</style>
 
 </body>
 </html>
