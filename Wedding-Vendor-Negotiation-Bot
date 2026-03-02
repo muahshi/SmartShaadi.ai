@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y6QPBQ6QZE');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Wedding Vendor Negotiation Bot 2026 | Smart Shaadi AI</title>
+    <meta name="description" content="Use AI to negotiate with wedding vendors in India. Get expert scripts for photographers, caterers, and venues to save up to 20% on costs.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --gold: #ffcc33; --dark: #0f0f1a; --glass: rgba(255, 255, 255, 0.05); --cyan: #00f2ff; --green: #2ecc71; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; line-height: 1.8; }
+        header { background: rgba(15, 15, 26, 0.95); padding: 20px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+        
+        .hero-section { padding: 60px 20px; text-align: center; background: linear-gradient(to bottom, #1a1a2e, #0f0f1a); }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        /* BOT UI STYLING */
+        .bot-box { background: var(--glass); border: 2px solid var(--cyan); border-radius: 20px; padding: 30px; margin-bottom: 50px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan); }
+        select, input, textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #1a1a1a; color: white; font-size: 1rem; box-sizing: border-box; font-family: 'Inter'; }
+        .gen-btn { width: 100%; padding: 15px; background: var(--cyan); color: black; border: none; border-radius: 10px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .gen-btn:hover { background: #00d4df; transform: scale(1.02); box-shadow: 0 0 15px var(--cyan); }
+        
+        #scriptResult { margin-top: 25px; padding: 20px; border-radius: 10px; background: rgba(46, 204, 113, 0.1); display: none; border: 1px solid var(--green); white-space: pre-wrap; position: relative; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: var(--green); color: black; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.7rem; font-family: 'Orbitron'; }
+
+        /* CONTENT STYLING */
+        h1, h2, h3 { font-family: 'Orbitron'; color: var(--gold); margin-top: 40px; }
+        .highlight { color: var(--cyan); font-weight: bold; }
+        .audit-card { background: rgba(255,255,255,0.03); border-left: 4px solid var(--cyan); padding: 20px; margin: 30px 0; }
+        .cta-box { background: linear-gradient(145deg, #111, #222); padding: 40px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); margin: 60px 0; }
+        .cta-btn { background: var(--gold); color: black; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; display: inline-block; transition: 0.3s; }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid #333; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+<header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
+
+<div class="hero-section">
+    <h1 style="font-size: 2.2rem;">AI Vendor Negotiation Bot</h1>
+    <p>Don't overpay. Use AI-driven psychology to get the best wedding deals in 2026.</p>
+</div>
+
+<div class="container">
+    <div class="bot-box" id="negotiator">
+        <div class="input-group">
+            <label>Select Vendor Type</label>
+            <select id="vendorType">
+                <option value="photographer">Photographer / Cinematographer</option>
+                <option value="venue">Wedding Venue / Resort</option>
+                <option value="caterer">Catering Service</option>
+                <option value="decor">Decoration & Floral Team</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Vendor's Current Quote (e.g. ₹2,00,000)</label>
+            <input type="text" id="quote" placeholder="Enter amount">
+        </div>
+        <div class="input-group">
+            <label>Specific Concern (Optional)</label>
+            <textarea id="concern" rows="2" placeholder="e.g. Budget is tight, or need extra hours, or comparing with another vendor"></textarea>
+        </div>
+        <button class="gen-btn" onclick="generateScript()">GENERATE WHATSAPP SCRIPT 📲</button>
+
+        <div id="scriptResult">
+            <button class="copy-btn" onclick="copyScript()">COPY</button>
+            <div id="scriptContent"></div>
+        </div>
+    </div>
+
+    <article>
+        <h2>Negotiation Is A System, Not An Argument</h2>
+        <p>2026 mein wedding inflation 15% tak badh chuka hai. Ek aam middle-class shaadi mein log sirf isliye 2-3 Lakh extra de dete hain kyunki unhe negotiate karna "awkward" lagta hai. <strong>Mubashir Hasan</strong> ka AI philosophy kehta hai: <em>"Complexity ko efficiency mein badlo."</em></p>
+        
+        <p>Negotiation ka matlab sirf "price kam karo" nahi hota. Iska matlab hai <strong>Value Optimization</strong>. Agar vendor price kam nahi kar raha, toh unse extra services automate karwana hi asli jeet hai.</p>
+
+        <div class="audit-card">
+            <h3>Bhopal Case Study: The 15% Rule</h3>
+            <p>Last month, Bhopal ke ek premium photographer ne ₹3.5 Lakhs ka quote diya tha. Hamare system-driven approach se client ne price negotiate nahi ki, balki <strong>"Off-Peak Payment Automation"</strong> aur <strong>"Social Media Rights Exchange"</strong> ka logic use kiya. Result? Price ₹3.1 Lakhs hui aur ₹40,000 worth ki naye-age AI Photo Booth service free mili.</p>
+        </div>
+
+        <h2>3 Rules of 2026 Wedding Negotiation</h2>
+        <ol>
+            <li><strong>The Data Anchor:</strong> Hamesha market rates ka audit saath rakhein. <a href="blog-wedding-venue-cost-2026.html" style="color:var(--cyan);">Venue Cost Audit 2026</a> yahan dekhein.</li>
+            <li><strong>Bundle, Don't Bully:</strong> Agar aap ek hi vendor se multiple services (jaise Venue + Decor) le rahe hain, toh bundle discount 20% tak ja sakta hai.</li>
+            <li><strong>Payment Terms:</strong> 100% advance kabhi na dein. Milestone-based payments automation setup karein.</li>
+        </ol>
+
+        <h2>Day vs Night Negotiation Psychology</h2>
+        <p>Bhopal aur Jaipur jaise heritage cities mein, vendors Day weddings ke liye 15-20% discount dene ko taiyar rehte hain kyunki unka electricity aur overtime cost bach jata hai. Humare bot ki scripts is logic ko automatically incorporate karti hain.</p>
+
+        <div class="cta-box">
+            <h2>Stop Managing Vendors Manually</h2>
+            <p>Apne saare vendor communications, payments, aur contracts ko AI se automate karein. Smart Shaadi AI Dashboard aapka 40+ ghante ka manual kaam bacha sakta hai.</p>
+            <a href="index.html" class="cta-btn">EXPLORE AI DASHBOARD</a>
+        </div>
+
+        <h2>FAQ: Vendor Management 2026</h2>
+        <div class="audit-card">
+            <p><strong>Q: Best time kya hai negotiate karne ka?</strong><br>
+            A: Pehli meeting mein nahi. Hamesha second meeting mein jab aap unka interest dekh lein, tab logic-based counter-offer dein.</p>
+            
+            <p><strong>Q: Kya vendors bura maan jate hain?</strong><br>
+            A: Business owners logic ki respect karte hain. Jab aap unhe bataate hain ki aap "efficiency" aur "clear systems" chahte hain, toh wo aapko premium client treat karte hain.</p>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <span style="font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem;">SMART SHAADI AI</span>
+    <p>Transforming Complexity into Efficiency through AI & Automation.<br> 
+    <strong>Mubashir Hasan</strong> | AI Systems Architect</p>
+</footer>
+
+<script>
+function generateScript() {
+    let type = document.getElementById('vendorType').value;
+    let quote = document.getElementById('quote').value;
+    let concern = document.getElementById('concern').value;
+    let resultDiv = document.getElementById('scriptResult');
+    let content = document.getElementById('scriptContent');
+
+    let script = "";
+
+    if(type === "photographer") {
+        script = `Hi Team, humne aapka portfolio dekha, quality amazing hai. 
+
+Aapka ₹${quote} ka quote receive hua. Hum efficiency-focused planning kar rahe hain aur humara budget alignment ₹${parseInt(quote.replace(/\D/g,''))*0.8} ke aas-paas hai. 
+
+Kya hum raw footage aur extra albums ko optimize karke is price par settle kar sakte hain? Hum quick decision aur fast booking automation ke liye taiyar hain. Batayein!`;
+    } else if(type === "venue") {
+        script = `Hi, we really liked the space. 
+
+Regarding the quote of ₹${quote}, we are comparing it with a few other Tier-2 premium venues in Bhopal/Indore. 
+
+Since we are planning a streamlined guest list, kya hum per-plate cost ya venue rental mein kuch efficiency discount (15%) dekh sakte hain? We are ready to sign the contract this week.`;
+    } else {
+        script = `Hi, thank you for the quote of ₹${quote}. 
+
+Humare AI Planner ke audit ke hisaab se ye thoda premium side par hai. Hum similar services ke liye ₹${parseInt(quote.replace(/\D/g,''))*0.85} ka target rakh rahe hain. 
+
+Agar hum kuch non-essential elements streamline karein, toh kya ye possible hai? Looking forward to a smart collaboration!`;
+    }
+
+    content.innerText = script;
+    resultDiv.style.display = "block";
+}
+
+function copyScript() {
+    let text = document.getElementById('scriptContent').innerText;
+    navigator.clipboard.writeText(text);
+    alert("Script copied to clipboard!");
+}
+</script>
+
+</body>
+</html>
