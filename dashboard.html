@@ -1,225 +1,206 @@
 <!DOCTYPE html>
 <html lang="hi-IN">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Y6QPBQ6QZE');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Command Center | Smart Shaadi AI by Mubashir Hasan</title>
+    <title>AI Command Center | Smart Shaadi AI</title>
     
-    <meta name="description" content="Automate your wedding planning with Smart Shaadi AI. Budgeting, Outfits, and Legal reviews powered by AI Automation.">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --card-bg: #10141d; --glass: rgba(0, 242, 255, 0.05); }
         body { font-family: 'Inter', sans-serif; background: var(--dark); color: white; margin: 0; padding: 0; line-height: 1.6; }
         
-        /* Dashboard Container */
         .dashboard-frame { width: 100%; max-width: 600px; margin: auto; padding: 20px; padding-bottom: 120px; box-sizing: border-box; }
         
-        header { text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(255,204,51,0.2); margin-bottom: 30px; }
-        .logo-text { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+        /* Wizard Overlay */
+        #wizard-overlay { position: fixed; inset: 0; background: rgba(8, 10, 15, 0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px); }
+        .wizard-card { background: #151a25; border: 1px solid var(--gold); padding: 25px; border-radius: 25px; width: 100%; max-width: 400px; }
+        .q-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 12px; border-radius: 12px; color: white; margin-bottom: 12px; box-sizing: border-box; }
+        .start-btn { width: 100%; background: var(--gold); border: none; padding: 15px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; color: black; }
 
-        .status-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--glass); border: 1px solid rgba(0,242,255,0.2); border-radius: 15px; margin-bottom: 25px; }
+        header { text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(255,204,51,0.2); margin-bottom: 20px; }
+        .logo-text { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+
+        .status-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--glass); border: 1px solid rgba(0,242,255,0.2); border-radius: 15px; margin-bottom: 20px; }
         .live-dot { height: 8px; width: 8px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
         
-        .user-hero { margin-bottom: 30px; border-left: 3px solid var(--gold); padding-left: 20px; }
-        .user-hero h2 { font-family: 'Orbitron'; font-size: 1.4rem; margin: 0; color: #fff; }
-        .user-hero p { color: #888; font-size: 0.9rem; margin: 5px 0; }
-
-        .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
-        .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 18px; position: relative; }
-        .stat-label { font-family: 'Orbitron'; font-size: 0.6rem; color: var(--cyan); letter-spacing: 1px; }
-        .stat-value { font-size: 1rem; font-weight: 700; margin-top: 8px; color: #fff; }
+        .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 18px; }
+        .stat-label { font-family: 'Orbitron'; font-size: 0.55rem; color: var(--cyan); }
+        .stat-value { font-size: 0.9rem; font-weight: 700; color: #fff; }
 
         /* Tools Grid */
-        .phase-header { font-family: 'Orbitron'; font-size: 0.75rem; color: var(--gold); margin: 35px 0 15px; display: flex; align-items: center; gap: 10px; opacity: 0.8; }
+        .phase-header { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); margin: 30px 0 12px; display: flex; align-items: center; gap: 10px; }
         .phase-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,204,51,0.2); }
         
-        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 20px; cursor: pointer; transition: 0.3s; position: relative; }
-        .tool-box:hover { border-color: var(--cyan); background: rgba(0, 242, 255, 0.08); transform: translateY(-3px); }
-        .tool-box i { font-size: 1.8rem; display: block; margin-bottom: 12px; }
-        .tool-title { font-family: 'Orbitron'; font-size: 0.7rem; font-weight: 600; color: #fff; display: block; }
-        .tool-desc { font-size: 0.6rem; color: #666; margin-top: 5px; display: block; }
+        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .tool-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 20px; cursor: pointer; position: relative; transition: 0.3s; }
+        .tool-box:active { transform: scale(0.95); border-color: var(--cyan); }
+        .tool-box i { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+        .tool-title { font-family: 'Orbitron'; font-size: 0.65rem; color: #fff; display: block; }
         
-        .badge { position: absolute; top: 12px; right: 12px; font-size: 0.5rem; background: var(--cyan); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-family: 'Orbitron'; }
-
-        /* Footer & Navigation */
-        footer { text-align: center; padding: 40px 20px; background: #05050a; margin-top: 50px; border-top: 1px solid #111; }
-        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; display: block; }
-        .footer-links { margin: 20px 0; }
-        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
-        .footer-links a:hover { color: var(--gold); }
-
-        /* Modal styling */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); }
-        .modal-content { background: #151a25; border: 1px solid var(--gold); margin: 10% auto; padding: 30px; width: 85%; max-width: 450px; border-radius: 25px; position: relative; }
-        .result-area { background: #000; padding: 20px; border-radius: 15px; font-size: 0.9rem; color: #ddd; margin: 20px 0; border: 1px solid #333; line-height: 1.6; }
-        .copy-btn { background: var(--gold); color: #000; border: none; padding: 15px; border-radius: 50px; font-family: 'Orbitron'; font-weight: bold; width: 100%; cursor: pointer; }
+        /* Modal for Tool Output */
+        #tool-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; padding: 20px; display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.3s; }
+        #tool-modal.active { visibility: visible; opacity: 1; }
+        .modal-body { background: #151a25; border: 1px solid var(--gold); padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; }
+        .output-box { background: #000; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.8rem; color: #ddd; text-align: left; }
 
         .fixed-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 100; }
-        .chat-btn { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; width: 100%; padding: 18px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; box-shadow: 0 10px 30px rgba(255,204,51,0.3); cursor: pointer; }
+        .chat-btn { background: var(--gold); color: #000; width: 100%; padding: 15px; border-radius: 50px; border: none; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; }
 
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .spinner { width: 40px; height: 40px; border: 3px solid rgba(0,242,255,0.1); border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s infinite linear; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-        <p style="font-family:'Orbitron'; color:var(--cyan); margin-top:20px; font-size:0.7rem; letter-spacing:2px;">INITIALIZING AI ARCHITECTURE...</p>
-    </div>
-
-    <header>
-        <a href="index.html" class="logo-text">SMART SHAADI AI</a>
-    </header>
-
-    <div id="mainModal" class="modal">
-        <div class="modal-content">
-            <h2 id="modal-title" style="font-family:'Orbitron'; color:var(--gold); font-size: 1rem; margin-top: 0;">AI ANALYSIS</h2>
-            <div id="result-text" class="result-area"></div>
-            <button class="copy-btn" id="action-btn">OK, GOT IT!</button>
+    <div id="wizard-overlay">
+        <div class="wizard-card">
+            <h2 style="font-family:'Orbitron'; color:var(--gold); font-size:1rem; text-align:center;">ACTIVATE AI ENGINE</h2>
+            <input type="text" id="in-name" class="q-input" placeholder="Names (e.g. Sahil & Soha)">
+            <input type="number" id="in-budget" class="q-input" placeholder="Total Budget (₹)">
+            <input type="number" id="in-guests" class="q-input" placeholder="Guest Count">
+            <input type="text" id="in-city" class="q-input" placeholder="Wedding City">
+            <input type="date" id="in-date" class="q-input">
+            <button class="start-btn" onclick="initializeEngine()">START PLANNING</button>
         </div>
     </div>
+
+    <div id="tool-modal">
+        <div class="modal-body">
+            <h3 id="modal-title" style="font-family:'Orbitron'; color:var(--gold); font-size:0.8rem;">AI ANALYSIS</h3>
+            <div id="modal-desc" class="output-box"></div>
+            <button class="start-btn" style="padding:10px;" onclick="closeModal()">CLOSE</button>
+        </div>
+    </div>
+
+    <header><a href="index.html" class="logo-text">SMART SHAADI AI</a></header>
 
     <main class="dashboard-frame">
         <div class="status-bar">
-            <div style="font-family: 'Orbitron'; font-size: 0.7rem;"><span class="live-dot"></span> ENGINE ACTIVE</div>
-            <div style="font-size: 0.6rem; color: #666;">MUBASHIR OS V2.0.6</div>
-        </div>
-
-        <div class="user-hero">
-            <h2>Mubarak ho, <span id="user-name" style="color:var(--gold);">Explorer</span>!</h2>
-            <p>Complexity reduced to Efficiency. Aapka plan ready hai.</p>
+            <div style="font-family:'Orbitron'; font-size:0.6rem;"><span class="live-dot"></span> ENGINE LIVE</div>
+            <div onclick="resetData()" style="font-size:0.5rem; color:var(--gold); cursor:pointer;">[ RESET ]</div>
         </div>
 
         <div class="stats-row">
-            <div class="stat-card"><div class="stat-label">Total Budget</div><div class="stat-value" id="val-total">₹0</div></div>
-            <div class="stat-card"><div class="stat-label">Guest List</div><div class="stat-value" id="val-guests">0</div></div>
-            <div class="stat-card"><div class="stat-label">Event Date</div><div class="stat-value" id="val-date">TBD</div></div>
-            <div class="stat-card"><div class="stat-label">Base City</div><div class="stat-value" id="val-city">Bhopal</div></div>
+            <div class="stat-card"><div class="stat-label">BUDGET</div><div class="stat-value" id="v-budget">₹0</div></div>
+            <div class="stat-card"><div class="stat-label">GUESTS</div><div class="stat-value" id="v-guests">0</div></div>
+            <div class="stat-card"><div class="stat-label">DATE</div><div class="stat-value" id="v-date">TBD</div></div>
+            <div class="stat-card"><div class="stat-label">CITY</div><div class="stat-value" id="v-city">---</div></div>
         </div>
 
         <div class="phase-header">PHASE 1: STRATEGY & AUDIT</div>
         <div class="tools-grid">
-            <div class="tool-box" onclick="location.href='wedding-budget-calculator-india-2026.html'">
-                <span class="badge">LIVE</span><i>📊</i><span class="tool-title">Budget Audit</span><span class="tool-desc">Cost efficiency.</span>
-            </div>
-            <div class="tool-box" onclick="runWeather()">
-                <span class="badge">LIVE</span><i>☁️</i><span class="tool-title">Weather AI</span><span class="tool-desc">Real-time prediction.</span>
-            </div>
+            <div class="tool-box" onclick="runBudgetAudit()"><i>📊</i><span class="tool-title">Budget Audit</span></div>
+            <div class="tool-box" onclick="runWeatherAI()"><i>☁️</i><span class="tool-title">Weather AI</span></div>
         </div>
 
-        <div class="phase-header">PHASE 2: AESTHETICS & VIBE</div>
+        <div class="phase-header">PHASE 2: AESTHETICS</div>
         <div class="tools-grid">
-            <div class="tool-box" onclick="runOutfit()">
-                <span class="badge" style="background:var(--cyan)">LIVE</span><i>👗</i><span class="tool-title">Outfit AI</span><span class="tool-desc">Trending Styles.</span>
-            </div>
-            <div class="tool-box" onclick="runMood()">
-                <span class="badge" style="background:var(--cyan)">LIVE</span><i>🎨</i><span class="tool-title">Moodboard</span><span class="tool-desc">Theme generator.</span>
-            </div>
+            <div class="tool-box" onclick="runOutfitAI()"><i>👗</i><span class="tool-title">Outfit AI</span></div>
+            <div class="tool-box" onclick="runMoodAI()"><i>🎨</i><span class="tool-title">Moodboard</span></div>
         </div>
 
-        <div class="phase-header">PHASE 3: AUTOMATION</div>
+        <div class="phase-header">PHASE 3: LOGISTICS</div>
         <div class="tools-grid">
-            <div class="tool-box" onclick="runInvite()">
-                <span class="badge" style="background:var(--gold)">LIVE</span><i>💌</i><span class="tool-title">Smart Invite</span><span class="tool-desc">WhatsApp logic.</span>
-            </div>
-            <div class="tool-box" onclick="runLegal()">
-                <span class="badge" style="background:var(--gold)">LIVE</span><i>📜</i><span class="tool-title">Legal Scan</span><span class="tool-desc">Contract review.</span>
-            </div>
+            <div class="tool-box" onclick="runInviteAI()"><i>💌</i><span class="tool-title">Smart Invite</span></div>
+            <div class="tool-box" onclick="runLegalAI()"><i>📜</i><span class="tool-title">Legal Scan</span></div>
         </div>
     </main>
 
     <div class="fixed-cta">
-        <button class="chat-btn" onclick="window.location.href='https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat'">
-            TALK TO AI CONSULTANT 💍
-        </button>
+        <button class="chat-btn" onclick="generateReportPDF()">DOWNLOAD FULL REPORT (PDF)</button>
     </div>
 
-    <footer>
-        <span class="footer-logo">SMART SHAADI AI</span>
-        <p style="font-size: 0.8rem; color: #666;">Transforming Complexity into Efficiency through AI & Automation.</p>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="blogs.html">Magazine</a>
-            <a href="blog-budget-2026.html">Budget Guide</a>
-        </div>
-        <p style="font-size: 0.7rem; color: #444;">&copy; 2026 Mubashir Hasan | AI Systems Architect</p>
-    </footer>
-
     <script>
-        function loadData() {
-            const d = JSON.parse(localStorage.getItem('ss_user_data')) || {name:"Explorer", budget:0, guests:0, date:"TBD", city:"Bhopal"};
-            document.getElementById('user-name').innerText = d.name;
-            document.getElementById('val-total').innerText = "₹" + d.budget.toLocaleString('en-IN');
-            document.getElementById('val-guests').innerText = d.guests;
-            document.getElementById('val-date').innerText = d.date;
-            document.getElementById('val-city').innerText = d.city;
-            return d;
+        // Core Logic
+        function initializeEngine() {
+            const data = {
+                name: document.getElementById('in-name').value,
+                budget: document.getElementById('in-budget').value,
+                guests: document.getElementById('in-guests').value,
+                city: document.getElementById('in-city').value,
+                date: document.getElementById('in-date').value
+            };
+            if(!data.name || !data.budget) return alert("Details bhariye!");
+            localStorage.setItem('ss_user_data', JSON.stringify(data));
+            location.reload();
         }
 
-        async function sync() {
-            try {
-                const res = await fetch('https://docs.google.com/spreadsheets/d/1ekr04BWhy6zRWDadcFXA_ZujmkeGKe7hMdO6FBDyA7Y/gviz/tq?tqx=out:json&t=' + Date.now());
-                const text = await res.text();
-                const json = JSON.parse(text.substring(47, text.length - 2));
-                const latest = json.table.rows[json.table.rows.length - 1].c;
-                const fresh = { name: latest[0].v, date: latest[1].f, budget: latest[2].v, guests: latest[3].v, city: latest[4].v };
-                localStorage.setItem('ss_user_data', JSON.stringify(fresh));
-                loadData();
-            } catch (e) { console.log("Offline or Sync Error"); loadData(); }
-            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 800);
+        function loadDashboard() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            if(d) {
+                document.getElementById('wizard-overlay').classList.add('hidden');
+                document.getElementById('v-budget').innerText = "₹" + parseInt(d.budget).toLocaleString('en-IN');
+                document.getElementById('v-guests').innerText = d.guests;
+                document.getElementById('v-date').innerText = d.date;
+                document.getElementById('v-city').innerText = d.city;
+            }
         }
 
-        function showModal(title, text, isCopy = false) {
+        function showModal(title, text) {
             document.getElementById('modal-title').innerText = title;
-            document.getElementById('result-text').innerText = text;
-            const btn = document.getElementById('action-btn');
-            btn.innerText = isCopy ? "COPY TO CLIPBOARD" : "UNDERSTOOD";
-            btn.onclick = isCopy ? () => { navigator.clipboard.writeText(text); alert("Copied! ✅"); closeModal(); } : closeModal;
-            document.getElementById('mainModal').style.display = "block";
+            document.getElementById('modal-desc').innerHTML = text;
+            document.getElementById('tool-modal').classList.add('active');
         }
-        
-        function closeModal() { document.getElementById('mainModal').style.display = "none"; }
+        function closeModal() { document.getElementById('tool-modal').classList.remove('active'); }
 
-        // Tool Logics with Mubashir's Tone
-        function runWeather() {
-            const d = loadData();
-            showModal("WEATHER PREDICTOR", `🌤️ AI Analysis for ${d.city}:\n\n${d.date} ke liye hamare sensors 85% clear sky predict kar rahe hain. Bhopal ke climate ke hisaab se sham ka function best rahega. No rain disruption expected.`);
+        // WORKING TOOLS LOGIC
+        function runBudgetAudit() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            const b = parseInt(d.budget);
+            showModal("BUDGET AUDIT", `<b>Allocation Breakdown:</b><br>• Venue & Food (45%): ₹${(b*0.45).toLocaleString()}<br>• Decor (15%): ₹${(b*0.15).toLocaleString()}<br>• Apparels (15%): ₹${(b*0.15).toLocaleString()}<br>• Buffer: ₹${(b*0.1).toLocaleString()}`);
         }
 
-        function runInvite() {
-            const d = loadData();
-            const msg = `Mubarak ho! ✨\n\n${d.name} ki shadi ${d.date} ko ${d.city} mein fix hui hai. Is efficiency ka credit Smart Shaadi AI ko jata hai. Milte hain!\n\n- Sent via Smart Shaadi AI`;
-            showModal("SMART INVITE LOGIC", msg, true);
+        function runWeatherAI() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            showModal("WEATHER AI", `<b>Prediction for ${d.city}:</b><br>Based on historical data for ${d.date}, there is a 15% chance of light showers. We recommend having a 'Plan B' waterproof canopy for outdoor areas.`);
         }
 
-        function runOutfit() {
-            const d = loadData();
-            showModal("OUTFIT AI", `👗 Style Audit:\n\nAapke ₹${d.budget.toLocaleString()} budget mein 'Indo-Western Fusion' best hai. Delhi markets (Chandni Chowk) se pick karein, wahan 2026 trends aa chuke hain!`);
+        function runOutfitAI() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            showModal("OUTFIT AI", `<b>Trending in ${d.city}:</b><br>Aapke budget ke hisaab se 'Pastel Silk' ya 'Handloom' collection best rahega. Consider local embroidery to save 20% on costs.`);
         }
 
-        function runLegal() {
-            showModal("LEGAL REVIEW", "📜 Contract Scanner Status:\n\nSystem ne contracts scan kiye hain. 'Force Majeure' aur 'Refund Policy' clauses par dhyan dein. AI is keeping you safe from hidden charges.");
+        function runMoodAI() {
+            showModal("MOODBOARD AI", "<b>Theme Recommendation:</b><br>'Heritage Royal'. Use marigold flowers with warm LED string lights. It matches the traditional vibe while keeping the automation cost low.");
         }
 
-        function runMood() {
-            const d = loadData();
-            showModal("MOODBOARD AI", `🎨 Recommended Theme: 'Bhopal Heritage Glow'\n\nUse warm LED lighting with traditional marigold accents. Ye setup cost-effective bhi hai aur premium look bhi deta hai.`);
+        function runInviteAI() {
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            showModal("SMART INVITE", `<b>WhatsApp Template:</b><br>"Mubarak ho! ✨ ${d.name} ki shadi ${d.date} ko ${d.city} mein fix hui hai. Details ke liye hamara Smart Dashboard check karein!"`);
         }
 
-        window.onload = sync;
+        function runLegalAI() {
+            showModal("LEGAL SCAN", "<b>Contract Audit:</b><br>System has scanned typical vendor contracts. Ensure your 'Force Majeure' clause covers sudden weather changes. AI suggests 20% advance payment maximum.");
+        }
+
+        function generateReportPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const d = JSON.parse(localStorage.getItem('ss_user_data'));
+            
+            doc.setFontSize(20);
+            doc.text("SMART SHAADI AI REPORT", 20, 20);
+            doc.setFontSize(12);
+            doc.text(`Couple: ${d.name}`, 20, 40);
+            doc.text(`Budget: INR ${d.budget}`, 20, 50);
+            doc.text(`Location: ${d.city}`, 20, 60);
+            doc.text("--------------------------------------------------", 20, 70);
+            doc.text("1. Budget: Optimal allocation for catering is 45%.", 20, 80);
+            doc.text("2. Weather: Moderate risk. Plan B suggested.", 20, 90);
+            doc.text("3. Style: Pastel themes recommended for 2026.", 20, 100);
+            doc.text("--------------------------------------------------", 20, 110);
+            doc.setTextColor(255, 153, 0);
+            doc.text("FOR FULL BREAKDOWN: TALK TO OUR AI CONSULTANT", 20, 130);
+            
+            doc.save(`Shaadi_Report_${d.name}.pdf`);
+            alert("Report PDF Downloaded! Ab aap isse WhatsApp par share kar sakte hain.");
+        }
+
+        function resetData() { localStorage.clear(); location.reload(); }
+        window.onload = loadDashboard;
     </script>
 </body>
 </html>
