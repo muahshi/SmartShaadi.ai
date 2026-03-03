@@ -118,36 +118,15 @@ nav{
   font-size:.88rem!important;letter-spacing:.04em;
 }
 
-/* ══════════════════════════════════════
-   OG IMAGE PLACEHOLDER
-══════════════════════════════════════ */
-.og-banner{
-  margin-top:64px;
-  height:320px;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(160deg,#0D0B0E 0%,#1a1020 50%,#0D0B0E 100%);
-  border-bottom:1px solid rgba(201,168,76,.1);
-  position:relative;overflow:hidden;
-}
-.og-banner::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,.07) 0%,transparent 70%);
-}
-.og-banner-text{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,6vw,4.5rem);font-weight:300;
-  color:rgba(245,239,224,.18);letter-spacing:-.01em;
-  position:relative;z-index:1;text-align:center;
-  font-style:italic;
-}
-.og-banner-text span{display:block;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.4);font-style:normal;margin-bottom:.8rem;font-family:'DM Sans',sans-serif}
+/* OG banner hidden — replace with real og-image.jpg when ready */
+.og-banner{display:none}
 
 /* ══════════════════════════════════════
    HERO — Heart ring background
 ══════════════════════════════════════ */
 .hero{
-  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;padding:5rem 2.8rem 5rem;gap:4rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;padding:5.5rem 2.8rem 4rem;gap:4rem;
   position:relative;overflow:hidden;
 }
 /* Decorative rings like the bottom ring in image */
@@ -478,7 +457,7 @@ footer{background:#070508;border-top:1px solid rgba(201,168,76,.1);padding:4rem 
   nav{padding:0 1.4rem}
   .nav-links{display:none}
   .hbg{display:flex}
-  .hero{grid-template-columns:1fr;padding:6.5rem 1.5rem 4rem;gap:0}
+  .hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem;gap:0}
   .hvis{display:none}
   .mg{grid-template-columns:1fr}
   .dash-wrap{flex-direction:column;min-height:auto}
