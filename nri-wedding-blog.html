@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Mein Shaadi, Tum Ho Videsh Mein — Smart Shaadi AI</title>
+  <meta name="description" content="NRI couples ke liye complete guide — Jaipur/Bhopal mein remote wedding plan karo bina India aaye. AI tools, vendor negotiation, aur real case study." />
+  <meta name="keywords" content="NRI wedding India, remote wedding planning, Jaipur wedding NRI, Bhopal wedding NRI, AI wedding planner, vendor negotiation bot" />
+  <meta property="og:title" content="India Mein Shaadi, Tum Ho Videsh Mein — Smart Shaadi AI" />
+  <meta property="og:description" content="How to Plan a 100% Remote Wedding in India using AI Tools" />
+  <meta property="og:url" content="https://smartshaadi.online" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --maroon: #8B1A2A;
+      --deep-maroon: #5C0F1B;
+      --gold: #C9943A;
+      --gold-light: #E8B96A;
+      --cream: #FAF6EF;
+      --cream-dark: #F0E8D8;
+      --ink: #1C1008;
+      --ink-muted: #5A4A3A;
+      --ink-light: #8A7A6A;
+      --teal: #1A6B6B;
+      --teal-light: #E6F4F4;
+      --rose: #C0392B;
+      --green-muted: #2E7D5A;
+      --green-bg: #E8F5EF;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--deep-maroon);
+      padding: 14px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .site-header a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .site-header a span { font-style: italic; color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(145deg, var(--deep-maroon) 0%, #7B1828 50%, #A02535 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 90px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 30%, rgba(201,148,58,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(201,148,58,0.10) 0%, transparent 50%);
+    }
+    .hero-mandala {
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      opacity: 0.06;
+      font-size: 320px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-mandala-left {
+      position: absolute;
+      bottom: -80px; left: -60px;
+      width: 280px; height: 280px;
+      opacity: 0.05;
+      font-size: 280px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201,148,58,0.2);
+      border: 1px solid rgba(201,148,58,0.4);
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      max-width: 780px;
+      margin: 0 auto 16px;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      animation: fadeUp 0.7s ease 0.2s both;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s ease 0.3s both;
+    }
+    .hero-meta-item {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-meta-item::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.5rem;
+    }
+    .hero-meta-item:first-child::before { display: none; }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .article-body {
+      padding: 56px 0 80px;
+    }
+
+    /* ── TOC ── */
+    .toc-box {
+      background: var(--cream-dark);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .toc-box h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc-list {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc-list li {
+      counter-increment: toc;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .toc-list li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      min-width: 24px;
+    }
+    .toc-list a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--maroon); }
+
+    /* ── PROSE ── */
+    .lead {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+      font-style: italic;
+      border-left: 3px solid var(--gold-light);
+      padding-left: 20px;
+    }
+
+    p { margin-bottom: 20px; color: var(--ink); }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      margin: 56px 0 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      background: var(--deep-maroon);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-top: 6px;
+      white-space: nowrap;
+    }
+    .section-heading h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 700;
+      color: var(--deep-maroon);
+      line-height: 1.3;
+    }
+    .section-heading h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    h3.sub-heading {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin: 36px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--teal-light);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      margin: 52px 0;
+      position: relative;
+    }
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+    }
+    .divider span {
+      position: relative;
+      background: var(--cream);
+      padding: 0 16px;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .callout::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+    }
+    .callout-yellow { background: #FFFBEB; }
+    .callout-yellow::before { background: var(--gold); }
+    .callout-teal { background: var(--teal-light); }
+    .callout-teal::before { background: var(--teal); }
+    .callout-green { background: var(--green-bg); }
+    .callout-green::before { background: var(--green-muted); }
+    .callout-rose { background: #FEF2F2; }
+    .callout-rose::before { background: var(--rose); }
+    .callout-purple { background: #F5F0FF; }
+    .callout-purple::before { background: #7C3AED; }
+
+    .callout-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--ink-muted);
+    }
+    .callout p, .callout li { font-size: 0.95rem; margin-bottom: 8px; }
+    .callout strong { color: var(--ink); }
+
+    /* ── QUOTE SCRIPT ── */
+    .script-block {
+      background: var(--ink);
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 20px 0;
+      position: relative;
+    }
+    .script-block::before {
+      content: '"';
+      position: absolute;
+      top: -10px; left: 20px;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .script-block p {
+      color: #E8E0D0;
+      font-size: 0.95rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .script-note {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .script-note p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-style: normal;
+    }
+
+    /* ── TABLES ── */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 28px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    thead th {
+      background: var(--deep-maroon);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    tbody tr:nth-child(odd) { background: #fff; }
+    tbody tr:nth-child(even) { background: var(--cream-dark); }
+    tbody tr:hover { background: #F5ECD8; transition: background 0.15s; }
+    tbody td {
+      padding: 12px 16px;
+      color: var(--ink-muted);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      vertical-align: top;
+    }
+    tbody td:first-child { font-weight: 600; color: var(--ink); }
+
+    /* ── CASE STUDY ── */
+    .case-study-card {
+      background: linear-gradient(135deg, var(--deep-maroon) 0%, #7B1828 100%);
+      border-radius: 16px;
+      padding: 32px 36px;
+      margin: 36px 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-study-card::before {
+      content: '💍';
+      position: absolute;
+      top: -20px; right: -10px;
+      font-size: 120px;
+      opacity: 0.06;
+    }
+    .case-study-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 16px;
+    }
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .case-meta-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .case-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+    }
+    .case-meta-value {
+      font-size: 0.92rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ── BUDGET TABLE ── */
+    .budget-table table thead th { background: #1A6B6B; }
+    .budget-table tbody tr:last-child td {
+      font-weight: 700;
+      color: var(--green-muted);
+      background: var(--green-bg);
+      font-size: 0.95rem;
+    }
+
+    /* ── MISTAKES ── */
+    .mistake-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .mistake-num {
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .mistake-text strong { color: var(--rose); }
+    .mistake-text { font-size: 0.95rem; line-height: 1.65; color: var(--ink-muted); }
+
+    /* ── TOOL LINKS ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .tool-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      display: block;
+    }
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border-color: var(--gold-light);
+    }
+    .tool-card-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .tool-card-name {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+    .tool-card-desc {
+      color: var(--ink-light);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .tool-card-badge {
+      display: inline-block;
+      background: var(--green-bg);
+      color: var(--green-muted);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-cta {
+      background: linear-gradient(135deg, #FAF0DC 0%, #F5E6C8 100%);
+      border: 2px solid var(--gold-light);
+      border-radius: 16px;
+      padding: 36px 40px;
+      text-align: center;
+      margin: 48px 0 0;
+    }
+    .highlight-cta h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--deep-maroon);
+      margin-bottom: 12px;
+    }
+    .highlight-cta p {
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--deep-maroon);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      margin: 6px;
+    }
+    .cta-btn:hover { background: var(--maroon); transform: translateY(-1px); }
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--deep-maroon);
+      border: 2px solid var(--deep-maroon);
+    }
+    .cta-btn.secondary:hover { background: var(--cream-dark); }
+
+    /* ── QUOTE TESTIMONIAL ── */
+    .testimonial {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin: 28px 0;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold-light);
+      position: absolute;
+      top: -10px; left: 20px;
+      line-height: 1;
+      opacity: 0.6;
+    }
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      padding-top: 20px;
+      margin-bottom: 14px;
+    }
+    .testimonial-author {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── STEP PROCESS ── */
+    .steps {
+      margin: 24px 0;
+      counter-reset: step;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .step-num {
+      counter-increment: step;
+      background: var(--deep-maroon);
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 0.95rem; }
+    .step-content { font-size: 0.93rem; color: var(--ink-muted); }
+
+    /* ── BULLET LIST ── */
+    .styled-list { list-style: none; margin: 14px 0 20px; padding: 0; }
+    .styled-list li {
+      padding: 6px 0 6px 28px;
+      position: relative;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+    .styled-list li::before {
+      content: '◈';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+      top: 9px;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--deep-maroon);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 0.85rem;
+    }
+    .site-footer a { color: var(--gold-light); text-decoration: none; }
+    .site-footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .site-footer-brand em { color: var(--gold-light); font-style: italic; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 56px 20px 64px; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .case-meta-grid { grid-template-columns: 1fr; }
+      .highlight-cta { padding: 28px 24px; }
+      .wrapper { padding: 0 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="https://smartshaadi.online">Smart<em>Shaadi</em> 💍</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-mandala">🌸</div>
+    <div class="hero-mandala-left">🕌</div>
+    <div style="position:relative; z-index:1;">
+      <div class="hero-tag">NRI Wedding Guide · 2026</div>
+      <h1>India Mein Shaadi,<br/><em>Tum Ho Videsh Mein</em></h1>
+      <p class="hero-sub">Jaipur ya Bhopal mein 100% remote wedding plan karo — bina ek baar bhi India aaye. Real case study + AI tools.</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item">15 min read</span>
+        <span class="hero-meta-item">Hinglish</span>
+        <span class="hero-meta-item">Updated March 2026</span>
+        <span class="hero-meta-item">High-Value Guide</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="wrapper">
+    <article class="article-body">
+
+      <!-- TOC -->
+      <div class="toc-box fade-in">
+        <h3>📋 Is Article Mein Kya Hai</h3>
+        <ol class="toc-list">
+          <li><a href="#problem">NRI Wedding Ki Asli Problem</a></li>
+          <li><a href="#command-center">Apna Remote Command Center Banao</a></li>
+          <li><a href="#vendor">Vendor Negotiation — Remotely</a></li>
+          <li><a href="#case-study">Case Study: Nikhil ki Jaipur Wedding</a></li>
+          <li><a href="#whatsapp">WhatsApp Coordination System</a></li>
+          <li><a href="#bhopal-jaipur">Bhopal vs Jaipur — Kaunsa Better?</a></li>
+          <li><a href="#mistakes">5 Galtiyan Jo NRIs Karte Hain</a></li>
+          <li><a href="#tools">Free Tools — Bookmark Kar Lo</a></li>
+        </ol>
+      </div>
+
+      <!-- INTRO -->
+      <p class="lead">Honestly bolunga toh — yeh sawaal mere ek dost Nikhil ne mujhse 2024 mein puchha tha. Woh Melbourne mein tha, uski family Bhopal mein thi, aur shaadi fix ho gayi thi Jaipur mein.</p>
+
+      <p>Baat yeh thi ki use koi ek bhi vendor visit karne nahi jaana tha — flight cost, leave ka chakkar, aur oopar se HR ko convince karna. Usne kaha: <em>"Yaar, ya toh mujhe 3 baar India jaana padega, ya main kisi ko poori planning saunp deta hoon."</em></p>
+
+      <p>Lekin aaj, 2026 mein, na woh gaya na usne kisi ko blind trust kiya. Usne sab kuch remotely manage kiya — WhatsApp par, ek AI tool ke through, aur kuch smart automation ke saath. Shaadi zabardast thi.</p>
+
+      <p>Agar tum bhi NRI ho aur India mein — Jaipur, Bhopal, Udaipur, ya koi bhi city mein — shaadi plan kar rahe ho bina baar baar jaaye, toh yeh guide tumhare liye hi hai.</p>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 1 -->
+      <div id="problem" class="section-heading fade-in">
+        <span class="section-num">01</span>
+        <h2>NRI Wedding Ki <em>Asli Problem</em> Kya Hai?</h2>
+      </div>
+
+      <p>Zyada tar NRIs yeh sochte hain ki problem hai paisa ya distance. Lekin actually problem hai — <strong>coordination ka bharosa.</strong></p>
+
+      <p>Jab tum 5,000 miles door ho, toh har cheez ek chain mein hoti hai. Ek vendor ne call nahi uthaya toh agla step ruk jaata hai. Ek payment delay hui toh venue booking cancel ho sakti hai. Aur tum kuch kar nahi sakte — bas WhatsApp par message karo aur wait karo.</p>
+
+      <div class="callout callout-yellow fade-in">
+        <div class="callout-title">📌 NRI Couples Ke Top 3 Dard-Points</div>
+        <ul class="styled-list">
+          <li>Vendor ne rate quote kiya — phir baat karte karte double kar diya</li>
+          <li>Family ne haan bol diya kisi cheez ke liye jo tumhe pasand nahi thi</li>
+          <li>Koi bhi decision tumhare bina nahi hota, toh tum 24/7 available rehte ho</li>
+        </ul>
+        <p style="font-size:0.9rem; color:#5A4A3A; margin-bottom:0;">Yeh problems solvable hain. Bas ek system chahiye — aur thodi AI ki madad.</p>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 2 -->
+      <div id="command-center" class="section-heading fade-in">
+        <span class="section-num">02</span>
+        <h2>Apna <em>Remote Command Center</em> Banao</h2>
+      </div>
+
+      <p>Sabse pehle ek cheez clearly decide karo: tum kya control karoge remotely, aur kya family par chhod rahe ho. Yeh boundary clear nahi hai toh confusion guaranteed hai.</p>
+
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr><th>Category</th><th>Remote — Tum</th><th>On-Ground — Family</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Budget & Payments</td><td>Final approval tumhari — koi payment bina sign-off ke nahi</td><td>Vendor ko actual cash/transfer karna</td></tr>
+            <tr><td>Vendor Selection</td><td>Smart Shaadi AI se shortlist — 3-5 options decide karo</td><td>In-person visit, photos/videos bhejo</td></tr>
+            <tr><td>Decor & Theme</td><td>Pinterest boards, moodboards share karo</td><td>Execution check karna on-site</td></tr>
+            <tr><td>Guest List</td><td>Smart Shaadi Guest Manager mein manage karo</td><td>Invites distribute karna locally</td></tr>
+            <tr><td>Negotiation</td><td>Smart Shaadi Vendor Bot use karo — WhatsApp par</td><td>Final terms confirm karna in-person</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Yeh table ek baar family ke saath share karo — Google Doc mein ya WhatsApp group mein. Boundaries clear hote hi 50% confusion door ho jaati hai.</p>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 3 -->
+      <div id="vendor" class="section-heading fade-in">
+        <span class="section-num">03</span>
+        <h2>Vendor Negotiation: <em>Remotely</em> Handle Kaise Karein</h2>
+      </div>
+
+      <p>Yeh sabse sensitive part hai. NRIs ke saath ek common pattern hota hai — vendor ko pata chalta hai ki client videsh mein hai, toh quote thoda <em>"generous"</em> ho jaata hai. Yeh sab jagah hota hai, Jaipur mein bhi, Bhopal mein bhi.</p>
+
+      <p>Iska solution hai — pehle hi itna prepared aana ki vendor ko lage <strong>tum market jaante ho.</strong></p>
+
+      <h3 class="sub-heading">🤝 Smart Shaadi Vendor Negotiation Bot — Tumhara Remote Assistant</h3>
+
+      <p>Smart Shaadi ne ek free tool banaya hai jiske through tum directly vendor se negotiation ke liye ready ho sakte ho. Yeh bot:</p>
+
+      <ul class="styled-list">
+        <li>Tumhe current market rate bata deta hai — city-wise (Jaipur, Bhopal, Delhi, etc.)</li>
+        <li>Counter-offer script teyaar karta hai — vendor ki language mein</li>
+        <li>Red flags identify karta hai — jaise hidden costs jo commonly add hote hain</li>
+        <li>Package comparison help karta hai — 2-3 vendors ek saath</li>
+      </ul>
+
+      <div class="callout callout-teal fade-in">
+        <div class="callout-title">🔗 Tool Link</div>
+        <p style="margin-bottom:10px;"><strong>Smart Shaadi Vendor Negotiation Bot</strong></p>
+        <p><a href="https://smartshaadi.online/wedding-vendor-negotiation-bot" style="color:#1A6B6B; font-family:var(--font-mono); font-size:0.88rem;">smartshaadi.online/wedding-vendor-negotiation-bot</a></p>
+        <p style="margin:10px 0 0; font-size:0.85rem; color:#2C7A7A;">💡 Bot ko apna city, budget, aur vendor type batao — woh ek ready-made negotiation script deta hai jo tum WhatsApp pe seedha copy-paste kar sako.</p>
+      </div>
+
+      <h3 class="sub-heading">Real Example: Jaipur Caterer Ko Remotely Handle Karna</h3>
+
+      <p>Ek caterer ne quote kiya ₹1,800 per plate (veg) for 300 guests in Jaipur. Negotiation Bot mein yeh details daalne par pata chala ki Jaipur mein 2026 ka standard rate ₹1,200–1,400 per plate hai for similar menus.</p>
+
+      <p>Bot ne yeh counter-offer script diya:</p>
+
+      <div class="script-block fade-in">
+        <p>"Bhai sahab, hum ne aapka quote dekha. Genuinely aapka work achha laga. Hum 300 guests ke saath confirm karna chahte hain, aur advance bhi dene mein koi dikkat nahi. Lekin humare research ke mutabik Jaipur mein comparable packages ₹1,250–1,350 mein mil rahe hain. Kya ₹1,300 per plate mein aap same menu offer kar sakte hain? Agar haan, toh hum kal hi 30% advance confirm karte hain."</p>
+        <div class="script-note">
+          <p>📌 Result: Caterer ne ₹1,350 par agree kiya. Sirf ek message. Mumbai se baith ke.</p>
+        </div>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 4 — CASE STUDY -->
+      <div id="case-study" class="section-heading fade-in">
+        <span class="section-num">04</span>
+        <h2>Case Study: <em>Nikhil ki Jaipur Wedding</em> — Melbourne Se</h2>
+      </div>
+
+      <div class="case-study-card fade-in">
+        <h3>👤 Nikhil Mehta — Melbourne, Australia</h3>
+        <div class="case-meta-grid">
+          <div class="case-meta-item"><div class="case-meta-label">Location</div><div class="case-meta-value">Jaipur (Rajputana Hotel)</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Guests</div><div class="case-meta-value">280 guests</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Budget</div><div class="case-meta-value">₹28 Lakh</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Planning Duration</div><div class="case-meta-value">7 months</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">India Visits During Planning</div><div class="case-meta-value" style="color:#90EE90;">ZERO ✓</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Arrived India</div><div class="case-meta-value">4 days before wedding</div></div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Background</h3>
+      <p>Nikhil IT sector mein tha Melbourne mein. Priya US mein thi. Dono ki family India mein thi — ek Bhopal mein, ek Jaipur mein. Usne pehle ek local wedding planner hire karne ki koshish ki — ₹3.5 lakh fee, plus woh bhi mostly un hi vendors ko recommend kar raha tha jisse uski commission thi. Yeh option drop kar diya.</p>
+
+      <h3 class="sub-heading">Month 1–2: AI Se Foundation</h3>
+      <p>Smart Shaadi AI chatbot se unhone puri basic planning shuru ki. Budget ₹28 lakh tha, Jaipur location. AI ne turant breakdown diya:</p>
+
+      <div class="table-wrapper budget-table fade-in">
+        <table>
+          <thead><tr><th>Category</th><th>Allocated Budget</th><th>Final Spent</th></tr></thead>
+          <tbody>
+            <tr><td>Venue (2 days)</td><td>₹8,00,000</td><td>₹7,40,000</td></tr>
+            <tr><td>Catering (280 guests)</td><td>₹6,50,000</td><td>₹5,90,000</td></tr>
+            <tr><td>Photography + Video</td><td>₹2,50,000</td><td>₹2,20,000</td></tr>
+            <tr><td>Decor + Mandap</td><td>₹4,00,000</td><td>₹4,20,000</td></tr>
+            <tr><td>Clothes + Jewelry</td><td>₹3,00,000</td><td>₹2,80,000</td></tr>
+            <tr><td>Miscellaneous + Buffer</td><td>₹4,00,000</td><td>₹3,60,000</td></tr>
+            <tr><td><strong>TOTAL</strong></td><td><strong>₹28,00,000</strong></td><td><strong>₹26,10,000 ✅</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.9rem; color:var(--green-muted);"><strong>₹1.9 lakh under budget</strong> — bina kisi compromise ke. Sirf smart negotiation aur advance planning ki wajah se.</p>
+
+      <h3 class="sub-heading">Month 2–4: Vendor Selection System</h3>
+      <p>Nikhil ne ek simple rule banaya: koi bhi vendor finalize nahi hoga bina ek video call ke. Lekin video call se pehle Smart Shaadi Bot ke through negotiation complete karni hai.</p>
+
+      <div class="steps fade-in">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content"><strong>Family visits vendor personally — photos aur sample videos bhejti</strong>Pehle impression on-ground hota hai, tum sirf shortlist approve karte ho</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content"><strong>Vendor Bot mein details daalte ho — market rate check</strong>Negotiate karne se pehle seedha pata chalta hai ki fair rate kya hai</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content"><strong>Bot ka counter-offer script WhatsApp par bhejna</strong>Professional, firm, aur market-informed — vendor seriously leta hai</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content"><strong>20-minute Google Meet — personality check bhi hota hai</strong>Terms theek hoti hain toh verbal confirm, phir written quote email par</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Month 4–6: Jab Decorator Ne Price Badhane Ki Koshish Ki</h3>
+      <p>Decorator ne suddenly bola ki jo fabric unhone quote ki thi woh available nahi hai, alternative thoda zyada price ka hai. Classic vendor tactic — pehle low quote, phir execution mein change.</p>
+      <p>Nikhil ne Smart Shaadi Vendor Bot mein yeh situation daali. Bot ne exactly yeh suggest kiya:</p>
+
+      <div class="script-block fade-in">
+        <p>"Hum samajhte hain availability issues aate hain. Lekin hum ne contract ke time yeh cheez specifically mention ki thi. Agar substitute material hai toh cost same rehni chahiye — warna hum dusre vendor ko consider karenge. Hum kal tak confirmation chahte hain."</p>
+        <div class="script-note">
+          <p>📌 Firm tone + deadline + alternative ka hint — teen cheezein jo vendor ko serious feel karaati hain.</p>
+        </div>
+      </div>
+
+      <p>Vendor ne usi rate par same quality ka alternative arrange kar diya. Koi extra charge nahi. India se kiya — ek bhi stressed call nahi.</p>
+
+      <div class="callout callout-green fade-in">
+        <div class="callout-title">📊 Final Result</div>
+        <ul class="styled-list">
+          <li>India visits during planning: <strong>0</strong></li>
+          <li>Budget saved vs initial estimate: <strong>₹1.9 lakh</strong></li>
+          <li>Vendor disputes: <strong>2 (both resolved remotely)</strong></li>
+        </ul>
+      </div>
+
+      <div class="testimonial fade-in">
+        <p class="testimonial-text">"Mujhe honestly nahi pata tha ki itna possible hai remotely. Bas ek proper system chahiye tha — Smart Shaadi ne woh system diya. Vendor Bot ne mujhe confident feel karaya ki main market ka rate jaanta hoon, aur koi mujhe fool nahi kar sakta."</p>
+        <div class="testimonial-author">— Nikhil Mehta · Melbourne → Jaipur Wedding · Jan 2026</div>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 5 -->
+      <div id="whatsapp" class="section-heading fade-in">
+        <span class="section-num">05</span>
+        <h2>WhatsApp Coordination: <em>Time Zone Problem</em> Ka Solution</h2>
+      </div>
+
+      <p>Ek cheez jo NRIs ko consistently frustrate karti hai — time zone difference. Tum Melbourne mein subah 7 baje ho, Jaipur mein raat ke 2 baj rahe hain. Iska solution hai — async communication ko properly set up karna.</p>
+
+      <h3 class="sub-heading">3 Separate WhatsApp Groups — Sirf Itna Karo</h3>
+      <ul class="styled-list">
+        <li><strong>Wedding Operations</strong> — tum, family coordinator, aur main vendor</li>
+        <li><strong>Guest Management</strong> — RSVP track karne ke liye</li>
+        <li><strong>Vendor Confirmations</strong> — important payments aur written confirmations</li>
+      </ul>
+      <p>Har group ka ek rule: Sirf actionable information. Personal baat koi nahi.</p>
+
+      <h3 class="sub-heading">Daily Routine — Sirf 25 Minutes/Day</h3>
+
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead><tr><th>Time (Tumhara Timezone)</th><th>Action</th><th>Tool</th></tr></thead>
+          <tbody>
+            <tr><td>Morning · 10 min</td><td>Smart Shaadi Dashboard check — pending tasks</td><td>smartshaadi.online/dashboard</td></tr>
+            <tr><td>Morning · 5 min</td><td>Vendor group messages read karo</td><td>WhatsApp</td></tr>
+            <tr><td>Afternoon · as needed</td><td>Vendor replies — Bot script use karo</td><td>Smart Shaadi Vendor Bot</td></tr>
+            <tr><td>Evening · 10 min</td><td>Family coordinator se brief sync call</td><td>Google Meet</td></tr>
+            <tr><td>Weekend · 30 min</td><td>Guest Manager update karo — RSVP status</td><td>Smart Shaadi Dashboard</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 6 -->
+      <div id="bhopal-jaipur" class="section-heading fade-in">
+        <span class="section-num">06</span>
+        <h2>Bhopal vs Jaipur — NRI Wedding Ke Liye <em>Kaunsa Better?</em></h2>
+      </div>
+
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead><tr><th>Factor</th><th>Jaipur</th><th>Bhopal</th></tr></thead>
+          <tbody>
+            <tr><td>Venue Options</td><td>Bahut zyada — heritage havelis, luxury hotels</td><td>Limited lekin growing — good mid-range options</td></tr>
+            <tr><td>Remote Management</td><td>Easier — vendors internationally experienced hain</td><td>Thoda zyada hand-holding chahiye</td></tr>
+            <tr><td>Avg Cost (300 guests)</td><td>₹18–30 lakh</td><td>₹12–22 lakh</td></tr>
+            <tr><td>"NRI Premium"</td><td>Moderate — competition hai market mein</td><td>Thoda zyada — market less competitive</td></tr>
+            <tr><td>Photography/Decor</td><td>Excellent — destination ecosystem mature</td><td>Good — improving har saal</td></tr>
+            <tr><td>Family Logistics</td><td>Guest accommodation budget chahiye</td><td>Family hi handle kar leti hai usually</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-yellow fade-in">
+        <p><strong>Honest Verdict:</strong> Dono mein achhi shaadi ho sakti hai. Jaipur visually stunning hai, Bhopal budget-friendly. Decision family convenience aur personal preference par hona chahiye — cost-cutting ke liye city mat badlo. Remote management dono mein equally possible hai Smart Shaadi tools ke saath.</p>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 7 -->
+      <div id="mistakes" class="section-heading fade-in">
+        <span class="section-num">07</span>
+        <h2>5 Galtiyan Jo <em>NRIs Commonly</em> Karte Hain</h2>
+      </div>
+
+      <div class="mistake-item fade-in">
+        <div class="mistake-num">1</div>
+        <div class="mistake-text"><strong>Kisi ek family member par sab depend karna</strong><br/>Ek coordinator enough nahi hota. Ek "primary" aur ek "backup" rakhna. Agar primary ki tabiyat kharab hui toh kya hoga?</div>
+      </div>
+      <div class="mistake-item fade-in">
+        <div class="mistake-num">2</div>
+        <div class="mistake-text"><strong>Verbal agreements par chalte rehna</strong><br/>Har cheez — rate, date, menu, cancellation policy — email ya WhatsApp par likhi honi chahiye. Vendor se bolna: "Bhai, ek baar WhatsApp par confirm kar do."</div>
+      </div>
+      <div class="mistake-item fade-in">
+        <div class="mistake-num">3</div>
+        <div class="mistake-text"><strong>Buffer budget nahi rakhna</strong><br/>Remote planning mein surprises aate hain. Minimum 10–15% buffer rakhna. Nikhil ne rakha tha — ₹4 lakh — aur ₹1.9 lakh wapas gaye.</div>
+      </div>
+      <div class="mistake-item fade-in">
+        <div class="mistake-num">4</div>
+        <div class="mistake-text"><strong>Har chhoti cheez approve karwana</strong><br/>Time barbad hota hai. Kuch boundaries set karo: "Family ₹20,000 tak khud decide kar sakti hai."</div>
+      </div>
+      <div class="mistake-item fade-in">
+        <div class="mistake-num">5</div>
+        <div class="mistake-text"><strong>Alag alag tools use karna — koi integration nahi</strong><br/>Spreadsheet mein guest list, alag app mein budget, dimaag mein timeline — yeh combination disaster hai. Smart Shaadi ka free dashboard sab integrate karta hai.</div>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- SECTION 8 -->
+      <div id="tools" class="section-heading fade-in">
+        <span class="section-num">08</span>
+        <h2>Free Tools — <em>Aaj Hi Bookmark</em> Kar Lo</h2>
+      </div>
+
+      <div class="tools-grid fade-in">
+        <a href="https://smartshaadi.online/wedding-vendor-negotiation-bot" class="tool-card">
+          <div class="tool-card-icon">🤝</div>
+          <div class="tool-card-name">Vendor Negotiation Bot</div>
+          <div class="tool-card-desc">Market rate check karo aur ready-made WhatsApp script paao — city-wise</div>
+          <span class="tool-card-badge">⭐ Most Used by NRIs</span>
+        </a>
+        <a href="https://smartshaadi.online/wedding-budget-calculator-india-2026" class="tool-card">
+          <div class="tool-card-icon">🧮</div>
+          <div class="tool-card-name">Budget Calculator 2026</div>
+          <div class="tool-card-desc">City aur guest count daalo — exact category-wise breakdown milega</div>
+          <span class="tool-card-badge">Free</span>
+        </a>
+        <a href="https://smartshaadi.online/whatsapp-invite-generator" class="tool-card">
+          <div class="tool-card-icon">💬</div>
+          <div class="tool-card-name">WhatsApp Invite Generator</div>
+          <div class="tool-card-desc">Beautiful invite messages — Hindi/English, shaadi style mein</div>
+          <span class="tool-card-badge">Free</span>
+        </a>
+        <a href="https://smartshaadi.online/destination-wedding-calculator-india-2026" class="tool-card">
+          <div class="tool-card-icon">✈️</div>
+          <div class="tool-card-name">Destination Calculator</div>
+          <div class="tool-card-desc">Jaipur, Udaipur, Goa — destination wedding ka full cost estimate</div>
+          <span class="tool-card-badge">Free</span>
+        </a>
+        <a href="https://smartshaadi.online/dashboard" class="tool-card">
+          <div class="tool-card-icon">📊</div>
+          <div class="tool-card-name">Full Dashboard</div>
+          <div class="tool-card-desc">Budget, guest list, RSVP, venue — sab ek jagah manage karo</div>
+          <span class="tool-card-badge">Free</span>
+        </a>
+        <a href="https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat" class="tool-card">
+          <div class="tool-card-icon">🤖</div>
+          <div class="tool-card-name">AI Chatbot</div>
+          <div class="tool-card-desc">Hindi ya English mein sawaal poochho — 24/7 instant planning help</div>
+          <span class="tool-card-badge">Free · 24/7</span>
+        </a>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- CONCLUSION -->
+      <p>Remote wedding planning scary lagta hai — tabtak, jab tak tumhare paas system nahi hota. Jab system hota hai, toh honestly normal local wedding planning se zyada control feel hota hai. Kyunki tum har cheez document karte ho, har cheez written hoti hai, aur AI tools tumhe market-informed banate hain.</p>
+
+      <p>Nikhil aaj bhi kehta hai — <em>"Yaar, meri shaadi mein sabse best cheez yeh thi ki main zero stressed tha. Kyunki 7 mahine pehle hi sab sorted tha."</em></p>
+
+      <p>Tumhari shaadi bhi ho sakti hai. Bas shuru karo.</p>
+
+      <!-- CTA -->
+      <div class="highlight-cta fade-in">
+        <h3>✨ Ready Ho? Yahan Se Shuru Karo</h3>
+        <p>Free mein plan karo — koi registration nahi, koi credit card nahi. Sirf tumhara sapna aur hamara AI.</p>
+        <a href="https://care-123.app.n8n.cloud/webhook/a3b79b62-1b23-4077-9856-02b84a40527b/chat" class="cta-btn">🤖 AI Se Baat Karein</a>
+        <a href="https://smartshaadi.online/wedding-vendor-negotiation-bot" class="cta-btn secondary">🤝 Vendor Bot Try Karo</a>
+      </div>
+
+    </article>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer-brand">Smart<em>Shaadi</em> 💍</div>
+    <p style="margin-bottom:8px;">India's #1 Free AI Wedding Planner · ⭐ 4.9/5 · 2,400+ Couples Helped</p>
+    <p><a href="https://smartshaadi.online">smartshaadi.online</a> &nbsp;·&nbsp; <a href="https://smartshaadi.online/privacy-policy">Privacy</a> &nbsp;·&nbsp; <a href="https://smartshaadi.online/terms">Terms</a> &nbsp;·&nbsp; <a href="https://smartshaadi.online/contact">Contact</a></p>
+    <p style="margin-top:14px; font-size:0.78rem; opacity:0.5;">© 2026 Smart Shaadi AI. Made with ❤️ for Indian Couples.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
