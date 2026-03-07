@@ -44,7 +44,7 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 .msg.ai .av{background:linear-gradient(135deg,rgba(201,168,76,.28),rgba(201,168,76,.07));border:1px solid rgba(201,168,76,.18)}
 .msg.user .av{background:rgba(245,239,224,.06);border:1px solid rgba(245,239,224,.08)}
 
-.bubble{max-width:78%;padding:.7rem .9rem;font-size:.82rem;line-height:1.65;word-break:break-word}
+.bubble{max-width:78%;padding:.7rem .9rem;font-size:.82rem;line-height:1.65;word-break:break-word;white-space:pre-wrap}
 .msg.ai .bubble{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.1);border-radius:12px 12px 12px 3px;color:rgba(245,239,224,.87)}
 .msg.user .bubble{background:rgba(245,239,224,.055);border:1px solid rgba(245,239,224,.07);border-radius:12px 12px 3px 12px;color:rgba(245,239,224,.68)}
 .mtime{font-size:.58rem;color:var(--mu);margin-top:.2rem}
@@ -127,7 +127,7 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 
 <script>
 // Gemini API key — seedha call, no proxy needed
-var GKEY = 'YAIzaSyCl2iuWm4jK5q3hIX43czCIQGUSCgVg9XE';
+var GKEY = 'AIzaSyC4tsIkhwGG3SULVZRW2HGDjnrbLCNkcH0';
 var API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GKEY;
 
 var hist = [];
