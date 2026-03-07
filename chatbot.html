@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Wedding Chatbot — Smart Shaadi AI</title>
-<meta name="description" content="Smart Shaadi AI chatbot — wedding planning ke liye Hindi & English mein baat karein. Budget, venue, catering sab ke jawab milein.">
+<meta name="description" content="Smart Shaadi AI chatbot — wedding planning ke liye Hindi & English mein baat karein.">
 <link rel="canonical" href="https://smartshaadi.online/chatbot.html">
-<meta property="og:title" content="AI Wedding Chatbot — Smart Shaadi AI">
-<meta property="og:description" content="Free AI wedding planner — Hindi & English mein baat karein!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -15,258 +13,140 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --gold:#C9A84C;--gl:#E8C97A;--gd:rgba(201,168,76,.14);--gd2:rgba(201,168,76,.07);
-  --dk:#0D0B0E;--dk2:#111018;--dk3:#18141F;
-  --cr:#F5EFE0;--mu:#7A7068;--gr:#7ED3A0;
+  --dk:#0D0B0E;--cr:#F5EFE0;--mu:#7A7068;--gr:#7ED3A0;
 }
 html{height:100%;-webkit-text-size-adjust:100%}
-body{
-  font-family:'DM Sans',sans-serif;background:var(--dk);color:var(--cr);
-  height:100%;display:flex;flex-direction:column;overflow:hidden;
-}
+body{font-family:'DM Sans',sans-serif;background:var(--dk);color:var(--cr);height:100%;display:flex;flex-direction:column;overflow:hidden}
 
-/* ── NAV ── */
-nav{
-  height:56px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 1.5rem;background:rgba(10,8,16,.97);
-  border-bottom:1px solid rgba(201,168,76,.12);flex-shrink:0;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gl);letter-spacing:.02em;text-decoration:none}
+nav{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;background:rgba(10,8,16,.97);border-bottom:1px solid rgba(201,168,76,.12);flex-shrink:0}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gl);text-decoration:none}
 .logo em{font-style:italic;color:var(--cr);font-weight:300}
-.nav-center{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(245,239,224,.38)}
+.nav-mid{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:rgba(245,239,224,.35)}
 .sdot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
-.nav-back{font-size:.78rem;color:rgba(245,239,224,.4);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-back{font-size:.75rem;color:rgba(245,239,224,.38);text-decoration:none}
 .nav-back:hover{color:var(--gl)}
 
-/* ── CHAT HEADER ── */
-.chat-hdr{
-  padding:.85rem 1.5rem;
-  background:rgba(13,11,18,.85);
-  border-bottom:1px solid rgba(201,168,76,.08);
-  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
-}
-.hdr-info h2{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--cr)}
-.hdr-info p{font-size:.67rem;color:var(--mu);margin-top:.08rem}
-.hdr-btn{
-  background:none;border:1px solid rgba(201,168,76,.14);border-radius:4px;
-  color:rgba(245,239,224,.32);font-size:.69rem;padding:.3rem .65rem;
-  cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;
-}
+.chat-hdr{padding:.8rem 1.2rem;background:rgba(13,11,18,.9);border-bottom:1px solid rgba(201,168,76,.08);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.hdr-info h2{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--cr)}
+.hdr-info p{font-size:.65rem;color:var(--mu);margin-top:.06rem}
+.hdr-btn{background:none;border:1px solid rgba(201,168,76,.14);border-radius:4px;color:rgba(245,239,224,.32);font-size:.68rem;padding:.28rem .6rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
 .hdr-btn:hover{border-color:rgba(201,168,76,.32);color:var(--gl)}
 
-/* ── MESSAGES ── */
-.msgs{
-  flex:1;overflow-y:auto;overflow-x:hidden;
-  padding:1.4rem 1.5rem;
-  display:flex;flex-direction:column;gap:.9rem;
-  scroll-behavior:smooth;
-}
+.msgs{flex:1;overflow-y:auto;overflow-x:hidden;padding:1.2rem;display:flex;flex-direction:column;gap:.85rem;scroll-behavior:smooth}
 .msgs::-webkit-scrollbar{width:3px}
 .msgs::-webkit-scrollbar-thumb{background:rgba(201,168,76,.12);border-radius:2px}
 
-.msg{display:flex;gap:.65rem;align-items:flex-end;animation:mi .3s ease}
-@keyframes mi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg{display:flex;gap:.6rem;align-items:flex-end;animation:mi .28s ease}
+@keyframes mi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 .msg.user{flex-direction:row-reverse}
-
-.av{
-  width:30px;height:30px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:.78rem;
-}
-.msg.ai .av{background:linear-gradient(135deg,rgba(201,168,76,.28),rgba(201,168,76,.07));border:1px solid rgba(201,168,76,.2)}
+.av{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+.msg.ai .av{background:linear-gradient(135deg,rgba(201,168,76,.28),rgba(201,168,76,.07));border:1px solid rgba(201,168,76,.18)}
 .msg.user .av{background:rgba(245,239,224,.06);border:1px solid rgba(245,239,224,.08)}
 
-.bubble{
-  max-width:75%;padding:.72rem .98rem;
-  font-size:.83rem;line-height:1.7;word-wrap:break-word;
-}
-.msg.ai .bubble{
-  background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.1);
-  border-radius:12px 12px 12px 3px;color:rgba(245,239,224,.87);
-}
-.msg.user .bubble{
-  background:rgba(245,239,224,.055);border:1px solid rgba(245,239,224,.07);
-  border-radius:12px 12px 3px 12px;color:rgba(245,239,224,.68);
-}
-.mtime{font-size:.59rem;color:var(--mu);margin-top:.22rem}
+.bubble{max-width:78%;padding:.7rem .9rem;font-size:.82rem;line-height:1.65;word-break:break-word}
+.msg.ai .bubble{background:rgba(201,168,76,.055);border:1px solid rgba(201,168,76,.1);border-radius:12px 12px 12px 3px;color:rgba(245,239,224,.87)}
+.msg.user .bubble{background:rgba(245,239,224,.055);border:1px solid rgba(245,239,224,.07);border-radius:12px 12px 3px 12px;color:rgba(245,239,224,.68)}
+.mtime{font-size:.58rem;color:var(--mu);margin-top:.2rem}
 .msg.user .mtime{text-align:right}
 
-/* Typing dots */
 .tdots{display:flex;gap:4px;padding:.3rem .1rem}
-.tdots span{
-  width:7px;height:7px;border-radius:50%;
-  background:rgba(201,168,76,.4);animation:td .9s infinite;
-}
+.tdots span{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.4);animation:td .9s infinite}
 .tdots span:nth-child(2){animation-delay:.18s}
 .tdots span:nth-child(3){animation-delay:.36s}
 @keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
 
-/* ── QUICK REPLIES ── */
-.qr-bar{
-  padding:.6rem 1.5rem;display:flex;gap:.42rem;
-  overflow-x:auto;flex-shrink:0;
-}
+.qr-bar{padding:.55rem 1.2rem;display:flex;gap:.4rem;overflow-x:auto;flex-shrink:0}
 .qr-bar::-webkit-scrollbar{display:none}
-.qr{
-  white-space:nowrap;padding:.36rem .75rem;border-radius:100px;
-  border:1px solid rgba(201,168,76,.18);background:var(--gd2);
-  color:rgba(201,168,76,.75);font-size:.71rem;
-  cursor:pointer;font-family:'DM Sans',sans-serif;
-  transition:all .2s;flex-shrink:0;
-}
+.qr{white-space:nowrap;padding:.34rem .7rem;border-radius:100px;border:1px solid rgba(201,168,76,.18);background:var(--gd2);color:rgba(201,168,76,.75);font-size:.7rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;flex-shrink:0}
 .qr:hover{border-color:var(--gold);color:var(--gold);background:var(--gd)}
 
-/* ── INPUT ── */
-.inpwrap{
-  padding:.88rem 1.5rem 1rem;
-  background:rgba(8,6,12,.95);
-  border-top:1px solid rgba(201,168,76,.07);
-  flex-shrink:0;
-}
-.inprow{display:flex;gap:.58rem;align-items:flex-end}
-.inpbox{
-  flex:1;padding:.72rem 1rem;border-radius:8px;
-  border:1px solid rgba(201,168,76,.16);background:rgba(245,239,224,.03);
-  color:var(--cr);font-size:.84rem;font-family:'DM Sans',sans-serif;
-  outline:none;resize:none;max-height:110px;
-  transition:border-color .2s;line-height:1.55;
-}
+.inpwrap{padding:.8rem 1.2rem .95rem;background:rgba(8,6,12,.95);border-top:1px solid rgba(201,168,76,.07);flex-shrink:0}
+.inprow{display:flex;gap:.55rem;align-items:flex-end}
+.inpbox{flex:1;padding:.7rem .9rem;border-radius:8px;border:1px solid rgba(201,168,76,.16);background:rgba(245,239,224,.03);color:var(--cr);font-size:.83rem;font-family:'DM Sans',sans-serif;outline:none;resize:none;max-height:100px;transition:border-color .2s;line-height:1.5}
 .inpbox:focus{border-color:rgba(201,168,76,.38)}
 .inpbox::placeholder{color:rgba(245,239,224,.17)}
-.sbtn{
-  width:42px;height:42px;border-radius:8px;border:none;
-  background:var(--gold);color:var(--dk);font-size:1rem;
-  cursor:pointer;transition:background .2s,transform .14s;flex-shrink:0;
-}
-.sbtn:hover{background:var(--gl);transform:scale(1.06)}
+.sbtn{width:40px;height:40px;border-radius:8px;border:none;background:var(--gold);color:var(--dk);font-size:.95rem;cursor:pointer;transition:background .2s,transform .14s;flex-shrink:0}
+.sbtn:hover{background:var(--gl);transform:scale(1.05)}
 .sbtn:disabled{background:rgba(201,168,76,.22);cursor:not-allowed;transform:none}
-.hint{font-size:.63rem;color:rgba(245,239,224,.15);margin-top:.42rem;text-align:center}
+.hint{font-size:.62rem;color:rgba(245,239,224,.14);margin-top:.38rem;text-align:center}
 
-/* ── WELCOME CARD ── */
-.welcome{
-  text-align:center;padding:2rem 1.2rem;
-  border:1px dashed rgba(201,168,76,.1);border-radius:14px;margin:.3rem 0;
-}
-.welcome-icon{font-size:2.2rem;margin-bottom:.7rem}
-.welcome h3{
-  font-family:'Cormorant Garamond',serif;font-size:1.35rem;
-  font-weight:300;color:var(--cr);margin-bottom:.5rem;line-height:1.25;
-}
+.welcome{text-align:center;padding:1.8rem 1rem;border:1px dashed rgba(201,168,76,.1);border-radius:12px}
+.welcome h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;margin-bottom:.45rem}
 .welcome h3 em{font-style:italic;color:var(--gl)}
-.welcome p{font-size:.79rem;color:var(--mu);line-height:1.72;margin-bottom:.7rem}
-.ftag{
-  display:inline-flex;align-items:center;gap:.35rem;
-  background:rgba(126,211,160,.08);border:1px solid rgba(126,211,160,.18);
-  border-radius:100px;padding:.2rem .65rem;font-size:.64rem;color:var(--gr);
-}
+.welcome p{font-size:.77rem;color:var(--mu);line-height:1.7;margin-bottom:.6rem}
+.ftag{display:inline-flex;align-items:center;gap:.32rem;background:rgba(126,211,160,.08);border:1px solid rgba(126,211,160,.18);border-radius:100px;padding:.18rem .6rem;font-size:.62rem;color:var(--gr)}
 .ftag-dot{width:5px;height:5px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite}
 
-/* ── RETRY BANNER ── */
-.retry-bar{
-  display:none;
-  background:rgba(224,112,112,.07);border:1px solid rgba(224,112,112,.15);
-  border-radius:8px;padding:.6rem 1rem;margin:.5rem 0;
-  font-size:.75rem;color:rgba(224,112,112,.8);
-  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
-}
-.retry-btn{
-  background:rgba(224,112,112,.15);border:1px solid rgba(224,112,112,.25);
-  border-radius:4px;color:#e07070;font-size:.72rem;padding:.28rem .7rem;
-  cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap;
-}
-.retry-btn:hover{background:rgba(224,112,112,.25)}
-
-@media(max-width:600px){
-  nav{padding:0 1rem}
-  .msgs{padding:1rem}
-  .qr-bar{padding:.5rem 1rem}
-  .inpwrap{padding:.72rem 1rem .88rem}
-  .bubble{max-width:87%;font-size:.8rem}
-  .chat-hdr{padding:.72rem 1rem}
+@media(max-width:480px){
+  .bubble{max-width:88%}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
-  <div class="nav-center"><div class="sdot"></div> AI Online — Free</div>
+  <div class="nav-mid"><div class="sdot"></div> AI Online — Free</div>
   <a href="index.html" class="nav-back">← Wapas</a>
 </nav>
 
-<!-- CHAT HEADER -->
 <div class="chat-hdr">
   <div class="hdr-info">
     <h2>💍 Smart Shaadi AI</h2>
-    <p>Wedding Planning Assistant — Hindi & English</p>
+    <p>Wedding Planning — Hindi &amp; English</p>
   </div>
   <button class="hdr-btn" onclick="clearChat()">🗑 Clear</button>
 </div>
 
-<!-- MESSAGES -->
 <div class="msgs" id="msgs">
   <div class="welcome">
-    <div class="welcome-icon">💍</div>
-    <h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em></h3>
-    <p>Budget, venue, guest list, catering — kuch bhi poochho<br>Hindi ya English mein. Main hamesha available hoon!</p>
-    <span class="ftag"><span class="ftag-dot"></span> Powered by Google Gemini — 100% Free</span>
+    <h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em> 💍</h3>
+    <p>Budget, venue, guest list, catering —<br>kuch bhi poochho Hindi ya English mein!</p>
+    <span class="ftag"><span class="ftag-dot"></span> Google Gemini — 100% Free</span>
   </div>
 </div>
 
-<!-- QUICK REPLIES -->
 <div class="qr-bar" id="qrBar">
   <button class="qr" onclick="sq('Wedding budget 2026 mein average kitna hona chahiye?')">💰 Budget 2026</button>
-  <button class="qr" onclick="sq('Delhi mein best wedding venues ₹15 lakh budget mein suggest karo')">🏛️ Venue suggest</button>
-  <button class="qr" onclick="sq('Catering cost per plate 2026 mein kitni hai — city-wise batao')">🍽️ Catering cost</button>
-  <button class="qr" onclick="sq('Destination wedding — Jaipur ya Udaipur kaunsa better hai aur cost kya hogi?')">✈️ Destination</button>
-  <button class="qr" onclick="sq('6 mahine mein wedding plan karne ke liye complete timeline aur checklist banao')">📅 Timeline</button>
-  <button class="qr" onclick="sq('Photography aur videography ka budget kitna rakhen 2026 mein?')">📸 Photography</button>
-  <button class="qr" onclick="sq('₹10 lakh mein 150 guests ke liye complete wedding plan banao')">💵 ₹10L Plan</button>
+  <button class="qr" onclick="sq('Delhi mein best wedding venues ₹15 lakh mein suggest karo')">🏛️ Venue</button>
+  <button class="qr" onclick="sq('Catering cost per plate 2026 mein city-wise kitni hai?')">🍽️ Catering</button>
+  <button class="qr" onclick="sq('Destination wedding Jaipur ya Udaipur — kaunsa better hai?')">✈️ Destination</button>
+  <button class="qr" onclick="sq('6 mahine mein wedding ke liye complete timeline banao')">📅 Timeline</button>
+  <button class="qr" onclick="sq('Photography budget 2026 mein kitna rakhen?')">📸 Photography</button>
+  <button class="qr" onclick="sq('₹10 lakh mein 150 guests ke liye complete wedding plan')">💵 ₹10L Plan</button>
 </div>
 
-<!-- INPUT -->
 <div class="inpwrap">
   <div class="inprow">
-    <textarea
-      class="inpbox" id="msgInp"
-      placeholder="Apna sawaal poochein... (Hindi ya English mein)"
-      rows="1"
-      onkeydown="hk(event)"
-      oninput="ar(this)"
-    ></textarea>
+    <textarea class="inpbox" id="msgInp" placeholder="Apna sawaal poochein... (Hindi ya English)" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
     <button class="sbtn" id="sbtn" onclick="send()">➤</button>
   </div>
   <p class="hint">Enter → Send &nbsp;•&nbsp; Shift+Enter → New Line</p>
 </div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────
-var PROXY = 'https://script.google.com/macros/s/AKfycbyINRmvHVZEtUBHRNrq5Eg4X5V6c-71Znm9bqgQ9rGFdta_6ytwY2KqVLi9T5xR-1u9/exec';
-// ────────────────────────────────────────────────────────
+// Gemini API key — seedha call, no proxy needed
+var GKEY = 'YAIzaSyCl2iuWm4jK5q3hIX43czCIQGUSCgVg9XE';
+var API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GKEY;
 
 var hist = [];
-var lastMsg = '';
+var lastTxt = '';
 
-var SYS = 'Tum Smart Shaadi AI ho — India ka #1 AI wedding planning assistant. Indian couples ki shaadi plan karne mein expert ho.\n\nExpertise:\n- Indian wedding budget 2026 (₹5L se ₹1Cr+) — real prices\n- Venue shortlisting — Delhi, Mumbai, Jaipur, Udaipur, Goa, Rajasthan\n- Catering per plate cost — city-wise veg/non-veg 2026\n- Guest list aur RSVP management\n- Wedding timeline aur complete checklist\n- Decoration, photography, music, makeup budgets\n- Destination weddings — India aur abroad (Bali, Dubai, Thailand)\n- Vendor negotiation tips aur scripts\n- Hindu, Muslim, Sikh, Christian shaadi traditions\n\nStyle:\n- Hinglish mein bolo — natural Hindi+English mix jaise Indians bolte hain\n- Friendly, warm, helpful tone\n- Specific numbers do: "₹800-1200 per plate Delhi mein" jaisi concrete info\n- Bullet points use karo readability ke liye\n- Short aur crisp — point pe aao, filler mat dalo\n- Practical actionable advice do\n- Budget poochha ho toh categories mein breakdown do';
+var SYS = 'Tum Smart Shaadi AI ho — India ka #1 AI wedding planning assistant.\n\nTumhara kaam Indian couples ki shaadi plan karne mein help karna hai.\n\nExpertise:\n- Indian wedding budget 2026 real prices\n- Venue — Delhi, Mumbai, Jaipur, Udaipur, Goa\n- Catering per plate city-wise veg/non-veg\n- Guest list aur RSVP\n- Wedding timeline aur checklist\n- Decoration, photography, music, makeup budgets\n- Destination weddings India aur abroad\n- Vendor negotiation tips\n\nStyle rules:\n- Hinglish mein bolo — natural Hindi+English\n- Friendly warm tone\n- Specific numbers do\n- Bullet points use karo\n- Short crisp answers\n- Practical advice do';
 
-function gt() {
-  return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+function gt(){return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
+
+function addMsg(role, html){
+  var m=document.getElementById('msgs');
+  var d=document.createElement('div');
+  d.className='msg '+role;
+  d.innerHTML='<div class="av">'+(role==='ai'?'💍':'👤')+'</div><div><div class="bubble">'+html+'</div><div class="mtime">'+gt()+'</div></div>';
+  m.appendChild(d);
+  m.scrollTop=m.scrollHeight;
 }
 
-function addMsg(role, html) {
-  var msgs = document.getElementById('msgs');
-  var d = document.createElement('div');
-  d.className = 'msg ' + role;
-  d.innerHTML =
-    '<div class="av">'+(role==='ai'?'💍':'👤')+'</div>' +
-    '<div><div class="bubble">'+html+'</div>' +
-    '<div class="mtime">'+gt()+'</div></div>';
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function fmt(t) {
+function fmt(t){
   return t
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
@@ -274,98 +154,77 @@ function fmt(t) {
     .replace(/\n/g,'<br>');
 }
 
-function showTyping() {
-  var msgs = document.getElementById('msgs');
-  var d = document.createElement('div');
-  d.className='msg ai'; d.id='ty';
+function showTyping(){
+  var m=document.getElementById('msgs');
+  var d=document.createElement('div');
+  d.className='msg ai';d.id='ty';
   d.innerHTML='<div class="av">💍</div><div class="bubble"><div class="tdots"><span></span><span></span><span></span></div></div>';
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
+  m.appendChild(d);m.scrollTop=m.scrollHeight;
 }
 function hideTyping(){var t=document.getElementById('ty');if(t)t.remove();}
 
-function clearChat() {
-  hist = [];
-  document.getElementById('msgs').innerHTML =
-    '<div class="welcome">' +
-    '<div class="welcome-icon">💍</div>' +
-    '<h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em></h3>' +
-    '<p>Budget, venue, guest list, catering — kuch bhi poochho Hindi ya English mein!</p>' +
-    '<span class="ftag"><span class="ftag-dot"></span> Powered by Google Gemini — 100% Free</span>' +
-    '</div>';
+function clearChat(){
+  hist=[];
+  document.getElementById('msgs').innerHTML='<div class="welcome"><h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em> 💍</h3><p>Kuch bhi poochho Hindi ya English mein!</p><span class="ftag"><span class="ftag-dot"></span> Google Gemini — 100% Free</span></div>';
   document.getElementById('qrBar').style.display='flex';
 }
 
-async function send() {
-  var inp = document.getElementById('msgInp');
-  var txt = inp.value.trim();
-  if (!txt) return;
+async function send(){
+  var inp=document.getElementById('msgInp');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  lastTxt=txt;
+  inp.value='';inp.style.height='auto';
+  document.getElementById('sbtn').disabled=true;
+  document.getElementById('qrBar').style.display='none';
+  addMsg('user',fmt(txt));
 
-  lastMsg = txt;
-  inp.value=''; inp.style.height='auto';
-  document.getElementById('sbtn').disabled = true;
-  document.getElementById('qrBar').style.display = 'none';
-
-  addMsg('user', fmt(txt));
-
-  // Build Gemini contents
-  if (hist.length === 0) {
-    hist.push({role:'user', parts:[{text: SYS + '\n\nPehla sawaal: ' + txt}]});
+  if(hist.length===0){
+    hist.push({role:'user',parts:[{text:SYS+'\n\nPehla sawaal: '+txt}]});
   } else {
-    hist.push({role:'user', parts:[{text: txt}]});
+    hist.push({role:'user',parts:[{text:txt}]});
   }
 
   showTyping();
 
-  try {
-    var res = await fetch(PROXY, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        contents: hist,
-        systemInstruction: {parts:[{text: SYS}]},
-        generationConfig: {temperature: 0.8, maxOutputTokens: 1024}
+  try{
+    var r=await fetch(API_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        contents:hist,
+        generationConfig:{temperature:0.8,maxOutputTokens:1024}
       })
     });
-
-    var data = await res.json();
+    var data=await r.json();
     hideTyping();
 
-    if (data.error) {
-      addMsg('ai', '❌ Error: ' + (data.error.message || 'Kuch gadbad hui. Dobara try karo.'));
-      document.getElementById('sbtn').disabled = false;
+    if(data.error){
+      var em=data.error.message||'Error aaya';
+      addMsg('ai','❌ '+fmt(em));
+      hist.pop();
+      document.getElementById('sbtn').disabled=false;
       return;
     }
 
-    var reply = data.candidates && data.candidates[0] && data.candidates[0].content.parts[0].text;
-    if (!reply) { addMsg('ai','❌ Koi jawab nahi mila. Dobara try karo.'); document.getElementById('sbtn').disabled=false; return; }
+    var reply=data.candidates[0].content.parts[0].text;
+    hist.push({role:'model',parts:[{text:reply}]});
+    addMsg('ai',fmt(reply));
 
-    hist.push({role:'model', parts:[{text: reply}]});
-    addMsg('ai', fmt(reply));
-
-  } catch(e) {
+  }catch(err){
     hideTyping();
-    // Show retry option
-    addMsg('ai',
-      '⚠️ Connection mein dikkat aayi. ' +
-      '<span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Dobara try karein →</span>'
-    );
-    // Remove last user msg from history so retry works
+    addMsg('ai','⚠️ Connection error. <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Retry karein →</span>');
     hist.pop();
   }
 
-  document.getElementById('sbtn').disabled = false;
-  document.getElementById('msgInp').focus();
+  document.getElementById('sbtn').disabled=false;
+  try{document.getElementById('msgInp').focus();}catch(e){}
 }
 
-function retry() {
-  document.getElementById('msgInp').value = lastMsg;
-  send();
-}
-
-function sq(t){ document.getElementById('msgInp').value=t; send(); }
-function hk(e){ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();} }
-function ar(el){ el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,110)+'px'; }
+function retry(){document.getElementById('msgInp').value=lastTxt;send();}
+function sq(t){document.getElementById('msgInp').value=t;send();}
+function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function ar(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
 </script>
 </body>
 </html>
