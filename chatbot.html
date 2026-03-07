@@ -261,6 +261,40 @@ function saveKey(){
   }catch(e){}
 })();
 
+// Auto-load form data if came from planning form
+window.addEventListener('load', function(){
+  try{
+    var raw = localStorage.getItem('ss_form_data');
+    if(!raw) return;
+    var fd = JSON.parse(raw);
+    localStorage.removeItem('ss_form_data'); // clear after use
+
+    // Wait a bit then auto-send
+    setTimeout(function(){
+      if(!GROQ_KEY) return; // wait for key first
+
+      // Build pre-filled first message
+      var msg = 'Namaste! Main yahan apni shaadi plan karne aaya hoon. Meri details yeh hain:\n\n';
+      if(fd.names) msg += '👫 Couple: '+fd.names+'\n';
+      if(fd.date) msg += '📅 Wedding Date: '+fd.date+'\n';
+      if(fd.city) msg += '📍 City: '+fd.city+'\n';
+      if(fd.wtype) msg += '💒 Wedding Type: '+fd.wtype+'\n';
+      if(fd.religion) msg += '🙏 Religion: '+fd.religion+'\n';
+      if(fd.budget) msg += '💰 Total Budget: '+fd.budget+'\n';
+      if(fd.guests) msg += '👥 Guest Count: '+fd.guests+'\n';
+      if(fd.venue) msg += '🏛️ Venue Preference: '+fd.venue+'\n';
+      if(fd.food) msg += '🍽️ Food: '+fd.food+'\n';
+      if(fd.services) msg += '✨ Services Chahiye: '+fd.services+'\n';
+      if(fd.notes) msg += '📝 Special Requirements: '+fd.notes+'\n';
+      msg += '\nPlease meri in details ke hisaab se complete wedding plan banao — budget breakdown, vendor suggestions, timeline sab kuch!';
+
+      document.getElementById('msgInp').value = msg;
+      document.getElementById('qrBar').style.display='none';
+      send();
+    }, 800);
+  }catch(e){}
+});
+
 function gt(){return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
 
 function addMsg(role, html){
