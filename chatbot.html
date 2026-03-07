@@ -308,7 +308,10 @@ function addMsg(role, html){
 
 function fmt(t){
   return t
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    // fmt for pdf
+  function pdfFmt(t){return t.replace(/₹/g,"Rs.").replace(/\*\*(.*?\)\*\*/g,"$1").replace(/\*(.*?\)\*/g,"$1").replace(/#{1,3} /g,"").replace(/PLANNING_COMPLETE/g,"").trim();}
+  // fmt for display
+  function fmt2(t){return t.replace(/.replace(/&/g/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.*?)\*/g,'<em>$1</em>')
     .replace(/### (.*?)(\n|$)/g,'<strong style="color:var(--gl);font-size:.88rem">$1</strong><br>')
@@ -365,6 +368,7 @@ async function send(){
     }
 
     var reply = data.choices[0].message.content;
+    // Store clean version for PDF (replace ₹ with Rs. for PDF font compat)
     hist.push({role:'assistant', content: reply});
 
     // Check if planning is complete
@@ -507,6 +511,7 @@ function downloadPDF(){
     aiMessages.forEach(function(m, i){
       var text = m.content
         .replace(/PLANNING_COMPLETE/g,'')
+        .replace(/₹/g,'Rs.')
         .replace(/\*\*/g,'')
         .replace(/\*/g,'')
         .replace(/#{1,3} /g,'')
@@ -551,7 +556,8 @@ function downloadPDF(){
         doc.setFontSize(9);
         doc.setTextColor(180, 170, 155);
         doc.setFont('helvetica','normal');
-        var ulines = doc.splitTextToSize(userMessages[i+1].content, W - 2*margin);
+        var ucontent = userMessages[i+1].content.replace(/₹/g,'Rs.');
+        var ulines = doc.splitTextToSize(ucontent, W - 2*margin);
         ulines.slice(0,5).forEach(function(line){
           checkPage(lineH);
           doc.text(line, margin, y);
