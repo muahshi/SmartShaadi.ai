@@ -96,10 +96,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 #loadingScreen p{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gl);font-style:italic}
 #loadingScreen small{font-size:.75rem;color:var(--mu)}
 
-/* SHEETS SETUP */
-.setup-box{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.12);border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:1.5rem;font-size:.76rem;color:rgba(245,239,224,.45);line-height:1.8}
-.setup-box strong{color:var(--gold);display:block;margin-bottom:.3rem}
-.setup-box code{background:rgba(245,239,224,.05);padding:.1rem .35rem;border-radius:3px;font-size:.7rem;color:var(--gl)}
+
 
 @media(max-width:560px){
   main{padding:4.5rem 1rem 3rem}
@@ -275,25 +272,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
         <label>Special Requirements ya Sawaal?</label>
         <textarea class="inp" id="f_notes" placeholder="e.g. outdoor venue chahiye, Rajasthani theme, November preferred..."></textarea>
       </div>
-
-      <!-- Google Sheets Setup Guide -->
-      <div class="setup-box">
-        <strong>⚙️ Google Sheets Setup (One-time — 5 min)</strong>
-        1. <a href="https://script.google.com" target="_blank" style="color:var(--gold)">script.google.com</a> → New Project → Paste code below<br>
-        2. Deploy → Web App → Anyone → Copy URL<br>
-        3. Is file mein <code>SHEETS_URL</code> variable mein paste karo<br><br>
-        <strong style="font-size:.7rem;color:rgba(245,239,224,.3)">Apps Script Code:</strong><br>
-        <code style="display:block;margin-top:.3rem;line-height:1.8;font-size:.65rem;color:rgba(245,239,224,.35)">
-          function doPost(e){<br>
-          &nbsp;var s=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();<br>
-          &nbsp;var d=JSON.parse(e.postData.contents);<br>
-          &nbsp;s.appendRow([new Date(),d.names,d.phone,d.email,d.date,d.city,d.wtype,d.religion,d.budget,d.guests,d.venue,d.food,d.services,d.notes]);<br>
-          &nbsp;return ContentService.createTextOutput('ok');<br>
-          }<br>
-          function doGet(){return ContentService.createTextOutput('active');}
-        </code>
-      </div>
-
       <div class="brow">
         <button class="btn-back" onclick="go(2)">← Wapas</button>
         <button class="btn-next" onclick="submitForm()" id="submitBtn">✨ AI Chatbot Shuru Karein →</button>
@@ -305,7 +283,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 
 <script>
 // ── REPLACE WITH YOUR GOOGLE APPS SCRIPT URL ──
-var SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyINRmvHVZEtUBHRNrq5Eg4X5V6c-71Znm9bqgQ9rGFdta_6ytwY2KqVLi9T5xR-1u9/exec';
 // ──────────────────────────────────────────────
 
 var fd = {};
