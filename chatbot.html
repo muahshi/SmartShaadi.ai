@@ -389,9 +389,9 @@ function downloadPDF(){
       });
     }
 
-    function addLine(color){
+    function addLine(r,g,b){
       checkPage(4);
-      doc.setDrawColor(color||[201,168,76]);
+      doc.setDrawColor(r||201, g||168, b||76);
       doc.setLineWidth(0.3);
       doc.line(margin, y, W-margin, y);
       y += 4;
@@ -462,7 +462,7 @@ function downloadPDF(){
     doc.setFont('helvetica','bold');
     doc.text('Your Wedding Planning Summary', margin, y);
     y += 3;
-    addLine([201,168,76]);
+    addLine(201,168,76);
     addSpace(3);
 
     // Extract conversation highlights
@@ -526,7 +526,7 @@ function downloadPDF(){
         addSpace(2);
       }
 
-      addLine([40,35,50]);
+      addLine(40,35,50);
       addSpace(2);
     });
 
@@ -543,7 +543,7 @@ function downloadPDF(){
     doc.setFont('helvetica','bold');
     doc.text('Free Planning Tools', margin, y);
     y += 3;
-    addLine([201,168,76]);
+    addLine(201,168,76);
     addSpace(5);
 
     var tools = [
