@@ -85,6 +85,21 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 </head>
 <body>
 
+<!-- KEY SETUP SCREEN -->
+<div id="keySetup" style="display:none;position:fixed;inset:0;background:var(--dk);z-index:999;display:flex;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:rgba(15,13,22,.97);border:1px solid rgba(201,168,76,.2);border-radius:16px;padding:2rem;max-width:420px;width:100%;text-align:center">
+    <div style="font-size:2.5rem;margin-bottom:.8rem">🔑</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.4rem">API Key Setup</h2>
+    <p style="font-size:.78rem;color:var(--mu);margin-bottom:1.4rem;line-height:1.7">
+      Groq API key daalo — <a href="https://console.groq.com" target="_blank" style="color:var(--gold)">console.groq.com</a> se milegi.<br>
+      Key sirf aapke browser mein save hogi. 🔒
+    </p>
+    <input id="keyInp" type="password" placeholder="gsk_..." style="width:100%;padding:.8rem 1rem;border-radius:6px;border:1px solid rgba(201,168,76,.2);background:rgba(245,239,224,.03);color:var(--cr);font-size:.85rem;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:.75rem">
+    <button onclick="saveKey()" style="width:100%;padding:.82rem;background:var(--gold);color:var(--dk);border:none;border-radius:6px;font-size:.85rem;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer">Shuru Karein →</button>
+    <p style="font-size:.65rem;color:rgba(245,239,224,.18);margin-top:.6rem">Key kabhi bhi server par nahi jaati</p>
+  </div>
+</div>
+
 <nav>
   <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
   <div class="nav-mid"><div class="sdot"></div> AI Online — Free</div>
@@ -127,8 +142,8 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 
 <script>
 // Gemini API key — seedha call, no proxy needed
-var GKEY = 'AIzaSyBnr4Te55kJDXC56kYGDXHhM--hGV2NINE';
-var API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GKEY;
+var GROQ_KEY = localStorage.getItem('ss_groq_key') || '';
+var API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 var hist = [];
 var lastTxt = '';
@@ -179,21 +194,23 @@ async function send(){
   document.getElementById('qrBar').style.display='none';
   addMsg('user',fmt(txt));
 
-  if(hist.length===0){
-    hist.push({role:'user',parts:[{text:SYS+'\n\nPehla sawaal: '+txt}]});
-  } else {
-    hist.push({role:'user',parts:[{text:txt}]});
-  }
+  hist.push({role:'user', content: txt});
 
   showTyping();
 
   try{
+    var messages = [{role:'system', content: SYS}].concat(hist);
     var r=await fetch(API_URL,{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+GROQ_KEY
+      },
       body:JSON.stringify({
-        contents:hist,
-        generationConfig:{temperature:0.8,maxOutputTokens:1024}
+        model:'llama-3.3-70b-versatile',
+        messages: messages,
+        temperature:0.8,
+        max_tokens:1024
       })
     });
     var data=await r.json();
@@ -207,8 +224,8 @@ async function send(){
       return;
     }
 
-    var reply=data.candidates[0].content.parts[0].text;
-    hist.push({role:'model',parts:[{text:reply}]});
+    var reply=data.choices[0].message.content;
+    hist.push({role:'assistant', content: reply});
     addMsg('ai',fmt(reply));
 
   }catch(err){
@@ -220,6 +237,17 @@ async function send(){
   document.getElementById('sbtn').disabled=false;
   try{document.getElementById('msgInp').focus();}catch(e){}
 }
+
+function saveKey(){
+  var k=document.getElementById('keyInp').value.trim();
+  if(!k.startsWith('gsk_')){alert('Valid Groq key daalo (gsk_ se shuru hoti hai)');return;}
+  localStorage.setItem('ss_groq_key',k);
+  GROQ_KEY=k;
+  document.getElementById('keySetup').style.display='none';
+}
+
+// Show setup if no key
+if(!GROQ_KEY){document.getElementById('keySetup').style.display='flex';}
 
 function retry(){document.getElementById('msgInp').value=lastTxt;send();}
 function sq(t){document.getElementById('msgInp').value=t;send();}
