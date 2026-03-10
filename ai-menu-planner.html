@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Wedding Menu Planner India 2026 | SmartShaadi</title>
+<meta name="description" content="AI se apni wedding ka complete menu plan karo — regional, seasonal, dietary preferences ke saath. Free tool by SmartShaadi.online">
+<link rel="canonical" href="https://smartshaadi.online/ai-menu-planner.html">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#ffcc33;--purple:#7C4DFF;--pink:#E91E8C;--orange:#FF6F00;--bg:#0f0f1a;--card:rgba(255,255,255,0.04);--border:rgba(255,204,51,0.15);--text:#e8e0f0;--muted:rgba(232,224,240,0.5)}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+nav{background:rgba(15,15,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
+.logo{font-size:18px;font-weight:900;color:var(--gold);text-decoration:none}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none}.nav-back:hover{color:var(--gold)}
+.nav-links{margin-left:auto;display:flex;gap:16px}.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}.nav-links a:hover{color:var(--gold)}
+.hero{background:linear-gradient(135deg,#0f0f1a 0%,#1a0d00 50%,#0f0f1a 100%);border-bottom:1px solid var(--border);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,111,0,0.08) 0%,transparent 60%)}
+.hero-badge{display:inline-block;background:rgba(255,111,0,0.08);border:1px solid rgba(255,111,0,0.25);color:#FFAB40;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:20px;margin-bottom:18px;position:relative}
+.hero h1{font-size:clamp(26px,5vw,46px);font-weight:900;margin-bottom:12px;line-height:1.15;position:relative;background:linear-gradient(135deg,#fff 20%,#FFAB40 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;position:relative}
+.main{max-width:720px;margin:0 auto;padding:32px 18px 80px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px;backdrop-filter:blur(8px)}
+.card-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#FFAB40;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:7px}
+.field input,.field select{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border .2s}
+.field input:focus,.field select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,111,0,0.1)}
+.field select option{background:#1a1a2e}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:8px 16px;border-radius:30px;cursor:pointer;font-size:13px;font-family:inherit;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--muted);transition:all .2s}
+.pill:hover{border-color:var(--orange);color:#FFAB40}
+.pill.active{background:rgba(255,111,0,0.12);border-color:var(--orange);color:#FFAB40;font-weight:700}
+.gen-btn{width:100%;padding:16px;border-radius:14px;border:none;background:linear-gradient(135deg,#E65100,#FF6F00);color:#fff;font-size:16px;font-weight:900;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 24px rgba(255,111,0,0.3);letter-spacing:.5px}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,111,0,0.4)}
+.gen-btn:disabled{background:rgba(255,255,255,0.1);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
+.progress-wrap{margin:16px 0;display:none}
+.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#E65100,#FF6F00,var(--gold));border-radius:3px;transition:width .4s}
+.progress-text{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:1px}
+.error-box{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.25);border-radius:12px;padding:14px 18px;color:#FF8A8A;font-size:13px;display:none;margin-bottom:16px}
+.results{display:none}
+.result-label-top{font-size:11px;letter-spacing:3px;color:#FFAB40;text-transform:uppercase;margin-bottom:16px;margin-top:8px}
+.menu-hero{background:linear-gradient(135deg,rgba(255,111,0,0.1),rgba(230,81,0,0.08));border:1px solid rgba(255,111,0,0.25);border-radius:16px;padding:24px;margin-bottom:16px}
+.menu-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
+.menu-subtitle{font-size:13px;color:#FFAB40;font-style:italic;margin-bottom:16px}
+.menu-course{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px;border-left:3px solid var(--orange)}
+.menu-course-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.menu-items{display:flex;flex-wrap:wrap;gap:8px}
+.menu-item{padding:6px 14px;background:rgba(255,111,0,0.1);border:1px solid rgba(255,111,0,0.2);border-radius:20px;font-size:13px;color:#FFAB40}
+.result-section{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.result-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.result-section-body{font-size:13px;color:rgba(232,224,240,0.75);line-height:1.8}
+.result-section-body ul{padding-left:0;list-style:none}
+.result-section-body ul li{padding:3px 0;padding-left:16px;position:relative}
+.result-section-body ul li::before{content:'✦';position:absolute;left:0;color:var(--orange);font-size:10px;top:5px}
+.copy-btn{padding:7px 16px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--muted);transition:all .2s;float:right}
+.copy-btn:hover{background:rgba(80,200,100,0.15);border-color:rgba(80,200,100,0.4);color:#50C864}
+.share-box{background:rgba(255,204,51,0.06);border:1px solid rgba(255,204,51,0.2);border-radius:14px;padding:18px;text-align:center;margin-top:8px}
+.share-box p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.share-text{font-size:13px;color:var(--text);background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 14px;margin-bottom:12px;line-height:1.7;text-align:left}
+.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-link{padding:9px 18px;border-radius:10px;font-size:13px;text-decoration:none;font-weight:600;border:1px solid var(--border);color:var(--gold);transition:all .2s}
+.cta-link:hover{background:rgba(255,204,51,0.1)}
+@media(max-width:560px){.fields-row{grid-template-columns:1fr}.hero{padding:36px 16px 30px}.card{padding:18px 14px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Smart Shaadi 💍</a>
+  <a href="index.html" class="nav-back">← Wapas</a>
+  <div class="nav-links">
+    <a href="ai-budget-calculator.html">💰 Budget</a>
+    <a href="ai-wedding-theme-generator.html">🎨 Theme</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-badge">✦ Free AI Tool ✦</div>
+  <h1>AI Wedding Menu<br>Planner 🍽️</h1>
+  <p>Region, season aur dietary preferences batao — AI complete wedding menu banayega with catering tips</p>
+</div>
+<div class="main">
+  <div class="card">
+    <div class="card-title">🍽️ Wedding Details</div>
+    <div class="fields-row">
+      <div class="field">
+        <label>City / Region *</label>
+        <input type="text" id="city" placeholder="e.g. Bhopal, Delhi, Lucknow">
+      </div>
+      <div class="field">
+        <label>Guest Count</label>
+        <select id="guests">
+          <option value="50-100">50-100 guests</option>
+          <option value="100-200" selected>100-200 guests</option>
+          <option value="200-400">200-400 guests</option>
+          <option value="400+">400+ guests</option>
+        </select>
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field">
+        <label>Meal Type</label>
+        <select id="mealType">
+          <option value="Sit-down dinner" selected>🪑 Sit-down Dinner</option>
+          <option value="Buffet lunch">🍛 Buffet Lunch</option>
+          <option value="Buffet dinner">🌙 Buffet Dinner</option>
+          <option value="Cocktail & Starters only">🥂 Cocktail + Starters</option>
+          <option value="Full day (multiple meals)">☀️ Full Day (Multiple Meals)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Season / Month</label>
+        <select id="season">
+          <option value="Winter (Nov-Feb)">❄️ Winter</option>
+          <option value="Spring (Mar-Apr)">🌸 Spring</option>
+          <option value="Summer (May-Jun)">☀️ Summer</option>
+          <option value="Monsoon (Jul-Sep)">🌧️ Monsoon</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🕉️ Preferences</div>
+    <div class="field">
+      <label style="margin-bottom:10px">Cuisine Type</label>
+      <div class="pills" id="cuisinePills">
+        <div class="pill active" data-val="North Indian">🫓 North Indian</div>
+        <div class="pill" data-val="South Indian">🍛 South Indian</div>
+        <div class="pill" data-val="Mughlai">🍖 Mughlai</div>
+        <div class="pill" data-val="Rajasthani">🏜️ Rajasthani</div>
+        <div class="pill" data-val="Bengali">🐟 Bengali</div>
+        <div class="pill" data-val="Pan-Indian Mix">🇮🇳 Pan-Indian Mix</div>
+        <div class="pill" data-val="Continental Mix">🌍 Continental Mix</div>
+      </div>
+    </div>
+    <div class="field">
+      <label style="margin-bottom:10px">Dietary Restrictions</label>
+      <div class="pills" id="dietPills">
+        <div class="pill active" data-val="Vegetarian only">🥗 Pure Veg</div>
+        <div class="pill" data-val="Non-vegetarian included">🍗 Non-Veg Included</div>
+        <div class="pill" data-val="Jain food available">🙏 Jain Options</div>
+        <div class="pill" data-val="No onion/garlic">🧅 No Onion/Garlic</div>
+        <div class="pill" data-val="Diabetic friendly">💊 Diabetic Friendly</div>
+        <div class="pill" data-val="Gluten-free options">🌾 Gluten-free</div>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:0">
+      <label style="margin-bottom:10px">Special Requirements</label>
+      <div class="pills" id="specialPills">
+        <div class="pill" data-val="Live counters (chaat, dosa, etc)">🎪 Live Counters</div>
+        <div class="pill" data-val="Fusion food options">🌮 Fusion Options</div>
+        <div class="pill active" data-val="Traditional mithai counter">🍬 Mithai Counter</div>
+        <div class="pill" data-val="Mocktail bar">🥤 Mocktail Bar</div>
+        <div class="pill" data-val="Midnight snack station">🌙 Midnight Snacks</div>
+        <div class="pill" data-val="Kids menu">👶 Kids Menu</div>
+      </div>
+    </div>
+  </div>
+  <button class="gen-btn" id="genBtn" onclick="generate()">🍽️ AI Menu Plan Banao</button>
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text">Aapke liye perfect menu prepare ho raha hai... 🍽️</div>
+  </div>
+  <div class="error-box" id="errorBox"></div>
+  <div class="results" id="results">
+    <div class="result-label-top">✦ Aapka Complete Wedding Menu</div>
+    <div id="menuResult"></div>
+    <div class="share-box">
+      <p>💡 Caterer ko yeh menu share karo!</p>
+      <div class="share-text" id="shareText"></div>
+      <button class="copy-btn" style="float:none;margin-bottom:12px" onclick="copyShare()">📋 Share Text Copy Karo</button>
+      <div class="cta-links">
+        <a href="ai-budget-calculator.html" class="cta-link">💰 Budget Plan</a>
+        <a href="ai-planning-timeline.html" class="cta-link">📅 Timeline</a>
+        <a href="ai-wedding-theme-generator.html" class="cta-link">🎨 Theme</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function setupMultiPills(id){document.querySelectorAll(`#${id} .pill`).forEach(p=>{p.addEventListener('click',()=>p.classList.toggle('active'));});}
+function setupSinglePills(id){document.querySelectorAll(`#${id} .pill`).forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll(`#${id} .pill`).forEach(x=>x.classList.remove('active'));p.classList.add('active');});});}
+setupSinglePills('cuisinePills');
+setupMultiPills('dietPills');
+setupMultiPills('specialPills');
+let progressInterval;
+function startProgress(){document.getElementById('progressWrap').style.display='block';let val=0;progressInterval=setInterval(()=>{val=Math.min(val+Math.random()*5,88);document.getElementById('progressFill').style.width=val+'%';},400);}
+function stopProgress(){clearInterval(progressInterval);document.getElementById('progressFill').style.width='100%';setTimeout(()=>{document.getElementById('progressWrap').style.display='none';document.getElementById('progressFill').style.width='0%';},400);}
+let shareContent='';
+async function generate(){
+  const city=document.getElementById('city').value.trim();
+  if(!city){showError('⚠️ City zaroori hai!');return;}
+  const guests=document.getElementById('guests').value;
+  const mealType=document.getElementById('mealType').value;
+  const season=document.getElementById('season').value;
+  const cuisine=document.querySelector('#cuisinePills .pill.active')?.dataset.val||'North Indian';
+  const diet=[...document.querySelectorAll('#dietPills .pill.active')].map(p=>p.dataset.val).join(', ')||'Vegetarian';
+  const special=[...document.querySelectorAll('#specialPills .pill.active')].map(p=>p.dataset.val).join(', ')||'None';
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errorBox').style.display='none';
+  document.getElementById('results').style.display='none';
+  startProgress();
+  const systemPrompt=`You are India's top wedding catering consultant. Create detailed, authentic Indian wedding menus with regional specialties. Include seasonal recommendations and practical catering tips.`;
+  const userPrompt=`Create a complete wedding menu for:
+- City: ${city}
+- Guests: ${guests}
+- Meal type: ${mealType}
+- Season: ${season}
+- Cuisine: ${cuisine}
+- Dietary: ${diet}
+- Special: ${special}
+
+Return EXACTLY in this format:
+
+MENU_NAME: [Creative menu name]
+TAGLINE: [One line about this menu]
+
+WELCOME_DRINKS: [item1, item2, item3, item4]
+STARTERS_VEG: [item1, item2, item3, item4, item5]
+STARTERS_NONVEG: [item1, item2, item3] (write "N/A" if veg only)
+SOUP: [item1, item2]
+MAIN_COURSE_VEG: [item1, item2, item3, item4, item5, item6]
+MAIN_COURSE_NONVEG: [item1, item2, item3] (write "N/A" if veg only)
+BREADS: [item1, item2, item3, item4]
+RICE_BIRYANI: [item1, item2]
+LIVE_COUNTER: [counter1 with items, counter2 with items]
+DESSERTS: [item1, item2, item3, item4, item5]
+MITHAI: [item1, item2, item3, item4]
+AFTER_DINNER: [item1, item2, item3]
+
+SEASONAL_SPECIAL: [Why this menu is perfect for ${season} and a seasonal special dish]
+CATERING_TIPS:
+- [Tip 1 for ${city} catering]
+- [Tip 2]
+- [Tip 3]
+ESTIMATED_COST: [Per plate cost range for ${city} for this menu type]`;
+  try{
+    const res=await fetch('/.netlify/functions/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
+    if(!res.ok)throw new Error('Server error '+res.status);
+    const data=await res.json();
+    stopProgress();
+    renderMenu(data.content,city,guests,cuisine);
+  }catch(err){
+    stopProgress();
+    showError('⚠️ Kuch gadbad hui. Please dobara try karein. ('+err.message+')');
+  }finally{
+    document.getElementById('genBtn').disabled=false;
+  }
+}
+function extract(content,key){const regex=new RegExp(`${key}:\\s*([^\\n]+)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
+function extractSection(content,key){const regex=new RegExp(`${key}:([\\s\\S]*?)(?=\\n[A-Z_]+:|$)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
+function formatList(text){if(!text)return'';const lines=text.split('\n').map(l=>l.replace(/^[-•*]\s*/,'').trim()).filter(l=>l.length>2);return'<ul>'+lines.map(l=>`<li>${l}</li>`).join('')+'</ul>';}
+function itemChips(text){if(!text||text==='N/A')return'<span style="color:var(--muted);font-size:12px">N/A</span>';const items=text.split(',').map(i=>i.trim()).filter(i=>i.length>1);return'<div class="menu-items">'+items.map(i=>`<div class="menu-item">${i}</div>`).join('')+'</div>';}
+function renderMenu(content,city,guests,cuisine){
+  const menuName=extract(content,'MENU_NAME')||'Aapka Dream Menu';
+  const tagline=extract(content,'TAGLINE')||'';
+  const courses=[
+    {emoji:'🥤',label:'Welcome Drinks',key:'WELCOME_DRINKS'},
+    {emoji:'🥗',label:'Veg Starters',key:'STARTERS_VEG'},
+    {emoji:'🍗',label:'Non-Veg Starters',key:'STARTERS_NONVEG'},
+    {emoji:'🍲',label:'Soup',key:'SOUP'},
+    {emoji:'🍛',label:'Main Course (Veg)',key:'MAIN_COURSE_VEG'},
+    {emoji:'🍖',label:'Main Course (Non-Veg)',key:'MAIN_COURSE_NONVEG'},
+    {emoji:'🫓',label:'Breads',key:'BREADS'},
+    {emoji:'🍚',label:'Rice & Biryani',key:'RICE_BIRYANI'},
+    {emoji:'🎪',label:'Live Counters',key:'LIVE_COUNTER'},
+    {emoji:'🍮',label:'Desserts',key:'DESSERTS'},
+    {emoji:'🍬',label:'Indian Mithai',key:'MITHAI'},
+    {emoji:'☕',label:'After Dinner',key:'AFTER_DINNER'},
+  ];
+  const seasonal=extractSection(content,'SEASONAL_SPECIAL')||'';
+  const tips=extractSection(content,'CATERING_TIPS')||'';
+  const cost=extract(content,'ESTIMATED_COST')||'';
+  shareContent=`🍽️ SmartShaadi.online ne meri ${city} wedding ka menu plan kiya!\n\nCuisine: ${cuisine} | Guests: ${guests}\n\nAap bhi free AI menu planner try karo:\n👉 smartshaadi.online/ai-menu-planner.html`;
+  const coursesHtml=courses.map(c=>{
+    const val=extract(content,c.key);
+    if(!val||val==='N/A')return'';
+    return`<div class="menu-course">
+      <div class="menu-course-title">${c.emoji} ${c.label}</div>
+      ${itemChips(val)}
+    </div>`;
+  }).filter(h=>h).join('');
+  const html=`
+    <div class="menu-hero">
+      <button class="copy-btn" onclick="copyMenu()">📋 Copy</button>
+      <div class="menu-title">🍽️ ${menuName}</div>
+      <div class="menu-subtitle">"${tagline}"</div>
+      <div style="font-size:12px;color:var(--muted)">📍 ${city} | 👥 ${guests} | 🍴 ${cuisine}</div>
+    </div>
+    ${coursesHtml}
+    ${seasonal?`<div class="result-section" style="border-left:3px solid var(--gold)"><div class="result-section-title">🌸 Seasonal Special</div><div class="result-section-body">${seasonal}</div></div>`:''}
+    ${tips?`<div class="result-section"><div class="result-section-title">💡 Catering Tips for ${city}</div><div class="result-section-body">${formatList(tips)}</div></div>`:''}
+    ${cost?`<div class="result-section" style="background:rgba(255,204,51,0.05);border:1px solid rgba(255,204,51,0.2)"><div class="result-section-title" style="color:var(--gold)">💰 Estimated Cost</div><div class="result-section-body">${cost}</div></div>`:''}
+  `;
+  document.getElementById('menuResult').innerHTML=html;
+  document.getElementById('shareText').textContent=shareContent;
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function copyMenu(){const text=document.getElementById('menuResult').innerText;navigator.clipboard.writeText(text).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Copy',2000);});}
+function copyShare(){navigator.clipboard.writeText(shareContent).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Share Text Copy Karo',2000);});}
+function showError(msg){const box=document.getElementById('errorBox');box.textContent=msg;box.style.display='block';}
+</script>
+</body>
+</html>
