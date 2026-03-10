@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Wedding Theme Generator 2026 | SmartShaadi</title>
+<meta name="description" content="AI se apni wedding ka perfect theme generate karo — color palette, decor ideas, outfit suggestions. Free tool by SmartShaadi.online">
+<link rel="canonical" href="https://smartshaadi.online/ai-wedding-theme-generator.html">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #ffcc33;
+  --purple: #7C4DFF;
+  --pink: #E91E8C;
+  --bg: #0f0f1a;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,204,51,0.15);
+  --text: #e8e0f0;
+  --muted: rgba(232,224,240,0.5);
+}
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+nav {
+  background: rgba(15,15,26,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { font-size: 18px; font-weight: 900; color: var(--gold); text-decoration: none; }
+.nav-back { font-size: 13px; color: var(--muted); text-decoration: none; }
+.nav-back:hover { color: var(--gold); }
+.nav-links { margin-left: auto; display: flex; gap: 16px; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.nav-links a:hover { color: var(--gold); }
+
+.hero {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a0a2e 50%, #0f0f1a 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 52px 20px 44px; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124,77,255,0.1) 0%, transparent 60%);
+}
+.hero-badge {
+  display: inline-block; background: rgba(124,77,255,0.1);
+  border: 1px solid rgba(124,77,255,0.3); color: #A78BFF;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 5px 18px; border-radius: 20px; margin-bottom: 18px; position: relative;
+}
+.hero h1 {
+  font-size: clamp(26px,5vw,46px); font-weight: 900; margin-bottom: 12px;
+  line-height: 1.15; position: relative;
+  background: linear-gradient(135deg, #fff 20%, #A78BFF 60%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p { font-size: 15px; color: var(--muted); max-width: 500px; margin: 0 auto; position: relative; }
+
+.main { max-width: 720px; margin: 0 auto; padding: 32px 18px 80px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 26px; margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+.card-title {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: #A78BFF; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.card-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+.field input, .field select {
+  width: 100%; padding: 11px 14px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05);
+  font-size: 14px; font-family: inherit; color: var(--text); outline: none; transition: border 0.2s;
+}
+.field input:focus, .field select:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(124,77,255,0.1); }
+.field select option { background: #1a1a2e; }
+.fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  padding: 8px 16px; border-radius: 30px; cursor: pointer;
+  font-size: 13px; font-family: inherit;
+  border: 1.5px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03); color: var(--muted); transition: all 0.2s;
+}
+.pill:hover { border-color: var(--purple); color: #A78BFF; }
+.pill.active { background: rgba(124,77,255,0.15); border-color: var(--purple); color: #A78BFF; font-weight: 700; }
+.pill.active-pink { background: rgba(233,30,140,0.15); border-color: var(--pink); color: var(--pink); font-weight: 700; }
+.pill.active-gold { background: rgba(255,204,51,0.15); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+
+.gen-btn {
+  width: 100%; padding: 16px; border-radius: 14px; border: none;
+  background: linear-gradient(135deg, #7C4DFF, #E91E8C);
+  color: #fff; font-size: 16px; font-weight: 900;
+  font-family: inherit; cursor: pointer; transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(124,77,255,0.4); letter-spacing: 0.5px;
+}
+.gen-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,77,255,0.5); }
+.gen-btn:disabled { background: rgba(255,255,255,0.1); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+
+.progress-wrap { margin: 16px 0; display: none; }
+.progress-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--purple), var(--pink), var(--gold)); border-radius: 3px; transition: width 0.4s; }
+.progress-text { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
+
+.error-box { background: rgba(255,50,50,0.08); border: 1px solid rgba(255,50,50,0.25); border-radius: 12px; padding: 14px 18px; color: #FF8A8A; font-size: 13px; display: none; margin-bottom: 16px; }
+
+.results { display: none; }
+.result-label-top { font-size: 11px; letter-spacing: 3px; color: #A78BFF; text-transform: uppercase; margin-bottom: 16px; margin-top: 8px; }
+
+/* Theme Result Cards */
+.theme-hero {
+  background: linear-gradient(135deg, rgba(124,77,255,0.15), rgba(233,30,140,0.1));
+  border: 1px solid rgba(124,77,255,0.3);
+  border-radius: 16px; padding: 24px; margin-bottom: 16px;
+}
+.theme-name { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.theme-tagline { font-size: 14px; color: #A78BFF; font-style: italic; margin-bottom: 20px; }
+
+.color-palette { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.color-swatch {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.swatch-circle {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.swatch-name { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-align: center; max-width: 60px; }
+
+.theme-section {
+  background: rgba(0,0,0,0.3); border-radius: 12px;
+  padding: 16px 18px; margin-bottom: 12px;
+}
+.theme-section-title {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.theme-section-body { font-size: 13px; color: rgba(232,224,240,0.75); line-height: 1.8; }
+.theme-section-body ul { padding-left: 0; list-style: none; }
+.theme-section-body ul li { padding: 3px 0; padding-left: 16px; position: relative; }
+.theme-section-body ul li::before { content: '✦'; position: absolute; left: 0; color: var(--purple); font-size: 10px; top: 5px; }
+
+.copy-btn {
+  padding: 7px 16px; border-radius: 20px; cursor: pointer;
+  font-size: 12px; font-family: inherit; font-weight: 600;
+  border: 1px solid var(--border); background: rgba(255,255,255,0.05);
+  color: var(--muted); transition: all 0.2s; float: right;
+}
+.copy-btn:hover, .copy-btn.copied { background: rgba(80,200,100,0.15); border-color: rgba(80,200,100,0.4); color: #50C864; }
+
+.share-box {
+  background: rgba(255,204,51,0.06); border: 1px solid rgba(255,204,51,0.2);
+  border-radius: 14px; padding: 18px; text-align: center; margin-top: 8px;
+}
+.share-box p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.share-text { font-size: 13px; color: var(--text); background: rgba(0,0,0,0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; line-height: 1.7; text-align: left; }
+
+.cta-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.cta-link { padding: 9px 18px; border-radius: 10px; font-size: 13px; text-decoration: none; font-weight: 600; border: 1px solid var(--border); color: var(--gold); transition: all 0.2s; }
+.cta-link:hover { background: rgba(255,204,51,0.1); }
+
+@media(max-width:560px) { .fields-row { grid-template-columns: 1fr; } .hero { padding: 36px 16px 30px; } .card { padding: 18px 14px; } .color-palette { gap: 8px; } .swatch-circle { width: 40px; height: 40px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Smart Shaadi 💍</a>
+  <a href="index.html" class="nav-back">← Wapas</a>
+  <div class="nav-links">
+    <a href="chatbot.html">🤖 AI Chatbot</a>
+    <a href="wedding-budget-calculator-india-2026.html">💰 Budget</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">✦ Free AI Tool ✦</div>
+  <h1>AI Wedding Theme<br>Generator 🎨</h1>
+  <p>Apni personality aur budget batao — AI ek complete wedding theme banayega with colors, decor, outfits aur tips</p>
+</div>
+
+<div class="main">
+
+  <div class="card">
+    <div class="card-title">💍 Aapki Details</div>
+    <div class="fields-row">
+      <div class="field">
+        <label>City *</label>
+        <input type="text" id="city" placeholder="e.g. Bhopal, Delhi, Mumbai">
+      </div>
+      <div class="field">
+        <label>Season / Month</label>
+        <select id="season">
+          <option value="Winter (Nov-Feb)">❄️ Winter (Nov-Feb)</option>
+          <option value="Spring (Mar-Apr)">🌸 Spring (Mar-Apr)</option>
+          <option value="Summer (May-Jun)">☀️ Summer (May-Jun)</option>
+          <option value="Monsoon (Jul-Sep)">🌧️ Monsoon (Jul-Sep)</option>
+          <option value="Autumn (Oct)">🍂 Autumn (Oct)</option>
+        </select>
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field">
+        <label>Budget Range</label>
+        <select id="budget">
+          <option value="Budget (5-10 Lakh)">💚 Budget (5-10 Lakh)</option>
+          <option value="Mid-range (10-25 Lakh)" selected>💛 Mid-range (10-25 Lakh)</option>
+          <option value="Premium (25-50 Lakh)">🧡 Premium (25-50 Lakh)</option>
+          <option value="Luxury (50 Lakh+)">💜 Luxury (50 Lakh+)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Venue Type</label>
+        <select id="venue">
+          <option value="Banquet Hall">🏛️ Banquet Hall</option>
+          <option value="Outdoor Garden">🌿 Outdoor Garden</option>
+          <option value="Farmhouse">🌾 Farmhouse</option>
+          <option value="Heritage/Palace">👑 Heritage / Palace</option>
+          <option value="Beach">🏖️ Beach</option>
+          <option value="Rooftop">🌆 Rooftop</option>
+          <option value="Home Wedding">🏠 Home Wedding</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✨ Personality & Vibe</div>
+    <div class="field">
+      <label style="margin-bottom:10px">Couple ki Personality</label>
+      <div class="pills" id="personalityPills">
+        <div class="pill active" data-val="Romantic & Traditional">💕 Romantic Traditional</div>
+        <div class="pill" data-val="Modern & Minimalist">🤍 Modern Minimal</div>
+        <div class="pill" data-val="Royal & Grand">👑 Royal Grand</div>
+        <div class="pill" data-val="Fun & Quirky">🎉 Fun Quirky</div>
+        <div class="pill" data-val="Bohemian & Free-spirited">🌸 Boho</div>
+        <div class="pill" data-val="Vintage & Classic">🕰️ Vintage</div>
+      </div>
+    </div>
+    <div class="field">
+      <label style="margin-bottom:10px">Religion / Culture</label>
+      <div class="pills" id="religionPills">
+        <div class="pill active" data-val="Hindu">🕉️ Hindu</div>
+        <div class="pill" data-val="Muslim/Nikah">☪️ Muslim</div>
+        <div class="pill" data-val="Sikh">🙏 Sikh</div>
+        <div class="pill" data-val="Christian">✝️ Christian</div>
+        <div class="pill" data-val="Inter-religion">🌈 Inter-religion</div>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:0">
+      <label style="margin-bottom:10px">Favorite Colors (Optional)</label>
+      <div class="pills" id="colorPills">
+        <div class="pill" data-val="Red & Gold">❤️ Red & Gold</div>
+        <div class="pill" data-val="Pink & Rose Gold">🌸 Pink Rose Gold</div>
+        <div class="pill" data-val="Blue & Silver">💙 Blue Silver</div>
+        <div class="pill" data-val="Green & Gold">💚 Green Gold</div>
+        <div class="pill" data-val="Purple & Lavender">💜 Purple</div>
+        <div class="pill" data-val="Pastel shades">🤍 Pastels</div>
+        <div class="pill" data-val="White & Ivory">🤍 White Ivory</div>
+        <div class="pill" data-val="No preference">✨ Surprise Me!</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">
+    🎨 AI Theme Generate Karo
+  </button>
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text">Aapke liye perfect theme design ho rahi hai... 🎨</div>
+  </div>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="results" id="results">
+    <div class="result-label-top">✦ Aapki Perfect Wedding Theme</div>
+    <div id="themeResult"></div>
+    <div class="share-box" id="shareBox">
+      <p>💡 Yeh theme dosto ko share karo!</p>
+      <div class="share-text" id="shareText"></div>
+      <button class="copy-btn" style="float:none;margin-bottom:12px" onclick="copyShare()">📋 Share Text Copy Karo</button>
+      <div class="cta-links">
+        <a href="ai-planning-timeline.html" class="cta-link">📅 Timeline Banao</a>
+        <a href="wedding-budget-calculator-india-2026.html" class="cta-link">💰 Budget Plan</a>
+        <a href="ai-invitation-writer.html" class="cta-link">💌 Invitation</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Multi-select pills
+function setupMultiPills(groupId) {
+  document.querySelectorAll(`#${groupId} .pill`).forEach(p => {
+    p.addEventListener('click', () => {
+      p.classList.toggle('active');
+    });
+  });
+}
+// Single-select pills
+function setupSinglePills(groupId) {
+  document.querySelectorAll(`#${groupId} .pill`).forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll(`#${groupId} .pill`).forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+    });
+  });
+}
+
+setupSinglePills('personalityPills');
+setupSinglePills('religionPills');
+setupMultiPills('colorPills');
+
+let progressInterval;
+function startProgress() {
+  document.getElementById('progressWrap').style.display = 'block';
+  let val = 0;
+  progressInterval = setInterval(() => {
+    val = Math.min(val + Math.random() * 5, 88);
+    document.getElementById('progressFill').style.width = val + '%';
+  }, 400);
+}
+function stopProgress() {
+  clearInterval(progressInterval);
+  document.getElementById('progressFill').style.width = '100%';
+  setTimeout(() => {
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('progressFill').style.width = '0%';
+  }, 400);
+}
+
+let shareContent = '';
+
+async function generate() {
+  const city = document.getElementById('city').value.trim();
+  if (!city) { showError('⚠️ City zaroori hai!'); return; }
+
+  const season = document.getElementById('season').value;
+  const budget = document.getElementById('budget').value;
+  const venue = document.getElementById('venue').value;
+  const personality = document.querySelector('#personalityPills .pill.active')?.dataset.val || 'Romantic & Traditional';
+  const religion = document.querySelector('#religionPills .pill.active')?.dataset.val || 'Hindu';
+  const colors = [...document.querySelectorAll('#colorPills .pill.active')].map(p => p.dataset.val).join(', ') || 'No preference';
+
+  document.getElementById('genBtn').disabled = true;
+  document.getElementById('errorBox').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  startProgress();
+
+  const systemPrompt = `You are India's top wedding theme designer. Create detailed, beautiful, culturally appropriate wedding themes for Indian couples. Be specific, creative, and practical. Include real vendor tips and 2026 trends.`;
+
+  const userPrompt = `Create a complete wedding theme for:
+- City: ${city}
+- Season: ${season}
+- Budget: ${budget}
+- Venue: ${venue}
+- Personality: ${personality}
+- Religion/Culture: ${religion}
+- Color preference: ${colors}
+
+Return EXACTLY in this format:
+
+THEME_NAME: [Creative theme name in Hindi/English]
+TAGLINE: [One beautiful line describing the theme]
+COLORS: [color1|hex1, color2|hex2, color3|hex3, color4|hex4]
+OVERVIEW: [2-3 lines describing the overall vibe]
+
+DECOR_IDEAS:
+- [idea 1]
+- [idea 2]
+- [idea 3]
+- [idea 4]
+- [idea 5]
+
+OUTFIT_SUGGESTIONS:
+- Bride: [suggestion]
+- Groom: [suggestion]
+- Family: [suggestion]
+- Guests dress code: [suggestion]
+
+FLOWERS_AND_FRAGRANCE:
+- [suggestion 1]
+- [suggestion 2]
+- [suggestion 3]
+
+FOOD_THEME:
+- [suggestion 1]
+- [suggestion 2]
+
+TRENDING_ELEMENTS:
+- [2026 trend 1]
+- [2026 trend 2]
+- [2026 trend 3]
+
+BUDGET_TIP: [One specific money-saving tip for this theme in ${city}]
+
+Make it specific to Indian culture, ${religion} traditions, and ${city} vendors. Be creative and inspiring!`;
+
+  try {
+    const res = await fetch('/.netlify/functions/groq-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const data = await res.json();
+    stopProgress();
+    renderTheme(data.content, city, season);
+  } catch (err) {
+    stopProgress();
+    showError('⚠️ Kuch gadbad hui. Please dobara try karein. (' + err.message + ')');
+  } finally {
+    document.getElementById('genBtn').disabled = false;
+  }
+}
+
+function parseColors(colorStr) {
+  if (!colorStr) return [];
+  return colorStr.split(',').map(c => {
+    const parts = c.trim().split('|');
+    return { name: parts[0]?.trim() || c.trim(), hex: parts[1]?.trim() || '#888888' };
+  }).filter(c => c.name);
+}
+
+function extractSection(content, key) {
+  const regex = new RegExp(`${key}:([\\s\\S]*?)(?=\\n[A-Z_]+:|$)`, 'i');
+  const match = content.match(regex);
+  return match ? match[1].trim() : '';
+}
+
+function formatList(text) {
+  if (!text) return '';
+  const lines = text.split('\n').map(l => l.replace(/^[-•*]\s*/, '').trim()).filter(l => l.length > 2);
+  return '<ul>' + lines.map(l => `<li>${l}</li>`).join('') + '</ul>';
+}
+
+function renderTheme(content, city, season) {
+  const themeName = extractSection(content, 'THEME_NAME') || 'Your Dream Theme';
+  const tagline = extractSection(content, 'TAGLINE') || '';
+  const colorsRaw = extractSection(content, 'COLORS');
+  const overview = extractSection(content, 'OVERVIEW') || '';
+  const decor = extractSection(content, 'DECOR_IDEAS');
+  const outfits = extractSection(content, 'OUTFIT_SUGGESTIONS');
+  const flowers = extractSection(content, 'FLOWERS_AND_FRAGRANCE');
+  const food = extractSection(content, 'FOOD_THEME');
+  const trending = extractSection(content, 'TRENDING_ELEMENTS');
+  const budgetTip = extractSection(content, 'BUDGET_TIP') || '';
+
+  const colors = parseColors(colorsRaw);
+
+  shareContent = `✨ SmartShaadi.online ne meri wedding theme suggest ki!\n\n🎨 Theme: ${themeName}\n💫 "${tagline}"\n📍 ${city} | ${season}\n\nAap bhi apni free AI wedding theme banao:\n👉 smartshaadi.online/ai-wedding-theme-generator.html`;
+
+  const colorSwatches = colors.length > 0
+    ? `<div class="color-palette">${colors.map(c => `
+        <div class="color-swatch">
+          <div class="swatch-circle" style="background:${c.hex}"></div>
+          <div class="swatch-name">${c.name}</div>
+        </div>`).join('')}</div>`
+    : '';
+
+  const sections = [
+    { title: '🌸 Decor Ideas', content: formatList(decor) },
+    { title: '👗 Outfit Suggestions', content: formatList(outfits) },
+    { title: '💐 Flowers & Fragrance', content: formatList(flowers) },
+    { title: '🍽️ Food Theme', content: formatList(food) },
+    { title: '✨ 2026 Trending Elements', content: formatList(trending) },
+  ].filter(s => s.content && s.content !== '<ul></ul>');
+
+  const html = `
+    <div class="theme-hero">
+      <button class="copy-btn" onclick="copyTheme()">📋 Copy</button>
+      <div class="theme-name">🎨 ${themeName}</div>
+      <div class="theme-tagline">"${tagline}"</div>
+      ${colorSwatches}
+      <div style="font-size:14px;color:rgba(232,224,240,0.75);line-height:1.8">${overview}</div>
+    </div>
+    ${sections.map(s => `
+      <div class="theme-section">
+        <div class="theme-section-title">${s.title}</div>
+        <div class="theme-section-body">${s.content}</div>
+      </div>`).join('')}
+    ${budgetTip ? `
+      <div class="theme-section" style="border:1px solid rgba(255,204,51,0.2);background:rgba(255,204,51,0.05)">
+        <div class="theme-section-title" style="color:var(--gold)">💰 Budget Tip for ${city}</div>
+        <div class="theme-section-body">${budgetTip}</div>
+      </div>` : ''}
+  `;
+
+  document.getElementById('themeResult').innerHTML = html;
+  document.getElementById('shareText').textContent = shareContent;
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyTheme() {
+  const text = document.getElementById('themeResult').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    event.target.textContent = '✓ Copied!';
+    setTimeout(() => event.target.textContent = '📋 Copy', 2000);
+  });
+}
+
+function copyShare() {
+  navigator.clipboard.writeText(shareContent).then(() => {
+    event.target.textContent = '✓ Copied!';
+    setTimeout(() => event.target.textContent = '📋 Share Text Copy Karo', 2000);
+  });
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.textContent = msg; box.style.display = 'block';
+}
+</script>
+</body>
+</html>
