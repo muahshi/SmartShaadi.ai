@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Wedding Planning Timeline 2026 | SmartShaadi</title>
+<meta name="description" content="Wedding date daalo — AI ek complete month-by-month planning timeline banayega. Free tool by SmartShaadi.online">
+<link rel="canonical" href="https://smartshaadi.online/ai-planning-timeline.html">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #ffcc33;
+  --pink: #E91E8C;
+  --teal: #00BFA5;
+  --bg: #0f0f1a;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,204,51,0.15);
+  --text: #e8e0f0;
+  --muted: rgba(232,224,240,0.5);
+}
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+nav {
+  background: rgba(15,15,26,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { font-size: 18px; font-weight: 900; color: var(--gold); text-decoration: none; }
+.nav-back { font-size: 13px; color: var(--muted); text-decoration: none; }
+.nav-back:hover { color: var(--gold); }
+.nav-links { margin-left: auto; display: flex; gap: 16px; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.nav-links a:hover { color: var(--gold); }
+.hero {
+  background: linear-gradient(135deg, #0f0f1a 0%, #0a1a2e 50%, #0f0f1a 100%);
+  border-bottom: 1px solid var(--border); padding: 52px 20px 44px; text-align: center;
+}
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(0,191,165,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero { position: relative; }
+.hero-badge { display: inline-block; background: rgba(0,191,165,0.1); border: 1px solid rgba(0,191,165,0.3); color: var(--teal); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 5px 18px; border-radius: 20px; margin-bottom: 18px; }
+.hero h1 { font-size: clamp(26px,5vw,46px); font-weight: 900; margin-bottom: 12px; background: linear-gradient(135deg, #fff 20%, var(--teal) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 15px; color: var(--muted); max-width: 500px; margin: 0 auto; }
+.main { max-width: 720px; margin: 0 auto; padding: 32px 18px 80px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; margin-bottom: 20px; }
+.card-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.card-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+.field input, .field select { width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); font-size: 14px; font-family: inherit; color: var(--text); outline: none; transition: border 0.2s; }
+.field input:focus, .field select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,191,165,0.1); }
+.field select option { background: #1a1a2e; }
+.fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { padding: 8px 16px; border-radius: 30px; cursor: pointer; font-size: 13px; font-family: inherit; border: 1.5px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: var(--muted); transition: all 0.2s; }
+.pill.active { background: rgba(0,191,165,0.15); border-color: var(--teal); color: var(--teal); font-weight: 700; }
+.gen-btn { width: 100%; padding: 16px; border-radius: 14px; border: none; background: linear-gradient(135deg, var(--teal), var(--gold)); color: #0f0f1a; font-size: 16px; font-weight: 900; font-family: inherit; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 24px rgba(0,191,165,0.3); }
+.gen-btn:hover { transform: translateY(-2px); }
+.gen-btn:disabled { background: rgba(255,255,255,0.1); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+.progress-wrap { margin: 16px 0; display: none; }
+.progress-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 3px; transition: width 0.4s; }
+.progress-text { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
+.error-box { background: rgba(255,50,50,0.08); border: 1px solid rgba(255,50,50,0.25); border-radius: 12px; padding: 14px 18px; color: #FF8A8A; font-size: 13px; display: none; margin-bottom: 16px; }
+.results { display: none; }
+
+/* Timeline specific styles */
+.timeline-container { display: grid; gap: 0; }
+.month-card { background: var(--card); border: 1px solid var(--border); border-bottom: none; padding: 20px 22px; position: relative; }
+.month-card:first-child { border-radius: 14px 14px 0 0; }
+.month-card:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 14px 14px; }
+.month-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--teal); border-radius: 3px 0 0 3px; }
+.month-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.month-badge { background: rgba(0,191,165,0.15); border: 1px solid rgba(0,191,165,0.3); color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; }
+.month-title { font-size: 15px; font-weight: 700; color: #fff; }
+.month-tasks { list-style: none; }
+.month-tasks li { font-size: 13px; color: var(--muted); padding: 5px 0; padding-left: 20px; position: relative; line-height: 1.5; }
+.month-tasks li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 11px; }
+.urgent { color: rgba(233,30,140,0.9) !important; }
+.urgent::before { content: '⚡' !important; color: var(--pink) !important; }
+
+.copy-all-btn { width: 100%; padding: 13px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--gold); font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; margin-top: 16px; transition: all 0.2s; }
+.copy-all-btn:hover { background: rgba(255,204,51,0.1); }
+
+.cta-box { background: rgba(255,204,51,0.06); border: 1px solid rgba(255,204,51,0.2); border-radius: 14px; padding: 20px; text-align: center; margin-top: 24px; }
+.cta-box p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.cta-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.cta-link { padding: 9px 18px; border-radius: 10px; font-size: 13px; text-decoration: none; font-weight: 600; border: 1px solid var(--border); color: var(--gold); transition: all 0.2s; }
+.cta-link:hover { background: rgba(255,204,51,0.1); }
+
+@media(max-width:560px) { .fields-row { grid-template-columns: 1fr; } .hero { padding: 36px 16px 30px; } .card { padding: 18px 14px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Smart Shaadi 💍</a>
+  <a href="index.html" class="nav-back">← Wapas</a>
+  <div class="nav-links">
+    <a href="chatbot.html">🤖 AI Chatbot</a>
+    <a href="wedding-budget-calculator-india-2026.html">💰 Budget</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">✦ Free AI Tool ✦</div>
+  <h1>AI Wedding Planning<br>Timeline 📅</h1>
+  <p>Shaadi ki date aur details daalo — AI ek complete month-by-month planning checklist banayega</p>
+</div>
+
+<div class="main">
+
+  <div class="card">
+    <div class="card-title">📅 Shaadi Details</div>
+    <div class="fields-row">
+      <div class="field">
+        <label>Shaadi ki Date *</label>
+        <input type="date" id="weddingDate">
+      </div>
+      <div class="field">
+        <label>City *</label>
+        <input type="text" id="city" placeholder="e.g. Delhi, Mumbai, Bhopal">
+      </div>
+    </div>
+    <div class="fields-row">
+      <div class="field">
+        <label>Total Budget (₹)</label>
+        <input type="text" id="budget" placeholder="e.g. 15,00,000">
+      </div>
+      <div class="field">
+        <label>Guest Count (Approx)</label>
+        <input type="text" id="guests" placeholder="e.g. 200-300">
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:0">
+      <label style="margin-bottom:10px">Wedding Type</label>
+      <div class="pills">
+        <div class="pill active" data-type="Local Wedding">🏠 Local</div>
+        <div class="pill" data-type="Destination Wedding">✈️ Destination</div>
+        <div class="pill" data-type="Court + Celebration">⚖️ Court</div>
+        <div class="pill" data-type="NRI Wedding">🌍 NRI</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">
+    📅 AI Timeline Generate Karo
+  </button>
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text">Aapke liye timeline plan ho rahi hai... 📋</div>
+  </div>
+
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="results" id="results">
+    <div style="font-size:11px;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:16px;margin-top:8px">
+      ✦ Aapki Complete Wedding Timeline
+    </div>
+    <div class="timeline-container" id="timelineContainer"></div>
+    <button class="copy-all-btn" id="copyAllBtn" onclick="copyAll()">📋 Poori Timeline Copy Karo</button>
+    <div class="cta-box">
+      <p>💡 Timeline ke saath budget bhi plan karo!</p>
+      <div class="cta-links">
+        <a href="wedding-budget-calculator-india-2026.html" class="cta-link">💰 Budget Calculator</a>
+        <a href="chatbot.html" class="cta-link">🤖 AI Se Poocho</a>
+        <a href="ai-invitation-writer.html" class="cta-link">💌 Invitation Writer</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.pills .pill').forEach(p => {
+  p.addEventListener('click', () => {
+    p.closest('.pills').querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+  });
+});
+
+let progressInterval;
+function startProgress() {
+  document.getElementById('progressWrap').style.display = 'block';
+  let val = 0;
+  progressInterval = setInterval(() => {
+    val = Math.min(val + Math.random() * 6, 88);
+    document.getElementById('progressFill').style.width = val + '%';
+  }, 350);
+}
+function stopProgress() {
+  clearInterval(progressInterval);
+  document.getElementById('progressFill').style.width = '100%';
+  setTimeout(() => {
+    document.getElementById('progressWrap').style.display = 'none';
+    document.getElementById('progressFill').style.width = '0%';
+  }, 400);
+}
+
+let fullTimelineText = '';
+
+async function generate() {
+  const dateInput = document.getElementById('weddingDate').value;
+  const city = document.getElementById('city').value.trim();
+  if (!dateInput || !city) { showError('⚠️ Date aur city zaroori hain!'); return; }
+
+  const wDate = new Date(dateInput);
+  const today = new Date();
+  const monthsLeft = Math.round((wDate - today) / (1000 * 60 * 60 * 24 * 30));
+  const budget = document.getElementById('budget').value.trim();
+  const guests = document.getElementById('guests').value.trim();
+  const type = document.querySelector('.pills .pill.active').dataset.type;
+  const formattedDate = wDate.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  document.getElementById('genBtn').disabled = true;
+  document.getElementById('errorBox').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  startProgress();
+
+  const systemPrompt = `You are an expert Indian wedding planner. Create detailed, practical month-by-month wedding planning timelines for Indian weddings. Be specific to Indian culture, vendors, and customs. Include city-specific tips when relevant.`;
+
+  const userPrompt = `Create a complete wedding planning timeline for:
+- Wedding Date: ${formattedDate} (${monthsLeft} months from now)
+- City: ${city}
+- Budget: ${budget || 'Not specified'}
+- Guests: ${guests || 'Not specified'}
+- Type: ${type}
+
+Format EXACTLY like this for each month:
+
+MONTH: [X Months Before] — [Month Name]
+TASKS:
+- [task 1]
+- [task 2]
+- [task 3]
+- [task 4]
+URGENT: [yes/no]
+
+Start from the most months before and go to wedding week. Include at least 6-8 time periods. Be specific and actionable. Include Indian-specific tasks like mehendi artist booking, pandit/qazi, baraat planning, etc. For urgent months mark URGENT: yes.`;
+
+  try {
+    const res = await fetch('/.netlify/functions/groq-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const data = await res.json();
+    stopProgress();
+    renderTimeline(data.content, city, formattedDate);
+  } catch (err) {
+    stopProgress();
+    showError('⚠️ Kuch gadbad hui. Please dobara try karein. (' + err.message + ')');
+  } finally {
+    document.getElementById('genBtn').disabled = false;
+  }
+}
+
+function renderTimeline(content, city, date) {
+  fullTimelineText = `SmartShaadi.online — ${city} Wedding Timeline\nDate: ${date}\n\n` + content;
+  const container = document.getElementById('timelineContainer');
+  container.innerHTML = '';
+
+  const blocks = content.split(/(?=MONTH:)/g).filter(b => b.includes('MONTH:'));
+
+  blocks.forEach((block, i) => {
+    const monthMatch = block.match(/MONTH:\s*(.+)/);
+    const tasksMatch = block.match(/TASKS:([\s\S]*?)(?=URGENT:|$)/);
+    const urgentMatch = block.match(/URGENT:\s*(yes|no)/i);
+
+    const monthTitle = monthMatch ? monthMatch[1].trim() : `Phase ${i+1}`;
+    const tasksRaw = tasksMatch ? tasksMatch[1].trim() : '';
+    const isUrgent = urgentMatch ? urgentMatch[1].toLowerCase() === 'yes' : false;
+    const tasks = tasksRaw.split('\n').map(t => t.replace(/^[-•*]\s*/, '').trim()).filter(t => t.length > 3);
+
+    const card = document.createElement('div');
+    card.className = 'month-card';
+    if (isUrgent) card.style.borderLeft = '3px solid var(--pink)';
+
+    const [timeLabel, ...titleParts] = monthTitle.split('—');
+    const displayTitle = titleParts.join('—').trim() || monthTitle;
+
+    card.innerHTML = `
+      <div class="month-header">
+        <div class="month-badge" style="${isUrgent ? 'background:rgba(233,30,140,0.15);border-color:rgba(233,30,140,0.3);color:var(--pink)' : ''}">${timeLabel.trim()}</div>
+        <div class="month-title">${displayTitle}${isUrgent ? ' ⚡' : ''}</div>
+      </div>
+      <ul class="month-tasks">
+        ${tasks.map(t => `<li class="${isUrgent ? 'urgent' : ''}">${t}</li>`).join('')}
+      </ul>
+    `;
+    container.appendChild(card);
+  });
+
+  if (blocks.length === 0) {
+    container.innerHTML = `<div class="month-card" style="border-bottom:1px solid var(--border)"><div class="month-tasks"><li style="color:var(--text);list-style:none;white-space:pre-wrap">${content}</li></div></div>`;
+  }
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyAll() {
+  navigator.clipboard.writeText(fullTimelineText).then(() => {
+    const btn = document.getElementById('copyAllBtn');
+    btn.textContent = '✓ Timeline Copy Ho Gayi!';
+    setTimeout(() => btn.textContent = '📋 Poori Timeline Copy Karo', 2000);
+  });
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.textContent = msg; box.style.display = 'block';
+}
+</script>
+</body>
+</html>
+
