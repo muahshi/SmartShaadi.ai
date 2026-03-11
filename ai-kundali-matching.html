@@ -1,332 +1,368 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Kundali Matching & Compatibility 2026 | SmartShaadi</title>
-<meta name="description" content="AI se kundali matching aur couple compatibility check karo — Guna Milan, personality match aur relationship advice. Free tool by SmartShaadi.online">
-<link rel="canonical" href="https://smartshaadi.online/ai-kundali-matching.html">
+<title>AI Kundali Matching — Smart Shaadi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#ffcc33;--purple:#7C4DFF;--indigo:#3949AB;--bg:#0f0f1a;--card:rgba(255,255,255,0.04);--border:rgba(255,204,51,0.15);--text:#e8e0f0;--muted:rgba(232,224,240,0.5)}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
-nav{background:rgba(15,15,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
-.logo{font-size:18px;font-weight:900;color:var(--gold);text-decoration:none}
-.nav-back{font-size:13px;color:var(--muted);text-decoration:none}.nav-back:hover{color:var(--gold)}
-.nav-links{margin-left:auto;display:flex;gap:16px}.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}.nav-links a:hover{color:var(--gold)}
-.hero{background:linear-gradient(135deg,#0f0f1a 0%,#0d0a1f 50%,#0f0f1a 100%);border-bottom:1px solid var(--border);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(57,73,171,0.12) 0%,transparent 60%)}
-.hero-badge{display:inline-block;background:rgba(57,73,171,0.1);border:1px solid rgba(57,73,171,0.3);color:#9FA8DA;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:20px;margin-bottom:18px;position:relative}
-.hero h1{font-size:clamp(26px,5vw,46px);font-weight:900;margin-bottom:12px;line-height:1.15;position:relative;background:linear-gradient(135deg,#fff 20%,#9FA8DA 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;position:relative}
-.disclaimer{background:rgba(57,73,171,0.06);border:1px solid rgba(57,73,171,0.2);border-radius:10px;padding:12px 16px;font-size:12px;color:#9FA8DA;text-align:center;margin-bottom:20px}
-.main{max-width:720px;margin:0 auto;padding:32px 18px 80px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px;backdrop-filter:blur(8px)}
-.card-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9FA8DA;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.person-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px}
-.person-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;font-weight:700}
-.person-label.bride{color:#FFB3C6}
-.person-label.groom{color:#90CAF9}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px}
-.field input,.field select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);font-size:13px;font-family:inherit;color:var(--text);outline:none;transition:border .2s}
-.field input:focus,.field select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,77,255,0.1)}
-.field select option{background:#1a1a2e}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:8px 16px;border-radius:30px;cursor:pointer;font-size:13px;font-family:inherit;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--muted);transition:all .2s}
-.pill:hover{border-color:var(--purple);color:#9FA8DA}
-.pill.active{background:rgba(57,73,171,0.15);border-color:var(--indigo);color:#9FA8DA;font-weight:700}
-.gen-btn{width:100%;padding:16px;border-radius:14px;border:none;background:linear-gradient(135deg,#283593,#7C4DFF);color:#fff;font-size:16px;font-weight:900;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 24px rgba(57,73,171,0.4);letter-spacing:.5px}
-.gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,77,255,0.5)}
-.gen-btn:disabled{background:rgba(255,255,255,0.1);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
-.progress-wrap{margin:16px 0;display:none}
-.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#283593,#7C4DFF,var(--gold));border-radius:3px;transition:width .4s}
-.progress-text{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:1px}
-.error-box{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.25);border-radius:12px;padding:14px 18px;color:#FF8A8A;font-size:13px;display:none;margin-bottom:16px}
-.results{display:none}
-.result-label-top{font-size:11px;letter-spacing:3px;color:#9FA8DA;text-transform:uppercase;margin-bottom:16px;margin-top:8px}
-.kundali-hero{background:linear-gradient(135deg,rgba(57,73,171,0.12),rgba(124,77,255,0.08));border:1px solid rgba(124,77,255,0.25);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center}
-.score-circle{width:110px;height:110px;border-radius:50%;border:4px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;position:relative}
-.score-num{font-size:32px;font-weight:900}
-.score-label{font-size:10px;letter-spacing:2px;color:var(--muted)}
-.score-title{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px}
-.score-subtitle{font-size:13px;color:#9FA8DA;font-style:italic;margin-bottom:16px}
-.guna-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.guna-item{background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;text-align:center}
-.guna-name{font-size:10px;color:var(--muted);margin-bottom:4px}
-.guna-score{font-size:16px;font-weight:900;color:#9FA8DA}
-.guna-max{font-size:10px;color:var(--muted)}
-.result-section{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px}
-.result-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.result-section-body{font-size:13px;color:rgba(232,224,240,0.75);line-height:1.8}
-.result-section-body ul{padding-left:0;list-style:none}
-.result-section-body ul li{padding:3px 0;padding-left:16px;position:relative}
-.result-section-body ul li::before{content:'✦';position:absolute;left:0;color:var(--purple);font-size:10px;top:5px}
-.copy-btn{padding:7px 16px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--muted);transition:all .2s;float:right}
-.copy-btn:hover{background:rgba(80,200,100,0.15);border-color:rgba(80,200,100,0.4);color:#50C864}
-.share-box{background:rgba(255,204,51,0.06);border:1px solid rgba(255,204,51,0.2);border-radius:14px;padding:18px;text-align:center;margin-top:8px}
-.share-box p{font-size:13px;color:var(--muted);margin-bottom:12px}
-.share-text{font-size:13px;color:var(--text);background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 14px;margin-bottom:12px;line-height:1.7;text-align:left}
-.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-link{padding:9px 18px;border-radius:10px;font-size:13px;text-decoration:none;font-weight:600;border:1px solid var(--border);color:var(--gold);transition:all .2s}
-.cta-link:hover{background:rgba(255,204,51,0.1)}
-@media(max-width:560px){.couple-grid{grid-template-columns:1fr}.guna-grid{grid-template-columns:repeat(2,1fr)}.hero{padding:36px 16px 30px}.card{padding:18px 14px}}
+  :root {
+    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
+    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
+    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+
+  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
+  .logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.12) 0%, transparent 60%); }
+  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
+  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 550px; margin-inline: auto; }
+  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+
+  .disclaimer { background: rgba(240,192,96,0.08); border: 1px solid rgba(240,192,96,0.2); border-radius: 12px; padding: 1rem 1.5rem; margin: 1rem auto; max-width: 860px; margin-inline: auto; font-size: 0.82rem; color: var(--muted); text-align: center; }
+  .disclaimer strong { color: var(--gold); }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:650px){ .two-col { grid-template-columns: 1fr; } }
+  .person-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .person-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+  .groom-label { color: #60a5fa; }
+  .bride-label { color: #f472b6; }
+
+  .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.9rem; }
+  label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+  input, select { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 0.65rem 0.9rem; font-family: 'Poppins', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; width: 100%; }
+  input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
+  select option { background: var(--surface); }
+
+  .rashi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+  @media(max-width:400px){ .rashi-grid { grid-template-columns: repeat(3, 1fr); } }
+  .rashi-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.3rem; cursor: pointer; text-align: center; font-size: 0.75rem; transition: all 0.2s; }
+  .rashi-btn .sym { font-size: 1.2rem; display: block; }
+  .rashi-btn:hover { border-color: var(--gold); }
+  .rashi-btn.active { border-color: var(--gold); background: rgba(240,192,96,0.12); color: var(--gold); }
+
+  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
+  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
+  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .loading { text-align: center; padding: 3rem; display: none; }
+  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
+  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
+  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Score display */
+  .score-section { padding: 2rem; border-bottom: 1px solid var(--border); display: none; }
+  .score-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .score-number { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); line-height: 1; }
+  .score-max { font-size: 1rem; color: var(--muted); }
+  .score-bar { height: 8px; background: var(--border); border-radius: 4px; margin: 0.8rem 0; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 4px; transition: width 1.2s ease; }
+  .score-status { font-weight: 600; font-size: 0.9rem; }
+
+  .kundali-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+
+  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="index.html" class="logo">Smart Shaadi 💍</a>
-  <a href="index.html" class="nav-back">← Wapas</a>
-  <div class="nav-links">
-    <a href="ai-wedding-theme-generator.html">🎨 Theme</a>
-    <a href="ai-budget-calculator.html">💰 Budget</a>
-  </div>
+  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
+  <ul class="nav-links">
+    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
+    <li><a href="/ai-budget-calculator.html">Budget</a></li>
+    <li><a href="/ai-planning-timeline.html">Timeline</a></li>
+  </ul>
+  <span class="nav-badge">✨ AI Powered</span>
 </nav>
+
 <div class="hero">
-  <div class="hero-badge">✦ Free AI Tool ✦</div>
-  <h1>AI Kundali Matching<br>& Compatibility 🔮</h1>
-  <p>Rashi, personality aur values batao — AI Guna Milan, compatibility score aur relationship advice dega</p>
+  <span class="hero-icon">🔮</span>
+  <h1>AI Kundali Matching</h1>
+  <p>Vedic astrology ke aadhaar par rishte ki compatibility check karein — Guna Milan & Doshas</p>
+  <span class="tag">🤖 Guna Milan · Mangal Dosha · Personality Match</span>
 </div>
-<div class="main">
-  <div class="disclaimer">🔮 Yeh AI-based fun compatibility tool hai. Real kundali ke liye kisi qualified jyotishi se milein. Yeh sirf entertainment aur general guidance ke liye hai.</div>
+
+<div style="max-width:860px;margin:0 auto;padding:0 1.5rem;">
+  <div class="disclaimer">
+    <strong>⚠️ Disclaimer:</strong> Yeh AI-generated analysis sirf entertainment aur general guidance ke liye hai. Shaadi ke important decisions ke liye kisi qualified Jyotish (astrologer) se milna chahiye.
+  </div>
+</div>
+
+<div class="container">
   <div class="card">
-    <div class="card-title">💕 Couple Details</div>
-    <div class="couple-grid">
+    <div class="card-title">⭐ Couple Ki Details Bharein</div>
+    <div class="two-col">
+      <!-- GROOM -->
       <div class="person-card">
-        <div class="person-label bride">👰 Dulhan (Bride)</div>
-        <div class="field"><label>Naam</label><input type="text" id="brideName" placeholder="e.g. Priya"></div>
-        <div class="field"><label>Rashi (Moon Sign)</label>
-          <select id="brideRashi">
-            <option value="Mesh (Aries)">Mesh ♈ (Aries)</option>
-            <option value="Vrishabh (Taurus)">Vrishabh ♉ (Taurus)</option>
-            <option value="Mithun (Gemini)">Mithun ♊ (Gemini)</option>
-            <option value="Kark (Cancer)">Kark ♋ (Cancer)</option>
-            <option value="Singh (Leo)">Singh ♌ (Leo)</option>
-            <option value="Kanya (Virgo)" selected>Kanya ♍ (Virgo)</option>
-            <option value="Tula (Libra)">Tula ♎ (Libra)</option>
-            <option value="Vrishchik (Scorpio)">Vrishchik ♏ (Scorpio)</option>
-            <option value="Dhanu (Sagittarius)">Dhanu ♐ (Sagittarius)</option>
-            <option value="Makar (Capricorn)">Makar ♑ (Capricorn)</option>
-            <option value="Kumbh (Aquarius)">Kumbh ♒ (Aquarius)</option>
-            <option value="Meen (Pisces)">Meen ♓ (Pisces)</option>
-          </select>
+        <div class="person-label groom-label">🤵 Dulha (Groom)</div>
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="groomName" placeholder="e.g. Rahul Sharma" />
         </div>
-        <div class="field"><label>Nakshatra</label>
-          <select id="brideNakshatra">
-            <option value="Ashwini">Ashwini</option><option value="Bharani">Bharani</option><option value="Krittika">Krittika</option><option value="Rohini" selected>Rohini</option><option value="Mrigashira">Mrigashira</option><option value="Ardra">Ardra</option><option value="Punarvasu">Punarvasu</option><option value="Pushya">Pushya</option><option value="Ashlesha">Ashlesha</option><option value="Magha">Magha</option><option value="Purva Phalguni">Purva Phalguni</option><option value="Uttara Phalguni">Uttara Phalguni</option><option value="Hasta">Hasta</option><option value="Chitra">Chitra</option><option value="Swati">Swati</option><option value="Vishakha">Vishakha</option><option value="Anuradha">Anuradha</option><option value="Jyeshtha">Jyeshtha</option><option value="Mula">Mula</option><option value="Purva Ashadha">Purva Ashadha</option><option value="Uttara Ashadha">Uttara Ashadha</option><option value="Shravana">Shravana</option><option value="Dhanishta">Dhanishta</option><option value="Shatabhisha">Shatabhisha</option><option value="Purva Bhadrapada">Purva Bhadrapada</option><option value="Uttara Bhadrapada">Uttara Bhadrapada</option><option value="Revati">Revati</option>
-          </select>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="groomDOB" />
         </div>
-      </div>
-      <div class="person-card">
-        <div class="person-label groom">🤵 Dulha (Groom)</div>
-        <div class="field"><label>Naam</label><input type="text" id="groomName" placeholder="e.g. Rahul"></div>
-        <div class="field"><label>Rashi (Moon Sign)</label>
+        <div class="field">
+          <label>Time of Birth (approximate)</label>
+          <input type="time" id="groomTOB" />
+        </div>
+        <div class="field">
+          <label>Place of Birth</label>
+          <input type="text" id="groomPOB" placeholder="e.g. Delhi, India" />
+        </div>
+        <div class="field">
+          <label>Rashi (Moon Sign)</label>
           <select id="groomRashi">
-            <option value="Mesh (Aries)">Mesh ♈ (Aries)</option>
-            <option value="Vrishabh (Taurus)">Vrishabh ♉ (Taurus)</option>
-            <option value="Mithun (Gemini)">Mithun ♊ (Gemini)</option>
-            <option value="Kark (Cancer)">Kark ♋ (Cancer)</option>
-            <option value="Singh (Leo)" selected>Singh ♌ (Leo)</option>
-            <option value="Kanya (Virgo)">Kanya ♍ (Virgo)</option>
-            <option value="Tula (Libra)">Tula ♎ (Libra)</option>
-            <option value="Vrishchik (Scorpio)">Vrishchik ♏ (Scorpio)</option>
-            <option value="Dhanu (Sagittarius)">Dhanu ♐ (Sagittarius)</option>
-            <option value="Makar (Capricorn)">Makar ♑ (Capricorn)</option>
-            <option value="Kumbh (Aquarius)">Kumbh ♒ (Aquarius)</option>
-            <option value="Meen (Pisces)">Meen ♓ (Pisces)</option>
+            <option value="">Select if known</option>
+            <option>Mesh (Aries) ♈</option>
+            <option>Vrishabh (Taurus) ♉</option>
+            <option>Mithun (Gemini) ♊</option>
+            <option>Karka (Cancer) ♋</option>
+            <option>Simha (Leo) ♌</option>
+            <option>Kanya (Virgo) ♍</option>
+            <option>Tula (Libra) ♎</option>
+            <option>Vrishchik (Scorpio) ♏</option>
+            <option>Dhanu (Sagittarius) ♐</option>
+            <option>Makar (Capricorn) ♑</option>
+            <option>Kumbh (Aquarius) ♒</option>
+            <option>Meen (Pisces) ♓</option>
           </select>
         </div>
-        <div class="field"><label>Nakshatra</label>
-          <select id="groomNakshatra">
-            <option value="Ashwini">Ashwini</option><option value="Bharani">Bharani</option><option value="Krittika">Krittika</option><option value="Rohini">Rohini</option><option value="Mrigashira">Mrigashira</option><option value="Ardra">Ardra</option><option value="Punarvasu">Punarvasu</option><option value="Pushya">Pushya</option><option value="Ashlesha">Ashlesha</option><option value="Magha" selected>Magha</option><option value="Purva Phalguni">Purva Phalguni</option><option value="Uttara Phalguni">Uttara Phalguni</option><option value="Hasta">Hasta</option><option value="Chitra">Chitra</option><option value="Swati">Swati</option><option value="Vishakha">Vishakha</option><option value="Anuradha">Anuradha</option><option value="Jyeshtha">Jyeshtha</option><option value="Mula">Mula</option><option value="Purva Ashadha">Purva Ashadha</option><option value="Uttara Ashadha">Uttara Ashadha</option><option value="Shravana">Shravana</option><option value="Dhanishta">Dhanishta</option><option value="Shatabhisha">Shatabhisha</option><option value="Purva Bhadrapada">Purva Bhadrapada</option><option value="Uttara Bhadrapada">Uttara Bhadrapada</option><option value="Revati">Revati</option>
+        <div class="field">
+          <label>Nakshatra (Birth Star)</label>
+          <input type="text" id="groomNakshatra" placeholder="e.g. Rohini, Ashwini (if known)" />
+        </div>
+      </div>
+
+      <!-- BRIDE -->
+      <div class="person-card">
+        <div class="person-label bride-label">👰 Dulhan (Bride)</div>
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="brideName" placeholder="e.g. Priya Gupta" />
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input type="date" id="brideDOB" />
+        </div>
+        <div class="field">
+          <label>Time of Birth (approximate)</label>
+          <input type="time" id="brideTOB" />
+        </div>
+        <div class="field">
+          <label>Place of Birth</label>
+          <input type="text" id="bridePOB" placeholder="e.g. Jaipur, India" />
+        </div>
+        <div class="field">
+          <label>Rashi (Moon Sign)</label>
+          <select id="brideRashi">
+            <option value="">Select if known</option>
+            <option>Mesh (Aries) ♈</option>
+            <option>Vrishabh (Taurus) ♉</option>
+            <option>Mithun (Gemini) ♊</option>
+            <option>Karka (Cancer) ♋</option>
+            <option>Simha (Leo) ♌</option>
+            <option>Kanya (Virgo) ♍</option>
+            <option>Tula (Libra) ♎</option>
+            <option>Vrishchik (Scorpio) ♏</option>
+            <option>Dhanu (Sagittarius) ♐</option>
+            <option>Makar (Capricorn) ♑</option>
+            <option>Kumbh (Aquarius) ♒</option>
+            <option>Meen (Pisces) ♓</option>
           </select>
+        </div>
+        <div class="field">
+          <label>Nakshatra (Birth Star)</label>
+          <input type="text" id="brideNakshatra" placeholder="e.g. Hasta, Pushya (if known)" />
         </div>
       </div>
     </div>
   </div>
+
   <div class="card">
-    <div class="card-title">✨ Personality Match</div>
-    <div class="field">
-      <label style="margin-bottom:10px">Bride ki Personality</label>
-      <div class="pills" id="bridePersonality">
-        <div class="pill active" data-val="Caring & Nurturing">💝 Caring</div>
-        <div class="pill" data-val="Ambitious & Career-focused">💼 Ambitious</div>
-        <div class="pill" data-val="Creative & Artistic">🎨 Creative</div>
-        <div class="pill" data-val="Traditional & Family-oriented">🏠 Traditional</div>
-        <div class="pill" data-val="Adventurous & Free-spirited">🌍 Adventurous</div>
-        <div class="pill" data-val="Intellectual & Analytical">📚 Intellectual</div>
-      </div>
-    </div>
-    <div class="field" style="margin-bottom:0">
-      <label style="margin-bottom:10px">Groom ki Personality</label>
-      <div class="pills" id="groomPersonality">
-        <div class="pill" data-val="Caring & Nurturing">💝 Caring</div>
-        <div class="pill" data-val="Ambitious & Career-focused">💼 Ambitious</div>
-        <div class="pill active" data-val="Protective & Strong">🛡️ Protective</div>
-        <div class="pill" data-val="Traditional & Family-oriented">🏠 Traditional</div>
-        <div class="pill" data-val="Adventurous & Free-spirited">🌍 Adventurous</div>
-        <div class="pill" data-val="Intellectual & Analytical">📚 Intellectual</div>
-      </div>
+    <div class="card-title">🙏 Analysis Type</div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.7rem;">
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.85rem;"><input type="checkbox" id="gunaCheck" checked style="accent-color:var(--gold)"> 8 Guna Milan (0-36 score)</label>
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.85rem;"><input type="checkbox" id="mangalCheck" checked style="accent-color:var(--gold)"> Mangal Dosha Check</label>
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.85rem;"><input type="checkbox" id="doshCheck" checked style="accent-color:var(--gold)"> Nadi Dosha Analysis</label>
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.85rem;"><input type="checkbox" id="personalityCheck" checked style="accent-color:var(--gold)"> Personality Compatibility</label>
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.85rem;"><input type="checkbox" id="remediesCheck" checked style="accent-color:var(--gold)"> Remedies & Suggestions</label>
     </div>
   </div>
-  <button class="gen-btn" id="genBtn" onclick="generate()">🔮 Compatibility Check Karo</button>
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-text">Kundali milan ho rahi hai... 🔮✨</div>
+
+  <button class="btn-generate" onclick="generateKundali()">
+    🔮 Check Compatibility — AI Se Dekhein
+  </button>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);margin-top:1rem">AI aapki kundali analyse kar raha hai... 🌟</p>
   </div>
-  <div class="error-box" id="errorBox"></div>
-  <div class="results" id="results">
-    <div class="result-label-top">✦ Aapki Compatibility Report</div>
-    <div id="kundaliResult"></div>
-    <div class="share-box">
-      <p>💕 Dosto ko batao aapka score!</p>
-      <div class="share-text" id="shareText"></div>
-      <button class="copy-btn" style="float:none;margin-bottom:12px" onclick="copyShare()">📋 Share Text Copy Karo</button>
-      <div class="cta-links">
-        <a href="ai-wedding-theme-generator.html" class="cta-link">🎨 Theme Banao</a>
-        <a href="ai-planning-timeline.html" class="cta-link">📅 Timeline</a>
-        <a href="ai-invitation-writer.html" class="cta-link">💌 Invitation</a>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-title">🔮 Kundali Matching Report</span>
+      <div class="action-btns">
+        <button class="btn-action" onclick="copyReport()">📋 Copy</button>
+        <button class="btn-action" onclick="shareWhatsApp()">📱 Share</button>
       </div>
     </div>
+    <div class="kundali-content" id="kundaliText"></div>
   </div>
 </div>
+
+<div class="toast" id="toast">✅ Copied!</div>
+
 <script>
-function setupSinglePills(id){document.querySelectorAll(`#${id} .pill`).forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll(`#${id} .pill`).forEach(x=>x.classList.remove('active'));p.classList.add('active');});});}
-setupSinglePills('bridePersonality');
-setupSinglePills('groomPersonality');
-let progressInterval;
-function startProgress(){document.getElementById('progressWrap').style.display='block';let val=0;progressInterval=setInterval(()=>{val=Math.min(val+Math.random()*4,88);document.getElementById('progressFill').style.width=val+'%';},400);}
-function stopProgress(){clearInterval(progressInterval);document.getElementById('progressFill').style.width='100%';setTimeout(()=>{document.getElementById('progressWrap').style.display='none';document.getElementById('progressFill').style.width='0%';},400);}
-let shareContent='';
-async function generate(){
-  const brideName=document.getElementById('brideName').value.trim()||'Dulhan';
-  const groomName=document.getElementById('groomName').value.trim()||'Dulha';
-  const brideRashi=document.getElementById('brideRashi').value;
-  const groomRashi=document.getElementById('groomRashi').value;
-  const brideNak=document.getElementById('brideNakshatra').value;
-  const groomNak=document.getElementById('groomNakshatra').value;
-  const brideP=document.querySelector('#bridePersonality .pill.active')?.dataset.val||'Caring';
-  const groomP=document.querySelector('#groomPersonality .pill.active')?.dataset.val||'Protective';
-  document.getElementById('genBtn').disabled=true;
-  document.getElementById('errorBox').style.display='none';
-  document.getElementById('results').style.display='none';
-  startProgress();
-  const systemPrompt=`You are a Vedic astrology expert specializing in kundali matching and relationship compatibility. Provide detailed, positive, and helpful compatibility reports based on traditional Hindu astrology principles including Ashtakoota Guna Milan. Always be encouraging and constructive. Remember this is for entertainment and general guidance.`;
-  const userPrompt=`Analyze compatibility for:
-Bride: ${brideName}, Rashi: ${brideRashi}, Nakshatra: ${brideNak}, Personality: ${brideP}
-Groom: ${groomName}, Rashi: ${groomRashi}, Nakshatra: ${groomNak}, Personality: ${groomP}
+async function generateKundali() {
+  const groomName = document.getElementById('groomName').value.trim() || 'Rahul';
+  const brideName = document.getElementById('brideName').value.trim() || 'Priya';
+  const groomDOB = document.getElementById('groomDOB').value;
+  const brideDOB = document.getElementById('brideDOB').value;
+  const groomTOB = document.getElementById('groomTOB').value;
+  const brideTOB = document.getElementById('brideTOB').value;
+  const groomPOB = document.getElementById('groomPOB').value || 'Delhi';
+  const bridePOB = document.getElementById('bridePOB').value || 'Mumbai';
+  const groomRashi = document.getElementById('groomRashi').value;
+  const brideRashi = document.getElementById('brideRashi').value;
+  const groomNakshatra = document.getElementById('groomNakshatra').value;
+  const brideNakshatra = document.getElementById('brideNakshatra').value;
 
-Return EXACTLY in this format:
+  const checks = [];
+  if(document.getElementById('gunaCheck').checked) checks.push('8 Guna Milan with score out of 36');
+  if(document.getElementById('mangalCheck').checked) checks.push('Mangal Dosha analysis');
+  if(document.getElementById('doshCheck').checked) checks.push('Nadi Dosha check');
+  if(document.getElementById('personalityCheck').checked) checks.push('Personality compatibility');
+  if(document.getElementById('remediesCheck').checked) checks.push('Remedies and suggestions');
 
-TOTAL_SCORE: [number out of 36]
-COMPATIBILITY_TITLE: [e.g. "Shubh Milan" or "Uttam Jodi"]
-OVERALL_VERDICT: [2-3 encouraging lines about this match]
+  const btn = document.querySelector('.btn-generate');
+  btn.disabled = true;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('resultCard').style.display = 'none';
 
-GUNA_SCORES:
-Varna|[score]/1
-Vashya|[score]/2
-Tara|[score]/3
-Yoni|[score]/4
-Graha Maitri|[score]/5
-Gana|[score]/6
-Bhakoot|[score]/7
-Nadi|[score]/8
+  const systemPrompt = `You are an expert Vedic astrologer (Jyotish) with deep knowledge of kundali matching, Guna Milan, doshas, and Indian astrology traditions. Provide detailed, culturally rich analysis in Hinglish. Always include a disclaimer about consulting a real astrologer. Be balanced - highlight both strengths and challenges with remedies.`;
 
-STRENGTHS:
-- [Strength 1]
-- [Strength 2]
-- [Strength 3]
+  const userPrompt = `Please perform a Vedic kundali matching analysis for this couple:
 
-AREAS_TO_WORK:
-- [Area 1 — phrase constructively]
-- [Area 2]
+GROOM: ${groomName}
+DOB: ${groomDOB || 'Not provided'}
+TOB: ${groomTOB || 'Not provided'}
+POB: ${groomPOB}
+Rashi: ${groomRashi || 'Not specified - derive from details given'}
+Nakshatra: ${groomNakshatra || 'Not specified'}
 
-PERSONALITY_MATCH: [How ${brideName}'s ${brideP} nature complements ${groomName}'s ${groomP} nature — 2-3 lines]
+BRIDE: ${brideName}
+DOB: ${brideDOB || 'Not provided'}
+TOB: ${brideTOB || 'Not provided'}
+POB: ${bridePOB}
+Rashi: ${brideRashi || 'Not specified - derive from details given'}
+Nakshatra: ${brideNakshatra || 'Not specified'}
 
-LOVE_LANGUAGE: [What love language this couple likely shares and how they can express love]
+Analysis Required: ${checks.join(', ')}
 
-LUCKY_ELEMENTS:
-- Lucky Colors: [colors for this couple]
-- Lucky Days: [days for important ceremonies]
-- Lucky Numbers: [numbers]
-- Auspicious Months 2026: [best months for wedding in 2026]
+Please provide:
 
-RELATIONSHIP_ADVICE:
-- [Practical tip 1 for a happy marriage]
-- [Practical tip 2]
-- [Practical tip 3]`;
-  try{
-    const res=await fetch('/.netlify/functions/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
-    if(!res.ok)throw new Error('Server error '+res.status);
-    const data=await res.json();
-    stopProgress();
-    renderKundali(data.content,brideName,groomName);
-  }catch(err){
-    stopProgress();
-    showError('⚠️ Kuch gadbad hui. Please dobara try karein. ('+err.message+')');
-  }finally{
-    document.getElementById('genBtn').disabled=false;
+1. 🌟 OVERALL COMPATIBILITY SUMMARY
+   - Brief overview of the match
+
+2. ✨ GUNA MILAN — 8 KOOTS ANALYSIS
+   For each koot, explain and give score:
+   - Varna (1 point)
+   - Vashya (2 points)  
+   - Tara (3 points)
+   - Yoni (4 points)
+   - Graha Maitri (5 points)
+   - Gana (6 points)
+   - Bhakoot (7 points)
+   - Nadi (8 points)
+   - TOTAL SCORE: X/36
+   - Interpretation of score
+
+3. 🔴 MANGAL DOSHA CHECK
+   - Groom's status
+   - Bride's status
+   - Compatibility/Cancellation if any
+
+4. 🌊 NADI DOSHA ANALYSIS
+
+5. 💑 LIFE AREAS COMPATIBILITY
+   - Love & emotional bonding
+   - Financial life
+   - Children & family
+   - Career & ambitions
+   - Health
+
+6. 💚 STRENGTHS OF THIS MATCH
+
+7. ⚠️ CHALLENGES (if any)
+
+8. 🙏 REMEDIES & PUJA SUGGESTIONS
+   - Specific rituals
+   - Gemstone suggestions
+   - Mantra recommendations
+
+9. 📅 AUSPICIOUS WEDDING DATE GUIDANCE
+
+Use emojis and make it engaging and culturally rich. Write in Hinglish.`;
+
+  try {
+    const res = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
+    });
+    const data = await res.json();
+    const text = data.choices[0].message.content;
+    document.getElementById('kundaliText').textContent = text;
+    document.getElementById('resultCard').style.display = 'block';
+    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
+  } catch(e) {
+    alert('Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    document.getElementById('loading').style.display = 'none';
   }
 }
-function extract(content,key){const regex=new RegExp(`${key}:\\s*([^\\n]+)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
-function extractSection(content,key){const regex=new RegExp(`${key}:([\\s\\S]*?)(?=\\n[A-Z_]+:|$)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
-function formatList(text){if(!text)return'';const lines=text.split('\n').map(l=>l.replace(/^[-•*]\s*/,'').trim()).filter(l=>l.length>2);return'<ul>'+lines.map(l=>`<li>${l}</li>`).join('')+'</ul>';}
-function getScoreColor(score){if(score>=28)return'#00C853';if(score>=20)return'#FFB300';return'#FF6F00';}
-function renderKundali(content,brideName,groomName){
-  const totalScore=parseInt(extract(content,'TOTAL_SCORE'))||25;
-  const title=extract(content,'COMPATIBILITY_TITLE')||'Shubh Milan';
-  const verdict=extractSection(content,'OVERALL_VERDICT')||'';
-  const gunaRaw=extractSection(content,'GUNA_SCORES')||'';
-  const strengths=extractSection(content,'STRENGTHS')||'';
-  const areas=extractSection(content,'AREAS_TO_WORK')||'';
-  const personalityMatch=extractSection(content,'PERSONALITY_MATCH')||'';
-  const loveLang=extractSection(content,'LOVE_LANGUAGE')||'';
-  const luckyRaw=extractSection(content,'LUCKY_ELEMENTS')||'';
-  const advice=extractSection(content,'RELATIONSHIP_ADVICE')||'';
-  const scoreColor=getScoreColor(totalScore);
-  const gunaLines=gunaRaw.split('\n').map(l=>l.trim()).filter(l=>l.includes('|'));
-  const gunaCards=gunaLines.map(l=>{
-    const parts=l.split('|');
-    const name=parts[0]?.trim()||'';
-    const scoreStr=parts[1]?.trim()||'0/0';
-    const [scored,max]=scoreStr.split('/').map(Number);
-    return`<div class="guna-item">
-      <div class="guna-name">${name}</div>
-      <div class="guna-score" style="color:${getScoreColor(scored/(max||1)*36)}">${scored}</div>
-      <div class="guna-max">/ ${max}</div>
-    </div>`;
-  }).join('');
-  shareContent=`🔮 SmartShaadi.online ne humara kundali match check kiya!\n\n${brideName} ♀ + ${groomName} ♂\n✨ Score: ${totalScore}/36 — ${title}\n\nAap bhi free AI kundali matching try karo:\n👉 smartshaadi.online/ai-kundali-matching.html`;
-  const html=`
-    <div class="kundali-hero">
-      <button class="copy-btn" onclick="copyResult()">📋 Copy</button>
-      <div class="score-circle" style="border-color:${scoreColor}">
-        <div class="score-num" style="color:${scoreColor}">${totalScore}</div>
-        <div class="score-label">OUT OF 36</div>
-      </div>
-      <div class="score-title">🔮 ${title}</div>
-      <div class="score-subtitle">${brideName} ♀ + ${groomName} ♂</div>
-      <div style="font-size:13px;color:rgba(232,224,240,0.75);line-height:1.7;max-width:480px;margin:0 auto">${verdict}</div>
-    </div>
-    ${gunaCards?`<div class="result-section"><div class="result-section-title">🏆 Ashtakoota Guna Milan</div><div class="guna-grid">${gunaCards}</div></div>`:''}
-    ${strengths?`<div class="result-section" style="border-left:3px solid #00C853"><div class="result-section-title" style="color:#69F0AE">💚 Rishte ki Khoobiyan</div><div class="result-section-body">${formatList(strengths)}</div></div>`:''}
-    ${personalityMatch?`<div class="result-section"><div class="result-section-title">💕 Personality Match</div><div class="result-section-body">${personalityMatch}</div></div>`:''}
-    ${loveLang?`<div class="result-section"><div class="result-section-title">❤️ Love Language</div><div class="result-section-body">${loveLang}</div></div>`:''}
-    ${areas?`<div class="result-section"><div class="result-section-title">🌱 Growth Areas</div><div class="result-section-body">${formatList(areas)}</div></div>`:''}
-    ${luckyRaw?`<div class="result-section" style="background:rgba(255,204,51,0.04);border:1px solid rgba(255,204,51,0.15)"><div class="result-section-title">✨ Lucky Elements</div><div class="result-section-body">${formatList(luckyRaw)}</div></div>`:''}
-    ${advice?`<div class="result-section"><div class="result-section-title">💍 Khush Shaadi ke Raaz</div><div class="result-section-body">${formatList(advice)}</div></div>`:''}
-  `;
-  document.getElementById('kundaliResult').innerHTML=html;
-  document.getElementById('shareText').textContent=shareContent;
-  document.getElementById('results').style.display='block';
-  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+
+function copyReport() {
+  navigator.clipboard.writeText(document.getElementById('kundaliText').textContent).then(() => {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  });
 }
-function copyResult(){const text=document.getElementById('kundaliResult').innerText;navigator.clipboard.writeText(text).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Copy',2000);});}
-function copyShare(){navigator.clipboard.writeText(shareContent).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Share Text Copy Karo',2000);});}
-function showError(msg){const box=document.getElementById('errorBox');box.textContent=msg;box.style.display='block';}
+
+function shareWhatsApp() {
+  const text = document.getElementById('kundaliText').textContent;
+  window.open(`https://wa.me/?text=${encodeURIComponent('Hamari Kundali Report 🔮\n\n' + text.substring(0, 800) + '\n\nSmartShaadi.online')}`, '_blank');
+}
 </script>
 </body>
 </html>
