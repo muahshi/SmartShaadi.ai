@@ -275,7 +275,8 @@ HIDDEN_COSTS: [3-4 costs people forget — ${religion} wedding specific]`;
     if(!res.ok)throw new Error('Server error '+res.status);
     const data=await res.json();
     stopProgress();
-    renderBudget(data.content,city,budgetFormatted,guests);
+    const textContent = data.choices[0].message.content;
+renderBudget(textContent, city, budgetFormatted, guests);
   }catch(err){
     stopProgress();
     showError('⚠️ Kuch gadbad hui. Please dobara try karein. ('+err.message+')');
