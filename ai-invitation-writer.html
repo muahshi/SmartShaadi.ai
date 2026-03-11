@@ -1,515 +1,401 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Wedding Invitation Writer 2026 | SmartShaadi</title>
-<meta name="description" content="AI se apni wedding invitation banao — Hindi, Hinglish, English mein. Bilkul free. SmartShaadi.online ka AI tool.">
-<link rel="canonical" href="https://smartshaadi.online/ai-invitation-writer.html">
+<title>AI Invitation Writer — Smart Shaadi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --gold: #ffcc33;
-  --gold2: #C8952A;
-  --pink: #E91E8C;
-  --bg: #0f0f1a;
-  --card: rgba(255,255,255,0.04);
-  --border: rgba(255,204,51,0.15);
-  --text: #e8e0f0;
-  --muted: rgba(232,224,240,0.5);
-}
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  min-height: 100vh;
-}
-/* NAV — same as existing site */
-nav {
-  background: rgba(15,15,26,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-  display: flex; align-items: center; gap: 16px;
-  position: sticky; top: 0; z-index: 100;
-}
-.logo {
-  font-family: 'Orbitron', 'Segoe UI', sans-serif;
-  font-size: 18px; font-weight: 900;
-  color: var(--gold); text-decoration: none; letter-spacing: 1px;
-}
-.nav-back {
-  font-size: 13px; color: var(--muted);
-  text-decoration: none; transition: color 0.2s;
-}
-.nav-back:hover { color: var(--gold); }
-.nav-links { margin-left: auto; display: flex; gap: 16px; }
-.nav-links a {
-  font-size: 13px; color: var(--muted);
-  text-decoration: none; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--gold); }
+  :root {
+    --bg: #0f0f1a;
+    --surface: #1a1a2e;
+    --card: #16213e;
+    --gold: #f0c060;
+    --gold2: #e8a020;
+    --green: #4ade80;
+    --text: #f0ece8;
+    --muted: #9090b0;
+    --border: #2a2a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, #0f0f1a 0%, #1a0a2e 50%, #0f0f1a 100%);
-  border-bottom: 1px solid var(--border);
-  padding: 52px 20px 44px;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255,204,51,0.08) 0%, transparent 60%);
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(255,204,51,0.1);
-  border: 1px solid rgba(255,204,51,0.3);
-  color: var(--gold); font-size: 11px;
-  letter-spacing: 3px; text-transform: uppercase;
-  padding: 5px 18px; border-radius: 20px; margin-bottom: 18px;
-}
-.hero h1 {
-  font-size: clamp(26px,5vw,46px);
-  font-weight: 900; margin-bottom: 12px; line-height: 1.15;
-  background: linear-gradient(135deg, #fff 20%, var(--gold) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.hero p {
-  font-size: 15px; color: var(--muted);
-  max-width: 500px; margin: 0 auto;
-}
+  /* NAV */
+  nav {
+    background: rgba(15,15,26,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
+  .logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-/* MAIN */
-.main { max-width: 720px; margin: 0 auto; padding: 32px 18px 80px; }
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.12) 0%, transparent 60%);
+  }
+  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); line-height: 1.2; }
+  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
+  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
 
-/* CARD */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 26px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(8px);
-}
-.card-title {
-  font-size: 11px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
-}
-.card-title::after {
-  content: ''; flex: 1; height: 1px;
-  background: var(--border);
-}
+  /* MAIN */
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-/* FORM */
-.field { margin-bottom: 16px; }
-.field label {
-  display: block; font-size: 13px; font-weight: 600;
-  color: var(--text); margin-bottom: 7px;
-}
-.field input, .field select, .field textarea {
-  width: 100%; padding: 11px 14px; border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  font-size: 14px; font-family: inherit;
-  color: var(--text); outline: none; transition: border 0.2s;
-}
-.field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(255,204,51,0.1);
-}
-.field select option { background: #1a1a2e; }
-.fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
 
-/* PILLS */
-.pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill {
-  padding: 8px 16px; border-radius: 30px; cursor: pointer;
-  font-size: 13px; font-family: inherit;
-  border: 1.5px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
-  color: var(--muted); transition: all 0.2s;
-}
-.pill:hover { border-color: var(--gold); color: var(--gold); }
-.pill.active {
-  background: rgba(255,204,51,0.15);
-  border-color: var(--gold); color: var(--gold); font-weight: 700;
-}
-.pill-lang.active {
-  background: rgba(233,30,140,0.15);
-  border-color: var(--pink); color: var(--pink);
-}
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
 
-/* GENERATE BTN */
-.gen-btn {
-  width: 100%; padding: 16px;
-  border-radius: 14px; border: none;
-  background: linear-gradient(135deg, #E91E8C, #ffcc33);
-  color: #0f0f1a; font-size: 16px; font-weight: 900;
-  font-family: inherit; cursor: pointer;
-  transition: all 0.3s; letter-spacing: 0.5px;
-  box-shadow: 0 4px 24px rgba(233,30,140,0.3);
-}
-.gen-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(233,30,140,0.4); }
-.gen-btn:disabled { background: rgba(255,255,255,0.1); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field.full { grid-column: 1/-1; }
+  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; letter-spacing: 0.03em; }
+  input, select, textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(240,192,96,0.1);
+  }
+  select option { background: var(--surface); }
+  textarea { resize: vertical; min-height: 80px; }
 
-/* PROGRESS */
-.progress-wrap { margin: 16px 0; display: none; }
-.progress-bar {
-  height: 3px; background: rgba(255,255,255,0.08);
-  border-radius: 3px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--pink), var(--gold));
-  border-radius: 3px; transition: width 0.4s;
-}
-.progress-text {
-  text-align: center; font-size: 12px;
-  color: var(--muted); margin-top: 8px; letter-spacing: 1px;
-}
+  .style-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.7rem; margin-top: 0.5rem; }
+  .style-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .style-chip:hover { border-color: var(--gold); color: var(--gold); }
+  .style-chip.active { background: rgba(240,192,96,0.15); border-color: var(--gold); color: var(--gold); }
 
-/* RESULTS */
-.results { display: none; }
-.result-version {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; margin-bottom: 16px; overflow: hidden;
-}
-.result-header {
-  padding: 14px 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255,204,51,0.04);
-}
-.result-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-.result-body {
-  padding: 20px; font-size: 14px;
-  line-height: 1.9; color: var(--text);
-  white-space: pre-wrap;
-}
-.copy-btn {
-  padding: 7px 16px; border-radius: 20px; cursor: pointer;
-  font-size: 12px; font-family: inherit; font-weight: 600;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.05);
-  color: var(--muted); transition: all 0.2s;
-}
-.copy-btn:hover, .copy-btn.copied {
-  background: rgba(80,200,100,0.15);
-  border-color: rgba(80,200,100,0.4); color: #50C864;
-}
+  .btn-generate {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #0f0f1a;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
+  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* ERROR */
-.error-box {
-  background: rgba(255,50,50,0.08); border: 1px solid rgba(255,50,50,0.25);
-  border-radius: 12px; padding: 14px 18px;
-  color: #FF8A8A; font-size: 13px; display: none; margin-bottom: 16px;
-}
+  /* RESULT */
+  .result-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: none;
+    animation: slideIn 0.4s ease;
+  }
+  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .result-header {
+    background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08));
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1.8rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .btn-action {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+  .invitation-display {
+    padding: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    line-height: 2;
+    font-size: 1rem;
+    color: var(--text);
+    white-space: pre-wrap;
+    min-height: 200px;
+  }
 
-/* CTA */
-.cta-box {
-  background: rgba(255,204,51,0.06); border: 1px solid rgba(255,204,51,0.2);
-  border-radius: 14px; padding: 20px; text-align: center; margin-top: 24px;
-}
-.cta-box p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
-.cta-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-.cta-link {
-  padding: 9px 18px; border-radius: 10px; font-size: 13px;
-  text-decoration: none; font-weight: 600; transition: all 0.2s;
-  border: 1px solid var(--border); color: var(--gold);
-}
-.cta-link:hover { background: rgba(255,204,51,0.1); }
+  .loading { text-align: center; padding: 3rem; display: none; }
+  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading p { color: var(--muted); font-size: 0.9rem; }
 
-@media(max-width:560px) {
-  .fields-row { grid-template-columns: 1fr; }
-  .hero { padding: 36px 16px 30px; }
-  .card { padding: 18px 14px; }
-}
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--green); color: #0f0f1a;
+    padding: 0.8rem 1.5rem; border-radius: 10px;
+    font-weight: 600; font-size: 0.9rem;
+    transform: translateY(100px); opacity: 0;
+    transition: all 0.3s; z-index: 999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+
+  @media(max-width:480px){
+    nav { padding: 0.8rem 1rem; }
+    .nav-links { display: none; }
+    .card { padding: 1.3rem; }
+    .invitation-display { padding: 1.5rem; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Smart Shaadi 💍</a>
-  <a href="index.html" class="nav-back">← Wapas</a>
-  <div class="nav-links">
-    <a href="chatbot.html">🤖 AI Chatbot</a>
-    <a href="wedding-budget-calculator-india-2026.html">💰 Budget</a>
-  </div>
+  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
+  <ul class="nav-links">
+    <li><a href="/ai-planning-timeline.html">Timeline</a></li>
+    <li><a href="/ai-budget-calculator.html">Budget</a></li>
+    <li><a href="/ai-menu-planner.html">Menu</a></li>
+  </ul>
+  <span class="nav-badge">✨ AI Powered</span>
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">✦ Free AI Tool ✦</div>
-  <h1>AI Wedding Invitation<br>Writer 💌</h1>
-  <p>Details daalo — AI ek beautiful, personalized wedding invitation 30 seconds mein banayega</p>
+  <span class="hero-icon">💌</span>
+  <h1>AI Wedding Invitation Writer</h1>
+  <p>Apni shaadi ke liye beautiful, personalized invitation ek click mein banayein</p>
+  <span class="tag">🤖 Groq AI · Hindi + English · Multiple Styles</span>
 </div>
 
-<div class="main">
-
-  <!-- FORM -->
+<div class="container">
   <div class="card">
-    <div class="card-title">💍 Couple & Event Details</div>
-    <div class="fields-row">
+    <div class="card-title">📝 Couple & Event Details</div>
+    <div class="form-grid">
       <div class="field">
-        <label>Dulhe ka Naam *</label>
-        <input type="text" id="groomName" placeholder="e.g. Rahul Sharma">
+        <label>Dulhe Ka Naam (Groom's Name)</label>
+        <input type="text" id="groomName" placeholder="e.g. Rahul Sharma" />
       </div>
       <div class="field">
-        <label>Dulhan ka Naam *</label>
-        <input type="text" id="brideName" placeholder="e.g. Priya Gupta">
-      </div>
-    </div>
-    <div class="fields-row">
-      <div class="field">
-        <label>Shaadi ki Tarikh *</label>
-        <input type="text" id="weddingDate" placeholder="e.g. 15 February 2026">
+        <label>Dulhan Ka Naam (Bride's Name)</label>
+        <input type="text" id="brideName" placeholder="e.g. Priya Gupta" />
       </div>
       <div class="field">
-        <label>Time</label>
-        <input type="text" id="weddingTime" placeholder="e.g. Shaam 7 baje se">
+        <label>Groom's Father Name</label>
+        <input type="text" id="groomFather" placeholder="e.g. Suresh Sharma" />
       </div>
-    </div>
-    <div class="field">
-      <label>Venue / Jagah *</label>
-      <input type="text" id="venue" placeholder="e.g. Hotel Taj Palace, New Delhi">
-    </div>
-    <div class="field">
-      <label>Event Type</label>
-      <select id="eventType">
-        <option value="Grand Wedding">💍 Grand Wedding</option>
-        <option value="Engagement">💎 Engagement / Sagai</option>
-        <option value="Haldi Ceremony">🌼 Haldi Ceremony</option>
-        <option value="Sangeet">🎵 Sangeet / Cocktail</option>
-        <option value="Reception">🥂 Reception</option>
-        <option value="Nikah">☪️ Nikah</option>
-        <option value="Mehendi">🌿 Mehendi</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Extra Note (Optional)</label>
-      <input type="text" id="extraNote" placeholder="e.g. Dress code: Red & Gold. Parking available.">
+      <div class="field">
+        <label>Bride's Father Name</label>
+        <input type="text" id="brideFather" placeholder="e.g. Ramesh Gupta" />
+      </div>
+      <div class="field">
+        <label>Shaadi Ki Tarikh (Wedding Date)</label>
+        <input type="date" id="weddingDate" />
+      </div>
+      <div class="field">
+        <label>Shaadi Ka Samay (Time)</label>
+        <input type="time" id="weddingTime" />
+      </div>
+      <div class="field full">
+        <label>Venue / Jagah</label>
+        <input type="text" id="venue" placeholder="e.g. Royal Garden Banquet, New Delhi" />
+      </div>
+      <div class="field">
+        <label>Language</label>
+        <select id="language">
+          <option value="hindi">हिंदी (Hindi)</option>
+          <option value="english">English</option>
+          <option value="hinglish" selected>Hinglish (Mix)</option>
+          <option value="urdu">Urdu</option>
+          <option value="marathi">Marathi</option>
+          <option value="punjabi">Punjabi</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Ceremony Type</label>
+        <select id="ceremony">
+          <option value="wedding">Main Wedding</option>
+          <option value="sangeet">Sangeet Night</option>
+          <option value="mehendi">Mehendi Ceremony</option>
+          <option value="haldi">Haldi Rasam</option>
+          <option value="reception">Reception Party</option>
+          <option value="engagement">Engagement</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Special Message / Shayari (Optional)</label>
+        <textarea id="specialMsg" placeholder="Koi khas baat ya shayari jo aap shamil karna chahte hain..."></textarea>
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">✨ Style Choose Karo</div>
-    <div class="field">
-      <label style="margin-bottom:10px">Tone</label>
-      <div class="pills" id="tonePills">
-        <div class="pill active" data-tone="Traditional &amp; Poetic">🕌 Traditional</div>
-        <div class="pill" data-tone="Modern &amp; Romantic">💝 Romantic</div>
-        <div class="pill" data-tone="Funny &amp; Quirky">😄 Funny</div>
-        <div class="pill" data-tone="Royal &amp; Grand">👑 Royal</div>
-        <div class="pill" data-tone="Simple &amp; Warm">🤗 Simple</div>
-        <div class="pill" data-tone="Desi Hindustani">🌶️ Desi</div>
-      </div>
-    </div>
-    <div class="field" style="margin-bottom:0">
-      <label style="margin-bottom:10px">Language</label>
-      <div class="pills" id="langPills">
-        <div class="pill pill-lang active" data-lang="Hinglish">Hinglish</div>
-        <div class="pill pill-lang" data-lang="Hindi">हिंदी</div>
-        <div class="pill pill-lang" data-lang="English">English</div>
-        <div class="pill pill-lang" data-lang="Urdu">اردو</div>
-      </div>
+    <div class="card-title">🎨 Invitation Style Chunein</div>
+    <div class="style-grid">
+      <div class="style-chip active" data-style="traditional">🏺 Traditional</div>
+      <div class="style-chip" data-style="royal">👑 Royal</div>
+      <div class="style-chip" data-style="modern">✨ Modern</div>
+      <div class="style-chip" data-style="romantic">💕 Romantic</div>
+      <div class="style-chip" data-style="poetic">📜 Poetic</div>
+      <div class="style-chip" data-style="funny">😄 Funny</div>
+      <div class="style-chip" data-style="religious">🙏 Religious</div>
+      <div class="style-chip" data-style="minimalist">🤍 Minimalist</div>
     </div>
   </div>
 
-  <button class="gen-btn" id="genBtn" onclick="generate()">
-    ✨ AI Invitation Generate Karo
+  <button class="btn-generate" onclick="generateInvitation()">
+    💌 Generate Invitation — AI Se Banayein
   </button>
 
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-text">AI likh raha hai... ✍️</div>
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>AI aapki beautiful invitation likh raha hai... 🪄</p>
   </div>
 
-  <div class="error-box" id="errorBox"></div>
-
-  <div class="results" id="results">
-    <div style="font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;margin-top:8px">
-      ✦ Aapki Invitations Ready Hain
-    </div>
-    <div id="resultCards"></div>
-    <div class="cta-box">
-      <p>💡 Aur planning tools chahiye?</p>
-      <div class="cta-links">
-        <a href="chatbot.html" class="cta-link">🤖 AI Wedding Planner</a>
-        <a href="wedding-budget-calculator-india-2026.html" class="cta-link">💰 Budget Calculator</a>
-        <a href="whatsapp-invite-generator.html" class="cta-link">💬 WhatsApp Invite</a>
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-title">💌 Aapki Wedding Invitation</span>
+      <div class="action-btns">
+        <button class="btn-action" onclick="copyInvitation()">📋 Copy</button>
+        <button class="btn-action" onclick="shareWhatsApp()">📱 WhatsApp</button>
+        <button class="btn-action" onclick="regenerate()">🔄 Regenerate</button>
       </div>
     </div>
+    <div class="invitation-display" id="invitationText"></div>
   </div>
-
 </div>
 
+<div class="toast" id="toast">✅ Copied to clipboard!</div>
+
 <script>
-// Pill selection
-document.querySelectorAll('#tonePills .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#tonePills .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-  });
-});
-document.querySelectorAll('#langPills .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#langPills .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
+let selectedStyle = 'traditional';
+
+document.querySelectorAll('.style-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.style-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    selectedStyle = chip.dataset.style;
   });
 });
 
-// Progress animation
-let progressInterval;
-function startProgress() {
-  document.getElementById('progressWrap').style.display = 'block';
-  let val = 0;
-  progressInterval = setInterval(() => {
-    val = Math.min(val + Math.random() * 7, 88);
-    document.getElementById('progressFill').style.width = val + '%';
-  }, 300);
-}
-function stopProgress() {
-  clearInterval(progressInterval);
-  document.getElementById('progressFill').style.width = '100%';
-  setTimeout(() => {
-    document.getElementById('progressWrap').style.display = 'none';
-    document.getElementById('progressFill').style.width = '0%';
-  }, 400);
-}
-
-// Copy button
-function copyText(text, btn) {
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = '✓ Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'Copy';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
-}
-
-// MAIN GENERATE
-async function generate() {
+async function generateInvitation() {
   const groom = document.getElementById('groomName').value.trim();
   const bride = document.getElementById('brideName').value.trim();
-  const date = document.getElementById('weddingDate').value.trim();
+  const groomDad = document.getElementById('groomFather').value.trim();
+  const brideDad = document.getElementById('brideFather').value.trim();
+  const date = document.getElementById('weddingDate').value;
+  const time = document.getElementById('weddingTime').value;
   const venue = document.getElementById('venue').value.trim();
+  const language = document.getElementById('language').value;
+  const ceremony = document.getElementById('ceremony').value;
+  const special = document.getElementById('specialMsg').value.trim();
 
-  if (!groom || !bride || !date || !venue) {
-    showError('⚠️ Naam, date aur venue zaroori hain!');
+  if (!groom || !bride) {
+    alert('Please enter both Groom and Bride names!');
     return;
   }
 
-  const tone = document.querySelector('#tonePills .pill.active').dataset.tone;
-  const lang = document.querySelector('#langPills .pill.active').dataset.lang;
-  const time = document.getElementById('weddingTime').value.trim();
-  const event = document.getElementById('eventType').value;
-  const note = document.getElementById('extraNote').value.trim();
+  const btn = document.querySelector('.btn-generate');
+  btn.disabled = true;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('resultCard').style.display = 'none';
 
-  document.getElementById('genBtn').disabled = true;
-  document.getElementById('errorBox').style.display = 'none';
-  document.getElementById('results').style.display = 'none';
-  startProgress();
+  const systemPrompt = `You are an expert Indian wedding invitation writer. You write beautiful, heartfelt wedding invitations in ${language} language with a ${selectedStyle} style. Use appropriate cultural references, blessings, and poetic language. Format the invitation beautifully with proper sections. Use emojis tastefully. Make it feel warm, celebratory and personal.`;
 
-  const systemPrompt = `You are an expert Indian wedding invitation writer. Write beautiful, culturally appropriate wedding invitations for Indian couples. Always write in the requested language and tone. Make them warm, emotional, and perfect for sharing on WhatsApp.`;
+  const userPrompt = `Write a ${selectedStyle} style wedding invitation for a ${ceremony} ceremony.
 
-  const userPrompt = `Write 3 different versions of a wedding invitation with these details:
-- Groom: ${groom}
-- Bride: ${bride}  
-- Event: ${event}
-- Date: ${date}
-- Time: ${time || 'Shaam mein'}
-- Venue: ${venue}
-- Extra note: ${note || 'None'}
-- Tone: ${tone}
-- Language: ${lang}
+Details:
+- Groom: ${groom} (Son of ${groomDad || 'respected parents'})
+- Bride: ${bride} (Daughter of ${brideDad || 'respected parents'})
+- Date: ${date || 'To be announced'}
+- Time: ${time || 'Shubh Muhurat'}
+- Venue: ${venue || 'To be announced'}
+- Language: ${language}
+${special ? `- Special message/shayari to include: ${special}` : ''}
 
-Format EXACTLY like this (3 versions separated by ---):
+Create a complete, beautiful invitation with:
+1. Opening blessing/shloka or quote
+2. Formal family announcement
+3. Invitation text with all details
+4. Closing blessing
+5. RSVP note
 
-VERSION 1 — [style name]
-[invitation text]
-
----
-
-VERSION 2 — [style name]  
-[invitation text]
-
----
-
-VERSION 3 — [style name]
-[invitation text]
-
-Make each version unique. Use emojis appropriately. Keep it WhatsApp-friendly. Make it emotional and beautiful.`;
+Make it emotionally touching and culturally appropriate for Indian wedding traditions.`;
 
   try {
-    // Call Netlify backend — API key safe hai server pe
-    const res = await fetch('/.netlify/functions/groq-agent', {
+    const res = await fetch('/api/groq-agent', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         system: systemPrompt,
-        messages: [{ role: 'user', content: userPrompt }]
+        messages: [{role: 'user', content: userPrompt}]
       })
     });
-
-    if (!res.ok) throw new Error('Server error ' + res.status);
-
     const data = await res.json();
-    const content = data.content || '';
-
-    stopProgress();
-    renderResults(content);
-
-  } catch (err) {
-    stopProgress();
-    showError('⚠️ Kuch gadbad hui. Please dobara try karein. (' + err.message + ')');
+    const text = data.choices[0].message.content;
+    document.getElementById('invitationText').textContent = text;
+    document.getElementById('resultCard').style.display = 'block';
+  } catch(e) {
+    alert('Error: ' + e.message);
   } finally {
-    document.getElementById('genBtn').disabled = false;
+    btn.disabled = false;
+    document.getElementById('loading').style.display = 'none';
   }
 }
 
-function renderResults(content) {
-  const versions = content.split('---').map(v => v.trim()).filter(v => v.length > 50);
-  const container = document.getElementById('resultCards');
-  container.innerHTML = '';
-
-  const colors = ['#E91E8C', '#ffcc33', '#00BFA5'];
-  const labels = ['Version 1', 'Version 2', 'Version 3'];
-
-  versions.forEach((v, i) => {
-    const lines = v.split('\n');
-    const title = lines[0].replace(/VERSION \d+ —?\s*/i, '').trim() || labels[i];
-    const body = lines.slice(1).join('\n').trim();
-
-    const card = document.createElement('div');
-    card.className = 'result-version';
-    card.innerHTML = `
-      <div class="result-header">
-        <div class="result-label" style="color:${colors[i]}">${labels[i]} — ${title}</div>
-        <button class="copy-btn" onclick="copyText(${JSON.stringify(body)}, this)">Copy</button>
-      </div>
-      <div class="result-body">${body}</div>
-    `;
-    container.appendChild(card);
+function copyInvitation() {
+  const text = document.getElementById('invitationText').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
   });
-
-  if (versions.length === 0) {
-    container.innerHTML = `<div class="result-version"><div class="result-body">${content}</div></div>`;
-  }
-
-  document.getElementById('results').style.display = 'block';
-  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function showError(msg) {
-  const box = document.getElementById('errorBox');
-  box.textContent = msg;
-  box.style.display = 'block';
+function shareWhatsApp() {
+  const text = document.getElementById('invitationText').textContent;
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/?text=${encoded}`, '_blank');
+}
+
+function regenerate() {
+  generateInvitation();
 }
 </script>
-
 </body>
 </html>
