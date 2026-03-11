@@ -1,296 +1,306 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Wedding Photography Shot List 2026 India | SmartShaadi</title>
-<meta name="description" content="AI se apni wedding ki complete photography shot list banao — ceremony-wise, must-have shots, poses aur tips. Free tool by SmartShaadi.online">
-<link rel="canonical" href="https://smartshaadi.online/ai-photography-shots.html">
+<title>AI Photography Shot List — Smart Shaadi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#ffcc33;--teal:#00BCD4;--bg:#0f0f1a;--card:rgba(255,255,255,0.04);--border:rgba(255,204,51,0.15);--text:#e8e0f0;--muted:rgba(232,224,240,0.5)}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
-nav{background:rgba(15,15,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
-.logo{font-size:18px;font-weight:900;color:var(--gold);text-decoration:none}
-.nav-back{font-size:13px;color:var(--muted);text-decoration:none}.nav-back:hover{color:var(--gold)}
-.nav-links{margin-left:auto;display:flex;gap:16px}.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}.nav-links a:hover{color:var(--gold)}
-.hero{background:linear-gradient(135deg,#0f0f1a 0%,#001a1f 50%,#0f0f1a 100%);border-bottom:1px solid var(--border);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,188,212,0.08) 0%,transparent 60%)}
-.hero-badge{display:inline-block;background:rgba(0,188,212,0.08);border:1px solid rgba(0,188,212,0.25);color:#80DEEA;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:20px;margin-bottom:18px;position:relative}
-.hero h1{font-size:clamp(26px,5vw,46px);font-weight:900;margin-bottom:12px;line-height:1.15;position:relative;background:linear-gradient(135deg,#fff 20%,#80DEEA 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;position:relative}
-.main{max-width:720px;margin:0 auto;padding:32px 18px 80px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px;backdrop-filter:blur(8px)}
-.card-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#80DEEA;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.field{margin-bottom:16px}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:7px}
-.field input,.field select{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border .2s}
-.field input:focus,.field select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,188,212,0.1)}
-.field select option{background:#1a1a2e}
-.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:8px 16px;border-radius:30px;cursor:pointer;font-size:13px;font-family:inherit;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--muted);transition:all .2s}
-.pill:hover{border-color:var(--teal);color:#80DEEA}
-.pill.active{background:rgba(0,188,212,0.12);border-color:var(--teal);color:#80DEEA;font-weight:700}
-.gen-btn{width:100%;padding:16px;border-radius:14px;border:none;background:linear-gradient(135deg,#006064,#00BCD4);color:#fff;font-size:16px;font-weight:900;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 24px rgba(0,188,212,0.3);letter-spacing:.5px}
-.gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,188,212,0.4)}
-.gen-btn:disabled{background:rgba(255,255,255,0.1);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
-.progress-wrap{margin:16px 0;display:none}
-.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#006064,#00BCD4,var(--gold));border-radius:3px;transition:width .4s}
-.progress-text{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:1px}
-.error-box{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.25);border-radius:12px;padding:14px 18px;color:#FF8A8A;font-size:13px;display:none;margin-bottom:16px}
-.results{display:none}
-.result-label-top{font-size:11px;letter-spacing:3px;color:#80DEEA;text-transform:uppercase;margin-bottom:16px;margin-top:8px}
-.shot-category{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px;border-left:3px solid var(--teal)}
-.shot-category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.shot-category-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-.shot-count{font-size:11px;color:var(--teal);font-weight:700;background:rgba(0,188,212,0.1);padding:3px 10px;border-radius:10px}
-.shots-list{display:flex;flex-direction:column;gap:6px}
-.shot-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:8px;font-size:13px;color:rgba(232,224,240,0.8);cursor:pointer;transition:background .2s}
-.shot-item:hover{background:rgba(0,188,212,0.08)}
-.shot-item.checked{background:rgba(0,200,83,0.08);color:rgba(232,224,240,0.5);text-decoration:line-through}
-.shot-checkbox{width:16px;height:16px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.2);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .2s}
-.shot-item.checked .shot-checkbox{background:var(--teal);border-color:var(--teal);color:#000}
-.progress-counter{text-align:right;font-size:12px;color:var(--teal);margin-bottom:8px}
-.result-section{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px}
-.result-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.result-section-body{font-size:13px;color:rgba(232,224,240,0.75);line-height:1.8}
-.result-section-body ul{padding-left:0;list-style:none}
-.result-section-body ul li{padding:3px 0;padding-left:16px;position:relative}
-.result-section-body ul li::before{content:'📸';position:absolute;left:0;font-size:10px;top:4px}
-.copy-btn{padding:7px 16px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--muted);transition:all .2s;float:right}
-.copy-btn:hover{background:rgba(80,200,100,0.15);border-color:rgba(80,200,100,0.4);color:#50C864}
-.share-box{background:rgba(255,204,51,0.06);border:1px solid rgba(255,204,51,0.2);border-radius:14px;padding:18px;text-align:center;margin-top:8px}
-.share-box p{font-size:13px;color:var(--muted);margin-bottom:12px}
-.share-text{font-size:13px;color:var(--text);background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 14px;margin-bottom:12px;line-height:1.7;text-align:left}
-.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-link{padding:9px 18px;border-radius:10px;font-size:13px;text-decoration:none;font-weight:600;border:1px solid var(--border);color:var(--gold);transition:all .2s}
-.cta-link:hover{background:rgba(255,204,51,0.1)}
-@media(max-width:560px){.fields-row{grid-template-columns:1fr}.hero{padding:36px 16px 30px}.card{padding:18px 14px}}
+  :root {
+    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
+    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
+    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+
+  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
+  .logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.1) 0%, transparent 60%); }
+  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
+  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
+  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field.full { grid-column: 1/-1; }
+  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
+  select option { background: var(--surface); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .ceremony-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.6rem; }
+  .check-item { display: flex; align-items: center; gap: 0.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.8rem; cursor: pointer; font-size: 0.82rem; transition: all 0.2s; user-select: none; }
+  .check-item input[type=checkbox] { accent-color: var(--gold); }
+  .check-item:hover { border-color: var(--gold); }
+
+  .style-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .style-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 0.4rem 1rem; cursor: pointer; font-size: 0.82rem; transition: all 0.2s; }
+  .style-pill:hover { border-color: var(--gold); color: var(--gold); }
+  .style-pill.active { border-color: var(--gold); background: rgba(240,192,96,0.12); color: var(--gold); }
+
+  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
+  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
+  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .loading { text-align: center; padding: 3rem; display: none; }
+  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
+  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
+  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+  .shots-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+
+  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="index.html" class="logo">Smart Shaadi 💍</a>
-  <a href="index.html" class="nav-back">← Wapas</a>
-  <div class="nav-links">
-    <a href="ai-budget-calculator.html">💰 Budget</a>
-    <a href="ai-planning-timeline.html">📅 Timeline</a>
-  </div>
+  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
+  <ul class="nav-links">
+    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
+    <li><a href="/ai-menu-planner.html">Menu</a></li>
+    <li><a href="/ai-playlist-generator.html">Playlist</a></li>
+  </ul>
+  <span class="nav-badge">✨ AI Powered</span>
 </nav>
+
 <div class="hero">
-  <div class="hero-badge">✦ Free AI Tool ✦</div>
-  <h1>AI Photography<br>Shot List 📸</h1>
-  <p>Ceremony details batao — AI complete shot list banayega jo aap photographer ko de sako</p>
+  <span class="hero-icon">📸</span>
+  <h1>AI Photography Shot List</h1>
+  <p>Koi bhi memorable moment miss mat ho — photographer ke liye complete shot list banao!</p>
+  <span class="tag">🤖 Ceremony-wise · Candid + Posed · 100+ Shots</span>
 </div>
-<div class="main">
+
+<div class="container">
   <div class="card">
-    <div class="card-title">📸 Wedding Details</div>
-    <div class="fields-row">
+    <div class="card-title">📋 Basic Details</div>
+    <div class="form-grid">
       <div class="field">
-        <label>Bride Name *</label>
-        <input type="text" id="brideName" placeholder="e.g. Priya">
+        <label>Groom's Name</label>
+        <input type="text" id="groomName" placeholder="e.g. Rahul" />
       </div>
       <div class="field">
-        <label>Groom Name *</label>
-        <input type="text" id="groomName" placeholder="e.g. Rahul">
+        <label>Bride's Name</label>
+        <input type="text" id="brideName" placeholder="e.g. Priya" />
       </div>
-    </div>
-    <div class="fields-row">
       <div class="field">
-        <label>Religion / Ceremony</label>
-        <select id="religion">
-          <option value="Hindu">🕉️ Hindu</option>
-          <option value="Muslim/Nikah">☪️ Muslim / Nikah</option>
-          <option value="Sikh/Anand Karaj">🙏 Sikh / Anand Karaj</option>
-          <option value="Christian">✝️ Christian</option>
-          <option value="Inter-religion">🌈 Inter-religion</option>
+        <label>Wedding Style</label>
+        <select id="weddingStyle">
+          <option value="Traditional Indian">Traditional Indian</option>
+          <option value="Modern Fusion">Modern Fusion</option>
+          <option value="Destination">Destination Wedding</option>
+          <option value="Intimate">Intimate Ceremony</option>
+          <option value="Royal/Grand">Royal/Grand</option>
         </select>
       </div>
       <div class="field">
-        <label>Photography Style</label>
-        <select id="style">
-          <option value="Traditional + Candid mix" selected>📸 Traditional + Candid</option>
-          <option value="Pure Candid/Photojournalistic">🎭 Pure Candid</option>
-          <option value="Editorial/Magazine style">✨ Editorial</option>
-          <option value="Cinematic/Filmy">🎬 Cinematic</option>
-          <option value="Traditional only">🏛️ Traditional Only</option>
+        <label>Photography Style Preference</label>
+        <select id="photoStyle">
+          <option value="candid + traditional mix">Candid + Traditional Mix</option>
+          <option value="editorial/high fashion">Editorial/High Fashion</option>
+          <option value="documentary/photojournalism">Documentary Style</option>
+          <option value="classic posed">Classic Posed</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Number of Photographers</label>
+        <select id="numPhotogs">
+          <option value="1">1 Photographer</option>
+          <option value="2" selected>2 Photographers</option>
+          <option value="3">3+ Photographers</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Videography?</label>
+        <select id="hasVideo">
+          <option value="yes drone + videography">Yes (Drone + Video)</option>
+          <option value="yes standard videography">Yes (Standard)</option>
+          <option value="no">No</option>
         </select>
       </div>
     </div>
-    <div class="field">
-      <label style="margin-bottom:10px">Ceremonies Included (Multiple select)</label>
-      <div class="pills" id="ceremonyPills">
-        <div class="pill active" data-val="Mehndi">🖐️ Mehndi</div>
-        <div class="pill active" data-val="Haldi">🌿 Haldi</div>
-        <div class="pill active" data-val="Sangeet">🎵 Sangeet</div>
-        <div class="pill active" data-val="Main Wedding/Baraat">💍 Main Shaadi</div>
-        <div class="pill active" data-val="Reception">🎊 Reception</div>
-        <div class="pill" data-val="Tilak/Ring Ceremony">💍 Tilak/Ring</div>
-        <div class="pill" data-val="Engagement">💎 Engagement</div>
-      </div>
-    </div>
   </div>
+
   <div class="card">
-    <div class="card-title">✨ Preferences</div>
+    <div class="card-title">🎊 Ceremonies Ko Select Karein</div>
+    <div class="ceremony-checks">
+      <label class="check-item"><input type="checkbox" value="Getting Ready / Bridal Prep" checked> 💄 Bridal Prep</label>
+      <label class="check-item"><input type="checkbox" value="Mehendi" checked> 🌿 Mehendi</label>
+      <label class="check-item"><input type="checkbox" value="Haldi" checked> 💛 Haldi</label>
+      <label class="check-item"><input type="checkbox" value="Sangeet" checked> 🎵 Sangeet</label>
+      <label class="check-item"><input type="checkbox" value="Baraat" checked> 🐴 Baraat</label>
+      <label class="check-item"><input type="checkbox" value="Main Wedding Ceremony" checked> 💍 Main Wedding</label>
+      <label class="check-item"><input type="checkbox" value="Reception"> 🥂 Reception</label>
+      <label class="check-item"><input type="checkbox" value="Vidai"> 😢 Vidai</label>
+      <label class="check-item"><input type="checkbox" value="Pre-wedding Shoot"> 🌅 Pre-wedding</label>
+      <label class="check-item"><input type="checkbox" value="Family Portraits"> 👨‍👩‍👧‍👦 Family Portraits</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✨ Must-Have Shot Types</div>
+    <div class="style-pills" id="shotTypes">
+      <span class="style-pill active" data-type="couple portraits">💑 Couple Portraits</span>
+      <span class="style-pill active" data-type="candid emotions">😂 Candid Emotions</span>
+      <span class="style-pill active" data-type="rituals close-up">🙏 Ritual Close-ups</span>
+      <span class="style-pill active" data-type="detail shots">💍 Detail Shots</span>
+      <span class="style-pill" data-type="aerial drone shots">🚁 Drone Shots</span>
+      <span class="style-pill" data-type="golden hour">🌅 Golden Hour</span>
+      <span class="style-pill" data-type="night sparkler shots">✨ Sparkler Shots</span>
+      <span class="style-pill" data-type="venue architecture">🏛️ Venue Shots</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 Special Requests</div>
     <div class="field">
-      <label style="margin-bottom:10px">Must-Have Shot Types</label>
-      <div class="pills" id="shotTypePills">
-        <div class="pill active" data-val="Couple romantic portraits">💕 Romantic Portraits</div>
-        <div class="pill active" data-val="Family group photos">👨‍👩‍👧‍👦 Family Groups</div>
-        <div class="pill" data-val="Bridal getting-ready shots">💄 Getting Ready</div>
-        <div class="pill active" data-val="Ceremony close-ups">🎊 Ceremony Moments</div>
-        <div class="pill" data-val="Details (jewellery, decor, food)">💎 Detail Shots</div>
-        <div class="pill" data-val="Fun/silly photos">😂 Fun Photos</div>
-        <div class="pill" data-val="Golden hour portraits">🌅 Golden Hour</div>
-      </div>
-    </div>
-    <div class="field" style="margin-bottom:0">
-      <label>Special Moments to Capture</label>
-      <input type="text" id="special" placeholder="e.g. first look, surprise entry, grandparents...">
+      <textarea id="special" placeholder="Specific family members? Props? Special rituals? Locations at venue? e.g. must capture nani ki blessing, we have a special swing at venue, surprise confetti moment at reception..."></textarea>
     </div>
   </div>
-  <button class="gen-btn" id="genBtn" onclick="generate()">📸 Shot List Generate Karo</button>
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-text">Aapki photography shot list ban rahi hai... 📸</div>
+
+  <button class="btn-generate" onclick="generateShotList()">
+    📸 Generate Complete Shot List — AI Se Banao
+  </button>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);margin-top:1rem">AI aapki photography shot list bana raha hai... 📸</p>
   </div>
-  <div class="error-box" id="errorBox"></div>
-  <div class="results" id="results">
-    <div class="result-label-top">✦ Aapki Complete Shot List</div>
-    <div class="progress-counter" id="progressCounter">0 / 0 shots completed</div>
-    <div id="shotResult"></div>
-    <div class="share-box">
-      <p>📸 Photographer ko yeh list send karo!</p>
-      <div class="share-text" id="shareText"></div>
-      <button class="copy-btn" style="float:none;margin-bottom:12px" onclick="copyShare()">📋 Share Text Copy Karo</button>
-      <div class="cta-links">
-        <a href="ai-planning-timeline.html" class="cta-link">📅 Timeline</a>
-        <a href="ai-budget-calculator.html" class="cta-link">💰 Budget</a>
-        <a href="ai-wedding-theme-generator.html" class="cta-link">🎨 Theme</a>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-title">📸 Aapki Complete Shot List</span>
+      <div class="action-btns">
+        <button class="btn-action" onclick="copyShotList()">📋 Copy</button>
+        <button class="btn-action" onclick="shareWhatsApp()">📱 Share with Photographer</button>
+        <button class="btn-action" onclick="generateShotList()">🔄 Regenerate</button>
       </div>
     </div>
+    <div class="shots-content" id="shotsText"></div>
   </div>
 </div>
+
+<div class="toast" id="toast">✅ Copied!</div>
+
 <script>
-function setupMultiPills(id){document.querySelectorAll(`#${id} .pill`).forEach(p=>{p.addEventListener('click',()=>p.classList.toggle('active'));});}
-setupMultiPills('ceremonyPills');
-setupMultiPills('shotTypePills');
-let progressInterval,totalShots=0,checkedShots=0;
-function startProgress(){document.getElementById('progressWrap').style.display='block';let val=0;progressInterval=setInterval(()=>{val=Math.min(val+Math.random()*5,88);document.getElementById('progressFill').style.width=val+'%';},400);}
-function stopProgress(){clearInterval(progressInterval);document.getElementById('progressFill').style.width='100%';setTimeout(()=>{document.getElementById('progressWrap').style.display='none';document.getElementById('progressFill').style.width='0%';},400);}
-let shareContent='';
-async function generate(){
-  const brideName=document.getElementById('brideName').value.trim();
-  const groomName=document.getElementById('groomName').value.trim();
-  if(!brideName||!groomName){showError('⚠️ Bride aur Groom ka naam zaroori hai!');return;}
-  const religion=document.getElementById('religion').value;
-  const style=document.getElementById('style').value;
-  const ceremonies=[...document.querySelectorAll('#ceremonyPills .pill.active')].map(p=>p.dataset.val).join(', ')||'Main Wedding';
-  const shotTypes=[...document.querySelectorAll('#shotTypePills .pill.active')].map(p=>p.dataset.val).join(', ')||'Portraits';
-  const special=document.getElementById('special').value.trim();
-  document.getElementById('genBtn').disabled=true;
-  document.getElementById('errorBox').style.display='none';
-  document.getElementById('results').style.display='none';
-  startProgress();
-  const systemPrompt=`You are India's top wedding photography director. Create detailed, practical shot lists for Indian weddings. Include traditional ceremony moments, candid opportunities, and must-have portraits. Be specific to Indian culture and traditions.`;
-  const userPrompt=`Create a complete wedding photography shot list for:
-- Bride: ${brideName}, Groom: ${groomName}
-- Religion: ${religion}
-- Ceremonies: ${ceremonies}
-- Photography Style: ${style}
-- Must-have shot types: ${shotTypes}
-- Special moments: ${special||'None specified'}
+let activeShotTypes = new Set(['couple portraits', 'candid emotions', 'rituals close-up', 'detail shots']);
 
-Return EXACTLY in this format (use | to separate shots within a category):
+document.querySelectorAll('.style-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    pill.classList.toggle('active');
+    const t = pill.dataset.type;
+    if(activeShotTypes.has(t)) activeShotTypes.delete(t);
+    else activeShotTypes.add(t);
+  });
+});
 
-GETTING_READY: [shot1 | shot2 | shot3 | shot4 | shot5]
-MEHNDI_SHOTS: [shot1 | shot2 | shot3 | shot4]
-HALDI_SHOTS: [shot1 | shot2 | shot3 | shot4]
-SANGEET_SHOTS: [shot1 | shot2 | shot3 | shot4 | shot5]
-BARAAT_SHOTS: [shot1 | shot2 | shot3 | shot4 | shot5]
-CEREMONY_SHOTS: [shot1 | shot2 | shot3 | shot4 | shot5 | shot6 | shot7]
-COUPLE_PORTRAITS: [shot1 | shot2 | shot3 | shot4 | shot5 | shot6]
-FAMILY_GROUPS: [shot1 | shot2 | shot3 | shot4 | shot5]
-RECEPTION_SHOTS: [shot1 | shot2 | shot3 | shot4 | shot5]
-DETAIL_SHOTS: [shot1 | shot2 | shot3 | shot4]
+async function generateShotList() {
+  const groom = document.getElementById('groomName').value.trim() || 'Groom';
+  const bride = document.getElementById('brideName').value.trim() || 'Bride';
+  const style = document.getElementById('weddingStyle').value;
+  const photoStyle = document.getElementById('photoStyle').value;
+  const numPhotogs = document.getElementById('numPhotogs').value;
+  const hasVideo = document.getElementById('hasVideo').value;
+  const special = document.getElementById('special').value;
+  const ceremonies = [...document.querySelectorAll('.ceremony-checks input:checked')].map(c => c.value).join(', ');
+  const shotTypes = [...activeShotTypes].join(', ');
 
-PHOTOGRAPHER_TIPS:
-- [Tip 1 for ${religion} wedding]
-- [Tip 2]
-- [Tip 3]
-TIMING_GUIDE: [When to capture which shots — golden hour, ceremony timing tips]`;
-  try{
-    const res=await fetch('/.netlify/functions/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
-    if(!res.ok)throw new Error('Server error '+res.status);
-    const data=await res.json();
-    stopProgress();
-    renderShots(data.content,brideName,groomName,ceremonies);
-  }catch(err){
-    stopProgress();
-    showError('⚠️ Kuch gadbad hui. Please dobara try karein. ('+err.message+')');
-  }finally{
-    document.getElementById('genBtn').disabled=false;
+  const btn = document.querySelector('.btn-generate');
+  btn.disabled = true;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('resultCard').style.display = 'none';
+
+  const systemPrompt = `You are a professional Indian wedding photographer with 15+ years of experience. You create comprehensive, ceremony-wise photography shot lists that ensure no special moment is missed. You understand Indian wedding rituals deeply and know what makes amazing photos. Use Hinglish language and be very specific with shot descriptions.`;
+
+  const userPrompt = `Create a COMPLETE wedding photography shot list for:
+
+Couple: ${bride} & ${groom}
+Wedding Style: ${style}
+Photography Style: ${photoStyle}
+Team: ${numPhotogs} photographers, ${hasVideo}
+Ceremonies: ${ceremonies}
+Shot Types Priority: ${shotTypes}
+Special Requests: ${special || 'Standard coverage'}
+
+Create a NUMBERED, DETAILED shot list organized by ceremony. For each ceremony include:
+
+📍 CEREMONY NAME
+Then list 10-20 specific shots with:
+- Shot number and description
+- Who is in the shot
+- Any specific angle or technique notes
+- Whether it's candid, posed, or detail shot
+
+Include these sections:
+1. 📸 PRE-CEREMONY SHOTS (Getting ready, venue, decor details)
+2. 🌿 MEHENDI CEREMONY SHOTS (if selected)
+3. 💛 HALDI SHOTS (if selected)  
+4. 🎵 SANGEET SHOTS (if selected)
+5. 🐴 BARAAT SHOTS (if selected)
+6. 💍 MAIN WEDDING CEREMONY (Jaimala, Pheras, rituals)
+7. 👨‍👩‍👧‍👦 FAMILY PORTRAIT LIST (organized groups)
+8. 💑 COUPLE PORTRAIT IDEAS (creative locations, poses)
+9. 🎉 RECEPTION SHOTS (if selected)
+10. ✨ MUST-NOT-MISS MOMENTS
+11. 📝 TIPS FOR PHOTOGRAPHER (lighting, timing notes)
+
+Be very specific - give actual shot descriptions, not general categories. Name the couple in relevant shots. Total should be 100+ shots minimum.`;
+
+  try {
+    const res = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
+    });
+    const data = await res.json();
+    const text = data.choices[0].message.content;
+    document.getElementById('shotsText').textContent = text;
+    document.getElementById('resultCard').style.display = 'block';
+    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
+  } catch(e) {
+    alert('Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    document.getElementById('loading').style.display = 'none';
   }
 }
-function extract(content,key){const regex=new RegExp(`${key}:\\s*([^\\n]+)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
-function extractSection(content,key){const regex=new RegExp(`${key}:([\\s\\S]*?)(?=\\n[A-Z_]+:|$)`,'i');const match=content.match(regex);return match?match[1].trim():'';}
-function formatList(text){if(!text)return'';const lines=text.split('\n').map(l=>l.replace(/^[-•*]\s*/,'').trim()).filter(l=>l.length>2);return'<ul>'+lines.map(l=>`<li>${l}</li>`).join('')+'</ul>';}
-function updateCounter(){document.getElementById('progressCounter').textContent=`${checkedShots} / ${totalShots} shots completed ✓`;}
-function toggleShot(el){el.classList.toggle('checked');el.querySelector('.shot-checkbox').textContent=el.classList.contains('checked')?'✓':'';if(el.classList.contains('checked'))checkedShots++;else checkedShots--;updateCounter();}
-const categoryMap={
-  'GETTING_READY':['💄','Getting Ready'],
-  'MEHNDI_SHOTS':['🖐️','Mehndi Ceremony'],
-  'HALDI_SHOTS':['🌿','Haldi Ceremony'],
-  'SANGEET_SHOTS':['🎵','Sangeet Night'],
-  'BARAAT_SHOTS':['🎺','Baraat'],
-  'CEREMONY_SHOTS':['💍','Main Ceremony'],
-  'COUPLE_PORTRAITS':['💕','Couple Portraits'],
-  'FAMILY_GROUPS':['👨‍👩‍👧‍👦','Family Groups'],
-  'RECEPTION_SHOTS':['🎊','Reception'],
-  'DETAIL_SHOTS':['💎','Detail Shots'],
-};
-function renderShots(content,brideName,groomName,ceremonies){
-  totalShots=0;checkedShots=0;
-  const tips=extractSection(content,'PHOTOGRAPHER_TIPS')||'';
-  const timing=extractSection(content,'TIMING_GUIDE')||'';
-  shareContent=`📸 SmartShaadi.online ne ${brideName} & ${groomName} ki wedding shot list banai!\n\nCeremonies: ${ceremonies}\n\nAap bhi free AI shot list banao:\n👉 smartshaadi.online/ai-photography-shots.html`;
-  let categoriesHtml='';
-  for(const[key,[emoji,label]] of Object.entries(categoryMap)){
-    const raw=extract(content,key);
-    if(!raw||raw.length<3)continue;
-    const shots=raw.split('|').map(s=>s.trim()).filter(s=>s.length>2);
-    if(shots.length===0)continue;
-    totalShots+=shots.length;
-    const shotsHtml=shots.map((s,i)=>`
-      <div class="shot-item" onclick="toggleShot(this)">
-        <div class="shot-checkbox"></div>
-        <span>${s}</span>
-      </div>`).join('');
-    categoriesHtml+=`
-      <div class="shot-category">
-        <div class="shot-category-header">
-          <div class="shot-category-title">${emoji} ${label}</div>
-          <div class="shot-count">${shots.length} shots</div>
-        </div>
-        <div class="shots-list">${shotsHtml}</div>
-      </div>`;
-  }
-  const html=`
-    ${categoriesHtml}
-    ${tips?`<div class="result-section"><div class="result-section-title">💡 Photographer Tips</div><div class="result-section-body">${formatList(tips)}</div></div>`:''}
-    ${timing?`<div class="result-section" style="background:rgba(255,204,51,0.04);border:1px solid rgba(255,204,51,0.15)"><div class="result-section-title">⏰ Timing Guide</div><div class="result-section-body">${timing}</div></div>`:''}
-  `;
-  document.getElementById('shotResult').innerHTML=html;
-  document.getElementById('shareText').textContent=shareContent;
-  updateCounter();
-  document.getElementById('results').style.display='block';
-  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+
+function copyShotList() {
+  navigator.clipboard.writeText(document.getElementById('shotsText').textContent).then(() => {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  });
 }
-function copyShare(){navigator.clipboard.writeText(shareContent).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Share Text Copy Karo',2000);});}
-function showError(msg){const box=document.getElementById('errorBox');box.textContent=msg;box.style.display='block';}
+
+function shareWhatsApp() {
+  const text = document.getElementById('shotsText').textContent;
+  window.open(`https://wa.me/?text=${encodeURIComponent('Wedding Photography Shot List 📸\n\n' + text.substring(0, 1000) + '\n\n...\n\nSmartShaadi.online')}`, '_blank');
+}
 </script>
 </body>
 </html>
