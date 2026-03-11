@@ -1,13 +1,3 @@
-// ═══════════════════════════════════════════════════
-// Vercel API Route: /api/groq-agent.js
-// SmartShaadi.online — Groq AI Backend
-//
-// SETUP KARO:
-// Vercel Dashboard → Your Project → Settings → Environment Variables
-// Key:   GROQ_API_KEY
-// Value: gsk_xxxxxxxxxxxxxxxxxxxx  (apni Groq key)
-// ═══════════════════════════════════════════════════
-
 export default async function handler(req, res) {
   // CORS headers — sabhi domains se allow
   res.setHeader('Access-Control-Allow-Origin', '*');
