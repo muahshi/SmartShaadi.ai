@@ -271,7 +271,7 @@ VENDOR_RECOMMENDATIONS:
 
 HIDDEN_COSTS: [3-4 costs people forget — ${religion} wedding specific]`;
   try{
-    const res=await fetch('/.netlify/functions/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
     if(!res.ok)throw new Error('Server error '+res.status);
     const data=await res.json();
     stopProgress();
