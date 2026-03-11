@@ -4,75 +4,139 @@
   <!-- MAIN PAGES -->
   <url>
     <loc>https://smartshaadi.online/index.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blogs.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/dashboard.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/contact.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.60</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/privacy-policy.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/terms.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
+  </url>
+
+  <!-- AI TOOLS HUB -->
+  <url>
+    <loc>https://smartshaadi.online/ai-tools.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.99</priority>
+  </url>
+
+  <!-- 9 AI AGENTS -->
+  <url>
+    <loc>https://smartshaadi.online/ai-invitation-writer.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-planning-timeline.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-wedding-theme-generator.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-budget-calculator.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-menu-planner.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-kundali-matching.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-photography-shots.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-guest-manager.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/ai-playlist-generator.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.97</priority>
   </url>
 
   <!-- AI TOOLS & CALCULATORS -->
   <url>
     <loc>https://smartshaadi.online/chatbot.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.98</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/planning-form.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.97</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/wedding-budget-calculator-india-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/destination-wedding-calculator-india-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.94</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/wedding-vendor-negotiation-bot.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.93</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/whatsapp-invite-generator.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
@@ -80,31 +144,31 @@
   <!-- 5 NEW CITY WEDDING COST GUIDES -->
   <url>
     <loc>https://smartshaadi.online/blog-mumbai-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-delhi-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-bangalore-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-hyderabad-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-pune-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
@@ -112,19 +176,19 @@
   <!-- SPECIAL GUIDES -->
   <url>
     <loc>https://smartshaadi.online/nri-wedding-blog.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-zero-waste-wedding-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/jaipur-ai-case-study.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
@@ -132,37 +196,37 @@
   <!-- PRE-WEDDING & FUNCTION GUIDES -->
   <url>
     <loc>https://smartshaadi.online/blog-mehendi-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-dj-music-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-dulhan-makeup-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-tent-shamiana-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-invitation-card-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-honeymoon-budget-india-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
@@ -170,43 +234,43 @@
   <!-- BUDGET ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-budget-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-200-guest-wedding-budget-india-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-5-lakh-wedding.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-saving-tips.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-middle-class-truth.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-guest-cost.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.84</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.89</priority>
   </url>
@@ -214,31 +278,31 @@
   <!-- VENUE & CITY COMPARISON ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-wedding-venue-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.89</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-bhopal-vs-jaipur-wedding-cost.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-indore-vs-bhopal-wedding-cost.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-planner-vs-diy.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-court-vs-traditional.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.84</priority>
   </url>
@@ -246,13 +310,13 @@
   <!-- DESTINATION WEDDING ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-destinations.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.89</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-destination-wedding-cost.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
@@ -260,31 +324,31 @@
   <!-- SHOPPING ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-market.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-delhi-markets.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-chandni-chowk-shopping-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-jewelry-audit-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-jewelry-audit-report-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -292,63 +356,69 @@
   <!-- DECOR & CATERING ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-wedding-decor-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-decoration-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-stage-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-mandap-decoration-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-catering-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-wedding-photography-cost-2026.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
+  </url>
+  <url>
+    <loc>https://smartshaadi.online/blog-photography-2026.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
   </url>
 
   <!-- AI & TECH ARTICLES -->
   <url>
     <loc>https://smartshaadi.online/blog-ai-hacks.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.87</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-ai-wedding-planner.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-ai-wedding-planner-reasons.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://smartshaadi.online/blog-future-ai.html</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.84</priority>
   </url>
