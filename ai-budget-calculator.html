@@ -1,343 +1,348 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Wedding Budget Calculator 2026 India | SmartShaadi</title>
-<meta name="description" content="AI se apni wedding ka complete budget plan banao — city-wise, category-wise breakdown with saving tips. Free tool by SmartShaadi.online">
-<link rel="canonical" href="https://smartshaadi.online/ai-budget-calculator.html">
+<title>AI Budget Calculator — Smart Shaadi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#ffcc33;--purple:#7C4DFF;--pink:#E91E8C;--green:#00C853;--bg:#0f0f1a;--card:rgba(255,255,255,0.04);--border:rgba(255,204,51,0.15);--text:#e8e0f0;--muted:rgba(232,224,240,0.5)}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
-nav{background:rgba(15,15,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
-.logo{font-size:18px;font-weight:900;color:var(--gold);text-decoration:none}
-.nav-back{font-size:13px;color:var(--muted);text-decoration:none}
-.nav-back:hover{color:var(--gold)}
-.nav-links{margin-left:auto;display:flex;gap:16px}
-.nav-links a{font-size:13px;color:var(--muted);text-decoration:none}
-.nav-links a:hover{color:var(--gold)}
-.hero{background:linear-gradient(135deg,#0f0f1a 0%,#0a1a0f 50%,#0f0f1a 100%);border-bottom:1px solid var(--border);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,200,83,0.08) 0%,transparent 60%)}
-.hero-badge{display:inline-block;background:rgba(0,200,83,0.08);border:1px solid rgba(0,200,83,0.25);color:#69F0AE;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:20px;margin-bottom:18px;position:relative}
-.hero h1{font-size:clamp(26px,5vw,46px);font-weight:900;margin-bottom:12px;line-height:1.15;position:relative;background:linear-gradient(135deg,#fff 20%,#69F0AE 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;position:relative}
-.main{max-width:720px;margin:0 auto;padding:32px 18px 80px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:20px;backdrop-filter:blur(8px)}
-.card-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#69F0AE;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.field{margin-bottom:16px}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:7px}
-.field input,.field select{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border .2s}
-.field input:focus,.field select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,200,83,0.1)}
-.field select option{background:#1a1a2e}
-.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.budget-display{text-align:center;padding:18px;background:rgba(0,200,83,0.06);border:1px solid rgba(0,200,83,0.2);border-radius:12px;margin-bottom:16px}
-.budget-amount{font-size:32px;font-weight:900;color:#69F0AE}
-.budget-label{font-size:12px;color:var(--muted);margin-top:4px}
-input[type=range]{width:100%;accent-color:var(--green);height:6px;margin:8px 0}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:8px 16px;border-radius:30px;cursor:pointer;font-size:13px;font-family:inherit;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--muted);transition:all .2s}
-.pill:hover{border-color:var(--green);color:#69F0AE}
-.pill.active{background:rgba(0,200,83,0.12);border-color:var(--green);color:#69F0AE;font-weight:700}
-.gen-btn{width:100%;padding:16px;border-radius:14px;border:none;background:linear-gradient(135deg,#00897B,#00C853);color:#fff;font-size:16px;font-weight:900;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 24px rgba(0,200,83,0.3);letter-spacing:.5px}
-.gen-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,200,83,0.4)}
-.gen-btn:disabled{background:rgba(255,255,255,0.1);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
-.progress-wrap{margin:16px 0;display:none}
-.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#00897B,#00C853,var(--gold));border-radius:3px;transition:width .4s}
-.progress-text{text-align:center;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:1px}
-.error-box{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.25);border-radius:12px;padding:14px 18px;color:#FF8A8A;font-size:13px;display:none;margin-bottom:16px}
-.results{display:none}
-.result-label-top{font-size:11px;letter-spacing:3px;color:#69F0AE;text-transform:uppercase;margin-bottom:16px;margin-top:8px}
-.budget-hero{background:linear-gradient(135deg,rgba(0,200,83,0.1),rgba(0,137,123,0.08));border:1px solid rgba(0,200,83,0.25);border-radius:16px;padding:24px;margin-bottom:16px}
-.total-budget{font-size:28px;font-weight:900;color:#69F0AE;margin-bottom:6px}
-.budget-note{font-size:13px;color:var(--muted);margin-bottom:20px}
-.budget-bar-wrap{margin-bottom:8px}
-.budget-bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
-.budget-bar-label span:last-child{color:#69F0AE;font-weight:700}
-.bbar{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin-bottom:12px}
-.bbar-fill{height:100%;border-radius:4px;transition:width 1s}
-.result-section{background:rgba(0,0,0,0.3);border-radius:12px;padding:16px 18px;margin-bottom:12px}
-.result-section-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.result-section-body{font-size:13px;color:rgba(232,224,240,0.75);line-height:1.8}
-.result-section-body ul{padding-left:0;list-style:none}
-.result-section-body ul li{padding:3px 0;padding-left:16px;position:relative}
-.result-section-body ul li::before{content:'✦';position:absolute;left:0;color:var(--green);font-size:10px;top:5px}
-.copy-btn{padding:7px 16px;border-radius:20px;cursor:pointer;font-size:12px;font-family:inherit;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--muted);transition:all .2s;float:right}
-.copy-btn:hover{background:rgba(80,200,100,0.15);border-color:rgba(80,200,100,0.4);color:#50C864}
-.share-box{background:rgba(255,204,51,0.06);border:1px solid rgba(255,204,51,0.2);border-radius:14px;padding:18px;text-align:center;margin-top:8px}
-.share-box p{font-size:13px;color:var(--muted);margin-bottom:12px}
-.share-text{font-size:13px;color:var(--text);background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 14px;margin-bottom:12px;line-height:1.7;text-align:left}
-.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-link{padding:9px 18px;border-radius:10px;font-size:13px;text-decoration:none;font-weight:600;border:1px solid var(--border);color:var(--gold);transition:all .2s}
-.cta-link:hover{background:rgba(255,204,51,0.1)}
-@media(max-width:560px){.fields-row{grid-template-columns:1fr}.hero{padding:36px 16px 30px}.card{padding:18px 14px}}
+  :root {
+    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
+    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
+    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+
+  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
+  .logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.12) 0%, transparent 60%); }
+  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
+  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
+  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field.full { grid-column: 1/-1; }
+  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
+  select option { background: var(--surface); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* Budget slider */
+  .budget-display { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); text-align: center; margin: 0.5rem 0; }
+  input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: var(--border); border-radius: 3px; outline: none; border: none; padding: 0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; cursor: pointer; }
+
+  /* Priority grid */
+  .priority-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.6rem; }
+  .priority-item { display: flex; align-items: center; gap: 0.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.82rem; }
+  .priority-item select { flex: 1; background: var(--bg); border: none; color: var(--text); padding: 0.2rem; font-size: 0.78rem; }
+
+  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
+  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
+  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .loading { text-align: center; padding: 3rem; display: none; }
+  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
+  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
+  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
+  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+  .budget-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+
+  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="index.html" class="logo">Smart Shaadi 💍</a>
-  <a href="index.html" class="nav-back">← Wapas</a>
-  <div class="nav-links">
-    <a href="ai-wedding-theme-generator.html">🎨 Theme</a>
-    <a href="ai-planning-timeline.html">📅 Timeline</a>
-  </div>
+  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
+  <ul class="nav-links">
+    <li><a href="/ai-planning-timeline.html">Timeline</a></li>
+    <li><a href="/ai-menu-planner.html">Menu</a></li>
+    <li><a href="/ai-guest-manager.html">Guests</a></li>
+  </ul>
+  <span class="nav-badge">✨ AI Powered</span>
 </nav>
+
 <div class="hero">
-  <div class="hero-badge">✦ Free AI Tool ✦</div>
-  <h1>AI Wedding Budget<br>Calculator 2026 💰</h1>
-  <p>Apna budget batao — AI city-wise complete breakdown banayega with saving tips aur vendor estimates</p>
+  <span class="hero-icon">💰</span>
+  <h1>AI Budget Calculator</h1>
+  <p>City-wise realistic wedding budget breakdown — koi hidden cost mat rehne do!</p>
+  <span class="tag">🤖 City-wise Rates · Vendor Tips · Savings Guide</span>
 </div>
-<div class="main">
+
+<div class="container">
   <div class="card">
-    <div class="card-title">💰 Budget Details</div>
-    <div class="budget-display">
-      <div class="budget-amount" id="budgetDisplay">₹15,00,000</div>
-      <div class="budget-label">Total Wedding Budget</div>
-    </div>
-    <div class="field">
-      <label>Budget Adjust Karo: <span id="budgetVal" style="color:#69F0AE">₹15 Lakh</span></label>
-      <input type="range" id="budgetRange" min="300000" max="10000000" step="100000" value="1500000" oninput="updateBudget(this.value)">
-    </div>
-    <div class="fields-row">
-      <div class="field">
-        <label>City *</label>
-        <input type="text" id="city" placeholder="e.g. Bhopal, Delhi, Mumbai">
-      </div>
-      <div class="field">
-        <label>Guest Count</label>
-        <select id="guests">
-          <option value="50-100">50-100 guests</option>
-          <option value="100-200" selected>100-200 guests</option>
-          <option value="200-400">200-400 guests</option>
-          <option value="400-700">400-700 guests</option>
-          <option value="700+">700+ guests (Badi shaadi!)</option>
-        </select>
+    <div class="card-title">💰 Apna Budget Set Karein</div>
+    <div class="field full" style="margin-bottom:1rem;">
+      <label>Total Wedding Budget</label>
+      <div class="budget-display" id="budgetDisplay">₹15,00,000</div>
+      <input type="range" id="budgetSlider" min="300000" max="10000000" step="100000" value="1500000" oninput="updateBudget(this.value)">
+      <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);margin-top:0.3rem;">
+        <span>₹3 Lakh</span><span>₹1 Crore</span>
       </div>
     </div>
-    <div class="fields-row">
+    <div class="form-grid">
       <div class="field">
-        <label>Wedding Duration</label>
-        <select id="duration">
-          <option value="1 day">1 Din (Simple)</option>
-          <option value="2 days" selected>2 Din (Nikah + Reception)</option>
-          <option value="3 days">3 Din (Mehndi + Shaadi + Reception)</option>
-          <option value="4-5 days">4-5 Din (Full Celebration)</option>
+        <label>City / Location</label>
+        <select id="city">
+          <option value="Delhi NCR">Delhi NCR</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Jaipur">Jaipur (Rajasthan)</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Pune">Pune</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Tier 2 City">Tier 2 City (Average)</option>
         </select>
       </div>
       <div class="field">
-        <label>City Tier</label>
-        <select id="tier">
-          <option value="Tier 1 city (Delhi/Mumbai/Bangalore)">🏙️ Tier 1 (Delhi/Mumbai)</option>
-          <option value="Tier 2 city (Bhopal/Jaipur/Lucknow)" selected>🏛️ Tier 2 (Bhopal/Jaipur)</option>
-          <option value="Tier 3 city (smaller towns)">🏘️ Tier 3 (Smaller Towns)</option>
+        <label>Wedding Type</label>
+        <select id="weddingType">
+          <option value="big fat indian wedding">Big Fat Indian Wedding</option>
+          <option value="intimate family only">Intimate Family Only</option>
+          <option value="destination wedding">Destination Wedding</option>
+          <option value="court + small party">Court + Small Party</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Number of Guests</label>
+        <input type="number" id="guests" placeholder="e.g. 300" value="300" />
+      </div>
+      <div class="field">
+        <label>Number of Days</label>
+        <select id="days">
+          <option value="1">1 Day (Single Ceremony)</option>
+          <option value="2">2 Days</option>
+          <option value="3" selected>3 Days (Full Wedding)</option>
+          <option value="4">4+ Days (Grand Wedding)</option>
         </select>
       </div>
     </div>
   </div>
+
   <div class="card">
-    <div class="card-title">✨ Priorities</div>
-    <div class="field">
-      <label style="margin-bottom:10px">Kya zyada important hai? (Multiple select)</label>
-      <div class="pills" id="priorityPills">
-        <div class="pill active" data-val="Photography & Videography">📸 Photography</div>
-        <div class="pill active" data-val="Venue & Decoration">🌸 Decor & Venue</div>
-        <div class="pill" data-val="Food & Catering">🍽️ Food</div>
-        <div class="pill" data-val="Bridal Outfit">👗 Bridal Outfit</div>
-        <div class="pill" data-val="Entertainment & Music">🎵 Entertainment</div>
-        <div class="pill" data-val="Jewellery">💎 Jewellery</div>
-        <div class="pill" data-val="Honeymoon">✈️ Honeymoon</div>
-      </div>
+    <div class="card-title">🎯 Kahan Zyada Kharchna Hai? (Priority Set Karein)</div>
+    <div class="priority-grid">
+      <div class="priority-item">💒 Venue <select id="p1"><option>High Priority</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">🌸 Decor <select id="p2"><option>High Priority</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">🍽️ Catering <select id="p3"><option selected>High Priority</option><option>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">👗 Bridal Outfit <select id="p4"><option>High Priority</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">📸 Photography <select id="p5"><option>High Priority</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">🎵 Music/DJ <select id="p6"><option>High Priority</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">💍 Jewelry <select id="p7"><option selected>High Priority</option><option>Medium</option><option>Low</option></select></div>
+      <div class="priority-item">🚗 Transport <select id="p8"><option>High Priority</option><option>Medium</option><option selected>Low</option></select></div>
     </div>
-    <div class="field" style="margin-bottom:0">
-      <label style="margin-bottom:10px">Religion / Culture</label>
-      <div class="pills" id="religionPills">
-        <div class="pill active" data-val="Hindu">🕉️ Hindu</div>
-        <div class="pill" data-val="Muslim">☪️ Muslim</div>
-        <div class="pill" data-val="Sikh">🙏 Sikh</div>
-        <div class="pill" data-val="Christian">✝️ Christian</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 Additional Details</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Accommodation Needed?</label>
+        <select id="accommodation">
+          <option value="no">No</option>
+          <option value="yes for 20 people">Yes (few relatives)</option>
+          <option value="yes for 50+ people">Yes (many guests)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Honeymoon Budget Include?</label>
+        <select id="honeymoon">
+          <option value="no">No, separate</option>
+          <option value="yes domestic">Yes - Domestic</option>
+          <option value="yes international">Yes - International</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Any specific requirements or concerns?</label>
+        <textarea id="special" placeholder="e.g. we want to save on decor, photography is most important, family is contributing 5 lakh separately, we need to include mehendi artist..."></textarea>
       </div>
     </div>
   </div>
-  <button class="gen-btn" id="genBtn" onclick="generate()">💰 AI Budget Plan Banao</button>
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-text">Aapka personalized budget calculate ho raha hai... 💰</div>
+
+  <button class="btn-generate" onclick="generateBudget()">
+    💰 Generate Detailed Budget Breakdown — AI Se Banao
+  </button>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);margin-top:1rem">AI aapka city-wise budget calculate kar raha hai... 💰</p>
   </div>
-  <div class="error-box" id="errorBox"></div>
-  <div class="results" id="results">
-    <div class="result-label-top">✦ Aapka Complete Budget Plan</div>
-    <div id="budgetResult"></div>
-    <div class="share-box" id="shareBox">
-      <p>💡 Yeh budget plan family ke saath share karo!</p>
-      <div class="share-text" id="shareText"></div>
-      <button class="copy-btn" style="float:none;margin-bottom:12px" onclick="copyShare()">📋 Share Text Copy Karo</button>
-      <div class="cta-links">
-        <a href="ai-planning-timeline.html" class="cta-link">📅 Timeline Banao</a>
-        <a href="ai-wedding-theme-generator.html" class="cta-link">🎨 Theme Choose</a>
-        <a href="ai-invitation-writer.html" class="cta-link">💌 Invitation</a>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-title">💰 Aapka Wedding Budget Plan</span>
+      <div class="action-btns">
+        <button class="btn-action" onclick="copyBudget()">📋 Copy</button>
+        <button class="btn-action" onclick="shareWhatsApp()">📱 Share</button>
+        <button class="btn-action" onclick="generateBudget()">🔄 Recalculate</button>
       </div>
     </div>
+    <div class="budget-content" id="budgetText"></div>
   </div>
 </div>
+
+<div class="toast" id="toast">✅ Copied!</div>
+
 <script>
-function updateBudget(val){
-  const n=parseInt(val);
-  document.getElementById('budgetDisplay').textContent='₹'+n.toLocaleString('en-IN');
-  const l=n/100000;
-  document.getElementById('budgetVal').textContent='₹'+l+' Lakh';
+function updateBudget(val) {
+  const num = parseInt(val);
+  if(num >= 10000000) document.getElementById('budgetDisplay').textContent = '₹' + (num/10000000).toFixed(1) + ' Crore';
+  else if(num >= 100000) document.getElementById('budgetDisplay').textContent = '₹' + (num/100000).toFixed(1) + ' Lakh';
+  else document.getElementById('budgetDisplay').textContent = '₹' + num.toLocaleString('en-IN');
 }
-function setupMultiPills(id){
-  document.querySelectorAll(`#${id} .pill`).forEach(p=>{
-    p.addEventListener('click',()=>p.classList.toggle('active'));
-  });
+
+function getPriorities() {
+  const items = ['Venue', 'Decor', 'Catering', 'Bridal Outfit', 'Photography', 'Music/DJ', 'Jewelry', 'Transport'];
+  const ids = ['p1','p2','p3','p4','p5','p6','p7','p8'];
+  return items.map((item, i) => `${item}: ${document.getElementById(ids[i]).value}`).join(', ');
 }
-function setupSinglePills(id){
-  document.querySelectorAll(`#${id} .pill`).forEach(p=>{
-    p.addEventListener('click',()=>{
-      document.querySelectorAll(`#${id} .pill`).forEach(x=>x.classList.remove('active'));
-      p.classList.add('active');
+
+async function generateBudget() {
+  const budget = document.getElementById('budgetSlider').value;
+  const budgetDisplay = document.getElementById('budgetDisplay').textContent;
+  const city = document.getElementById('city').value;
+  const wtype = document.getElementById('weddingType').value;
+  const guests = document.getElementById('guests').value || '300';
+  const days = document.getElementById('days').value;
+  const accommodation = document.getElementById('accommodation').value;
+  const honeymoon = document.getElementById('honeymoon').value;
+  const special = document.getElementById('special').value;
+  const priorities = getPriorities();
+
+  const btn = document.querySelector('.btn-generate');
+  btn.disabled = true;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('resultCard').style.display = 'none';
+
+  const systemPrompt = `You are an expert Indian wedding financial planner with deep knowledge of wedding costs across different Indian cities. You provide realistic, city-specific budget breakdowns with actual price ranges. You know vendor costs, seasonal pricing, and money-saving tips. Use Hinglish. Be very specific with amounts in Indian Rupees.`;
+
+  const userPrompt = `Create a detailed wedding budget breakdown:
+
+Total Budget: ${budgetDisplay}
+City: ${city}
+Wedding Type: ${wtype}
+Guests: ${guests}
+Duration: ${days} days
+Accommodation: ${accommodation}
+Honeymoon: ${honeymoon}
+Priorities: ${priorities}
+Special Notes: ${special || 'Standard planning'}
+
+Please provide a DETAILED budget breakdown:
+
+1. 💰 BUDGET OVERVIEW
+   - Total budget: ${budgetDisplay}
+   - Per person cost calculation
+   - Budget category summary
+
+2. 📊 CATEGORY-WISE ALLOCATION
+   For each category, provide:
+   - Recommended amount (₹)
+   - % of total budget
+   - ${city}-specific price range
+   - Min (budget option) and Max (premium option)
+
+   Categories:
+   💒 Venue & Hall
+   🌸 Decoration & Floral
+   🍽️ Catering & Food
+   👗 Bridal Outfit & Accessories
+   🤵 Groom Outfit
+   💍 Jewelry
+   📸 Photography & Videography
+   🎵 Music, DJ & Entertainment
+   💄 Makeup & Beauty (full wedding)
+   🚗 Transport (Baraat, Vidai)
+   🖨️ Invitation & Stationery
+   🎁 Gifts & Favors
+   🏨 Accommodation (if needed)
+   🕯️ Puja & Pandit
+   ⚡ Miscellaneous & Emergency (10%)
+
+3. 📅 PAYMENT TIMELINE
+   - When to pay vendors (advance/full)
+   - Month-wise spending plan
+
+4. 💡 ${city.toUpperCase()}-SPECIFIC TIPS
+   - Best vendor areas/markets
+   - Peak season pricing
+   - Negotiation tips
+
+5. 💚 MONEY SAVING TIPS
+   - 5 ways to cut costs without sacrificing quality
+   - DIY options
+   - Off-season booking benefits
+
+6. ⚠️ COMMON BUDGET MISTAKES
+   - What couples often forget to budget
+
+7. 📋 VENDOR CHECKLIST
+   - Who to book and when
+   - Advance payment amounts
+
+Make all amounts realistic for ${city} in 2024-2025!`;
+
+  try {
+    const res = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
     });
-  });
-}
-setupMultiPills('priorityPills');
-setupSinglePills('religionPills');
-let progressInterval;
-function startProgress(){
-  document.getElementById('progressWrap').style.display='block';
-  let val=0;
-  progressInterval=setInterval(()=>{val=Math.min(val+Math.random()*5,88);document.getElementById('progressFill').style.width=val+'%';},400);
-}
-function stopProgress(){
-  clearInterval(progressInterval);
-  document.getElementById('progressFill').style.width='100%';
-  setTimeout(()=>{document.getElementById('progressWrap').style.display='none';document.getElementById('progressFill').style.width='0%';},400);
-}
-let shareContent='';
-async function generate(){
-  const city=document.getElementById('city').value.trim();
-  if(!city){showError('⚠️ City zaroori hai!');return;}
-  const budget=document.getElementById('budgetRange').value;
-  const guests=document.getElementById('guests').value;
-  const duration=document.getElementById('duration').value;
-  const tier=document.getElementById('tier').value;
-  const priorities=[...document.querySelectorAll('#priorityPills .pill.active')].map(p=>p.dataset.val).join(', ')||'Photography, Decor';
-  const religion=document.querySelector('#religionPills .pill.active')?.dataset.val||'Hindu';
-  const budgetFormatted='₹'+parseInt(budget).toLocaleString('en-IN');
-  document.getElementById('genBtn').disabled=true;
-  document.getElementById('errorBox').style.display='none';
-  document.getElementById('results').style.display='none';
-  startProgress();
-  const systemPrompt=`You are India's top wedding budget planning expert. Create detailed, realistic, city-specific wedding budget breakdowns. Use real 2026 vendor prices for Indian cities. Be specific and practical.`;
-  const userPrompt=`Create a complete wedding budget plan:
-- City: ${city}
-- Total Budget: ${budgetFormatted}
-- Guests: ${guests}
-- Duration: ${duration}
-- City Tier: ${tier}
-- Priorities: ${priorities}
-- Religion: ${religion}
-
-Return EXACTLY in this format:
-
-SUMMARY: [2 lines about this budget's potential in ${city}]
-
-BREAKDOWN:
-Venue & Decoration|25|[specific price range for ${city}]|[1 line tip]
-Catering & Food|30|[specific price range]|[1 line tip]
-Photography & Video|10|[specific price range]|[1 line tip]
-Bridal Outfit & Grooming|8|[specific price range]|[1 line tip]
-Jewellery|7|[specific price range]|[1 line tip]
-Music & Entertainment|4|[specific price range]|[1 line tip]
-Invitation & Stationery|2|[specific price range]|[1 line tip]
-Transport & Logistics|3|[specific price range]|[1 line tip]
-Pandit/Qazi & Rituals|3|[specific price range]|[1 line tip]
-Miscellaneous & Buffer|8|[specific price range]|[1 line tip]
-
-PRIORITY_ADJUSTMENT: [How to adjust based on priorities: ${priorities}]
-
-TOP_SAVING_TIPS:
-- [Tip 1 specific to ${city}]
-- [Tip 2]
-- [Tip 3]
-- [Tip 4]
-- [Tip 5]
-
-VENDOR_RECOMMENDATIONS:
-- [Category]: [What to look for in ${city}, price range]
-- [Category]: [What to look for, price range]
-- [Category]: [What to look for, price range]
-
-HIDDEN_COSTS: [3-4 costs people forget — ${religion} wedding specific]`;
-  try{
-    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:[{role:'user',content:userPrompt}]})});
-    if(!res.ok)throw new Error('Server error '+res.status);
-    const data=await res.json();
-    stopProgress();
-    const textContent = data.choices[0].message.content;
-renderBudget(textContent, city, budgetFormatted, guests);
-  }catch(err){
-    stopProgress();
-    showError('⚠️ Kuch gadbad hui. Please dobara try karein. ('+err.message+')');
-  }finally{
-    document.getElementById('genBtn').disabled=false;
+    const data = await res.json();
+    const text = data.choices[0].message.content;
+    document.getElementById('budgetText').textContent = text;
+    document.getElementById('resultCard').style.display = 'block';
+    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
+  } catch(e) {
+    alert('Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    document.getElementById('loading').style.display = 'none';
   }
 }
-const barColors=['#00C853','#00BCD4','#7C4DFF','#E91E8C','#FF6F00','#FF5722','#9C27B0','#2196F3','#4CAF50','#607D8B'];
-function extractSection(content,key){
-  const regex=new RegExp(`${key}:([\\s\\S]*?)(?=\\n[A-Z_]+:|$)`,'i');
-  const match=content.match(regex);
-  return match?match[1].trim():'';
+
+function copyBudget() {
+  navigator.clipboard.writeText(document.getElementById('budgetText').textContent).then(() => {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  });
 }
-function formatList(text){
-  if(!text)return'';
-  const lines=text.split('\n').map(l=>l.replace(/^[-•*]\s*/,'').trim()).filter(l=>l.length>2);
-  return'<ul>'+lines.map(l=>`<li>${l}</li>`).join('')+'</ul>';
+
+function shareWhatsApp() {
+  const text = document.getElementById('budgetText').textContent;
+  window.open(`https://wa.me/?text=${encodeURIComponent('Wedding Budget Plan 💰\n\n' + text.substring(0, 900) + '\n\nSmartShaadi.online')}`, '_blank');
 }
-function renderBudget(content,city,budgetFormatted,guests){
-  const summary=extractSection(content,'SUMMARY')||'';
-  const breakdownRaw=extractSection(content,'BREAKDOWN')||'';
-  const priorityAdj=extractSection(content,'PRIORITY_ADJUSTMENT')||'';
-  const savingTips=extractSection(content,'TOP_SAVING_TIPS')||'';
-  const vendors=extractSection(content,'VENDOR_RECOMMENDATIONS')||'';
-  const hidden=extractSection(content,'HIDDEN_COSTS')||'';
-  const lines=breakdownRaw.split('\n').map(l=>l.trim()).filter(l=>l.includes('|'));
-  const bars=lines.map((l,i)=>{
-    const parts=l.split('|');
-    const name=parts[0]?.trim()||'Item';
-    const pct=parseInt(parts[1])||5;
-    const range=parts[2]?.trim()||'';
-    const tip=parts[3]?.trim()||'';
-    return`<div class="budget-bar-wrap">
-      <div class="budget-bar-label"><span>${name}</span><span>${pct}% — ${range}</span></div>
-      <div class="bbar"><div class="bbar-fill" style="width:${pct}%;background:${barColors[i%barColors.length]}"></div></div>
-      ${tip?`<div style="font-size:11px;color:var(--muted);margin-bottom:4px">💡 ${tip}</div>`:''}
-    </div>`;
-  }).join('');
-  shareContent=`💰 SmartShaadi.online ne meri ${city} wedding ka budget plan banaya!\n\nBudget: ${budgetFormatted} | Guests: ${guests}\n\nAap bhi free AI budget calculator try karo:\n👉 smartshaadi.online/ai-budget-calculator.html`;
-  const html=`
-    <div class="budget-hero">
-      <button class="copy-btn" onclick="copyBudget()">📋 Copy</button>
-      <div class="total-budget">${budgetFormatted}</div>
-      <div class="budget-note">📍 ${city} | 👥 ${guests}</div>
-      <div style="font-size:13px;color:rgba(232,224,240,0.75);line-height:1.7;margin-bottom:20px">${summary}</div>
-      ${bars}
-    </div>
-    ${priorityAdj?`<div class="result-section"><div class="result-section-title">🎯 Priority-Based Adjustment</div><div class="result-section-body">${priorityAdj}</div></div>`:''}
-    ${savingTips?`<div class="result-section"><div class="result-section-title">💡 Top Saving Tips for ${city}</div><div class="result-section-body">${formatList(savingTips)}</div></div>`:''}
-    ${vendors?`<div class="result-section"><div class="result-section-title">🏪 Vendor Guide</div><div class="result-section-body">${formatList(vendors)}</div></div>`:''}
-    ${hidden?`<div class="result-section" style="border:1px solid rgba(255,100,100,0.2);background:rgba(255,50,50,0.04)"><div class="result-section-title" style="color:#FF8A8A">⚠️ Hidden Costs — Dhyan Rakhna!</div><div class="result-section-body">${hidden}</div></div>`:''}
-  `;
-  document.getElementById('budgetResult').innerHTML=html;
-  document.getElementById('shareText').textContent=shareContent;
-  document.getElementById('results').style.display='block';
-  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(()=>{document.querySelectorAll('.bbar-fill').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,50);});},100);
-}
-function copyBudget(){const text=document.getElementById('budgetResult').innerText;navigator.clipboard.writeText(text).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Copy',2000);});}
-function copyShare(){navigator.clipboard.writeText(shareContent).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Share Text Copy Karo',2000);});}
-function showError(msg){const box=document.getElementById('errorBox');box.textContent=msg;box.style.display='block';}
 </script>
 </body>
 </html>
