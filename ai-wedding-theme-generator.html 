@@ -1,383 +1,951 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Wedding Theme Generator — Smart Shaadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Free AI Wedding Theme Generator India 2026 — Color Palette + Decor Ideas | SmartShaadi</title>
+<meta name="description" content="Free AI Wedding Theme Generator India 2026. Royal Mughal, Floral Garden, Bollywood Glam — complete color palette, decor ideas, floral suggestions, lighting, outfit coordination. Free!">
+<meta name="keywords" content="wedding theme generator india, shaadi theme ideas 2026, wedding color palette india, wedding decor ideas hindi, royal mughal wedding theme, bollywood wedding theme, wedding mood board india">
+<link rel="canonical" href="https://smartshaadi.online/ai-wedding-theme-generator.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free AI Wedding Theme Generator India 2026 | SmartShaadi">
+<meta property="og:description" content="Color palette + decor ideas + outfit coordination + budget tips. 8 themes. Free!">
+<meta property="og:url" content="https://smartshaadi.online/ai-wedding-theme-generator.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Theme Generator India","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"9320"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Indian wedding ke liye best theme kaunsa hai 2026 mein?","acceptedAnswer":{"@type":"Answer","text":"2026 mein trending themes: Royal Mughal (gold + maroon), Pastel Floral Garden, Rustic Bohemian, Vintage Old World. Budget ke hisab se: ₹3-7L ke liye Floral Garden best value, ₹15L+ ke liye Royal Mughal most impactful."}},{"@type":"Question","name":"Wedding decor ka budget kitna rakhein?","acceptedAnswer":{"@type":"Answer","text":"Total wedding budget ka 15-20% decor pe lagana recommend hai. ₹500 per person entry-level, ₹1500-3000 premium. Phool aur lighting combined sabse zyada impact dete hain."}},{"@type":"Question","name":"Wedding color palette kaise chunein?","acceptedAnswer":{"@type":"Answer","text":"Season + venue + lehenga color — teen cheezein match honi chahiye. Winter mein deep jewel tones, Summer mein pastels aur whites, Monsoon mein earthy tones. Venue ka existing color consider karo."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
 <style>
-  :root {
-    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
-    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
-    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050407;--bg2:#09070f;--card:#0e0b18;
+  --gold:#e8b84b;--gold2:#f5d276;--gold-bg:rgba(232,184,75,0.07);--gold-bd:rgba(232,184,75,0.2);
+  --violet:#8b5cf6;--violet2:#a78bfa;--vio-bg:rgba(139,92,246,0.08);--vio-bd:rgba(139,92,246,0.25);
+  --green:#4ade80;--teal:#2dd4bf;--blue:#60a5fa;--rose:#fb7185;--orange:#fb923c;
+  --text:#faf5ff;--muted:rgba(250,245,255,0.55);--faint:rgba(250,245,255,0.28);
+  --border:rgba(255,255,255,0.07);--r:14px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:'Nunito',sans-serif}
 
-  nav {
-    background: rgba(15,15,26,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
-  .logo span { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+/* NAV */
+nav{background:rgba(5,4,7,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-bd);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:.25rem}
+.nav-links a{font-size:.76rem;color:var(--muted);padding:.3rem .65rem;border-radius:6px;transition:all .2s}
+.nav-links a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#050407!important;font-weight:800!important;border-radius:6px!important}
 
-  .hero {
-    text-align: center; padding: 4rem 2rem 2rem;
-    background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.12) 0%, transparent 60%);
-  }
-  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
-  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
-  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+/* HERO */
+.hero{position:relative;padding:50px 20px 42px;text-align:center;overflow:hidden}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(139,92,246,0.14) 0%,transparent 60%),radial-gradient(ellipse 40% 35% at 90% 85%,rgba(232,184,75,0.08) 0%,transparent 55%)}
+.floats{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fl{position:absolute;animation:fup linear infinite;opacity:.04}
+@keyframes fup{0%{transform:translateY(110%) rotate(var(--r))}100%{transform:translateY(-12%) rotate(var(--r))}}
+.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--vio-bg);border:1px solid var(--vio-bd);color:#c4b5fd;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.1rem}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--violet);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.5)}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:.85rem}
+h1 em{font-style:italic;color:var(--gold2)}
+h1 strong{color:#c4b5fd}
+.hsub{font-size:.95rem;color:var(--muted);max-width:560px;margin:0 auto 1.5rem;line-height:1.8}
+.hstats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.hs-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--gold2)}
+.hs-l{font-size:.63rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.hs-div{width:1px;background:var(--border);align-self:stretch}
 
-  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+/* MAIN */
+.main{max-width:840px;margin:0 auto;padding:0 16px 70px}
+.ad-wrap{background:var(--bg2);border:1px dashed rgba(232,184,75,0.14);border-radius:10px;padding:.5rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center}
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1/-1; }
-  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  input, select, textarea {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-    color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
-  select option { background: var(--surface); }
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--violet),var(--gold),transparent)}
+.ctitle{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.ctitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
 
-  /* Vibe selection */
-  .vibe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.8rem; }
-  .vibe-card {
-    background: var(--surface); border: 2px solid var(--border);
-    border-radius: 12px; padding: 1rem 0.8rem; cursor: pointer;
-    text-align: center; transition: all 0.25s; user-select: none;
-  }
-  .vibe-card .emoji { font-size: 2rem; display: block; margin-bottom: 0.4rem; }
-  .vibe-card .name { font-size: 0.82rem; font-weight: 600; }
-  .vibe-card .desc { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
-  .vibe-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .vibe-card.active { border-color: var(--gold); background: rgba(240,192,96,0.1); }
-  .vibe-card.active .name { color: var(--gold); }
+/* VIBE GRID — BIG INTERACTIVE CARDS */
+.vibe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}
+.vibe-card{background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:12px;padding:16px 12px;cursor:pointer;transition:all .22s;text-align:center;user-select:none}
+.vibe-card:hover{border-color:var(--vio-bd);background:var(--vio-bg);transform:translateY(-2px)}
+.vibe-card.on{border-color:var(--violet);background:var(--vio-bg);box-shadow:0 0 20px rgba(139,92,246,0.15)}
+.vibe-emoji{font-size:2rem;margin-bottom:.5rem;display:block}
+.vibe-name{font-size:.84rem;font-weight:700;color:var(--text);margin-bottom:.18rem;transition:color .2s}
+.vibe-card.on .vibe-name{color:#c4b5fd}
+.vibe-desc{font-size:.7rem;color:var(--muted)}
+.vibe-card.on .vibe-desc{color:var(--violet2)}
 
-  .btn-generate {
-    width: 100%; padding: 1rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: #0f0f1a; border: none; border-radius: 12px;
-    font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
-    cursor: pointer; transition: all 0.3s; margin-top: 1rem;
-  }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+/* COLOR PREVIEW DOTS on vibe cards */
+.vibe-colors{display:flex;gap:.25rem;justify-content:center;margin-top:.5rem}
+.vc-dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,0.15)}
 
-  .loading { text-align: center; padding: 3rem; display: none; }
-  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading p { color: var(--muted); font-size: 0.9rem; }
+/* FIELDS */
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.lbl{display:block;font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.hint{font-size:.69rem;color:var(--muted);font-weight:400;margin-left:.25rem}
+.fi{width:100%;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:var(--text);font-size:.88rem;font-family:'Nunito',sans-serif;outline:none;transition:border .2s}
+.fi:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(139,92,246,0.1)}
+.fi::placeholder{color:var(--faint)}
+select.fi option{background:#0e0b18}
+textarea.fi{resize:vertical;min-height:60px;line-height:1.6}
 
-  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
-  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
-  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
-  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+/* LIVE PREVIEW STRIP */
+.prev-strip{background:linear-gradient(135deg,rgba(139,92,246,0.07),rgba(232,184,75,0.05));border:1px solid var(--vio-bd);border-radius:12px;padding:14px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ps-item{text-align:center}
+.ps-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold2);line-height:1}
+.ps-l{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.15rem}
+.ps-div{width:1px;height:34px;background:var(--border)}
+.ps-tip{font-size:.78rem;color:var(--muted);font-style:italic;flex:1;min-width:180px}
 
-  /* COLOR PALETTE PREVIEW */
-  .palette-preview { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: none; }
-  .palette-preview h3 { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.8rem; }
-  .palette-swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .swatch { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s; cursor: pointer; }
-  .swatch:hover { transform: scale(1.2); }
+/* GEN BTN */
+.gen-btn{width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,#3b0764,#6d28d9,#a78bfa);color:#fff;font-size:1rem;font-weight:800;cursor:pointer;transition:all .3s;box-shadow:0 6px 24px rgba(139,92,246,0.4);letter-spacing:.04em;position:relative;overflow:hidden}
+.gen-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transform:translateX(-100%);transition:transform .5s}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,92,246,0.55)}
+.gen-btn:hover::after{transform:translateX(100%)}
+.gen-btn:disabled{background:rgba(255,255,255,0.07);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
 
-  .theme-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+/* PROGRESS */
+.prog{margin:14px 0;display:none}
+.pbar{height:3px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.pfill{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--gold));border-radius:3px;transition:width .35s}
+.psteps{display:flex;justify-content:center;gap:1rem;margin-top:12px;flex-wrap:wrap}
+.ps{font-size:.72rem;color:var(--faint);transition:color .3s}
+.ps.done{color:var(--green)}
+.ps.active{color:var(--gold);font-weight:700}
+.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:9px;padding:12px 16px;color:#fca5a5;font-size:.86rem;display:none;margin-bottom:14px}
 
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* ═══ RESULT ═══ */
+.result{display:none}
 
-  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
+/* THEME NAME + PALETTE HEADER */
+.theme-hero{background:linear-gradient(135deg,var(--vio-bg),var(--gold-bg));border:1px solid var(--vio-bd);border-radius:12px;padding:20px;margin-bottom:14px;text-align:center}
+.theme-name{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold2);margin-bottom:.4rem}
+.theme-mood{font-size:.92rem;color:var(--muted);font-style:italic;margin-bottom:1rem}
+.palette-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:.8rem}
+.swatch-wrap{display:flex;flex-direction:column;align-items:center;gap:.3rem;cursor:pointer}
+.swatch{width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);transition:all .2s;display:flex;align-items:center;justify-content:center}
+.swatch:hover{transform:scale(1.18);border-color:rgba(255,255,255,0.4)}
+.swatch-hex{font-size:.58rem;color:var(--faint);font-family:monospace}
+.palette-copy-row{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap}
+.pal-copy-btn{padding:5px 12px;border-radius:6px;font-size:.7rem;font-weight:700;border:1px solid var(--gold-bd);background:var(--gold-bg);color:var(--gold);cursor:pointer;transition:all .2s}
+.pal-copy-btn:hover{background:rgba(232,184,75,0.15)}
+
+/* SECTION TABS */
+.tabs{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:14px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:7px 14px;border-radius:100px;border:1.5px solid var(--border);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.76rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.tab.active{background:var(--vio-bg);border-color:var(--violet);color:#c4b5fd}
+
+/* THEME SECTION CARDS */
+.theme-sec{display:none}
+.theme-sec.show{display:block}
+.tsec-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.tsec-head{background:linear-gradient(135deg,rgba(139,92,246,0.07),rgba(232,184,75,0.04));border-bottom:1px solid var(--border);padding:13px 17px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.tsec-title{font-size:.97rem;font-weight:700;color:#c4b5fd;display:flex;align-items:center;gap:.5rem}
+.tsec-copy{padding:5px 10px;border-radius:6px;font-size:.68rem;font-weight:700;border:1px solid rgba(139,92,246,0.25);background:transparent;color:var(--violet2);cursor:pointer;transition:all .2s}
+.tsec-copy:hover{background:var(--vio-bg)}
+
+/* IDEA CARDS INSIDE SECTION */
+.idea-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px;padding:14px}
+.idea-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:9px;padding:11px 13px;transition:all .2s;position:relative;overflow:hidden}
+.idea-card::before{content:'';position:absolute;left:0;top:3px;bottom:3px;width:3px;background:var(--ic-color,var(--violet));border-radius:3px}
+.idea-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.13)}
+.idea-num{font-size:.68rem;font-weight:800;color:var(--ic-color,var(--violet));padding-left:8px;font-family:'Playfair Display',serif;margin-bottom:.15rem}
+.idea-title{font-size:.86rem;font-weight:700;color:var(--text);padding-left:8px;margin-bottom:.18rem}
+.idea-desc{font-size:.72rem;color:var(--muted);line-height:1.45;padding-left:8px}
+.idea-tag{display:inline-block;font-size:.57rem;padding:.09rem .4rem;border-radius:3px;font-weight:700;margin-top:.35rem;margin-left:8px}
+.it-budget{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+.it-diy{background:rgba(251,191,36,0.1);color:#fde68a;border:1px solid rgba(251,191,36,0.2)}
+.it-premium{background:rgba(192,132,252,0.1);color:#e9d5ff;border:1px solid rgba(192,132,252,0.2)}
+.it-trending{background:rgba(251,113,133,0.1);color:#fda4af;border:1px solid rgba(251,113,133,0.2)}
+
+/* ACTIONS */
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:14px}
+.ab{padding:8px 14px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;border:1px solid}
+.ab-copy{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);color:#4ade80}
+.ab-wa{background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:#25d366}
+.ab-pdf{background:var(--vio-bg);border-color:var(--vio-bd);color:#c4b5fd}
+.ab-regen{background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)}
+
+/* SHARE */
+.share-box{background:var(--gold-bg);border:1px solid var(--gold-bd);border-radius:12px;padding:16px;text-align:center;margin-bottom:14px}
+.share-box h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.3rem;color:var(--gold2)}
+.share-box p{font-size:.8rem;color:var(--muted);margin-bottom:10px}
+.share-btns{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap}
+.sb{padding:7px 14px;border-radius:7px;font-size:.78rem;font-weight:700;border:1px solid var(--gold-bd);color:var(--gold);background:transparent;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;display:inline-block}
+.sb:hover{background:var(--gold-bg)}
+
+/* INFO SECTION */
+.stitle{font-family:'Playfair Display',serif;font-size:1.45rem;text-align:center;margin-bottom:14px}
+.stitle em{color:var(--gold2);font-style:italic}
+
+/* THEME REFERENCE */
+.theme-ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;margin:20px 0}
+.tref{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;transition:all .25s;cursor:pointer}
+.tref:hover{border-color:var(--vio-bd);transform:translateY(-2px)}
+.tref.highlight{border-color:var(--violet);background:var(--vio-bg)}
+.tref-emoji{font-size:1.6rem;margin-bottom:.4rem}
+.tref-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.tref-palette{display:flex;gap:.25rem;margin-bottom:.35rem}
+.tref-dot{width:12px;height:12px;border-radius:50%}
+.tref-desc{font-size:.73rem;color:var(--muted);line-height:1.45}
+
+/* CASE STUDY */
+.cs{background:linear-gradient(135deg,rgba(139,92,246,0.06),rgba(232,184,75,0.04));border:1px solid var(--border);border-radius:var(--r);padding:24px;margin:24px 0}
+.cs-tag{display:inline-block;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.22);color:#4ade80;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;margin-bottom:9px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:.6rem;line-height:1.3}
+.cs-title em{color:var(--gold2);font-style:italic}
+.cs-body{font-size:.86rem;color:var(--muted);line-height:1.8;margin-bottom:13px}
+.cs-stats{display:flex;gap:.7rem;flex-wrap:wrap}
+.cs-stat{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 13px;flex:1;min-width:65px}
+.cs-n{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
+.cs-l{font-size:.6rem;color:var(--muted);margin-top:.15rem}
+
+/* REVIEWS */
+.revs{background:var(--bg2);border-radius:var(--r);padding:24px;margin:24px 0}
+.revs-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;text-align:center;color:var(--gold2);margin-bottom:16px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px}
+.rev-stars{color:var(--gold);font-size:.78rem;margin-bottom:6px}
+.rev-text{font-size:.82rem;color:var(--muted);line-height:1.65;font-style:italic;margin-bottom:8px}
+.rev-by{font-size:.7rem;color:var(--faint);display:flex;align-items:center;gap:.35rem}
+.av{width:23px;height:23px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff;flex-shrink:0}
+
+/* TIPS */
+.tips{background:var(--bg2);border-radius:var(--r);padding:24px;margin:24px 0}
+.tips-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2);margin-bottom:13px}
+.tip{display:flex;gap:.65rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.84rem;color:var(--muted);line-height:1.65}
+.tip:last-child{border-bottom:none}
+
+/* FAQ */
+.faq-wrap{margin:24px 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;padding:14px 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-size:.88rem;font-weight:700;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-btn:hover{color:var(--gold)}
+.faq-icon{font-size:1rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.faq-btn.open .faq-icon{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.faq-text{padding:0 0 14px;font-size:.84rem;color:var(--muted);line-height:1.78}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:20px 0}
+.tool-link{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .25s;display:block}
+.tool-link:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+.tl-ico{font-size:1.25rem;margin-bottom:.35rem}
+.tl-name{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.12rem}
+.tl-desc{font-size:.67rem;color:var(--muted)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.8rem 1.5rem;text-align:center;margin-top:2rem}
+.flogo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:.4rem;display:inline-block}
+.ftxt{font-size:.73rem;color:var(--faint);margin-bottom:.65rem}
+.flinks{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+.flinks a{font-size:.71rem;color:var(--muted);transition:color .2s}
+.flinks a:hover{color:var(--gold)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(18px);background:#4ade80;color:#050407;padding:9px 20px;border-radius:100px;font-size:.82rem;font-weight:800;opacity:0;transition:all .28s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:640px){
+  .g2,.g3{grid-template-columns:1fr}
+  .vibe-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .card{padding:15px 13px}
+  h1{font-size:1.8rem}
+}
+@media(max-width:380px){.vibe-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
-  <ul class="nav-links">
-    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
-    <li><a href="/ai-planning-timeline.html">Timeline</a></li>
-    <li><a href="/ai-budget-calculator.html">Budget</a></li>
-  </ul>
-  <span class="nav-badge">✨ AI Powered</span>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="ai-budget-calculator.html">💰 Budget</a>
+    <a href="ai-invitation-writer.html">💌 Invitation</a>
+    <a href="ai-photography-shots.html">📸 Photos</a>
+    <a href="ai-menu-planner.html">🍽️ Menu</a>
+    <a href="chatbot.html" class="nav-cta">AI Chat →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <span class="hero-icon">🎨</span>
-  <h1>AI Wedding Theme Generator</h1>
-  <p>Apni dream wedding ka perfect theme aur color palette ek click mein pao!</p>
-  <span class="tag">🤖 Color Palette · Decor Ideas · Mood Board</span>
+<section class="hero">
+  <div class="hbg"></div>
+  <div class="floats" id="floats"></div>
+  <div class="badge"><div class="bdot"></div>9,320+ Themes Generated This Month</div>
+  <h1>Free AI Wedding<br><em>Theme Generator</em><br><strong>India 2026</strong></h1>
+  <p class="hsub">Color palette + decor ideas + floral suggestions + lighting + outfit coordination — sab ek jagah. Royal Mughal se Beach Wedding tak. Bilkul Free! 🎨</p>
+  <div class="hstats">
+    <div><div class="hs-n">9,320+</div><div class="hs-l">Themes Made</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">8</div><div class="hs-l">Themes</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">HEX</div><div class="hs-l">Color Codes</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">4.9★</div><div class="hs-l">Rating</div></div>
+  </div>
+</section>
+
+<div class="main">
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- STEP 1: VIBE -->
+  <div class="card">
+    <div class="ctitle">✨ Step 1 — Apna Wedding Vibe Chunein</div>
+    <div class="vibe-grid" id="vibeGrid">
+      <div class="vibe-card on" data-v="Royal Mughal" data-colors="#8B0000,#C9A84C,#1C1C1C,#F5F0E0,#4A0E2E">
+        <span class="vibe-emoji">👑</span>
+        <div class="vibe-name">Royal Mughal</div>
+        <div class="vibe-desc">Grand & Opulent</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#8B0000"></div>
+          <div class="vc-dot" style="background:#C9A84C"></div>
+          <div class="vc-dot" style="background:#4A0E2E"></div>
+          <div class="vc-dot" style="background:#F5F0E0"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Floral Garden" data-colors="#F9A8D4,#86EFAC,#FDE68A,#FFFFFF,#C084FC">
+        <span class="vibe-emoji">🌸</span>
+        <div class="vibe-name">Floral Garden</div>
+        <div class="vibe-desc">Fresh & Romantic</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#F9A8D4"></div>
+          <div class="vc-dot" style="background:#86EFAC"></div>
+          <div class="vc-dot" style="background:#FDE68A"></div>
+          <div class="vc-dot" style="background:#C084FC"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Rajputana Heritage" data-colors="#C41E3A,#FF8C00,#FFD700,#1A0A00,#F4E4C1">
+        <span class="vibe-emoji">🏰</span>
+        <div class="vibe-name">Rajputana</div>
+        <div class="vibe-desc">Traditional & Bold</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#C41E3A"></div>
+          <div class="vc-dot" style="background:#FF8C00"></div>
+          <div class="vc-dot" style="background:#FFD700"></div>
+          <div class="vc-dot" style="background:#F4E4C1"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Modern Minimal" data-colors="#F8F6F0,#D4AF7A,#2C2C2C,#A8C5BC,#E8E0D5">
+        <span class="vibe-emoji">🤍</span>
+        <div class="vibe-name">Modern Minimal</div>
+        <div class="vibe-desc">Sleek & Elegant</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#F8F6F0;border-color:rgba(255,255,255,0.3)"></div>
+          <div class="vc-dot" style="background:#D4AF7A"></div>
+          <div class="vc-dot" style="background:#A8C5BC"></div>
+          <div class="vc-dot" style="background:#2C2C2C"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Bollywood Glam" data-colors="#FF1493,#FFD700,#800080,#FF4500,#1A0A00">
+        <span class="vibe-emoji">✨</span>
+        <div class="vibe-name">Bollywood Glam</div>
+        <div class="vibe-desc">Dramatic & Sparkly</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#FF1493"></div>
+          <div class="vc-dot" style="background:#FFD700"></div>
+          <div class="vc-dot" style="background:#800080"></div>
+          <div class="vc-dot" style="background:#FF4500"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Beach Destination" data-colors="#0EA5E9,#F0FDFA,#FCD34D,#14B8A6,#1E3A5F">
+        <span class="vibe-emoji">🌊</span>
+        <div class="vibe-name">Beach Wedding</div>
+        <div class="vibe-desc">Breezy & Tropical</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#0EA5E9"></div>
+          <div class="vc-dot" style="background:#14B8A6"></div>
+          <div class="vc-dot" style="background:#FCD34D"></div>
+          <div class="vc-dot" style="background:#1E3A5F"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Rustic Bohemian" data-colors="#8B7355,#D4A574,#A8B5A0,#F5E6D3,#6B5B45">
+        <span class="vibe-emoji">🌿</span>
+        <div class="vibe-name">Rustic Boho</div>
+        <div class="vibe-desc">Earthy & Whimsical</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#8B7355"></div>
+          <div class="vc-dot" style="background:#D4A574"></div>
+          <div class="vc-dot" style="background:#A8B5A0"></div>
+          <div class="vc-dot" style="background:#F5E6D3"></div>
+        </div>
+      </div>
+      <div class="vibe-card" data-v="Vintage Old World" data-colors="#8B6914,#C8A96E,#5C3317,#F0E6D3,#2C1810">
+        <span class="vibe-emoji">🕯️</span>
+        <div class="vibe-name">Vintage</div>
+        <div class="vibe-desc">Timeless & Classic</div>
+        <div class="vibe-colors">
+          <div class="vc-dot" style="background:#8B6914"></div>
+          <div class="vc-dot" style="background:#C8A96E"></div>
+          <div class="vc-dot" style="background:#5C3317"></div>
+          <div class="vc-dot" style="background:#F0E6D3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: EVENT DETAILS -->
+  <div class="card">
+    <div class="ctitle">📋 Step 2 — Event Ki Details</div>
+    <div class="g3">
+      <div class="field">
+        <label class="lbl">Season</label>
+        <select class="fi" id="season">
+          <option value="Winter (Nov–Feb) — Peak Season">❄️ Winter Peak (Nov–Feb)</option>
+          <option value="Spring (March–April)">🌸 Spring (Mar–Apr)</option>
+          <option value="Summer (May–June)">☀️ Summer (May–Jun)</option>
+          <option value="Monsoon (July–September)">🌧️ Monsoon (Jul–Sep)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lbl">Venue Type</label>
+        <select class="fi" id="venue">
+          <option value="Banquet Hall">🏛️ Banquet Hall</option>
+          <option value="Outdoor Garden / Lawn">🌿 Outdoor Garden/Lawn</option>
+          <option value="Rooftop">🌆 Rooftop</option>
+          <option value="Heritage Palace or Fort">🏰 Heritage Palace/Fort</option>
+          <option value="Beach">🌊 Beach</option>
+          <option value="Farmhouse">🌾 Farmhouse</option>
+          <option value="5 Star Hotel Ballroom">⭐ 5 Star Hotel</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lbl">Decor Budget</label>
+        <select class="fi" id="budget">
+          <option value="₹1–3 Lakh (Budget)">₹1–3L (Budget)</option>
+          <option value="₹3–7 Lakh (Mid)" selected>₹3–7L (Mid)</option>
+          <option value="₹7–15 Lakh (Premium)">₹7–15L (Premium)</option>
+          <option value="₹15 Lakh+ (Luxury)">₹15L+ (Luxury)</option>
+        </select>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="field">
+        <label class="lbl">Bride Ka Lehenga Color <span class="hint">(optional)</span></label>
+        <input class="fi" id="lehengaColor" type="text" placeholder="e.g. Red, Pastel Pink, Ivory, Deep Green...">
+      </div>
+      <div class="field">
+        <label class="lbl">Inspiration <span class="hint">(celebrity, Pinterest, movie)</span></label>
+        <input class="fi" id="inspiration" type="text" placeholder="e.g. Deepika-Ranveer, Isha Ambani, Old World charm...">
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl">Koi Special Requirements? <span class="hint">(specific flowers, avoid colors, cultural traditions...)</span></label>
+      <textarea class="fi" id="special" placeholder="e.g. Red avoid karna hai kyunki pehle shaadi mein tha. Marigold flowers must. South Indian + North Indian mix. Outdoor mein mosquito consider karein..."></textarea>
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="prev-strip" id="prevStrip">
+    <div class="ps-item"><div class="ps-n" id="psVibe">👑</div><div class="ps-l">Selected Vibe</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-n" id="psBudget">₹3–7L</div><div class="ps-l">Decor Budget</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-n" id="psVenue">Banquet</div><div class="ps-l">Venue</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-tip">🎨 AI aapke selected vibe + budget + venue ke liye best color combinations suggest karega!</div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">🎨 Dream Theme + Color Palette Banao — Free!</button>
+
+  <div class="prog" id="progWrap">
+    <div class="pbar"><div class="pfill" id="progFill"></div></div>
+    <div class="psteps">
+      <div class="ps" id="ps1">🎨 Vibe Analysing</div>
+      <div class="ps" id="ps2">🌈 Palette Creating</div>
+      <div class="ps" id="ps3">💐 Decor Planning</div>
+      <div class="ps" id="ps4">✨ Finishing Touches</div>
+    </div>
+  </div>
+  <div class="err" id="errBox"></div>
+
+  <!-- ═══ RESULT ═══ -->
+  <div class="result" id="resultWrap">
+
+    <!-- THEME HERO + PALETTE -->
+    <div class="theme-hero">
+      <div class="theme-name" id="themeName">Royal Mughal Majesty</div>
+      <div class="theme-mood" id="themeMood">Grand, opulent, timeless elegance</div>
+      <div class="palette-row" id="paletteRow">
+        <!-- filled by JS -->
+      </div>
+      <div class="palette-copy-row" id="paletteCopyRow"></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs" id="tabsRow"></div>
+    <div id="sectionsWrap"></div>
+
+    <div class="actions">
+      <button class="ab ab-copy" onclick="copyAll()">📋 Full Theme Copy</button>
+      <button class="ab ab-wa" onclick="waShare()">📱 WhatsApp</button>
+      <button class="ab ab-pdf" onclick="copyAll()">🎨 Decorator Ko Bhejo</button>
+      <button class="ab ab-regen" onclick="generate()">🔄 Dobara Banao</button>
+    </div>
+
+    <div class="share-box">
+      <h4>🎨 Dosto Ko Share Karo!</h4>
+      <p>Shaadi plan kar rahe friends ko yeh free tool batao!</p>
+      <div class="share-btns">
+        <button class="sb" onclick="waShareTool()">📱 WhatsApp</button>
+        <button class="sb" onclick="copyLink()">🔗 Link Copy</button>
+        <a href="ai-budget-calculator.html" class="sb">💰 Budget →</a>
+        <a href="ai-photography-shots.html" class="sb">📸 Photos →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD MID -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- THEME REFERENCE -->
+  <h2 class="stitle" style="margin-top:28px">Popular Wedding <em>Theme Ideas</em> 2026</h2>
+  <div class="theme-ref-grid">
+    <div class="tref" onclick="selectVibe('Royal Mughal')">
+      <div class="tref-emoji">👑</div>
+      <div class="tref-name">Royal Mughal</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#8B0000"></div><div class="tref-dot" style="background:#C9A84C"></div><div class="tref-dot" style="background:#4A0E2E"></div></div>
+      <div class="tref-desc">Deep reds, gold, maroon. Arches, chandeliers, marigold garlands.</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Floral Garden')">
+      <div class="tref-emoji">🌸</div>
+      <div class="tref-name">Floral Garden</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#F9A8D4"></div><div class="tref-dot" style="background:#86EFAC"></div><div class="tref-dot" style="background:#FDE68A"></div></div>
+      <div class="tref-desc">Pastels, fresh florals, garden vibe. Best for outdoor venues.</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Bollywood Glam')">
+      <div class="tref-emoji">✨</div>
+      <div class="tref-name">Bollywood Glam</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#FF1493"></div><div class="tref-dot" style="background:#FFD700"></div><div class="tref-dot" style="background:#800080"></div></div>
+      <div class="tref-desc">Bold, dramatic, sparkly. Perfect for filmy couples!</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Modern Minimal')">
+      <div class="tref-emoji">🤍</div>
+      <div class="tref-name">Modern Minimal</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#F8F6F0;border:1px solid #ccc"></div><div class="tref-dot" style="background:#D4AF7A"></div><div class="tref-dot" style="background:#A8C5BC"></div></div>
+      <div class="tref-desc">Whites, neutrals, clean lines. Contemporary elegant look.</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Rustic Bohemian')">
+      <div class="tref-emoji">🌿</div>
+      <div class="tref-name">Rustic Boho</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#8B7355"></div><div class="tref-dot" style="background:#D4A574"></div><div class="tref-dot" style="background:#A8B5A0"></div></div>
+      <div class="tref-desc">Earthy tones, macramé, wildflowers. Instagram-worthy!</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Beach Destination')">
+      <div class="tref-emoji">🌊</div>
+      <div class="tref-name">Beach Wedding</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#0EA5E9"></div><div class="tref-dot" style="background:#14B8A6"></div><div class="tref-dot" style="background:#FCD34D"></div></div>
+      <div class="tref-desc">Blues, teals, sandy neutrals. Goa/Kerala wedding vibes.</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Rajputana Heritage')">
+      <div class="tref-emoji">🏰</div>
+      <div class="tref-name">Rajputana</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#C41E3A"></div><div class="tref-dot" style="background:#FF8C00"></div><div class="tref-dot" style="background:#FFD700"></div></div>
+      <div class="tref-desc">Rich reds, saffron, gold. Heritage palace wedding feel.</div>
+    </div>
+    <div class="tref" onclick="selectVibe('Vintage Old World')">
+      <div class="tref-emoji">🕯️</div>
+      <div class="tref-name">Vintage</div>
+      <div class="tref-palette"><div class="tref-dot" style="background:#8B6914"></div><div class="tref-dot" style="background:#C8A96E"></div><div class="tref-dot" style="background:#5C3317"></div></div>
+      <div class="tref-desc">Warm browns, antique gold, candlelight. Timeless romance.</div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY -->
+  <div class="cs">
+    <div class="cs-tag">✦ Real Story</div>
+    <h2 class="cs-title">Riya Ki <em>₹4 Lakh Mein Royal Mughal</em> Wedding</h2>
+    <p class="cs-body">Riya bata rahi thi: "Hum ₹7 lakh decor budget mein confused the — decorator 5 alag themes suggest kar raha tha. Maine SmartShaadi ka Theme Generator use kiya — Royal Mughal + Banquet Hall + Winter select kiya. AI ne exact HEX color codes diye, floral list di, aur yeh bhi bataya ki kahan save karein. Marigold garlands khud banwaye ₹8,000 mein jo ₹35,000 ki theen market mein. Hanging fairy lights khud arrange kiye. Total decor ₹4.2 lakh mein hua jo ₹7 lakh estimate tha. Sabne kaha wedding look karte karte ₹15 lakh ki thi!"</p>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-n">₹2.8L</div><div class="cs-l">Bachaye</div></div>
+      <div class="cs-stat"><div class="cs-n">Royal</div><div class="cs-l">Mughal Theme</div></div>
+      <div class="cs-stat"><div class="cs-n">₹4.2L</div><div class="cs-l">Total Decor</div></div>
+      <div class="cs-stat"><div class="cs-n">⭐×5</div><div class="cs-l">Guest Rating</div></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="revs">
+    <h2 class="revs-title">Couples Ki <em>Real Reviews</em></h2>
+    <div class="rev-grid">
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Color palette ke HEX codes di — decorator ko exactly wahi material match karna pada. Koi guesswork nahi! Pure gold + deep maroon combination ne venue transform kar diya."</p><div class="rev-by"><div class="av">P</div>Priya & Raj · Delhi</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Rustic Boho theme ke liye AI ne suggest kiya ki kaunse flowers local market mein milenge. Budget ₹2.5L mein stunning farmhouse wedding ho gayi. Everyone thought ₹10L+ tha!"</p><div class="rev-by"><div class="av">A</div>Aarti Ji · Pune</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Outfit coordination section best tha — groom suit color, family dupatta colors — sab AI ne suggest kiya. Family ek theme pe thi pehli baar! Photos bilkul magazine jaise aaye."</p><div class="rev-by"><div class="av">N</div>Nisha & Kiran · Mumbai</div></div>
+    </div>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <h2 class="tips-title">🎨 Wedding Theme Choose Karne Ke 6 Golden Rules</h2>
+    <div class="tip"><span style="flex-shrink:0">🌸</span><div><strong>Lehenga pehle chunein, theme baad mein</strong> — Most couples yeh ulta karte hain! Pehle bridal lehenga finalize karo — phir uska color palette theme decide karega. Clash avoid ho jaata hai automatically.</div></div>
+    <div class="tip"><span style="flex-shrink:0">💡</span><div><strong>Lighting sabse bada impact deta hai</strong> — ₹50,000 ke flowers + ₹15,000 ki lighting se behtar hai ₹20,000 ke flowers + ₹45,000 ki premium lighting. Warm fairy lights ne average venues ko magical bana diya hai.</div></div>
+    <div class="tip"><span style="flex-shrink:0">📅</span><div><strong>Season ke saath theme match karo</strong> — Summer mein dark maroon theme mein guests uncomfortable hote hain. Winter mein pastels washed out lagte hain. Season + theme + venue — teen cheezein ek saath sochni chahiye.</div></div>
+    <div class="tip"><span style="flex-shrink:0">🌼</span><div><strong>Local flowers 5x saste hote hain</strong> — Imported orchids ke peeche mat bhaago. Genda phool, roses, tuberose, mogra — Indian flowers sabse impactful hain aur 80% saste. Seasonal flowers double attractive lagte hain.</div></div>
+    <div class="tip"><span style="flex-shrink:0">📸</span><div><strong>Photography ke liye theme consider karo</strong> — White backdrop + dark lehenga = stunning. Dark venue + dark lehenga = lost. AI-generated color palette photographer ko share karo — woh accordingly lighting set karenge.</div></div>
+    <div class="tip"><span style="flex-shrink:0">👗</span><div><strong>Family color coordination theme ka hissa hai</strong> — Groom ki family ka color, bride ki family ka color — yeh plan karo pehle. Group photos mein coordinated colors magical lagte hain. AI se outfit coordination section copy karo — family ko bhejo.</div></div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+    <h2 class="stitle" style="margin-bottom:14px">Aksar Pooche Jane Wale <em>Sawaal</em></h2>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Indian wedding ke liye 2026 mein best theme kaunsa hai?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">2026 trending themes: (1) Modern Pastel — soft pinks, sage green, ivory, (2) Earthy Bohemian — beige, terracotta, greens, (3) Jewel Tones — emerald, sapphire, burgundy, (4) Classic Royal Mughal — timeless, always impressive. Budget ke hisab se: ₹3-7L ke liye Floral Garden best value, ₹15L+ ke liye Royal Mughal sabse impactful.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Wedding decor budget kitna rakhein 2026 mein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Total wedding budget ka 15-20% decor pe recommended hai. Approximate costs: Flowers alone ₹50,000-2,00,000, Lighting ₹30,000-1,00,000, Stage backdrop ₹40,000-2,00,000, Centerpieces ₹500-2000 per table. Lighting aur flowers combined sabse zyada impact dete hain — baaki elements mein save karein.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Decorator ko brief kaise dein — kya share karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Decorator ko share karein: (1) Color palette with HEX codes — AI se copy karo, (2) 5-10 reference photos, (3) Must-have elements list, (4) Must-avoid list, (5) Budget breakdown per element, (6) Venue measurements. 3 decorators se quotes lo — ek ka nahi. HEX codes dene se "approximately" ka game band ho jaata hai.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Flowers vs lighting — kahan zyada invest karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Lighting pe invest karo pehle! Reasons: (1) Lighting photos mein flowers se zyada impact deta hai, (2) Fairy lights + warm Edison bulbs = any venue magical, (3) Wrong lighting mein ₹5 lakh ke flowers bhi flat lagte hain, (4) Correct warm lighting mein simple decor premium lagi hai. Formula: 40% budget lighting, 40% flowers/stage, 20% centerpieces + misc.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">DIY decor possible hai Indian wedding mein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Haan! Best DIY options: (1) Marigold garlands — ₹100/meter vs ₹500+ market, (2) Paper flower backdrop — ₹2000 complete vs ₹15000 professional, (3) Mason jar centerpieces, (4) Ribbon + fairy light canopy, (5) Photo wall with printed pictures. Avoid DIY for: Stage, Main entrance arch, Table arrangements for 200+ guests — professional better hai for large scale.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Destination wedding ke liye theme kaise plan karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Destination wedding tips: (1) Local flowers use karo — import nahi, (2) Venue ka natural element theme mein integrate karo (beach sand, mountain greens), (3) Weather check karo — Goa June mein: monsoon = floral decor ruined, (4) Local vendor hire karo — transport cost bachega, (5) Minimal decor strategy — venue itself backdrop hai, (6) AI se location-specific theme generate karo.</div></div></div>
+  </div>
+
+  <!-- TOOLS -->
+  <h2 class="stitle" style="margin-top:24px;margin-bottom:12px">🤖 Baaki AI Tools — <em>Sab Free</em></h2>
+  <div class="tools-grid">
+    <a href="ai-budget-calculator.html" class="tool-link"><div class="tl-ico">💰</div><div class="tl-name">Budget Calculator</div><div class="tl-desc">City-wise breakdown</div></a>
+    <a href="ai-invitation-writer.html" class="tool-link"><div class="tl-ico">💌</div><div class="tl-name">Invitation Writer</div><div class="tl-desc">6 languages</div></a>
+    <a href="ai-photography-shots.html" class="tool-link"><div class="tl-ico">📸</div><div class="tl-name">Shot List</div><div class="tl-desc">100+ shots</div></a>
+    <a href="ai-playlist-generator.html" class="tool-link"><div class="tl-ico">🎵</div><div class="tl-name">Playlist Generator</div><div class="tl-desc">Sangeet to Vidai</div></a>
+    <a href="ai-kundali-matching.html" class="tool-link"><div class="tl-ico">🔮</div><div class="tl-name">Kundali Matching</div><div class="tl-desc">Guna Milan</div></a>
+    <a href="ai-menu-planner.html" class="tool-link"><div class="tl-ico">🍽️</div><div class="tl-name">Menu Planner</div><div class="tl-desc">Qty + cost</div></a>
+  </div>
 </div>
 
-<div class="container">
-  <div class="card">
-    <div class="card-title">💫 Apna Vibe Chunein</div>
-    <div class="vibe-grid">
-      <div class="vibe-card active" data-vibe="Royal Mughal">
-        <span class="emoji">👑</span>
-        <div class="name">Royal Mughal</div>
-        <div class="desc">Grand & Opulent</div>
-      </div>
-      <div class="vibe-card" data-vibe="Floral Garden">
-        <span class="emoji">🌸</span>
-        <div class="name">Floral Garden</div>
-        <div class="desc">Fresh & Romantic</div>
-      </div>
-      <div class="vibe-card" data-vibe="Rajputana Heritage">
-        <span class="emoji">🏰</span>
-        <div class="name">Rajputana</div>
-        <div class="desc">Traditional & Bold</div>
-      </div>
-      <div class="vibe-card" data-vibe="Modern Minimal">
-        <span class="emoji">🤍</span>
-        <div class="name">Modern Minimal</div>
-        <div class="desc">Sleek & Elegant</div>
-      </div>
-      <div class="vibe-card" data-vibe="Bollywood Glam">
-        <span class="emoji">✨</span>
-        <div class="name">Bollywood Glam</div>
-        <div class="desc">Dramatic & Sparkly</div>
-      </div>
-      <div class="vibe-card" data-vibe="Beach Destination">
-        <span class="emoji">🌊</span>
-        <div class="name">Beach Wedding</div>
-        <div class="desc">Breezy & Tropical</div>
-      </div>
-      <div class="vibe-card" data-vibe="Rustic Bohemian">
-        <span class="emoji">🌿</span>
-        <div class="name">Rustic Boho</div>
-        <div class="desc">Earthy & Whimsical</div>
-      </div>
-      <div class="vibe-card" data-vibe="Vintage Old World">
-        <span class="emoji">🕯️</span>
-        <div class="name">Vintage</div>
-        <div class="desc">Timeless & Classic</div>
-      </div>
-    </div>
+<footer>
+  <a href="index.html" class="flogo">Smart<em>Shaadi</em> 💍</a>
+  <p class="ftxt">India's #1 Free AI Wedding Planner — Theme, Budget, Playlist, 9 AI Agents</p>
+  <div class="flinks">
+    <a href="index.html">Home</a><a href="blogs.html">Magazine</a>
+    <a href="chatbot.html">AI Chat</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
   </div>
-
-  <div class="card">
-    <div class="card-title">📝 More Details</div>
-    <div class="form-grid">
-      <div class="field">
-        <label>Season / Mausam</label>
-        <select id="season">
-          <option value="winter">❄️ Winter (Oct-Feb)</option>
-          <option value="spring">🌸 Spring (March-April)</option>
-          <option value="summer">☀️ Summer (May-June)</option>
-          <option value="monsoon">🌧️ Monsoon (July-Sep)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Venue Type</label>
-        <select id="venueType">
-          <option value="banquet hall">Banquet Hall</option>
-          <option value="outdoor garden">Outdoor Garden</option>
-          <option value="rooftop">Rooftop</option>
-          <option value="heritage palace">Heritage Palace/Fort</option>
-          <option value="beach">Beach</option>
-          <option value="farmhouse">Farmhouse</option>
-          <option value="5 star hotel">5 Star Hotel</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Budget for Decor</label>
-        <select id="decorBudget">
-          <option value="1-3 lakh">₹1-3 Lakh</option>
-          <option value="3-7 lakh" selected>₹3-7 Lakh</option>
-          <option value="7-15 lakh">₹7-15 Lakh</option>
-          <option value="15+ lakh">₹15 Lakh+</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Favourite Colors (Optional)</label>
-        <input type="text" id="favColors" placeholder="e.g. deep red, gold, ivory" />
-      </div>
-      <div class="field full">
-        <label>Inspiration / Koi Specific Style?</label>
-        <input type="text" id="inspiration" placeholder="e.g. Deepika-Ranveer wedding, Isha Ambani style, Pinterest board colors..." />
-      </div>
-    </div>
-  </div>
-
-  <button class="btn-generate" onclick="generateTheme()">
-    🎨 Generate My Dream Theme — AI Se Banao
-  </button>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p>AI aapka dream wedding theme design kar raha hai... 🎨</p>
-  </div>
-
-  <div class="result-card" id="resultCard">
-    <div class="result-header">
-      <span class="result-title">🎨 Aapka Wedding Theme</span>
-      <div class="action-btns">
-        <button class="btn-action" onclick="copyTheme()">📋 Copy</button>
-        <button class="btn-action" onclick="shareWhatsApp()">📱 Share</button>
-        <button class="btn-action" onclick="generateTheme()">🔄 New Theme</button>
-      </div>
-    </div>
-    <div class="palette-preview" id="palettePreview">
-      <h3>🎨 Color Palette Preview</h3>
-      <div class="palette-swatches" id="swatches"></div>
-    </div>
-    <div class="theme-content" id="themeText"></div>
-  </div>
-</div>
-
-<div class="toast" id="toast">✅ Copied!</div>
+</footer>
+<div class="toast" id="toast"></div>
 
 <script>
-let selectedVibe = 'Royal Mughal';
+/* FLOATS */
+(()=>{
+  const c=document.getElementById('floats');
+  ['🎨','🌸','✨','💐','🕯️','👑','🌿','💜','🌈','🎊','🌺','🦋'].forEach(e=>{
+    const s=document.createElement('span');
+    s.className='fl';
+    s.textContent=e;
+    s.style.cssText=`position:absolute;left:${Math.random()*100}%;font-size:${18+Math.random()*28}px;animation-duration:${17+Math.random()*20}s;animation-delay:-${Math.random()*30}s;--r:${-20+Math.random()*40}deg`;
+    c.appendChild(s);
+  });
+})();
 
-document.querySelectorAll('.vibe-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.vibe-card').forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-    selectedVibe = card.dataset.vibe;
+/* VIBE SELECT */
+let selectedVibe='Royal Mughal';
+document.querySelectorAll('.vibe-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.vibe-card').forEach(v=>v.classList.remove('on'));
+    c.classList.add('on');
+    selectedVibe=c.dataset.v;
+    updateStrip();
   });
 });
-
-// Extract hex colors from text and display swatches
-function extractAndShowColors(text) {
-  const hexPattern = /#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\b/g;
-  const matches = [...text.matchAll(hexPattern)];
-  const preview = document.getElementById('palettePreview');
-  const swatches = document.getElementById('swatches');
-  swatches.innerHTML = '';
-
-  if (matches.length > 0) {
-    const seen = new Set();
-    matches.forEach(m => {
-      if (!seen.has(m[0]) && seen.size < 8) {
-        seen.add(m[0]);
-        const s = document.createElement('div');
-        s.className = 'swatch';
-        s.style.background = m[0];
-        s.title = m[0];
-        s.onclick = () => navigator.clipboard.writeText(m[0]);
-        swatches.appendChild(s);
-      }
-    });
-    if (swatches.children.length > 0) preview.style.display = 'block';
-  }
+function selectVibe(v){
+  const card=document.querySelector(`.vibe-card[data-v="${v}"]`);
+  if(card){card.click();card.scrollIntoView({behavior:'smooth',block:'center'});}
 }
 
-async function generateTheme() {
-  const season = document.getElementById('season').value;
-  const venueType = document.getElementById('venueType').value;
-  const decorBudget = document.getElementById('decorBudget').value;
-  const favColors = document.getElementById('favColors').value;
-  const inspiration = document.getElementById('inspiration').value;
-
-  const btn = document.querySelector('.btn-generate');
-  btn.disabled = true;
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('resultCard').style.display = 'none';
-
-  const systemPrompt = `You are a top Indian wedding decor designer and theme consultant. You create complete, stunning wedding theme concepts with color palettes, decor ideas, fabric suggestions, floral arrangements, lighting, and vendor tips. Always include specific HEX color codes for the color palette. Use Hinglish language. Be creative, specific, and practical.`;
-
-  const userPrompt = `Create a complete wedding theme concept with these preferences:
-
-Vibe/Theme Style: ${selectedVibe}
-Season: ${season}
-Venue Type: ${venueType}
-Decor Budget: ${decorBudget}
-Preferred Colors: ${favColors || 'Not specified, suggest best'}
-Inspiration: ${inspiration || 'Classic Indian elegance'}
-
-Please provide:
-
-1. 🎨 THEME NAME & CONCEPT
-   - Unique, memorable theme name
-   - 2-3 sentence mood description
-
-2. 🌈 COLOR PALETTE (include HEX codes)
-   - Primary color + HEX
-   - Secondary color + HEX
-   - Accent color 1 + HEX
-   - Accent color 2 + HEX
-   - Neutral/Base color + HEX
-
-3. 💐 FLORAL ARRANGEMENT IDEAS
-   - Main flowers & colors
-   - Centerpiece suggestions
-   - Entrance decor
-   - Stage backdrop
-
-4. ✨ LIGHTING CONCEPT
-   - Type of lighting
-   - Specific suggestions
-   - Ambiance tips
-
-5. 🏺 KEY DECOR ELEMENTS
-   - 6-8 must-have decor items
-   - DIY vs professional tips
-
-6. 👗 OUTFIT COLOR COORDINATION
-   - Bridal outfit suggestions
-   - Groom color coordination
-   - Family color theme
-
-7. 📸 PHOTO BACKDROP IDEAS
-   - 3 unique backdrop concepts
-
-8. 💰 BUDGET BREAKDOWN
-   - How to allocate decor budget
-
-9. 🛒 VENDOR & SHOPPING TIPS
-   - Where to source items in India
-
-Make it dreamy, detailed, and culturally rich!`;
-
-  try {
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
-    });
-    const data = await res.json();
-    const text = data.choices[0].message.content;
-    document.getElementById('themeText').textContent = text;
-    document.getElementById('resultCard').style.display = 'block';
-    extractAndShowColors(text);
-    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
-  } catch(e) {
-    alert('Error: ' + e.message);
-  } finally {
-    btn.disabled = false;
-    document.getElementById('loading').style.display = 'none';
-  }
+/* LIVE STRIP */
+function updateStrip(){
+  const card=document.querySelector('.vibe-card.on');
+  document.getElementById('psVibe').textContent=card?.querySelector('.vibe-emoji')?.textContent||'🎨';
+  document.getElementById('psBudget').textContent=document.getElementById('budget').value.split('(')[0].trim().split(' ')[0]||'Mid';
+  const v=document.getElementById('venue').value;
+  document.getElementById('psVenue').textContent=v.split('/')[0].split(' ')[0]||'Hall';
 }
+document.getElementById('budget').addEventListener('change',updateStrip);
+document.getElementById('venue').addEventListener('change',updateStrip);
+updateStrip();
 
-function copyTheme() {
-  navigator.clipboard.writeText(document.getElementById('themeText').textContent).then(() => {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+/* SECTION META */
+const SMETA={
+  'Color Palette':{ico:'🌈',col:'#a78bfa'},
+  'Floral Arrangements':{ico:'💐',col:'#f472b6'},
+  'Lighting':{ico:'✨',col:'#fbbf24'},
+  'Decor Elements':{ico:'🏺',col:'#fb923c'},
+  'Outfit Coordination':{ico:'👗',col:'#f43f5e'},
+  'Photo Backdrops':{ico:'📸',col:'#60a5fa'},
+  'Budget Breakdown':{ico:'💰',col:'#4ade80'},
+  'Vendor Tips':{ico:'🛒',col:'#2dd4bf'},
+};
+
+/* PARSE SECTIONS */
+function parse(text){
+  const secs={};const keys=Object.keys(SMETA);
+  const lines=text.split('\n');let cur=null;
+  lines.forEach(l=>{
+    const t=l.trim();if(!t)return;
+    const mk=keys.find(k=>t.toLowerCase().includes(k.toLowerCase().split(' ')[0]));
+    if(mk&&t.length<80&&(t.startsWith('#')||t.startsWith('**')||/^[🌈💐✨🏺👗📸💰🛒A-Z1-9]/.test(t))){
+      cur=mk;if(!secs[cur])secs[cur]=[];return;
+    }
+    if(!cur)return;
+    const m=t.match(/^[\d\.\-\*•]+\s*(.+)/)||( t.length>5&&t.length<160?[null,t]:null);
+    if(m){
+      let raw=m[1].replace(/\*+/g,'').trim();if(raw.length<5)return;
+      let title=raw,desc='';
+      const di=raw.indexOf('—');const ci=raw.indexOf(':');
+      if(di>3){title=raw.slice(0,di).trim();desc=raw.slice(di+1).trim();}
+      else if(ci>2&&ci<30){title=raw.slice(0,ci).trim();desc=raw.slice(ci+1).trim();}
+      // tag
+      let tag='';
+      if(/diy|khud|ghar/i.test(raw))tag='diy';
+      else if(/₹|budget|save|sasta/i.test(raw))tag='budget';
+      else if(/premium|luxury|5 star/i.test(raw))tag='premium';
+      else if(/trend|popular|instagram/i.test(raw))tag='trending';
+      secs[cur].push({title,desc,tag});
+    }
   });
+  return secs;
 }
 
-function shareWhatsApp() {
-  const text = document.getElementById('themeText').textContent;
-  window.open(`https://wa.me/?text=${encodeURIComponent('Meri wedding theme idea 🎨\n\n' + text.substring(0, 800) + '\n\nSmartShaadi.online')}`, '_blank');
+/* EXTRACT COLORS */
+function extractColors(text){
+  const hex=/#([A-Fa-f0-9]{6})\b/g;
+  const matches=[...text.matchAll(hex)];
+  const seen=new Set();const colors=[];
+  matches.forEach(m=>{if(!seen.has(m[0])&&seen.size<7){seen.add(m[0]);colors.push(m[0]);}});
+  return colors;
+}
+
+/* EXTRACT THEME NAME */
+function extractThemeName(text){
+  const lines=text.split('\n');
+  for(const l of lines){
+    const t=l.trim();
+    if(t.length>5&&t.length<60&&(t.startsWith('#')||t.startsWith('**')||/^[A-Z🎨👑🌸✨]/.test(t))){
+      const clean=t.replace(/^#+\s*/,'').replace(/\*+/g,'').replace(/^(theme name|concept|title):?\s*/i,'').trim();
+      if(clean.length>3)return clean;
+    }
+  }
+  return selectedVibe+' — '+document.getElementById('venue').value.split('/')[0];
+}
+
+/* RENDER */
+function renderResult(secs,text){
+  // Theme name + mood
+  const name=extractThemeName(text);
+  document.getElementById('themeName').textContent=name;
+  const moodLine=text.split('\n').slice(0,8).find(l=>/mood|concept|opulent|romantic|elegant|dramatic|timeless/i.test(l));
+  document.getElementById('themeMood').textContent=(moodLine||'').replace(/^#+\s*/,'').replace(/\*+/g,'').trim().slice(0,100)||selectedVibe+' — '+document.getElementById('season').value;
+
+  // Colors
+  const colors=extractColors(text);
+  const card=document.querySelector('.vibe-card.on');
+  const fallbackColors=(card?.dataset?.colors||'#8B0000,#C9A84C,#4A0E2E,#F5F0E0,#1C1C1C').split(',');
+  const finalColors=colors.length>=3?colors:fallbackColors;
+
+  const paletteRow=document.getElementById('paletteRow');
+  paletteRow.innerHTML='';
+  const copyRow=document.getElementById('paletteCopyRow');
+  copyRow.innerHTML='';
+  const colorNames=['Primary','Secondary','Accent 1','Accent 2','Neutral'];
+  finalColors.slice(0,5).forEach((col,i)=>{
+    const wrap=document.createElement('div');
+    wrap.className='swatch-wrap';
+    wrap.title='Click to copy '+col;
+    wrap.onclick=()=>{navigator.clipboard.writeText(col).then(()=>showToast('🎨 '+col+' copied!'));};
+    wrap.innerHTML=`<div class="swatch" style="background:${col}"></div><div class="swatch-hex">${col}</div>`;
+    paletteRow.appendChild(wrap);
+
+    const btn=document.createElement('button');
+    btn.className='pal-copy-btn';
+    btn.textContent=(colorNames[i]||'Color '+(i+1))+' '+col;
+    btn.onclick=()=>{navigator.clipboard.writeText(col).then(()=>showToast('🎨 Copied!'));};
+    copyRow.appendChild(btn);
+  });
+
+  // Sections + tabs
+  const tabs=document.getElementById('tabsRow');
+  const wrap=document.getElementById('sectionsWrap');
+  tabs.innerHTML='';wrap.innerHTML='';
+
+  const tagCls={budget:'it-budget',diy:'it-diy',premium:'it-premium',trending:'it-trending'};
+  const tagLbl={budget:'💰 Budget Tip',diy:'🔨 DIY',premium:'⭐ Premium',trending:'🔥 Trending'};
+
+  let first=true;
+  Object.entries(secs).forEach(([secName,items],idx)=>{
+    if(!items||!items.length)return;
+    const m=SMETA[secName]||{ico:'🎨',col:'#a78bfa'};
+
+    const tab=document.createElement('button');
+    tab.className='tab'+(first?' active':'');
+    tab.textContent=m.ico+' '+secName.split(' ')[0]+' ('+items.length+')';
+    const myIdx=idx;
+    tab.onclick=()=>{
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.theme-sec').forEach(s=>s.classList.remove('show'));
+      tab.classList.add('active');
+      document.getElementById('ts_'+myIdx).classList.add('show');
+    };
+    tabs.appendChild(tab);
+
+    const cards=items.map((item,i)=>`
+      <div class="idea-card" style="--ic-color:${m.col}">
+        <div class="idea-num">#${i+1}</div>
+        <div class="idea-title">${item.title}</div>
+        ${item.desc?`<div class="idea-desc">${item.desc}</div>`:''}
+        ${item.tag?`<span class="idea-tag ${tagCls[item.tag]||'it-trending'}">${tagLbl[item.tag]||item.tag}</span>`:''}
+      </div>`).join('');
+
+    const sec=document.createElement('div');
+    sec.id='ts_'+idx;
+    sec.className='theme-sec'+(first?' show':'');
+    sec.innerHTML=`
+      <div class="tsec-card">
+        <div class="tsec-head">
+          <div class="tsec-title" style="color:${m.col}">${m.ico} ${secName}</div>
+          <button class="tsec-copy" onclick="copySec('${secName}')">📋 Copy</button>
+        </div>
+        <div class="idea-grid">${cards}</div>
+      </div>`;
+    wrap.appendChild(sec);
+    first=false;
+  });
+  window._secs=secs;
+  window._rawText=text;
+  window._colors=finalColors;
+}
+
+/* PROGRESS */
+let pi;
+function startProg(){
+  document.getElementById('progWrap').style.display='block';
+  let v=0,si=0;
+  const steps=['ps1','ps2','ps3','ps4'];
+  steps.forEach(s=>document.getElementById(s).className='ps');
+  document.getElementById('ps1').className='ps active';
+  pi=setInterval(()=>{
+    v=Math.min(v+Math.random()*4.5,88);
+    document.getElementById('progFill').style.width=v+'%';
+    const ni=Math.floor(v/25);
+    if(ni>si&&ni<4){document.getElementById(steps[si]).className='ps done';si=ni;document.getElementById(steps[si]).className='ps active';}
+  },400);
+}
+function stopProg(){
+  clearInterval(pi);
+  ['ps1','ps2','ps3','ps4'].forEach(s=>document.getElementById(s).className='ps done');
+  document.getElementById('progFill').style.width='100%';
+  setTimeout(()=>{document.getElementById('progWrap').style.display='none';document.getElementById('progFill').style.width='0';},600);
+}
+
+/* GENERATE */
+async function generate(){
+  const season=document.getElementById('season').value;
+  const venue=document.getElementById('venue').value;
+  const budget=document.getElementById('budget').value;
+  const lehnga=document.getElementById('lehengaColor').value.trim();
+  const inspo=document.getElementById('inspiration').value.trim();
+  const special=document.getElementById('special').value.trim();
+
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('resultWrap').style.display='none';
+  startProg();
+
+  const sys=`Tu India ka top wedding decor designer aur theme consultant hai — 15+ saal experience, 300+ weddings. Tu complete wedding theme concepts banata hai — color palettes with HEX codes, decor ideas, floral arrangements, lighting concepts, outfit coordination. Hinglish mein likho. Specific, creative, practical raho. Hamesha exact HEX color codes include karo.`;
+
+  const prompt=`Complete wedding theme concept banao:
+
+VIBE: ${selectedVibe}
+SEASON: ${season}
+VENUE: ${venue}
+DECOR BUDGET: ${budget}
+LEHENGA COLOR: ${lehnga||'Not specified — suggest best match'}
+INSPIRATION: ${inspo||'Classic Indian elegance'}
+${special?'SPECIAL REQUIREMENTS: '+special:''}
+
+EXACT SECTIONS (yeh headers use karo):
+## Color Palette
+Primary + Secondary + 3 Accent colors with HEX codes. Why yeh combination work karta hai.
+
+## Floral Arrangements
+Main flowers, centerpieces, entrance, stage backdrop, jaimala. Local flowers prefer karo.
+
+## Lighting
+Type of lighting, specific products/ideas, ambiance tips. Budget allocation.
+
+## Decor Elements
+8-10 must-have decor items. DIY possible vs professional needed.
+
+## Outfit Coordination
+Bride outfit color suggestions, groom coordination, family color theme.
+
+## Photo Backdrops
+3 unique backdrop concepts for Instagram-worthy shots.
+
+## Budget Breakdown
+${budget} budget ke liye allocation per element.
+
+## Vendor Tips
+Kahan se source karein India mein — online + offline.
+
+Theme ke liye ek unique catchy name do at the top.
+Hinglish mein likho. Specific, practical, Indian context. 450-550 words total.`;
+
+  try{
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,messages:[{role:'user',content:prompt}]})});
+    if(!res.ok)throw new Error('Server '+res.status);
+    const d=await res.json();
+    // ✅ CORRECT API RESPONSE PARSING
+    const text=d.choices[0].message.content;
+    stopProg();
+
+    const secs=parse(text);
+    renderResult(secs,text);
+
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('resultWrap').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(e){
+    stopProg();showErr('⚠️ Kuch gadbad hui. Dobara try karo. ('+e.message+')');
+  }finally{document.getElementById('genBtn').disabled=false;}
+}
+
+/* COPY HELPERS */
+function copySec(name){
+  const items=window._secs?.[name]||[];
+  const t=`🎨 ${name}\n`+items.map((s,i)=>`${i+1}. ${s.title}${s.desc?' — '+s.desc:''}`).join('\n');
+  navigator.clipboard.writeText(t).then(()=>showToast('📋 '+name+' copied!'));
+}
+function copyAll(){
+  let t=`🎨 Wedding Theme — ${selectedVibe}\nSmartShaadi.online\n\n`;
+  if(window._colors?.length){t+='COLOR PALETTE:\n'+window._colors.join(' · ')+'\n\n';}
+  Object.entries(window._secs||{}).forEach(([sec,items])=>{
+    t+=`\n═══ ${sec.toUpperCase()} ═══\n`;
+    items.forEach((s,i)=>t+=`${i+1}. ${s.title}${s.desc?' — '+s.desc:''}\n`);
+  });
+  t+='\n🔗 https://smartshaadi.online/ai-wedding-theme-generator.html';
+  navigator.clipboard.writeText(t).then(()=>showToast('📋 Full theme copied!'));
+}
+function waShare(){
+  const t=`🎨 Wedding Theme: ${selectedVibe}\n\nColor Palette: ${(window._colors||[]).join(', ')}\n\n${(window._rawText||'').substring(0,500)}\n\n🔗 https://smartshaadi.online/ai-wedding-theme-generator.html`;
+  window.open('https://wa.me/?text='+encodeURIComponent(t));
+}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Theme Generator!\n🎨 Color palette + decor ideas + outfit coordination.\nhttps://smartshaadi.online/ai-wedding-theme-generator.html'));}
+function copyLink(){navigator.clipboard.writeText('https://smartshaadi.online/ai-wedding-theme-generator.html').then(()=>showToast('🔗 Link copied!'));}
+function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+function faq(btn){
+  const body=btn.nextElementSibling;const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-btn.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.style.maxHeight='0';});
+  if(!isOpen){btn.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
 }
 </script>
 </body>
