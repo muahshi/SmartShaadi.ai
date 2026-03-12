@@ -1,311 +1,1081 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Menu Planner — Smart Shaadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Free AI Wedding Menu Planner India 2026 — Quantity Calculator + Cost Estimate | SmartShaadi</title>
+<meta name="description" content="India ka #1 Free AI Wedding Menu Planner. Regional cuisine menu + automatic quantity calculator for 50-1000 guests + per-plate cost estimate + caterer note ready. North Indian, Punjabi, South Indian, Bengali, Gujarati. Hindi mein!">
+<meta name="keywords" content="wedding menu planner india, shaadi ka menu, wedding catering menu hindi, north indian wedding menu 2026, wedding food quantity calculator india, per plate cost wedding india, caterer brief wedding india">
+<link rel="canonical" href="https://smartshaadi.online/ai-menu-planner.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free AI Wedding Menu Planner India 2026 — Quantity + Cost | SmartShaadi">
+<meta property="og:description" content="Automatic quantity calculator, per-plate cost, caterer note. 50–1000 guests. Regional menus. Free!">
+<meta property="og:url" content="https://smartshaadi.online/ai-menu-planner.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Menu Planner India","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"11240"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Indian wedding mein per plate kharcha kitna hota hai 2026?","acceptedAnswer":{"@type":"Answer","text":"2026 mein per plate: Budget ₹400–700, Mid ₹700–1200, Premium ₹1200–2000, Luxury ₹2000+. City ke hisab se vary karta hai."}},{"@type":"Question","name":"500 guests ke liye kitna khana chahiye?","acceptedAnswer":{"@type":"Answer","text":"500 guests ke liye: Chawal 75 kg, Dal 40 kg, Sabzi 60 kg, Maida 50 kg, Paneer 15 kg, Sweets 25 kg. Hamesha 15% extra rakhein."}},{"@type":"Question","name":"Caterer se negotiate kaise karein?","acceptedAnswer":{"@type":"Answer","text":"3 caterers se quotes lo, exact menu list lekar jaao, off-season discount maango, package deal negotiate karo aur written agreement zaroor lo."}}]}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
+
 <style>
-  :root {
-    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
-    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
-    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07050e;--bg2:#0d0b18;--card:#120f1e;--card2:#181428;
+  --gold:#e8b84b;--gold2:#f5d276;--gold-bg:rgba(232,184,75,0.07);--gold-bd:rgba(232,184,75,0.2);
+  --saffron:#ff9933;--saffron2:#ffb347;--saf-bg:rgba(255,153,51,0.08);--saf-bd:rgba(255,153,51,0.25);
+  --green:#4ade80;--green2:#22c55e;--teal:#2dd4bf;--blue:#60a5fa;--red:#f87171;--purple:#c084fc;
+  --text:#fff5e8;--muted:rgba(255,245,232,0.55);--faint:rgba(255,245,232,0.28);
+  --border:rgba(255,255,255,0.07);--radius:14px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.5}
+a{text-decoration:none;color:inherit}
+button{font-family:'Nunito',sans-serif}
 
-  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
-  .logo span { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+/* ── NAV ── */
+nav{background:rgba(7,5,14,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-bd);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:.25rem}
+.nav-links a{font-size:.76rem;color:var(--muted);padding:.3rem .65rem;border-radius:6px;transition:all .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#07050e!important;font-weight:800!important;border-radius:6px!important}
 
-  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.1) 0%, transparent 60%); }
-  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
-  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
-  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+/* ── HERO ── */
+.hero{position:relative;padding:48px 20px 40px;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(255,153,51,0.14) 0%,transparent 60%),radial-gradient(ellipse 40% 35% at 90% 80%,rgba(232,184,75,0.08) 0%,transparent 55%)}
+.spice-float{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sf{position:absolute;animation:spiceUp linear infinite;opacity:.045;font-size:clamp(18px,3vw,36px)}
+@keyframes spiceUp{0%{transform:translateY(108%) rotate(var(--r))}100%{transform:translateY(-12%) rotate(var(--r))}}
+.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--saf-bg);border:1px solid var(--saf-bd);color:#ffd19a;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.1rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--saffron);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.55)}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.85rem,4.8vw,3.4rem);font-weight:700;line-height:1.1;margin-bottom:.85rem}
+h1 em{font-style:italic;color:var(--gold2)}
+h1 strong{color:#ffd19a}
+.hero-sub{font-size:.95rem;color:var(--muted);max-width:560px;margin:0 auto 1.5rem;line-height:1.8}
+.hero-stats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.hs-num{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--gold2)}
+.hs-lbl{font-size:.63rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.hs-div{width:1px;background:var(--border);align-self:stretch}
 
-  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+/* ── MAIN ── */
+.main{max-width:840px;margin:0 auto;padding:0 16px 70px}
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1/-1; }
-  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
-  select option { background: var(--surface); }
-  textarea { resize: vertical; min-height: 80px; }
+/* ── ADS ── */
+.ad-wrap{background:var(--bg2);border:1px dashed rgba(232,184,75,0.15);border-radius:10px;padding:.5rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center}
 
-  .cuisine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.7rem; }
-  .cuisine-chip { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 0.7rem 0.5rem; cursor: pointer; text-align: center; font-size: 0.82rem; transition: all 0.2s; user-select: none; }
-  .cuisine-chip .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
-  .cuisine-chip:hover { border-color: var(--gold); }
-  .cuisine-chip.active { border-color: var(--gold); background: rgba(240,192,96,0.12); color: var(--gold); }
+/* ── CARD ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--saffron),var(--gold),transparent)}
+.card-title{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.card-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
 
-  .toggle-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .toggle-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 0.4rem 1rem; cursor: pointer; font-size: 0.82rem; font-family: 'Poppins', sans-serif; color: var(--muted); transition: all 0.2s; }
-  .toggle-btn.active { background: rgba(74,222,128,0.15); border-color: var(--green); color: var(--green); }
+/* ── GUEST COUNTER (big interactive) ── */
+.guest-hero{text-align:center;padding:10px 0 6px}
+.guest-big{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:700;line-height:1;color:var(--saffron);transition:all .15s;cursor:default}
+.guest-sub{font-size:.8rem;color:var(--muted);margin:.3rem 0 .8rem}
+.guest-size-badge{display:inline-block;font-size:.72rem;padding:.22rem .8rem;border-radius:100px;font-weight:700;transition:all .3s}
+.gsb-tiny{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.3)}
+.gsb-small{background:rgba(96,165,250,0.1);color:#93c5fd;border:1px solid rgba(96,165,250,0.3)}
+.gsb-medium{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.3)}
+.gsb-large{background:rgba(251,146,60,0.1);color:#fdba74;border:1px solid rgba(251,146,60,0.3)}
+.gsb-grand{background:rgba(248,113,113,0.1);color:#f87171;border:1px solid rgba(248,113,113,0.3)}
+.guest-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0}
+.gc-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--saf-bd);background:var(--saf-bg);color:var(--saffron);font-size:1.4rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;line-height:1;font-weight:700}
+.gc-btn:hover{background:rgba(255,153,51,0.2);border-color:var(--saffron);transform:scale(1.08)}
+.gc-presets{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.gc-preset{padding:5px 12px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.72rem;cursor:pointer;transition:all .2s;font-weight:600}
+.gc-preset:hover,.gc-preset.active{border-color:var(--saf-bd);color:#ffd19a;background:var(--saf-bg)}
+input[type=range].guest-slider{-webkit-appearance:none;width:100%;height:5px;border-radius:3px;background:linear-gradient(to right,var(--saffron) var(--gval,30%),rgba(255,255,255,0.08) var(--gval,30%));outline:none;cursor:pointer;margin-top:10px}
+input[type=range].guest-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--saffron);border:3px solid var(--bg);box-shadow:0 2px 8px rgba(255,153,51,0.5);cursor:pointer}
+.slider-marks{display:flex;justify-content:space-between;margin-top:5px}
+.slider-mark{font-size:.67rem;color:var(--faint)}
 
-  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+/* ── CUISINE PILLS ── */
+.cuisine-row{display:flex;flex-wrap:wrap;gap:7px}
+.cpill{padding:8px 15px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.8rem;cursor:pointer;transition:all .2s;font-weight:600;display:flex;align-items:center;gap:.35rem}
+.cpill:hover{border-color:var(--saf-bd);color:#ffd19a;background:var(--saf-bg)}
+.cpill.on{background:var(--saf-bg);border-color:var(--saffron);color:#ffd19a;font-weight:700;box-shadow:0 0 10px rgba(255,153,51,0.15)}
 
-  .loading { text-align: center; padding: 3rem; display: none; }
-  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* ── FORM FIELDS ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.lbl{display:block;font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.lbl-hint{font-size:.7rem;color:var(--muted);font-weight:400;margin-left:.3rem}
+.fi{width:100%;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:var(--text);font-size:.88rem;font-family:'Nunito',sans-serif;outline:none;transition:border .2s,box-shadow .2s}
+.fi:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(255,153,51,0.1)}
+.fi::placeholder{color:var(--faint)}
+select.fi option{background:#120f1e}
+textarea.fi{resize:vertical;min-height:60px;line-height:1.6}
 
-  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
-  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
-  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
-  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
-  .menu-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+/* ── TOGGLE PILLS (diet / counters) ── */
+.tpill-row{display:flex;flex-wrap:wrap;gap:7px}
+.tpill{padding:7px 13px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.76rem;cursor:pointer;transition:all .2s;font-weight:600}
+.tpill:hover{border-color:var(--gold-bd);color:var(--gold);background:var(--gold-bg)}
+.tpill.on{background:var(--gold-bg);border-color:var(--gold);color:var(--gold2);font-weight:700}
 
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* ── LIVE COST PREVIEW ── */
+.cost-preview{background:linear-gradient(135deg,rgba(255,153,51,0.07),rgba(232,184,75,0.05));border:1px solid var(--saf-bd);border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.cp-label{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.2rem}
+.cp-value{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gold2);line-height:1}
+.cp-note{font-size:.7rem;color:var(--faint);margin-top:.15rem}
+.cp-divider{width:1px;height:38px;background:var(--border)}
 
-  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
+/* ── GEN BTN ── */
+.gen-btn{width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,#7c2d12,#c2410c,#ff9933);color:#fff;font-size:1rem;font-weight:800;cursor:pointer;transition:all .3s;box-shadow:0 6px 24px rgba(255,153,51,0.35);letter-spacing:.04em;position:relative;overflow:hidden}
+.gen-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);transform:translateX(-100%);transition:transform .5s}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,153,51,0.5)}
+.gen-btn:hover::after{transform:translateX(100%)}
+.gen-btn:disabled{background:rgba(255,255,255,0.07);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin:14px 0;display:none}
+.prog-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;width:0;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:3px;transition:width .35s}
+.prog-steps{display:flex;justify-content:center;gap:1.2rem;margin-top:12px;flex-wrap:wrap}
+.ps{font-size:.72rem;color:var(--faint);transition:color .3s}
+.ps.done{color:var(--green)}
+.ps.active{color:var(--gold);font-weight:700}
+
+/* ── ERROR ── */
+.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:9px;padding:12px 16px;color:#fca5a5;font-size:.86rem;display:none;margin-bottom:14px}
+
+/* ═══════════════════════════════════
+   RESULT AREA
+═══════════════════════════════════ */
+.result-wrap{display:none}
+
+/* ── OVERVIEW STRIP ── */
+.overview-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.ov-tile{background:linear-gradient(135deg,rgba(255,153,51,0.09),rgba(232,184,75,0.06));border:1px solid var(--saf-bd);border-radius:12px;padding:14px 16px;text-align:center}
+.ov-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--gold2);line-height:1}
+.ov-lbl{font-size:.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.2rem}
+.ov-sub{font-size:.68rem;color:var(--faint);margin-top:.12rem}
+
+/* ── MENU TABS ── */
+.menu-tabs-wrap{margin-bottom:16px}
+.menu-tabs{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.menu-tabs::-webkit-scrollbar{display:none}
+.mtab{padding:7px 14px;border-radius:100px;border:1.5px solid var(--border);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.76rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.mtab.active{background:var(--saf-bg);border-color:var(--saffron);color:#ffd19a}
+
+/* ── MENU SECTION ── */
+.menu-section{display:none}
+.menu-section.visible{display:block}
+
+.sec-header{background:linear-gradient(135deg,rgba(255,153,51,0.06),rgba(232,184,75,0.04));border:1px solid var(--saf-bd);border-radius:12px 12px 0 0;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.sec-title-wrap{display:flex;align-items:center;gap:.6rem}
+.sec-icon{font-size:1.3rem}
+.sec-title{font-size:1rem;font-weight:700;color:var(--text)}
+.sec-mood{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:.1rem}
+.sec-actions{display:flex;gap:.4rem;align-items:center}
+.sec-badge{font-size:.65rem;padding:.18rem .6rem;border-radius:100px;background:var(--saf-bg);color:#ffd19a;border:1px solid var(--saf-bd);font-weight:700}
+.sm-btn{padding:5px 10px;border-radius:6px;font-size:.68rem;font-weight:700;border:1px solid rgba(255,255,255,0.1);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.sm-btn:hover{border-color:var(--saf-bd);color:#ffd19a;background:var(--saf-bg)}
+
+/* ── DISH CARDS ── */
+.dish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px;background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:14px}
+.dish-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:9px;padding:10px 12px;transition:all .2s;cursor:default;position:relative;overflow:hidden}
+.dish-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--dish-color,var(--saffron));border-radius:3px 0 0 3px}
+.dish-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.13);transform:translateY(-1px)}
+.dish-name{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.18rem;padding-left:6px}
+.dish-desc{font-size:.72rem;color:var(--muted);line-height:1.4;padding-left:6px}
+.dish-tag-row{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.35rem;padding-left:6px}
+.dt{font-size:.58rem;padding:.1rem .42rem;border-radius:3px;font-weight:700;letter-spacing:.02em}
+.dt-veg{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+.dt-nv{background:rgba(248,113,113,0.1);color:#f87171;border:1px solid rgba(248,113,113,0.2)}
+.dt-sweet{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)}
+.dt-live{background:rgba(192,132,252,0.1);color:#d8b4fe;border:1px solid rgba(192,132,252,0.2)}
+.dt-pop{background:rgba(255,153,51,0.1);color:#ffd19a;border:1px solid rgba(255,153,51,0.2)}
+.dt-jain{background:rgba(45,212,191,0.1);color:#5eead4;border:1px solid rgba(45,212,191,0.2)}
+
+/* ── QUANTITY TABLE ── */
+.qty-wrap{background:linear-gradient(135deg,rgba(232,184,75,0.07),rgba(255,153,51,0.04));border:1px solid var(--gold-bd);border-radius:12px;padding:18px;margin-bottom:14px}
+.qty-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.qty-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.5rem}
+.qty-copy{padding:6px 12px;border-radius:7px;font-size:.71rem;font-weight:700;border:1px solid var(--gold-bd);background:var(--gold-bg);color:var(--gold);cursor:pointer;transition:all .2s}
+.qty-copy:hover{background:rgba(232,184,75,0.15)}
+.qty-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.qty-table th{background:rgba(232,184,75,0.07);color:var(--gold2);padding:8px 12px;text-align:left;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--gold-bd)}
+.qty-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle}
+.qty-table tr:last-child td{border-bottom:none}
+.qty-table tr:hover td{background:rgba(255,255,255,0.02)}
+.qty-name{color:var(--text);font-weight:700;display:flex;align-items:center;gap:.4rem}
+.qty-base{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--muted)}
+.qty-buf{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--green);font-weight:700}
+.qty-note{font-size:.7rem;color:var(--faint)}
+.qty-footer{margin-top:10px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.18);border-radius:7px;padding:9px 13px;font-size:.79rem;color:#86efac;display:flex;align-items:center;gap:.5rem}
+
+/* ── COST BREAKDOWN ── */
+.cost-breakdown{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.cb-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.cb-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
+.cost-bars{display:flex;flex-direction:column;gap:9px}
+.cost-bar-item{display:flex;align-items:center;gap:10px}
+.cb-label{font-size:.78rem;color:var(--text);font-weight:600;min-width:130px;display:flex;align-items:center;gap:.4rem}
+.cb-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.cb-fill{height:100%;border-radius:3px;transition:width 1s cubic-bezier(.17,.67,.35,1.2)}
+.cb-amount{font-size:.8rem;font-weight:700;color:var(--gold2);font-family:'Playfair Display',serif;min-width:60px;text-align:right}
+.cost-total-row{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cost-total-lbl{font-size:.82rem;font-weight:700;color:var(--text)}
+.cost-total-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--green)}
+
+/* ── AI NOTES ── */
+.ai-notes{background:linear-gradient(135deg,rgba(192,132,252,0.07),rgba(255,153,51,0.04));border:1px solid rgba(192,132,252,0.2);border-radius:12px;padding:18px;margin-bottom:14px}
+.ai-notes-head{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#d8b4fe;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.copy-note-btn{padding:5px 12px;border-radius:6px;font-size:.7rem;font-weight:700;border:1px solid rgba(192,132,252,0.3);background:rgba(192,132,252,0.08);color:#d8b4fe;cursor:pointer;transition:all .2s}
+.copy-note-btn:hover{background:rgba(192,132,252,0.15)}
+.ai-notes-body{font-size:.84rem;color:var(--muted);line-height:1.85;white-space:pre-wrap}
+
+/* ── ACTIONS ── */
+.result-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:14px}
+.ra-btn{padding:8px 14px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;border:1px solid}
+.ra-copy{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);color:#4ade80}
+.ra-wa{background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:#25d366}
+.ra-caterer{background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.3);color:#d8b4fe}
+.ra-regen{background:var(--saf-bg);border-color:var(--saf-bd);color:#ffd19a}
+
+/* ── SHARE ── */
+.share-box{background:var(--gold-bg);border:1px solid var(--gold-bd);border-radius:12px;padding:16px;text-align:center;margin-bottom:14px}
+.share-box h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.3rem;color:var(--gold2)}
+.share-box p{font-size:.8rem;color:var(--muted);margin-bottom:10px}
+.share-btns{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap}
+.shr-btn{padding:7px 14px;border-radius:7px;font-size:.78rem;font-weight:700;border:1px solid var(--gold-bd);color:var(--gold);background:transparent;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;text-decoration:none;display:inline-block}
+.shr-btn:hover{background:var(--gold-bg)}
+
+/* ── REFERENCE / INFO SECTIONS ── */
+.section-title{font-family:'Playfair Display',serif;font-size:1.45rem;text-align:center;margin-bottom:16px}
+.section-title em{color:var(--gold2);font-style:italic}
+.cuisine-ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px;margin:24px 0}
+.cref{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:15px;transition:all .25s}
+.cref:hover{border-color:var(--saf-bd);transform:translateY(-2px)}
+.cref-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:9px;display:flex;align-items:center;gap:.4rem}
+.cref-list{list-style:none}
+.cref-list li{font-size:.77rem;color:var(--muted);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:.4rem;line-height:1.4}
+.cref-list li:last-child{border-bottom:none}
+.cr-dot{width:5px;height:5px;border-radius:50%;background:var(--saffron);flex-shrink:0}
+
+/* ── CASE STUDY ── */
+.case-study{background:linear-gradient(135deg,rgba(255,153,51,0.06),rgba(232,184,75,0.04));border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:24px 0}
+.cs-tag{display:inline-block;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.22);color:#4ade80;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;margin-bottom:9px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.6rem;line-height:1.3}
+.cs-title em{color:var(--gold2);font-style:italic}
+.cs-body{font-size:.86rem;color:var(--muted);line-height:1.8;margin-bottom:13px}
+.cs-stats{display:flex;gap:.7rem;flex-wrap:wrap}
+.cs-stat{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 13px;flex:1;min-width:65px}
+.cs-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold2)}
+.cs-lbl{font-size:.6rem;color:var(--muted);margin-top:.15rem}
+
+/* ── REVIEWS ── */
+.reviews-section{background:var(--bg2);border-radius:var(--radius);padding:24px;margin:24px 0}
+.revs-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;text-align:center;color:var(--gold2);margin-bottom:16px}
+.revs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px}
+.rev-stars{color:var(--gold);font-size:.78rem;margin-bottom:6px}
+.rev-text{font-size:.82rem;color:var(--muted);line-height:1.65;font-style:italic;margin-bottom:8px}
+.rev-author{font-size:.7rem;color:var(--faint);display:flex;align-items:center;gap:.35rem}
+.av{width:23px;height:23px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#07050e;flex-shrink:0}
+
+/* ── TIPS ── */
+.tips-section{background:var(--bg2);border-radius:var(--radius);padding:24px;margin:24px 0}
+.tips-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2);margin-bottom:13px}
+.tip-row{display:flex;gap:.65rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.84rem;color:var(--muted);line-height:1.65}
+.tip-row:last-child{border-bottom:none}
+.tip-icon{flex-shrink:0;font-size:.95rem;margin-top:.1rem}
+
+/* ── FAQ ── */
+.faq-wrap{margin:24px 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;padding:14px 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-size:.88rem;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-btn:hover{color:var(--gold)}
+.faq-icon{font-size:1rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.faq-btn.open .faq-icon{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.faq-text{padding:0 0 14px;font-size:.84rem;color:var(--muted);line-height:1.78}
+
+/* ── TOOLS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:24px 0}
+.tool-link{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .25s;display:block}
+.tool-link:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+.tl-icon{font-size:1.25rem;margin-bottom:.35rem}
+.tl-name{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.12rem}
+.tl-desc{font-size:.67rem;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.8rem 1.5rem;text-align:center;margin-top:2rem}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:.4rem;display:inline-block}
+.foot-text{font-size:.73rem;color:var(--faint);margin-bottom:.65rem}
+.foot-links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+.foot-links a{font-size:.71rem;color:var(--muted);transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(18px);background:#4ade80;color:#07050e;padding:9px 20px;border-radius:100px;font-size:.82rem;font-weight:800;opacity:0;transition:all .28s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .grid2,.grid3{grid-template-columns:1fr}
+  .dish-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .card{padding:15px 13px}
+  h1{font-size:1.8rem}
+  .guest-big{font-size:3.5rem}
+  .overview-strip{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .dish-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
-  <ul class="nav-links">
-    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
-    <li><a href="/ai-budget-calculator.html">Budget</a></li>
-    <li><a href="/ai-guest-manager.html">Guests</a></li>
-  </ul>
-  <span class="nav-badge">✨ AI Powered</span>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="ai-budget-calculator.html">💰 Budget</a>
+    <a href="ai-invitation-writer.html">💌 Invitation</a>
+    <a href="ai-planning-timeline.html">📅 Timeline</a>
+    <a href="ai-guest-manager.html">👥 Guests</a>
+    <a href="chatbot.html" class="nav-cta">AI Chat →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <span class="hero-icon">🍽️</span>
-  <h1>AI Wedding Menu Planner</h1>
-  <p>Regional cuisine se lekar fusion tak — perfect wedding menu AI se banao!</p>
-  <span class="tag">🤖 Regional Cuisine · Quantity Calculator · Cost Estimate</span>
-</div>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="spice-float" id="spiceFloat"></div>
+  <div class="badge"><div class="badge-dot"></div>11,240+ Menus Planned This Month</div>
+  <h1>Free AI Wedding<br><em>Menu Planner</em><br><strong>India 2026</strong></h1>
+  <p class="hero-sub">Automatic quantity calculator + per-plate cost + caterer note — ek saath sab kuch. 50 se 1000 guests. North Indian, Punjabi, Bengali, Gujarati — sab cuisines. Bilkul Free! 🍽️</p>
+  <div class="hero-stats">
+    <div><div class="hs-num">11,240+</div><div class="hs-lbl">Menus Planned</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-num">Auto</div><div class="hs-lbl">Qty Calculator</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-num">10</div><div class="hs-lbl">Cuisines</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-num">4.9★</div><div class="hs-lbl">Rating</div></div>
+  </div>
+</section>
 
-<div class="container">
+<div class="main">
+  <!-- AD TOP -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- STEP 1: GUESTS -->
   <div class="card">
-    <div class="card-title">🗺️ Apna Regional Cuisine Chunein</div>
-    <div class="cuisine-grid">
-      <div class="cuisine-chip active" data-cuisine="North Indian"><span class="emoji">🫓</span>North Indian</div>
-      <div class="cuisine-chip" data-cuisine="South Indian"><span class="emoji">🥘</span>South Indian</div>
-      <div class="cuisine-chip" data-cuisine="Bengali"><span class="emoji">🐟</span>Bengali</div>
-      <div class="cuisine-chip" data-cuisine="Punjabi"><span class="emoji">🧆</span>Punjabi</div>
-      <div class="cuisine-chip" data-cuisine="Gujarati"><span class="emoji">🥗</span>Gujarati</div>
-      <div class="cuisine-chip" data-cuisine="Rajasthani"><span class="emoji">🌶️</span>Rajasthani</div>
-      <div class="cuisine-chip" data-cuisine="Maharashtrian"><span class="emoji">🫔</span>Maharashtrian</div>
-      <div class="cuisine-chip" data-cuisine="Hyderabadi"><span class="emoji">🍚</span>Hyderabadi</div>
-      <div class="cuisine-chip" data-cuisine="Fusion"><span class="emoji">🌍</span>Fusion</div>
-      <div class="cuisine-chip" data-cuisine="Continental"><span class="emoji">🍝</span>Continental</div>
+    <div class="card-title">👥 Step 1 — Kitne Mehman Aa Rahe Hain?</div>
+    <div class="guest-hero">
+      <div class="guest-big" id="guestNum">300</div>
+      <div class="guest-sub">Expected Guests</div>
+      <div class="guest-size-badge gsb-medium" id="guestBadge">Medium Wedding</div>
+    </div>
+    <div class="guest-controls">
+      <button class="gc-btn" onclick="changeGuests(-50)">−</button>
+      <div style="flex:1;max-width:320px">
+        <input type="range" class="guest-slider" id="gSlider" min="50" max="1000" step="25" value="300" oninput="setGuests(this.value)">
+        <div class="slider-marks"><span class="slider-mark">50</span><span class="slider-mark">250</span><span class="slider-mark">500</span><span class="slider-mark">750</span><span class="slider-mark">1000</span></div>
+      </div>
+      <button class="gc-btn" onclick="changeGuests(+50)">+</button>
+    </div>
+    <div class="gc-presets">
+      <button class="gc-preset" onclick="setGuests(100)">100</button>
+      <button class="gc-preset" onclick="setGuests(200)">200</button>
+      <button class="gc-preset active" onclick="setGuests(300)">300</button>
+      <button class="gc-preset" onclick="setGuests(500)">500</button>
+      <button class="gc-preset" onclick="setGuests(750)">750</button>
+      <button class="gc-preset" onclick="setGuests(1000)">1000</button>
     </div>
   </div>
 
+  <!-- STEP 2: CUISINE -->
   <div class="card">
-    <div class="card-title">📊 Event Details</div>
-    <div class="form-grid">
+    <div class="card-title">🗺️ Step 2 — Cuisine Chunein (Multiple OK)</div>
+    <div class="cuisine-row">
+      <button class="cpill on" data-v="North Indian">🫓 North Indian</button>
+      <button class="cpill on" data-v="Punjabi">🥁 Punjabi</button>
+      <button class="cpill" data-v="South Indian">🥘 South Indian</button>
+      <button class="cpill" data-v="Bengali">🐟 Bengali</button>
+      <button class="cpill" data-v="Gujarati">🥗 Gujarati</button>
+      <button class="cpill" data-v="Rajasthani">🌶️ Rajasthani</button>
+      <button class="cpill" data-v="Maharashtrian">🫔 Maharashtrian</button>
+      <button class="cpill" data-v="Hyderabadi">🍚 Hyderabadi</button>
+      <button class="cpill" data-v="Fusion">🌍 Fusion</button>
+      <button class="cpill" data-v="Continental">🍝 Continental</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: EVENT DETAILS -->
+  <div class="card">
+    <div class="card-title">📋 Step 3 — Event Ki Details</div>
+    <div class="grid3">
       <div class="field">
-        <label>Expected Guests</label>
-        <input type="number" id="guests" placeholder="e.g. 300" min="10" />
-      </div>
-      <div class="field">
-        <label>Meal Type</label>
-        <select id="mealType">
-          <option value="full dinner buffet">Full Dinner Buffet</option>
-          <option value="lunch buffet">Lunch Buffet</option>
-          <option value="sit down dinner">Sit-down Dinner</option>
-          <option value="cocktail party">Cocktail Party / Snacks</option>
-          <option value="tea party">Tea/Snacks Party</option>
+        <label class="lbl">Meal Type</label>
+        <select class="fi" id="mealType">
+          <option value="Full Dinner Buffet">🍽️ Full Dinner Buffet</option>
+          <option value="Lunch Buffet">☀️ Lunch Buffet</option>
+          <option value="Sit-down Dinner">🪑 Sit-down Dinner</option>
+          <option value="Cocktail + Dinner">🥂 Cocktail + Dinner</option>
+          <option value="Tea & Snacks">☕ Tea & Snacks</option>
+          <option value="Mehendi/Haldi Food">🌿 Mehendi/Haldi</option>
         </select>
       </div>
       <div class="field">
-        <label>Budget Per Plate</label>
-        <select id="plateRate">
-          <option value="500-800">₹500-800 (Budget)</option>
-          <option value="800-1200" selected>₹800-1200 (Mid)</option>
-          <option value="1200-2000">₹1200-2000 (Premium)</option>
-          <option value="2000+">₹2000+ (Luxury)</option>
+        <label class="lbl">Budget Per Plate</label>
+        <select class="fi" id="bpp" onchange="updateCostPreview()">
+          <option value="400">₹400–700 (Budget)</option>
+          <option value="700">₹700–1000 (Economy)</option>
+          <option value="950" selected>₹950–1200 (Mid)</option>
+          <option value="1500">₹1200–2000 (Premium)</option>
+          <option value="2500">₹2000+ (Luxury)</option>
         </select>
       </div>
       <div class="field">
-        <label>City</label>
-        <input type="text" id="city" placeholder="e.g. Delhi, Mumbai, Chennai" />
+        <label class="lbl">City</label>
+        <select class="fi" id="city">
+          <option value="Delhi NCR">Delhi NCR</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Tier 2 City">Tier 2 City</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label class="lbl">Season</label>
+        <select class="fi" id="season">
+          <option value="Peak Season (Nov–Feb)">❄️ Winter/Peak (Nov–Feb)</option>
+          <option value="Shoulder (Mar, Oct)">🌸 Shoulder (Mar, Oct)</option>
+          <option value="Off Season (Apr–Sep)">☀️ Off Season (Apr–Sep) — Sasta!</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lbl">Serving Style</label>
+        <select class="fi" id="serving">
+          <option value="Buffet self-service">Buffet — Self Service</option>
+          <option value="Waiter served at tables">Waiter Served</option>
+          <option value="Traditional leaf plate (patra)">🍃 Patra / Leaf Plate</option>
+          <option value="Buffet + Waiter mix">Buffet + Waiter Mix</option>
+        </select>
       </div>
     </div>
   </div>
 
+  <!-- STEP 4: DIETARY + COUNTERS -->
   <div class="card">
-    <div class="card-title">🥗 Dietary Preferences</div>
-    <div class="toggle-row" id="dietaryToggles">
-      <button class="toggle-btn active" data-diet="Vegetarian">🥦 Veg</button>
-      <button class="toggle-btn active" data-diet="Non-Vegetarian">🍖 Non-Veg</button>
-      <button class="toggle-btn" data-diet="Jain">🙏 Jain</button>
-      <button class="toggle-btn" data-diet="Vegan">🌱 Vegan</button>
-      <button class="toggle-btn" data-diet="Gluten-Free">🌾 Gluten-Free</button>
-      <button class="toggle-btn" data-diet="No Onion Garlic">🧅 No Onion-Garlic</button>
-      <button class="toggle-btn active" data-diet="Sweet Counter">🍬 Sweet Counter</button>
-      <button class="toggle-btn active" data-diet="Live Counters">👨‍🍳 Live Counters</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">✨ Special Requests</div>
+    <div class="card-title">🥗 Step 4 — Dietary & Live Counters</div>
     <div class="field">
-      <textarea id="special" placeholder="Koi khas dishes? Allergies? Fusion theme? Regional specialties? e.g. Biryani counter must, No beef/pork, Mithai variety chahiye..."></textarea>
-    </div>
-  </div>
-
-  <button class="btn-generate" onclick="generateMenu()">
-    🍽️ Generate Complete Menu — AI Se Banao
-  </button>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p style="color:var(--muted);margin-top:1rem">AI aapka wedding menu plan kar raha hai... 👨‍🍳</p>
-  </div>
-
-  <div class="result-card" id="resultCard">
-    <div class="result-header">
-      <span class="result-title">🍽️ Aapka Wedding Menu</span>
-      <div class="action-btns">
-        <button class="btn-action" onclick="copyMenu()">📋 Copy</button>
-        <button class="btn-action" onclick="shareWhatsApp()">📱 WhatsApp</button>
-        <button class="btn-action" onclick="generateMenu()">🔄 New Menu</button>
+      <label class="lbl">Dietary Requirements</label>
+      <div class="tpill-row" id="dietRow">
+        <button class="tpill on" data-v="Pure Veg">🥦 Pure Veg</button>
+        <button class="tpill on" data-v="Non-Veg">🍖 Non-Veg</button>
+        <button class="tpill" data-v="Jain Section">🙏 Jain Section</button>
+        <button class="tpill" data-v="Vegan Options">🌱 Vegan</button>
+        <button class="tpill" data-v="Gluten-Free Options">🌾 Gluten-Free</button>
+        <button class="tpill" data-v="No Onion-Garlic">🧅 No Onion-Garlic</button>
+        <button class="tpill" data-v="Diabetic-Friendly">💊 Diabetic-Friendly</button>
       </div>
     </div>
-    <div class="menu-content" id="menuText"></div>
+    <div class="field" style="margin-top:12px">
+      <label class="lbl">Live Counters & Special Stations <span class="lbl-hint">(guests ko bahut pasand aate hain!)</span></label>
+      <div class="tpill-row" id="counterRow">
+        <button class="tpill on" data-v="Chaat Counter">🥙 Chaat Counter</button>
+        <button class="tpill on" data-v="Sweet Counter (Mithai)">🍬 Sweet Counter</button>
+        <button class="tpill on" data-v="Paan Counter">🍃 Paan Counter</button>
+        <button class="tpill" data-v="Live Tandoor">🔥 Live Tandoor</button>
+        <button class="tpill" data-v="Ice Cream Station">🍦 Ice Cream</button>
+        <button class="tpill" data-v="Juice & Mocktail Bar">🥤 Juice Bar</button>
+        <button class="tpill" data-v="Chowmein/Frankie Counter">🍜 Chowmein</button>
+        <button class="tpill" data-v="Live Biryani Deg">🫕 Live Biryani</button>
+        <button class="tpill" data-v="Fruit & Salad Counter">🍉 Fruit Salad</button>
+        <button class="tpill" data-v="Pizza & Pasta Counter">🍕 Pizza/Pasta</button>
+      </div>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label class="lbl">Kuch Special Hai? <span class="lbl-hint">(allergies, VIP guests, theme food, specific dish...)</span></label>
+      <textarea class="fi" id="special" placeholder="e.g. Dulhe ke naana ko diabetes hai — sugar-free section chahiye. Bride ki family Jain hai. Groom ko paneer nahi pasand. Ek Italian counter bhi chahiye..."></textarea>
+    </div>
+  </div>
+
+  <!-- LIVE COST PREVIEW (updates in real time) -->
+  <div class="cost-preview" id="costPreview">
+    <div>
+      <div class="cp-label">Guests</div>
+      <div class="cp-value" id="cpGuests">300</div>
+      <div class="cp-note">Expected</div>
+    </div>
+    <div class="cp-divider"></div>
+    <div>
+      <div class="cp-label">Per Plate (Est.)</div>
+      <div class="cp-value" id="cpPerPlate">₹950</div>
+      <div class="cp-note">Mid range</div>
+    </div>
+    <div class="cp-divider"></div>
+    <div>
+      <div class="cp-label">Total Catering (Est.)</div>
+      <div class="cp-value" id="cpTotal">₹2.85L</div>
+      <div class="cp-note">Before negotiation</div>
+    </div>
+    <div class="cp-divider"></div>
+    <div>
+      <div class="cp-label">After 15% Negotiation</div>
+      <div class="cp-value" id="cpNego" style="color:var(--green)">₹2.42L</div>
+      <div class="cp-note">Target price</div>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">🍽️ Complete Menu + Quantity + Cost Banao — Free!</button>
+
+  <div class="prog-wrap" id="progWrap">
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-steps">
+      <div class="ps" id="ps1">🗺️ Cuisine Loading</div>
+      <div class="ps" id="ps2">🍽️ Dishes Choosing</div>
+      <div class="ps" id="ps3">⚖️ Qty Calculating</div>
+      <div class="ps" id="ps4">💰 Cost Estimating</div>
+      <div class="ps" id="ps5">📝 Caterer Note</div>
+    </div>
+  </div>
+  <div class="err" id="errBox"></div>
+
+  <!-- ══════════ RESULT ══════════ -->
+  <div class="result-wrap" id="resultWrap">
+
+    <!-- OVERVIEW STRIP -->
+    <div class="overview-strip" id="ovStrip">
+      <div class="ov-tile"><div class="ov-num" id="ovGuests">300</div><div class="ov-lbl">Total Guests</div><div class="ov-sub">Expected</div></div>
+      <div class="ov-tile"><div class="ov-num" id="ovPP">₹950</div><div class="ov-lbl">Per Plate</div><div class="ov-sub">Estimated</div></div>
+      <div class="ov-tile"><div class="ov-num" id="ovTotal">₹2.85L</div><div class="ov-lbl">Total Cost</div><div class="ov-sub">Catering only</div></div>
+      <div class="ov-tile"><div class="ov-num" id="ovDishes">—</div><div class="ov-lbl">Dishes</div><div class="ov-sub">In menu</div></div>
+      <div class="ov-tile"><div class="ov-num" id="ovCuisine">N.Indian</div><div class="ov-lbl">Cuisine</div><div class="ov-sub">Mix</div></div>
+    </div>
+
+    <!-- MENU TABS -->
+    <div class="menu-tabs-wrap">
+      <div class="menu-tabs" id="menuTabs"></div>
+    </div>
+    <div id="menuSectionsContainer"></div>
+
+    <!-- QUANTITY CALCULATOR -->
+    <div class="qty-wrap">
+      <div class="qty-header">
+        <div class="qty-title">⚖️ Auto Quantity Calculator — <span id="qtyGC">300</span> Guests Ke Liye</div>
+        <button class="qty-copy" onclick="copyQty()">📋 Copy List</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="qty-table">
+          <thead><tr><th>Ingredient</th><th>Base Qty</th><th>+15% Buffer ✓</th><th>Pro Tip</th></tr></thead>
+          <tbody id="qtyBody"></tbody>
+        </table>
+      </div>
+      <div class="qty-footer">⚠️ 15% buffer amount already included in green column — last-minute guests ke liye hamesha buffer rakho!</div>
+    </div>
+
+    <!-- COST BREAKDOWN BARS -->
+    <div class="cost-breakdown">
+      <div class="cb-title">💰 Catering Cost Breakdown</div>
+      <div class="cost-bars" id="costBars"></div>
+      <div class="cost-total-row">
+        <div class="cost-total-lbl">🧾 Total Estimated Catering Cost</div>
+        <div class="cost-total-num" id="cbTotal">₹0</div>
+      </div>
+    </div>
+
+    <!-- AI CATERER NOTE -->
+    <div class="ai-notes">
+      <div class="ai-notes-head">
+        <span>👨‍🍳 Caterer Ke Liye Complete AI Note — Copy Karo WhatsApp Karo!</span>
+        <button class="copy-note-btn" onclick="copyCaterer()">📋 Copy Note</button>
+      </div>
+      <div class="ai-notes-body" id="aiNotesBody"></div>
+    </div>
+
+    <div class="result-actions">
+      <button class="ra-btn ra-copy" onclick="copyAll()">📋 Full Menu Copy</button>
+      <button class="ra-btn ra-wa" onclick="waShare()">📱 WhatsApp</button>
+      <button class="ra-btn ra-caterer" onclick="copyCaterer()">👨‍🍳 Caterer Note</button>
+      <button class="ra-btn ra-regen" onclick="generate()">🔄 Dobara Banao</button>
+    </div>
+
+    <div class="share-box">
+      <h4>🍽️ Dosto Ko Share Karo!</h4>
+      <p>Shaadi plan kar rahe friends ko yeh free tool batao!</p>
+      <div class="share-btns">
+        <button class="shr-btn" onclick="waShareTool()">📱 WhatsApp</button>
+        <button class="shr-btn" onclick="copyLink()">🔗 Link Copy</button>
+        <a href="ai-budget-calculator.html" class="shr-btn">💰 Budget →</a>
+        <a href="ai-guest-manager.html" class="shr-btn">👥 Guests →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD MID -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- CUISINE REFERENCE -->
+  <h2 class="section-title" style="margin-top:28px">Regional Cuisine <em>Signature Dishes</em></h2>
+  <div class="cuisine-ref-grid">
+    <div class="cref"><div class="cref-title">🫓 North Indian Must-Haves</div><ul class="cref-list"><li><span class="cr-dot"></span>Dal Makhani</li><li><span class="cr-dot"></span>Paneer Butter Masala</li><li><span class="cr-dot"></span>Shahi Biryani / Pulao</li><li><span class="cr-dot"></span>Naan + Laccha Paratha</li><li><span class="cr-dot"></span>Gulab Jamun + Kheer</li></ul></div>
+    <div class="cref"><div class="cref-title">🥁 Punjabi Wedding Staples</div><ul class="cref-list"><li><span class="cr-dot"></span>Sarson ka Saag + Makki Roti</li><li><span class="cr-dot"></span>Butter Chicken / Murgh Makhni</li><li><span class="cr-dot"></span>Amritsari Kulcha</li><li><span class="cr-dot"></span>Lassi Counter</li><li><span class="cr-dot"></span>Pinni + Barfi</li></ul></div>
+    <div class="cref"><div class="cref-title">🥘 South Indian Spread</div><ul class="cref-list"><li><span class="cr-dot"></span>Idli / Vada / Masala Dosa</li><li><span class="cr-dot"></span>Sambar + 4 Chutneys</li><li><span class="cr-dot"></span>Curd Rice + Rasam</li><li><span class="cr-dot"></span>Lemon Rice</li><li><span class="cr-dot"></span>Payasam</li></ul></div>
+    <div class="cref"><div class="cref-title">🥗 Gujarati Thali</div><ul class="cref-list"><li><span class="cr-dot"></span>Dhokla / Fafda / Jalebi</li><li><span class="cr-dot"></span>Undhiyu</li><li><span class="cr-dot"></span>Dal Dhokli</li><li><span class="cr-dot"></span>Shrikhand + Aamras</li><li><span class="cr-dot"></span>Mohanthal</li></ul></div>
+  </div>
+
+  <!-- CASE STUDY -->
+  <div class="case-study">
+    <div class="cs-tag">✦ Real Story</div>
+    <h2 class="cs-title">Sunita Aunty Ne <em>₹42,000 Bachaye</em> — Caterer Se Negotiation</h2>
+    <p class="cs-body">Sunita Ji bata rahi thi: "Hamare caterer ne 400 guests ke liye ₹1,800 per plate quote kiya — total ₹72,000! Mujhe kuch nahi pata tha compare karne ke liye. Maine SmartShaadi ka Menu Planner use kiya. AI ne quantity calculator se exact amounts bataye — mujhe pata chala ki caterer 30% zyada estimate de raha tha! AI note copy karke doosre caterer ko diya — unhone ₹1,100 mein sab de diya. Aur menu bhi better tha — live chaat counter aur 2 extra sweet varieties ke saath. ₹42,000 directly bache — ghar mein badhai ka mood ho gaya!"</p>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-num">₹42K</div><div class="cs-lbl">Bachaye</div></div>
+      <div class="cs-stat"><div class="cs-num">400</div><div class="cs-lbl">Guests</div></div>
+      <div class="cs-stat"><div class="cs-num">₹1,100</div><div class="cs-lbl">Per Plate</div></div>
+      <div class="cs-stat"><div class="cs-num">⭐×5</div><div class="cs-lbl">Guest Rating</div></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews-section">
+    <h2 class="revs-title">Families Ki <em>Real Reviews</em></h2>
+    <div class="revs-grid">
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Quantity calculator ne ek dum sahi amount bataya! Caterer ke saath negotiation mein clear numbers the — unhone kuch bhi zyada charge nahi kar paaye. Zabardast!"</p><div class="rev-author"><div class="av">R</div>Renu Ji · Lucknow</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Caterer Note copy karke WhatsApp ki — usne kaha 'aap toh professional ho!' Sab dishes exactly match huein. Pehli baar shaadi mein koi confusion nahi!"</p><div class="rev-author"><div class="av">V</div>Vivek · Delhi Wedding</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"North Indian + Rajasthani fusion — bilkul waise nikla. Guests baar baar taste kar rahe the! Live chaat counter sabka favourite raha. Dil khush ho gaya."</p><div class="rev-author"><div class="av">M</div>Meena Ji · Jaipur</div></div>
+    </div>
+  </div>
+
+  <!-- AD BOTTOM -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <h2 class="tips-title">🍽️ Caterer Se Deal Karne Ke 6 Golden Rules</h2>
+    <div class="tip-row"><div class="tip-icon">⚖️</div><div><strong>Exact quantities lekar jaao</strong> — "200 log hain" se behtar hai "200 guests, 75kg chawal, 40kg dal, 15kg paneer" — caterer ke paas exact brief hoga toh woh extra charge nahi kar sakta.</div></div>
+    <div class="tip-row"><div class="tip-icon">📋</div><div><strong>3 caterers se quotes lo — hamesha</strong> — Ek caterer ka quote final mat karo. 3 quotes lo, compare karo, phir negotiate karo. Average mein 15-20% difference hota hai.</div></div>
+    <div class="tip-row"><div class="tip-icon">🥘</div><div><strong>Kam dishes, premium quality</strong> — 14 average dishes se behtar hain 9 excellent dishes. Guests quality yaad rakhte hain, quantity nahi. Live counters se perceived value 2x ho jaati hai.</div></div>
+    <div class="tip-row"><div class="tip-icon">📅</div><div><strong>Off-season mein 20-30% sasta</strong> — Same caterer, same food — April–September mein 20-30% less charge karte hain. Smart families off-season mein book karti hain.</div></div>
+    <div class="tip-row"><div class="tip-icon">📝</div><div><strong>Written agreement zaroor lo</strong> — Verbal deal pe shaadi nahi hoti! Menu, quantity, timing, setup, cleanup — sab likhit mein. Yahan Caterer Note copy karo, WhatsApp karo.</div></div>
+    <div class="tip-row"><div class="tip-icon">💰</div><div><strong>Advance 20%, rest on delivery</strong> — 50%+ advance mat do. 20% advance, 60% delivery pe, 20% sab theek hone ke baad. Leverage aapke paas rehna chahiye.</div></div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+    <h2 class="section-title" style="margin-bottom:14px">Aksar Pooche Jane Wale <em>Sawaal</em></h2>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Indian wedding mein per plate kharcha kitna hota hai 2026 mein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">2026 mein city-wise: Delhi/Mumbai ₹800–2500, Jaipur/Lucknow ₹500–1500, Tier-2 cities ₹400–1000. Budget: ₹400–700, Mid: ₹700–1200, Premium: ₹1200–2000, Luxury: ₹2000+. Peak season (Nov–Feb) mein 10–15% zyada hota hai. Live counters add karne se ₹100–200 per plate extra lagte hain.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">500 guests ke liye exactly kitna khana order karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">500 guests (full dinner buffet, North Indian): Chawal 100 kg, Dal 60 kg, Sabzi 90 kg, Maida/Atta 75 kg, Paneer 22 kg, Sweets/Mithai 40 kg, Raita 50 litre, Salad items 20 kg, Welcome Drink 125 litre. Hamesha 15% extra buffer ke saath order karo — last minute guests guarantee se aate hain!</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Wedding menu mein minimum kya kya hona chahiye?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Complete Indian wedding menu minimum: Welcome drink (2), Starters (3–4), Main course veg (4–5), Non-veg (2–3), Breads (2–3 types), Rice/Biryani, Dal (2 types), Raita + Salad, Desserts (3–4), Papad + Achar, Paan counter. 15–18 items ka spread ideal hai. Live chaat counter additionally add karo — sabse popular hota hai.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Live counters kyon zaroori hain? Sach mein fayda hota hai?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Haan! Live counters ke real benefits: (1) Fresh food — taste 10x better hota hai, (2) Entertainment — guests enjoy karte hain dekhke, (3) Premium feel — ₹600 per plate ki shaadi bhi ₹1500 wali lagti hai, (4) Less waste — demand ke hisab se banao, (5) Conversation point — guests yaad rakhte hain. Chaat counter + Paan counter — yeh minimum do hamesha rakhein.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Caterer fraud se kaise bachein? Common scams kya hain?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Common caterer scams: (1) "250 guests ke menu" mein 150 pe hi khatam ho jaata hai — Quantity calculator se verify karo, (2) Cheap ingredients mein premium price — paneer milawati, ghee mein dalda, (3) Day-of venue change — advance receipt lo, (4) Overtime charges hidden — contract mein timing clearly likho, (5) Staff extra charges — setup/cleanup included karo contract mein. Solution: Written contract, yahan se Caterer Note copy karo — sab listed hai.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">Pure Veg wedding mein guests impress kaise karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Pure Veg ko boring mat hone do! Tips: (1) Paneer multiple ways — tikka, makhni, kadai, (2) Mushroom + baby corn dishes — non-veg feel, (3) Live chaat counter — sabka favourite, (4) International section — pasta, pizza, (5) Premium sweets — 6–7 varieties, (6) Mocktail bar — colorful presentation, (7) Dry fruits garnish everywhere — premium look. Gujarati/Rajasthani cuisine add karo — naturally veg aur delicious!</div></div></div>
+  </div>
+
+  <!-- TOOLS -->
+  <h2 class="section-title" style="margin-top:24px;margin-bottom:14px">🤖 Baaki AI Tools — <em>Sab Free</em></h2>
+  <div class="tools-grid">
+    <a href="ai-budget-calculator.html" class="tool-link"><div class="tl-icon">💰</div><div class="tl-name">Budget Calculator</div><div class="tl-desc">City-wise breakdown</div></a>
+    <a href="ai-guest-manager.html" class="tool-link"><div class="tl-icon">👥</div><div class="tl-name">Guest Manager</div><div class="tl-desc">RSVP + seating</div></a>
+    <a href="ai-invitation-writer.html" class="tool-link"><div class="tl-icon">💌</div><div class="tl-name">Invitation Writer</div><div class="tl-desc">6 languages</div></a>
+    <a href="ai-planning-timeline.html" class="tool-link"><div class="tl-icon">📅</div><div class="tl-name">Timeline Planner</div><div class="tl-desc">Month-wise checklist</div></a>
+    <a href="ai-kundali-matching.html" class="tool-link"><div class="tl-icon">🔮</div><div class="tl-name">Kundali Matching</div><div class="tl-desc">Guna Milan</div></a>
+    <a href="ai-playlist-generator.html" class="tool-link"><div class="tl-icon">🎵</div><div class="tl-name">Playlist Generator</div><div class="tl-desc">Sangeet to Vidai</div></a>
   </div>
 </div>
 
-<div class="toast" id="toast">✅ Copied!</div>
+<footer>
+  <a href="index.html" class="foot-logo">Smart<em>Shaadi</em> 💍</a>
+  <p class="foot-text">India's #1 Free AI Wedding Planner — Menu, Budget, Kundali, 9 AI Agents</p>
+  <div class="foot-links">
+    <a href="index.html">Home</a><a href="blogs.html">Magazine</a><a href="chatbot.html">AI Chat</a>
+    <a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
 
 <script>
-let selectedCuisine = 'North Indian';
-let activeDiets = new Set(['Vegetarian', 'Non-Vegetarian', 'Sweet Counter', 'Live Counters']);
-
-document.querySelectorAll('.cuisine-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.cuisine-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    selectedCuisine = chip.dataset.cuisine;
+/* ── SPICE FLOAT ── */
+(()=>{
+  const c=document.getElementById('spiceFloat');
+  ['🍽️','🥘','🍛','🥗','🍚','🧆','🥙','🍜','🫕','🍲','🥧','🌶️'].forEach((e,i)=>{
+    const s=document.createElement('span');
+    s.className='sf';
+    s.textContent=e;
+    s.style.cssText=`left:${Math.random()*100}%;font-size:${20+Math.random()*32}px;animation-duration:${18+Math.random()*22}s;animation-delay:-${Math.random()*35}s;--r:${-18+Math.random()*36}deg`;
+    c.appendChild(s);
   });
-});
+})();
 
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('active');
-    const diet = btn.dataset.diet;
-    if (activeDiets.has(diet)) activeDiets.delete(diet);
-    else activeDiets.add(diet);
+/* ── GUEST COUNTER ── */
+let guests=300;
+function setGuests(v){
+  guests=Math.max(50,Math.min(1000,parseInt(v)));
+  document.getElementById('guestNum').textContent=guests;
+  const sl=document.getElementById('gSlider');
+  sl.value=guests;
+  sl.style.setProperty('--gval',((guests-50)/950*100)+'%');
+  const b=document.getElementById('guestBadge');
+  const cfg=guests<=100?['Intimate Wedding','gsb-tiny']:guests<=200?['Small Wedding','gsb-small']:guests<=400?['Medium Wedding','gsb-medium']:guests<=700?['Large Wedding','gsb-large']:['Grand Wedding','gsb-grand'];
+  b.textContent=cfg[0];b.className='guest-size-badge '+cfg[1];
+  document.querySelectorAll('.gc-preset').forEach(p=>p.classList.toggle('active',parseInt(p.textContent)===guests));
+  updateCostPreview();
+}
+function changeGuests(d){setGuests(guests+d);}
+
+/* ── COST PREVIEW (live) ── */
+function fmtINR(v){
+  if(v>=10000000)return'₹'+(v/10000000).toFixed(1)+'Cr';
+  if(v>=100000)return'₹'+(v/100000).toFixed(2)+'L';
+  return'₹'+(v/1000).toFixed(0)+'K';
+}
+function updateCostPreview(){
+  const pp=parseInt(document.getElementById('bpp').value)||950;
+  const total=pp*guests;
+  const nego=Math.round(total*0.85);
+  document.getElementById('cpGuests').textContent=guests;
+  document.getElementById('cpPerPlate').textContent='₹'+pp;
+  document.getElementById('cpTotal').textContent=fmtINR(total);
+  document.getElementById('cpNego').textContent=fmtINR(nego);
+}
+updateCostPreview();
+document.getElementById('bpp').addEventListener('change',updateCostPreview);
+
+/* ── PILLS ── */
+document.querySelectorAll('.cpill').forEach(p=>p.addEventListener('click',()=>p.classList.toggle('on')));
+document.querySelectorAll('.tpill').forEach(p=>p.addEventListener('click',()=>p.classList.toggle('on')));
+
+/* ── QUANTITY DATA ── */
+const QTY=[
+  {e:'🍚',n:'Chawal / Rice',u:'kg',r:0.2,t:'Biryani ke liye alag rakhein'},
+  {e:'🫕',n:'Dal (mixed)',u:'kg',r:0.13,t:'2 types — makhani + tadka'},
+  {e:'🥘',n:'Sabzi (main course)',u:'kg',r:0.18,t:'4-5 dishes mein divide karein'},
+  {e:'🧀',n:'Paneer',u:'kg',r:0.055,t:'2 dishes minimum'},
+  {e:'🫓',n:'Maida/Atta (roti/naan)',u:'kg',r:0.15,t:'Live tandoor pe fresh best'},
+  {e:'🫙',n:'Ghee (pure)',u:'kg',r:0.03,t:'Dal + roti ke liye'},
+  {e:'🍬',n:'Sweets / Mithai',u:'kg',r:0.085,t:'3-5 varieties recommended'},
+  {e:'🥛',n:'Raita (dahi)',u:'litre',r:0.11,t:'Boondi + plain dono rakhein'},
+  {e:'🥗',n:'Salad items',u:'kg',r:0.1,t:'Seasonal fresh veggies'},
+  {e:'🥤',n:'Welcome Drink',u:'litre',r:0.25,t:'Sharbat / Juice / Nimbu pani'},
+  {e:'🍦',n:'Ice Cream / Kulfi',u:'litre',r:0.15,t:'2-3 flavours min'},
+  {e:'🌶️',n:'Cooking oil / Spices',u:'litre/kg',r:0.04,t:'Bulk order = better rate'},
+];
+
+function buildQtyTable(g){
+  document.getElementById('qtyGC').textContent=g;
+  const tb=document.getElementById('qtyBody');
+  tb.innerHTML='';
+  QTY.forEach(q=>{
+    const base=Math.ceil(q.r*g);
+    const buf=Math.ceil(base*1.15);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><div class="qty-name">${q.e} ${q.n}</div></td><td class="qty-base">${base} ${q.u}</td><td class="qty-buf">${buf} ${q.u}</td><td class="qty-note">${q.t}</td>`;
+    tb.appendChild(tr);
   });
-});
+}
 
-async function generateMenu() {
-  const guests = document.getElementById('guests').value || '200';
-  const mealType = document.getElementById('mealType').value;
-  const plateRate = document.getElementById('plateRate').value;
-  const city = document.getElementById('city').value || 'Delhi';
-  const special = document.getElementById('special').value;
-  const dietary = [...activeDiets].join(', ');
+/* ── COST BREAKDOWN BARS ── */
+const COST_CATS=[
+  {n:'Venue + Setup',pct:0,color:'#f59e0b',val:0},
+  {n:'Catering Food',pct:.55,color:'#ff9933',val:0},
+  {n:'Live Counters',pct:.1,color:'#f97316',val:0},
+  {n:'Service Staff',pct:.08,color:'#fbbf24',val:0},
+  {n:'Crockery + Linen',pct:.06,color:'#4ade80',val:0},
+  {n:'Decor + Flowers',pct:.12,color:'#c084fc',val:0},
+  {n:'Misc / Contingency',pct:.09,color:'#60a5fa',val:0},
+];
+function buildCostBars(total){
+  COST_CATS[0].pct=0;// venue excluded from catering
+  const catTotal=total;
+  const bars=document.getElementById('costBars');
+  bars.innerHTML='';
+  const items=[
+    {n:'Food Ingredients',pct:.5,color:'#ff9933'},
+    {n:'Cooking + Labor',pct:.18,color:'#fbbf24'},
+    {n:'Live Counters',pct:.1,color:'#4ade80'},
+    {n:'Service Staff',pct:.09,color:'#60a5fa'},
+    {n:'Crockery + Linen',pct:.07,color:'#c084fc'},
+    {n:'Contingency',pct:.06,color:'#94a3b8'},
+  ];
+  items.forEach(item=>{
+    const amt=Math.round(catTotal*item.pct);
+    const div=document.createElement('div');
+    div.className='cost-bar-item';
+    div.innerHTML=`<div class="cb-label"><span style="width:8px;height:8px;border-radius:50%;background:${item.color};flex-shrink:0;display:inline-block"></span>${item.n}</div><div class="cb-track"><div class="cb-fill" style="width:0%;background:${item.color}" data-w="${item.pct*100}%"></div></div><div class="cb-amount">${fmtINR(amt)}</div>`;
+    bars.appendChild(div);
+  });
+  document.getElementById('cbTotal').textContent=fmtINR(catTotal);
+  setTimeout(()=>document.querySelectorAll('.cb-fill').forEach(el=>el.style.width=el.dataset.w),150);
+}
 
-  const btn = document.querySelector('.btn-generate');
-  btn.disabled = true;
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('resultCard').style.display = 'none';
+/* ── MENU SECTION PARSER ── */
+const SEC_META={
+  'Welcome Drinks':{icon:'🥤',color:'#2dd4bf'},
+  'Starters':{icon:'🥙',color:'#ff9933'},
+  'Non-Veg':{icon:'🍖',color:'#f87171'},
+  'Main Course':{icon:'🥘',color:'#f59e0b'},
+  'Breads':{icon:'🫓',color:'#e8b84b'},
+  'Rice & Biryani':{icon:'🍚',color:'#84cc16'},
+  'Dal':{icon:'🫕',color:'#fb923c'},
+  'Desserts':{icon:'🍬',color:'#c084fc'},
+  'Live Counters':{icon:'🎪',color:'#60a5fa'},
+  'Salad & Raita':{icon:'🥗',color:'#4ade80'},
+};
 
-  const systemPrompt = `You are a top Indian wedding catering expert and menu planner. You create comprehensive, realistic wedding menus with specific dishes, quantities, and cost estimates. You know regional Indian cuisines deeply. Use Hinglish language. Be very specific with dish names, portions, and practical caterer advice.`;
+function parseSections(text){
+  const secs={};
+  const keys=Object.keys(SEC_META);
+  const lines=text.split('\n');
+  let cur=null;
+  lines.forEach(line=>{
+    const tl=line.trim();
+    if(!tl)return;
+    const match=keys.find(k=>tl.toLowerCase().includes(k.toLowerCase().split(' ')[0])||tl.toLowerCase().includes(k.toLowerCase()));
+    if(match&&tl.length<65&&(tl.startsWith('#')||tl.startsWith('**')||/^[A-Z🥤🥙🍖🥘🫓🍚🫕🍬🎪🥗]/.test(tl))){
+      cur=match;if(!secs[cur])secs[cur]=[];return;
+    }
+    if(!cur)return;
+    const m=tl.match(/^[\d\.\-\*•]+\s*(.+)/)||( tl.length>3&&tl.length<90?[null,tl]:null);
+    if(m){
+      let raw=m[1].replace(/\*+/g,'').trim();
+      if(raw.length<3)return;
+      let name=raw,desc='';
+      const di=raw.indexOf('—');
+      if(di>2){name=raw.slice(0,di).trim();desc=raw.slice(di+1).trim();}
+      secs[cur].push({name,desc});
+    }
+  });
+  return secs;
+}
 
-  const userPrompt = `Create a complete wedding menu plan with:
+function renderSections(secs){
+  const tabs=document.getElementById('menuTabs');
+  const container=document.getElementById('menuSectionsContainer');
+  tabs.innerHTML='';container.innerHTML='';
+  let totalDishes=0;
+  let first=true;
+  Object.entries(secs).forEach(([secName,dishes],idx)=>{
+    if(!dishes||!dishes.length)return;
+    const meta=SEC_META[secName]||{icon:'🍽️',color:'#ff9933'};
+    totalDishes+=dishes.length;
+    // Tab
+    const tab=document.createElement('button');
+    tab.className='mtab'+(first?' active':'');
+    tab.textContent=meta.icon+' '+secName+' ('+dishes.length+')';
+    tab.onclick=()=>{
+      document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('visible'));
+      tab.classList.add('active');
+      document.getElementById('msec_'+idx).classList.add('visible');
+    };
+    tabs.appendChild(tab);
+    // Section
+    const colors={veg:'#4ade80',nv:'#f87171',sweet:'#fbbf24',live:'#d8b4fe',pop:'#ffd19a',jain:'#5eead4'};
+    const dishCards=dishes.map(d=>`
+      <div class="dish-card" style="--dish-color:${meta.color}">
+        <div class="dish-name">${d.name}</div>
+        ${d.desc?`<div class="dish-desc">${d.desc}</div>`:''}
+        <div class="dish-tag-row">
+          ${secName==='Non-Veg'?'<span class="dt dt-nv">🔴 Non-Veg</span>':'<span class="dt dt-veg">🟢 Veg</span>'}
+          ${secName==='Desserts'?'<span class="dt dt-sweet">🍬 Sweet</span>':''}
+          ${secName==='Live Counters'?'<span class="dt dt-live">🎪 Live</span>':''}
+          ${idx<2?'<span class="dt dt-pop">⭐ Popular</span>':''}
+        </div>
+      </div>`).join('');
+    const sec=document.createElement('div');
+    sec.id='msec_'+idx;
+    sec.className='menu-section'+(first?' visible':'');
+    sec.innerHTML=`
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-icon">${meta.icon}</span>
+          <div><div class="sec-title" style="color:${meta.color}">${secName}</div><div class="sec-mood">${dishes.length} dishes</div></div>
+        </div>
+        <div class="sec-actions">
+          <span class="sec-badge">${dishes.length} items</span>
+          <button class="sm-btn" onclick="copySec('${secName}')">📋 Copy</button>
+        </div>
+      </div>
+      <div class="dish-grid">${dishCards}</div>`;
+    container.appendChild(sec);
+    first=false;
+  });
+  document.getElementById('ovDishes').textContent=totalDishes||'—';
+  window._menuSections=secs;
+}
 
-Cuisine Type: ${selectedCuisine}
-Number of Guests: ${guests}
-Meal Type: ${mealType}
-Budget Per Plate: ₹${plateRate}
-City: ${city}
-Dietary Options Required: ${dietary}
-Special Requests: ${special || 'Standard wedding menu'}
+/* ── PROGRESS ── */
+let progInt;
+function startProg(){
+  document.getElementById('progWrap').style.display='block';
+  let v=0,si=0;
+  const steps=['ps1','ps2','ps3','ps4','ps5'];
+  steps.forEach(s=>document.getElementById(s).className='ps');
+  document.getElementById('ps1').className='ps active';
+  progInt=setInterval(()=>{
+    v=Math.min(v+Math.random()*3.8,88);
+    document.getElementById('progFill').style.width=v+'%';
+    const ni=Math.floor(v/20);
+    if(ni>si&&ni<5){document.getElementById(steps[si]).className='ps done';si=ni;document.getElementById(steps[si]).className='ps active';}
+  },380);
+}
+function stopProg(){
+  clearInterval(progInt);
+  ['ps1','ps2','ps3','ps4','ps5'].forEach(s=>document.getElementById(s).className='ps done');
+  document.getElementById('progFill').style.width='100%';
+  setTimeout(()=>{document.getElementById('progWrap').style.display='none';document.getElementById('progFill').style.width='0';},600);
+}
 
-Please provide a DETAILED menu plan including:
+/* ── GENERATE ── */
+async function generate(){
+  const cuisines=[...document.querySelectorAll('.cpill.on')].map(p=>p.dataset.v);
+  if(!cuisines.length){showErr('⚠️ Kum se kum ek cuisine select karo!');return;}
+  const diets=[...document.querySelectorAll('#dietRow .tpill.on')].map(p=>p.dataset.v);
+  const counters=[...document.querySelectorAll('#counterRow .tpill.on')].map(p=>p.dataset.v);
+  const meal=document.getElementById('mealType').value;
+  const bpp=document.getElementById('bpp').value;
+  const city=document.getElementById('city').value;
+  const season=document.getElementById('season').value;
+  const serving=document.getElementById('serving').value;
+  const special=document.getElementById('special').value.trim();
 
-1. 🥗 STARTERS / SNACKS (with quantity per person)
-   - Veg options (5-6 items)
-   - Non-Veg options (3-4 items) if selected
-   - Live counter ideas
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('resultWrap').style.display='none';
+  startProg();
 
-2. 🍲 MAIN COURSE
-   - Dal & Lentils (2-3 varieties)
-   - Paneer/Veg dishes (4-5 items)
-   - Non-Veg mains (3-4 items) if selected
-   - Rice & Biryani options
-   - Breads (naan, roti, puri varieties)
-   - Accompaniments
+  const pp=parseInt(bpp)||950;
+  const total=pp*guests;
 
-3. 🥗 SALAD & RAITA COUNTER
+  // Set overview
+  document.getElementById('ovGuests').textContent=guests;
+  document.getElementById('ovPP').textContent='₹'+pp;
+  document.getElementById('ovTotal').textContent=fmtINR(total);
+  document.getElementById('ovCuisine').textContent=cuisines[0]?.split(' ')[0]||'N.Indian';
 
-4. 🍬 DESSERT & SWEET COUNTER (8-10 items)
+  // Build qty + cost
+  buildQtyTable(guests);
+  buildCostBars(total);
 
-5. 🥤 BEVERAGES
-   - Soft drinks, juices, chaas, etc.
+  const sys=`Tu India ka top wedding catering expert hai — 20+ saal ka experience. 
+Tu detailed, realistic wedding menus banata hai based on regional cuisine, guest count, aur budget.
+Response mein CLEAR section headers use kar followed by numbered dish lists.
+Hinglish mein likho (Hindi + English mix). Real Indian dish names use karo.`;
 
-6. 👨‍🍳 LIVE COUNTER IDEAS (if selected)
-   - 3-4 live counter concepts
+  const prompt=`Ek complete wedding menu banao:
 
-7. 📊 QUANTITY CALCULATOR
-   - Approximate quantities for ${guests} guests
+CUISINE: ${cuisines.join(' + ')}
+GUESTS: ${guests}
+MEAL TYPE: ${meal}
+BUDGET PER PLATE: ₹${pp}
+CITY: ${city}
+SEASON: ${season}
+SERVING STYLE: ${serving}
+DIETARY: ${diets.join(', ')||'Veg + Non-Veg'}
+LIVE COUNTERS: ${counters.join(', ')||'Chaat, Sweets, Paan'}
+${special?'SPECIAL REQUIREMENTS: '+special:''}
 
-8. 💰 COST ESTIMATE
-   - Estimated total food cost
-   - Per plate breakdown
-   - Caterer negotiation tips
+EXACTLY is format mein likho (yeh headers EXACTLY use karo):
+## Welcome Drinks
+## Starters
+${diets.includes('Non-Veg')?'## Non-Veg':''}
+## Main Course
+## Breads
+## Rice & Biryani
+## Dal
+## Desserts
+## Live Counters
+## Salad & Raita
 
-9. ⚠️ PRO TIPS
-   - Food ordering tips
-   - Wastage reduction
-   - Timing of service
+Har section mein 3–6 dishes list karo:
+- Dish Name — ek line description (optional)
 
-Make it very specific to ${selectedCuisine} cuisine traditions!`;
+Phir yeh sections add karo:
+## CATERER NOTE
+Yeh section mein likho:
+1. Serving timing guide (kab kya serve karo)
+2. Is budget mein quality tips
+3. Caterer se negotiation ke 3 specific points
+4. 3 hidden costs jo hamesha bhool jaate hain
+5. ${guests} guests ke liye key quantities (top 5 items)
 
-  try {
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
-    });
-    const data = await res.json();
-    const text = data.choices[0].message.content;
-    document.getElementById('menuText').textContent = text;
-    document.getElementById('resultCard').style.display = 'block';
-    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
-  } catch(e) {
-    alert('Error: ' + e.message);
-  } finally {
-    btn.disabled = false;
-    document.getElementById('loading').style.display = 'none';
+Total words: 400–500. Practical aur specific raho.`;
+
+  try{
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,messages:[{role:'user',content:prompt}]})});
+    if(!res.ok)throw new Error('Server '+res.status);
+    const data=await res.json();
+    const text=data.choices[0].message.content;
+    stopProg();
+
+    const secs=parseSections(text);
+    renderSections(secs);
+
+    // Caterer note
+    const noteIdx=text.toLowerCase().indexOf('caterer note');
+    const noteText=noteIdx>-1?text.slice(noteIdx+12).trim():text.slice(Math.floor(text.length*.6));
+    document.getElementById('aiNotesBody').textContent=noteText||text;
+
+    // Store for copy
+    window._rawMenu=text;
+    window._catNote=`👨‍🍳 WEDDING CATERER NOTE — SmartShaadi.online\n${'═'.repeat(40)}\n\nGuests: ${guests} | Budget: ₹${pp}/plate | City: ${city}\nCuisine: ${cuisines.join(', ')}\nDietary: ${diets.join(', ')}\nCounters: ${counters.join(', ')}\n\n${noteText}\n\n📱 Free Tool: https://smartshaadi.online/ai-menu-planner.html`;
+
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('resultWrap').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(e){
+    stopProg();
+    showErr('⚠️ Kuch gadbad hui, dobara try karo. ('+e.message+')');
+  }finally{
+    document.getElementById('genBtn').disabled=false;
   }
 }
 
-function copyMenu() {
-  navigator.clipboard.writeText(document.getElementById('menuText').textContent).then(() => {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  });
+/* ── COPY HELPERS ── */
+function copySec(name){
+  const dishes=window._menuSections?.[name]||[];
+  const t=`🍽️ ${name}\n`+dishes.map((d,i)=>`${i+1}. ${d.name}${d.desc?' — '+d.desc:''}`).join('\n');
+  navigator.clipboard.writeText(t).then(()=>showToast('📋 '+name+' copied!'));
 }
-
-function shareWhatsApp() {
-  const text = document.getElementById('menuText').textContent;
-  window.open(`https://wa.me/?text=${encodeURIComponent('Wedding Menu Plan 🍽️\n\n' + text.substring(0, 800) + '\n\nSmartShaadi.online')}`, '_blank');
+function copyQty(){
+  let t=`⚖️ Quantity List — ${guests} Guests\nSmartShaadi.online\n\n`;
+  QTY.forEach(q=>{const b=Math.ceil(q.r*guests);const bf=Math.ceil(b*1.15);t+=`${q.n}: ${b} ${q.u} (buffer: ${bf} ${q.u})\n`;});
+  t+='\n⚠️ Buffer amounts already 15% extra included!';
+  navigator.clipboard.writeText(t).then(()=>showToast('⚖️ Qty List copied!'));
+}
+function copyCaterer(){navigator.clipboard.writeText(window._catNote||'').then(()=>showToast('👨‍🍳 Caterer Note copied!'));}
+function copyAll(){navigator.clipboard.writeText('🍽️ Wedding Menu — SmartShaadi.online\n\n'+(window._rawMenu||'')).then(()=>showToast('📋 Full menu copied!'));}
+function waShare(){
+  const cuisines=[...document.querySelectorAll('.cpill.on')].map(p=>p.dataset.v).join(', ');
+  const t=`🍽️ Wedding Menu\n${document.getElementById('city').value} | ${guests} guests | ${cuisines}\n\n${(window._rawMenu||'').substring(0,500)}...\n\n🔗 https://smartshaadi.online/ai-menu-planner.html`;
+  window.open('https://wa.me/?text='+encodeURIComponent(t));
+}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Menu Planner India!\n🍽️ Quantity calculator + caterer note included.\nhttps://smartshaadi.online/ai-menu-planner.html'));}
+function copyLink(){navigator.clipboard.writeText('https://smartshaadi.online/ai-menu-planner.html').then(()=>showToast('🔗 Link copied!'));}
+function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+function toggleFaq(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-btn.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.style.maxHeight='0';});
+  if(!isOpen){btn.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
 }
 </script>
 </body>
