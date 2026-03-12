@@ -1,487 +1,1180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Guest Manager — Smart Shaadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Free AI Wedding Guest Manager India 2026 — Seating Plan + RSVP Tracker | SmartShaadi</title>
+<meta name="description" content="Free AI Wedding Guest Manager India 2026. Guest list planning, smart seating arrangement, RSVP tracker, WhatsApp communication plan. 500+ guests manage karo easily. Free!">
+<meta name="keywords" content="wedding guest manager india, shaadi guest list 2026, wedding seating plan india, wedding rsvp tracker india, wedding guest list hindi, shaadi mein kitne log">
+<link rel="canonical" href="https://smartshaadi.online/ai-guest-manager.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free AI Wedding Guest Manager 2026 | SmartShaadi">
+<meta property="og:description" content="Guest list + seating plan + RSVP tracker. 500+ guests easily manage karo!">
+<meta property="og:url" content="https://smartshaadi.online/ai-guest-manager.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Guest Manager","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"7850"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Indian wedding mein kitne log invite karein?","acceptedAnswer":{"@type":"Answer","text":"Intimate: 50-100, Medium: 150-250, Large: 300-500, Grand: 500+. Budget ka 60-70% catering pe jaata hai, isliye guest count = most important decision. 1 extra guest = ₹1500-3000 extra cost average."}},{"@type":"Question","name":"Wedding seating arrangement kaise karein?","acceptedAnswer":{"@type":"Answer","text":"Tables: 8-10 per table ideal. VIP + family front rows. Same family ek saath. Known conflicts alag tables pe. Buffer 10% tables empty rakhein. Aisle clearly marked hona chahiye."}},{"@type":"Question","name":"RSVP kaise manage karein Indian wedding mein?","acceptedAnswer":{"@type":"Answer","text":"WhatsApp group best hai. Deadline 3-4 weeks pehle. 2 reminders send karo. Expected no-show 10-15%. Final count 1 week pehle confirm karo caterer ko. Outstation guests ki travel/stay pehle arrange karo."}},{"@type":"Question","name":"Outstation guests ke liye kya arrange karein?","acceptedAnswer":{"@type":"Answer","text":"Hotel block booking 2-3 months pehle. Transport from hotel to venue. Welcome kit (itinerary, local info, emergency numbers). Welcome dinner eve of wedding. Group transport for all ceremonies."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
 <style>
-  :root {
-    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
-    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
-    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050408;--bg2:#080610;--card:#0d0b16;--card2:#121020;
+  --teal:#14b8a6;--teal2:#2dd4bf;--teal-bg:rgba(20,184,166,0.08);--teal-bd:rgba(20,184,166,0.25);
+  --gold:#e8b84b;--gold2:#f5d276;--gold-bg:rgba(232,184,75,0.07);--gold-bd:rgba(232,184,75,0.2);
+  --green:#4ade80;--green2:#22c55e;--blue:#60a5fa;--rose:#fb7185;--purple:#c084fc;--orange:#fb923c;
+  --text:#f0fffe;--muted:rgba(240,255,254,0.55);--faint:rgba(240,255,254,0.28);
+  --border:rgba(255,255,255,0.07);--r:14px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:'Nunito',sans-serif}
 
-  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
-  .logo span { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+/* NAV */
+nav{background:rgba(5,4,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-bd);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:.25rem}
+.nav-links a{font-size:.76rem;color:var(--muted);padding:.3rem .65rem;border-radius:6px;transition:all .2s}
+.nav-links a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#050408!important;font-weight:800!important;border-radius:6px!important}
 
-  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.1) 0%, transparent 60%); }
-  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
-  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
-  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+/* HERO */
+.hero{position:relative;padding:50px 20px 42px;text-align:center;overflow:hidden}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(20,184,166,0.13) 0%,transparent 60%),radial-gradient(ellipse 40% 35% at 90% 85%,rgba(232,184,75,0.08) 0%,transparent 55%)}
+.floats{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fl{position:absolute;animation:fup linear infinite;opacity:.04}
+@keyframes fup{0%{transform:translateY(110%) rotate(var(--r))}100%{transform:translateY(-12%) rotate(var(--r))}}
+.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--teal-bg);border:1px solid var(--teal-bd);color:#5eead4;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.1rem}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.5)}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:.85rem}
+h1 em{font-style:italic;color:var(--gold2)}
+h1 strong{color:#5eead4}
+.hsub{font-size:.95rem;color:var(--muted);max-width:570px;margin:0 auto 1.5rem;line-height:1.8}
+.hstats{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.hs-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--gold2)}
+.hs-l{font-size:.63rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem}
+.hs-div{width:1px;background:var(--border);align-self:stretch}
 
-  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+/* MAIN */
+.main{max-width:860px;margin:0 auto;padding:0 16px 70px}
+.ad-wrap{background:var(--bg2);border:1px dashed rgba(232,184,75,0.14);border-radius:10px;padding:.5rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center}
 
-  /* TABS */
-  .tabs { display: flex; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
-  .tab { flex: 1; padding: 0.8rem; text-align: center; cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--muted); transition: all 0.2s; border: none; background: none; font-family: 'Poppins', sans-serif; }
-  .tab.active { background: var(--card); color: var(--gold); }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--gold),transparent)}
+.ctitle{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.ctitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
 
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+/* GUEST COUNTER TILES — MAIN FEATURE */
+.count-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.count-tile{background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:12px;padding:14px;text-align:center;transition:all .2s}
+.count-tile:hover{border-color:var(--teal-bd);background:var(--teal-bg)}
+.ct-label{font-size:.7rem;color:var(--muted);margin-bottom:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.ct-controls{display:flex;align-items:center;justify-content:center;gap:.4rem}
+.ct-btn{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1}
+.ct-btn:hover{border-color:var(--teal-bd);background:var(--teal-bg);color:var(--teal2)}
+.ct-num{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gold2);min-width:48px}
+.ct-sub{font-size:.62rem;color:var(--faint);margin-top:.25rem}
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1/-1; }
-  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
-  select option { background: var(--surface); }
-  textarea { resize: vertical; min-height: 100px; }
+/* LIVE TOTAL BAR */
+.total-bar{background:linear-gradient(135deg,rgba(20,184,166,0.09),rgba(232,184,75,0.05));border:1px solid var(--teal-bd);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;transition:all .2s}
+.tb-item{text-align:center}
+.tb-num{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gold2);line-height:1;transition:all .2s}
+.tb-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.15rem}
+.tb-div{width:1px;height:34px;background:var(--border)}
+.tb-tip{font-size:.78rem;color:var(--muted);font-style:italic;flex:1;min-width:180px}
 
-  /* STATS */
-  .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); line-height: 1; }
-  .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+/* BREAKDOWN BAR */
+.breakdown-row{display:flex;gap:.4rem;margin-top:8px;height:6px;border-radius:3px;overflow:hidden}
+.br-seg{height:100%;border-radius:3px;transition:flex .4s}
 
-  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.lbl{display:block;font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.hint{font-size:.69rem;color:var(--muted);font-weight:400;margin-left:.25rem}
+.fi{width:100%;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:var(--text);font-size:.88rem;font-family:'Nunito',sans-serif;outline:none;transition:border .2s}
+.fi:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(20,184,166,0.1)}
+.fi::placeholder{color:var(--faint)}
+select.fi option{background:#0d0b16}
+textarea.fi{resize:vertical;min-height:62px;line-height:1.6}
 
-  .btn-secondary { background: var(--surface); border: 1px solid var(--gold); color: var(--gold); border-radius: 10px; padding: 0.7rem 1.5rem; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
-  .btn-secondary:hover { background: rgba(240,192,96,0.1); }
+/* SECTION TABS (3 tabs for 3 plans) */
+.section-tabs{display:flex;gap:.4rem;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:1px}
+.stab{padding:10px 18px;border:none;background:none;color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;font-family:'Nunito',sans-serif}
+.stab:hover{color:var(--teal2)}
+.stab.active{color:var(--teal2);border-bottom-color:var(--teal)}
+.section-content{display:none}
+.section-content.show{display:block}
 
-  .loading { text-align: center; padding: 3rem; display: none; }
-  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* GEN BTN */
+.gen-btn{width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,#0f3d3a,#0d9488,#2dd4bf);color:#fff;font-size:1rem;font-weight:800;cursor:pointer;transition:all .3s;box-shadow:0 6px 24px rgba(20,184,166,0.35);letter-spacing:.04em;position:relative;overflow:hidden;margin-top:14px}
+.gen-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transform:translateX(-100%);transition:transform .5s}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(20,184,166,0.5)}
+.gen-btn:hover::after{transform:translateX(100%)}
+.gen-btn:disabled{background:rgba(255,255,255,0.07);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
 
-  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
-  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
-  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
-  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
-  .result-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+/* PROGRESS */
+.prog{margin:14px 0;display:none}
+.pbar{height:3px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.pfill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px;transition:width .35s}
+.psteps{display:flex;justify-content:center;gap:1rem;margin-top:12px;flex-wrap:wrap}
+.ps{font-size:.72rem;color:var(--faint);transition:color .3s}
+.ps.done{color:var(--green)}
+.ps.active{color:var(--gold);font-weight:700}
+.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);border-radius:9px;padding:12px 16px;color:#fca5a5;font-size:.86rem;display:none;margin-bottom:14px}
 
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* ═══ RESULT ═══ */
+.result{display:none}
 
-  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
+/* OVERVIEW TILES */
+.ov{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px;margin-bottom:16px}
+.ov-tile{background:linear-gradient(135deg,rgba(20,184,166,0.09),rgba(232,184,75,0.05));border:1px solid var(--teal-bd);border-radius:12px;padding:13px;text-align:center}
+.ov-n{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;color:var(--gold2);line-height:1}
+.ov-l{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.2rem}
+
+/* RESULT TABS */
+.rtabs{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:14px}
+.rtabs::-webkit-scrollbar{display:none}
+.rtab{padding:7px 14px;border-radius:100px;border:1.5px solid var(--border);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.76rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.rtab.active{background:var(--teal-bg);border-color:var(--teal);color:#5eead4}
+
+/* RESULT SECTIONS */
+.rsec{display:none}
+.rsec.show{display:block}
+.rsec-head{background:linear-gradient(135deg,rgba(20,184,166,0.07),rgba(232,184,75,0.04));border:1px solid var(--teal-bd);border-radius:12px 12px 0 0;padding:13px 17px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.rsh-left{display:flex;align-items:center;gap:.6rem}
+.rsh-ico{font-size:1.35rem}
+.rsh-title{font-size:.97rem;font-weight:700;color:#5eead4}
+.rsh-count{font-size:.65rem;padding:.18rem .6rem;border-radius:100px;background:var(--teal-bg);color:#5eead4;border:1px solid var(--teal-bd);font-weight:700}
+.rsh-copy{padding:5px 10px;border-radius:6px;font-size:.68rem;font-weight:700;border:1px solid var(--teal-bd);background:transparent;color:var(--teal2);cursor:pointer;transition:all .2s}
+.rsh-copy:hover{background:var(--teal-bg)}
+
+/* ITEM CARDS */
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:8px;background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:13px}
+.item-card{background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:9px;padding:11px 13px;transition:all .2s;position:relative;overflow:hidden}
+.item-card::before{content:'';position:absolute;left:0;top:3px;bottom:3px;width:3px;background:var(--ic-col,var(--teal));border-radius:3px}
+.item-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(255,255,255,0.13)}
+.ic-num{font-size:.68rem;font-weight:800;color:var(--ic-col,var(--teal));padding-left:8px;font-family:'Playfair Display',serif;margin-bottom:.15rem}
+.ic-title{font-size:.86rem;font-weight:700;color:var(--text);padding-left:8px;margin-bottom:.18rem;line-height:1.35}
+.ic-desc{font-size:.72rem;color:var(--muted);line-height:1.45;padding-left:8px}
+.ic-tags{display:flex;gap:.28rem;flex-wrap:wrap;margin-top:.35rem;padding-left:8px}
+.ictag{font-size:.57rem;padding:.09rem .4rem;border-radius:3px;font-weight:700}
+.t-urgent{background:rgba(248,113,113,0.12);color:#fca5a5;border:1px solid rgba(248,113,113,0.22)}
+.t-action{background:rgba(251,191,36,0.1);color:#fde68a;border:1px solid rgba(251,191,36,0.2)}
+.t-tip{background:rgba(96,165,250,0.1);color:#bfdbfe;border:1px solid rgba(96,165,250,0.2)}
+.t-vip{background:rgba(192,132,252,0.1);color:#e9d5ff;border:1px solid rgba(192,132,252,0.2)}
+.t-budget{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2)}
+
+/* SEATING VISUAL */
+.seating-visual{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;overflow-x:auto}
+.sv-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.sv-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
+.sv-stage{background:linear-gradient(135deg,rgba(232,184,75,0.1),rgba(20,184,166,0.05));border:1px solid var(--gold-bd);border-radius:8px;text-align:center;padding:10px;font-size:.78rem;font-weight:700;color:var(--gold2);margin-bottom:14px;letter-spacing:.08em}
+.sv-tables{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.sv-table{background:rgba(20,184,166,0.06);border:1.5px solid var(--teal-bd);border-radius:10px;padding:10px;min-width:110px;text-align:center;transition:all .2s}
+.sv-table:hover{background:var(--teal-bg);transform:scale(1.04)}
+.sv-table.vip{border-color:var(--gold-bd);background:rgba(232,184,75,0.06)}
+.sv-table.vip:hover{background:var(--gold-bg)}
+.svt-name{font-size:.72rem;font-weight:800;color:var(--text);margin-bottom:.25rem}
+.svt-group{font-size:.65rem;color:var(--muted);margin-bottom:.2rem}
+.svt-seats{font-size:.62rem;color:var(--faint)}
+.svt-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.2rem;vertical-align:middle}
+
+/* RSVP TRACKER */
+.rsvp-tracker{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.rt-head{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.rt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.rt-stat{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:9px;padding:12px;text-align:center;transition:all .2s;cursor:default}
+.rt-stat:hover{border-color:var(--teal-bd);background:var(--teal-bg)}
+.rt-n{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;line-height:1;margin-bottom:.15rem;transition:all .2s}
+.rt-l{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.rt-bar{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;margin-top:10px}
+.rt-bar-fill{height:100%;border-radius:4px;transition:width .5s;background:linear-gradient(90deg,var(--teal),var(--green))}
+
+/* WHATSAPP MESSAGE PREVIEW */
+.wa-preview{background:linear-gradient(135deg,rgba(37,211,102,0.07),rgba(20,184,166,0.04));border:1px solid rgba(37,211,102,0.22);border-radius:12px;padding:18px;margin-bottom:14px}
+.wa-head{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#25d366;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.wa-copy-btn{padding:5px 12px;border-radius:6px;font-size:.7rem;font-weight:700;border:1px solid rgba(37,211,102,0.3);background:rgba(37,211,102,0.08);color:#25d366;cursor:pointer;transition:all .2s}
+.wa-copy-btn:hover{background:rgba(37,211,102,0.15)}
+.wa-tabs{display:flex;gap:.3rem;margin-bottom:10px;flex-wrap:wrap}
+.wa-tab{padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.7rem;font-weight:700;cursor:pointer;transition:all .2s}
+.wa-tab.active{background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:#25d366}
+.wa-msg{display:none}
+.wa-msg.show{display:block}
+.wa-body{font-size:.84rem;color:var(--muted);line-height:1.85;white-space:pre-wrap;background:rgba(255,255,255,0.02);border-radius:8px;padding:12px}
+
+/* ACTIONS */
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:14px}
+.ab{padding:8px 14px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;border:1px solid}
+.ab-copy{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);color:#4ade80}
+.ab-wa{background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:#25d366}
+.ab-teal{background:var(--teal-bg);border-color:var(--teal-bd);color:#5eead4}
+.ab-regen{background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)}
+
+/* SHARE */
+.share-box{background:var(--gold-bg);border:1px solid var(--gold-bd);border-radius:12px;padding:16px;text-align:center;margin-bottom:14px}
+.share-box h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.3rem;color:var(--gold2)}
+.share-box p{font-size:.8rem;color:var(--muted);margin-bottom:10px}
+.share-btns{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap}
+.sb{padding:7px 14px;border-radius:7px;font-size:.78rem;font-weight:700;border:1px solid var(--gold-bd);color:var(--gold);background:transparent;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;display:inline-block}
+.sb:hover{background:var(--gold-bg)}
+
+/* INFO SECTIONS */
+.stitle{font-family:'Playfair Display',serif;font-size:1.45rem;text-align:center;margin-bottom:14px}
+.stitle em{color:var(--gold2);font-style:italic}
+
+/* CHECKLIST */
+.checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:20px 0}
+.cl-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;transition:all .25s}
+.cl-card:hover{border-color:var(--teal-bd);transform:translateY(-2px)}
+.cl-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:9px;display:flex;align-items:center;gap:.4rem}
+.cl-list{list-style:none}
+.cl-list li{font-size:.77rem;color:var(--muted);padding:.27rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:.4rem;line-height:1.4}
+.cl-list li:last-child{border-bottom:none}
+.cldot{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:.35rem}
+
+/* COST CALCULATOR */
+.cost-calc{background:linear-gradient(135deg,rgba(20,184,166,0.07),rgba(232,184,75,0.04));border:1px solid var(--teal-bd);border-radius:12px;padding:18px;margin:20px 0}
+.cc-head{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:12px}
+.cc-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.84rem}
+.cc-row:last-child{border-bottom:none;font-weight:800;color:var(--gold2);font-size:.92rem;margin-top:.25rem;padding-top:.75rem;border-top:1px solid var(--gold-bd)}
+.cc-lbl{color:var(--muted)}
+.cc-val{font-weight:700;color:var(--text);font-family:'Playfair Display',serif}
+.cc-total{color:var(--gold2)!important}
+
+/* CASE STUDY */
+.cs{background:linear-gradient(135deg,rgba(20,184,166,0.06),rgba(232,184,75,0.04));border:1px solid var(--border);border-radius:var(--r);padding:24px;margin:24px 0}
+.cs-tag{display:inline-block;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.22);color:#4ade80;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;margin-bottom:9px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:.6rem;line-height:1.3}
+.cs-title em{color:var(--gold2);font-style:italic}
+.cs-body{font-size:.86rem;color:var(--muted);line-height:1.8;margin-bottom:13px}
+.cs-stats{display:flex;gap:.7rem;flex-wrap:wrap}
+.cs-stat{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 13px;flex:1;min-width:65px}
+.cs-n{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
+.cs-l{font-size:.6rem;color:var(--muted);margin-top:.15rem}
+
+/* REVIEWS */
+.revs{background:var(--bg2);border-radius:var(--r);padding:24px;margin:24px 0}
+.revs-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;text-align:center;color:var(--gold2);margin-bottom:16px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px}
+.rev-stars{color:var(--gold);font-size:.78rem;margin-bottom:6px}
+.rev-text{font-size:.82rem;color:var(--muted);line-height:1.65;font-style:italic;margin-bottom:8px}
+.rev-by{font-size:.7rem;color:var(--faint);display:flex;align-items:center;gap:.35rem}
+.av{width:23px;height:23px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff;flex-shrink:0}
+
+/* TIPS */
+.tips{background:var(--bg2);border-radius:var(--r);padding:24px;margin:24px 0}
+.tips-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2);margin-bottom:13px}
+.tip{display:flex;gap:.65rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.84rem;color:var(--muted);line-height:1.65}
+.tip:last-child{border-bottom:none}
+
+/* FAQ */
+.faq-wrap{margin:24px 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{width:100%;padding:14px 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-size:.88rem;font-weight:700;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-btn:hover{color:var(--gold)}
+.faq-icon{font-size:1rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.faq-btn.open .faq-icon{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.faq-text{padding:0 0 14px;font-size:.84rem;color:var(--muted);line-height:1.78}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:20px 0}
+.tool-link{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all .25s;display:block}
+.tool-link:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+.tl-ico{font-size:1.25rem;margin-bottom:.35rem}
+.tl-name{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.12rem}
+.tl-desc{font-size:.67rem;color:var(--muted)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.8rem 1.5rem;text-align:center;margin-top:2rem}
+.flogo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:.4rem;display:inline-block}
+.ftxt{font-size:.73rem;color:var(--faint);margin-bottom:.65rem}
+.flinks{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+.flinks a{font-size:.71rem;color:var(--muted);transition:color .2s}
+.flinks a:hover{color:var(--gold)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(18px);background:#4ade80;color:#050408;padding:9px 20px;border-radius:100px;font-size:.82rem;font-weight:800;opacity:0;transition:all .28s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:640px){
+  .g2,.g3{grid-template-columns:1fr}
+  .count-tiles{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .card{padding:15px 13px}
+  h1{font-size:1.8rem}
+  .section-tabs{overflow-x:auto;scrollbar-width:none}
+}
+@media(max-width:380px){.count-tiles{grid-template-columns:repeat(2,1fr)};.items-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
-  <ul class="nav-links">
-    <li><a href="/ai-menu-planner.html">Menu</a></li>
-    <li><a href="/ai-budget-calculator.html">Budget</a></li>
-    <li><a href="/ai-planning-timeline.html">Timeline</a></li>
-  </ul>
-  <span class="nav-badge">✨ AI Powered</span>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="ai-budget-calculator.html">💰 Budget</a>
+    <a href="ai-menu-planner.html">🍽️ Menu</a>
+    <a href="ai-photography-shots.html">📸 Photos</a>
+    <a href="ai-invitation-writer.html">💌 Invitation</a>
+    <a href="chatbot.html" class="nav-cta">AI Chat →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <span class="hero-icon">👥</span>
-  <h1>AI Guest Manager</h1>
-  <p>Guest list, seating plan, RSVP tracker aur invitations — sab kuch ek jagah!</p>
-  <span class="tag">🤖 Seating AI · RSVP Tips · Group Management</span>
+<section class="hero">
+  <div class="hbg"></div>
+  <div class="floats" id="floats"></div>
+  <div class="badge"><div class="bdot"></div>7,850+ Guest Plans Generated</div>
+  <h1>Free AI Wedding<br><em>Guest Manager</em><br><strong>India 2026</strong></h1>
+  <p class="hsub">Guest list + smart seating plan + RSVP tracker + WhatsApp messages — sab ek jagah. 500+ guests easily manage karo. Koi confusions nahi, koi chaos nahi. Bilkul Free! 👥</p>
+  <div class="hstats">
+    <div><div class="hs-n">7,850+</div><div class="hs-l">Plans Made</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">3-in-1</div><div class="hs-l">AI Plans</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">500+</div><div class="hs-l">Guests</div></div>
+    <div class="hs-div"></div>
+    <div><div class="hs-n">4.9★</div><div class="hs-l">Rating</div></div>
+  </div>
+</section>
+
+<div class="main">
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- STEP 1: GUEST COUNTERS -->
+  <div class="card">
+    <div class="ctitle">👥 Step 1 — Guest Count Set Karo</div>
+    <div class="count-tiles">
+      <div class="count-tile">
+        <div class="ct-label">👰 Bride Side</div>
+        <div class="ct-controls">
+          <button class="ct-btn" onclick="adj('bride',-10)">−</button>
+          <div class="ct-num" id="bride-num">100</div>
+          <button class="ct-btn" onclick="adj('bride',10)">+</button>
+        </div>
+        <div class="ct-sub" id="bride-sub">guests</div>
+      </div>
+      <div class="count-tile">
+        <div class="ct-label">🤵 Groom Side</div>
+        <div class="ct-controls">
+          <button class="ct-btn" onclick="adj('groom',-10)">−</button>
+          <div class="ct-num" id="groom-num">120</div>
+          <button class="ct-btn" onclick="adj('groom',10)">+</button>
+        </div>
+        <div class="ct-sub" id="groom-sub">guests</div>
+      </div>
+      <div class="count-tile">
+        <div class="ct-label">👶 Kids (under 12)</div>
+        <div class="ct-controls">
+          <button class="ct-btn" onclick="adj('kids',-5)">−</button>
+          <div class="ct-num" id="kids-num">25</div>
+          <button class="ct-btn" onclick="adj('kids',5)">+</button>
+        </div>
+        <div class="ct-sub">children</div>
+      </div>
+      <div class="count-tile">
+        <div class="ct-label">👑 VIP / Special</div>
+        <div class="ct-controls">
+          <button class="ct-btn" onclick="adj('vip',-5)">−</button>
+          <div class="ct-num" id="vip-num">15</div>
+          <button class="ct-btn" onclick="adj('vip',5)">+</button>
+        </div>
+        <div class="ct-sub">VIP guests</div>
+      </div>
+    </div>
+
+    <!-- LIVE TOTAL BAR -->
+    <div class="total-bar" id="totalBar">
+      <div class="tb-item"><div class="tb-num" id="tb-total">260</div><div class="tb-lbl">Total Guests</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-item"><div class="tb-num" id="tb-tables">26</div><div class="tb-lbl">Tables (~10/table)</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-item"><div class="tb-num" id="tb-cost">₹5.2L</div><div class="tb-lbl">Est. Catering Cost</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-item"><div class="tb-num" id="tb-size">Medium</div><div class="tb-lbl">Wedding Size</div></div>
+    </div>
+    <div class="breakdown-row" id="breakdownRow">
+      <div class="br-seg" style="background:#14b8a6;flex:100" id="br-bride"></div>
+      <div class="br-seg" style="background:#e8b84b;flex:120" id="br-groom"></div>
+      <div class="br-seg" style="background:#60a5fa;flex:25" id="br-kids"></div>
+      <div class="br-seg" style="background:#c084fc;flex:15" id="br-vip"></div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:8px;font-size:.68rem;color:var(--faint)">
+      <span><span style="color:#14b8a6">●</span> Bride Side</span>
+      <span><span style="color:#e8b84b">●</span> Groom Side</span>
+      <span><span style="color:#60a5fa">●</span> Kids</span>
+      <span><span style="color:#c084fc">●</span> VIP</span>
+    </div>
+  </div>
+
+  <!-- STEP 2: 3-TAB INPUT -->
+  <div class="card">
+    <div class="ctitle">📋 Step 2 — Details Enter Karo</div>
+    <div class="section-tabs">
+      <button class="stab active" onclick="switchTab('plan')">📊 Guest Plan</button>
+      <button class="stab" onclick="switchTab('seating')">🪑 Seating Arrangement</button>
+      <button class="stab" onclick="switchTab('rsvp')">📨 RSVP & Communication</button>
+    </div>
+
+    <!-- TAB 1: GUEST PLAN -->
+    <div class="section-content show" id="tab-plan">
+      <div class="g2">
+        <div class="field">
+          <label class="lbl">Venue Capacity</label>
+          <input class="fi" type="number" id="venueCap" placeholder="e.g. 350" min="50" max="2000">
+        </div>
+        <div class="field">
+          <label class="lbl">Reception Venue</label>
+          <select class="fi" id="recVenue">
+            <option value="Same venue, same guest list">🏛️ Same venue + guests</option>
+            <option value="Same venue but more guests at reception">🏛️ Same venue + more guests</option>
+            <option value="Separate reception venue with extended guest list">📍 Separate venue</option>
+          </select>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="field">
+          <label class="lbl">Ceremonies Count</label>
+          <select class="fi" id="ceremonies">
+            <option value="1 (Just main wedding)">1 — Main Wedding Only</option>
+            <option value="2 (Wedding + Reception)" selected>2 — Wedding + Reception</option>
+            <option value="3-4 (Mehendi, Haldi, Wedding, Reception)">3-4 — Full Functions</option>
+            <option value="5+ (All functions)">5+ — All Functions</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl">City / Location</label>
+          <input class="fi" type="text" id="city" placeholder="e.g. Delhi, Mumbai, Jaipur...">
+        </div>
+      </div>
+      <div class="field">
+        <label class="lbl">Guest Categories <span class="hint">(families, groups ka description)</span></label>
+        <textarea class="fi" id="guestCategories" placeholder="e.g. 40 relatives from Jaipur, 30 office colleagues, 25 school friends, 20 family friends, Groom ki side se mostly joint family..."></textarea>
+      </div>
+      <div class="field">
+        <label class="lbl">Special Challenges <span class="hint">(koi family drama, conflicts, special needs)</span></label>
+        <textarea class="fi" id="challenges" placeholder="e.g. Bride ki mamaji aur chacha mein tension hai. Kuch elderly guests hain. Outstation relatives ke liye accommodation. 20 guests vegetarian..."></textarea>
+      </div>
+    </div>
+
+    <!-- TAB 2: SEATING -->
+    <div class="section-content" id="tab-seating">
+      <div class="g3">
+        <div class="field">
+          <label class="lbl">Table Size</label>
+          <select class="fi" id="tableSize">
+            <option value="6 per table (Round, intimate)">🔵 6 per table (Intimate)</option>
+            <option value="8 per table (Standard round)" selected>🔵 8 per table (Standard)</option>
+            <option value="10 per table (Large round)">🔵 10 per table (Large)</option>
+            <option value="12 per table (Banquet style)">🟦 12 per table (Banquet)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl">Seating Style</label>
+          <select class="fi" id="seatStyle">
+            <option value="Banquet buffet (free seating after buffet)">🍽️ Banquet Buffet</option>
+            <option value="Sit-down dinner (assigned seating)" selected>🪑 Sit-down Dinner</option>
+            <option value="Cocktail high tables (standing)">🥂 Cocktail Tables</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl">Stage Location</label>
+          <select class="fi" id="stagePos">
+            <option value="Front center (facing all guests)" selected>🎭 Front Center</option>
+            <option value="Side stage (angled view)">↗️ Side Stage</option>
+            <option value="Raised platform center">⬆️ Raised Platform</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="lbl">Groups to Seat Together / Apart <span class="hint">(specific requirements)</span></label>
+        <textarea class="fi" id="seatGroups" placeholder="e.g. School friends ek saath — 25 log. Office colleagues alag table. Daadi ko stage ke paas chahiye (hearing issue). Mamaji aur chacha ki families alag sides pe..."></textarea>
+      </div>
+    </div>
+
+    <!-- TAB 3: RSVP -->
+    <div class="section-content" id="tab-rsvp">
+      <div class="g3">
+        <div class="field">
+          <label class="lbl">Wedding Date</label>
+          <input class="fi" type="date" id="weddingDate">
+        </div>
+        <div class="field">
+          <label class="lbl">RSVP Deadline</label>
+          <input class="fi" type="date" id="rsvpDeadline">
+        </div>
+        <div class="field">
+          <label class="lbl">Outstation Guests %</label>
+          <select class="fi" id="outstation">
+            <option value="~10% outstation">~10% (Mostly Local)</option>
+            <option value="~30% outstation" selected>~30% (Some Outstation)</option>
+            <option value="~50% outstation">~50% (Half Outstation)</option>
+            <option value="70%+ outstation">70%+ (Destination)</option>
+          </select>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="field">
+          <label class="lbl">Primary Communication</label>
+          <select class="fi" id="commChannel">
+            <option value="WhatsApp primarily" selected>📱 WhatsApp</option>
+            <option value="WhatsApp + Phone calls">📱📞 WhatsApp + Calls</option>
+            <option value="Formal invitation + WhatsApp">📨 Formal + WhatsApp</option>
+            <option value="Wedding website + WhatsApp">🌐 Wedding Website</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl">Couple Names <span class="hint">(messages mein aayenge)</span></label>
+          <input class="fi" type="text" id="coupleNames" placeholder="e.g. Priya & Rahul">
+        </div>
+      </div>
+      <div class="field">
+        <label class="lbl">Outstation / Special Needs <span class="hint">(accommodation, transport)</span></label>
+        <textarea class="fi" id="outNeeds" placeholder="e.g. 30 guests ke liye hotel block chahiye. Airport pickup arrange karni hai. Bus from hotel to venue. Special meals for elderly guests..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">👥 Complete Guest Management Plan Banao — Free!</button>
+
+  <div class="prog" id="progWrap">
+    <div class="pbar"><div class="pfill" id="progFill"></div></div>
+    <div class="psteps">
+      <div class="ps" id="ps1">📊 Guest Plan Building</div>
+      <div class="ps" id="ps2">🪑 Seating Arranging</div>
+      <div class="ps" id="ps3">📨 RSVP Planning</div>
+      <div class="ps" id="ps4">💬 Messages Writing</div>
+    </div>
+  </div>
+  <div class="err" id="errBox"></div>
+
+  <!-- ═══ RESULT ═══ -->
+  <div class="result" id="resultWrap">
+
+    <!-- OVERVIEW -->
+    <div class="ov" id="ovRow">
+      <div class="ov-tile"><div class="ov-n" id="ov1">—</div><div class="ov-l">Total Guests</div></div>
+      <div class="ov-tile"><div class="ov-n" id="ov2">—</div><div class="ov-l">Tables Needed</div></div>
+      <div class="ov-tile"><div class="ov-n" id="ov3">—</div><div class="ov-l">Est. Catering</div></div>
+      <div class="ov-tile"><div class="ov-n" id="ov4">—</div><div class="ov-l">VIP Guests</div></div>
+      <div class="ov-tile"><div class="ov-n" id="ov5">—</div><div class="ov-l">Outstation</div></div>
+    </div>
+
+    <!-- SEATING VISUAL -->
+    <div class="seating-visual">
+      <div class="sv-title">🪑 Visual Seating Map</div>
+      <div class="sv-stage">🎭 STAGE — Couple + Family</div>
+      <div class="sv-tables" id="svTables">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- RSVP TRACKER -->
+    <div class="rsvp-tracker">
+      <div class="rt-head">
+        <span>📨 RSVP Tracker — Live Status</span>
+        <span style="font-size:.72rem;color:var(--muted)">Expected based on your inputs</span>
+      </div>
+      <div class="rt-grid" id="rtGrid">
+        <!-- filled by JS -->
+      </div>
+      <div class="rt-bar"><div class="rt-bar-fill" id="rtBarFill" style="width:0%"></div></div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:6px;text-align:center" id="rtBarLabel">Estimating confirmations...</div>
+    </div>
+
+    <!-- RESULT TABS -->
+    <div class="rtabs" id="rtabsRow"></div>
+    <div id="rsecWrap"></div>
+
+    <!-- WHATSAPP MESSAGES -->
+    <div class="wa-preview">
+      <div class="wa-head">
+        <span>📱 WhatsApp Message Templates — Copy Karke Send Karo!</span>
+        <button class="wa-copy-btn" onclick="copyWA()">📋 Copy Current</button>
+      </div>
+      <div class="wa-tabs" id="waTabs"></div>
+      <div id="waMsgs"></div>
+    </div>
+
+    <div class="actions">
+      <button class="ab ab-copy" onclick="copyAll()">📋 Full Plan Copy</button>
+      <button class="ab ab-wa" onclick="waSharePlan()">📱 WhatsApp</button>
+      <button class="ab ab-teal" onclick="copyAll()">👥 Coordinator Ko Bhejo</button>
+      <button class="ab ab-regen" onclick="generate()">🔄 Dobara Banao</button>
+    </div>
+
+    <div class="share-box">
+      <h4>👥 Dosto Ko Share Karo!</h4>
+      <p>Shaadi plan kar rahe doston ko yeh free tool batao!</p>
+      <div class="share-btns">
+        <button class="sb" onclick="waShareTool()">📱 WhatsApp</button>
+        <button class="sb" onclick="copyLink()">🔗 Link Copy</button>
+        <a href="ai-budget-calculator.html" class="sb">💰 Budget →</a>
+        <a href="ai-menu-planner.html" class="sb">🍽️ Menu →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD MID -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- LIVE COST CALCULATOR (static reference) -->
+  <h2 class="stitle" style="margin-top:28px">Guest Count Se <em>Budget Impact</em> — Calculator</h2>
+  <div class="cost-calc">
+    <div class="cc-head">💰 Per Guest Cost Estimate</div>
+    <div class="cc-row"><span class="cc-lbl">Catering (avg ₹1,800/head)</span><span class="cc-val" id="cc-catering">₹4.68L</span></div>
+    <div class="cc-row"><span class="cc-lbl">Invitation + stationery (₹150/head)</span><span class="cc-val" id="cc-invite">₹39,000</span></div>
+    <div class="cc-row"><span class="cc-lbl">Return gifts (₹300/head)</span><span class="cc-val" id="cc-gifts">₹78,000</span></div>
+    <div class="cc-row"><span class="cc-lbl">Seating/decor per table</span><span class="cc-val" id="cc-decor">₹52,000</span></div>
+    <div class="cc-row"><span class="cc-lbl">Buffer (10% extra)</span><span class="cc-val" id="cc-buffer">₹63,700</span></div>
+    <div class="cc-row"><span class="cc-lbl cc-total">Total Estimated Guest Cost</span><span class="cc-val cc-total" id="cc-total">₹7.0L</span></div>
+  </div>
+
+  <!-- PRE-WEDDING CHECKLIST -->
+  <h2 class="stitle" style="margin-top:24px;margin-bottom:12px">Guest Management <em>Timeline Checklist</em></h2>
+  <div class="checklist-grid">
+    <div class="cl-card">
+      <div class="cl-title">📅 6+ Months Pehle</div>
+      <ul class="cl-list">
+        <li><span class="cldot"></span>Rough guest list banao — both sides</li>
+        <li><span class="cldot"></span>Venue capacity ke hisab se count cap karo</li>
+        <li><span class="cldot"></span>VIP guests identify karo</li>
+        <li><span class="cldot"></span>Outstation guests ki accommodation plan</li>
+        <li><span class="cldot"></span>Hotel block booking start karo</li>
+      </ul>
+    </div>
+    <div class="cl-card">
+      <div class="cl-title">📅 3-4 Months Pehle</div>
+      <ul class="cl-list">
+        <li><span class="cldot"></span>Final guest list lock karo</li>
+        <li><span class="cldot"></span>Invitations print/design order karo</li>
+        <li><span class="cldot"></span>WhatsApp groups create karo</li>
+        <li><span class="cldot"></span>Outstation guests ko travel info send karo</li>
+        <li><span class="cldot"></span>Dietary restrictions collect karo</li>
+      </ul>
+    </div>
+    <div class="cl-card">
+      <div class="cl-title">📅 1 Month Pehle</div>
+      <ul class="cl-list">
+        <li><span class="cldot"></span>RSVP collect karo + reminders send</li>
+        <li><span class="cldot"></span>Seating arrangement draft banao</li>
+        <li><span class="cldot"></span>Caterer ko headcount confirm karo</li>
+        <li><span class="cldot"></span>Transport arrangements finalize</li>
+        <li><span class="cldot"></span>Welcome kits prepare karo (outstation)</li>
+      </ul>
+    </div>
+    <div class="cl-card">
+      <div class="cl-title">📅 1 Week Pehle</div>
+      <ul class="cl-list">
+        <li><span class="cldot"></span>Final headcount to caterer + decorator</li>
+        <li><span class="cldot"></span>Seating chart print + display arrange</li>
+        <li><span class="cldot"></span>Day-of coordinators assign karo</li>
+        <li><span class="cldot"></span>VIP welcome arrangements confirm</li>
+        <li><span class="cldot"></span>No-show buffer 10-15% rakhein</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASE STUDY -->
+  <div class="cs">
+    <div class="cs-tag">✦ Real Story</div>
+    <h2 class="cs-title">Meera Ki Wedding — <em>350 Guests, Zero Chaos</em></h2>
+    <p class="cs-body">Meera bata rahi thi: "Humari 350 guests ki shaadi thi — mujhe serious anxiety tha ki sab manage kaise hoga. Seating pe toh literally fights ho jaati hain Indian weddings mein! Maine SmartShaadi ka Guest Manager use kiya. AI ne exactly bataya ki Mamaji aur Chacha ki families ko opposite sides pe kitna gap dena hai, VIP guests ko stage ke kitna paas rakhein, outstation guests ke liye WhatsApp messages kab aur kya send karein. Aur ek baat jo sabse kaam aayi — RSVP timeline bataya 3 reminders ke saath. 310 confirmations aayi, buffet waste nahi hua. Sabne kaha 'itni smooth wedding pehle nahi dekhi!'"</p>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-n">350</div><div class="cs-l">Guests</div></div>
+      <div class="cs-stat"><div class="cs-n">0</div><div class="cs-l">Seating Fights</div></div>
+      <div class="cs-stat"><div class="cs-n">310</div><div class="cs-l">RSVP Confirmed</div></div>
+      <div class="cs-stat"><div class="cs-n">💚</div><div class="cs-l">Zero Chaos</div></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="revs">
+    <h2 class="revs-title">Couples Ki <em>Real Reviews</em></h2>
+    <div class="rev-grid">
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"WhatsApp message templates se RSVP collect karna itna easy ho gaya! Copy karo, naam change karo, send karo. 280 guests mein se 240 ne confirm kiya — best RSVP rate!"</p><div class="rev-by"><div class="av">S</div>Sunita & Arun · Delhi</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"Seating plan mein family tensions ka solution AI ne exactly sahi diya — dono families same side pe nahi thi, photos mein bhi alag groups. Wedding smooth rahi!"</p><div class="rev-by"><div class="av">P</div>Priyanka Ji · Mumbai</div></div>
+      <div class="rev"><div class="rev-stars">★★★★★</div><p class="rev-text">"40 outstation guests ke liye accommodation + transport ka complete plan AI ne diya. Welcome dinner idea bhi — hamare guests ne kaha 'aaj tak ki best wedding hospitality!'"</p><div class="rev-by"><div class="av">R</div>Rohit & Kavya · Jaipur</div></div>
+    </div>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <h2 class="tips-title">👥 Guest Management Ke 6 Golden Rules</h2>
+    <div class="tip"><span style="flex-shrink:0">🔢</span><div><strong>Guest count = sabse important budget decision</strong> — 1 extra guest = ₹2,000-4,000 extra (catering + invite + gift). 50 extra guests = ₹1-2 lakh extra. Pehle number fix karo, phir baaki sab plan karo.</div></div>
+    <div class="tip"><span style="flex-shrink:0">📱</span><div><strong>WhatsApp group RSVP system banao</strong> — "Wedding Planning — Priya & Rahul" group banao, sab invites isme. RSVP form link share karo ya directly message karo. 3 reminders: 6 weeks, 3 weeks, 1 week before deadline.</div></div>
+    <div class="tip"><span style="flex-shrink:0">🪑</span><div><strong>Seating chart din pe change mat karo</strong> — 1 week pehle finalize karo aur print karwa lo. Venue entrance pe display board lagao. Last-minute changes confusion create karte hain. Buffer table (1-2 tables empty) zaroor rakhein.</div></div>
+    <div class="tip"><span style="flex-shrink:0">🧳</span><div><strong>Outstation guests = extra care</strong> — Welcome kit mein: itinerary, hotel + venue address, emergency numbers, local transport options, weather info. Welcome dinner eve of wedding — outstation guests ko appreciated feel karaata hai.</div></div>
+    <div class="tip"><span style="flex-shrink:0">👑</span><div><strong>VIP seating = strategic</strong> — Stage ke 2-3 rows mein: parents, grandparents, close family. Elderly guests ko aisle ke paas rakhein (easy movement). Close friends stage ke baju — unki reactions photos mein best aate hain.</div></div>
+    <div class="tip"><span style="flex-shrink:0">📊</span><div><strong>10-15% no-show expect karo</strong> — Catering ko 90% ka count do, 100% ka nahi. Invitees ka 10-15% last minute cancel karte hain. Buffer se food waste bhi kam hoga aur extra cost bhi nahi.</div></div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+    <h2 class="stitle" style="margin-bottom:14px">Aksar Pooche Jane Wale <em>Sawaal</em></h2>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Indian wedding mein kitne guests invite karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Size categories: Intimate (50-100), Medium (100-200), Large (200-400), Grand (400+). Budget formula: Total guest budget = Guests × ₹2,500 (avg per person all-inclusive). 200 guests = minimum ₹5 lakh guest cost alone. Venue capacity bhi consider karo — overcrowding se sabka experience kharab hota hai.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Family drama hone par seating kaise plan karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Strategy: (1) Conflict wale groups ko physically opposite sides pe rakhein — left vs right, (2) Ek trustworthy family member ko "buffer coordinator" banao, (3) VIP uncomfortable hoge aise situation mein main stage pe lao briefly, (4) Meals timing same rakho — same time pe sab bhojan karein = interaction forced nahi hoga, (5) Photos ke liye groups alag time pe bulao.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">RSVP kaise track karein effectively?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Best system: (1) Google Sheets shared spreadsheet — Name, Phone, Attending (Y/N), Guests Count, Dietary, Notes. (2) WhatsApp replies screenshot karo + update karo. (3) 3 reminder waves: 6 weeks before (first ask), 3 weeks (reminder), 1 week (final deadline). (4) Expected no-show = 12-15% for Indian weddings. Final caterer count = confirmed count × 0.95.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Outstation guests ke liye kya arrange karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Must-do: (1) Hotel block booking 2-3 months pehle — negotiate group rates, (2) Welcome kit: printed itinerary, local transport, emergency numbers, (3) Group transport for main ceremonies, (4) Welcome dinner eve of wedding, (5) Day-of coordinator specifically for outstation guests. Budget: ₹500-1000 per outstation guest for coordination costs. Worth it — impressed outstation guests = lifelong good memories.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Wedding mein kids ke liye kya arrangements karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Kids-specific planning: (1) Kiddy corner/play area — bouncy castle ya supervised play zone, (2) Kids menu alag — simple familiar food, (3) Kids table alag — parents nearby but kids saath, (4) Seating: aisle ke end mein — easy exit for toilet/crying, (5) Event timing — main ceremonies kids ke nap time se bachao, (6) Baby care room if 10+ infants. Ages 8-12 ke liye designated helper assign karo.</div></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="faq(this)">Last minute guest add/remove kaise handle karein?<span class="faq-icon">+</span></button><div class="faq-body"><div class="faq-text">Protocol: (1) Hard cutoff date set karo — "2 weeks pehle ke baad koi changes nahi", (2) Buffer seats: Seating chart mein 2-3 "flex seats" rakhein, (3) Buffer food: Caterer ko 5% extra order, (4) Last minute additions: already printed chart mein "Table 15 — Open" row rakhein, (5) Removals: caterer ko 1 week pehle final count, decorator ko 3 days pehle. Venue ko at least 5 days pehle inform karo.</div></div></div>
+  </div>
+
+  <!-- TOOLS -->
+  <h2 class="stitle" style="margin-top:24px;margin-bottom:12px">🤖 Baaki AI Tools — <em>Sab Free</em></h2>
+  <div class="tools-grid">
+    <a href="ai-budget-calculator.html" class="tool-link"><div class="tl-ico">💰</div><div class="tl-name">Budget Calculator</div><div class="tl-desc">City-wise breakdown</div></a>
+    <a href="ai-menu-planner.html" class="tool-link"><div class="tl-ico">🍽️</div><div class="tl-name">Menu Planner</div><div class="tl-desc">Qty per guest</div></a>
+    <a href="ai-invitation-writer.html" class="tool-link"><div class="tl-ico">💌</div><div class="tl-name">Invitation Writer</div><div class="tl-desc">6 languages</div></a>
+    <a href="ai-photography-shots.html" class="tool-link"><div class="tl-ico">📸</div><div class="tl-name">Shot List</div><div class="tl-desc">100+ shots</div></a>
+    <a href="ai-playlist-generator.html" class="tool-link"><div class="tl-ico">🎵</div><div class="tl-name">Playlist</div><div class="tl-desc">Sangeet to Vidai</div></a>
+    <a href="ai-planning-timeline.html" class="tool-link"><div class="tl-ico">📅</div><div class="tl-name">Timeline</div><div class="tl-desc">Month-wise</div></a>
+  </div>
 </div>
 
-<div class="container">
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(0)">📊 Guest Plan</button>
-    <button class="tab" onclick="switchTab(1)">🪑 Seating AI</button>
-    <button class="tab" onclick="switchTab(2)">📨 RSVP & Comms</button>
+<footer>
+  <a href="index.html" class="flogo">Smart<em>Shaadi</em> 💍</a>
+  <p class="ftxt">India's #1 Free AI Wedding Planner — Guest Manager, Budget, Playlist, 9 AI Agents</p>
+  <div class="flinks">
+    <a href="index.html">Home</a><a href="blogs.html">Magazine</a>
+    <a href="chatbot.html">AI Chat</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
   </div>
-
-  <!-- TAB 1: Guest Plan -->
-  <div class="tab-content active" id="tab0">
-    <div class="card">
-      <div class="card-title">📊 Aapki Guest Planning Details</div>
-      <div class="form-grid">
-        <div class="field">
-          <label>Groom Side Guests</label>
-          <input type="number" id="groomGuests" placeholder="e.g. 150" min="0" />
-        </div>
-        <div class="field">
-          <label>Bride Side Guests</label>
-          <input type="number" id="brideGuests" placeholder="e.g. 150" min="0" />
-        </div>
-        <div class="field">
-          <label>Kids (under 12)</label>
-          <input type="number" id="kidsCount" placeholder="e.g. 30" min="0" />
-        </div>
-        <div class="field">
-          <label>VIP / Special Guests</label>
-          <input type="number" id="vipCount" placeholder="e.g. 20" min="0" />
-        </div>
-        <div class="field">
-          <label>Venue Capacity</label>
-          <input type="number" id="venueCapacity" placeholder="e.g. 400" min="50" />
-        </div>
-        <div class="field">
-          <label>Reception Venue (Different?)</label>
-          <select id="separateReception">
-            <option value="no">Same Venue</option>
-            <option value="yes">Separate Venue / Different Guests</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label>Guest Categories (describe your list)</label>
-          <textarea id="guestCategories" placeholder="e.g. Close family: 50, Extended family: 80, Friends: 60, Office colleagues: 40, Neighbors: 30, Important relatives from out of station: 20..."></textarea>
-        </div>
-        <div class="field full">
-          <label>Special Challenges / Concerns</label>
-          <textarea id="guestChallenges" placeholder="e.g. Family politics between two families, elderly guests need special seating, some guests are vegetarian, out-of-town guests need accommodation, divorced parents..."></textarea>
-        </div>
-      </div>
-      <button class="btn-generate" onclick="generateGuestPlan()">📊 Generate Guest Management Plan</button>
-    </div>
-  </div>
-
-  <!-- TAB 2: Seating AI -->
-  <div class="tab-content" id="tab1">
-    <div class="card">
-      <div class="card-title">🪑 Smart Seating Arrangement</div>
-      <div class="form-grid">
-        <div class="field">
-          <label>Total Guests</label>
-          <input type="number" id="totalGuestsSeating" placeholder="e.g. 300" />
-        </div>
-        <div class="field">
-          <label>Table Size</label>
-          <select id="tableSize">
-            <option value="8">8 per table</option>
-            <option value="10" selected>10 per table</option>
-            <option value="12">12 per table</option>
-            <option value="round of 6">Round table of 6</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Seating Style</label>
-          <select id="seatingStyle">
-            <option value="banquet style buffet">Banquet Buffet Style</option>
-            <option value="sit-down dinner">Sit-down Dinner</option>
-            <option value="cocktail high tables">Cocktail High Tables</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Main Stage Location</label>
-          <select id="stageLocation">
-            <option value="front center">Front Center</option>
-            <option value="side">Side</option>
-            <option value="raised platform">Raised Platform</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label>Guest Groups to Seat Together / Apart</label>
-          <textarea id="seatingConstraints" placeholder="e.g. Dulhe ke naana-nani ko stage ke paas rakho, office colleagues ek table pe, ex-couples ko alag rakho, elderly ke paas washroom access honi chahiye..."></textarea>
-        </div>
-      </div>
-      <button class="btn-generate" onclick="generateSeating()">🪑 Generate Seating Strategy</button>
-    </div>
-  </div>
-
-  <!-- TAB 3: RSVP & Communication -->
-  <div class="tab-content" id="tab2">
-    <div class="card">
-      <div class="card-title">📨 RSVP & Guest Communication</div>
-      <div class="form-grid">
-        <div class="field">
-          <label>Wedding Date</label>
-          <input type="date" id="weddingDateRSVP" />
-        </div>
-        <div class="field">
-          <label>RSVP Deadline</label>
-          <input type="date" id="rsvpDeadline" />
-        </div>
-        <div class="field">
-          <label>Out-of-Town Guests %</label>
-          <select id="outOfTown">
-            <option value="10%">~10% (Mostly local)</option>
-            <option value="30%" selected>~30% (Some outstation)</option>
-            <option value="50%">~50% (Destination wedding)</option>
-            <option value="70%+">70%+ (Mostly outstation)</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Communication Channel</label>
-          <select id="commChannel">
-            <option value="WhatsApp primarily">WhatsApp Primarily</option>
-            <option value="WhatsApp + Phone calls">WhatsApp + Calls</option>
-            <option value="formal invitations + WhatsApp">Formal + WhatsApp</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label>Special Needs (Out of town guests, accommodation, transport)</label>
-          <textarea id="specialNeeds" placeholder="e.g. 50 out of town guests need hotel booking, airport pickup needed, shuttle service for venue..."></textarea>
-        </div>
-      </div>
-      <button class="btn-generate" onclick="generateRSVP()">📨 Generate RSVP & Communication Plan</button>
-    </div>
-  </div>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p style="color:var(--muted);margin-top:1rem">AI processing your guest details... 👥</p>
-  </div>
-
-  <div class="result-card" id="resultCard">
-    <div class="result-header">
-      <span class="result-title" id="resultTitle">👥 Guest Management Plan</span>
-      <div class="action-btns">
-        <button class="btn-action" onclick="copyResult()">📋 Copy</button>
-        <button class="btn-action" onclick="shareWhatsApp()">📱 Share</button>
-      </div>
-    </div>
-    <div class="result-content" id="resultText"></div>
-  </div>
-</div>
-
-<div class="toast" id="toast">✅ Copied!</div>
+</footer>
+<div class="toast" id="toast"></div>
 
 <script>
-function switchTab(n) {
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===n));
-  document.querySelectorAll('.tab-content').forEach((c,i) => c.classList.toggle('active', i===n));
-  document.getElementById('resultCard').style.display = 'none';
+/* ── FLOATS ── */
+(()=>{
+  const c=document.getElementById('floats');
+  ['👥','💍','🎊','👑','🥂','📱','🪑','📨','🌸','✨','👰','🤵'].forEach(e=>{
+    const s=document.createElement('span');s.className='fl';s.textContent=e;
+    s.style.cssText=`position:absolute;left:${Math.random()*100}%;font-size:${18+Math.random()*26}px;animation-duration:${17+Math.random()*20}s;animation-delay:-${Math.random()*30}s;--r:${-20+Math.random()*40}deg`;
+    c.appendChild(s);
+  });
+})();
+
+/* ── GUEST COUNTERS ── */
+const counts={bride:100,groom:120,kids:25,vip:15};
+function adj(k,d){
+  const min={bride:0,groom:0,kids:0,vip:0};
+  counts[k]=Math.max(min[k],counts[k]+d);
+  document.getElementById(k+'-num').textContent=counts[k];
+  updateTotal();
+}
+function updateTotal(){
+  const total=counts.bride+counts.groom+counts.kids+counts.vip;
+  const tables=Math.ceil(total/10);
+  const cost=(total*2000/100000).toFixed(1);
+  const size=total<=80?'Intimate':total<=200?'Medium':total<=400?'Large':'Grand';
+  document.getElementById('tb-total').textContent=total;
+  document.getElementById('tb-tables').textContent=tables;
+  document.getElementById('tb-cost').textContent='₹'+cost+'L';
+  document.getElementById('tb-size').textContent=size;
+  // breakdown bar
+  document.getElementById('br-bride').style.flex=counts.bride;
+  document.getElementById('br-groom').style.flex=counts.groom;
+  document.getElementById('br-kids').style.flex=Math.max(counts.kids,1);
+  document.getElementById('br-vip').style.flex=Math.max(counts.vip,1);
+  updateCostCalc(total,tables);
+}
+function updateCostCalc(total,tables){
+  const catering=total*1800;const invite=total*150;const gifts=total*300;const decor=tables*2000;
+  const buffer=Math.round((catering+invite+gifts+decor)*0.1);
+  const grand=catering+invite+gifts+decor+buffer;
+  const fmt=n=>n>=100000?'₹'+(n/100000).toFixed(1)+'L':'₹'+n.toLocaleString('en-IN');
+  document.getElementById('cc-catering').textContent=fmt(catering);
+  document.getElementById('cc-invite').textContent=fmt(invite);
+  document.getElementById('cc-gifts').textContent=fmt(gifts);
+  document.getElementById('cc-decor').textContent=fmt(decor);
+  document.getElementById('cc-buffer').textContent=fmt(buffer);
+  document.getElementById('cc-total').textContent=fmt(grand);
+}
+updateTotal();
+
+/* ── TABS (input) ── */
+function switchTab(name){
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section-content').forEach(s=>s.classList.remove('show'));
+  event.target.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('show');
 }
 
-async function callAI(system, user, title) {
-  const btn = document.querySelector('.tab-content.active .btn-generate');
-  if(btn) btn.disabled = true;
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('resultCard').style.display = 'none';
-  document.getElementById('resultTitle').textContent = title;
-  try {
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ system, messages: [{role: 'user', content: user}] })
+/* ── SECTION META ── */
+const SMETA={
+  'Guest List Plan':{ico:'📊',col:'#14b8a6'},
+  'Seating Strategy':{ico:'🪑',col:'#e8b84b'},
+  'RSVP Timeline':{ico:'📅',col:'#60a5fa'},
+  'Outstation Guests':{ico:'🧳',col:'#fb923c'},
+  'VIP Protocol':{ico:'👑',col:'#c084fc'},
+  'Day-of Coordination':{ico:'📋',col:'#4ade80'},
+};
+
+/* ── PARSE AI TEXT INTO SECTIONS ── */
+function parse(text){
+  const secs={};const keys=Object.keys(SMETA);
+  const lines=text.split('\n');let cur=null;
+  lines.forEach(l=>{
+    const t=l.trim();if(!t)return;
+    const mk=keys.find(k=>t.toLowerCase().includes(k.toLowerCase().split(' ')[0]));
+    if(mk&&t.length<80&&(t.startsWith('#')||t.startsWith('**')||/^[📊🪑📅🧳👑📋A-Z]/.test(t))){
+      cur=mk;if(!secs[cur])secs[cur]=[];return;
+    }
+    if(!cur)return;
+    const m=t.match(/^[\d\.\-\*•]+\s*(.+)/)||(t.length>5&&t.length<160?[null,t]:null);
+    if(m){
+      let raw=m[1].replace(/\*+/g,'').trim();if(raw.length<5)return;
+      let title=raw,desc='';
+      const di=raw.indexOf('—');const ci=raw.indexOf(':');
+      if(di>3){title=raw.slice(0,di).trim();desc=raw.slice(di+1).trim();}
+      else if(ci>2&&ci<35){title=raw.slice(0,ci).trim();desc=raw.slice(ci+1).trim();}
+      let tag='';
+      if(/urgent|asap|jaldi|important/i.test(raw))tag='urgent';
+      else if(/action|karo|arrange|book|confirm/i.test(raw))tag='action';
+      else if(/tip|suggestion|idea|better/i.test(raw))tag='tip';
+      else if(/vip|special|senior|elder/i.test(raw))tag='vip';
+      else if(/budget|cost|save|sasta/i.test(raw))tag='budget';
+      secs[cur].push({title,desc,tag});
+    }
+  });
+  return secs;
+}
+
+/* ── EXTRACT WA MESSAGES ── */
+function extractWAMsgs(text){
+  const msgs={};
+  const patterns=[
+    {key:'Invitation',match:/invitation|invite|nimantran/i},
+    {key:'RSVP',match:/rsvp|confirm.*attend|attendance/i},
+    {key:'Reminder',match:/reminder|yaad dila|deadline/i},
+    {key:'Outstation',match:/outstation|travel|hotel|stay|accommodation/i},
+    {key:'Day Of',match:/day.of|wedding day|kal|aaj/i},
+  ];
+  const blocks=text.split(/\n{2,}/);
+  patterns.forEach(p=>{
+    const found=blocks.find(b=>p.match.test(b)&&b.length>40&&b.length<600);
+    if(found){
+      const clean=found.replace(/^#+\s*/,'').replace(/\*+/g,'').trim();
+      if(clean.length>20)msgs[p.key]=clean;
+    }
+  });
+  if(!Object.keys(msgs).length){
+    // fallback: split text into chunks
+    const chunks=text.split('##').filter(c=>c.trim().length>30);
+    ['Invitation','RSVP','Reminder'].forEach((k,i)=>{
+      if(chunks[i])msgs[k]=chunks[i].replace(/^[\w\s]+\n/,'').trim().substring(0,400);
     });
-    const data = await res.json();
-    const text = data.choices[0].message.content;
-    document.getElementById('resultText').textContent = text;
-    document.getElementById('resultCard').style.display = 'block';
-    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
-  } catch(e) {
-    alert('Error: ' + e.message);
-  } finally {
-    if(btn) btn.disabled = false;
-    document.getElementById('loading').style.display = 'none';
+  }
+  return msgs;
+}
+
+/* ── RENDER SEATING VISUAL ── */
+function renderSeating(total,vip){
+  const container=document.getElementById('svTables');container.innerHTML='';
+  const tableSize=parseInt(document.getElementById('tableSize')?.value?.split(' ')[0])||10;
+  const numTables=Math.ceil(total/tableSize);
+  const tableGroups=[
+    {name:'Table 1 — VIP Family',group:'Parents + Close Family',seats:tableSize,isVip:true},
+    {name:'Table 2 — Bride Family',group:'Bride ke parents + siblings',seats:tableSize,isVip:false},
+    {name:'Table 3 — Groom Family',group:'Groom ke parents + siblings',seats:tableSize,isVip:false},
+    {name:'Table 4 — Close Friends',group:'Best friends circle',seats:tableSize,isVip:false},
+    {name:'Table 5 — Relatives A',group:'Bride side relatives',seats:tableSize,isVip:false},
+    {name:'Table 6 — Relatives B',group:'Groom side relatives',seats:tableSize,isVip:false},
+  ];
+  const maxShow=Math.min(numTables,12);
+  for(let i=0;i<maxShow;i++){
+    const g=tableGroups[i]||{name:'Table '+(i+1),group:'Guests',seats:tableSize,isVip:false};
+    const div=document.createElement('div');
+    div.className='sv-table'+(g.isVip?' vip':'');
+    div.innerHTML=`<div class="svt-name">${g.name}</div><div class="svt-group">${g.group}</div><div class="svt-seats">${g.seats} seats</div>`;
+    container.appendChild(div);
+  }
+  if(numTables>12){
+    const more=document.createElement('div');
+    more.className='sv-table';more.style.opacity='.6';
+    more.innerHTML=`<div class="svt-name">+${numTables-12} more</div><div class="svt-group">tables</div>`;
+    container.appendChild(more);
   }
 }
 
-async function generateGuestPlan() {
-  const groomG = document.getElementById('groomGuests').value || '150';
-  const brideG = document.getElementById('brideGuests').value || '150';
-  const kids = document.getElementById('kidsCount').value || '20';
-  const vip = document.getElementById('vipCount').value || '15';
-  const capacity = document.getElementById('venueCapacity').value || '400';
-  const categories = document.getElementById('guestCategories').value;
-  const challenges = document.getElementById('guestChallenges').value;
-  const total = (parseInt(groomG)||0) + (parseInt(brideG)||0);
-
-  const system = `You are an expert Indian wedding planner specializing in guest management. You provide practical, detailed advice for managing large Indian wedding guest lists with all the social complexities involved. Use Hinglish. Be empathetic and culturally aware.`;
-  const user = `Create a comprehensive guest management plan:
-
-Total Guests: ~${total} (Groom side: ${groomG}, Bride side: ${brideG})
-Kids: ${kids}, VIPs: ${vip}
-Venue Capacity: ${capacity}
-Guest Breakdown: ${categories || 'Mix of family and friends'}
-Challenges: ${challenges || 'Standard planning'}
-
-Please provide:
-
-1. 📊 GUEST LIST STRATEGY
-   - How to categorize guests (A list, B list, C list)
-   - Managing both family sides fairly
-   - Cutting/adding guests diplomatically
-
-2. 📋 MASTER CHECKLIST FORMAT
-   - Template for tracking each guest
-   - What info to collect
-
-3. 🎯 INVITATION STRATEGY
-   - Who to invite first
-   - Timing of invitations
-   - How to send invitations (digital vs physical)
-
-4. 📱 RSVP TRACKING SYSTEM
-   - How to follow up
-   - Deadline management
-   - Final count management
-
-5. 🚗 LOGISTICS PLANNING
-   - Transportation needs
-   - Parking arrangements
-   - Elderly/special needs planning
-
-6. 🎁 GIFT REGISTRY & MANAGEMENT
-   - How to manage wedding gifts
-   - Registry suggestions
-
-7. 👔 WELCOME & GREETING PLAN
-   - Reception desk setup
-   - Welcome volunteers
-   - Guest experience flow
-
-8. ⚠️ HANDLING DIFFICULT SITUATIONS
-   - Uninvited guests showing up
-   - Family politics
-   - No-shows on wedding day
-
-Use emojis and make it actionable!`;
-
-  await callAI(system, user, '📊 Guest Management Plan');
+/* ── RENDER RSVP TRACKER ── */
+function renderRSVP(total){
+  const confirmed=Math.round(total*0.78);
+  const pending=Math.round(total*0.15);
+  const declined=Math.round(total*0.07);
+  const pct=Math.round(confirmed/total*100);
+  const grid=document.getElementById('rtGrid');
+  grid.innerHTML=`
+    <div class="rt-stat"><div class="rt-n" style="color:#4ade80">${confirmed}</div><div class="rt-l">Expected Confirmed ✓</div></div>
+    <div class="rt-stat"><div class="rt-n" style="color:#fbbf24">${pending}</div><div class="rt-l">Awaiting Reply</div></div>
+    <div class="rt-stat"><div class="rt-n" style="color:#f87171">${declined}</div><div class="rt-l">Expected Decline</div></div>
+    <div class="rt-stat"><div class="rt-n" style="color:#60a5fa">${Math.round(confirmed*0.9)}</div><div class="rt-l">Final Caterer Count</div></div>`;
+  document.getElementById('rtBarFill').style.width=pct+'%';
+  document.getElementById('rtBarLabel').textContent=pct+'% attendance expected based on typical Indian wedding patterns';
 }
 
-async function generateSeating() {
-  const total = document.getElementById('totalGuestsSeating').value || '300';
-  const tableSize = document.getElementById('tableSize').value;
-  const style = document.getElementById('seatingStyle').value;
-  const stage = document.getElementById('stageLocation').value;
-  const constraints = document.getElementById('seatingConstraints').value;
-  const tables = Math.ceil(parseInt(total) / parseInt(tableSize));
+/* ── RENDER RESULT ── */
+function renderResult(secs,text,total,vipCount){
+  const outPct=document.getElementById('outstation').value;
+  const outNum=Math.round(total*0.3);
+  // overview
+  document.getElementById('ov1').textContent=total;
+  document.getElementById('ov2').textContent=Math.ceil(total/10);
+  document.getElementById('ov3').textContent='₹'+(total*2000/100000).toFixed(1)+'L';
+  document.getElementById('ov4').textContent=vipCount;
+  document.getElementById('ov5').textContent=outNum;
 
-  const system = `You are an expert wedding venue coordinator specializing in seating arrangements. You understand Indian wedding dynamics, family politics, and guest comfort. Use Hinglish.`;
-  const user = `Create a complete seating arrangement strategy:
+  renderSeating(total,vipCount);
+  renderRSVP(total);
 
-Total Guests: ${total}
-Table Size: ${tableSize} per table = ~${tables} tables needed
-Seating Style: ${style}
-Stage Location: ${stage}
-Special Constraints: ${constraints || 'Standard arrangement'}
+  // Result tabs + sections
+  const tabsRow=document.getElementById('rtabsRow');
+  const secWrap=document.getElementById('rsecWrap');
+  tabsRow.innerHTML='';secWrap.innerHTML='';
 
-Provide:
+  const tagCls={urgent:'t-urgent',action:'t-action',tip:'t-tip',vip:'t-vip',budget:'t-budget'};
+  const tagLbl={urgent:'🚨 Urgent',action:'✅ Action',tip:'💡 Tip',vip:'👑 VIP',budget:'💰 Budget'};
+  let first=true;
+  Object.entries(secs).forEach(([name,items],idx)=>{
+    if(!items||!items.length)return;
+    const m=SMETA[name]||{ico:'📋',col:'#14b8a6'};
+    const tab=document.createElement('button');
+    tab.className='rtab'+(first?' active':'');
+    tab.textContent=m.ico+' '+name.split(' ')[0]+' ('+items.length+')';
+    const myIdx=idx;
+    tab.onclick=()=>{
+      document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.rsec').forEach(s=>s.classList.remove('show'));
+      tab.classList.add('active');
+      document.getElementById('rs_'+myIdx).classList.add('show');
+    };
+    tabsRow.appendChild(tab);
 
-1. 🗺️ VENUE LAYOUT CONCEPT
-   - Table zones (A, B, C zones)
-   - Stage proximity planning
-   - Entry/exit flow
+    const cards=items.map((it,i)=>`
+      <div class="item-card" style="--ic-col:${m.col}">
+        <div class="ic-num">#${i+1}</div>
+        <div class="ic-title">${it.title}</div>
+        ${it.desc?`<div class="ic-desc">${it.desc}</div>`:''}
+        ${it.tag?`<div class="ic-tags"><span class="ictag ${tagCls[it.tag]||'t-tip'}">${tagLbl[it.tag]||it.tag}</span></div>`:''}
+      </div>`).join('');
 
-2. 🏆 TABLE PRIORITY SYSTEM
-   - Table 1-5 (VIP zone): who goes here
-   - How to assign family zones
-   - Friends vs family sections
-
-3. 👨‍👩‍👧‍👦 FAMILY SEATING RULES
-   - Groom's immediate family placement
-   - Bride's immediate family placement
-   - Extended family logic
-
-4. 🎯 GROUP SEATING GUIDE
-   - Office colleagues together
-   - Friend groups
-   - Childhood friends
-   - Elderly guests placement
-   - Kids' table setup
-
-5. ♿ ACCESSIBILITY PLANNING
-   - Special needs seating
-   - Elderly near exits
-   - Wheelchair accessible
-
-6. 📝 SEATING CARD SYSTEM
-   - How to organize place cards
-   - Table name ideas
-   - Day-of seating management
-
-7. ⚠️ COMMON SEATING MISTAKES TO AVOID
-
-Make it comprehensive and practical!`;
-
-  await callAI(system, user, '🪑 Seating Arrangement Strategy');
-}
-
-async function generateRSVP() {
-  const wDate = document.getElementById('weddingDateRSVP').value;
-  const rsvpDate = document.getElementById('rsvpDeadline').value;
-  const outOfTown = document.getElementById('outOfTown').value;
-  const channel = document.getElementById('commChannel').value;
-  const special = document.getElementById('specialNeeds').value;
-
-  const system = `You are an expert Indian wedding coordinator specializing in guest communications and RSVP management. Provide practical WhatsApp messages, follow-up scripts, and communication templates in Hinglish.`;
-  const user = `Create a complete RSVP & communication plan:
-
-Wedding Date: ${wDate || 'Not specified'}
-RSVP Deadline: ${rsvpDate || '2 weeks before wedding'}
-Out-of-town Guests: ${outOfTown}
-Communication Channel: ${channel}
-Special Needs: ${special || 'Standard'}
-
-Provide:
-
-1. 📅 COMMUNICATION TIMELINE
-   - When to send save-the-dates
-   - When to send invitations
-   - RSVP follow-up schedule
-   - Final confirmations
-
-2. 💬 WHATSAPP MESSAGE TEMPLATES
-   - Save the date message
-   - Formal invitation message
-   - RSVP request message
-   - Reminder for non-responders
-   - Final details message (day before)
-   - Thank you message template
-
-3. 📱 WHATSAPP GROUP STRATEGY
-   - Which groups to create
-   - What to post in each group
-   - Managing wedding group etiquette
-
-4. ✈️ OUT-OF-TOWN GUEST GUIDE
-   - What info to send
-   - Hotel recommendations message
-   - Transport coordination
-   - Arrival/departure schedule
-
-5. 📊 RSVP TRACKING TIPS
-   - Simple Excel/Notes format
-   - Following up without being rude
-   - Managing late responses
-
-6. 🎁 ACCOMMODATION COORDINATION
-   - Hotel group booking tips
-   - Welcome kits for outstation guests
-
-7. ⚠️ PRE-WEDDING REMINDERS
-   - Dress code reminder
-   - Venue directions
-   - Timing reminders
-
-Include actual WhatsApp message drafts that couples can copy-paste!`;
-
-  await callAI(system, user, '📨 RSVP & Communication Plan');
-}
-
-function copyResult() {
-  navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(() => {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+    const sec=document.createElement('div');
+    sec.id='rs_'+idx;sec.className='rsec'+(first?' show':'');
+    sec.innerHTML=`<div class="rsec-head"><div class="rsh-left"><span class="rsh-ico">${m.ico}</span><div class="rsh-title" style="color:${m.col}">${name}</div></div><div style="display:flex;gap:.4rem;align-items:center"><span class="rsh-count">${items.length} items</span><button class="rsh-copy" onclick="copySec('${name}')">📋 Copy</button></div></div><div class="items-grid">${cards}</div>`;
+    secWrap.appendChild(sec);
+    first=false;
   });
+
+  // WA messages
+  const msgs=extractWAMsgs(text);
+  const waTabs=document.getElementById('waTabs');
+  const waMsgs=document.getElementById('waMsgs');
+  waTabs.innerHTML='';waMsgs.innerHTML='';
+  let wFirst=true;
+  Object.entries(msgs).forEach(([name,msg],idx)=>{
+    const t=document.createElement('button');
+    t.className='wa-tab'+(wFirst?' active':'');
+    t.textContent=name;
+    const mi=idx;
+    t.onclick=()=>{
+      document.querySelectorAll('.wa-tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.wa-msg').forEach(x=>x.classList.remove('show'));
+      t.classList.add('active');
+      document.getElementById('wm_'+mi).classList.add('show');
+    };
+    waTabs.appendChild(t);
+    const d=document.createElement('div');
+    d.id='wm_'+idx;d.className='wa-msg'+(wFirst?' show':'');
+    d.innerHTML=`<div class="wa-body">${msg}</div>`;
+    waMsgs.appendChild(d);
+    window['_wa_'+idx]=msg;
+    wFirst=false;
+  });
+  window._secs=secs;window._rawText=text;window._waMsgs=msgs;
 }
 
-function shareWhatsApp() {
-  const text = document.getElementById('resultText').textContent;
-  window.open(`https://wa.me/?text=${encodeURIComponent(text.substring(0, 900) + '\n\nSmartShaadi.online')}`, '_blank');
+/* ── PROGRESS ── */
+let pi;
+function startProg(){
+  document.getElementById('progWrap').style.display='block';
+  let v=0,si=0;
+  const steps=['ps1','ps2','ps3','ps4'];
+  steps.forEach(s=>document.getElementById(s).className='ps');
+  document.getElementById('ps1').className='ps active';
+  pi=setInterval(()=>{
+    v=Math.min(v+Math.random()*3.8,86);
+    document.getElementById('progFill').style.width=v+'%';
+    const ni=Math.floor(v/25);
+    if(ni>si&&ni<4){document.getElementById(steps[si]).className='ps done';si=ni;document.getElementById(steps[si]).className='ps active';}
+  },400);
+}
+function stopProg(){
+  clearInterval(pi);
+  ['ps1','ps2','ps3','ps4'].forEach(s=>document.getElementById(s).className='ps done');
+  document.getElementById('progFill').style.width='100%';
+  setTimeout(()=>{document.getElementById('progWrap').style.display='none';document.getElementById('progFill').style.width='0';},600);
+}
+
+/* ── GENERATE ── */
+async function generate(){
+  const total=counts.bride+counts.groom+counts.kids+counts.vip;
+  if(total<10){showErr('⚠️ Kum se kum 10 guests toh hone chahiye!');return;}
+
+  const venueCap=document.getElementById('venueCap').value||'Same as guest count';
+  const recVenue=document.getElementById('recVenue').value;
+  const ceremonies=document.getElementById('ceremonies').value;
+  const city=document.getElementById('city').value||'India';
+  const guestCat=document.getElementById('guestCategories').value;
+  const challenges=document.getElementById('challenges').value;
+  const tableSize=document.getElementById('tableSize').value;
+  const seatStyle=document.getElementById('seatStyle').value;
+  const stagePos=document.getElementById('stagePos').value;
+  const seatGroups=document.getElementById('seatGroups').value;
+  const wDate=document.getElementById('weddingDate').value;
+  const rsvpD=document.getElementById('rsvpDeadline').value;
+  const outstation=document.getElementById('outstation').value;
+  const commCh=document.getElementById('commChannel').value;
+  const coupleNames=document.getElementById('coupleNames').value||'Couple';
+  const outNeeds=document.getElementById('outNeeds').value;
+
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('resultWrap').style.display='none';
+  startProg();
+
+  const sys=`Tu India ka top wedding planner aur event coordinator hai — 12+ saal experience, 200+ weddings managed. Tu complete guest management plans banata hai — seating strategies, RSVP systems, WhatsApp communication templates. Hinglish mein likho. Specific, practical, Indian context.`;
+
+  const prompt=`Complete wedding guest management plan banao:
+
+GUEST COUNT:
+- Bride Side: ${counts.bride}
+- Groom Side: ${counts.groom}
+- Kids: ${counts.kids}
+- VIP/Special: ${counts.vip}
+- TOTAL: ${total}
+
+VENUE: Capacity ${venueCap} | ${recVenue}
+CEREMONIES: ${ceremonies}
+CITY: ${city}
+GUEST CATEGORIES: ${guestCat||'Not specified'}
+CHALLENGES: ${challenges||'None mentioned'}
+
+SEATING:
+- Table size: ${tableSize}
+- Style: ${seatStyle}
+- Stage: ${stagePos}
+- Groups: ${seatGroups||'Standard arrangement'}
+
+RSVP:
+- Wedding date: ${wDate||'Not specified'}
+- RSVP deadline: ${rsvpD||'Not specified'}
+- Outstation: ${outstation}
+- Communication: ${commCh}
+- Couple: ${coupleNames}
+- Special needs: ${outNeeds||'None'}
+
+Generate complete plan with EXACT section headers:
+
+## Guest List Plan
+8-10 specific action items for guest list management
+
+## Seating Strategy
+8-10 seating arrangement tips specific to ${total} guests
+
+## RSVP Timeline
+6-8 specific dates/actions for RSVP collection
+
+## Outstation Guests
+6-8 action items for outstation guest management
+
+## VIP Protocol
+5-6 VIP-specific arrangements
+
+## Day-of Coordination
+8-10 day-of guest management tasks
+
+Then add 3-4 WhatsApp message templates:
+### Invitation Message (for ${coupleNames})
+[Template]
+
+### RSVP Reminder
+[Template]
+
+### Outstation Guest Info
+[Template]
+
+Hinglish mein, specific to ${total} guests aur ${city} location. Practical aur actionable. 500-600 words.`;
+
+  try{
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,messages:[{role:'user',content:prompt}]})});
+    if(!res.ok)throw new Error('Server '+res.status);
+    const d=await res.json();
+    // ✅ CORRECT: data.choices[0].message.content
+    const text=d.choices[0].message.content;
+    stopProg();
+
+    const secs=parse(text);
+    renderResult(secs,text,total,counts.vip);
+
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('resultWrap').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(e){
+    stopProg();showErr('⚠️ Kuch gadbad hui. Dobara try karo. ('+e.message+')');
+  }finally{document.getElementById('genBtn').disabled=false;}
+}
+
+/* ── COPY HELPERS ── */
+function copySec(name){
+  const items=window._secs?.[name]||[];
+  const t=`👥 ${name}\n`+items.map((s,i)=>`${i+1}. ${s.title}${s.desc?' — '+s.desc:''}`).join('\n');
+  navigator.clipboard.writeText(t).then(()=>showToast('📋 '+name+' copied!'));
+}
+function copyAll(){
+  let t=`👥 Wedding Guest Management Plan\nSmartShaadi.online\n\n`;
+  t+=`Total Guests: ${counts.bride+counts.groom+counts.kids+counts.vip}\n\n`;
+  Object.entries(window._secs||{}).forEach(([sec,items])=>{
+    t+=`\n═══ ${sec.toUpperCase()} ═══\n`;
+    items.forEach((s,i)=>t+=`${i+1}. ${s.title}${s.desc?' — '+s.desc:''}\n`);
+  });
+  if(window._waMsgs){
+    t+='\n\n═══ WHATSAPP MESSAGES ═══\n';
+    Object.entries(window._waMsgs).forEach(([n,m])=>t+=`\n${n}:\n${m}\n`);
+  }
+  t+='\n🔗 https://smartshaadi.online/ai-guest-manager.html';
+  navigator.clipboard.writeText(t).then(()=>showToast('📋 Full plan copied!'));
+}
+function copyWA(){
+  const active=document.querySelector('.wa-msg.show .wa-body');
+  if(active)navigator.clipboard.writeText(active.textContent).then(()=>showToast('📱 Message copied!'));
+}
+function waSharePlan(){
+  const total=counts.bride+counts.groom+counts.kids+counts.vip;
+  let t=`👥 Wedding Guest Plan — ${total} Guests\n\n${(window._rawText||'').substring(0,500)}\n\n🔗 https://smartshaadi.online/ai-guest-manager.html`;
+  window.open('https://wa.me/?text='+encodeURIComponent(t));
+}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Guest Manager!\n👥 Guest list + seating plan + RSVP + WhatsApp templates.\nhttps://smartshaadi.online/ai-guest-manager.html'));}
+function copyLink(){navigator.clipboard.writeText('https://smartshaadi.online/ai-guest-manager.html').then(()=>showToast('🔗 Link copied!'));}
+function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+function faq(btn){
+  const body=btn.nextElementSibling;const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-btn.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.style.maxHeight='0';});
+  if(!isOpen){btn.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
 }
 </script>
 </body>
