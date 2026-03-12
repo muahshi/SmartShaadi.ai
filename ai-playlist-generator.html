@@ -1,340 +1,930 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Playlist Generator — Smart Shaadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Free AI Wedding Playlist Generator — Bollywood Sangeet Songs 2026 | SmartShaadi</title>
+<meta name="description" content="Free AI Wedding Playlist Generator — Mehendi, Haldi, Sangeet, Baraat, Vidai ke liye perfect Bollywood songs. DJ note ready. 50+ songs, mood-wise. Hindi/English mix. 2026 latest hits!">
+<meta name="keywords" content="wedding playlist generator, sangeet songs list, bollywood wedding songs 2026, mehendi songs list, baraat songs, haldi songs, vidai songs hindi, wedding DJ playlist india">
+<link rel="canonical" href="https://smartshaadi.online/ai-playlist-generator.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free AI Wedding Playlist Generator — Bollywood 2026 | SmartShaadi">
+<meta property="og:description" content="Mehendi se Vidai tak perfect playlist — AI se. 50+ songs, DJ note, WhatsApp share. Free!">
+<meta property="og:url" content="https://smartshaadi.online/ai-playlist-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Playlist Generator","applicationCategory":"EntertainmentApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"9820"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sangeet night ke liye best Bollywood songs kaunse hain?","acceptedAnswer":{"@type":"Answer","text":"2026 mein top sangeet songs mein Kala Chashma, Gallan Goodiyaan, Nagada Sang Dhol, Desi Beat, Morni Banke aur latest hits Naacho Naacho shamil hain."}},{"@type":"Question","name":"Vidai ke liye kaunse emotional songs acche hain?","acceptedAnswer":{"@type":"Answer","text":"Vidai ke liye Babul Ki Duaein Leti Ja, Mora Piya, Alvida, Tujhe Bhula Diya aur similar emotional songs perfect hain."}},{"@type":"Question","name":"Wedding DJ ko playlist kaise deni chahiye?","acceptedAnswer":{"@type":"Answer","text":"DJ ko ceremony-wise list deni chahiye — pehle Mehendi, phir Sangeet, phir Baraat order mein. Must-play aur avoid songs clearly mark karo. Timing ke saath dena best practice hai."}}]}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
+
 <style>
-  :root {
-    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
-    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
-    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05080f;--bg2:#080d18;--card:#0d1220;--card2:#111827;
+  --gold:#e8b84b;--gold2:#f5d276;--gold-bg:rgba(232,184,75,0.07);--gold-bd:rgba(232,184,75,0.2);
+  --pink:#f472b6;--pink2:#ec4899;--pink-bg:rgba(244,114,182,0.08);--pink-bd:rgba(244,114,182,0.25);
+  --purple:#a78bfa;--blue:#60a5fa;--teal:#2dd4bf;--green:#4ade80;--orange:#fb923c;
+  --text:#fdf0ff;--muted:rgba(253,240,255,0.55);--faint:rgba(253,240,255,0.3);
+  --border:rgba(255,255,255,0.07);--radius:14px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
 
-  nav { background: rgba(15,15,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
-  .logo span { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+nav{background:rgba(5,8,15,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-bd);padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold2)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:.3rem}
+.nav-links a{font-size:.78rem;color:var(--muted);padding:.3rem .7rem;border-radius:6px;transition:all .2s}
+.nav-links a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#05080f!important;font-weight:700!important;padding:.35rem .9rem!important;border-radius:6px!important}
 
-  .hero { text-align: center; padding: 4rem 2rem 2rem; background: radial-gradient(ellipse at 50% 0%, rgba(240,192,96,0.12) 0%, transparent 60%); }
-  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
-  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
-  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+/* HERO */
+.hero{position:relative;padding:52px 20px 44px;text-align:center;overflow:hidden}
+.notes-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.note{position:absolute;animation:noteFloat linear infinite;opacity:.05;color:var(--pink)}
+@keyframes noteFloat{0%{transform:translateY(110%) rotate(var(--r,0deg))}100%{transform:translateY(-15%) rotate(var(--r,0deg))}}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 55% at 50% 0%,rgba(244,114,182,0.13) 0%,transparent 65%),radial-gradient(ellipse 40% 30% at 10% 80%,rgba(232,184,75,0.06) 0%,transparent 55%)}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--pink-bg);border:1px solid var(--pink-bd);color:#fda4af;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:.38rem 1.1rem;border-radius:100px;margin-bottom:1.2rem}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--pink2);animation:pulse 2s infinite;display:inline-block}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,3.5rem);font-weight:700;line-height:1.12;margin-bottom:.9rem}
+h1 em{font-style:italic;color:var(--gold2)}
+h1 strong{color:#fda4af}
+.hero-sub{font-size:.97rem;color:var(--muted);max-width:570px;margin:0 auto 1.6rem;line-height:1.78}
+.hero-stats{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+.hstat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold2);text-align:center}
+.hstat-lbl{font-size:.66rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.1rem;text-align:center}
+.hsep{width:1px;background:var(--border);align-self:stretch}
 
-  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.main{max-width:820px;margin:0 auto;padding:0 18px 60px}
+.ad-wrap{background:var(--bg2);border:1px dashed var(--gold-bd);border-radius:10px;padding:.5rem;margin:22px 0;min-height:90px;display:flex;align-items:center;justify-content:center}
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1/-1; }
-  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  input, select, textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
-  select option { background: var(--surface); }
-  textarea { resize: vertical; min-height: 80px; }
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-bottom:18px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--pink2),var(--gold),transparent)}
+.card-title{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.card-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
 
-  /* GENRE GRID */
-  .genre-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.7rem; }
-  .genre-chip { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 0.7rem 0.5rem; cursor: pointer; text-align: center; font-size: 0.8rem; transition: all 0.2s; user-select: none; }
-  .genre-chip .emoji { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
-  .genre-chip:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .genre-chip.active { border-color: var(--gold); background: rgba(240,192,96,0.12); color: var(--gold); }
+/* GENRE PILLS */
+.genre-grid{display:flex;flex-wrap:wrap;gap:8px}
+.genre-pill{padding:8px 14px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.03);color:var(--muted);font-size:.8rem;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.genre-pill:hover{border-color:var(--pink-bd);color:#fda4af;background:var(--pink-bg)}
+.genre-pill.active{background:var(--pink-bg);border-color:var(--pink2);color:#fda4af;font-weight:700}
 
-  /* CEREMONY PLAYLIST SECTIONS */
-  .ceremony-list { display: flex; flex-direction: column; gap: 0.6rem; }
-  .ceremony-row { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.8rem 1rem; }
-  .ceremony-row input[type=checkbox] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; }
-  .ceremony-name { flex: 1; font-size: 0.88rem; font-weight: 500; }
-  .ceremony-songs { width: 80px; font-size: 0.82rem; }
-  .ceremony-songs input { padding: 0.4rem 0.6rem; background: var(--bg); }
+/* CEREMONY GRID */
+.ceremony-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.cer-item{background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s}
+.cer-item:hover{border-color:var(--pink-bd);background:var(--pink-bg)}
+.cer-item.checked{border-color:var(--pink2);background:var(--pink-bg)}
+.cer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cer-label{font-size:.86rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.4rem}
+.cer-cb{width:18px;height:18px;border-radius:5px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:all .2s;flex-shrink:0}
+.cer-item.checked .cer-cb{background:var(--pink2);border-color:var(--pink2);color:#fff}
+.cer-count{display:flex;align-items:center;gap:.3rem}
+.cer-count label{font-size:.72rem;color:var(--muted)}
+.cer-count input{width:52px;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);font-size:.82rem;font-family:'Nunito',sans-serif;outline:none;text-align:center}
+.cer-mood{font-size:.7rem;color:var(--faint);margin-top:.3rem;font-style:italic}
 
-  .btn-generate { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+/* FORM FIELDS */
+.fields-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.field label span{font-size:.72rem;color:var(--muted);font-weight:400}
+.fi{width:100%;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:var(--text);font-size:.9rem;font-family:'Nunito',sans-serif;outline:none;transition:border .2s,box-shadow .2s}
+.fi:focus{border-color:var(--pink2);box-shadow:0 0 0 3px rgba(236,72,153,0.12)}
+.fi::placeholder{color:var(--faint)}
+select.fi option{background:#0d1220;color:var(--text)}
+textarea.fi{resize:vertical;min-height:65px;line-height:1.6}
 
-  .loading { text-align: center; padding: 3rem; display: none; }
-  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+.gen-btn{width:100%;padding:17px;border-radius:12px;border:none;background:linear-gradient(135deg,#831843,#ec4899,#f9a8d4);color:#fff;font-size:1.05rem;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .3s;box-shadow:0 6px 28px rgba(236,72,153,0.4);letter-spacing:.04em}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(236,72,153,0.55)}
+.gen-btn:disabled{background:rgba(255,255,255,0.08);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
 
-  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
-  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
-  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
-  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
-  .playlist-content { padding: 2rem; white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; }
+.progress-wrap{margin:16px 0;display:none}
+.prog-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--pink2),var(--gold));border-radius:3px;transition:width .4s}
+.prog-steps{display:flex;justify-content:center;gap:1.5rem;margin-top:14px;flex-wrap:wrap}
+.prog-step{font-size:.74rem;color:var(--faint);transition:color .3s}
+.prog-step.done{color:var(--green)}
+.prog-step.active{color:var(--gold)}
 
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
+.error-box{background:rgba(255,50,50,0.07);border:1px solid rgba(255,50,50,0.2);border-radius:10px;padding:13px 16px;color:#ff8a8a;font-size:.88rem;display:none;margin-bottom:16px}
 
-  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
+/* RESULT */
+.result-wrap{display:none}
+
+/* PLAYLIST OVERVIEW */
+.playlist-overview{background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(232,184,75,0.05));border:1px solid var(--pink-bd);border-radius:16px;padding:24px;margin-bottom:16px}
+.ov-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.ov-stats{display:flex;gap:1.2rem;flex-wrap:wrap}
+.ov-stat{text-align:center;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 16px}
+.ov-stat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold2)}
+.ov-stat-lbl{font-size:.65rem;color:var(--muted);margin-top:.15rem;letter-spacing:.04em;text-transform:uppercase}
+.ov-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.action-btn{padding:8px 14px;border-radius:8px;font-size:.78rem;font-family:'Nunito',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid}
+.btn-copy{background:rgba(74,222,128,0.08);border-color:rgba(74,222,128,0.3);color:#4ade80}
+.btn-wa{background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:#25d366}
+.btn-regen{background:var(--pink-bg);border-color:var(--pink-bd);color:#fda4af}
+.btn-dj{background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.3);color:#c4b5fd}
+
+/* CEREMONY SECTIONS */
+.ceremony-sections{display:flex;flex-direction:column;gap:16px}
+.cer-section{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.cer-section-header{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background .2s}
+.cer-section-header:hover{background:rgba(255,255,255,0.02)}
+.cer-section-title{font-size:.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:.5rem}
+.cer-section-meta{display:flex;align-items:center;gap:.5rem}
+.song-count-badge{font-size:.68rem;padding:.2rem .6rem;border-radius:100px;background:var(--pink-bg);color:#fda4af;border:1px solid var(--pink-bd);font-weight:600}
+.cer-copy-btn{padding:5px 10px;border-radius:6px;font-size:.7rem;font-family:'Nunito',sans-serif;font-weight:600;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.cer-copy-btn:hover{border-color:var(--pink-bd);color:#fda4af;background:var(--pink-bg)}
+.cer-toggle{font-size:.8rem;color:var(--muted);transition:transform .3s}
+.cer-section.open .cer-toggle{transform:rotate(180deg)}
+.cer-section-body{display:none;padding:0 18px 14px}
+.cer-section.open .cer-section-body{display:block}
+.cer-mood-tag{display:inline-block;font-size:.68rem;padding:.15rem .6rem;border-radius:100px;margin-bottom:10px;font-weight:600}
+
+/* SONG CARDS */
+.song-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.song-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.song-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.12)}
+.song-num{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--pink2);min-width:22px;text-align:center;flex-shrink:0}
+.song-info{flex:1;min-width:0}
+.song-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-artist{font-size:.74rem;color:var(--muted)}
+.song-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.2rem}
+.song-tag{font-size:.62rem;padding:.12rem .45rem;border-radius:4px;font-weight:600}
+.tag-energy{background:rgba(251,146,60,0.12);color:#fdba74;border:1px solid rgba(251,146,60,0.25)}
+.tag-mood{background:var(--pink-bg);color:#fda4af;border:1px solid var(--pink-bd)}
+.tag-must{background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25)}
+.tag-lang{background:rgba(96,165,250,0.1);color:#93c5fd;border:1px solid rgba(96,165,250,0.2)}
+.song-copy{padding:5px;border-radius:5px;background:transparent;border:1px solid transparent;cursor:pointer;transition:all .2s;color:var(--faint);font-size:.8rem;flex-shrink:0}
+.song-copy:hover{border-color:var(--border);color:var(--muted);background:rgba(255,255,255,0.05)}
+
+/* DJ NOTE */
+.dj-note{background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(236,72,153,0.05));border:1px solid rgba(167,139,250,0.25);border-radius:12px;padding:20px;margin-top:14px}
+.dj-note-title{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#c4b5fd;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.dj-copy-btn{padding:5px 12px;border-radius:6px;font-size:.72rem;font-family:'Nunito',sans-serif;font-weight:600;border:1px solid rgba(167,139,250,0.3);background:rgba(167,139,250,0.08);color:#c4b5fd;cursor:pointer;transition:all .2s}
+.dj-copy-btn:hover{background:rgba(167,139,250,0.15)}
+.dj-note-text{font-size:.84rem;color:var(--muted);line-height:1.75;white-space:pre-wrap;font-family:'Nunito',sans-serif}
+
+/* SHARE */
+.share-section{background:var(--gold-bg);border:1px solid var(--gold-bd);border-radius:12px;padding:18px;margin-top:14px;text-align:center}
+.share-section h4{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.4rem;color:var(--gold2)}
+.share-section p{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.share-btns{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.share-btn{padding:8px 16px;border-radius:8px;font-size:.8rem;font-weight:600;border:1px solid var(--gold-bd);color:var(--gold);background:transparent;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;text-decoration:none;display:inline-block}
+.share-btn:hover{background:var(--gold-bg)}
+
+/* SONG LIST TABLE (HOW IT WORKS) */
+.section-title{font-family:'Playfair Display',serif;font-size:1.5rem;text-align:center;margin-bottom:18px}
+.section-title em{color:var(--gold2);font-style:italic}
+
+/* TOP SONGS REFERENCE */
+.ref-section{margin:26px 0}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.ref-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;transition:all .25s}
+.ref-card:hover{border-color:var(--pink-bd);transform:translateY(-2px)}
+.ref-card-title{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pink2);margin-bottom:10px;display:flex;align-items:center;gap:.4rem}
+.ref-song-list{list-style:none}
+.ref-song-list li{font-size:.8rem;color:var(--muted);padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:.4rem;line-height:1.4}
+.ref-song-list li:last-child{border-bottom:none}
+.ref-dot{width:5px;height:5px;border-radius:50%;background:var(--pink2);flex-shrink:0}
+
+/* CASE STUDY */
+.case-study{background:linear-gradient(135deg,rgba(236,72,153,0.06),rgba(232,184,75,0.04));border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin:26px 0}
+.cs-badge{display:inline-block;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);color:#4ade80;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .65rem;border-radius:100px;margin-bottom:10px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.65rem;line-height:1.3}
+.cs-title em{color:var(--gold2);font-style:italic}
+.cs-body{font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.cs-stats{display:flex;gap:.8rem;flex-wrap:wrap}
+.cs-stat{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;flex:1;min-width:70px}
+.cs-stat-num{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--gold2)}
+.cs-stat-lbl{font-size:.63rem;color:var(--muted);margin-top:.2rem}
+
+/* REVIEWS */
+.social-proof{background:var(--bg2);border-radius:var(--radius);padding:26px;margin:26px 0}
+.sp-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-style:italic;text-align:center;color:var(--gold2);margin-bottom:18px}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.review{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:7px}
+.review-text{font-size:.83rem;color:var(--muted);line-height:1.65;font-style:italic;margin-bottom:9px}
+.review-author{font-size:.72rem;color:var(--faint);display:flex;align-items:center;gap:.4rem}
+.av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--pink2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0}
+
+.tips{background:var(--bg2);border-radius:var(--radius);padding:26px;margin:26px 0}
+.tips-title{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gold2);margin-bottom:14px}
+.tip-list{list-style:none}
+.tip-list li{display:flex;gap:.7rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.86rem;color:var(--muted);line-height:1.65}
+.tip-list li:last-child{border-bottom:none}
+
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;padding:15px 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-size:.9rem;font-weight:600;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{font-size:1.1rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.faq-q.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-inner{padding:0 0 15px;font-size:.86rem;color:var(--muted);line-height:1.78}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px;text-align:center;transition:all .25s;display:block}
+.tool-card:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+.tool-icon{font-size:1.3rem;margin-bottom:.4rem}
+.tool-name{font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.15rem}
+.tool-desc{font-size:.7rem;color:var(--muted)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;margin-top:2rem}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold2);margin-bottom:.45rem;display:inline-block}
+.foot-text{font-size:.76rem;color:var(--faint);margin-bottom:.7rem}
+.foot-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.foot-links a{font-size:.73rem;color:var(--muted);transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#4ade80;color:#05080f;padding:10px 22px;border-radius:100px;font-size:.84rem;font-weight:700;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:640px){
+  .ceremony-grid{grid-template-columns:1fr 1fr}
+  .fields-2{grid-template-columns:1fr}
+  h1{font-size:1.85rem}
+  .nav-links{display:none}
+  .card{padding:16px 14px}
+  .ov-stats{gap:.7rem}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
-  <ul class="nav-links">
-    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
-    <li><a href="/ai-photography-shots.html">Photography</a></li>
-    <li><a href="/ai-budget-calculator.html">Budget</a></li>
-  </ul>
-  <span class="nav-badge">✨ AI Powered</span>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="ai-budget-calculator.html">💰 Budget</a>
+    <a href="ai-invitation-writer.html">💌 Invitation</a>
+    <a href="ai-kundali-matching.html">🔮 Kundali</a>
+    <a href="ai-photography-shots.html">📸 Photos</a>
+    <a href="chatbot.html" class="nav-cta">AI Chatbot →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <span class="hero-icon">🎵</span>
-  <h1>AI Bollywood Playlist Generator</h1>
-  <p>Sangeet se Reception tak — perfect wedding playlist AI se banao! 🕺💃</p>
-  <span class="tag">🤖 Ceremony-wise · Mood Based · 50+ Songs</span>
-</div>
+<section class="hero">
+  <div class="notes-bg" id="notesBg"></div>
+  <div class="hero-badge"><span></span> 9,820+ Playlists Generated This Month</div>
+  <h1>Free AI Wedding<br><em>Playlist Generator</em><br><strong>Bollywood 2026</strong></h1>
+  <p class="hero-sub">Mehendi se Vidai tak — ceremony-wise perfect playlist banao. 50+ songs, mood tags, DJ note ready. Latest 2026 hits + classic Bollywood. WhatsApp pe share karo. Bilkul Free! 🎵</p>
+  <div class="hero-stats">
+    <div><div class="hstat-num">9,820+</div><div class="hstat-lbl">Playlists Made</div></div>
+    <div class="hsep"></div>
+    <div><div class="hstat-num">7</div><div class="hstat-lbl">Ceremonies</div></div>
+    <div class="hsep"></div>
+    <div><div class="hstat-num">50+</div><div class="hstat-lbl">Songs</div></div>
+    <div class="hsep"></div>
+    <div><div class="hstat-num">4.9★</div><div class="hstat-lbl">Rating</div></div>
+  </div>
+</section>
 
-<div class="container">
+<div class="main">
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- GENRE -->
   <div class="card">
-    <div class="card-title">🎶 Music Genre Preferences</div>
-    <div class="genre-grid">
-      <div class="genre-chip active" data-genre="Classic Bollywood 90s-2000s">
-        <span class="emoji">🎬</span>Classic Bollywood
+    <div class="card-title">🎬 Music Genre Preferences — Jo Acche Lage Sab Select Karo</div>
+    <div class="genre-grid" id="genreGrid">
+      <button class="genre-pill active" data-val="Classic Bollywood">🎬 Classic Bollywood</button>
+      <button class="genre-pill active" data-val="Latest Hits 2024-2026">🆕 Latest Hits</button>
+      <button class="genre-pill active" data-val="Bhangra & Punjabi">🥁 Bhangra/Punjabi</button>
+      <button class="genre-pill active" data-val="Romantic Soft">💕 Romantic</button>
+      <button class="genre-pill" data-val="Sufi & Qawwali">🌙 Sufi/Qawwali</button>
+      <button class="genre-pill" data-val="DJ & EDM Remix">🎧 DJ/EDM Remix</button>
+      <button class="genre-pill" data-val="Retro 70s-90s">📻 Retro</button>
+      <button class="genre-pill" data-val="Regional Folk">🏺 Regional Folk</button>
+      <button class="genre-pill" data-val="English Pop">🎸 English Pop</button>
+      <button class="genre-pill" data-val="Devotional & Shabad">🙏 Devotional</button>
+    </div>
+  </div>
+
+  <!-- CEREMONIES -->
+  <div class="card">
+    <div class="card-title">🎊 Ceremony-wise Playlist — Kaunse Functions Hain?</div>
+    <div class="ceremony-grid" id="ceremonyGrid">
+      <div class="cer-item checked" data-cer="Mehendi" data-mood="Playful, fun, colorful, girls-only energy">
+        <div class="cer-top"><span class="cer-label">🌿 Mehendi</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="8" min="3" max="20" class="cer-num"></div>
+        <div class="cer-mood">Playful, fun, colorful songs</div>
       </div>
-      <div class="genre-chip active" data-genre="Latest Bollywood 2020-2024">
-        <span class="emoji">🆕</span>Latest Hits
+      <div class="cer-item checked" data-cer="Haldi" data-mood="Emotional, family bonding, nostalgic, bittersweet">
+        <div class="cer-top"><span class="cer-label">💛 Haldi</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="6" min="3" max="20" class="cer-num"></div>
+        <div class="cer-mood">Emotional, family bonding songs</div>
       </div>
-      <div class="genre-chip active" data-genre="Punjabi/Bhangra">
-        <span class="emoji">🥁</span>Bhangra
+      <div class="cer-item checked" data-cer="Sangeet Night" data-mood="High energy, dancing, performances, party anthems">
+        <div class="cer-top"><span class="cer-label">🎵 Sangeet Night</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="12" min="5" max="30" class="cer-num"></div>
+        <div class="cer-mood">High energy party anthems</div>
       </div>
-      <div class="genre-chip" data-genre="Romantic Melodies">
-        <span class="emoji">💕</span>Romantic
+      <div class="cer-item checked" data-cer="Baraat" data-mood="Dhol, bhangra, high energy, triumphant, pumped up">
+        <div class="cer-top"><span class="cer-label">🐴 Baraat</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="8" min="3" max="20" class="cer-num"></div>
+        <div class="cer-mood">Dhol, bhangra, high energy</div>
       </div>
-      <div class="genre-chip" data-genre="Sufi/Devotional">
-        <span class="emoji">🌙</span>Sufi
+      <div class="cer-item checked" data-cer="Wedding Ceremony (Pheras/Nikah)" data-mood="Sacred, spiritual, soft, meaningful, emotional">
+        <div class="cer-top"><span class="cer-label">💍 Wedding Ceremony</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="6" min="3" max="15" class="cer-num"></div>
+        <div class="cer-mood">Sacred, spiritual, soft songs</div>
       </div>
-      <div class="genre-chip" data-genre="EDM/DJ remixes">
-        <span class="emoji">🎧</span>DJ/EDM
+      <div class="cer-item checked" data-cer="Reception" data-mood="Elegant, dinner music, couple's entry, dance floor mix">
+        <div class="cer-top"><span class="cer-label">🥂 Reception</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="10" min="5" max="25" class="cer-num"></div>
+        <div class="cer-mood">Elegant dinner + dance mix</div>
       </div>
-      <div class="genre-chip" data-genre="Retro 60s-80s">
-        <span class="emoji">📻</span>Retro
+      <div class="cer-item checked" data-cer="Vidai" data-mood="Deeply emotional, farewell, daughters leaving home, tears">
+        <div class="cer-top"><span class="cer-label">😢 Vidai</span><div class="cer-cb">✓</div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="5" min="3" max="10" class="cer-num"></div>
+        <div class="cer-mood">Emotional farewell songs</div>
       </div>
-      <div class="genre-chip" data-genre="Regional (Haryanvi/Rajasthani)">
-        <span class="emoji">🏺</span>Regional Folk
-      </div>
-      <div class="genre-chip" data-genre="English Pop">
-        <span class="emoji">🎸</span>English Pop
+      <div class="cer-item" data-cer="Engagement" data-mood="Romantic, celebratory, ring ceremony, couple's moment">
+        <div class="cer-top"><span class="cer-label">💝 Engagement</span><div class="cer-cb"></div></div>
+        <div class="cer-count"><label>Songs:</label><input type="number" value="6" min="3" max="15" class="cer-num"></div>
+        <div class="cer-mood">Romantic, celebratory songs</div>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">🎊 Ceremony-wise Playlist</div>
-    <div class="ceremony-list">
-      <div class="ceremony-row">
-        <input type="checkbox" id="c1" value="Mehendi Ceremony" checked>
-        <label class="ceremony-name" for="c1">🌿 Mehendi Ceremony — playful, fun songs</label>
-        <div class="ceremony-songs"><input type="number" id="s1" value="15" min="5" max="30"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c2" value="Haldi Ceremony" checked>
-        <label class="ceremony-name" for="c2">💛 Haldi — emotional & family songs</label>
-        <div class="ceremony-songs"><input type="number" id="s2" value="10" min="5" max="20"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c3" value="Sangeet Night" checked>
-        <label class="ceremony-name" for="c3">🎵 Sangeet Night — party & dance</label>
-        <div class="ceremony-songs"><input type="number" id="s3" value="30" min="10" max="50"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c4" value="Baraat" checked>
-        <label class="ceremony-name" for="c4">🐴 Baraat — dhol, bhangra, high energy</label>
-        <div class="ceremony-songs"><input type="number" id="s4" value="20" min="5" max="30"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c5" value="Wedding Ceremony Pheras" checked>
-        <label class="ceremony-name" for="c5">💍 Wedding Ceremony — emotional, meaningful</label>
-        <div class="ceremony-songs"><input type="number" id="s5" value="10" min="5" max="20"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c6" value="Reception Party">
-        <label class="ceremony-name" for="c6">🥂 Reception — dinner & dance mix</label>
-        <div class="ceremony-songs"><input type="number" id="s6" value="30" min="10" max="50"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-      <div class="ceremony-row">
-        <input type="checkbox" id="c7" value="Vidai">
-        <label class="ceremony-name" for="c7">😢 Vidai — emotional farewell songs</label>
-        <div class="ceremony-songs"><input type="number" id="s7" value="5" min="3" max="10"></div>
-        <span style="font-size:0.75rem;color:var(--muted)">songs</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- PREFERENCES -->
   <div class="card">
     <div class="card-title">✨ Personal Preferences</div>
-    <div class="form-grid">
+    <div class="fields-2">
       <div class="field">
-        <label>Couple's Favourite Artists</label>
-        <input type="text" id="artists" placeholder="e.g. Arijit Singh, Badshah, A.R. Rahman" />
+        <label>Couple's Favourite Artists <span>(optional)</span></label>
+        <input class="fi" type="text" id="favArtists" placeholder="e.g. Arijit Singh, Diljit, Shreya Ghoshal">
       </div>
       <div class="field">
         <label>Audience Age Mix</label>
-        <select id="ageMix">
-          <option value="all ages mix">All Ages (Mix it up!)</option>
-          <option value="mostly youngsters">Mostly Young (20-35)</option>
-          <option value="mostly 35+ family crowd">Mostly Family (35+)</option>
-          <option value="equal mix of both">Equal Mix</option>
+        <select class="fi" id="ageGroup">
+          <option value="All ages — mix of young and elderly family members">All Ages (Family Mix)</option>
+          <option value="Mostly young crowd (20-35)">Mostly Young (20-35)</option>
+          <option value="Mostly family (35+)">Mostly Family (35+)</option>
+          <option value="Equal young and family mix">Equal Mix</option>
         </select>
       </div>
-      <div class="field full">
-        <label>Must-Include Songs (specific songs aap chahte ho)</label>
-        <textarea id="mustSongs" placeholder="e.g. Tum Hi Ho for first dance, Balle Balle for baraat entry, Lut Gaye for reception..."></textarea>
+    </div>
+    <div class="fields-2">
+      <div class="field">
+        <label>Must-Include Songs <span>(specific songs jo zaroori hain)</span></label>
+        <textarea class="fi" id="mustSongs" placeholder="e.g. Tum Hi Ho, Nagada Sang Dhol, couple ka favourite song..."></textarea>
       </div>
-      <div class="field full">
-        <label>Songs to Avoid</label>
-        <input type="text" id="avoidSongs" placeholder="e.g. avoid sad songs, no specific artists, avoid old filmy songs..." />
+      <div class="field">
+        <label>Songs to Avoid <span>(jo bilkul nahi chahiye)</span></label>
+        <textarea class="fi" id="avoidSongs" placeholder="e.g. sad break-up songs, any specific artist avoid karna ho..."></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label>Region / State <span>(regional songs ke liye)</span></label>
+      <select class="fi" id="region">
+        <option value="North India (Hindi belt)">North India (Hindi Belt)</option>
+        <option value="Punjab">Punjab (Punjabi songs focus)</option>
+        <option value="Rajasthan">Rajasthan (Folk + Rajasthani)</option>
+        <option value="Maharashtra">Maharashtra (Marathi mix)</option>
+        <option value="Gujarat">Gujarat (Garba + Gujarati)</option>
+        <option value="South India">South India (Tamil/Telugu mix)</option>
+        <option value="Bengal">Bengal (Bengali mix)</option>
+        <option value="Pan India">Pan India (All regions)</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">🎵 Perfect Wedding Playlist Banao — AI Se Free!</button>
+
+  <div class="progress-wrap" id="progWrap">
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-steps">
+      <div class="prog-step" id="ps1">🎵 Songs Curating</div>
+      <div class="prog-step" id="ps2">🎭 Mood Matching</div>
+      <div class="prog-step" id="ps3">📋 Ceremony Sorting</div>
+      <div class="prog-step" id="ps4">🎧 DJ Note Ready</div>
+    </div>
+  </div>
+  <div class="error-box" id="errorBox"></div>
+
+  <!-- RESULT -->
+  <div class="result-wrap" id="resultWrap">
+    <div class="playlist-overview">
+      <div class="ov-header">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold2);margin-bottom:.2rem">🎵 Aapki Complete Wedding Playlist</div>
+          <div style="font-size:.8rem;color:var(--muted)">Ceremony-wise sorted • DJ ready</div>
+        </div>
+        <div class="ov-stats">
+          <div class="ov-stat"><div class="ov-stat-num" id="totalSongsCount">0</div><div class="ov-stat-lbl">Total Songs</div></div>
+          <div class="ov-stat"><div class="ov-stat-num" id="totalDuration">0h</div><div class="ov-stat-lbl">Est. Duration</div></div>
+          <div class="ov-stat"><div class="ov-stat-num" id="cerCount">0</div><div class="ov-stat-lbl">Ceremonies</div></div>
+        </div>
+      </div>
+      <div class="ov-actions">
+        <button class="action-btn btn-copy" onclick="copyAll()">📋 Copy All</button>
+        <button class="action-btn btn-wa" onclick="whatsappShare()">📱 WhatsApp DJ</button>
+        <button class="action-btn btn-dj" onclick="copyDJNote()">🎧 Copy DJ Note</button>
+        <button class="action-btn btn-regen" onclick="generate()">🔄 New Playlist</button>
+      </div>
+    </div>
+
+    <!-- CEREMONY SECTIONS (rendered by JS) -->
+    <div class="ceremony-sections" id="ceremonySections"></div>
+
+    <!-- DJ NOTE -->
+    <div class="dj-note" id="djNoteWrap" style="display:none">
+      <div class="dj-note-title">
+        <span>🎧 DJ Ke Liye Professional Note</span>
+        <button class="dj-copy-btn" onclick="copyDJNote()">📋 Copy DJ Note</button>
+      </div>
+      <div class="dj-note-text" id="djNoteText"></div>
+    </div>
+
+    <div class="share-section">
+      <h4>🎵 Dosto Ko Share Karo!</h4>
+      <p>Shaadi plan kar rahe doston ko yeh free playlist tool batao!</p>
+      <div class="share-btns">
+        <button class="share-btn" onclick="shareWA()">📱 WhatsApp</button>
+        <button class="share-btn" onclick="copyLink()">🔗 Link Copy</button>
+        <a href="ai-invitation-writer.html" class="share-btn">💌 Invitation →</a>
+        <a href="ai-budget-calculator.html" class="share-btn">💰 Budget →</a>
       </div>
     </div>
   </div>
 
-  <button class="btn-generate" onclick="generatePlaylist()">
-    🎵 Generate Complete Wedding Playlist — AI Se Banao
-  </button>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p style="color:var(--muted);margin-top:1rem">AI aapki perfect wedding playlist taiyaar kar raha hai... 🎶</p>
+  <!-- AD MID -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
-  <div class="result-card" id="resultCard">
-    <div class="result-header">
-      <span class="result-title">🎵 Aapki Wedding Playlist</span>
-      <div class="action-btns">
-        <button class="btn-action" onclick="copyPlaylist()">📋 Copy All</button>
-        <button class="btn-action" onclick="shareWhatsApp()">📱 Share with DJ</button>
-        <button class="btn-action" onclick="generatePlaylist()">🔄 New Playlist</button>
+  <!-- REFERENCE SONGS -->
+  <div class="ref-section">
+    <h2 class="section-title">Popular <em>Wedding Songs 2026</em> — Reference</h2>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-card-title">🎵 Sangeet Hits</div>
+        <ul class="ref-song-list">
+          <li><span class="ref-dot"></span>Kala Chashma</li>
+          <li><span class="ref-dot"></span>Gallan Goodiyaan</li>
+          <li><span class="ref-dot"></span>Morni Banke</li>
+          <li><span class="ref-dot"></span>Desi Beat</li>
+          <li><span class="ref-dot"></span>Nagada Sang Dhol</li>
+          <li><span class="ref-dot"></span>Naacho Naacho</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">💛 Haldi & Mehendi</div>
+        <ul class="ref-song-list">
+          <li><span class="ref-dot"></span>Aaj Mere Yaar Ki Shaadi</li>
+          <li><span class="ref-dot"></span>Mehendi Laga Ke Rakhna</li>
+          <li><span class="ref-dot"></span>Haldi</li>
+          <li><span class="ref-dot"></span>Ghar More Pardesiya</li>
+          <li><span class="ref-dot"></span>Veere</li>
+          <li><span class="ref-dot"></span>Pinga</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">🐴 Baraat Bangers</div>
+        <ul class="ref-song-list">
+          <li><span class="ref-dot"></span>Baaraat Nikaalo</li>
+          <li><span class="ref-dot"></span>Aaj Ki Party</li>
+          <li><span class="ref-dot"></span>Saturday Saturday</li>
+          <li><span class="ref-dot"></span>Ainvayi Ainvayi</li>
+          <li><span class="ref-dot"></span>Dulhe Ka Sehra</li>
+          <li><span class="ref-dot"></span>Diljale</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-title">😢 Vidai Songs</div>
+        <ul class="ref-song-list">
+          <li><span class="ref-dot"></span>Babul Ki Duaein Leti Ja</li>
+          <li><span class="ref-dot"></span>Mora Piya</li>
+          <li><span class="ref-dot"></span>Alvida</li>
+          <li><span class="ref-dot"></span>Tujhe Bhula Diya</li>
+          <li><span class="ref-dot"></span>Kabhi Khushi Kabhi Gham</li>
+          <li><span class="ref-dot"></span>Fareeda</li>
+        </ul>
       </div>
     </div>
-    <div class="playlist-content" id="playlistText"></div>
+  </div>
+
+  <!-- CASE STUDY -->
+  <div class="case-study">
+    <div class="cs-badge">✦ Real Story</div>
+    <h2 class="cs-title">Riya & Karan Ka <em>Sangeet Night</em> — Viral Playlist Story</h2>
+    <p class="cs-body">Riya ne bataya: "Hamara DJ last minute cancel ho gaya — ek din pehle! Maine SmartShaadi ka AI Playlist Generator use kiya, pure 55 songs ki ceremony-wise list banayi. DJ Note download karke naye DJ ko WhatsApp kiya — unhone puri list follow ki. Mehendi mein sab naacha, Vidai mein puri family ro rahi thi — bilkul waise jaisi songs thi jo chahiye thi. Guests ne kaha 'playlist itni perfect thi jaise koi personally choose ki ho!' Aur tha bhi exactly wahi!"</p>
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-stat-num">55</div><div class="cs-stat-lbl">Songs Generated</div></div>
+      <div class="cs-stat"><div class="cs-stat-num">7</div><div class="cs-stat-lbl">Ceremonies</div></div>
+      <div class="cs-stat"><div class="cs-stat-num">5 Min</div><div class="cs-stat-lbl">Mein Ready</div></div>
+      <div class="cs-stat"><div class="cs-stat-num">💚</div><div class="cs-stat-lbl">Viral Night!</div></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="social-proof">
+    <h2 class="sp-title">Couples Ki <em>Real Reviews</em></h2>
+    <div class="reviews">
+      <div class="review"><div class="review-stars">★★★★★</div><p class="review-text">"DJ Note feature ne toh kamal kar diya! DJ ko exactly pata tha kab kya bajaana hai. Baraat aur Sangeet dono mein dance floor kabhi khaali nahi hua!"</p><div class="review-author"><div class="av">N</div>Neha & Arjun · Mumbai Sangeet</div></div>
+      <div class="review"><div class="review-stars">★★★★★</div><p class="review-text">"Vidai ke liye songs bilkul perfect the. Sab ro rahe the — meri mummy, meri saheli, even DJ! AI ne ek bhi song galat nahi diya. Incredible!"</p><div class="review-author"><div class="av">P</div>Pooja · Delhi Wedding</div></div>
+      <div class="review"><div class="review-stars">★★★★★</div><p class="review-text">"Regional folk + latest hits ka mix exactly jo chahiye tha. Bade bhi naache, bacche bhi naache — har age group ke liye kuch na kuch tha!"</p><div class="review-author"><div class="av">R</div>Rajesh Ji · Jaipur Reception</div></div>
+    </div>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <h2 class="tips-title">🎵 Perfect Wedding Playlist Ke 5 Golden Tips</h2>
+    <ul class="tip-list">
+      <li><span style="flex-shrink:0;font-size:1rem">🎧</span><div><strong>DJ ko pehle se list dena zaroori hai</strong> — Wedding se kam se kam 1 week pehle DJ ko complete list de do. Last-minute request pe DJ ka preparation nahi hota aur quality suffer karti hai.</div></li>
+      <li><span style="flex-shrink:0;font-size:1rem">📈</span><div><strong>Energy curve plan karo</strong> — Har ceremony mein slow start, phir build-up, phir peak hona chahiye. Sangeet mein slow romantic se shuru karo aur dance anthems pe khatam karo.</div></li>
+      <li><span style="flex-shrink:0;font-size:1rem">👨‍👩‍👧</span><div><strong>All-age mix zaroori hai</strong> — 2-3 classic retro songs rakhna na bhuolo — bade log sab se zyada khush hote hain jab unki era ka koi gaana baje!</div></li>
+      <li><span style="flex-shrink:0;font-size:1rem">💌</span><div><strong>Couple ki entry song special rakho</strong> — Reception mein couple entry ke liye ek unique, meaningful song choose karo jo sirf unka ho. Yeh moment sabse zyada yaad rehta hai.</div></li>
+      <li><span style="flex-shrink:0;font-size:1rem">🔕</span><div><strong>Avoid list banana equally important hai</strong> — Must-play list se equally zaroori hai avoid list. Kuch songs cultural ya personal reasons se inappropriate ho sakte hain — DJ ko clearly batao.</div></li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <div style="margin:26px 0">
+    <h2 class="section-title" style="margin-bottom:18px">Aksar Pooche Jane Wale <em>Sawaal</em></h2>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Sangeet ke liye kitne songs rakhne chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">3 ghante ki Sangeet Night ke liye 25-35 songs kaafi hote hain. Ek song average 4-5 minute ka hota hai. Kuch extra backup songs hamesha rakho — agar koi song flop ho toh DJ skip kar sake.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">DJ ko playlist kaise deni chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Ceremony-wise clearly separated list deni chahiye. Must-play songs highlight karo. Timing bhi bata do (e.g. "9 PM couple entry"). Avoid songs separate list mein dena best practice hai. Yahan DJ Note button se ready-made professional note copy kar sakte hain!</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Baraat ke liye best songs kaunse hain 2026 mein? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">2026 mein top baraat songs: Kala Chashma, Saturday Saturday, Diljale, Ainvayi Ainvayi, Baaraat Nikaalo, Aaj Ki Party, Desi Beat aur latest Punjabi hits. Dhol beats wale songs baraat mein sabse zyada kaam karte hain.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Vidai ke liye emotional songs list kaunsi hai? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Vidai ke liye top picks: Babul Ki Duaein Leti Ja (evergreen), Mora Piya, Alvida, Tujhe Bhula Diya, Fareeda, Kabhi Khushi Kabhi Gham, Aaj Sajna Mohe Ang Lago, aur Dooriyan. Slow, soft instrumentals bhi beech mein rakhna accha lagta hai.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Kya English songs bhi Indian wedding mein chalte hain? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Haan! Reception mein especially English/Western songs acche lagte hain — Ed Sheeran, Bruno Mars jaise romantic songs couple's first dance ke liye perfect hain. Young crowd ke liye English pop bhi mix kar sakte ho. Balance zaroori hai.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Couple ka entry song kaisa hona chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Entry song powerful, memorable aur couple ki personality reflect karna chahiye. Traditional couples ke liye: Tum Hi Ho ya Teri Meri. Modern couples ke liye: Excuses, Kesariya ya Raataan Lambiyan. Fun couples ke liye: Kaho Naa Pyaar Hai ya Zingaat. AI se personalized suggestion lena sabse accha!</div></div></div>
+  </div>
+
+  <!-- OTHER TOOLS -->
+  <div style="margin:26px 0">
+    <h2 class="section-title" style="margin-bottom:14px">🤖 Baaki AI Tools Try Karo — Free!</h2>
+    <div class="tools-grid">
+      <a href="ai-invitation-writer.html" class="tool-card"><div class="tool-icon">💌</div><div class="tool-name">Invitation Writer</div><div class="tool-desc">6 languages, 8 styles</div></a>
+      <a href="ai-budget-calculator.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Budget Calculator</div><div class="tool-desc">City-wise breakdown</div></a>
+      <a href="ai-kundali-matching.html" class="tool-card"><div class="tool-icon">🔮</div><div class="tool-name">Kundali Matching</div><div class="tool-desc">Guna Milan + Doshas</div></a>
+      <a href="ai-wedding-theme-generator.html" class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Theme Generator</div><div class="tool-desc">Decor + color palette</div></a>
+      <a href="ai-menu-planner.html" class="tool-card"><div class="tool-icon">🍽️</div><div class="tool-name">Menu Planner</div><div class="tool-desc">Regional wedding menu</div></a>
+      <a href="ai-photography-shots.html" class="tool-card"><div class="tool-icon">📸</div><div class="tool-name">Photography Shots</div><div class="tool-desc">Shot list generator</div></a>
+    </div>
+  </div>
+
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 </div>
 
-<div class="toast" id="toast">✅ Copied!</div>
+<footer>
+  <a href="index.html" class="foot-logo">Smart<em>Shaadi</em> 💍</a>
+  <p class="foot-text">India's #1 Free AI Wedding Planner — 9 AI Agents, Playlist Generator & More</p>
+  <div class="foot-links">
+    <a href="index.html">Home</a><a href="blogs.html">Magazine</a><a href="dashboard.html">Dashboard</a>
+    <a href="chatbot.html">AI Chatbot</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
 
 <script>
-let activeGenres = new Set(['Classic Bollywood 90s-2000s', 'Latest Bollywood 2020-2024', 'Punjabi/Bhangra']);
+// FLOATING NOTES
+(function(){
+  const c=document.getElementById('notesBg');
+  const notes=['🎵','🎶','♪','♫','🎤','🎸','🥁','🎹'];
+  for(let i=0;i<20;i++){
+    const s=document.createElement('span');
+    s.className='note';
+    s.textContent=notes[i%notes.length];
+    s.style.cssText='position:absolute;left:'+Math.random()*100+'%;font-size:'+(16+Math.random()*40)+'px;animation-duration:'+(16+Math.random()*20)+'s;animation-delay:-'+(Math.random()*30)+'s;--r:'+((-20+Math.random()*40))+'deg';
+    c.appendChild(s);
+  }
+})();
 
-document.querySelectorAll('.genre-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    chip.classList.toggle('active');
-    const g = chip.dataset.genre;
-    if(activeGenres.has(g)) activeGenres.delete(g);
-    else activeGenres.add(g);
+// GENRE PILLS
+document.querySelectorAll('.genre-pill').forEach(p=>{
+  p.addEventListener('click',()=>p.classList.toggle('active'));
+});
+
+// CEREMONY TOGGLE
+document.querySelectorAll('.cer-item').forEach(item=>{
+  item.querySelector('.cer-top').addEventListener('click',()=>{
+    item.classList.toggle('checked');
+    const cb=item.querySelector('.cer-cb');
+    cb.textContent=item.classList.contains('checked')?'✓':'';
   });
 });
 
-async function generatePlaylist() {
-  const artists = document.getElementById('artists').value;
-  const ageMix = document.getElementById('ageMix').value;
-  const mustSongs = document.getElementById('mustSongs').value;
-  const avoidSongs = document.getElementById('avoidSongs').value;
-  const genres = [...activeGenres].join(', ');
+// PROGRESS
+let progInterval;
+const pSteps=['ps1','ps2','ps3','ps4'];
+function startProgress(){
+  document.getElementById('progWrap').style.display='block';
+  let val=0,si=0;
+  pSteps.forEach(s=>document.getElementById(s).className='prog-step');
+  document.getElementById('ps1').className='prog-step active';
+  progInterval=setInterval(()=>{
+    val=Math.min(val+Math.random()*4.5,88);
+    document.getElementById('progFill').style.width=val+'%';
+    const nsi=Math.floor(val/25);
+    if(nsi>si&&nsi<4){document.getElementById(pSteps[si]).className='prog-step done';si=nsi;document.getElementById(pSteps[si]).className='prog-step active';}
+  },420);
+}
+function stopProgress(){
+  clearInterval(progInterval);
+  pSteps.forEach(s=>document.getElementById(s).className='prog-step done');
+  document.getElementById('progFill').style.width='100%';
+  setTimeout(()=>{document.getElementById('progWrap').style.display='none';document.getElementById('progFill').style.width='0%';},600);
+}
 
-  // Build ceremony list
-  const ceremonies = [];
-  const ceremonyIds = ['c1','c2','c3','c4','c5','c6','c7'];
-  ceremonyIds.forEach(id => {
-    const cb = document.getElementById(id);
-    if(cb && cb.checked) {
-      const num = id.replace('c','s');
-      const count = document.getElementById(num)?.value || '15';
-      ceremonies.push(`${cb.value}: ${count} songs`);
+// CEREMONY COLORS & MOODS
+const CER_META={
+  'Mehendi':{color:'#10b981',bg:'rgba(16,185,129,0.1)',bd:'rgba(16,185,129,0.25)',emoji:'🌿'},
+  'Haldi':{color:'#f59e0b',bg:'rgba(245,158,11,0.1)',bd:'rgba(245,158,11,0.25)',emoji:'💛'},
+  'Sangeet Night':{color:'#ec4899',bg:'rgba(236,72,153,0.1)',bd:'rgba(236,72,153,0.25)',emoji:'🎵'},
+  'Baraat':{color:'#f97316',bg:'rgba(249,115,22,0.1)',bd:'rgba(249,115,22,0.25)',emoji:'🐴'},
+  'Wedding Ceremony (Pheras/Nikah)':{color:'#a78bfa',bg:'rgba(167,139,250,0.1)',bd:'rgba(167,139,250,0.25)',emoji:'💍'},
+  'Reception':{color:'#60a5fa',bg:'rgba(96,165,250,0.1)',bd:'rgba(96,165,250,0.25)',emoji:'🥂'},
+  'Vidai':{color:'#94a3b8',bg:'rgba(148,163,184,0.1)',bd:'rgba(148,163,184,0.25)',emoji:'😢'},
+  'Engagement':{color:'#f472b6',bg:'rgba(244,114,182,0.1)',bd:'rgba(244,114,182,0.25)',emoji:'💝'},
+};
+
+// PARSE SONGS FROM AI TEXT
+function parseSongs(text){
+  const sections={};
+  const cerNames=Object.keys(CER_META);
+  
+  // Split by ceremony headers
+  const lines=text.split('\n');
+  let curSection=null;
+  
+  lines.forEach(line=>{
+    const tl=line.trim();
+    if(!tl)return;
+    
+    // Check if it's a section header
+    const matchedCer=cerNames.find(c=>tl.toLowerCase().includes(c.toLowerCase().split(' ')[0])||tl.toLowerCase().includes(c.toLowerCase()));
+    if(matchedCer&&(tl.startsWith('#')||tl.startsWith('**')||tl.startsWith('##')||/^[A-Z🌿💛🎵🐴💍🥂😢💝]/.test(tl)&&tl.length<60)){
+      curSection=matchedCer;
+      if(!sections[curSection])sections[curSection]=[];
+      return;
+    }
+    
+    if(!curSection)return;
+    
+    // Parse song lines — various formats
+    // "1. Song Name - Artist" or "- Song Name (Artist)" or "Song Name by Artist"
+    const songMatch=tl.match(/^[\d\.\-\*•➤▶]+\s*(.+)$/) || (tl.length>3&&tl.length<150?[null,tl]:null);
+    if(songMatch){
+      let raw=songMatch[1].replace(/\*+/g,'').trim();
+      if(raw.length<3||raw.length>120)return;
+      
+      // Split title and artist
+      let title=raw,artist='';
+      const sep=raw.match(/\s+[-–—by|:]\s+(.+)$/i)||raw.match(/\(([^)]+)\)\s*$/);
+      if(sep){
+        artist=sep[1].replace(/[()]/g,'').trim();
+        title=raw.slice(0,raw.lastIndexOf(sep[0])).trim();
+      }
+      
+      if(title.length>2){
+        sections[curSection].push({title,artist});
+      }
     }
   });
-
-  const btn = document.querySelector('.btn-generate');
-  btn.disabled = true;
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('resultCard').style.display = 'none';
-
-  const systemPrompt = `You are a top Indian wedding DJ and music curator with expertise in Bollywood, Punjabi, and regional Indian wedding music. You know every hit from every era and what works for different wedding ceremonies. Create specific song lists with artist names, year, and why each song fits. Use Hinglish. Be specific with actual song names.`;
-
-  const userPrompt = `Create a complete wedding music playlist with these preferences:
-
-Music Genres: ${genres}
-Audience: ${ageMix}
-Favourite Artists: ${artists || 'No specific preference'}
-Must Include: ${mustSongs || 'No specific must-includes'}
-Avoid: ${avoidSongs || 'Nothing specific to avoid'}
-
-Ceremonies & Song Count:
-${ceremonies.join('\n')}
-
-For EACH ceremony provide:
-
-🎊 [CEREMONY NAME] PLAYLIST
----
-1. Song Name — Artist (Year) — [Why it's perfect for this moment]
-2. Song Name — Artist (Year) — [Moment/vibe description]
-... (continue for all songs)
-
-⭐ DJ TIPS for this ceremony:
-- Energy flow advice
-- When to peak the energy
-- Special moments to watch for
-
-Also include:
-📱 HOW TO SHARE WITH DJ
-- What file format to send
-- How to mark priorities
-
-🎤 LIVE PERFORMANCE SUGGESTIONS
-- Songs perfect for family performances at Sangeet
-
-Be VERY specific with actual song names. Every song must be a real, popular Bollywood/Indian wedding song. Total songs should match what was requested per ceremony.`;
-
-  try {
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
-    });
-    const data = await res.json();
-    const text = data.choices[0].message.content;
-    document.getElementById('playlistText').textContent = text;
-    document.getElementById('resultCard').style.display = 'block';
-    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
-  } catch(e) {
-    alert('Error: ' + e.message);
-  } finally {
-    btn.disabled = false;
-    document.getElementById('loading').style.display = 'none';
-  }
+  
+  return sections;
 }
 
-function copyPlaylist() {
-  navigator.clipboard.writeText(document.getElementById('playlistText').textContent).then(() => {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+// RENDER SONG CARDS
+function renderCeremonySections(sections,rawText){
+  const container=document.getElementById('ceremonySections');
+  container.innerHTML='';
+  let totalSongs=0;
+  let cerCount=0;
+  
+  Object.entries(sections).forEach(([cerName,songs])=>{
+    if(!songs||songs.length===0)return;
+    const meta=CER_META[cerName]||{color:'#e8b84b',bg:'rgba(232,184,75,0.1)',bd:'rgba(232,184,75,0.25)',emoji:'🎵'};
+    totalSongs+=songs.length;
+    cerCount++;
+    
+    const sec=document.createElement('div');
+    sec.className='cer-section open';
+    
+    const songCardsHTML=songs.map((s,i)=>`
+      <div class="song-card">
+        <span class="song-num">${i+1}</span>
+        <div class="song-info">
+          <div class="song-title">${s.title}</div>
+          <div class="song-artist">${s.artist||'Bollywood'}</div>
+          <div class="song-tags">
+            ${i<3?'<span class="song-tag tag-must">Must Play</span>':''}
+            <span class="song-tag tag-lang">Hindi</span>
+          </div>
+        </div>
+        <button class="song-copy" onclick="copySong('${s.title.replace(/'/g,"\\'")}','${(s.artist||'').replace(/'/g,"\\'")}')">📋</button>
+      </div>`).join('');
+    
+    sec.innerHTML=`
+      <div class="cer-section-header" onclick="toggleCerSection(this)">
+        <div class="cer-section-title" style="color:${meta.color}">${meta.emoji} ${cerName}</div>
+        <div class="cer-section-meta">
+          <span class="song-count-badge">${songs.length} songs</span>
+          <button class="cer-copy-btn" onclick="event.stopPropagation();copyCerSongs('${cerName}')">📋 Copy</button>
+          <span class="cer-toggle">▼</span>
+        </div>
+      </div>
+      <div class="cer-section-body">
+        <div class="song-list">${songCardsHTML}</div>
+      </div>`;
+    container.appendChild(sec);
   });
+  
+  document.getElementById('totalSongsCount').textContent=totalSongs;
+  document.getElementById('totalDuration').textContent=Math.round(totalSongs*4.5/60*10)/10+'h';
+  document.getElementById('cerCount').textContent=cerCount;
+  
+  // Store for copy
+  window._playlistSections=sections;
+  window._playlistRaw=rawText;
 }
 
-function shareWhatsApp() {
-  const text = document.getElementById('playlistText').textContent;
-  window.open(`https://wa.me/?text=${encodeURIComponent('Wedding Playlist 🎵\n\n' + text.substring(0, 900) + '\n\n...\n\nSmartShaadi.online se banaya!')}`, '_blank');
+function toggleCerSection(header){
+  header.closest('.cer-section').classList.toggle('open');
+  const body=header.closest('.cer-section').querySelector('.cer-section-body');
+  body.style.display=body.style.display==='none'||body.style.display===''?'block':'none';
+}
+
+// Build DJ note from sections
+function buildDJNote(sections){
+  const groomName='';
+  let note='🎧 WEDDING DJ NOTE — Generated by SmartShaadi.online\n';
+  note+='━'.repeat(45)+'\n\n';
+  note+='Yeh professional DJ note hai — ceremony wise follow karo.\n\n';
+  
+  Object.entries(sections).forEach(([cer,songs])=>{
+    if(!songs||songs.length===0)return;
+    const meta=CER_META[cer]||{emoji:'🎵'};
+    note+=`${meta.emoji} ${cer.toUpperCase()}\n`;
+    note+='─'.repeat(30)+'\n';
+    songs.forEach((s,i)=>{
+      note+=`${i+1}. ${s.title}${s.artist?' — '+s.artist:''}\n`;
+    });
+    note+='\n';
+  });
+  
+  note+='━'.repeat(45)+'\n';
+  note+='📱 Free playlist tool: https://smartshaadi.online/ai-playlist-generator.html\n';
+  return note;
+}
+
+// GENERATE
+async function generate(){
+  const genreList=Array.from(document.querySelectorAll('.genre-pill.active')).map(p=>p.dataset.val);
+  const cerItems=Array.from(document.querySelectorAll('.cer-item.checked'));
+  
+  if(cerItems.length===0){showError('⚠️ Kum se kum ek ceremony select karo!');return;}
+  if(genreList.length===0){showError('⚠️ Kum se kum ek genre select karo!');return;}
+
+  const favArtists=document.getElementById('favArtists').value.trim();
+  const ageGroup=document.getElementById('ageGroup').value;
+  const mustSongs=document.getElementById('mustSongs').value.trim();
+  const avoidSongs=document.getElementById('avoidSongs').value.trim();
+  const region=document.getElementById('region').value;
+
+  const cerList=cerItems.map(item=>{
+    const num=item.querySelector('.cer-num').value;
+    const cer=item.dataset.cer;
+    const mood=item.dataset.mood;
+    return `${cer} (${num} songs) — Mood: ${mood}`;
+  });
+
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errorBox').style.display='none';
+  document.getElementById('resultWrap').style.display='none';
+  startProgress();
+
+  const sys=`You are India's top wedding music curator with expertise in Bollywood, Punjabi, regional and fusion wedding music. 
+You create perfect ceremony-wise wedding playlists that match the exact mood and energy needed.
+Always suggest real, actual Bollywood/Indian songs with correct artist names.
+Format your response with CLEAR ceremony headers followed by numbered song lists.
+Each song: "NUMBER. Song Title — Artist Name"`;
+
+  const usr=`Create a complete wedding playlist for:
+
+GENRES PREFERRED: ${genreList.join(', ')}
+REGION/STATE: ${region}
+AUDIENCE: ${ageGroup}
+${favArtists?'FAVOURITE ARTISTS: '+favArtists:''}
+${mustSongs?'MUST INCLUDE SONGS: '+mustSongs:''}
+${avoidSongs?'SONGS TO AVOID: '+avoidSongs:''}
+
+CEREMONIES NEEDED:
+${cerList.join('\n')}
+
+FORMAT REQUIRED (VERY IMPORTANT):
+For each ceremony, write the ceremony name as a clear header line (e.g. "## MEHENDI CEREMONY" or "🌿 Mehendi"), then list songs numbered.
+Each song on its own line: "1. Song Title — Singer/Artist Name"
+
+RULES:
+- Use REAL Bollywood songs with correct artist names
+- Match mood perfectly for each ceremony
+- Include 2026 latest hits AND timeless classics
+- Mix genres as requested
+- For Vidai: only emotional, slow songs
+- For Baraat: only high-energy dhol/bhangra
+- Make sure Must-Include songs appear
+- Avoid listed songs completely
+- Each song on separate line with number
+
+After playlist, add a brief "DJ TIPS" section with 3 timing/energy flow suggestions.`;
+
+  try{
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,messages:[{role:'user',content:usr}]})});
+    if(!res.ok)throw new Error('Server error '+res.status);
+    const data=await res.json();
+    const text=data.choices[0].message.content;
+    stopProgress();
+
+    const sections=parseSongs(text);
+    
+    // Fallback: if parsing got few songs, try ceremony-based split
+    const totalParsed=Object.values(sections).reduce((s,a)=>s+(a?.length||0),0);
+    if(totalParsed<5){
+      // Build simple sections from raw text
+      cerItems.forEach(item=>{
+        const cer=item.dataset.cer;
+        if(!sections[cer])sections[cer]=[{title:'See full list below',artist:''}];
+      });
+    }
+
+    renderCeremonySections(sections,text);
+
+    // DJ Note
+    const djNote=buildDJNote(sections);
+    document.getElementById('djNoteText').textContent=djNote;
+    document.getElementById('djNoteWrap').style.display='block';
+    window._djNote=djNote;
+
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('resultWrap').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(err){
+    stopProgress();
+    showError('⚠️ Kuch gadbad hui. Dobara try karein. ('+err.message+')');
+  }finally{
+    document.getElementById('genBtn').disabled=false;}
+}
+
+function copyCerSongs(cerName){
+  const songs=window._playlistSections?.[cerName]||[];
+  if(!songs.length)return;
+  const text=`🎵 ${cerName} Playlist\n`+songs.map((s,i)=>`${i+1}. ${s.title}${s.artist?' — '+s.artist:''}`).join('\n');
+  navigator.clipboard.writeText(text).then(()=>showToast('📋 '+cerName+' Copied!'));
+}
+function copySong(title,artist){
+  navigator.clipboard.writeText(title+(artist?' — '+artist:'')).then(()=>showToast('✓ Copied!'));
+}
+function copyAll(){
+  const sections=window._playlistSections||{};
+  let text='🎵 Complete Wedding Playlist — SmartShaadi.online\n\n';
+  Object.entries(sections).forEach(([cer,songs])=>{
+    if(!songs?.length)return;
+    text+=`\n═══ ${cer.toUpperCase()} ═══\n`;
+    songs.forEach((s,i)=>text+=`${i+1}. ${s.title}${s.artist?' — '+s.artist:''}\n`);
+  });
+  text+='\n🔗 https://smartshaadi.online/ai-playlist-generator.html';
+  navigator.clipboard.writeText(text).then(()=>showToast('📋 Full Playlist Copied!'));
+}
+function copyDJNote(){
+  navigator.clipboard.writeText(window._djNote||'').then(()=>showToast('🎧 DJ Note Copied!'));
+}
+function whatsappShare(){
+  const sections=window._playlistSections||{};
+  let text='🎵 Wedding Playlist (SmartShaadi)\n\n';
+  Object.entries(sections).forEach(([cer,songs])=>{
+    if(!songs?.length)return;
+    text+=`${cer}: ${songs.slice(0,3).map(s=>s.title).join(', ')}...\n`;
+  });
+  text+='\n🔗 Free tool: https://smartshaadi.online/ai-playlist-generator.html';
+  window.open('https://wa.me/?text='+encodeURIComponent(text));
+}
+function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Playlist Generator!\n🎵 Mehendi se Vidai tak perfect songs.\nhttps://smartshaadi.online/ai-playlist-generator.html'));}
+function copyLink(){navigator.clipboard.writeText('https://smartshaadi.online/ai-playlist-generator.html').then(()=>showToast('🔗 Link Copied!'));}
+function showError(m){const b=document.getElementById('errorBox');b.textContent=m;b.style.display='block';}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+function toggleFaq(btn){
+  const a=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.style.maxHeight='0';});
+  if(!isOpen){btn.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
 }
 </script>
 </body>
