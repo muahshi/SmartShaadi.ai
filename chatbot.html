@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Shaadi AI — Wedding Planner Chatbot | Free AI Planning</title>
+<title>Smart Shaadi AI — Free Wedding Planner Chatbot</title>
 <meta name="description" content="Smart Shaadi AI chatbot se Hindi ya English mein baat karein. Free AI wedding planner — budget, venue, catering sab ke liye instant help.">
 <link rel="canonical" href="https://www.smartshaadi.online/chatbot.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,6 @@
 html,body{height:100%;overflow:hidden}
 body{font-family:'DM Sans',sans-serif;background:var(--dk);color:var(--cr);display:flex;flex-direction:column}
 
-/* NAV */
 nav{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;background:rgba(10,8,14,.98);border-bottom:1px solid rgba(201,168,76,.1);flex-shrink:0}
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--gl);text-decoration:none}
 .logo em{font-style:italic;color:var(--cr);font-weight:300}
@@ -29,7 +28,6 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
 .nav-back{font-size:.75rem;color:rgba(245,239,224,.35);text-decoration:none}
 .nav-back:hover{color:var(--gl)}
 
-/* CHAT HEADER */
 .chat-hdr{padding:.75rem 1.2rem;background:rgba(13,11,18,.95);border-bottom:1px solid rgba(201,168,76,.07);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
 .hdr-info h2{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400}
 .hdr-info p{font-size:.62rem;color:var(--mu);margin-top:.05rem}
@@ -39,7 +37,6 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
 #pdfBtn{border-color:rgba(201,168,76,.35);color:var(--gold);display:none}
 #pdfBtn:hover{background:var(--gd)}
 
-/* MESSAGES */
 .msgs{flex:1;overflow-y:auto;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem;scroll-behavior:smooth}
 .msgs::-webkit-scrollbar{width:3px}
 .msgs::-webkit-scrollbar-thumb{background:rgba(201,168,76,.1)}
@@ -55,20 +52,17 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
 .mtime{font-size:.57rem;color:var(--mu);margin-top:.18rem}
 .msg.user .mtime{text-align:right}
 
-/* TYPING */
 .tdots{display:flex;gap:4px;padding:.2rem 0}
 .tdots span{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.35);animation:td .9s infinite}
 .tdots span:nth-child(2){animation-delay:.18s}
 .tdots span:nth-child(3){animation-delay:.36s}
 @keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
 
-/* QUICK REPLIES */
 .qrbar{padding:.5rem 1.2rem;display:flex;gap:.38rem;overflow-x:auto;flex-shrink:0}
 .qrbar::-webkit-scrollbar{display:none}
 .qr{white-space:nowrap;padding:.32rem .68rem;border-radius:100px;border:1px solid rgba(201,168,76,.16);background:var(--gd2);color:rgba(201,168,76,.7);font-size:.69rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;flex-shrink:0}
 .qr:hover{border-color:var(--gold);color:var(--gold);background:var(--gd)}
 
-/* INPUT */
 .inpwrap{padding:.75rem 1.2rem .9rem;background:rgba(8,6,10,.97);border-top:1px solid rgba(201,168,76,.07);flex-shrink:0}
 .inprow{display:flex;gap:.5rem;align-items:flex-end}
 .inpbox{flex:1;padding:.68rem .9rem;border-radius:8px;border:1px solid rgba(201,168,76,.15);background:rgba(245,239,224,.03);color:var(--cr);font-size:.83rem;font-family:'DM Sans',sans-serif;outline:none;resize:none;max-height:100px;transition:border-color .2s;line-height:1.5}
@@ -79,29 +73,23 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
 .sbtn:disabled{background:rgba(201,168,76,.2);cursor:not-allowed;transform:none}
 .hint{font-size:.6rem;color:rgba(245,239,224,.12);margin-top:.35rem;text-align:center}
 
-/* WELCOME */
 .welcome{text-align:center;padding:1.6rem 1rem;border:1px dashed rgba(201,168,76,.1);border-radius:12px;margin:.5rem 0}
 .welcome h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin-bottom:.4rem}
 .welcome h3 em{font-style:italic;color:var(--gl)}
 .welcome p{font-size:.76rem;color:var(--mu);line-height:1.7;margin-bottom:.55rem}
 .ftag{display:inline-flex;align-items:center;gap:.3rem;background:rgba(126,211,160,.07);border:1px solid rgba(126,211,160,.15);border-radius:100px;padding:.17rem .55rem;font-size:.62rem;color:var(--gr)}
 
-/* ERROR TOAST */
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#2a1515;border:1px solid #e07070;color:#e07070;padding:.6rem 1.2rem;border-radius:8px;font-size:.78rem;z-index:999;display:none;animation:mi .3s ease}
-
 @media(max-width:480px){.bubble{max-width:88%}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
   <div class="sdot"><div class="dot"></div>AI Planner</div>
   <a href="index.html" class="nav-back">← Wapas</a>
 </nav>
 
-<!-- CHAT HEADER -->
 <div class="chat-hdr">
   <div class="hdr-info">
     <h2>💍 Smart Shaadi AI</h2>
@@ -113,7 +101,6 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
   </div>
 </div>
 
-<!-- MESSAGES -->
 <div class="msgs" id="msgs">
   <div class="welcome">
     <h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em> 💍</h3>
@@ -122,7 +109,6 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
   </div>
 </div>
 
-<!-- QUICK REPLIES -->
 <div class="qrbar" id="qrbar">
   <button class="qr" onclick="sq('Meri shaadi plan karni hai')">💍 Planning Shuru</button>
   <button class="qr" onclick="sq('Mera budget 10 lakh hai, complete plan do')">💰 Budget Plan</button>
@@ -132,7 +118,6 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
   <button class="qr" onclick="sq('Complete wedding checklist chahiye')">✅ Checklist</button>
 </div>
 
-<!-- INPUT -->
 <div class="inpwrap">
   <div class="inprow">
     <textarea class="inpbox" id="msgInp" placeholder="Apna sawaal poochein... (Hindi ya English)" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
@@ -141,56 +126,15 @@ nav{height:54px;display:flex;align-items:center;justify-content:space-between;pa
   <p class="hint">Enter → Send &nbsp;•&nbsp; Shift+Enter → New Line</p>
 </div>
 
-<!-- ERROR TOAST -->
-<div class="toast" id="toast"></div>
-
 <script>
 // ── CONFIG ──
-var API_URL = '/api/groq-agent';  // Same Vercel backend as other AI tools
-var hist = [];
+// Exact same backend used by all 9 AI tools
+var API_URL = '/api/groq-agent';
+var hist = [];   // stores {role, content} — same format backend expects
 var lastTxt = '';
 
-var SYS = `Tum Smart Shaadi AI ho — India ka best AI wedding planning assistant. Hinglish mein baat karo (Hindi + English mix).
-
-PLANNING FLOW:
-Pehli baar baat karte waqt yeh details collect karo:
-- Dulha/Dulhan ke naam
-- Wedding date/month
-- City/location
-- Guest count (kitne log)
-- Total budget (Rs. mein)
-
-Phir yeh sab do with EXACT Rs. amounts:
-
-BUDGET BREAKDOWN:
-- Venue: Rs.X (X% of total)
-- Catering: Rs.X (X% of total)
-- Decoration: Rs.X (X%)
-- Photography/Video: Rs.X (X%)
-- Music/DJ: Rs.X (X%)
-- Bridal wear: Rs.X (X%)
-- Misc/Contingency: Rs.X (X%)
-
-VENDOR SUGGESTIONS (har category mein 3 options):
-Format: "1. Vendor Type — Rs.X to Rs.Y range — Kyon recommend karein"
-
-Categories cover karo: Venue, Catering, Photography, Decoration, Music, Makeup
-
-SMART SHAADI TOOLS (zaroor mention karo):
-- Budget Calculator: smartshaadi.online/wedding-budget-calculator-india-2026.html
-- Destination Calculator: smartshaadi.online/destination-wedding-calculator-india-2026.html
-- Vendor Negotiation: smartshaadi.online/wedding-vendor-negotiation-bot.html
-- WhatsApp Invites: smartshaadi.online/whatsapp-invite-generator.html
-- AI Invitation Writer: smartshaadi.online/ai-invitation-writer.html
-
-WEDDING TIMELINE:
-6 mahine pehle → 4 mahine → 2 mahine → 1 mahine → 1 hafta pehle → Wedding day
-
-TIPS:
-- Specific Rs. amounts do (2026 Indian market prices)
-- Local vendor suggestions (city ke hisaab se)
-- Practical money-saving tips
-- Warm, friendly tone — jaise ek experienced dost advice de raha ho`;
+// System prompt — sent as "system" key (matching backend: const { system, messages })
+var SYS = 'Tum Smart Shaadi AI ho — India ka best AI wedding planning assistant. Hinglish mein baat karo (Hindi + English mix).\n\nPEHLI BAAR yeh collect karo:\n- Dulha/Dulhan ke naam\n- Wedding date/month\n- City/location\n- Guest count\n- Total budget (Rs. mein)\n\nPhir yeh sab do:\n\nBUDGET BREAKDOWN (exact Rs. amounts):\n- Venue: Rs.X (30%)\n- Catering: Rs.X (25%)\n- Decoration: Rs.X (15%)\n- Photography/Video: Rs.X (10%)\n- Music/DJ: Rs.X (5%)\n- Bridal Wear: Rs.X (10%)\n- Misc: Rs.X (5%)\n\nVENDOR SUGGESTIONS (3 per category):\nFormat: "1. Type — Rs.X to Rs.Y — Kyon recommend"\nCategories: Venue, Catering, Photography, Decoration, Music, Makeup\n\nTOOLS (zaroor mention karo):\n- Budget Calculator: smartshaadi.online/wedding-budget-calculator-india-2026.html\n- Vendor Bot: smartshaadi.online/wedding-vendor-negotiation-bot.html\n- WhatsApp Invites: smartshaadi.online/whatsapp-invite-generator.html\n- AI Invitation: smartshaadi.online/ai-invitation-writer.html\n\nTIMELINE: 6 mahine → 4 mahine → 2 mahine → 1 mahine → 1 hafta → Wedding day\n\nStyle: Warm, specific Rs. amounts, 2026 Indian market prices, practical tips.';
 
 // ── HELPERS ──
 function gt(){
@@ -207,11 +151,13 @@ function fmt(t){
     .replace(/# (.*?)(\n|$)/g,'<strong style="color:var(--gold)">$1</strong>\n');
 }
 
-function addMsg(role, text){
+function addMsg(role, html){
   var m = document.getElementById('msgs');
   var d = document.createElement('div');
   d.className = 'msg ' + role;
-  d.innerHTML = '<div class="av">'+(role==='ai'?'💍':'👤')+'</div><div><div class="bubble">'+text+'</div><div class="mtime">'+gt()+'</div></div>';
+  d.innerHTML = '<div class="av">'+(role==='ai'?'💍':'👤')+'</div>'
+    +'<div><div class="bubble">'+html+'</div>'
+    +'<div class="mtime">'+gt()+'</div></div>';
   m.appendChild(d);
   m.scrollTop = m.scrollHeight;
 }
@@ -226,40 +172,38 @@ function showTyping(){
 }
 function hideTyping(){ var t=document.getElementById('ty'); if(t) t.remove(); }
 
-function showToast(msg, dur){
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.display = 'block';
-  setTimeout(function(){ t.style.display='none'; }, dur||3500);
-}
-
 function clearChat(){
   hist=[];
-  document.getElementById('msgs').innerHTML='<div class="welcome"><h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em> 💍</h3><p>Apni wedding ki details batao — budget, date, city<br>Phir complete plan + <strong style="color:var(--gold)">PDF Report</strong> milegi!</p><span class="ftag"><div class="dot" style="width:5px;height:5px"></div> Free • No Login • Hindi &amp; English</span></div>';
+  document.getElementById('msgs').innerHTML=
+    '<div class="welcome">'
+    +'<h3>Namaste! Main hoon aapka<br><em>AI Wedding Planner</em> 💍</h3>'
+    +'<p>Apni wedding ki details batao — budget, date, city<br>Phir complete plan + <strong style="color:var(--gold)">PDF Report</strong> milegi!</p>'
+    +'<span class="ftag"><div class="dot" style="width:5px;height:5px"></div> Free • No Login • Hindi &amp; English</span>'
+    +'</div>';
   document.getElementById('qrbar').style.display='flex';
   document.getElementById('pdfBtn').style.display='none';
 }
 
-// ── AUTO-LOAD FORM DATA (from planning-form.html) ──
+// Auto-load data from planning-form.html if present
 function loadFormData(){
   try{
     var raw = localStorage.getItem('ss_form_data');
     if(!raw) return;
     var fd = JSON.parse(raw);
     localStorage.removeItem('ss_form_data');
-    var msg = 'Namaste! Main yahan apni shaadi plan karne aaya hoon. Meri details:\n';
-    if(fd.names)    msg += 'Couple: ' + fd.names + '\n';
-    if(fd.date)     msg += 'Date: ' + fd.date + '\n';
-    if(fd.city)     msg += 'City: ' + fd.city + '\n';
-    if(fd.wtype)    msg += 'Wedding Type: ' + fd.wtype + '\n';
-    if(fd.religion) msg += 'Religion: ' + fd.religion + '\n';
-    if(fd.budget)   msg += 'Budget: ' + fd.budget + '\n';
-    if(fd.guests)   msg += 'Guests: ' + fd.guests + '\n';
-    if(fd.venue)    msg += 'Venue Preference: ' + fd.venue + '\n';
-    if(fd.food)     msg += 'Food: ' + fd.food + '\n';
-    if(fd.services) msg += 'Services: ' + fd.services + '\n';
-    if(fd.notes)    msg += 'Special: ' + fd.notes + '\n';
-    msg += '\nIn details ke hisaab se mujhe complete wedding plan banao please!';
+    var msg = 'Namaste! Main apni shaadi plan karne aaya hoon. Meri details:\n';
+    if(fd.names)    msg += 'Couple: '           + fd.names    + '\n';
+    if(fd.date)     msg += 'Date: '             + fd.date     + '\n';
+    if(fd.city)     msg += 'City: '             + fd.city     + '\n';
+    if(fd.wtype)    msg += 'Wedding Type: '     + fd.wtype    + '\n';
+    if(fd.religion) msg += 'Religion: '         + fd.religion + '\n';
+    if(fd.budget)   msg += 'Budget: '           + fd.budget   + '\n';
+    if(fd.guests)   msg += 'Guests: '           + fd.guests   + '\n';
+    if(fd.venue)    msg += 'Venue Preference: ' + fd.venue    + '\n';
+    if(fd.food)     msg += 'Food: '             + fd.food     + '\n';
+    if(fd.services) msg += 'Services: '         + fd.services + '\n';
+    if(fd.notes)    msg += 'Special: '          + fd.notes    + '\n';
+    msg += '\nIn details ke hisaab se mujhe complete wedding plan banao!';
     document.getElementById('msgInp').value = msg;
     document.getElementById('qrbar').style.display = 'none';
     send();
@@ -277,50 +221,59 @@ async function send(){
   inp.style.height = 'auto';
   document.getElementById('sbtn').disabled = true;
   document.getElementById('qrbar').style.display = 'none';
+
   addMsg('user', fmt(txt));
-  hist.push({role:'user', content: txt});
+
+  // Add to history BEFORE sending (backend expects full history in messages[])
+  hist.push({ role: 'user', content: txt });
+
   showTyping();
 
   try{
-    // Call the same backend used by all other AI tools
+    // ── EXACT FORMAT the backend expects ──
+    // const { system, messages } = req.body;
+    var payload = {
+      system:   SYS,
+      messages: hist.slice(-14)  // last 14 messages for context, keeps tokens manageable
+    };
+
     var res = await fetch(API_URL, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        agent: 'chatbot',
-        systemPrompt: SYS,
-        messages: hist.slice(-12),  // last 12 messages to keep context
-        userMessage: txt
-      })
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
     });
 
     hideTyping();
 
+    // Backend returns raw Groq response: data.data (from resolve({ status, data }))
+    var data = await res.json();
+
     if(!res.ok){
-      var errData = {};
-      try{ errData = await res.json(); }catch(e){}
-      var errMsg = errData.error || ('Server error: ' + res.status);
-      addMsg('ai', '⚠️ ' + fmt(errMsg) + '\n\n<span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Retry karein →</span>');
+      // Groq error object e.g. { error: { message: '...' } }
+      var errMsg = (data.error && data.error.message)
+        ? data.error.message
+        : ('Server error ' + res.status + '. Dobara try karein.');
+      addMsg('ai', '⚠️ ' + fmt(errMsg)
+        + '\n\n<span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Retry →</span>');
+      hist.pop(); // remove failed user message
+      document.getElementById('sbtn').disabled = false;
+      return;
+    }
+
+    // Backend returns raw Groq JSON: { choices: [{ message: { content: '...' } }] }
+    var reply = data?.choices?.[0]?.message?.content || '';
+
+    if(!reply){
+      addMsg('ai', '⚠️ Koi response nahi aaya. Dobara try karein.');
       hist.pop();
       document.getElementById('sbtn').disabled = false;
       return;
     }
 
-    var data = await res.json();
-
-    // Handle different response formats from groq-agent
-    var reply = '';
-    if(data.result) reply = data.result;
-    else if(data.response) reply = data.response;
-    else if(data.message) reply = data.message;
-    else if(data.content) reply = data.content;
-    else if(typeof data === 'string') reply = data;
-    else reply = 'Kuch galat ho gaya. Dobara try karein.';
-
-    hist.push({role:'assistant', content: reply});
+    hist.push({ role: 'assistant', content: reply });
     addMsg('ai', fmt(reply));
 
-    // Show PDF button after enough conversation
+    // Show PDF button after 2 exchanges
     if(hist.length >= 4){
       document.getElementById('pdfBtn').style.display = 'inline-block';
     }
@@ -328,7 +281,8 @@ async function send(){
   }catch(err){
     hideTyping();
     console.error('Chatbot error:', err);
-    addMsg('ai', '⚠️ Connection problem. <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Retry karein →</span>');
+    addMsg('ai', '⚠️ Connection problem. '
+      +'<span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="retry()">Retry →</span>');
     hist.pop();
   }
 
@@ -342,11 +296,11 @@ function retry(){
     send();
   }
 }
-function sq(t){ document.getElementById('msgInp').value=t; send(); }
-function hk(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); send(); } }
+function sq(t){ document.getElementById('msgInp').value = t; send(); }
+function hk(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); } }
 function ar(el){ el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
 
-// ── PDF DOWNLOAD ──
+// ── PDF ──
 function downloadPDF(){
   try{
     var {jsPDF} = window.jspdf;
@@ -355,29 +309,26 @@ function downloadPDF(){
 
     function np(n){ if(y+(n||lh)>272){doc.addPage();bg();y=22;} }
     function bg(){
-      doc.setFillColor(13,11,14);
-      doc.rect(0,0,W,297,'F');
-      doc.setFillColor(201,168,76);
-      doc.rect(0,0,W,1.5,'F');
-      doc.rect(0,295.5,W,1.5,'F');
+      doc.setFillColor(13,11,14); doc.rect(0,0,W,297,'F');
+      doc.setFillColor(201,168,76); doc.rect(0,0,W,1.5,'F'); doc.rect(0,295.5,W,1.5,'F');
     }
 
-    // COVER PAGE
+    // Cover
     bg(); y=60;
     doc.setFontSize(10); doc.setTextColor(201,168,76); doc.setFont('helvetica','normal');
     doc.text('SMART SHAADI AI',W/2,y,{align:'center'}); y+=12;
-    doc.setFontSize(30); doc.setTextColor(245,239,224); doc.setFont('helvetica','bold');
-    doc.text('Wedding Planning',W/2,y,{align:'center'}); y+=13;
-    doc.setFontSize(30); doc.setTextColor(232,201,122); doc.setFont('helvetica','normal');
-    doc.text('Report 2026',W/2,y,{align:'center'}); y+=20;
-    doc.setDrawColor(201,168,76); doc.setLineWidth(0.5); doc.line(W/2-20,y,W/2+20,y); y+=15;
-    doc.setFontSize(9); doc.setTextColor(122,112,104); doc.setFont('helvetica','normal');
+    doc.setFontSize(28); doc.setTextColor(245,239,224); doc.setFont('helvetica','bold');
+    doc.text('Wedding Planning',W/2,y,{align:'center'}); y+=12;
+    doc.setFontSize(28); doc.setTextColor(232,201,122); doc.setFont('helvetica','normal');
+    doc.text('Report 2026',W/2,y,{align:'center'}); y+=18;
+    doc.setDrawColor(201,168,76); doc.setLineWidth(0.5); doc.line(W/2-20,y,W/2+20,y); y+=14;
+    doc.setFontSize(9); doc.setTextColor(122,112,104);
     doc.text('smartshaadi.online',W/2,y,{align:'center'}); y+=7;
     doc.text(new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),W/2,y,{align:'center'});
 
-    // PLAN PAGES
+    // Chat pages
     doc.addPage(); bg(); y=22;
-    doc.setFontSize(15); doc.setTextColor(232,201,122); doc.setFont('helvetica','bold');
+    doc.setFontSize(14); doc.setTextColor(232,201,122); doc.setFont('helvetica','bold');
     doc.text('Your Complete Wedding Plan',mg,y); y+=4;
     doc.setDrawColor(201,168,76); doc.setLineWidth(0.25); doc.line(mg,y,W-mg,y); y+=8;
 
@@ -387,52 +338,46 @@ function downloadPDF(){
     aiMsgs.forEach(function(m,i){
       var clean = m.content
         .replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3} /g,'')
-        .replace(/Rs\./g,'Rs.').replace(/[^\x00-\x7F]/g,'?').trim();
+        .replace(/[^\x00-\x7F]/g,'?').trim();
       if(!clean) return;
 
-      doc.setFontSize(8); doc.setTextColor(201,168,76); doc.setFont('helvetica','bold');
-      np(8); doc.text('Smart Shaadi AI:',mg,y); y+=5;
+      np(8); doc.setFontSize(8); doc.setTextColor(201,168,76); doc.setFont('helvetica','bold');
+      doc.text('Smart Shaadi AI:',mg,y); y+=5;
       doc.setFontSize(8.5); doc.setTextColor(210,200,185); doc.setFont('helvetica','normal');
-      var lines=doc.splitTextToSize(clean,W-2*mg);
-      lines.slice(0,60).forEach(function(l){ np(); doc.text(l,mg,y); y+=lh; });
+      doc.splitTextToSize(clean,W-2*mg).slice(0,60).forEach(function(l){ np(); doc.text(l,mg,y); y+=lh; });
       y+=2;
 
       if(uMsgs[i+1]){
-        doc.setFontSize(8); doc.setTextColor(126,211,160); doc.setFont('helvetica','bold');
-        np(6); doc.text('You:',mg,y); y+=5;
+        np(8); doc.setFontSize(8); doc.setTextColor(126,211,160); doc.setFont('helvetica','bold');
+        doc.text('You:',mg,y); y+=5;
         doc.setFontSize(8.5); doc.setTextColor(180,170,155); doc.setFont('helvetica','normal');
-        var ul=doc.splitTextToSize(uMsgs[i+1].content.replace(/[^\x00-\x7F]/g,'?'),W-2*mg);
-        ul.slice(0,6).forEach(function(l){ np(); doc.text(l,mg,y); y+=lh; });
+        doc.splitTextToSize(uMsgs[i+1].content.replace(/[^\x00-\x7F]/g,'?'),W-2*mg).slice(0,6)
+          .forEach(function(l){ np(); doc.text(l,mg,y); y+=lh; });
       }
       np(3); doc.setDrawColor(40,35,50); doc.setLineWidth(0.2); doc.line(mg,y,W-mg,y); y+=6;
     });
 
-    // TOOLS PAGE
+    // Tools page
     doc.addPage(); bg(); y=22;
-    doc.setFontSize(15); doc.setTextColor(232,201,122); doc.setFont('helvetica','bold');
-    doc.text('Free Planning Tools at Smart Shaadi AI',mg,y); y+=4;
+    doc.setFontSize(14); doc.setTextColor(232,201,122); doc.setFont('helvetica','bold');
+    doc.text('Free Planning Tools',mg,y); y+=4;
     doc.setDrawColor(201,168,76); doc.setLineWidth(0.25); doc.line(mg,y,W-mg,y); y+=10;
-
-    var tools=[
+    [
       ['Budget Calculator','smartshaadi.online/wedding-budget-calculator-india-2026.html'],
-      ['Destination Wedding Calculator','smartshaadi.online/destination-wedding-calculator-india-2026.html'],
+      ['Destination Calculator','smartshaadi.online/destination-wedding-calculator-india-2026.html'],
       ['Vendor Negotiation Bot','smartshaadi.online/wedding-vendor-negotiation-bot.html'],
       ['WhatsApp Invite Generator','smartshaadi.online/whatsapp-invite-generator.html'],
       ['AI Invitation Writer','smartshaadi.online/ai-invitation-writer.html'],
-      ['Kundali Matching','smartshaadi.online/ai-kundali-matching.html'],
-    ];
-    tools.forEach(function(t){
-      np(14);
-      doc.setFillColor(22,18,28);
-      doc.roundedRect(mg,y-4,W-2*mg,12,2,2,'F');
+      ['AI Kundali Matching','smartshaadi.online/ai-kundali-matching.html'],
+    ].forEach(function(t){
+      np(14); doc.setFillColor(22,18,28); doc.roundedRect(mg,y-4,W-2*mg,12,2,2,'F');
       doc.setFontSize(9); doc.setTextColor(232,201,122); doc.setFont('helvetica','bold');
       doc.text(t[0],mg+4,y+2);
       doc.setFontSize(8); doc.setTextColor(122,112,104); doc.setFont('helvetica','normal');
-      doc.text(t[1],mg+4,y+7);
-      y+=15;
+      doc.text(t[1],mg+4,y+7); y+=15;
     });
 
-    // PAGE NUMBERS
+    // Page numbers
     var pc=doc.internal.getNumberOfPages();
     for(var i=1;i<=pc;i++){
       doc.setPage(i);
@@ -442,10 +387,8 @@ function downloadPDF(){
     }
 
     doc.save('SmartShaadi-Plan-'+Date.now()+'.pdf');
-
   }catch(err){
-    showToast('PDF error: '+err.message);
-    console.error(err);
+    alert('PDF error: '+err.message);
   }
 }
 
