@@ -1,96 +1,272 @@
 <!DOCTYPE html>
-<html lang="hi-IN">
+<html lang="en">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255"
-     crossorigin="anonymous"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Y6QPBQ6QZE');
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Smart Shaadi AI - Mubashir Hasan</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root { --gold: #ffcc33; --dark: #080a0f; --cyan: #00f2ff; --glass: rgba(255, 255, 255, 0.05); }
-        
-        body { font-family: 'Inter', sans-serif; background: var(--dark); color: #e0e0e0; margin: 0; padding: 0; line-height: 1.6; }
-        
-        header { background: rgba(15, 15, 26, 0.95); padding: 25px; text-align: center; border-bottom: 1px solid var(--gold); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Smart Shaadi AI — India's #1 AI Wedding Planner</title>
+  <meta name="description" content="Smart Shaadi AI se sampark karein. Wedding planning mein madad chahiye? Humse email ya contact form ke through baat karein.">
+  <link rel="canonical" href="https://www.smartshaadi.online/contact.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #b5451b;
+      --gold: #d4a017;
+      --dark: #1a1a2e;
+      --text: #333;
+      --bg: #fdf8f3;
+      --border: #e8d9c5;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Lato',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+    nav {
+      background:#fff; border-bottom:2px solid var(--border);
+      padding:16px 24px; display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--primary); text-decoration:none; }
+    .nav-logo span { color:var(--gold); }
+    nav a.home-link { font-size:0.9rem; color:var(--primary); text-decoration:none; border:1.5px solid var(--primary); padding:6px 16px; border-radius:20px; transition:all 0.2s; }
+    nav a.home-link:hover { background:var(--primary); color:#fff; }
 
-        .container { max-width: 600px; margin: 50px auto; padding: 20px; }
-        
-        .contact-card { background: var(--glass); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,204,51,0.2); backdrop-filter: blur(10px); position: relative; overflow: hidden; }
-        .contact-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--gold), var(--cyan)); }
+    .hero {
+      background: linear-gradient(135deg, #2d5016 0%, #4a7c25 100%);
+      color:#fff; padding:60px 24px 50px; text-align:center;
+    }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.4rem; margin-bottom:12px; }
+    .hero p { opacity:0.9; font-size:1rem; max-width:500px; margin:0 auto; }
 
-        h1 { font-family: 'Orbitron'; color: var(--gold); text-align: center; font-size: 1.8rem; margin-bottom: 10px; }
-        .subtitle { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 30px; display: block; }
+    .container { max-width:900px; margin:0 auto; padding:56px 24px; }
 
-        .info-box { background: rgba(0, 242, 255, 0.05); padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px dashed rgba(0, 242, 255, 0.3); text-align: center; }
-        .info-box p { margin: 5px 0; font-size: 0.95rem; }
-        .info-box strong { color: var(--cyan); }
+    .contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:40px; margin-bottom:48px; }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); letter-spacing: 1px; }
-        
-        input, textarea { width: 100%; padding: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-family: 'Inter'; font-size: 0.9rem; box-sizing: border-box; transition: 0.3s; }
-        input:focus, textarea:focus { outline: none; border-color: var(--cyan); background: rgba(0,242,255,0.05); }
+    /* INFO SIDE */
+    .info-side h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:20px; }
+    .info-card {
+      background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:20px 22px;
+      margin-bottom:16px; display:flex; gap:16px; align-items:flex-start;
+    }
+    .info-icon { font-size:1.8rem; flex-shrink:0; }
+    .info-card h3 { font-size:0.95rem; color:#777; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; }
+    .info-card p { font-size:0.97rem; color:var(--dark); font-weight:600; }
+    .info-card a { color:var(--primary); text-decoration:none; font-weight:600; }
+    .info-card a:hover { text-decoration:underline; }
+    .info-card .sub { font-size:0.85rem; color:#999; font-weight:400; margin-top:2px; }
 
-        button { background: linear-gradient(45deg, var(--gold), #ffaa00); color: #000; border: none; padding: 18px; border-radius: 50px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; width: 100%; font-size: 0.9rem; margin-top: 10px; transition: 0.4s; box-shadow: 0 10px 20px rgba(255,204,51,0.2); }
-        button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,204,51,0.4); }
+    .response-note {
+      background:linear-gradient(135deg,#fff8f0,#fdf2e5);
+      border:1.5px solid var(--gold);
+      border-radius:10px;
+      padding:16px 18px;
+      font-size:0.9rem;
+      color:#5a3e00;
+    }
+    .response-note strong { display:block; margin-bottom:4px; }
 
-        .back-home { display: block; text-align: center; margin-top: 30px; color: #666; text-decoration: none; font-size: 0.8rem; font-family: 'Orbitron'; transition: 0.3s; }
-        .back-home:hover { color: var(--gold); }
+    /* FORM SIDE */
+    .form-side h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:20px; }
+    form { background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:28px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .field { margin-bottom:18px; }
+    .field label { display:block; font-size:0.88rem; font-weight:700; color:#555; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.4px; }
+    .field input, .field select, .field textarea {
+      width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:8px;
+      font-family:'Lato',sans-serif; font-size:0.95rem; color:var(--dark); background:#fdf8f3;
+      transition:border-color 0.2s, box-shadow 0.2s; outline:none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color:var(--primary); box-shadow:0 0 0 3px rgba(181,69,27,0.1); background:#fff;
+    }
+    .field textarea { resize:vertical; min-height:120px; }
+    .submit-btn {
+      width:100%; padding:14px; background:var(--primary); color:#fff;
+      border:none; border-radius:8px; font-size:1rem; font-weight:700;
+      font-family:'Lato',sans-serif; cursor:pointer; transition:background 0.2s, transform 0.1s;
+    }
+    .submit-btn:hover { background:#8b2500; }
+    .submit-btn:active { transform:scale(0.99); }
 
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #111; margin-top: 50px; }
-    </style>
+    /* FAQ */
+    .faq-section { margin-top:56px; }
+    .faq-section h2 { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--dark); text-align:center; margin-bottom:28px; }
+    .faq-section h2 span { color:var(--primary); }
+    .faq-item { background:#fff; border:1.5px solid var(--border); border-radius:10px; margin-bottom:12px; overflow:hidden; }
+    .faq-q { padding:18px 20px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+    .faq-q:hover { background:#fdf2e5; }
+    .faq-q .arrow { transition:transform 0.2s; color:var(--primary); }
+    .faq-a { padding:0 20px 18px; font-size:0.95rem; color:#555; display:none; }
+    .faq-item.open .faq-a { display:block; }
+    .faq-item.open .arrow { transform:rotate(180deg); }
+
+    footer { background:var(--dark); color:rgba(255,255,255,0.7); text-align:center; padding:24px; font-size:0.85rem; }
+    footer a { color:var(--gold); text-decoration:none; margin:0 8px; }
+
+    @media(max-width:768px) {
+      .contact-layout { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .hero h1 { font-size:1.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header><a href="index.html" class="logo">SMART SHAADI AI</a></header>
+<nav>
+  <a href="https://www.smartshaadi.online/index.html" class="nav-logo">Smart<span>Shaadi</span> 💍</a>
+  <a href="https://www.smartshaadi.online/index.html" class="home-link">← Home</a>
+</nav>
 
-<main class="container">
-    <div class="contact-card">
-        <h1>Connect with AI Architect</h1>
-        <span class="subtitle">Efficiency aur Automation se shaadi plan karein.</span>
-        
-        <div class="info-box">
-            <p>Humein aapki madad karke khushi hogi!</p>
-            <p><strong>Email:</strong> muahshi.dev@gmail.com</p>
+<div class="hero">
+  <h1>📬 Humse Sampark Karein</h1>
+  <p>Koi sawaal hai? Wedding planning mein madad chahiye? Hum yahan hain aapki help ke liye!</p>
+</div>
+
+<div class="container">
+
+  <div class="contact-layout">
+
+    <!-- INFO -->
+    <div class="info-side">
+      <h2>Contact Information</h2>
+
+      <div class="info-card">
+        <div class="info-icon">📧</div>
+        <div>
+          <h3>Email</h3>
+          <p><a href="mailto:muahshi.dev@gmail.com">muahshi.dev@gmail.com</a></p>
+          <p class="sub">General queries ke liye</p>
         </div>
+      </div>
 
-        <form action="https://formspree.io/f/xvgzlowj" method="POST">
-            <div class="form-group">
-                <label>Aapka Naam</label>
-                <input type="text" name="name" placeholder="Mubashir Hasan" required>
-            </div>
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" placeholder="example@gmail.com" required>
-            </div>
-            <div class="form-group">
-                <label>Aapka Sawal (Message)</label>
-                <textarea name="message" rows="4" placeholder="How can our AI help you?" required></textarea>
-            </div>
-            <button type="submit">INITIALIZE CONNECTION →</button>
-        </form>
+      <div class="info-card">
+        <div class="info-icon">🌐</div>
+        <div>
+          <h3>Website</h3>
+          <p><a href="https://www.smartshaadi.online">www.smartshaadi.online</a></p>
+          <p class="sub">India's #1 Free AI Wedding Planner</p>
+        </div>
+      </div>
 
-        <a href="index.html" class="back-home">← TERMINATE & RETURN HOME</a>
+      <div class="info-card">
+        <div class="info-icon">👤</div>
+        <div>
+          <h3>Founder</h3>
+          <p>Mubashir Hasan</p>
+          <p class="sub">Developer & Creator, Smart Shaadi AI</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h3>Working Hours</h3>
+          <p>Monday – Saturday</p>
+          <p class="sub">10:00 AM – 7:00 PM IST</p>
+        </div>
+      </div>
+
+      <div class="response-note">
+        <strong>⚡ Response Time</strong>
+        Hum typically 24–48 hours mein respond karte hain. Urgent matters ke liye email ke subject mein "URGENT" likhein.
+      </div>
     </div>
-</main>
+
+    <!-- FORM -->
+    <div class="form-side">
+      <h2>Message Bhejein</h2>
+      <form action="https://formspree.io/f/muahshi.dev@gmail.com" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label>Aapka Naam *</label>
+            <input type="text" name="name" placeholder="Jaise: Rahul Sharma" required />
+          </div>
+          <div class="field">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="aapka@email.com" required />
+          </div>
+        </div>
+        <div class="field">
+          <label>Subject *</label>
+          <select name="subject" required>
+            <option value="">-- Topic chunein --</option>
+            <option>Wedding Planning Help</option>
+            <option>AI Tool Related Query</option>
+            <option>Technical Issue / Bug Report</option>
+            <option>Business / Partnership</option>
+            <option>Advertising / AdSense</option>
+            <option>Privacy / Data Request</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Aapka Message *</label>
+          <textarea name="message" placeholder="Apna sawaal ya feedback yahan likhein..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">✉️ Message Bhejein →</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Aksar Pooche Jaane Wale <span>Sawaal</span></h2>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        Kya Smart Shaadi AI ke tools bilkul free hain?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Haan! Hamare saare 9 AI tools aur planning dashboard 100% free hain. Koi registration nahi, koi credit card nahi, koi hidden charges nahi.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        AI chatbot Hindi mein kaam karta hai?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Bilkul! Hamara AI chatbot Hindi, English, aur Hinglish teeno mein kaam karta hai. Aap jis bhi language mein comfortable hain, usi mein baat kar sakte hain.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        Technical issue ya bug report kaise karein?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Upar diye gaye contact form mein "Technical Issue / Bug Report" select karein aur detail mein describe karein kya problem aa rahi hai. Screenshot attach kar sakte hain email ke through.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        Privacy ya data deletion request ke liye kya karein?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">muahshi.dev@gmail.com par email karein subject mein "Data Deletion Request" likh kar. Hum 3-5 business days mein process karenge.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        Business partnership ya collaboration ke liye kaun se details bhejein?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Contact form mein "Business / Partnership" select karein aur apne proposal ki brief summary likhein. Hum interested proposals par within 48 hours respond karte hain.</div>
+    </div>
+
+  </div>
+
+</div>
 
 <footer>
-    <p style="font-family: 'Orbitron'; color: var(--gold); font-size: 1rem; margin-bottom: 5px;">Mubashir Hasan</p>
-    <p style="font-size: 0.75rem; color: #555;">AI Automation & Systems Architect<br>
-    Transforming Complexity into Efficiency.</p>
+  <p>© 2026 Smart Shaadi AI. All rights reserved.</p>
+  <p style="margin-top:8px;">
+    <a href="https://www.smartshaadi.online/index.html">Home</a>
+    <a href="https://www.smartshaadi.online/about.html">About</a>
+    <a href="https://www.smartshaadi.online/privacy-policy.html">Privacy Policy</a>
+    <a href="https://www.smartshaadi.online/terms.html">Terms</a>
+  </p>
 </footer>
+
+<script>
+  // FAQ toggle already handled by onclick, no extra JS needed
+</script>
 
 </body>
 </html>
