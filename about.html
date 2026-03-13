@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Smart Shaadi AI — India's #1 AI Wedding Planner</title>
+  <meta name="description" content="Smart Shaadi AI ke baare mein jaanein — India ka #1 free AI wedding planning platform. Kaun hain hum, kya hai hamara mission, aur kaise madad karte hain Indian couples ko.">
+  <link rel="canonical" href="https://www.smartshaadi.online/about.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #b5451b;
+      --gold: #d4a017;
+      --dark: #1a1a2e;
+      --text: #333;
+      --bg: #fdf8f3;
+      --border: #e8d9c5;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Lato',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+    nav {
+      background:#fff; border-bottom:2px solid var(--border);
+      padding:16px 24px; display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--primary); text-decoration:none; }
+    .nav-logo span { color:var(--gold); }
+    nav a.home-link { font-size:0.9rem; color:var(--primary); text-decoration:none; border:1.5px solid var(--primary); padding:6px 16px; border-radius:20px; transition:all 0.2s; }
+    nav a.home-link:hover { background:var(--primary); color:#fff; }
+
+    .hero {
+      background: linear-gradient(135deg, #d4a017 0%, #b5451b 50%, #8b2500 100%);
+      color:#fff; padding:70px 24px 60px; text-align:center; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:'💍'; position:absolute; font-size:200px; opacity:0.05; top:-30px; right:-20px;
+    }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:2.6rem; margin-bottom:16px; }
+    .hero h1 em { font-style:italic; color:#ffe0a0; }
+    .hero p { opacity:0.9; font-size:1.05rem; max-width:600px; margin:0 auto; }
+
+    .container { max-width:860px; margin:0 auto; padding:56px 24px; }
+
+    /* STORY SECTION */
+    .story { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-bottom:60px; }
+    .story-text h2 { font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--dark); margin-bottom:16px; }
+    .story-text h2 span { color:var(--primary); }
+    .story-text p { margin-bottom:14px; font-size:0.97rem; color:#555; }
+    .story-image {
+      background: linear-gradient(135deg, #fdf2e5, #ffe8cc);
+      border-radius:16px;
+      padding:40px 30px;
+      text-align:center;
+      border:2px solid var(--border);
+    }
+    .story-image .emoji { font-size:80px; display:block; margin-bottom:16px; }
+    .story-image p { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--primary); font-style:italic; }
+
+    /* MISSION */
+    .mission {
+      background: linear-gradient(135deg, var(--dark) 0%, #2d2d5e 100%);
+      color:#fff; border-radius:16px; padding:48px 40px; text-align:center; margin-bottom:60px;
+    }
+    .mission h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:16px; }
+    .mission h2 span { color:var(--gold); }
+    .mission p { opacity:0.85; font-size:1rem; max-width:580px; margin:0 auto; line-height:1.9; }
+
+    /* STATS */
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:60px; }
+    .stat-card {
+      background:#fff; border:2px solid var(--border); border-radius:12px;
+      padding:28px 16px; text-align:center;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+    .stat-card .num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--primary); font-weight:700; }
+    .stat-card .label { font-size:0.85rem; color:#777; margin-top:4px; }
+
+    /* VALUES */
+    .values h2 { font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--dark); text-align:center; margin-bottom:32px; }
+    .values h2 span { color:var(--primary); }
+    .values-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px; }
+    .value-card {
+      background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:24px;
+      display:flex; gap:16px; align-items:flex-start;
+    }
+    .value-icon { font-size:2rem; flex-shrink:0; }
+    .value-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--dark); margin-bottom:6px; }
+    .value-card p { font-size:0.9rem; color:#666; line-height:1.6; }
+
+    /* FOUNDER */
+    .founder {
+      background:#fff; border:2px solid var(--border); border-radius:16px; padding:40px;
+      display:flex; gap:32px; align-items:center; margin-bottom:60px;
+    }
+    .founder-avatar {
+      width:100px; height:100px; background:linear-gradient(135deg, var(--primary), var(--gold));
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:2.5rem; flex-shrink:0;
+    }
+    .founder-info h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:4px; }
+    .founder-info .role { color:var(--primary); font-weight:700; font-size:0.95rem; margin-bottom:12px; }
+    .founder-info p { font-size:0.95rem; color:#555; }
+
+    /* TOOLS */
+    .tools-section h2 { font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--dark); text-align:center; margin-bottom:32px; }
+    .tools-section h2 span { color:var(--primary); }
+    .tools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:60px; }
+    .tool-chip {
+      background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:14px 16px;
+      text-align:center; font-size:0.9rem; color:var(--dark); text-decoration:none;
+      transition:all 0.2s;
+    }
+    .tool-chip:hover { background:var(--primary); color:#fff; border-color:var(--primary); transform:translateY(-2px); }
+
+    /* CTA */
+    .cta {
+      background:linear-gradient(135deg, #b5451b, #8b2500);
+      color:#fff; border-radius:16px; padding:48px 40px; text-align:center;
+    }
+    .cta h2 { font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:12px; }
+    .cta p { opacity:0.9; margin-bottom:28px; font-size:1rem; }
+    .cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .btn-white { background:#fff; color:var(--primary); padding:12px 28px; border-radius:25px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; }
+    .btn-white:hover { background:#ffe8cc; }
+    .btn-outline { border:2px solid rgba(255,255,255,0.7); color:#fff; padding:12px 28px; border-radius:25px; text-decoration:none; font-weight:700; font-size:0.95rem; transition:all 0.2s; }
+    .btn-outline:hover { background:rgba(255,255,255,0.15); }
+
+    footer { background:var(--dark); color:rgba(255,255,255,0.7); text-align:center; padding:24px; font-size:0.85rem; margin-top:0; }
+    footer a { color:var(--gold); text-decoration:none; margin:0 8px; }
+
+    @media(max-width:768px) {
+      .story { grid-template-columns:1fr; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .values-grid { grid-template-columns:1fr; }
+      .tools-grid { grid-template-columns:repeat(2,1fr); }
+      .founder { flex-direction:column; text-align:center; }
+      .hero h1 { font-size:1.8rem; }
+      .mission { padding:36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.smartshaadi.online/index.html" class="nav-logo">Smart<span>Shaadi</span> 💍</a>
+  <a href="https://www.smartshaadi.online/index.html" class="home-link">← Home</a>
+</nav>
+
+<div class="hero">
+  <h1>Humara Safar: <em>AI</em> se Shaadi Tak</h1>
+  <p>Jaanein Smart Shaadi AI ke baare mein — India ka pehla free AI wedding planning platform jo har couple ki dream shaadi possible banaata hai.</p>
+</div>
+
+<div class="container">
+
+  <!-- STORY -->
+  <div class="story">
+    <div class="story-text">
+      <h2>Kyun Bana <span>Smart Shaadi AI?</span></h2>
+      <p>India mein shaadi planning ek bahut bada kaam hai — budget manage karna, vendors dhundhna, guest list banana, kundali milana — sab kuch manually karna bahut time-consuming aur stressful hota tha.</p>
+      <p>Smart Shaadi AI is problem ka solution hai. Hamara goal tha ek aisa platform banana jo every Indian couple ki madad kare — chahe unka budget ₹5 lakh ho ya ₹50 lakh — apni dream shaadi plan karne mein, bilkul free mein.</p>
+      <p>2025 mein launch hone ke baad se, Smart Shaadi AI ne hazaron couples ki madad ki hai stress-free wedding planning mein.</p>
+    </div>
+    <div class="story-image">
+      <span class="emoji">💍</span>
+      <p>"Technology aur tradition ka perfect milan — har couple ke liye."</p>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="mission">
+    <h2>Hamara <span>Mission</span></h2>
+    <p>Har Indian couple ki dream wedding ko reality banana — technology ki madad se, bilkul free mein. Hum believe karte hain ki acchi wedding planning ke liye expensive wedding planners hire karna zaroori nahi hona chahiye. AI se yeh possible hai.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num">9</div>
+      <div class="label">Free AI Tools</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">30+</div>
+      <div class="label">Expert Articles</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">100%</div>
+      <div class="label">Free Forever</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">24/7</div>
+      <div class="label">AI Support</div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="values">
+    <h2>Hamare <span>Core Values</span></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🆓</div>
+        <div>
+          <h3>Free Forever</h3>
+          <p>Hamare core planning tools kab bhi free rahenge. Hum believe karte hain ki wedding planning tools har couple ke liye accessible hone chahiye.</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤖</div>
+        <div>
+          <h3>AI-First Approach</h3>
+          <p>Hum latest AI technology use karte hain taaki aapko best possible wedding planning experience mile — fast, smart, aur personalized.</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇮🇳</div>
+        <div>
+          <h3>India-First Design</h3>
+          <p>Sab kuch Indian weddings ke liye banaya gaya hai — Hindi aur English dono mein, Indian budget aur traditions ko samajhte hue.</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <div>
+          <h3>Privacy & Trust</h3>
+          <p>Aapka data aapka hai. Hum kabhi aapka personal data sell nahi karte. Trust ke saath plan karein.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDER -->
+  <div class="founder">
+    <div class="founder-avatar">👨‍💻</div>
+    <div class="founder-info">
+      <h2>Mubashir Hasan</h2>
+      <div class="role">Founder & Developer, Smart Shaadi AI</div>
+      <p>Smart Shaadi AI ek passionate developer ke vision se banaya gaya hai jo AI technology ka use karke real-world problems solve karna chahte hain. Wedding planning ek aise area tha jahan technology ki bahut zaroorat thi — isliye Smart Shaadi AI ka janm hua. Unka focus hai simple, useful, aur free tools banana jo har Indian couple ki madad karein.</p>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="tools-section">
+    <h2>Hamare <span>9 Free AI Tools</span></h2>
+    <div class="tools-grid">
+      <a href="https://www.smartshaadi.online/ai-invitation-writer.html" class="tool-chip">💌 AI Invitation Writer</a>
+      <a href="https://www.smartshaadi.online/ai-kundali-matching.html" class="tool-chip">🔮 AI Kundali Matching</a>
+      <a href="https://www.smartshaadi.online/ai-budget-calculator.html" class="tool-chip">💰 AI Budget Calculator</a>
+      <a href="https://www.smartshaadi.online/ai-playlist-generator.html" class="tool-chip">🎵 AI Playlist Generator</a>
+      <a href="https://www.smartshaadi.online/ai-menu-planner.html" class="tool-chip">🍽️ AI Menu Planner</a>
+      <a href="https://www.smartshaadi.online/ai-photography-shots.html" class="tool-chip">📸 AI Photography Shots</a>
+      <a href="https://www.smartshaadi.online/ai-wedding-theme-generator.html" class="tool-chip">🎨 AI Theme Generator</a>
+      <a href="https://www.smartshaadi.online/ai-guest-manager.html" class="tool-chip">👥 AI Guest Manager</a>
+      <a href="https://www.smartshaadi.online/ai-planning-timeline.html" class="tool-chip">📅 AI Planning Timeline</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Apni Dream Shaadi Plan Karein 💍</h2>
+    <p>Thousands of Indian couples ne Smart Shaadi AI se apni wedding plan ki. Aap bhi shuru karein — bilkul free mein.</p>
+    <div class="cta-buttons">
+      <a href="https://smartshaadi.online/planning-form.html" class="btn-white">✨ Free Planning Shuru Karein</a>
+      <a href="https://smartshaadi.online/chatbot.html" class="btn-outline">🤖 AI se Baat Karein</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Smart Shaadi AI. All rights reserved. Made with ❤️ for Indian Couples.</p>
+  <p style="margin-top:8px;">
+    <a href="https://www.smartshaadi.online/index.html">Home</a>
+    <a href="https://www.smartshaadi.online/privacy-policy.html">Privacy Policy</a>
+    <a href="https://www.smartshaadi.online/terms.html">Terms</a>
+    <a href="https://www.smartshaadi.online/contact.html">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
