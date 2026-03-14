@@ -1,0 +1,52 @@
+{
+  "name": "SmartShaadi AI — Wedding Planner",
+  "short_name": "SmartShaadi",
+  "description": "India's #1 Free AI Wedding Planner — 10 AI Tools, Guest PDF, Budget Tracker",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0D0B0E",
+  "theme_color": "#0D0B0E",
+  "categories": ["lifestyle", "utilities", "wedding"],
+  "lang": "hi-IN",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/app-home.jpg",
+      "sizes": "390x844",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "SmartShaadi App Home"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI Chat",
+      "short_name": "Chat",
+      "description": "SmartShaadi AI se baat karein",
+      "url": "/app#chat",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Guest Manager",
+      "short_name": "Guests",
+      "description": "Guest list aur RSVP manage karein",
+      "url": "/app#guests",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
