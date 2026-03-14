@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smartshaadi.online/sitemap.xml
+Sitemap: https://www.smartshaadi.online/sitemap.xml
