@@ -1,52 +1,69 @@
 {
   "name": "SmartShaadi AI — Wedding Planner",
   "short_name": "SmartShaadi",
-  "description": "India's #1 Free AI Wedding Planner — 10 AI Tools, Guest PDF, Budget Tracker",
-  "start_url": "/app",
+  "description": "India's #1 Free AI Wedding Planner — 10 AI Tools, Guest PDF, Budget Tracker, Kundali Matching",
+  "start_url": "/app.html?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0D0B0E",
   "theme_color": "#0D0B0E",
-  "categories": ["lifestyle", "utilities", "wedding"],
+  "categories": ["lifestyle", "utilities"],
   "lang": "hi-IN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
   "icons": [
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "/icons/icon-72.png",   "sizes": "72x72",   "type": "image/png" },
+    { "src": "/icons/icon-96.png",   "sizes": "96x96",   "type": "image/png" },
+    { "src": "/icons/icon-128.png",  "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/icon-144.png",  "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152.png",  "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-192.png",  "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-384.png",  "sizes": "384x384", "type": "image/png" },
+    { "src": "/icons/icon-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/app-home.jpg",
+      "src": "/screenshots/home.jpg",
       "sizes": "390x844",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "SmartShaadi App Home"
+      "label": "SmartShaadi Home — 10 AI Tools"
+    },
+    {
+      "src": "/screenshots/tools.jpg",
+      "sizes": "390x844",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "AI Wedding Tools — Invitation, Kundali, Budget"
     }
   ],
   "shortcuts": [
     {
       "name": "AI Chat",
-      "short_name": "Chat",
+      "short_name": "AI Chat",
       "description": "SmartShaadi AI se baat karein",
-      "url": "/app#chat",
+      "url": "/app.html#chat",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Guest Manager",
       "short_name": "Guests",
       "description": "Guest list aur RSVP manage karein",
-      "url": "/app#guests",
+      "url": "/app.html#guests",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Budget Tracker",
+      "short_name": "Budget",
+      "description": "Wedding budget track karein",
+      "url": "/app.html#budget",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "share_target": {
+    "action": "/app.html",
+    "method": "GET",
+    "params": { "title": "title", "text": "text", "url": "url" }
+  }
 }
