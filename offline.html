@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>No Internet — SmartShaadi</title>
+<meta name="theme-color" content="#0D0B0E"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#0D0B0E;color:#fff;font-family:'DM Sans',-apple-system,sans-serif;height:100%;display:flex;align-items:center;justify-content:center;}
+.wrap{text-align:center;padding:32px 24px;max-width:360px;}
+.icon{font-size:72px;margin-bottom:20px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+h1{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px;}
+p{font-size:14px;color:#666;line-height:1.7;margin-bottom:28px;}
+.btn{background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:14px;padding:14px 32px;color:#0D0B0E;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;width:100%;margin-bottom:12px;}
+.btn2{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 32px;color:#888;font-size:14px;cursor:pointer;font-family:inherit;width:100%;}
+.features{margin-top:28px;background:#141118;border-radius:16px;padding:16px;border:1px solid rgba(201,168,76,.15);}
+.features h3{font-size:12px;color:#C9A84C;font-weight:700;margin-bottom:12px;}
+.feat{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.feat:last-child{border:none;}
+.feat-icon{font-size:18px;width:28px;text-align:center;}
+.feat-text{font-size:12px;color:#aaa;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="icon">📡</div>
+  <h1>Internet Nahi Hai</h1>
+  <p>AI tools ke liye internet chahiye.<br>Lekin Guest Manager, Budget Tracker aur Timeline offline kaam karte hain!</p>
+
+  <button class="btn" onclick="window.location.reload()">🔄 Retry Karein</button>
+  <button class="btn2" onclick="window.location.href='/app.html'">← App Par Wapas Jao</button>
+
+  <div class="features">
+    <h3>✅ OFFLINE BHI KAAM KARTA HAI:</h3>
+    <div class="feat"><div class="feat-icon">👥</div><div class="feat-text">Guest Manager — list dekhein, RSVP update karein</div></div>
+    <div class="feat"><div class="feat-icon">💰</div><div class="feat-text">Budget Tracker — expenses track karein</div></div>
+    <div class="feat"><div class="feat-icon">📅</div><div class="feat-text">Planning Timeline — tasks complete karein</div></div>
+    <div class="feat"><div class="feat-icon">📄</div><div class="feat-text">PDF Export — Guest list print karein</div></div>
+  </div>
+
+  <div style="margin-top:20px;font-size:11px;color:#444;">
+    SmartShaadi AI · smartshaadi.online
+  </div>
+</div>
+<script>
+// Auto-retry when connection comes back
+window.addEventListener('online', () => {
+  document.querySelector('h1').textContent = 'Internet Wapas Aa Gaya! 🎉';
+  document.querySelector('p').textContent = 'App pe wapas ja rahe hain...';
+  setTimeout(() => window.location.href = '/app.html', 1500);
+});
+</script>
+</body>
+</html>
