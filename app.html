@@ -1068,24 +1068,44 @@ function submitVendor() {
 // CLAUDE API
 // ═══════════════════════════════════════════════
 async function callClaude(prompt, isChat=false, history=[]) {
-  const messages = isChat
-    ? history.map(m=>({role:m.role,content:m.content}))
-    : [{role:'user',content:prompt}];
+  // Calls /api/groq-agent on your Vercel backend
+  // Backend expects: { system: string, messages: [{role,content}] }
+  // Backend returns Groq OpenAI format: { choices: [{message:{content:...}}] }
 
-  const res = await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      model:'claude-sonnet-4-20250514',
-      max_tokens:1000,
-      system: isChat
-        ? 'You are SmartShaadi AI, India\'s best wedding planning assistant. Reply in warm Hinglish (Hindi+English). Give specific advice with ₹ Indian prices. Be helpful, warm, use emojis. Keep replies concise.'
-        : 'You are SmartShaadi AI, India\'s expert wedding planner. Respond in warm Hinglish. Be detailed, specific, use Indian prices in ₹. Format with clear sections.',
-      messages,
-    }),
-  });
-  const d = await res.json();
-  return d.content?.[0]?.text || 'Kuch error aaya, dobara try karein!';
+  const systemPrompt = isChat
+    ? "You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish (Hindi+English mix). Give specific Indian prices in Rs. Be helpful, warm, use emojis. Keep replies concise."
+    : "You are SmartShaadi AI, India's expert wedding planner. Respond in warm Hinglish. Be detailed with Indian prices in Rs. Use clear sections and emojis.";
+
+  const messages = isChat
+    ? history.map(m => ({ role: m.role, content: m.content }))
+    : [{ role: 'user', content: prompt }];
+
+  try {
+    const res = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: systemPrompt,
+        messages: messages
+      })
+    });
+
+    const d = await res.json();
+
+    if (!res.ok) {
+      console.error('Groq backend error:', d);
+      throw new Error(d.error || 'Backend error ' + res.status);
+    }
+
+    // Groq returns OpenAI-compatible format
+    const text = d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content;
+    if (!text) throw new Error('Empty AI response');
+    return text;
+
+  } catch(err) {
+    console.error('callClaude error:', err.message);
+    throw new Error('AI se connect nahi ho paya 🙏 Dobara try karein.');
+  }
 }
 
 // ═══════════════════════════════════════════════
