@@ -377,19 +377,6 @@ textarea.inp{resize:none;}
 </div>
 </div>
 
-
-    <!-- ████ ADMIN PANEL ████ -->
-    <div id="scr-admin" class="scr">
-    <div style="padding-bottom:24px;">
-      <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid rgba(231,76,60,.3);">
-        <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-        <div class="st">🔐 Admin <span style="color:#E74C3C;">Panel</span></div>
-        <div style="font-size:11px;color:#666;margin-top:2px;">Pending vendor applications</div>
-      </div>
-      <div style="padding:14px;" id="admin-content"></div>
-    </div>
-    </div>
-
 </div><!-- /wrap -->
 
 <!-- ████ BOTTOM NAV ████ -->
@@ -444,53 +431,18 @@ const TP={
 };
 
 // ══ VENDORS DATA ══
-// ── VENDOR SYSTEM: localStorage + hardcoded base ──
-const BASE_VENDORS=[
-  {id:'v1',name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'Delhi ke top wedding photographers. 8 saal ka experience. Candid + Traditional packages.',approved:true},
-  {id:'v2',name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine specialists. Veg + non-veg. Min 100 guests.',approved:true},
-  {id:'v3',name:'Floral Dreams Decor',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration team. Mandap + table decor + lighting.',approved:true},
-  {id:'v4',name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. State-of-art equipment. Live dhol available.',approved:true},
-  {id:'v5',name:'Priya Bridal Makeup',city:'Delhi',cat:'Makeup',rating:4.8,reviews:145,tier:'Premium',price:'₹15,000+',badge:'🏆 Verified',phone:'9811122233',desc:'HD + Airbrush bridal makeup. 12+ hours staying power. Trial session included.',approved:true},
-  {id:'v6',name:'Gulshan Photography',city:'Mumbai',cat:'Photography',rating:4.6,reviews:54,tier:'Basic',price:'₹25,000+',badge:'✓ Listed',phone:'9922334455',desc:'Candid + traditional photography packages. Pre-wedding shoots available.',approved:true},
-  {id:'v7',name:'Spice Route Catering',city:'Hyderabad',cat:'Catering',rating:4.7,reviews:76,tier:'Featured',price:'₹700/plate',badge:'⭐ Featured',phone:'9988776655',desc:'Hyderabadi biryani specialists. Veg + non-veg. Live counters available.',approved:true},
-  {id:'v8',name:'Mehndi Masters',city:'Jaipur',cat:'Makeup',rating:4.9,reviews:210,tier:'Premium',price:'₹8,000+',badge:'🏆 Verified',phone:'9876512345',desc:'Rajasthani + Arabic mehndi. Bridal + family packages. Home visit available.',approved:true},
-  {id:'v9',name:'Sound of Joy DJ',city:'Pune',cat:'Music & DJ',rating:4.5,reviews:43,tier:'Basic',price:'₹18,000+',badge:'✓ Listed',phone:'9900112233',desc:'Wedding DJ with live dhol. Pune + nearby areas. Bollywood + Marathi music.',approved:true},
-  {id:'v10',name:'Petal Decors',city:'Bangalore',cat:'Decoration',rating:4.6,reviews:58,tier:'Featured',price:'₹60,000+',badge:'⭐ Featured',phone:'9845678901',desc:'Modern + traditional decor. Floral + lighting specialist. Full venue setup.',approved:true},
+const VENDORS=[
+  {name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'Delhi ke top wedding photographers. 8 saal ka experience.'},
+  {name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine specialists.'},
+  {name:'Floral Dreams',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration team.'},
+  {name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. State-of-art equipment.'},
+  {name:'Priya Bridal Makeup',city:'Delhi',cat:'Makeup',rating:4.8,reviews:145,tier:'Premium',price:'₹15,000+',badge:'🏆 Verified',phone:'9811122233',desc:'HD + Airbrush bridal makeup. 12+ hours staying power.'},
+  {name:'Gulshan Photography',city:'Mumbai',cat:'Photography',rating:4.6,reviews:54,tier:'Basic',price:'₹25,000+',badge:'✓ Listed',phone:'9922334455',desc:'Candid + traditional photography packages.'},
+  {name:'Spice Route Catering',city:'Hyderabad',cat:'Catering',rating:4.7,reviews:76,tier:'Featured',price:'₹700/plate',badge:'⭐ Featured',phone:'9988776655',desc:'Hyderabadi biryani specialists. Veg + non-veg.'},
+  {name:'Mehndi Masters',city:'Jaipur',cat:'Makeup',rating:4.9,reviews:210,tier:'Premium',price:'₹8,000+',badge:'🏆 Verified',phone:'9876512345',desc:'Rajasthani + Arabic mehndi. Bridal packages available.'},
+  {name:'Sound of Joy DJ',city:'Pune',cat:'Music & DJ',rating:4.5,reviews:43,tier:'Basic',price:'₹18,000+',badge:'✓ Listed',phone:'9900112233',desc:'Wedding DJ with live dhol. Pune & surrounding areas.'},
+  {name:'Petal Decors',city:'Bangalore',cat:'Decoration',rating:4.6,reviews:58,tier:'Featured',price:'₹60,000+',badge:'⭐ Featured',phone:'9845678901',desc:'Modern + traditional decor. Floral + lighting specialist.'},
 ];
-
-// Load + merge with user-submitted vendors from localStorage
-function getVENDORS(){
-  try{
-    const stored=JSON.parse(localStorage.getItem('ss_vendors')||'[]');
-    return [...BASE_VENDORS, ...stored.filter(v=>v.approved)];
-  }catch{return BASE_VENDORS;}
-}
-function getPendingVendors(){
-  try{return JSON.parse(localStorage.getItem('ss_vendors_pending')||'[]');}
-  catch{return [];}
-}
-function saveVendor(vendor){
-  // Save to pending (needs admin approval)
-  const pending=getPendingVendors();
-  pending.push({...vendor, id:'v'+Date.now(), approved:false, submittedAt:new Date().toISOString()});
-  localStorage.setItem('ss_vendors_pending', JSON.stringify(pending));
-}
-function approveVendor(id){
-  const pending=getPendingVendors();
-  const vendor=pending.find(v=>v.id===id);
-  if(!vendor)return;
-  vendor.approved=true;
-  // Move to approved
-  const approved=JSON.parse(localStorage.getItem('ss_vendors')||'[]');
-  approved.push(vendor);
-  localStorage.setItem('ss_vendors',JSON.stringify(approved));
-  // Remove from pending
-  const newPending=pending.filter(v=>v.id!==id);
-  localStorage.setItem('ss_vendors_pending',JSON.stringify(newPending));
-}
-
-// Dynamic VENDORS reference
-let VENDORS = getVENDORS();
 
 let vCityFilter='All', vCatFilter='All';
 
@@ -509,7 +461,6 @@ function filterCat(cat, btn){
 function renderVendorDir(){
   const c=document.getElementById('vendor-dir-wrap');
   if(!c)return;
-  VENDORS=getVENDORS(); // refresh from localStorage
   const filtered=VENDORS.filter(v=>(vCityFilter==='All'||v.city===vCityFilter)&&(vCatFilter==='All'||v.cat===vCatFilter));
   if(!filtered.length){c.innerHTML='<div style="text-align:center;padding:40px;color:#444;font-size:13px;">Is city/category mein abhi koi vendor nahi hai.<br><br><button onclick="go(\'vendor-apply\')" style="background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:10px;padding:10px 20px;font-size:12px;font-weight:700;color:#0D0B0E;cursor:pointer;font-family:\'DM Sans\',sans-serif;">Pehle Vendor Ban Jao →</button></div>';return;}
   c.innerHTML=filtered.map(v=>`
@@ -677,7 +628,6 @@ function go(id){
   if(id==='guests')rg();
   if(id==='vendor-dir')renderVendorDir();
   if(id==='vendor-apply')rVA();
-  if(id==='admin')rAdmin();
 }
 function goBack(){go(prevScreen==='tool'?'home':prevScreen);}
 
@@ -753,107 +703,17 @@ function rg(){
 }
 function exportPDF(){
   if(!guests.length){alert('Pehle guests add karo!');return;}
-  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
-  const veg=guests.filter(g=>g.meal==='Veg').length;
-  const pending=guests.filter(g=>g.rsvp==='Pending').length;
-  const declined=guests.filter(g=>g.rsvp==='Declined').length;
-  const dateStr=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
-
-  const htmlContent = `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"/>
-<title>Guest List — SmartShaadi</title>
-<style>
-  *{box-sizing:border-box;}
-  body{font-family:Georgia,serif;color:#1a1a1a;padding:32px;max-width:800px;margin:0 auto;background:#fff;}
-  h1{color:#C9A84C;font-size:26px;margin-bottom:4px;border-bottom:3px solid #C9A84C;padding-bottom:10px;}
-  .sub{color:#888;font-size:12px;margin-bottom:20px;}
-  .stats{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
-  .stat{background:#fdf8f0;padding:12px 18px;border-radius:10px;border-left:4px solid #C9A84C;min-width:100px;}
-  .sv{font-size:22px;font-weight:bold;color:#C9A84C;}
-  .sl{font-size:11px;color:#888;margin-top:2px;}
-  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
-  th{background:#C9A84C;color:white;padding:10px 12px;text-align:left;font-size:12px;}
-  td{padding:9px 12px;border-bottom:1px solid #eee;vertical-align:middle;}
-  tr:nth-child(even){background:#fdf8f0;}
-  .badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}
-  .confirmed{background:#e8f5e9;color:#27AE60;}
-  .pending{background:#fff3e0;color:#F39C12;}
-  .declined{background:#fce4ec;color:#E74C3C;}
-  .footer{margin-top:28px;font-size:11px;color:#aaa;text-align:center;border-top:1px solid #eee;padding-top:16px;}
-  .summary-row{background:#fffdf5;font-weight:bold;}
-</style></head><body>
-<h1>💍 SmartShaadi — Guest List</h1>
-<div class="sub">Generated on ${dateStr} &nbsp;·&nbsp; smartshaadi.online/app</div>
-<div class="stats">
-  <div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total Guests</div></div>
-  <div class="stat"><div class="sv" style="color:#27AE60;">${conf}</div><div class="sl">Confirmed</div></div>
-  <div class="stat"><div class="sv" style="color:#F39C12;">${pending}</div><div class="sl">Pending</div></div>
-  <div class="stat"><div class="sv" style="color:#E74C3C;">${declined}</div><div class="sl">Declined</div></div>
-  <div class="stat"><div class="sv" style="color:#3498DB;">${veg}</div><div class="sl">Veg</div></div>
-  <div class="stat"><div class="sv" style="color:#9B59B6;">${guests.length-veg}</div><div class="sl">Non-Veg/Jain</div></div>
-</div>
-<table>
-  <tr><th>#</th><th>Name</th><th>Side</th><th>Meal Preference</th><th>RSVP Status</th><th>Table No.</th><th>Phone</th></tr>
-  ${guests.map((g,i)=>`<tr>
-    <td style="color:#999;font-size:12px;">${i+1}</td>
-    <td><strong>${g.name}</strong></td>
-    <td style="font-size:12px;color:#666;">${g.side}</td>
-    <td style="font-size:12px;">${g.meal==='Veg'?'🌱':'g.meal==='Non-Veg'?'🍗':'🙏'} ${g.meal}</td>
-    <td><span class="badge ${g.rsvp.toLowerCase()}">${g.rsvp==='Confirmed'?'✓ '+g.rsvp:g.rsvp==='Declined'?'✗ '+g.rsvp:'⏳ '+g.rsvp}</span></td>
-    <td style="text-align:center;font-weight:bold;">${g.table||'—'}</td>
-    <td style="font-size:12px;color:#666;">${g.phone||'—'}</td>
-  </tr>`).join('')}
-  <tr class="summary-row">
-    <td colspan="4" style="padding-top:14px;font-size:13px;">Total: ${guests.length} guests</td>
-    <td style="padding-top:14px;font-size:12px;color:#27AE60;">${conf} confirmed</td>
-    <td colspan="2" style="padding-top:14px;font-size:12px;">Veg: ${veg} &nbsp;|&nbsp; Non-Veg: ${guests.length-veg}</td>
-  </tr>
-</table>
-<div class="footer">
-  SmartShaadi AI — India's #1 Free AI Wedding Planner<br>
-  smartshaadi.online &nbsp;|&nbsp; app.smartshaadi.online
-</div>
-</body></html>`;
-
-  // ── WebView-compatible: use data URI + anchor download ──
-  try {
-    // Method 1: Blob URL (works in modern WebView)
-    const blob = new Blob([htmlContent], {type:'text/html;charset=utf-8'});
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = 'SmartShaadi-GuestList-' + new Date().toLocaleDateString('en-IN').replace(/\//g,'-') + '.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(blobUrl), 3000);
-    showToast('📄 Guest list download ho rahi hai!');
-  } catch(e1) {
-    try {
-      // Method 2: data URI (fallback)
-      const encoded = encodeURIComponent(htmlContent);
-      const a = document.createElement('a');
-      a.href = 'data:text/html;charset=utf-8,' + encoded;
-      a.download = 'SmartShaadi-GuestList.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      showToast('📄 Download ho rahi hai!');
-    } catch(e2) {
-      // Method 3: new tab (last resort for older WebView)
-      const w = window.open('about:blank','_blank');
-      if(w) { w.document.write(htmlContent); w.document.close(); }
-      else { showToast('⚠️ Browser mein open karo: smartshaadi.online/app'); }
-    }
-  }
-}
-
-// Toast notification helper
-function showToast(msg, duration=3000){
-  let t=document.getElementById('toast');
-  if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#27AE60;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:700;z-index:9999;transition:opacity .3s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.3);';document.body.appendChild(t);}
-  t.textContent=msg;t.style.opacity='1';
-  clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',duration);
+  const conf=guests.filter(g=>g.rsvp==='Confirmed').length,veg=guests.filter(g=>g.meal==='Veg').length;
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><title>Guest List — SmartShaadi</title>
+  <style>body{font-family:Georgia,serif;color:#1a1a1a;padding:40px;max-width:800px;margin:0 auto;}h1{color:#C9A84C;font-size:28px;margin-bottom:4px;}.sub{color:#888;font-size:13px;margin-bottom:24px;}.stats{display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap;}.stat{background:#fdf8f0;padding:12px 20px;border-radius:10px;border-left:4px solid #C9A84C;}.sv{font-size:24px;font-weight:bold;color:#C9A84C;}.sl{font-size:11px;color:#888;}table{width:100%;border-collapse:collapse;font-size:13px;}th{background:#C9A84C;color:white;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #eee;}tr:nth-child(even){background:#fdf8f0;}.confirmed{color:#27AE60;font-weight:bold;}.pending{color:#F39C12;font-weight:bold;}.declined{color:#E74C3C;font-weight:bold;}.footer{margin-top:30px;font-size:11px;color:#aaa;text-align:center;}@media print{.pb{display:none!important;}}</style></head><body>
+  <h1>💍 SmartShaadi — Guest List</h1><div class="sub">Generated ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})} · smartshaadi.online/app</div>
+  <div class="stats"><div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total</div></div><div class="stat"><div class="sv">${conf}</div><div class="sl">Confirmed</div></div><div class="stat"><div class="sv">${veg}</div><div class="sl">Veg</div></div><div class="stat"><div class="sv">${guests.length-veg}</div><div class="sl">Non-Veg/Jain</div></div></div>
+  <table><tr><th>#</th><th>Name</th><th>Side</th><th>Meal</th><th>RSVP</th><th>Table</th><th>Phone</th></tr>
+  ${guests.map((g,i)=>`<tr><td>${i+1}</td><td><b>${g.name}</b></td><td>${g.side}</td><td>${g.meal}</td><td class="${g.rsvp.toLowerCase()}">${g.rsvp}</td><td>${g.table||'—'}</td><td>${g.phone||'—'}</td></tr>`).join('')}
+  </table><div class="footer">SmartShaadi AI · smartshaadi.online</div>
+  <br/><button class="pb" onclick="window.print()" style="background:#C9A84C;color:white;border:none;padding:12px 28px;border-radius:8px;font-size:14px;cursor:pointer;">🖨️ Print / Save PDF</button>
+  </body></html>`);w.document.close();
 }
 
 // ══ BUDGET ══
@@ -929,121 +789,9 @@ function rVA(submitted=false){
     <div style="font-size:10px;color:#444;text-align:center;margin-top:8px;">24 ghante mein WhatsApp pe contact hoga</div>`;
 }
 function subV(){
-  const n=document.getElementById('vn')?.value?.trim();
-  const p=document.getElementById('vph')?.value?.trim();
-  const ci=document.getElementById('vci')?.value?.trim();
-  const pr=document.getElementById('vpr')?.value?.trim()||'Contact for price';
-  const ds=document.getElementById('vds')?.value?.trim()||'';
-  // Get selected category
-  let selCat='Other';
-  document.querySelectorAll('#vcw button').forEach(btn=>{
-    if(btn.style.color==='var(--g)'||btn.style.color==='rgb(201, 168, 76)') selCat=btn.textContent;
-  });
+  const n=document.getElementById('vn')?.value?.trim(),p=document.getElementById('vph')?.value?.trim(),ci=document.getElementById('vci')?.value?.trim();
   if(!n||!p||!ci){alert('Naam, phone aur city zaroori hain!');return;}
-  if(p.length<10){alert('Valid phone number daalein!');return;}
-
-  const newVendor={
-    id:'v'+Date.now(), name:n, phone:p.replace(/\D/g,''),
-    city:ci, cat:selCat, price:pr, desc:ds||n+' — '+selCat+' in '+ci,
-    tier:vTier, rating:0, reviews:0,
-    badge:vTier==='Premium'?'🏆 Verified':vTier==='Featured'?'⭐ Featured':'✓ Listed',
-    approved:false, submittedAt:new Date().toISOString()
-  };
-
-  // Save to pending localStorage
-  saveVendor(newVendor);
-
-  // Send WhatsApp notification to admin (your number)
-  const adminPhone = '919575877759'; // ← APNA WHATSAPP NUMBER YAHAN DAALO
-  const waMsg = encodeURIComponent(
-    '🆕 *New Vendor Application — SmartShaadi*\n\n' +
-    '👤 Name: ' + n + '\n' +
-    '📞 Phone: ' + p + '\n' +
-    '📍 City: ' + ci + '\n' +
-    '🏷️ Category: ' + selCat + '\n' +
-    '💰 Price: ' + pr + '\n' +
-    '⭐ Tier: ' + vTier + '\n' +
-    '📝 Desc: ' + (ds||'—') + '\n\n' +
-    'App mein approve karne ke liye:\n' +
-    'smartshaadi.online/app#admin'
-  );
-
-  // Open WhatsApp with details (admin notification)
-  setTimeout(()=>{
-    window.open('https://wa.me/'+adminPhone+'?text='+waMsg, '_blank');
-  }, 500);
-
   rVA(true);
-  showToast('✅ Application submit ho gayi!');
-}
-
-
-// ══ ADMIN PANEL ══
-const ADMIN_PIN = '2611'; // ← Apna PIN set karo
-
-function rAdmin(){
-  const c=document.getElementById('admin-content');
-  if(!c)return;
-  const pending=getPendingVendors();
-
-  if(!sessionStorage.getItem('ss_admin_auth')){
-    c.innerHTML=`
-      <div style="text-align:center;padding:40px 20px;">
-        <div style="font-size:48px;margin-bottom:16px;">🔐</div>
-        <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;">Admin Access</div>
-        <div style="font-size:13px;color:#666;margin-bottom:20px;">PIN enter karein</div>
-        <input id="pin-inp" class="inp" type="password" placeholder="PIN" maxlength="6" style="text-align:center;font-size:20px;letter-spacing:8px;margin-bottom:12px;"/>
-        <button onclick="checkPin()" class="bg" style="max-width:200px;margin:0 auto;">Enter →</button>
-      </div>`;
-    return;
-  }
-
-  if(!pending.length){
-    c.innerHTML=`<div style="text-align:center;padding:40px;color:#444;font-size:13px;">
-      <div style="font-size:48px;margin-bottom:12px;">✅</div>
-      Koi pending application nahi hai!<br><br>
-      <div style="font-size:11px;color:#333;">Total approved vendors: ${getVENDORS().length - BASE_VENDORS.length} (user submitted)</div>
-    </div>`;
-    return;
-  }
-
-  c.innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:#E74C3C;margin-bottom:14px;">📋 ${pending.length} Pending Applications</div>
-    ${pending.map(v=>`
-    <div style="background:var(--c2);border-radius:16px;padding:14px;border:1px solid rgba(255,152,0,.2);margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px;">${v.name}</div>
-      <div style="font-size:11px;color:#888;margin-bottom:2px;">📍 ${v.city} · ${v.cat} · ${v.tier}</div>
-      <div style="font-size:11px;color:#888;margin-bottom:2px;">📞 ${v.phone}</div>
-      <div style="font-size:11px;color:#888;margin-bottom:2px;">💰 ${v.price}</div>
-      <div style="font-size:11px;color:#777;margin-bottom:10px;line-height:1.5;">${v.desc}</div>
-      <div style="font-size:10px;color:#444;margin-bottom:10px;">Submitted: ${new Date(v.submittedAt).toLocaleDateString('en-IN')}</div>
-      <div style="display:flex;gap:8px;">
-        <button onclick="approveV('${v.id}')" style="flex:1;background:linear-gradient(135deg,#27AE60,#2ecc71);border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;">✅ Approve</button>
-        <button onclick="rejectV('${v.id}')" style="flex:1;background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);border-radius:10px;padding:10px;font-size:12px;color:#E74C3C;cursor:pointer;font-family:'DM Sans',sans-serif;">❌ Reject</button>
-        <a href="https://wa.me/91${v.phone}" target="_blank" style="flex:1;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);border-radius:10px;padding:10px;font-size:12px;color:#25D366;text-decoration:none;text-align:center;display:block;">💬 Chat</a>
-      </div>
-    </div>`).join('')}
-  `;
-}
-
-function checkPin(){
-  const pin=document.getElementById('pin-inp')?.value;
-  if(pin===ADMIN_PIN){sessionStorage.setItem('ss_admin_auth','1');rAdmin();}
-  else{showToast('❌ Wrong PIN!',2000);}
-}
-
-function approveV(id){
-  approveVendor(id);
-  VENDORS=getVENDORS();
-  showToast('✅ Vendor approved! Ab directory mein dikh raha hai.');
-  rAdmin();
-}
-
-function rejectV(id){
-  const pending=getPendingVendors().filter(v=>v.id!==id);
-  localStorage.setItem('ss_vendors_pending',JSON.stringify(pending));
-  showToast('🗑️ Application rejected.');
-  rAdmin();
 }
 
 // ══ INIT ══
@@ -1112,15 +860,6 @@ if ('serviceWorker' in navigator) {
     .then(reg => console.log('SW registered'))
     .catch(() => {});
 }
-
-// ── Secret Admin Access: tap footer 5x ──
-let adminTaps=0,adminTimer;
-document.addEventListener('click',()=>{
-  adminTaps++;
-  clearTimeout(adminTimer);
-  adminTimer=setTimeout(()=>adminTaps=0,2000);
-  if(adminTaps>=7){adminTaps=0;go('admin');}
-});
 
 // ── Performance: preload fonts ──
 const link = document.createElement('link');
