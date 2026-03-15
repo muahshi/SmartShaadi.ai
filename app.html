@@ -3,184 +3,400 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-<title>SmartShaadi App</title>
-<meta name="theme-color" content="#0D0B0E"/>
+<title>SmartShaadi v2 — AI Wedding Planner</title>
+<meta name="theme-color" content="#0A0809"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="SmartShaadi"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700;800&display=swap"/>
+<meta name="description" content="India's #1 Free AI Wedding Planner"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"/>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1: CSS — Design System + Components
+     ═══════════════════════════════════════════ -->
 <style>
-:root{--g:#C9A84C;--g2:#E8C97A;--bg:#0D0B0E;--c1:#141118;--c2:#1a1520;--br:rgba(201,168,76,.15);}
+/* ── Design Tokens ── */
+:root{
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#F5DFA0;
+  --bg:#0A0809;--s1:#110E12;--s2:#181420;--s3:#1E1926;
+  --border:rgba(201,168,76,.12);--border2:rgba(255,255,255,.06);
+  --text:#F0EBE3;--text2:#9A8FA0;--text3:#4A4252;
+  --green:#2ECC71;--green2:#27AE60;
+  --blue:#3498DB;--red:#E74C3C;--orange:#FF9800;--pink:#E91E8C;
+  --r-sm:10px;--r-md:16px;--r-lg:20px;--r-xl:28px;
+  --shadow:0 8px 32px rgba(0,0,0,.4);
+  --shadow-gold:0 8px 32px rgba(201,168,76,.15);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --nav-h:68px;
+  --safe-bottom:max(env(safe-area-inset-bottom),8px);
+}
+
+/* ── Reset ── */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{background:var(--bg);color:#fff;font-family:'DM Sans',sans-serif;height:100%;overflow:hidden;}
-#shell{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;}
-#wrap{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+html,body{background:var(--bg);color:var(--text);font-family:var(--font-body);height:100%;overflow:hidden;}
+
+/* ── Shell ── */
+#shell{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden;}
+#wrap{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
 #wrap::-webkit-scrollbar{display:none;}
 
-/* NAV */
-#bnav{display:flex;background:rgba(13,11,14,.96);border-top:1px solid var(--br);backdrop-filter:blur(20px);padding:6px 0 max(env(safe-area-inset-bottom),8px);flex-shrink:0;position:relative;z-index:50;}
-.nb{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;}
-.nb .ni{font-size:22px;line-height:1;}
-.nb .nl{font-size:9px;font-weight:500;color:#444;transition:color .2s;}
-.nb.on .nl{color:var(--g);font-weight:800;}
-.ndot{width:16px;height:2px;background:var(--g);border-radius:1px;margin-top:2px;}
+/* ── Nav ── */
+#bnav{
+  display:flex;background:rgba(10,8,9,.97);
+  border-top:1px solid var(--border);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  padding:6px 0 var(--safe-bottom);
+  flex-shrink:0;position:relative;z-index:50;
+  height:var(--nav-h);
+}
+.nb{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;transition:transform .15s;}
+.nb:active{transform:scale(.9);}
+.nb .ni{font-size:20px;line-height:1;transition:transform .2s;}
+.nb .nl{font-size:9px;font-weight:600;color:var(--text3);transition:color .2s;letter-spacing:.3px;}
+.nb.on .nl{color:var(--gold);font-weight:800;}
+.nb.on .ni{transform:scale(1.15);}
+.ndot{width:4px;height:4px;background:var(--gold);border-radius:50%;margin-top:1px;animation:ndpop .2s ease;}
+@keyframes ndpop{from{transform:scale(0)}to{transform:scale(1)}}
 
-/* SCREENS */
+/* ── Screens ── */
 .scr{display:none;}
-.scr.on{display:block;animation:fu .2s ease;}
-@keyframes fu{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-
-/* TOOL FULLSCREEN */
+.scr.on{display:block;animation:scrIn .25s cubic-bezier(.4,0,.2,1);}
+@keyframes scrIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 #scr-tool{display:none;flex-direction:column;}
 #scr-tool.on{display:flex;}
-#tool-topbar{background:var(--bg);padding:12px 16px;border-bottom:1px solid var(--br);display:flex;align-items:center;gap:10px;flex-shrink:0;}
-#tool-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 80px;}
-#tool-body::-webkit-scrollbar{display:none;}
 
-/* AD OVERLAY */
-#adbox{position:fixed;inset:0;background:rgba(13,11,14,.97);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;max-width:480px;margin:0 auto;}
+/* ── Topbar ── */
+.topbar{
+  background:var(--bg);padding:14px 16px;
+  border-bottom:1px solid var(--border2);
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+  position:sticky;top:0;z-index:40;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.back-btn{
+  background:var(--s2);border:1px solid var(--border2);
+  border-radius:10px;padding:7px 10px;
+  color:var(--text2);font-size:14px;cursor:pointer;
+  display:flex;align-items:center;gap:4px;
+  font-family:var(--font-body);font-weight:600;font-size:12px;
+  transition:all .15s;
+}
+.back-btn:active{transform:scale(.95);background:var(--s3);}
+
+/* ── Cards ── */
+.card{background:var(--s2);border-radius:var(--r-lg);padding:16px;border:1px solid var(--border);}
+.card-sm{background:var(--s2);border-radius:var(--r-md);padding:12px;border:1px solid var(--border2);}
+
+/* ── Form ── */
+.inp{
+  width:100%;background:var(--s1);border:1.5px solid var(--border2);
+  border-radius:var(--r-sm);padding:12px 14px;
+  color:var(--text);font-size:14px;outline:none;
+  font-family:var(--font-body);transition:border-color .2s;
+}
+.inp:focus{border-color:var(--gold);}
+.inp::placeholder{color:var(--text3);}
+textarea.inp{resize:none;}
+
+.lbl{font-size:11px;color:var(--text2);margin-bottom:5px;display:block;font-weight:600;letter-spacing:.5px;text-transform:uppercase;}
+
+/* ── Buttons ── */
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:var(--r-md);padding:14px;
+  color:#0A0809;font-weight:800;font-size:14px;cursor:pointer;
+  width:100%;font-family:var(--font-body);
+  transition:all .15s;box-shadow:var(--shadow-gold);
+  letter-spacing:.3px;
+}
+.btn-gold:active{transform:scale(.98);opacity:.9;}
+.btn-ghost{
+  background:var(--s2);border:1.5px solid var(--border);
+  border-radius:var(--r-md);padding:11px 16px;
+  color:var(--gold);font-weight:700;font-size:13px;cursor:pointer;
+  font-family:var(--font-body);transition:all .15s;width:100%;
+}
+.btn-ghost:active{transform:scale(.98);background:var(--s3);}
+.btn-sm{
+  background:var(--s3);border:1px solid var(--border2);
+  border-radius:8px;padding:7px 14px;
+  color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;
+  font-family:var(--font-body);transition:all .15s;white-space:nowrap;
+}
+.btn-sm.on{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold);font-weight:700;}
+.btn-sm:active{transform:scale(.95);}
+
+/* ── Pills / Badges ── */
+.pill{background:rgba(201,168,76,.12);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;letter-spacing:.5px;}
+.pill-green{background:rgba(46,204,113,.1);color:var(--green);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;}
+.pill-red{background:rgba(231,76,60,.1);color:var(--red);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;}
+
+/* ── Progress Bar ── */
+.pbar{height:6px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;}
+.pbar-fill{height:100%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+
+/* ── Stats Grid ── */
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.sb{background:var(--s2);border-radius:var(--r-md);padding:11px 8px;text-align:center;border:1px solid var(--border2);}
+.sv{font-size:16px;font-weight:800;}
+.sl{font-size:9px;color:var(--text3);margin-top:2px;}
+
+/* ── Display font ── */
+.st{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);line-height:1.2;}
+
+/* ── Chat ── */
+.mb{max-width:82%;padding:12px 15px;border-radius:18px;font-size:13px;line-height:1.65;}
+.mb.ai{background:var(--s2);color:#ddd;border:1px solid var(--border);border-bottom-left-radius:5px;}
+.mb.me{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0A0809;border-bottom-right-radius:5px;font-weight:500;}
+.qc{
+  flex-shrink:0;background:var(--s2);border:1.5px solid var(--border);
+  border-radius:20px;padding:7px 14px;font-size:11px;color:var(--gold);
+  cursor:pointer;white-space:nowrap;font-family:var(--font-body);font-weight:600;
+  transition:all .15s;
+}
+.qc:active{transform:scale(.95);background:var(--s3);}
+
+/* ── Typing dots ── */
+.td{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;animation:bnc .9s infinite;}
+@keyframes bnc{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-5px);opacity:1}}
+
+/* ── RSVP buttons ── */
+.rsvpb{flex:1;padding:8px 4px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid rgba(255,255,255,.06);background:var(--bg);color:var(--text3);font-family:var(--font-body);font-weight:600;transition:all .15s;}
+.rsvpb:active{transform:scale(.95);}
+.rsvpb.ok{background:rgba(46,204,113,.12);border-color:var(--green);color:var(--green);}
+.rsvpb.wt{background:rgba(255,152,0,.12);border-color:var(--orange);color:var(--orange);}
+.rsvpb.no{background:rgba(231,76,60,.12);border-color:var(--red);color:var(--red);}
+
+/* ── Task ── */
+.task-r{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:var(--r-sm);margin-bottom:6px;cursor:pointer;
+  border:1px solid var(--border2);background:var(--s2);
+  margin-left:48px;transition:all .2s;
+}
+.task-r.dn{background:rgba(46,204,113,.06);border-color:rgba(46,204,113,.2);}
+.tck{width:20px;height:20px;border-radius:50%;border:2px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all .2s;}
+.tck.dn{background:var(--green);border-color:var(--green);}
+
+/* ── Vendor cards ── */
+.vcard{
+  background:var(--s2);border-radius:var(--r-lg);
+  padding:16px;border:1px solid var(--border2);margin-bottom:10px;
+  transition:border-color .2s;
+}
+.vcard:hover{border-color:var(--border);}
+.vbadge-premium{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
+.vbadge-featured{background:rgba(52,152,219,.12);color:var(--blue);border:1px solid rgba(52,152,219,.3);}
+.vbadge-basic{background:rgba(255,255,255,.04);color:var(--text2);border:1px solid var(--border2);}
+
+/* ── Countdown ── */
+.countdown-num{
+  font-family:var(--font-display);font-size:52px;font-weight:900;
+  background:linear-gradient(135deg,var(--gold),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1;
+}
+
+/* ── Separator ── */
+.sep{height:1px;background:var(--border2);margin:16px 0;}
+
+/* ── Misc ── */
+.bbtn{background:none;border:none;color:var(--text2);font-size:12px;cursor:pointer;padding:0;font-family:var(--font-body);display:inline-flex;align-items:center;gap:4px;font-weight:600;}
+.bbtn:active{opacity:.7;}
+
+/* ── Ad Overlay ── */
+#adbox{position:fixed;inset:0;background:rgba(10,8,9,.97);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;max-width:480px;margin:0 auto;}
 #adbox.on{display:flex;}
 
-/* VENDOR DIR */
-#vendor-dir-wrap{padding:16px;}
-.vcard{background:var(--c2);border-radius:16px;padding:14px;border:1px solid rgba(255,255,255,.05);margin-bottom:10px;}
-.vcity-btn{padding:7px 14px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:var(--bg);color:#666;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;}
-.vcity-btn.on{background:rgba(201,168,76,.15);border-color:var(--g);color:var(--g);font-weight:700;}
+/* ── Toast ── */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--s3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:24px;font-size:13px;font-weight:700;z-index:9999;transition:all .3s;white-space:nowrap;box-shadow:var(--shadow);pointer-events:none;opacity:0;}
 
-/* SHARED */
-.card{background:var(--c2);border-radius:18px;padding:16px;border:1px solid var(--br);}
-.inp{width:100%;background:var(--c1);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:11px 14px;color:#fff;font-size:13px;outline:none;font-family:'DM Sans',sans-serif;}
-.inp:focus{border-color:var(--g);}
-.inp::placeholder{color:#2a2a2a;}
-textarea.inp{resize:none;}
-.lbl{font-size:11px;color:#888;margin-bottom:5px;display:block;}
-.bg{background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:14px;padding:13px;color:#0D0B0E;font-weight:800;font-size:14px;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;}
-.bg:active{opacity:.85;}
-.bgh{background:var(--c2);border:1px solid var(--br);border-radius:12px;padding:10px 14px;color:var(--g);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.pill{background:rgba(201,168,76,.12);color:var(--g);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;}
-.st{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;}
-.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.sb{background:var(--c2);border-radius:12px;padding:10px 6px;text-align:center;}
-.bbar{height:7px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;margin:8px 0;}
-.bf{height:100%;border-radius:4px;transition:width .4s;}
-.rsvpb{flex:1;padding:7px 4px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid rgba(255,255,255,.06);background:var(--bg);color:#555;font-family:'DM Sans',sans-serif;transition:all .15s;}
-.rsvpb.ok{background:#4CAF5022;border-color:#4CAF50;color:#4CAF50;font-weight:700;}
-.rsvpb.wt{background:#FF980022;border-color:#FF9800;color:#FF9800;font-weight:700;}
-.rsvpb.no{background:#f4433622;border-color:#f44336;color:#f44336;font-weight:700;}
-.task-r{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;border:1px solid rgba(255,255,255,.04);background:var(--c2);margin-left:52px;}
-.task-r.dn{background:#27AE6011;border-color:#27AE6033;}
-.tck{width:20px;height:20px;border-radius:50%;border:2px solid #333;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;}
-.tck.dn{background:#27AE60;border-color:#27AE60;}
-.mb{max-width:82%;padding:11px 15px;border-radius:16px;font-size:13px;line-height:1.6;}
-.mb.ai{background:var(--c2);color:#ddd;border:1px solid var(--br);border-bottom-left-radius:4px;}
-.mb.me{background:linear-gradient(135deg,var(--g),var(--g2));color:#0D0B0E;border-bottom-right-radius:4px;font-weight:500;}
-.qc{flex-shrink:0;background:var(--c2);border:1px solid var(--br);border-radius:20px;padding:6px 12px;font-size:11px;color:var(--g);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;}
-.td{width:8px;height:8px;border-radius:50%;background:var(--g);display:inline-block;animation:bnc 1s infinite;}
-@keyframes bnc{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
-@keyframes spin{0%{transform:rotate(0deg) scale(.5);opacity:0}60%{transform:rotate(360deg) scale(1.1)}100%{transform:rotate(360deg) scale(1);opacity:1}}
-.bbtn{background:none;border:none;color:#555;font-size:12px;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:4px;}
-.sep{height:1px;background:rgba(255,255,255,.05);margin:16px 0;}
+/* ── Offline Banner ── */
+#offline-banner{display:none;position:sticky;top:0;width:100%;background:var(--red);padding:9px 16px;z-index:998;text-align:center;font-size:12px;font-weight:700;color:#fff;}
+
+/* ── Install Prompt ── */
+#install-banner{display:none;position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:452px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;z-index:100;box-shadow:var(--shadow);animation:slideUp .3s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ── Splash ── */
+#splash{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s ease;}
+@keyframes spinIn{0%{transform:rotate(-30deg) scale(.5);opacity:0}60%{transform:rotate(10deg) scale(1.1)}100%{transform:rotate(0deg) scale(1);opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Share Card ── */
+#share-modal{position:fixed;inset:0;background:rgba(10,8,9,.97);z-index:990;display:none;overflow-y:auto;padding:20px;}
+#share-modal.on{display:block;}
+.share-card{background:linear-gradient(160deg,#1A1200,#0A0809 50%,#0D0B15);border-radius:var(--r-xl);padding:24px;border:1px solid rgba(201,168,76,.25);max-width:440px;margin:0 auto;}
+
+/* ── Scrollbar ── */
+#tool-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 100px;}
+#tool-body::-webkit-scrollbar{display:none;}
+
+/* ── Animations ── */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.loading{animation:pulse 1.5s infinite;}
 </style>
 </head>
 <body>
 
-<!-- ══ SPLASH SCREEN ══ -->
-<div id="splash" style="position:fixed;inset:0;background:#0D0B0E;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .4s ease;">
+<!-- ═══════════════════════════════
+     SECTION 2: UI — Splash Screen
+     ═══════════════════════════════ -->
+<div id="splash">
   <div style="text-align:center;">
-    <div style="font-size:64px;margin-bottom:16px;animation:spin 1.5s ease-out;">💍</div>
-    <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:700;color:#fff;line-height:1.1;">Smart<span style="color:#C9A84C;">Shaadi</span></div>
-    <div style="font-size:13px;color:#555;margin-top:8px;letter-spacing:2px;text-transform:uppercase;">AI Wedding Planner</div>
-    <div style="margin-top:32px;display:flex;gap:8px;justify-content:center;" id="splash-dots">
-      <div style="width:8px;height:8px;border-radius:50%;background:#C9A84C;animation:bnc 1s infinite;animation-delay:0s;"></div>
-      <div style="width:8px;height:8px;border-radius:50%;background:#C9A84C;animation:bnc 1s infinite;animation-delay:.2s;"></div>
-      <div style="width:8px;height:8px;border-radius:50%;background:#C9A84C;animation:bnc 1s infinite;animation-delay:.4s;"></div>
+    <div style="font-size:72px;margin-bottom:20px;animation:spinIn 1.2s cubic-bezier(.34,1.56,.64,1);">💍</div>
+    <div style="font-family:var(--font-display);font-size:38px;font-weight:900;color:var(--text);line-height:1.1;animation:fadeUp .6s .4s both;">Smart<span style="color:var(--gold);">Shaadi</span></div>
+    <div style="font-size:11px;color:var(--text3);margin-top:8px;letter-spacing:3px;text-transform:uppercase;animation:fadeUp .6s .6s both;">v2 · AI Wedding Planner</div>
+    <div style="margin-top:36px;display:flex;gap:8px;justify-content:center;animation:fadeUp .6s .8s both;">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bnc .9s infinite;"></div>
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bnc .9s infinite;animation-delay:.2s;"></div>
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bnc .9s infinite;animation-delay:.4s;"></div>
     </div>
   </div>
-  <div style="position:absolute;bottom:40px;font-size:11px;color:#333;">India's #1 Free AI Wedding Planner</div>
+  <div style="position:absolute;bottom:36px;font-size:11px;color:var(--text3);letter-spacing:1px;">India's #1 Free AI Wedding Planner</div>
 </div>
 
-<!-- ══ OFFLINE BANNER ══ -->
-<div id="offline-banner" style="display:none;position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#E74C3C;padding:10px 16px;z-index:998;text-align:center;font-size:12px;font-weight:700;color:#fff;">
-  📡 Internet nahi hai — AI tools offline kaam nahi karenge
+<!-- Offline Banner -->
+<div id="offline-banner">📡 Internet nahi hai — AI tools offline kaam nahi karenge</div>
+
+<!-- Install Prompt -->
+<div id="install-banner">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="font-size:32px;">💍</div>
+    <div style="flex:1;">
+      <div style="font-size:13px;font-weight:800;color:var(--text);">App Install Karo — Free!</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:2px;">Home screen pe add karo for quick access</div>
+    </div>
+    <button id="install-btn" class="btn-gold" style="width:auto;padding:10px 16px;font-size:12px;">Install</button>
+    <button onclick="document.getElementById('install-banner').style.display='none'" style="background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;padding:4px;">✕</button>
+  </div>
 </div>
 
-<div id="shell">
-
-<!-- ══ AD OVERLAY ══ -->
+<!-- Ad Overlay -->
 <div id="adbox">
-  <div style="background:var(--c2);border-radius:24px;padding:24px 20px;border:1px solid var(--br);text-align:center;width:100%;max-width:360px;">
-    <div style="font-size:48px;margin-bottom:10px;">⚡</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--g);margin-bottom:6px;">3 Free Uses Ho Gayi!</div>
-    <div style="font-size:13px;color:#888;line-height:1.6;margin-bottom:20px;">Ek short ad dekho aur paao <b style="color:var(--g);">+3 free uses</b> — ya vendor se directly contact karo!</div>
-    <div style="background:#1a1a2e;border-radius:14px;padding:14px;border:1px solid rgba(201,168,76,.2);margin-bottom:16px;text-align:left;">
-      <div style="font-size:9px;color:#444;margin-bottom:6px;">📢 SPONSORED</div>
-      <div style="font-size:14px;font-weight:700;color:var(--g);margin-bottom:3px;">Sharma Photography, Delhi</div>
-      <div style="font-size:11px;color:#888;margin-bottom:10px;">⭐ 4.9 · 200+ weddings · ₹35,000 se shuru</div>
+  <div style="background:var(--s2);border-radius:var(--r-xl);padding:24px 20px;border:1px solid var(--border);text-align:center;width:100%;max-width:360px;">
+    <div style="font-size:44px;margin-bottom:12px;">⚡</div>
+    <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);margin-bottom:6px;">3 Free Uses Ho Gayi!</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;">Ek short ad dekho aur paao <b style="color:var(--gold);">+3 free uses</b></div>
+    <div style="background:var(--s3);border-radius:var(--r-md);padding:14px;border:1px solid rgba(201,168,76,.15);margin-bottom:16px;text-align:left;">
+      <div style="font-size:9px;color:var(--text3);margin-bottom:6px;letter-spacing:1px;">📢 SPONSORED</div>
+      <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:3px;">Sharma Photography, Delhi</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:12px;">⭐ 4.9 · 200+ weddings · ₹35,000 se shuru</div>
       <div style="display:flex;gap:8px;">
-        <button onclick="closeAd(true)" style="flex:1;background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:800;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;">📞 Contact</button>
-        <button onclick="closeAd(true)" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;font-size:12px;color:#888;cursor:pointer;font-family:'DM Sans',sans-serif;">Skip →</button>
+        <button onclick="closeAd(true)" class="btn-gold" style="flex:1;padding:10px;font-size:12px;">📞 Contact</button>
+        <button onclick="closeAd(true)" style="flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border2);border-radius:10px;padding:10px;font-size:12px;color:var(--text2);cursor:pointer;font-family:var(--font-body);">Skip →</button>
       </div>
     </div>
-    <button onclick="closeAd(false)" style="background:none;border:none;color:#444;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">← Ghar Wapas</button>
+    <button onclick="closeAd(false)" class="bbtn" style="font-size:12px;">← Ghar Wapas</button>
   </div>
 </div>
 
-<!-- ══ SCREEN WRAP ══ -->
+<!-- Share Modal -->
+<div id="share-modal">
+  <div style="max-width:440px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <button onclick="document.getElementById('share-modal').classList.remove('on')" class="back-btn">← Wapas</button>
+      <div style="font-size:15px;font-weight:800;">💌 Wedding Report Card</div>
+    </div>
+    <div id="share-card-content"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════
+     SECTION 3: Shell
+     ═══════════════════ -->
+<div id="shell">
 <div id="wrap">
 
-<!-- ████ HOME ████ -->
+<!-- ████████ HOME SCREEN ████████ -->
 <div id="scr-home" class="scr on">
 <div style="padding-bottom:24px;">
 
   <!-- Hero -->
-  <div style="background:linear-gradient(160deg,#0D0B0E,#1a1520 55%,#0D0B0E);padding:36px 18px 24px;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1),transparent);pointer-events:none;"></div>
+  <div style="background:linear-gradient(160deg,var(--s1),var(--s3) 60%,var(--bg));padding:32px 18px 20px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08),transparent);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(232,201,122,.05),transparent);pointer-events:none;"></div>
     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
       <div>
-        <div style="font-size:10px;color:var(--g);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">India's #1 Free</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:#fff;line-height:1.1;">Smart<span style="color:var(--g);">Shaadi</span> 💍</div>
-        <div style="font-size:12px;color:#555;margin-top:5px;">AI Wedding Planner · Forever Free</div>
+        <div style="font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-weight:700;">India's #1 Free</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:900;color:var(--text);line-height:1.1;">Smart<span style="color:var(--gold);">Shaadi</span> 💍</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:5px;font-weight:500;">AI Wedding Planner · v2 · Forever Free</div>
       </div>
       <a href="https://www.smartshaadi.online" style="text-decoration:none;">
-        <div style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:12px;padding:8px 12px;text-align:center;">
+        <div style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-md);padding:9px 12px;text-align:center;">
           <div style="font-size:18px;">🌐</div>
-          <div style="font-size:9px;color:var(--g);margin-top:2px;">Website</div>
+          <div style="font-size:9px;color:var(--gold);margin-top:2px;font-weight:700;">Website</div>
         </div>
       </a>
     </div>
+
+    <!-- Stats row -->
     <div class="sg" style="margin-top:18px;">
-      <div class="sb" style="border:1px solid var(--br);"><div style="font-size:15px;font-weight:800;color:var(--g);">10</div><div style="font-size:9px;color:#666;">AI Tools</div></div>
-      <div class="sb" style="border:1px solid var(--br);"><div style="font-size:15px;font-weight:800;color:#4CAF50;">Free</div><div style="font-size:9px;color:#666;">Forever</div></div>
-      <div class="sb" style="border:1px solid var(--br);"><div style="font-size:15px;font-weight:800;color:#3498DB;">PDF</div><div style="font-size:9px;color:#666;">Export</div></div>
-      <div class="sb" style="border:1px solid var(--br);"><div style="font-size:15px;font-weight:800;color:#E91E8C;">24/7</div><div style="font-size:9px;color:#666;">Support</div></div>
+      <div class="sb" style="border-color:rgba(201,168,76,.2);"><div class="sv" style="color:var(--gold);">10</div><div class="sl">AI Tools</div></div>
+      <div class="sb" style="border-color:rgba(46,204,113,.2);"><div class="sv" style="color:var(--green);font-size:13px;">Free</div><div class="sl">Forever</div></div>
+      <div class="sb" style="border-color:rgba(52,152,219,.2);"><div class="sv" style="color:var(--blue);font-size:13px;">PDF</div><div class="sl">Export</div></div>
+      <div class="sb" style="border-color:rgba(233,30,140,.2);"><div class="sv" style="color:var(--pink);font-size:13px;">24/7</div><div class="sl">Support</div></div>
+    </div>
+  </div>
+
+  <!-- Countdown widget (shown when date is set) -->
+  <div id="home-countdown" style="margin:14px 14px 0;display:none;">
+    <div style="background:linear-gradient(135deg,var(--s2),var(--s3));border-radius:var(--r-xl);padding:18px;border:1px solid rgba(201,168,76,.25);cursor:pointer;" onclick="go('countdown')">
+      <div style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:8px;">⏳ Wedding Countdown</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px;">
+        <div class="countdown-num" id="home-days">—</div>
+        <div style="font-size:18px;color:var(--text2);font-weight:600;">days to go</div>
+      </div>
+      <div class="pbar"><div class="pbar-fill" id="home-prog" style="background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--text3);">
+        <span id="home-tasks-done">0 tasks done</span>
+        <span style="color:var(--gold);font-weight:700;">View Plan →</span>
+      </div>
     </div>
   </div>
 
   <!-- Free uses bar -->
   <div style="margin:14px 14px 0;">
-    <div class="card" style="border-color:rgba(201,168,76,.25);padding:14px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <div style="font-size:13px;font-weight:700;color:#fff;">🎁 Free Uses Today</div>
+    <div class="card" style="border-color:rgba(201,168,76,.2);padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div style="font-size:13px;font-weight:700;">🎁 Free Uses Today</div>
         <span id="uses-pill" class="pill">3/3 remaining</span>
       </div>
-      <div class="bbar" style="height:8px;margin:0 0 6px;"><div id="uses-bar" class="bf" style="width:100%;background:linear-gradient(90deg,var(--g),var(--g2));"></div></div>
-      <div style="font-size:11px;color:#555;">Har tool ek use · Ad dekho = +3 free uses</div>
+      <div class="pbar" style="height:7px;margin-bottom:6px;"><div id="uses-bar" class="pbar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
+      <div style="font-size:11px;color:var(--text3);">Har tool ek use · Ad dekho = +3 free uses</div>
     </div>
   </div>
 
-  <!-- Quick btns -->
+  <!-- Quick action buttons -->
   <div style="padding:14px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <button onclick="go('chat')" class="bg" style="font-size:13px;padding:13px;">🤖 AI Chat</button>
-    <button onclick="go('guests')" class="bgh" style="width:100%;">👥 Guests + PDF</button>
-    <button onclick="go('budget')" class="bgh" style="width:100%;color:#27AE60;border-color:#27AE6033;">💰 Budget</button>
-    <button onclick="go('timeline')" class="bgh" style="width:100%;color:#FF5722;border-color:#FF572233;">📅 Timeline</button>
+    <button onclick="go('chat')" class="btn-gold" style="font-size:13px;padding:14px;">🤖 AI Chat</button>
+    <button onclick="go('countdown')" class="btn-ghost" style="color:var(--gold);">⏳ Countdown</button>
+    <button onclick="go('guests')" class="btn-ghost" style="color:#1ABC9C;border-color:rgba(26,188,156,.25);">👥 Guests + PDF</button>
+    <button onclick="go('budget')" class="btn-ghost" style="color:var(--green);border-color:rgba(39,174,96,.25);">💰 Budget</button>
+  </div>
+
+  <!-- Report card CTA -->
+  <div style="padding:14px 14px 0;">
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(233,30,140,.05));border-radius:var(--r-xl);padding:16px;border:1px solid rgba(201,168,76,.2);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="font-size:32px;">💌</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:800;color:var(--text);">Wedding Report Card</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:2px;">Share karo friends ke saath!</div>
+        </div>
+        <button onclick="go('report')" class="btn-gold" style="width:auto;padding:10px 16px;font-size:12px;">Generate</button>
+      </div>
+    </div>
   </div>
 
   <!-- Tools section -->
   <div style="padding:18px 14px 0;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="st">✨ AI <span style="color:var(--g);">Tools</span></div>
+      <div class="st">✨ AI <span style="color:var(--gold);">Tools</span></div>
       <span class="pill">10 Free</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="tgrid"></div>
@@ -188,225 +404,539 @@ textarea.inp{resize:none;}
 
   <!-- Vendor CTA -->
   <div style="padding:18px 14px 0;">
-    <div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(232,201,122,.05));border-radius:20px;padding:18px;border:1px dashed rgba(201,168,76,.3);">
-      <div style="font-size:16px;font-weight:800;color:var(--g);margin-bottom:4px;">🏆 Vendor hain? List Karein!</div>
-      <div style="font-size:12px;color:#666;margin-bottom:14px;line-height:1.5;">1000+ couples daily apni shaadi plan kar rahe hain</div>
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(232,201,122,.04));border-radius:var(--r-xl);padding:18px;border:1px dashed rgba(201,168,76,.25);">
+      <div style="font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px;">🏆 Vendor hain? List Karein!</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:14px;line-height:1.5;">1000+ couples daily apni shaadi plan kar rahe hain</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
-        <div onclick="go('vendor-apply');setTier('Basic')" style="background:rgba(255,255,255,.05);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--br);"><div style="font-size:12px;color:var(--g);font-weight:700;">Basic</div><div style="font-size:10px;color:#555;">₹999/mo</div></div>
-        <div onclick="go('vendor-apply');setTier('Featured')" style="background:linear-gradient(135deg,var(--g),var(--g2));border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;"><div style="font-size:12px;color:#0D0B0E;font-weight:800;">⭐ Featured</div><div style="font-size:10px;color:#0D0B0E88;">₹1,999/mo</div></div>
-        <div onclick="go('vendor-apply');setTier('Premium')" style="background:rgba(255,255,255,.05);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--br);"><div style="font-size:12px;color:var(--g);font-weight:700;">🏆 Premium</div><div style="font-size:10px;color:#555;">₹2,999/mo</div></div>
+        <div onclick="go('vendor-apply');App.vTier='Basic'" style="background:var(--s3);border-radius:var(--r-md);padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">Basic</div><div style="font-size:10px;color:var(--text3);">₹999/mo</div></div>
+        <div onclick="go('vendor-apply');App.vTier='Featured'" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:var(--r-md);padding:10px 6px;text-align:center;cursor:pointer;"><div style="font-size:12px;color:#0A0809;font-weight:800;">⭐ Featured</div><div style="font-size:10px;color:#0A080988;">₹1,999/mo</div></div>
+        <div onclick="go('vendor-apply');App.vTier='Premium'" style="background:var(--s3);border-radius:var(--r-md);padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">🏆 Premium</div><div style="font-size:10px;color:var(--text3);">₹2,999/mo</div></div>
       </div>
-      <button onclick="go('vendor-dir')" class="bgh" style="width:100%;margin-bottom:8px;">🔍 Verified Vendors Dekho</button>
-      <button onclick="go('vendor-apply')" class="bg">📝 Vendor Ban Jao →</button>
+      <button onclick="go('vendor-dir')" class="btn-ghost" style="margin-bottom:8px;">🔍 Verified Vendors Dekho</button>
+      <button onclick="go('vendor-apply')" class="btn-gold">📝 Vendor Ban Jao →</button>
     </div>
   </div>
 
 </div>
 </div><!-- /home -->
 
-<!-- ████ TOOL SCREEN (fullscreen) ████ -->
+<!-- ████████ TOOL FULLSCREEN ████████ -->
 <div id="scr-tool" class="scr">
-  <div id="tool-topbar">
-    <button onclick="goBack()" style="background:none;border:none;color:#888;font-size:24px;cursor:pointer;line-height:1;padding:0;width:32px;">←</button>
-    <div id="tool-name" style="font-size:15px;font-weight:800;color:#fff;flex:1;"></div>
-    <a id="tool-full-link" href="#" target="_blank" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--g);text-decoration:none;font-weight:700;white-space:nowrap;">🌐 Full Page</a>
+  <div class="topbar">
+    <button onclick="goBack()" class="back-btn">← Back</button>
+    <div id="tool-name" style="font-size:15px;font-weight:800;flex:1;"></div>
+    <a id="tool-full-link" href="#" target="_blank" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--gold);text-decoration:none;font-weight:700;white-space:nowrap;">🌐 Full</a>
   </div>
   <div id="tool-body"></div>
 </div>
 
-<!-- ████ CHAT ████ -->
+<!-- ████████ CHAT ████████ -->
 <div id="scr-chat" class="scr">
-<div style="display:flex;flex-direction:column;height:calc(100dvh - 68px);">
-  <div style="background:var(--bg);padding:14px 16px 12px;border-bottom:1px solid var(--br);flex-shrink:0;">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--g2));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🤖</div>
-      <div><div style="font-size:14px;font-weight:700;">SmartShaadi AI</div><div style="font-size:10px;color:#4CAF50;">● Online · Hindi & English</div></div>
+  <div style="display:flex;flex-direction:column;height:calc(100dvh - var(--nav-h));">
+    <div class="topbar">
+      <button onclick="go('home')" class="back-btn">← Wapas</button>
+      <div style="display:flex;align-items:center;gap:10px;flex:1;">
+        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🤖</div>
+        <div><div style="font-size:14px;font-weight:700;">SmartShaadi AI</div><div style="font-size:10px;color:var(--green);">● Online · Hindi & English</div></div>
+      </div>
+    </div>
+    <div id="chat-wrap" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;">
+      <div style="display:flex;"><div class="mb ai">Namaste! 🙏 Budget, venue, kundali, vendors — kuch bhi poochho! Hindi ya English dono chalega.</div></div>
+    </div>
+    <div style="padding:8px 14px 4px;display:flex;gap:8px;overflow-x:auto;flex-shrink:0;" id="chips">
+      <button class="qc" onclick="sc('Budget plan chahiye 💰')">Budget 💰</button>
+      <button class="qc" onclick="sc('Venue suggest karo')">Venue 🏛️</button>
+      <button class="qc" onclick="sc('Kundali check karo')">Kundali 🔮</button>
+      <button class="qc" onclick="sc('Catering cost Delhi')">Catering 🍽️</button>
+      <button class="qc" onclick="sc('Sangeet songs list')">Songs 🎵</button>
+      <button class="qc" onclick="sc('Photography tips')">Photos 📸</button>
+    </div>
+    <div style="padding:8px 14px 10px;background:var(--bg);border-top:1px solid var(--border2);flex-shrink:0;">
+      <div style="display:flex;gap:8px;">
+        <input id="ci" class="inp" placeholder="Apna sawaal poochho..." style="border-radius:24px;flex:1;" onkeydown="if(event.key==='Enter')sendChat()"/>
+        <button onclick="sendChat()" style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;font-size:18px;cursor:pointer;flex-shrink:0;box-shadow:var(--shadow-gold);transition:transform .15s;" onmousedown="this.style.transform='scale(.92)'" onmouseup="this.style.transform=''">➤</button>
+      </div>
     </div>
   </div>
-  <div id="chat-wrap" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;">
-    <div style="display:flex;"><div class="mb ai">Namaste! 🙏 Budget, venue, kundali, vendors — kuch bhi poochho! Hindi ya English dono chalega.</div></div>
+</div>
+
+<!-- ████████ COUNTDOWN DASHBOARD ████████ -->
+<div id="scr-countdown" class="scr">
+<div style="padding-bottom:24px;">
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st" style="flex:1;">⏳ <span style="color:var(--gold);">Countdown</span></div>
   </div>
-  <div style="padding:8px 14px;display:flex;gap:8px;overflow-x:auto;flex-shrink:0;" id="chips">
-    <button class="qc" onclick="sc('Budget plan chahiye 💰')">Budget 💰</button>
-    <button class="qc" onclick="sc('Venue suggest karo')">Venue 🏛️</button>
-    <button class="qc" onclick="sc('Kundali check karo')">Kundali 🔮</button>
-    <button class="qc" onclick="sc('Catering cost Delhi')">Catering 🍽️</button>
-    <button class="qc" onclick="sc('Sangeet songs list')">Songs 🎵</button>
-    <button class="qc" onclick="sc('Photography tips')">Photos 📸</button>
+
+  <!-- Set date -->
+  <div style="padding:14px 14px 0;">
+    <div class="card" style="border-color:rgba(201,168,76,.25);">
+      <label class="lbl">Wedding Date Set Karo</label>
+      <input type="date" id="wdate-cd" class="inp" style="color:var(--gold);font-size:16px;font-weight:700;" onchange="saveWeddingDate(this.value);rCountdown()"/>
+    </div>
   </div>
-  <div style="padding:10px 14px 12px;background:var(--bg);border-top:1px solid rgba(255,255,255,.04);flex-shrink:0;">
-    <div style="display:flex;gap:8px;">
-      <input id="ci" class="inp" placeholder="Apna sawaal poochho..." style="border-radius:24px;flex:1;" onkeydown="if(event.key==='Enter')sendChat()"/>
-      <button onclick="sendChat()" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--g2));border:none;font-size:18px;cursor:pointer;flex-shrink:0;">➤</button>
+
+  <!-- Countdown hero -->
+  <div id="cd-hero" style="padding:14px 14px 0;display:none;">
+    <div style="background:linear-gradient(160deg,var(--s2),var(--s3));border-radius:var(--r-xl);padding:24px;border:1px solid rgba(201,168,76,.25);text-align:center;">
+      <div style="font-size:11px;color:var(--text2);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:600;">Shaadi Mein Sirf</div>
+      <div class="countdown-num" id="cd-days">—</div>
+      <div style="font-size:20px;color:var(--text2);font-weight:600;margin-top:4px;">din baaki hain 💍</div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r-md);padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-weeks">—</div><div style="font-size:9px;color:var(--text3);">Weeks</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r-md);padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-months">—</div><div style="font-size:9px;color:var(--text3);">Months</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:var(--r-md);padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-date-str">—</div><div style="font-size:9px;color:var(--text3);">Date</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Planning progress -->
+  <div id="cd-progress" style="padding:14px 14px 0;display:none;">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:800;">📋 Planning Progress</div>
+        <span id="cd-prog-pill" class="pill">0%</span>
+      </div>
+      <div class="pbar" style="height:10px;margin-bottom:8px;"><div class="pbar-fill" id="cd-prog-bar" style="background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
+      <div style="font-size:11px;color:var(--text3);" id="cd-prog-text">0 tasks complete</div>
+    </div>
+  </div>
+
+  <!-- Today's tasks -->
+  <div id="cd-today" style="padding:14px 14px 0;display:none;">
+    <div style="font-size:13px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:6px;">🔥 Today's Tasks <span class="pill-red" id="cd-today-count">0</span></div>
+    <div id="cd-today-list"></div>
+  </div>
+
+  <!-- Upcoming tasks -->
+  <div id="cd-upcoming" style="padding:10px 14px 0;display:none;">
+    <div style="font-size:13px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:6px;">📅 Upcoming <span class="pill" id="cd-up-count">0</span></div>
+    <div id="cd-upcoming-list"></div>
+  </div>
+
+  <!-- Completed tasks -->
+  <div id="cd-done-section" style="padding:10px 14px 0;display:none;">
+    <div style="font-size:13px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:6px;">✅ Completed <span class="pill-green" id="cd-done-count">0</span></div>
+    <div id="cd-done-list"></div>
+  </div>
+</div>
+</div>
+
+<!-- ████████ REPORT CARD ████████ -->
+<div id="scr-report" class="scr">
+<div style="padding-bottom:24px;">
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st" style="flex:1;">💌 <span style="color:var(--gold);">Report Card</span></div>
+  </div>
+  <div style="padding:14px;">
+    <div class="card" style="margin-bottom:14px;border-color:rgba(201,168,76,.2);">
+      <div style="font-size:13px;font-weight:800;color:var(--gold);margin-bottom:14px;">✍️ Details Bharo</div>
+      <label class="lbl">Bride ka Naam</label>
+      <input id="rc-bride" class="inp" placeholder="Priya Sharma" style="margin-bottom:10px;"/>
+      <label class="lbl">Groom ka Naam</label>
+      <input id="rc-groom" class="inp" placeholder="Rahul Gupta" style="margin-bottom:10px;"/>
+      <label class="lbl">City</label>
+      <input id="rc-city" class="inp" placeholder="Delhi / Mumbai / Jaipur" style="margin-bottom:10px;"/>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div>
+          <label class="lbl">Guests</label>
+          <input id="rc-guests" class="inp" placeholder="200" type="number"/>
+        </div>
+        <div>
+          <label class="lbl">Budget (₹)</label>
+          <input id="rc-budget" class="inp" placeholder="1500000" type="number"/>
+        </div>
+      </div>
+      <button onclick="genReport()" class="btn-gold">💌 Generate Report Card</button>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ████ GUESTS ████ -->
+<!-- ████████ GUESTS ████████ -->
 <div id="scr-guests" class="scr">
 <div style="padding-bottom:24px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid rgba(26,188,156,.2);">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div><div class="st">👥 Guest <span style="color:#1ABC9C;">Manager</span></div><div style="font-size:11px;color:#666;margin-top:2px;" id="gsub">0 guests</div></div>
-      <button onclick="exportPDF()" style="background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:12px;padding:10px 16px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;">📄 PDF</button>
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div>
+      <div class="st">👥 <span style="color:#1ABC9C;">Guests</span></div>
+      <div style="font-size:11px;color:var(--text3);margin-top:1px;" id="gsub">0 guests</div>
     </div>
+    <button onclick="exportPDF()" style="background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:var(--r-md);padding:10px 16px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--font-body);margin-left:auto;">📄 PDF</button>
   </div>
   <div style="padding:14px 14px 0;">
     <div class="sg">
-      <div class="sb" style="border:1px solid rgba(201,168,76,.2);"><div id="gt" style="font-size:18px;font-weight:800;color:var(--g);">0</div><div style="font-size:9px;color:#666;">Total</div></div>
-      <div class="sb" style="border:1px solid rgba(76,175,80,.2);"><div id="gc" style="font-size:18px;font-weight:800;color:#4CAF50;">0</div><div style="font-size:9px;color:#666;">Confirmed</div></div>
-      <div class="sb" style="border:1px solid rgba(255,152,0,.2);"><div id="gp" style="font-size:18px;font-weight:800;color:#FF9800;">0</div><div style="font-size:9px;color:#666;">Pending</div></div>
-      <div class="sb" style="border:1px solid rgba(33,150,243,.2);"><div id="gv" style="font-size:18px;font-weight:800;color:#2196F3;">0</div><div style="font-size:9px;color:#666;">Veg</div></div>
+      <div class="sb" style="border-color:rgba(201,168,76,.2);"><div id="gt" class="sv" style="color:var(--gold);">0</div><div class="sl">Total</div></div>
+      <div class="sb" style="border-color:rgba(46,204,113,.2);"><div id="gc" class="sv" style="color:var(--green);">0</div><div class="sl">Confirmed</div></div>
+      <div class="sb" style="border-color:rgba(255,152,0,.2);"><div id="gp" class="sv" style="color:var(--orange);">0</div><div class="sl">Pending</div></div>
+      <div class="sb" style="border-color:rgba(52,152,219,.2);"><div id="gv" class="sv" style="color:var(--blue);">0</div><div class="sl">Veg</div></div>
     </div>
     <div style="margin-top:10px;">
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:#555;margin-bottom:4px;"><span>RSVP Progress</span><span id="gpct">0%</span></div>
-      <div class="bbar"><div id="gbar" class="bf" style="width:0%;background:linear-gradient(90deg,#1ABC9C,#2ecc71);"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px;"><span>RSVP Progress</span><span id="gpct">0%</span></div>
+      <div class="pbar"><div id="gbar" class="pbar-fill" style="background:linear-gradient(90deg,#1ABC9C,#2ecc71);"></div></div>
     </div>
     <input id="gsrch" class="inp" placeholder="🔍 Guest search karo..." style="margin-top:12px;" oninput="rg()"/>
-    <button id="gftog" onclick="tgf()" style="width:100%;margin-top:10px;padding:12px;background:var(--c2);border:1px solid rgba(255,255,255,.06);border-radius:14px;color:#888;font-weight:700;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">+ Naya Guest Add Karo</button>
+    <button id="gftog" onclick="tgf()" style="width:100%;margin-top:10px;padding:13px;background:var(--s2);border:1px solid var(--border2);border-radius:var(--r-md);color:var(--text2);font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font-body);">+ Naya Guest Add Karo</button>
     <div id="gf" style="display:none;margin-top:12px;">
-      <div class="card" style="border-color:rgba(26,188,156,.25);">
+      <div class="card" style="border-color:rgba(26,188,156,.2);">
         <input id="gfn" class="inp" placeholder="Poora naam *" style="margin-bottom:10px;"/>
         <input id="gfph" class="inp" placeholder="Phone (optional)" style="margin-bottom:10px;"/>
         <input id="gftb" class="inp" placeholder="Table number (optional)" style="margin-bottom:10px;"/>
         <div style="display:flex;gap:8px;margin-bottom:10px;">
-          <button onclick="sGF('side','Bride')" id="sb-bride" class="bgh" style="flex:1;color:#888;">Bride Side</button>
-          <button onclick="sGF('side','Groom')" id="sb-groom" class="bgh" style="flex:1;color:#888;">Groom Side</button>
+          <button onclick="sGF('side','Bride')" id="sb-bride" class="btn-sm">Bride Side</button>
+          <button onclick="sGF('side','Groom')" id="sb-groom" class="btn-sm">Groom Side</button>
         </div>
         <div style="display:flex;gap:8px;margin-bottom:14px;">
-          <button onclick="sGF('meal','Veg')"     id="sm-veg"    class="bgh" style="flex:1;font-size:11px;color:#888;">🌱 Veg</button>
-          <button onclick="sGF('meal','Non-Veg')" id="sm-nonveg" class="bgh" style="flex:1;font-size:11px;color:#888;">🍗 Non-Veg</button>
-          <button onclick="sGF('meal','Jain')"    id="sm-jain"   class="bgh" style="flex:1;font-size:11px;color:#888;">🙏 Jain</button>
+          <button onclick="sGF('meal','Veg')" id="sm-veg" class="btn-sm" style="flex:1;">🌱 Veg</button>
+          <button onclick="sGF('meal','Non-Veg')" id="sm-nonveg" class="btn-sm" style="flex:1;">🍗 Non-Veg</button>
+          <button onclick="sGF('meal','Jain')" id="sm-jain" class="btn-sm" style="flex:1;">🙏 Jain</button>
         </div>
-        <button onclick="addG()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:12px;color:#fff;font-weight:700;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;">✅ Add Guest</button>
+        <button onclick="addG()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:var(--r-md);color:#fff;font-weight:800;font-size:13px;cursor:pointer;font-family:var(--font-body);">✅ Add Guest</button>
       </div>
     </div>
     <div id="glist" style="margin-top:14px;"></div>
-    <button onclick="exportPDF()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:14px;color:#fff;font-weight:800;font-size:14px;cursor:pointer;margin-top:10px;font-family:'DM Sans',sans-serif;">📄 Full Guest List PDF Download</button>
+    <button onclick="exportPDF()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:var(--r-md);color:#fff;font-weight:800;font-size:14px;cursor:pointer;margin-top:10px;font-family:var(--font-body);">📄 Full Guest List PDF Download</button>
   </div>
 </div>
 </div>
 
-<!-- ████ BUDGET ████ -->
+<!-- ████████ BUDGET ████████ -->
 <div id="scr-budget" class="scr">
 <div style="padding-bottom:24px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid rgba(39,174,96,.2);">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div class="st">💰 Budget <span style="color:#27AE60;">Tracker</span></div>
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st">💰 Budget <span style="color:var(--green);">Tracker</span></div>
   </div>
   <div style="padding:14px;" id="bcon"></div>
 </div>
 </div>
 
-<!-- ████ TIMELINE ████ -->
+<!-- ████████ TIMELINE ████████ -->
 <div id="scr-timeline" class="scr">
 <div style="padding-bottom:24px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid rgba(255,87,34,.2);">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div class="st">📅 Planning <span style="color:#FF5722;">Timeline</span></div>
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st">📅 Planning <span style="color:var(--orange);">Timeline</span></div>
   </div>
   <div style="padding:14px;">
     <div class="card" style="border-color:rgba(255,87,34,.2);margin-bottom:18px;">
       <label class="lbl">Wedding Date</label>
-      <input type="date" id="wdate" class="inp" value="2026-02-15" style="color:#FF5722;font-size:15px;font-weight:700;" onchange="rTL()"/>
+      <input type="date" id="wdate" class="inp" value="2026-12-15" style="color:var(--orange);font-size:15px;font-weight:700;" onchange="rTL()"/>
     </div>
     <div id="tlcon"></div>
   </div>
 </div>
 </div>
 
-<!-- ████ VENDOR DIRECTORY ████ -->
+<!-- ████████ VENDOR DIRECTORY ████████ -->
 <div id="scr-vendor-dir" class="scr">
 <div style="padding-bottom:24px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid var(--br);">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div><div class="st">🏆 Verified <span style="color:var(--g);">Vendors</span></div><div style="font-size:11px;color:#666;margin-top:2px;">SmartShaadi Certified Professionals</div></div>
-      <button onclick="go('vendor-apply')" class="bg" style="width:auto;padding:8px 14px;font-size:12px;">+ List Karo</button>
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div>
+      <div class="st">🏆 <span style="color:var(--gold);">Vendors</span></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:1px;">SmartShaadi Certified</div>
+    </div>
+    <button onclick="go('vendor-apply')" class="btn-gold" style="width:auto;padding:9px 14px;font-size:12px;margin-left:auto;">+ List</button>
+  </div>
+
+  <!-- Get 3 Best Vendors CTA -->
+  <div style="padding:14px 14px 0;">
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(52,152,219,.06));border-radius:var(--r-xl);padding:16px;border:1px solid rgba(201,168,76,.2);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="font-size:28px;">🎯</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:800;">Get 3 Best Vendors</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:2px;">Apni city + category batao — best match milega</div>
+        </div>
+        <button onclick="showLeadForm()" class="btn-gold" style="width:auto;padding:10px 14px;font-size:12px;">Match!</button>
+      </div>
     </div>
   </div>
 
-  <!-- City filter -->
+  <!-- Lead form (hidden by default) -->
+  <div id="lead-form" style="display:none;padding:10px 14px 0;">
+    <div class="card" style="border-color:rgba(201,168,76,.2);">
+      <div style="font-size:12px;font-weight:800;color:var(--gold);margin-bottom:12px;">🎯 Best Vendors Dhundo</div>
+      <input id="lead-name" class="inp" placeholder="Aapka naam *" style="margin-bottom:8px;"/>
+      <input id="lead-phone" class="inp" placeholder="WhatsApp number *" style="margin-bottom:8px;"/>
+      <input id="lead-city" class="inp" placeholder="City *" style="margin-bottom:8px;"/>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;" id="lead-cats">
+        <button onclick="toggleLeadCat(this)" class="btn-sm">📸 Photography</button>
+        <button onclick="toggleLeadCat(this)" class="btn-sm">🍽️ Catering</button>
+        <button onclick="toggleLeadCat(this)" class="btn-sm">🌸 Decoration</button>
+        <button onclick="toggleLeadCat(this)" class="btn-sm">🎵 Music</button>
+        <button onclick="toggleLeadCat(this)" class="btn-sm">💄 Makeup</button>
+      </div>
+      <button onclick="submitLead()" class="btn-gold" style="font-size:13px;">🚀 Match Karo →</button>
+    </div>
+  </div>
+
+  <!-- Filters -->
   <div style="padding:12px 14px 0;">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;" id="city-filter">
-      <button class="vcity-btn on" onclick="filterCity('All',this)">All Cities</button>
-      <button class="vcity-btn" onclick="filterCity('Delhi',this)">Delhi</button>
-      <button class="vcity-btn" onclick="filterCity('Mumbai',this)">Mumbai</button>
-      <button class="vcity-btn" onclick="filterCity('Jaipur',this)">Jaipur</button>
-      <button class="vcity-btn" onclick="filterCity('Bangalore',this)">Bangalore</button>
-      <button class="vcity-btn" onclick="filterCity('Hyderabad',this)">Hyderabad</button>
-      <button class="vcity-btn" onclick="filterCity('Pune',this)">Pune</button>
+      <button class="btn-sm on" onclick="filterCity('All',this)">All Cities</button>
+      <button class="btn-sm" onclick="filterCity('Delhi',this)">Delhi</button>
+      <button class="btn-sm" onclick="filterCity('Mumbai',this)">Mumbai</button>
+      <button class="btn-sm" onclick="filterCity('Jaipur',this)">Jaipur</button>
+      <button class="btn-sm" onclick="filterCity('Bangalore',this)">Bangalore</button>
+      <button class="btn-sm" onclick="filterCity('Hyderabad',this)">Hyderabad</button>
+      <button class="btn-sm" onclick="filterCity('Pune',this)">Pune</button>
     </div>
   </div>
-
-  <!-- Category filter -->
-  <div style="padding:10px 14px 0;">
+  <div style="padding:8px 14px 0;">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;" id="cat-filter">
-      <button class="vcity-btn on" onclick="filterCat('All',this)">All</button>
-      <button class="vcity-btn" onclick="filterCat('Photography',this)">📸 Photography</button>
-      <button class="vcity-btn" onclick="filterCat('Catering',this)">🍽️ Catering</button>
-      <button class="vcity-btn" onclick="filterCat('Decoration',this)">🌸 Decoration</button>
-      <button class="vcity-btn" onclick="filterCat('Music & DJ',this)">🎵 Music</button>
-      <button class="vcity-btn" onclick="filterCat('Makeup',this)">💄 Makeup</button>
+      <button class="btn-sm on" onclick="filterCat('All',this)">All</button>
+      <button class="btn-sm" onclick="filterCat('Photography',this)">📸 Photography</button>
+      <button class="btn-sm" onclick="filterCat('Catering',this)">🍽️ Catering</button>
+      <button class="btn-sm" onclick="filterCat('Decoration',this)">🌸 Decoration</button>
+      <button class="btn-sm" onclick="filterCat('Music & DJ',this)">🎵 Music</button>
+      <button class="btn-sm" onclick="filterCat('Makeup',this)">💄 Makeup</button>
     </div>
   </div>
-
   <div id="vendor-dir-wrap" style="padding:12px 14px 0;"></div>
-
-  <!-- Become vendor CTA -->
-  <div style="margin:4px 14px 0;background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(232,201,122,.05));border-radius:16px;padding:16px;border:1px dashed rgba(201,168,76,.3);text-align:center;">
-    <div style="font-size:14px;font-weight:800;color:var(--g);margin-bottom:4px;">📢 Apna Business Yahan List Karein</div>
-    <div style="font-size:11px;color:#666;margin-bottom:12px;">1000+ couples daily dekh rahe hain · ₹999/mo se shuru</div>
-    <button onclick="go('vendor-apply')" class="bg" style="max-width:280px;margin:0 auto;">Abhi Apply Karein →</button>
+  <div style="margin:4px 14px 0;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(232,201,122,.04));border-radius:var(--r-lg);padding:16px;border:1px dashed rgba(201,168,76,.25);text-align:center;">
+    <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:4px;">📢 Apna Business List Karein</div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:12px;">1000+ couples daily · ₹999/mo se shuru</div>
+    <button onclick="go('vendor-apply')" class="btn-gold" style="max-width:280px;margin:0 auto;">Abhi Apply Karein →</button>
   </div>
 </div>
 </div>
 
-<!-- ████ VENDOR APPLY ████ -->
+<!-- ████████ VENDOR APPLY ████████ -->
 <div id="scr-vendor-apply" class="scr">
 <div style="padding-bottom:24px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid var(--br);">
-    <button class="bbtn" onclick="go('vendor-dir')" style="margin-bottom:10px;">← Wapas</button>
-    <div class="st">📝 Vendor <span style="color:var(--g);">Apply</span></div>
-    <div style="font-size:11px;color:#666;margin-top:2px;">1000+ couples tak apna business pahunchao</div>
+  <div class="topbar">
+    <button onclick="go('vendor-dir')" class="back-btn">← Wapas</button>
+    <div>
+      <div class="st">📝 <span style="color:var(--gold);">Vendor Apply</span></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:1px;">1000+ couples tak pahuncho</div>
+    </div>
   </div>
   <div style="padding:14px;" id="vacon"></div>
 </div>
 </div>
 
+<!-- ████████ ADMIN ████████ -->
+<div id="scr-admin" class="scr">
+<div style="padding-bottom:24px;">
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st">🔐 Admin <span style="color:var(--red);">Panel</span></div>
+  </div>
+  <div style="padding:14px;" id="admin-content"></div>
+</div>
+</div>
+
 </div><!-- /wrap -->
 
-<!-- ████ BOTTOM NAV ████ -->
+<!-- Bottom Nav -->
 <nav id="bnav">
-  <button class="nb on" id="nb-home"     onclick="go('home')">    <span class="ni">🏠</span><span class="nl">Home</span><div class="ndot"></div></button>
-  <button class="nb"    id="nb-chat"     onclick="go('chat')">    <span class="ni">🤖</span><span class="nl">AI Chat</span></button>
-  <button class="nb"    id="nb-guests"   onclick="go('guests')">  <span class="ni">👥</span><span class="nl">Guests</span></button>
-  <button class="nb"    id="nb-budget"   onclick="go('budget')">  <span class="ni">💰</span><span class="nl">Budget</span></button>
-  <button class="nb"    id="nb-vendor-dir" onclick="go('vendor-dir')"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
+  <button class="nb on" id="nb-home" onclick="go('home')"><span class="ni">🏠</span><span class="nl">Home</span><div class="ndot"></div></button>
+  <button class="nb" id="nb-chat" onclick="go('chat')"><span class="ni">🤖</span><span class="nl">AI Chat</span></button>
+  <button class="nb" id="nb-countdown" onclick="go('countdown')"><span class="ni">⏳</span><span class="nl">Countdown</span></button>
+  <button class="nb" id="nb-guests" onclick="go('guests')"><span class="ni">👥</span><span class="nl">Guests</span></button>
+  <button class="nb" id="nb-vendor-dir" onclick="go('vendor-dir')"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
 </nav>
 </div><!-- /shell -->
 
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: JAVASCRIPT — App Logic
+     ═══════════════════════════════════════════════ -->
 <script>
-// ══ TOOLS DATA ══
-const TOOLS=[
+'use strict';
+
+/* ═══════════════════════════════════
+   4A. GLOBAL APP STATE
+   ═══════════════════════════════════ */
+const App = {
+  // Freemium
+  uses: 3,
+  // Vendor filters
+  vCityFilter: 'All',
+  vCatFilter: 'All',
+  vTier: 'Featured',
+  // Guest form state
+  gSide: 'Bride',
+  gMeal: 'Veg',
+  // Tool input state
+  TI: {},
+  // Navigation
+  navHistory: ['home'],
+  // Current tool
+  currentTool: null,
+  // Tasks
+  cTasks: {},
+  // Budget
+  bTotal: 1500000,
+  bSpent: {},
+  // Wedding date
+  weddingDate: null,
+};
+
+/* ═══════════════════════════════════
+   4B. LOCALSTORAGE — Safe wrappers
+   ═══════════════════════════════════ */
+const Store = {
+  get(key, fallback = null) {
+    try { const v = localStorage.getItem('ss_' + key); return v !== null ? JSON.parse(v) : fallback; }
+    catch { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem('ss_' + key, JSON.stringify(value)); return true; }
+    catch { return false; }
+  },
+  del(key) { try { localStorage.removeItem('ss_' + key); } catch {} },
+};
+
+/* ═══════════════════════════════════
+   4C. SECURITY — Input sanitization
+   ═══════════════════════════════════ */
+const Sanitize = {
+  text(str) {
+    if (typeof str !== 'string') return '';
+    return str.replace(/[<>&"'`]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c])).trim().substring(0, 500);
+  },
+  phone(str) {
+    if (typeof str !== 'string') return '';
+    return str.replace(/\D/g, '').substring(0, 12);
+  },
+  number(val, min = 0, max = 999999999) {
+    const n = parseFloat(val);
+    if (isNaN(n)) return min;
+    return Math.min(max, Math.max(min, n));
+  },
+};
+
+/* ═══════════════════════════════════
+   4D. FREEMIUM SYSTEM
+   ═══════════════════════════════════ */
+const Freemium = {
+  getTodayStr() { return new Date().toDateString(); },
+  init() {
+    if (Store.get('date') !== this.getTodayStr()) {
+      Store.set('date', this.getTodayStr());
+      Store.set('uses', 3);
+    }
+    App.uses = Store.get('uses', 3);
+    this.updateUI();
+  },
+  consume() {
+    App.uses = Math.max(0, App.uses - 1);
+    Store.set('uses', App.uses);
+    this.updateUI();
+  },
+  add(n) {
+    App.uses = App.uses + n;
+    Store.set('uses', App.uses);
+    this.updateUI();
+  },
+  updateUI() {
+    const pct = Math.min(100, (App.uses / 3) * 100);
+    const bar = document.getElementById('uses-bar');
+    const pill = document.getElementById('uses-pill');
+    if (bar) {
+      bar.style.width = pct + '%';
+      bar.style.background = App.uses === 0 ? '#E74C3C' : 'linear-gradient(90deg,var(--gold),var(--gold2))';
+    }
+    if (pill) pill.textContent = App.uses + ' free uses left today';
+  },
+};
+
+function closeAd(grant) {
+  document.getElementById('adbox').classList.remove('on');
+  if (grant) Freemium.add(3);
+}
+
+/* ═══════════════════════════════════
+   4E. NAVIGATION
+   ═══════════════════════════════════ */
+function _goCore(id) {
+  document.querySelectorAll('.scr').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b => {
+    b.classList.remove('on');
+    const d = b.querySelector('.ndot');
+    if (d) d.remove();
+  });
+  const s = document.getElementById('scr-' + id);
+  if (s) { s.classList.add('on'); document.getElementById('wrap').scrollTop = 0; }
+  const nb = document.getElementById('nb-' + id);
+  if (nb) {
+    nb.classList.add('on');
+    const dot = document.createElement('div');
+    dot.className = 'ndot';
+    nb.appendChild(dot);
+  }
+  // Screen-specific renders
+  const renders = {
+    budget: rBudget,
+    timeline: rTL,
+    guests: rg,
+    'vendor-dir': renderVendorDir,
+    'vendor-apply': rVA,
+    admin: rAdmin,
+    countdown: rCountdown,
+    report: () => {},
+  };
+  if (renders[id]) renders[id]();
+}
+
+function go(id) {
+  if (id !== App.navHistory[App.navHistory.length - 1]) {
+    App.navHistory.push(id);
+    history.pushState({ screen: id }, '', '#' + id);
+  }
+  _goCore(id);
+}
+
+function goBack() {
+  App.navHistory.pop();
+  const prev = App.navHistory[App.navHistory.length - 1] || 'home';
+  _goCore(prev);
+}
+
+window.addEventListener('popstate', (e) => {
+  App.navHistory.pop();
+  const prev = App.navHistory[App.navHistory.length - 1] || 'home';
+  _goCore(prev);
+});
+history.replaceState({ screen: 'home' }, '', '#home');
+
+/* ═══════════════════════════════════
+   4F. TOAST
+   ═══════════════════════════════════ */
+let toastTimer;
+function showToast(msg, duration = 3000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.style.opacity = '0'; }, duration);
+}
+
+/* ═══════════════════════════════════
+   SECTION 5: AI TOOLS
+   ═══════════════════════════════════ */
+const TOOLS = [
   {id:'invitation',icon:'💌',name:'Invitation Writer',desc:'Beautiful invite + AI image prompt',color:'#C9A84C',url:'/ai-invitation-writer.html',badge:'📸 Image!'},
-  {id:'kundali',   icon:'🔮',name:'Kundali Matching', desc:'36 Guna Milan + Mangal Dosha',     color:'#9B59B6',url:'/ai-kundali-matching.html',badge:''},
-  {id:'budget',    icon:'💰',name:'Budget Planner AI',desc:'Smart breakdown + saving tips',    color:'#27AE60',url:'/ai-budget-calculator.html',badge:''},
-  {id:'playlist',  icon:'🎵',name:'Playlist Generator',desc:'Sangeet to Vidaai songs',         color:'#E74C3C',url:'/ai-playlist-generator.html',badge:''},
-  {id:'menu',      icon:'🍽️',name:'Menu Planner',     desc:'Full wedding menu with costs',    color:'#F39C12',url:'/ai-menu-planner.html',badge:''},
-  {id:'photos',    icon:'📸',name:'Photo Shot List',  desc:'150+ must-have shots',            color:'#3498DB',url:'/ai-photography-shots.html',badge:''},
-  {id:'theme',     icon:'🎨',name:'Theme Generator',  desc:'Decor + color palette + tips',    color:'#E91E8C',url:'/ai-wedding-theme-generator.html',badge:''},
-  {id:'timeline',  icon:'📅',name:'Timeline Generator',desc:'AI-generated milestones',        color:'#FF5722',url:'/ai-planning-timeline.html',badge:''},
-  {id:'chatbot',   icon:'🤖',name:'AI Wedding Chatbot',desc:'24/7 wedding assistant',          color:'#8E44AD',url:'/chatbot.html',badge:'NEW!'},
-  {id:'negotiation',icon:'🤝',name:'Vendor Negotiator',desc:'Best price lene ka script',      color:'#16A085',url:'/wedding-vendor-negotiation-bot.html',badge:'NEW!'},
+  {id:'kundali',icon:'🔮',name:'Kundali Matching',desc:'36 Guna Milan + Mangal Dosha',color:'#9B59B6',url:'/ai-kundali-matching.html',badge:''},
+  {id:'budget',icon:'💰',name:'Budget Planner AI',desc:'Smart breakdown + saving tips',color:'#27AE60',url:'/ai-budget-calculator.html',badge:''},
+  {id:'playlist',icon:'🎵',name:'Playlist Generator',desc:'Sangeet to Vidaai songs',color:'#E74C3C',url:'/ai-playlist-generator.html',badge:''},
+  {id:'menu',icon:'🍽️',name:'Menu Planner',desc:'Full wedding menu with costs',color:'#F39C12',url:'/ai-menu-planner.html',badge:''},
+  {id:'photos',icon:'📸',name:'Photo Shot List',desc:'150+ must-have shots',color:'#3498DB',url:'/ai-photography-shots.html',badge:''},
+  {id:'theme',icon:'🎨',name:'Theme Generator',desc:'Decor + color palette + tips',color:'#E91E8C',url:'/ai-wedding-theme-generator.html',badge:''},
+  {id:'timeline',icon:'📅',name:'Timeline Generator',desc:'AI-generated milestones',color:'#FF5722',url:'/ai-planning-timeline.html',badge:''},
+  {id:'chatbot',icon:'🤖',name:'AI Wedding Chatbot',desc:'24/7 wedding assistant',color:'#8E44AD',url:'/chatbot.html',badge:'NEW!'},
+  {id:'negotiation',icon:'🤝',name:'Vendor Negotiator',desc:'Best price lene ka script',color:'#16A085',url:'/wedding-vendor-negotiation-bot.html',badge:'NEW!'},
 ];
 
-// ══ TOOL FIELDS & PROMPTS (for in-app AI) ══
-const TF={
-  invitation:[{k:'bride',l:'Bride ka naam',p:'Priya Sharma'},{k:'groom',l:'Groom ka naam',p:'Rahul Gupta'},{k:'date',l:'Wedding date',p:'15 Feb 2026'},{k:'venue',l:'Venue',p:'The Grand Palace, Delhi'},{k:'family',l:'Family names',p:'Sharma & Gupta Parivar'},{k:'lang',l:'Language',p:'Hinglish / Hindi / English / Urdu'},{k:'style',l:'Style',p:'Royal / Floral / Minimalist / Modern'}],
+const TF = {
+  invitation:[{k:'bride',l:'Bride ka naam',p:'Priya Sharma'},{k:'groom',l:'Groom ka naam',p:'Rahul Gupta'},{k:'date',l:'Wedding date',p:'15 Feb 2026'},{k:'venue',l:'Venue',p:'The Grand Palace, Delhi'},{k:'family',l:'Family names',p:'Sharma & Gupta Parivar'},{k:'lang',l:'Language',p:'Hinglish / Hindi / English / Urdu'},{k:'style',l:'Style',p:'Royal / Floral / Minimalist'}],
   kundali:[{k:'bn',l:'Bride naam',p:'Priya'},{k:'bd',l:'Bride DOB',p:'15 March 1998'},{k:'br',l:'Bride Rashi',p:'Mithun'},{k:'gn',l:'Groom naam',p:'Rahul'},{k:'gd',l:'Groom DOB',p:'20 June 1995'},{k:'gr',l:'Groom Rashi',p:'Vrishabh'}],
   budget:[{k:'budget',l:'Total budget (₹)',p:'1500000'},{k:'guests',l:'Guests',p:'200'},{k:'city',l:'City',p:'Delhi'},{k:'type',l:'Wedding type',p:'2-day / destination'}],
   playlist:[{k:'fn',l:'Function',p:'Sangeet / All'},{k:'style',l:'Style',p:'Classic Bollywood / Modern / Mix'}],
@@ -417,365 +947,795 @@ const TF={
   chatbot:[],
   negotiation:[{k:'vendor',l:'Vendor type',p:'Photographer / Caterer'},{k:'city',l:'City',p:'Delhi'},{k:'price',l:'Their quoted price (₹)',p:'80000'},{k:'myb',l:'Your budget (₹)',p:'60000'}],
 };
-const TP={
-  invitation:d=>`Write a stunning Indian wedding invitation for ${d.bride||'Priya'} & ${d.groom||'Rahul'}, date: ${d.date||'15 Feb 2026'}, venue: ${d.venue||'The Grand Palace, Delhi'}, family: ${d.family||'Sharma & Gupta Parivar'}, language: ${d.lang||'Hinglish'}, style: ${d.style||'Royal'}. Make it poetic, traditional yet modern. Also add section: "IMAGE PROMPT:" — describe a beautiful ${d.style||'Royal'} Indian wedding card for AI image generation (colors, motifs, border, layout).`,
-  kundali:d=>`Detailed Kundali Milan: Bride: ${d.bn||'Priya'}, DOB: ${d.bd||'15 Mar 1998'}, Rashi: ${d.br||'Mithun'}. Groom: ${d.gn||'Rahul'}, DOB: ${d.gd||'20 Jun 1995'}, Rashi: ${d.gr||'Vrishabh'}. Give: all 8 Ashtakoot categories with scores, Total Guna/36, Mangal Dosha, Nadi Dosha, final verdict + remedies if needed.`,
-  budget:d=>`Detailed Indian wedding budget ₹${d.budget||'1500000'}, ${d.guests||'200'} guests, ${d.city||'Delhi'}, ${d.type||'2-day'}. 12 categories with exact ₹ amounts, %, saving tips, priority. Must-spend vs can-cut.`,
-  playlist:d=>`Complete Indian wedding playlist: ${d.fn||'all functions'}. Haldi(8), Mehendi(10), Sangeet(12), Baraat(10), Varmala(6), Reception(15), Vidaai(8). Artist+year+best moment. Style: ${d.style||'Mix'}.`,
-  menu:d=>`Full Indian wedding menu: ${d.guests||'200'} guests, ${d.type||'Veg+Non-veg'}, ${d.fn||'Reception'}, ₹${d.budget||'800'}/plate, ${d.city||'Delhi'}. All courses + quantity per 100 guests + cost estimate.`,
-  photos:d=>`Wedding photography shot list for ${d.fn||'all functions'}. By function: Haldi, Mehendi, Sangeet, Baraat, Ceremony, Reception. Family portraits, candids, detail shots, emotional moments. 150+ shots. Mark TOP 20 with ⭐.`,
-  theme:d=>`Complete ${d.theme||'Royal Rajasthani'} wedding theme: 5-color palette (hex codes), flowers, mandap design, table settings, lighting, family outfit colors, photobooth, entrance decor. Budget ₹${d.budget||'200000'} — itemized breakdown.`,
-  timeline:d=>`Indian wedding timeline for ${d.date||'15 Feb 2026'}. Milestones: 12mo, 9mo, 6mo, 4mo, 3mo, 2mo, 1mo, 2wk, 1wk, 3 days, 1 day, wedding morning. Tasks + deadlines + payments + ⚠️ warnings per phase.`,
-  chatbot:()=>'Help me plan my Indian wedding.',
-  negotiation:d=>`Vendor negotiation script for ${d.vendor||'photographer'} in ${d.city||'Delhi'}. Their price: ₹${d.price||'80000'}. My budget: ₹${d.myb||'60000'}. Opening line, negotiation points, what to ask free, red flags, closing technique + WhatsApp message template ready to send.`,
+
+const TP = {
+  invitation: d => `Write a stunning Indian wedding invitation for ${d.bride||'Priya'} & ${d.groom||'Rahul'}, date: ${d.date||'15 Feb 2026'}, venue: ${d.venue||'The Grand Palace, Delhi'}, family: ${d.family||'Sharma & Gupta Parivar'}, language: ${d.lang||'Hinglish'}, style: ${d.style||'Royal'}. Make it poetic, traditional yet modern. Also add section: "IMAGE PROMPT:" — describe a beautiful ${d.style||'Royal'} Indian wedding card for AI image generation (colors, motifs, border, layout).`,
+  kundali: d => `Detailed Kundali Milan: Bride: ${d.bn||'Priya'}, DOB: ${d.bd||'15 Mar 1998'}, Rashi: ${d.br||'Mithun'}. Groom: ${d.gn||'Rahul'}, DOB: ${d.gd||'20 Jun 1995'}, Rashi: ${d.gr||'Vrishabh'}. Give: all 8 Ashtakoot categories with scores, Total Guna/36, Mangal Dosha, Nadi Dosha, final verdict + remedies if needed.`,
+  budget: d => `Detailed Indian wedding budget ₹${d.budget||'1500000'}, ${d.guests||'200'} guests, ${d.city||'Delhi'}, ${d.type||'2-day'}. 12 categories with exact ₹ amounts, %, saving tips, priority. Must-spend vs can-cut.`,
+  playlist: d => `Complete Indian wedding playlist: ${d.fn||'all functions'}. Haldi(8), Mehendi(10), Sangeet(12), Baraat(10), Varmala(6), Reception(15), Vidaai(8). Artist+year+best moment. Style: ${d.style||'Mix'}.`,
+  menu: d => `Full Indian wedding menu: ${d.guests||'200'} guests, ${d.type||'Veg+Non-veg'}, ${d.fn||'Reception'}, ₹${d.budget||'800'}/plate, ${d.city||'Delhi'}. All courses + quantity per 100 guests + cost estimate.`,
+  photos: d => `Wedding photography shot list for ${d.fn||'all functions'}. By function: Haldi, Mehendi, Sangeet, Baraat, Ceremony, Reception. Family portraits, candids, detail shots, emotional moments. 150+ shots. Mark TOP 20 with ⭐.`,
+  theme: d => `Complete ${d.theme||'Royal Rajasthani'} wedding theme: 5-color palette (hex codes), flowers, mandap design, table settings, lighting, family outfit colors, photobooth, entrance decor. Budget ₹${d.budget||'200000'} — itemized breakdown.`,
+  timeline: d => `Indian wedding timeline for ${d.date||'15 Feb 2026'}. Milestones: 12mo, 9mo, 6mo, 4mo, 3mo, 2mo, 1mo, 2wk, 1wk, 3 days, 1 day, wedding morning. Tasks + deadlines + payments + ⚠️ warnings per phase.`,
+  chatbot: () => 'Help me plan my Indian wedding.',
+  negotiation: d => `Vendor negotiation script for ${d.vendor||'photographer'} in ${d.city||'Delhi'}. Their price: ₹${d.price||'80000'}. My budget: ₹${d.myb||'60000'}. Opening line, negotiation points, what to ask free, red flags, closing technique + WhatsApp message template ready to send.`,
 };
 
-// ══ VENDORS DATA ══
-const VENDORS=[
-  {name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'Delhi ke top wedding photographers. 8 saal ka experience.'},
-  {name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine specialists.'},
-  {name:'Floral Dreams',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration team.'},
-  {name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. State-of-art equipment.'},
-  {name:'Priya Bridal Makeup',city:'Delhi',cat:'Makeup',rating:4.8,reviews:145,tier:'Premium',price:'₹15,000+',badge:'🏆 Verified',phone:'9811122233',desc:'HD + Airbrush bridal makeup. 12+ hours staying power.'},
-  {name:'Gulshan Photography',city:'Mumbai',cat:'Photography',rating:4.6,reviews:54,tier:'Basic',price:'₹25,000+',badge:'✓ Listed',phone:'9922334455',desc:'Candid + traditional photography packages.'},
-  {name:'Spice Route Catering',city:'Hyderabad',cat:'Catering',rating:4.7,reviews:76,tier:'Featured',price:'₹700/plate',badge:'⭐ Featured',phone:'9988776655',desc:'Hyderabadi biryani specialists. Veg + non-veg.'},
-  {name:'Mehndi Masters',city:'Jaipur',cat:'Makeup',rating:4.9,reviews:210,tier:'Premium',price:'₹8,000+',badge:'🏆 Verified',phone:'9876512345',desc:'Rajasthani + Arabic mehndi. Bridal packages available.'},
-  {name:'Sound of Joy DJ',city:'Pune',cat:'Music & DJ',rating:4.5,reviews:43,tier:'Basic',price:'₹18,000+',badge:'✓ Listed',phone:'9900112233',desc:'Wedding DJ with live dhol. Pune & surrounding areas.'},
-  {name:'Petal Decors',city:'Bangalore',cat:'Decoration',rating:4.6,reviews:58,tier:'Featured',price:'₹60,000+',badge:'⭐ Featured',phone:'9845678901',desc:'Modern + traditional decor. Floral + lighting specialist.'},
-];
-
-let vCityFilter='All', vCatFilter='All';
-
-function filterCity(city, btn){
-  vCityFilter=city;
-  document.querySelectorAll('#city-filter .vcity-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  renderVendorDir();
-}
-function filterCat(cat, btn){
-  vCatFilter=cat;
-  document.querySelectorAll('#cat-filter .vcity-btn').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  renderVendorDir();
-}
-function renderVendorDir(){
-  const c=document.getElementById('vendor-dir-wrap');
-  if(!c)return;
-  const filtered=VENDORS.filter(v=>(vCityFilter==='All'||v.city===vCityFilter)&&(vCatFilter==='All'||v.cat===vCatFilter));
-  if(!filtered.length){c.innerHTML='<div style="text-align:center;padding:40px;color:#444;font-size:13px;">Is city/category mein abhi koi vendor nahi hai.<br><br><button onclick="go(\'vendor-apply\')" style="background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:10px;padding:10px 20px;font-size:12px;font-weight:700;color:#0D0B0E;cursor:pointer;font-family:\'DM Sans\',sans-serif;">Pehle Vendor Ban Jao →</button></div>';return;}
-  c.innerHTML=filtered.map(v=>`
-    <div class="vcard">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <div style="font-size:14px;font-weight:800;color:#fff;">${v.name}</div>
-            <div style="font-size:10px;background:${v.tier==='Premium'?'rgba(201,168,76,.2)':v.tier==='Featured'?'rgba(52,152,219,.2)':'rgba(255,255,255,.06)'};color:${v.tier==='Premium'?'var(--g)':v.tier==='Featured'?'#3498DB':'#888'};padding:2px 8px;border-radius:20px;font-weight:700;">${v.badge}</div>
-          </div>
-          <div style="font-size:11px;color:#666;margin-top:3px;">📍 ${v.city} · ${v.cat}</div>
-          <div style="font-size:11px;color:var(--g);margin-top:2px;">⭐ ${v.rating} (${v.reviews} reviews)</div>
-          <div style="font-size:11px;color:#888;margin-top:4px;line-height:1.5;">${v.desc}</div>
-        </div>
-        <div style="text-align:right;margin-left:10px;flex-shrink:0;">
-          <div style="font-size:14px;font-weight:800;color:var(--g2);">${v.price}</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <a href="https://wa.me/91${v.phone}?text=Hi! SmartShaadi App se dekha. Wedding ke liye inquiry karna tha." target="_blank" style="flex:1;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;text-align:center;display:block;">💬 WhatsApp</a>
-        <a href="tel:+91${v.phone}" style="flex:1;background:var(--c1);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px;font-size:12px;color:#aaa;text-decoration:none;text-align:center;display:block;">📞 Call</a>
-        ${v.tier==='Basic'?`<div style="flex:1;background:var(--bg);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:8px 6px;font-size:9px;color:var(--g);text-align:center;cursor:pointer;" onclick="go('vendor-apply')">View Details<br><span style="font-size:8px;color:#555;">(Ad dekhein)</span></div>`:''}
-      </div>
-      ${v.tier==='Basic'?`<div style="margin-top:8px;font-size:9px;color:#444;text-align:center;">📢 Full details ke liye vendor ne ad sponsor kiya hai</div>`:''}
-    </div>`).join('');
-}
-
-// ══ FREEMIUM ══
-function getTodayStr(){return new Date().toDateString();}
-function getUses(){
-  if(localStorage.getItem('ss_date')!==getTodayStr()){localStorage.setItem('ss_date',getTodayStr());localStorage.setItem('ss_uses','3');}
-  return parseInt(localStorage.getItem('ss_uses')||'3');
-}
-function consumeUse(){const l=getUses();localStorage.setItem('ss_uses',Math.max(0,l-1).toString());uUB();}
-function addUses(n){localStorage.setItem('ss_uses',(getUses()+n).toString());uUB();}
-function uUB(){
-  const l=getUses(),p=Math.min(100,(l/3)*100);
-  const bar=document.getElementById('uses-bar'),pill=document.getElementById('uses-pill');
-  if(bar)bar.style.width=p+'%';
-  if(bar)bar.style.background=l===0?'#E74C3C':'linear-gradient(90deg,var(--g),var(--g2))';
-  if(pill)pill.textContent=l+' free uses left today';
-}
-function closeAd(grant){document.getElementById('adbox').classList.remove('on');if(grant)addUses(3);}
-
-// ══ TOOL GRID RENDER ══
-function rTG(){
-  const g=document.getElementById('tgrid');
-  g.innerHTML=TOOLS.map(t=>`
-    <div style="background:var(--c2);border-radius:16px;padding:14px 12px;cursor:pointer;position:relative;border:1px solid ${t.color}22;transition:transform .15s;" onclick="openTool('${t.id}')" onmousedown="this.style.transform='scale(.97)'" onmouseup="this.style.transform=''" ontouchstart="this.style.transform='scale(.97)'" ontouchend="this.style.transform=''">
-      ${t.badge?`<div style="position:absolute;top:8px;right:8px;font-size:8px;padding:2px 6px;border-radius:20px;font-weight:700;background:${t.color}22;color:${t.color};">${t.badge}</div>`:''}
+function rTG() {
+  const g = document.getElementById('tgrid');
+  if (!g) return;
+  g.innerHTML = TOOLS.map(t => `
+    <div style="background:var(--s2);border-radius:var(--r-lg);padding:14px 12px;cursor:pointer;position:relative;border:1px solid ${t.color}22;transition:transform .15s,box-shadow .15s;"
+      onclick="openTool('${t.id}')"
+      onmousedown="this.style.transform='scale(.97)'"
+      onmouseup="this.style.transform=''"
+      ontouchstart="this.style.transform='scale(.97)'"
+      ontouchend="this.style.transform=''">
+      ${t.badge ? `<div style="position:absolute;top:8px;right:8px;font-size:8px;padding:2px 7px;border-radius:20px;font-weight:700;background:${t.color}22;color:${t.color};">${Sanitize.text(t.badge)}</div>` : ''}
       <div style="font-size:26px;margin-bottom:8px;">${t.icon}</div>
-      <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px;padding-right:${t.badge?'40px':'0'};">${t.name}</div>
-      <div style="font-size:10px;color:#555;line-height:1.4;">${t.desc}</div>
-      <div style="margin-top:8px;font-size:10px;font-weight:600;color:${t.color};">Use Now →</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;padding-right:${t.badge?'40px':'0'};">${Sanitize.text(t.name)}</div>
+      <div style="font-size:10px;color:var(--text3);line-height:1.4;">${Sanitize.text(t.desc)}</div>
+      <div style="margin-top:8px;font-size:10px;font-weight:700;color:${t.color};">Use Now →</div>
     </div>`).join('');
 }
 
-// ══ OPEN TOOL ══
-function openTool(id){
-  const l=getUses();
-  if(l<=0){document.getElementById('adbox').classList.add('on');return;}
-  consumeUse();
-  const t=TOOLS.find(x=>x.id===id);
-  if(!t)return;
-  document.getElementById('tool-name').textContent=t.name;
-  document.getElementById('tool-full-link').href=t.url;
+function openTool(id) {
+  if (App.uses <= 0) { document.getElementById('adbox').classList.add('on'); return; }
+  Freemium.consume();
+  const t = TOOLS.find(x => x.id === id);
+  if (!t) return;
+  App.currentTool = t;
+  App.TI = {};
+  document.getElementById('tool-name').textContent = t.name;
+  document.getElementById('tool-full-link').href = t.url;
   renderToolForm(t);
   go('tool');
 }
 
-function renderToolForm(t,result='',loading=false){
-  const fields=TF[t.id]||[];
-  const isInvite=t.id==='invitation';
-  let imgP='';
-  if(isInvite&&result){const m=result.match(/IMAGE PROMPT[:\s]+([\s\S]{50,})/i);if(m)imgP=m[1].trim().substring(0,600);}
-
-  document.getElementById('tool-body').innerHTML=`
+function renderToolForm(t, result = '', loading = false) {
+  const fields = TF[t.id] || [];
+  const isInvite = t.id === 'invitation';
+  let imgP = '';
+  if (isInvite && result) {
+    const m = result.match(/IMAGE PROMPT[:\s]+([\s\S]{50,})/i);
+    if (m) imgP = m[1].trim().substring(0, 600);
+  }
+  const safeResult = result.replace(/IMAGE PROMPT[\s\S]*/i, '').trim();
+  document.getElementById('tool-body').innerHTML = `
     <div style="padding:16px;">
-      <div style="font-size:13px;font-weight:700;color:${t.color};margin-bottom:14px;">Details Bharo ✍️</div>
-      ${fields.map(f=>`<div style="margin-bottom:12px;"><label class="lbl">${f.l}</label><input class="inp" id="tf-${f.k}" placeholder="${f.p}" style="border-color:${t.color}22;" oninput="TI['${f.k}']=this.value"/></div>`).join('')}
-      <button onclick="runTool('${t.id}')" id="run-btn" style="width:100%;padding:14px;background:${loading?'#2a2a2a':`linear-gradient(135deg,${t.color},var(--g2))`};border:none;border-radius:14px;color:#0D0B0E;font-weight:800;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:4px;">
-        ${loading?'✨ Generating...':'✨ Generate with AI'}
+      <div style="font-size:12px;font-weight:700;color:${t.color};margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase;">Details Bharo ✍️</div>
+      ${fields.map(f => `<div style="margin-bottom:12px;"><label class="lbl">${Sanitize.text(f.l)}</label><input class="inp" id="tf-${f.k}" placeholder="${Sanitize.text(f.p)}" style="border-color:${t.color}22;" oninput="App.TI['${f.k}']=this.value"/></div>`).join('')}
+      <button onclick="runTool('${t.id}')" id="run-btn" style="width:100%;padding:14px;background:${loading ? 'var(--s3)' : `linear-gradient(135deg,${t.color},var(--gold2))`};border:none;border-radius:var(--r-md);color:${loading ? 'var(--text2)' : '#0A0809'};font-weight:800;font-size:14px;cursor:pointer;font-family:var(--font-body);margin-top:4px;transition:all .2s;" ${loading ? 'disabled' : ''}>
+        ${loading ? '<span style="animation:pulse 1s infinite;display:inline-block;">✨ Generating...</span>' : '✨ Generate with AI'}
       </button>
-
-      <!-- Rewarded ad hint -->
-      <div style="margin-top:12px;background:var(--c2);border-radius:12px;padding:10px 14px;border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:10px;">
+      <div style="margin-top:12px;background:var(--s2);border-radius:var(--r-md);padding:10px 14px;border:1px solid var(--border2);display:flex;align-items:center;gap:10px;">
         <div style="font-size:18px;">📺</div>
-        <div style="flex:1;"><div style="font-size:11px;color:#fff;font-weight:600;">Zyada uses chahiye? Ad dekhein</div><div style="font-size:10px;color:#444;">Skip ke baad +3 free uses milenge</div></div>
-        <div onclick="document.getElementById('adbox').classList.add('on')" style="font-size:10px;color:var(--g);font-weight:600;cursor:pointer;padding:4px 8px;border:1px solid var(--br);border-radius:8px;">Watch</div>
+        <div style="flex:1;"><div style="font-size:11px;color:var(--text);font-weight:600;">Zyada uses chahiye?</div><div style="font-size:10px;color:var(--text3);">Ad dekhein = +3 free uses</div></div>
+        <div onclick="document.getElementById('adbox').classList.add('on')" style="font-size:10px;color:var(--gold);font-weight:700;cursor:pointer;padding:5px 10px;border:1px solid var(--border);border-radius:8px;">Watch</div>
       </div>
-
-      <!-- Website full version link -->
-      <a href="${t.url}" target="_blank" style="display:block;margin-top:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 14px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-size:12px;color:#888;">Website pe full version try karo</div>
-        <div style="font-size:12px;color:var(--g);font-weight:700;">Open 🌐</div>
+      <a href="${t.url}" target="_blank" style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:var(--r-md);padding:11px 14px;text-decoration:none;">
+        <div style="font-size:12px;color:var(--text3);">Website pe full version try karo</div>
+        <div style="font-size:12px;color:var(--gold);font-weight:700;">Open 🌐</div>
       </a>
-
-      ${result?`
-      <!-- RESULT -->
-      <div style="margin-top:16px;background:var(--c2);border-radius:20px;padding:18px;border:1px solid ${t.color}33;">
+      ${result ? `
+      <div style="margin-top:16px;background:var(--s2);border-radius:var(--r-xl);padding:18px;border:1px solid ${t.color}33;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
           <div style="font-size:13px;font-weight:700;color:${t.color};">✅ AI Result</div>
           <div style="display:flex;gap:8px;">
-            <button onclick="navigator.clipboard?.writeText(document.getElementById('rtxt').innerText)" style="background:rgba(255,255,255,.08);border:none;border-radius:8px;padding:6px 12px;font-size:11px;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;">📋 Copy</button>
-            <button onclick="if(navigator.share)navigator.share({title:'SmartShaadi AI',text:document.getElementById('rtxt').innerText,url:'https://smartshaadi.online/app'});" style="background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);border-radius:8px;padding:6px 12px;font-size:11px;color:#25D366;cursor:pointer;font-family:'DM Sans',sans-serif;">💬 Share</button>
+            <button onclick="navigator.clipboard?.writeText(document.getElementById('rtxt').innerText);showToast('📋 Copied!')" style="background:rgba(255,255,255,.07);border:none;border-radius:8px;padding:7px 12px;font-size:11px;color:var(--text);cursor:pointer;font-family:var(--font-body);font-weight:600;">📋 Copy</button>
+            <button onclick="if(navigator.share)navigator.share({title:'SmartShaadi AI',text:document.getElementById('rtxt').innerText,url:'https://smartshaadi.online/app'});else showToast('⚠️ Share not supported')" style="background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:7px 12px;font-size:11px;color:#25D366;cursor:pointer;font-family:var(--font-body);font-weight:600;">💬 Share</button>
           </div>
         </div>
-        <div id="rtxt" style="font-size:13px;color:#ddd;line-height:1.8;white-space:pre-wrap;max-height:400px;overflow-y:auto;">${result.replace(/IMAGE PROMPT[\s\S]*/i,'').trim()}</div>
+        <div id="rtxt" style="font-size:13px;color:#ddd;line-height:1.8;white-space:pre-wrap;max-height:400px;overflow-y:auto;">${safeResult.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
       </div>
-
-      ${isInvite?`
-      <!-- INVITE PREVIEW + IMAGE PROMPT -->
-      <div style="margin-top:14px;background:var(--c2);border-radius:20px;padding:18px;border:1px solid rgba(201,168,76,.25);">
-        <div style="font-size:14px;font-weight:800;color:var(--g);margin-bottom:10px;">🎨 AI Invitation Card Preview</div>
-        <div style="background:linear-gradient(135deg,#2d1f0a,#1a1200);border-radius:16px;padding:24px 20px;border:2px solid rgba(201,168,76,.3);text-align:center;margin-bottom:14px;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.15),transparent);pointer-events:none;"></div>
+      ${isInvite && imgP ? `
+      <div style="margin-top:14px;background:var(--s2);border-radius:var(--r-xl);padding:18px;border:1px solid rgba(201,168,76,.2);">
+        <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:10px;">🎨 Invitation Card Preview</div>
+        <div style="background:linear-gradient(135deg,#2d1f0a,#1a1200);border-radius:var(--r-lg);padding:24px 20px;border:2px solid rgba(201,168,76,.3);text-align:center;margin-bottom:14px;position:relative;overflow:hidden;">
           <div style="font-size:24px;margin-bottom:8px;">🌸</div>
-          <div style="font-size:10px;color:var(--g);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">With the Blessings of God</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;">${TI.bride||'Bride'} 💍 ${TI.groom||'Groom'}</div>
-          <div style="font-size:12px;color:rgba(201,168,76,.7);margin-bottom:4px;">${TI.date||'Date TBD'}</div>
-          <div style="font-size:11px;color:#555;">${TI.venue||'Venue TBD'}</div>
+          <div style="font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">With the Blessings of God</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;">${Sanitize.text(App.TI.bride||'Bride')} 💍 ${Sanitize.text(App.TI.groom||'Groom')}</div>
+          <div style="font-size:12px;color:rgba(201,168,76,.7);margin-bottom:4px;">${Sanitize.text(App.TI.date||'Date TBD')}</div>
+          <div style="font-size:11px;color:var(--text3);">${Sanitize.text(App.TI.venue||'Venue TBD')}</div>
           <div style="font-size:20px;margin:10px 0;">🌺 🪔 🌺</div>
-          <div style="font-size:9px;color:#444;letter-spacing:2px;">— ${TI.family||'Family'} —</div>
+          <div style="font-size:9px;color:var(--text3);letter-spacing:2px;">— ${Sanitize.text(App.TI.family||'Family')} —</div>
         </div>
-        ${imgP?`
-        <div style="background:var(--bg);border-radius:12px;padding:14px;border:1px solid rgba(201,168,76,.15);">
-          <div style="font-size:11px;color:var(--g);font-weight:700;margin-bottom:8px;">📋 Midjourney / DALL-E Image Prompt:</div>
-          <div id="imgpt" style="font-size:11px;color:#888;line-height:1.7;font-style:italic;">${imgP}</div>
-          <button onclick="navigator.clipboard?.writeText(document.getElementById('imgpt').innerText);alert('Prompt copied! Midjourney ya DALL-E mein paste karo 🎨')" style="margin-top:12px;background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:10px;padding:10px 20px;font-size:12px;font-weight:700;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;">📋 Prompt Copy Karo</button>
-        </div>`:''}
-      </div>`:''}`:''}
+        <div style="background:var(--bg);border-radius:var(--r-md);padding:14px;border:1px solid rgba(201,168,76,.12);">
+          <div style="font-size:11px;color:var(--gold);font-weight:700;margin-bottom:8px;">📋 Midjourney / DALL-E Prompt:</div>
+          <div id="imgpt" style="font-size:11px;color:var(--text2);line-height:1.7;font-style:italic;">${Sanitize.text(imgP)}</div>
+          <button onclick="navigator.clipboard?.writeText(document.getElementById('imgpt').innerText);showToast('🎨 Prompt copied! DALL-E mein paste karo')" class="btn-gold" style="margin-top:12px;">📋 Prompt Copy Karo</button>
+        </div>
+      </div>` : ''}
+      ` : ''}
     </div>`;
 }
 
-let TI={};
-async function runTool(id){
-  const t=TOOLS.find(x=>x.id===id);if(!t)return;
-  const fields=TF[id]||[];
-  fields.forEach(f=>{const el=document.getElementById('tf-'+f.k);if(el)TI[f.k]=el.value;});
-  renderToolForm(t,'',true);
-  try{
-    const prompt=TP[id]?TP[id](TI):'Help me plan my Indian wedding.';
-    const res=await fetch('/api/groq-agent',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:"You are SmartShaadi AI, India's expert wedding planner. Respond in warm Hinglish. Be detailed with Indian ₹ prices. Use clear sections and emojis.",messages:[{role:'user',content:prompt}]})
+async function runTool(id) {
+  const t = TOOLS.find(x => x.id === id);
+  if (!t) return;
+  const fields = TF[id] || [];
+  fields.forEach(f => {
+    const el = document.getElementById('tf-' + f.k);
+    if (el) App.TI[f.k] = el.value;
+  });
+  renderToolForm(t, '', true);
+  try {
+    const prompt = TP[id] ? TP[id](App.TI) : 'Help me plan my Indian wedding.';
+    const res = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: "You are SmartShaadi AI, India's expert wedding planner. Respond in warm Hinglish. Be detailed with Indian ₹ prices. Use clear sections and emojis.",
+        messages: [{ role: 'user', content: prompt }]
+      })
     });
-    const d=await res.json();
-    const txt=d.choices?.[0]?.message?.content||'Kuch error aaya, dobara try karein!';
-    renderToolForm(t,txt,false);
-  }catch(e){renderToolForm(t,'Error: '+e.message+'\n\nWebsite pe jaake try karein: '+t.url,false);}
+    const d = await res.json();
+    const txt = d.choices?.[0]?.message?.content || 'Kuch error aaya, dobara try karein!';
+    renderToolForm(t, txt, false);
+  } catch (e) {
+    renderToolForm(t, 'Error: ' + e.message + '\n\nWebsite pe jaake try karein: ' + t.url, false);
+  }
 }
 
-// ══ NAVIGATION ══
-let prevScreen='home';
-function go(id){
-  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
-  document.querySelectorAll('.nb').forEach(b=>{b.classList.remove('on');const d=b.querySelector('.ndot');if(d)d.remove();});
-  const s=document.getElementById('scr-'+id);
-  if(s){s.classList.add('on');document.getElementById('wrap').scrollTop=0;}
-  const nb=document.getElementById('nb-'+id);
-  if(nb){nb.classList.add('on');const dot=document.createElement('div');dot.className='ndot';nb.appendChild(dot);}
-  prevScreen=id;
-  if(id==='budget')rBudget();
-  if(id==='timeline')rTL();
-  if(id==='guests')rg();
-  if(id==='vendor-dir')renderVendorDir();
-  if(id==='vendor-apply')rVA();
-}
-function goBack(){go(prevScreen==='tool'?'home':prevScreen);}
+/* ═══════════════════════════════════
+   SECTION 6: CHAT
+   ═══════════════════════════════════ */
+function sc(t) { document.getElementById('ci').value = t; }
 
-// ══ CHAT ══
-function sc(t){document.getElementById('ci').value=t;}
-async function sendChat(){
-  const inp=document.getElementById('ci');const text=inp.value.trim();if(!text)return;
-  inp.value='';addM('me',text);addTyping();
-  try{
-    const msgs=[];
-    document.querySelectorAll('#chat-wrap .mb:not(.typing)').forEach(b=>{msgs.push({role:b.classList.contains('me')?'user':'assistant',content:b.innerText});});
-    const r=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:"You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish. Give Indian prices in ₹. Be helpful, warm, use emojis.",messages:msgs})});
-    const d=await r.json();
-    removeTyping();addM('ai',d.choices?.[0]?.message?.content||'Dobara try karein 🙏');
-  }catch(e){removeTyping();addM('ai','Thodi der mein try karein 🙏');}
+async function sendChat() {
+  const inp = document.getElementById('ci');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  addMsg('me', text);
+  addTyping();
+  try {
+    const msgs = [];
+    document.querySelectorAll('#chat-wrap .mb:not(.typing-wrap)').forEach(b => {
+      msgs.push({ role: b.classList.contains('me') ? 'user' : 'assistant', content: b.innerText });
+    });
+    const r = await fetch('/api/groq-agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: "You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish. Give Indian prices in ₹. Be helpful, warm, use emojis.",
+        messages: msgs
+      })
+    });
+    const d = await r.json();
+    removeTyping();
+    addMsg('ai', d.choices?.[0]?.message?.content || 'Dobara try karein 🙏');
+  } catch (e) {
+    removeTyping();
+    addMsg('ai', 'Thodi der mein try karein 🙏');
+  }
 }
-function addM(role,text){
-  const w=document.getElementById('chat-wrap');
-  const wrap=document.createElement('div');wrap.style.display='flex';
-  if(role==='me')wrap.style.justifyContent='flex-end';
-  const b=document.createElement('div');b.className='mb '+role;b.innerText=text;
-  wrap.appendChild(b);w.appendChild(wrap);w.scrollTop=w.scrollHeight;
-}
-function addTyping(){
-  const w=document.getElementById('chat-wrap');
-  const d=document.createElement('div');d.id='tind';d.style.display='flex';
-  d.innerHTML='<div class="mb ai typing" style="padding:12px 16px;"><span class="td" style="animation-delay:0s"></span><span class="td" style="animation-delay:.2s;margin:0 4px"></span><span class="td" style="animation-delay:.4s"></span></div>';
-  w.appendChild(d);w.scrollTop=w.scrollHeight;
-}
-function removeTyping(){document.getElementById('tind')?.remove();}
 
-// ══ GUESTS ══
-let guests=[{id:1,name:'Anjali Sharma',side:'Bride',meal:'Veg',rsvp:'Confirmed',phone:'',table:'1'},{id:2,name:'Vikram Singh',side:'Groom',meal:'Non-Veg',rsvp:'Pending',phone:'',table:'2'}];
-let gSide='Bride',gMeal='Veg';
-function sGF(f,v){
-  if(f==='side'){gSide=v;['bride','groom'].forEach(s=>{const btn=document.getElementById('sb-'+s);if(btn){const val=s.charAt(0).toUpperCase()+s.slice(1);btn.style.color=val===v?'#1ABC9C':'#888';btn.style.borderColor=val===v?'#1ABC9C':'rgba(255,255,255,.08)';}});}
-  else{gMeal=v;['veg','nonveg','jain'].forEach(m=>{const map={veg:'Veg',nonveg:'Non-Veg',jain:'Jain'};const btn=document.getElementById('sm-'+m);if(btn){btn.style.color=map[m]===v?'var(--g)':'#888';btn.style.borderColor=map[m]===v?'var(--g)':'rgba(255,255,255,.08)';}});}
+function addMsg(role, text) {
+  const w = document.getElementById('chat-wrap');
+  const wrap = document.createElement('div');
+  wrap.style.display = 'flex';
+  if (role === 'me') wrap.style.justifyContent = 'flex-end';
+  const b = document.createElement('div');
+  b.className = 'mb ' + role;
+  b.textContent = text; // safe — no innerHTML
+  wrap.appendChild(b);
+  w.appendChild(wrap);
+  w.scrollTop = w.scrollHeight;
 }
-function tgf(){const f=document.getElementById('gf'),b=document.getElementById('gftog');if(f.style.display==='none'){f.style.display='block';b.textContent='✕ Close';b.style.color='var(--g)';}else{f.style.display='none';b.textContent='+ Naya Guest Add Karo';b.style.color='#888';}}
-function addG(){
-  const n=document.getElementById('gfn')?.value?.trim();if(!n){alert('Naam daalein!');return;}
-  guests.push({id:Date.now(),name:n,side:gSide,meal:gMeal,rsvp:'Pending',phone:document.getElementById('gfph')?.value||'',table:document.getElementById('gftb')?.value||''});
-  ['gfn','gfph','gftb'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  tgf();rg();
+
+function addTyping() {
+  const w = document.getElementById('chat-wrap');
+  const d = document.createElement('div');
+  d.id = 'tind';
+  d.style.display = 'flex';
+  d.innerHTML = '<div class="mb ai" style="padding:12px 16px;"><span class="td" style="animation-delay:0s"></span><span class="td" style="animation-delay:.2s;margin:0 5px"></span><span class="td" style="animation-delay:.4s"></span></div>';
+  w.appendChild(d);
+  w.scrollTop = w.scrollHeight;
 }
-function setR(id,s){guests=guests.map(g=>g.id===id?{...g,rsvp:s}:g);rg();}
-function remG(id){guests=guests.filter(g=>g.id!==id);rg();}
-function rg(){
-  const srch=document.getElementById('gsrch')?.value?.toLowerCase()||'';
-  const f=guests.filter(g=>g.name.toLowerCase().includes(srch));
-  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
-  const veg=guests.filter(g=>g.meal==='Veg').length;
-  const pct=guests.length?Math.round(conf/guests.length*100):0;
-  const se=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  se('gt',guests.length);se('gc',conf);se('gp',guests.filter(g=>g.rsvp==='Pending').length);se('gv',veg);
-  const bar=document.getElementById('gbar');if(bar)bar.style.width=pct+'%';
-  const pp=document.getElementById('gpct');if(pp)pp.textContent=pct+'% confirmed';
-  const sub=document.getElementById('gsub');if(sub)sub.textContent=guests.length+' guests · RSVP + PDF Export';
-  const list=document.getElementById('glist');if(!list)return;
-  list.innerHTML=f.length===0?'<div style="text-align:center;padding:30px;color:#333;font-size:13px;">Koi nahi mila 🔍</div>':
-    f.map(g=>`<div style="background:var(--c2);border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,.04);margin-bottom:8px;">
+
+function removeTyping() { document.getElementById('tind')?.remove(); }
+
+/* ═══════════════════════════════════
+   SECTION 7: COUNTDOWN DASHBOARD
+   ═══════════════════════════════════ */
+const PHASE_TASKS = [
+  { label: '12 Months Before', tasks: ['Finalize budget', 'Book venue', 'Set wedding date', 'Start guest list'], monthsBefore: 12 },
+  { label: '9 Months Before', tasks: ['Book photographer', 'Book caterer', 'Shortlist decorator', 'Send save-the-dates'], monthsBefore: 9 },
+  { label: '6 Months Before', tasks: ['Finalize theme', 'Book DJ/music', 'Order outfits', 'Plan honeymoon'], monthsBefore: 6 },
+  { label: '3 Months Before', tasks: ['Send invitations', 'Book makeup artist', 'Confirm vendors', 'Plan mehendi/sangeet'], monthsBefore: 3 },
+  { label: '1 Month Before', tasks: ['Final RSVP', 'Confirm seating', 'Final fittings', 'Pre-wedding shoot'], monthsBefore: 1 },
+  { label: '1 Week Before', tasks: ['Vendor final calls', 'Pack bags', 'Confirm transport', 'Complete payments'], monthsBefore: 0.25 },
+  { label: 'Wedding Day! 💍', tasks: ['Enjoy every moment!', 'Assign coordinator', 'Emergency kit ready', 'Breathe & smile 😊'], monthsBefore: 0 },
+];
+
+function saveWeddingDate(val) {
+  Store.set('wedding_date', val);
+  App.weddingDate = val;
+  // Also sync to timeline
+  const wd = document.getElementById('wdate');
+  if (wd) wd.value = val;
+  updateHomeCountdown();
+}
+
+function updateHomeCountdown() {
+  const dateStr = App.weddingDate || Store.get('wedding_date');
+  const widget = document.getElementById('home-countdown');
+  if (!dateStr || !widget) return;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const wed = new Date(dateStr);
+  const days = Math.ceil((wed - today) / 86400000);
+  if (days < 0) { widget.style.display = 'none'; return; }
+  widget.style.display = 'block';
+  document.getElementById('home-days').textContent = days;
+  // Progress
+  const cTasks = Store.get('countdown_tasks', {});
+  const total = PHASE_TASKS.reduce((a,p) => a + p.tasks.length, 0);
+  const done = Object.values(cTasks).filter(Boolean).length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  const bar = document.getElementById('home-prog');
+  if (bar) bar.style.width = pct + '%';
+  const td = document.getElementById('home-tasks-done');
+  if (td) td.textContent = done + ' tasks done';
+}
+
+function rCountdown() {
+  const dateStr = App.weddingDate || Store.get('wedding_date');
+  const inp = document.getElementById('wdate-cd');
+  if (inp && dateStr) inp.value = dateStr;
+  const cTasks = Store.get('countdown_tasks', {});
+  const hero = document.getElementById('cd-hero');
+  const prog = document.getElementById('cd-progress');
+  const todayDiv = document.getElementById('cd-today');
+  const upcomingDiv = document.getElementById('cd-upcoming');
+  const doneDiv = document.getElementById('cd-done-section');
+  if (!dateStr) { [hero,prog,todayDiv,upcomingDiv,doneDiv].forEach(el => { if(el) el.style.display='none'; }); return; }
+  const today = new Date(); today.setHours(0,0,0,0);
+  const wed = new Date(dateStr);
+  const days = Math.ceil((wed - today) / 86400000);
+  const weeks = Math.ceil(days / 7);
+  const months = Math.ceil(days / 30);
+  // Show hero
+  if (hero) { hero.style.display = 'block'; }
+  document.getElementById('cd-days').textContent = days > 0 ? days : '🎉';
+  document.getElementById('cd-weeks').textContent = weeks > 0 ? weeks : '—';
+  document.getElementById('cd-months').textContent = months > 0 ? months : '—';
+  document.getElementById('cd-date-str').textContent = wed.toLocaleDateString('en-IN', {day:'numeric',month:'short'});
+  // Progress
+  const total = PHASE_TASKS.reduce((a,p) => a + p.tasks.length, 0);
+  const doneCount = Object.values(cTasks).filter(Boolean).length;
+  const pct = total ? Math.round(doneCount / total * 100) : 0;
+  if (prog) prog.style.display = 'block';
+  document.getElementById('cd-prog-bar').style.width = pct + '%';
+  document.getElementById('cd-prog-pill').textContent = pct + '%';
+  document.getElementById('cd-prog-text').textContent = doneCount + ' of ' + total + ' tasks complete';
+  // Categorize tasks
+  const todayTasks = [], upcomingTasks = [], doneTasks = [];
+  PHASE_TASKS.forEach((phase, pi) => {
+    const daysForPhase = phase.monthsBefore * 30;
+    phase.tasks.forEach((task, ti) => {
+      const key = `${pi}-${ti}`;
+      const isDone = cTasks[key];
+      const taskObj = { key, label: task, phase: phase.label, pi, ti };
+      if (isDone) doneTasks.push(taskObj);
+      else if (days <= daysForPhase + 30 && days >= daysForPhase - 10) todayTasks.push(taskObj);
+      else upcomingTasks.push(taskObj);
+    });
+  });
+  // Render today
+  if (todayDiv) {
+    if (todayTasks.length) {
+      todayDiv.style.display = 'block';
+      document.getElementById('cd-today-count').textContent = todayTasks.length;
+      document.getElementById('cd-today-list').innerHTML = todayTasks.map(t => renderTaskItem(t, cTasks)).join('');
+    } else { todayDiv.style.display = 'none'; }
+  }
+  // Render upcoming
+  if (upcomingDiv) {
+    const pending = upcomingTasks.slice(0, 8);
+    if (pending.length) {
+      upcomingDiv.style.display = 'block';
+      document.getElementById('cd-up-count').textContent = pending.length;
+      document.getElementById('cd-upcoming-list').innerHTML = pending.map(t => renderTaskItem(t, cTasks)).join('');
+    } else { upcomingDiv.style.display = 'none'; }
+  }
+  // Render done
+  if (doneDiv) {
+    if (doneTasks.length) {
+      doneDiv.style.display = 'block';
+      document.getElementById('cd-done-count').textContent = doneTasks.length;
+      document.getElementById('cd-done-list').innerHTML = doneTasks.slice(0,5).map(t => renderTaskItem(t, cTasks)).join('');
+    } else { doneDiv.style.display = 'none'; }
+  }
+}
+
+function renderTaskItem(t, cTasks) {
+  const isDone = cTasks[t.key];
+  return `<div class="task-r ${isDone ? 'dn' : ''}" onclick="toggleCDTask('${t.key}')">
+    <div class="tck ${isDone ? 'dn' : ''}">${isDone ? '✓' : ''}</div>
+    <div style="flex:1;">
+      <div style="font-size:12px;color:${isDone ? 'var(--green)' : 'var(--text)'};text-decoration:${isDone ? 'line-through' : 'none'};">${Sanitize.text(t.label)}</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px;">${Sanitize.text(t.phase)}</div>
+    </div>
+  </div>`;
+}
+
+function toggleCDTask(key) {
+  const cTasks = Store.get('countdown_tasks', {});
+  cTasks[key] = !cTasks[key];
+  Store.set('countdown_tasks', cTasks);
+  rCountdown();
+  updateHomeCountdown();
+  if (cTasks[key]) showToast('✅ Task complete!');
+}
+
+/* ═══════════════════════════════════
+   SECTION 8: REPORT CARD
+   ═══════════════════════════════════ */
+function genReport() {
+  const bride = Sanitize.text(document.getElementById('rc-bride')?.value || 'Priya');
+  const groom = Sanitize.text(document.getElementById('rc-groom')?.value || 'Rahul');
+  const city = Sanitize.text(document.getElementById('rc-city')?.value || 'Delhi');
+  const guests = Sanitize.number(document.getElementById('rc-guests')?.value, 1, 10000);
+  const budget = Sanitize.number(document.getElementById('rc-budget')?.value, 1, 999999999);
+  if (!bride || !groom) { showToast('⚠️ Naam zaroori hai!'); return; }
+
+  const budgetCats = [
+    {n:'Venue',pct:30,c:'#C9A84C'},
+    {n:'Catering',pct:25,c:'#27AE60'},
+    {n:'Decoration',pct:15,c:'#E91E8C'},
+    {n:'Photography',pct:10,c:'#3498DB'},
+    {n:'Clothing',pct:8,c:'#9B59B6'},
+    {n:'Music/DJ',pct:5,c:'#E74C3C'},
+    {n:'Transport',pct:4,c:'#F39C12'},
+    {n:'Misc',pct:3,c:'#888'},
+  ];
+
+  const milestones = ['12 months: Book venue', '9 months: Book photographer', '6 months: Finalize theme', '3 months: Send invitations', '1 month: Final RSVP', '1 week: Final calls'];
+  const themes = ['Royal Rajasthani', 'Floral Garden', 'Modern Minimal', 'Bollywood Glam'];
+  const suggestedTheme = themes[guests % themes.length];
+
+  const html = `
+    <div class="share-card">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:32px;margin-bottom:6px;">💍</div>
+        <div style="font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--gold);">${bride} & ${groom}</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:4px;">📍 ${city} · 👥 ${guests} Guests · SmartShaadi v2</div>
+      </div>
+
+      <div style="background:rgba(201,168,76,.06);border-radius:var(--r-lg);padding:16px;border:1px solid rgba(201,168,76,.15);margin-bottom:14px;">
+        <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:10px;">💰 BUDGET BREAKDOWN</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold);margin-bottom:12px;">₹${budget.toLocaleString('en-IN')}</div>
+        ${budgetCats.map(c => {
+          const amt = Math.round(budget * c.pct / 100);
+          return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="font-size:11px;color:var(--text2);width:90px;flex-shrink:0;">${c.n}</div>
+            <div style="flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:${c.pct}%;background:${c.c};border-radius:3px;"></div>
+            </div>
+            <div style="font-size:11px;color:var(--text3);width:70px;text-align:right;">₹${amt.toLocaleString('en-IN')}</div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div style="background:rgba(52,152,219,.06);border-radius:var(--r-md);padding:12px;border:1px solid rgba(52,152,219,.15);">
+          <div style="font-size:10px;color:var(--blue);font-weight:700;margin-bottom:6px;">🎨 SUGGESTED THEME</div>
+          <div style="font-size:13px;font-weight:800;color:var(--text);">${suggestedTheme}</div>
+        </div>
+        <div style="background:rgba(46,204,113,.06);border-radius:var(--r-md);padding:12px;border:1px solid rgba(46,204,113,.15);">
+          <div style="font-size:10px;color:var(--green);font-weight:700;margin-bottom:6px;">👥 PER PLATE COST</div>
+          <div style="font-size:13px;font-weight:800;color:var(--text);">₹${Math.round(budget * 0.25 / guests).toLocaleString('en-IN')}</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,.03);border-radius:var(--r-md);padding:14px;border:1px solid var(--border2);margin-bottom:16px;">
+        <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:10px;">📅 PLANNING MILESTONES</div>
+        ${milestones.map(m => `<div style="font-size:11px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border2);">✓ ${m}</div>`).join('')}
+      </div>
+
+      <div style="font-size:10px;color:var(--text3);text-align:center;margin-bottom:16px;">Generated by SmartShaadi v2 · smartshaadi.online/app</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <a href="https://wa.me/?text=${encodeURIComponent(`💍 ${bride} & ${groom} ki Shaadi Planning!\n\n📍 ${city} · 👥 ${guests} Guests · ₹${budget.toLocaleString('en-IN')}\n\nSmartShaadi se plan karo FREE mein 🎉\nhttps://smartshaadi.online/app`)}" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--r-md);padding:12px;text-align:center;text-decoration:none;display:block;">
+          <div style="font-size:14px;font-weight:800;color:#fff;">💬 WhatsApp</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px;">Share karo</div>
+        </a>
+        <button onclick="copyReportLink('${bride}','${groom}','${city}')" style="background:var(--s3);border:1px solid var(--border);border-radius:var(--r-md);padding:12px;cursor:pointer;font-family:var(--font-body);">
+          <div style="font-size:14px;font-weight:800;color:var(--gold);">🔗 Copy Link</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:2px;">Copy & share</div>
+        </button>
+      </div>
+    </div>`;
+
+  document.getElementById('share-modal').innerHTML = `
+    <div style="max-width:440px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-top:4px;">
+        <button onclick="document.getElementById('share-modal').classList.remove('on')" class="back-btn">← Wapas</button>
+        <div style="font-size:15px;font-weight:800;">💌 Wedding Report Card</div>
+      </div>
+      ${html}
+    </div>`;
+  document.getElementById('share-modal').classList.add('on');
+}
+
+function copyReportLink(bride, groom, city) {
+  const text = `💍 ${bride} & ${groom} ki wedding India mein! Plan kar rahe hain SmartShaadi se 🎉\nhttps://smartshaadi.online/app`;
+  navigator.clipboard?.writeText(text);
+  showToast('🔗 Link copied!');
+}
+
+/* ═══════════════════════════════════
+   SECTION 9: GUESTS
+   ═══════════════════════════════════ */
+let guests = Store.get('guests', [
+  {id:1,name:'Anjali Sharma',side:'Bride',meal:'Veg',rsvp:'Confirmed',phone:'',table:'1'},
+  {id:2,name:'Vikram Singh',side:'Groom',meal:'Non-Veg',rsvp:'Pending',phone:'',table:'2'}
+]);
+
+function saveGuests() { Store.set('guests', guests); }
+
+function sGF(f, v) {
+  if (f === 'side') {
+    App.gSide = v;
+    ['bride','groom'].forEach(s => {
+      const btn = document.getElementById('sb-' + s);
+      if (btn) btn.classList.toggle('on', s.charAt(0).toUpperCase() + s.slice(1) === v);
+    });
+  } else {
+    App.gMeal = v;
+    [{id:'sm-veg',val:'Veg'},{id:'sm-nonveg',val:'Non-Veg'},{id:'sm-jain',val:'Jain'}].forEach(m => {
+      const btn = document.getElementById(m.id);
+      if (btn) btn.classList.toggle('on', m.val === v);
+    });
+  }
+}
+
+function tgf() {
+  const f = document.getElementById('gf'), b = document.getElementById('gftog');
+  const isOpen = f.style.display !== 'none';
+  f.style.display = isOpen ? 'none' : 'block';
+  b.textContent = isOpen ? '+ Naya Guest Add Karo' : '✕ Close';
+  b.style.color = isOpen ? 'var(--text2)' : 'var(--gold)';
+}
+
+function addG() {
+  const n = Sanitize.text(document.getElementById('gfn')?.value || '');
+  if (!n) { showToast('⚠️ Naam daalein!'); return; }
+  guests.push({
+    id: Date.now(),
+    name: n,
+    side: App.gSide,
+    meal: App.gMeal,
+    rsvp: 'Pending',
+    phone: Sanitize.phone(document.getElementById('gfph')?.value || ''),
+    table: Sanitize.text(document.getElementById('gftb')?.value || ''),
+  });
+  saveGuests();
+  ['gfn','gfph','gftb'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  tgf();
+  rg();
+  showToast('✅ Guest add ho gaya!');
+}
+
+function setR(id, s) {
+  guests = guests.map(g => g.id === id ? {...g, rsvp: s} : g);
+  saveGuests(); rg();
+}
+
+function remG(id) {
+  guests = guests.filter(g => g.id !== id);
+  saveGuests(); rg();
+  showToast('🗑️ Guest removed');
+}
+
+function rg() {
+  const srch = (document.getElementById('gsrch')?.value || '').toLowerCase();
+  const f = guests.filter(g => g.name.toLowerCase().includes(srch));
+  const conf = guests.filter(g => g.rsvp === 'Confirmed').length;
+  const veg = guests.filter(g => g.meal === 'Veg').length;
+  const pct = guests.length ? Math.round(conf / guests.length * 100) : 0;
+  const se = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  se('gt', guests.length); se('gc', conf);
+  se('gp', guests.filter(g => g.rsvp === 'Pending').length);
+  se('gv', veg);
+  const bar = document.getElementById('gbar'); if (bar) bar.style.width = pct + '%';
+  const pp = document.getElementById('gpct'); if (pp) pp.textContent = pct + '% confirmed';
+  const sub = document.getElementById('gsub'); if (sub) sub.textContent = guests.length + ' guests · RSVP + PDF Export';
+  const list = document.getElementById('glist'); if (!list) return;
+  if (!f.length) { list.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text3);font-size:13px;">Koi nahi mila 🔍</div>'; return; }
+  list.innerHTML = f.map(g => `
+    <div style="background:var(--s2);border-radius:var(--r-md);padding:12px 14px;border:1px solid var(--border2);margin-bottom:8px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div><div style="font-size:13px;font-weight:700;color:#fff;">${g.name}</div><div style="font-size:10px;color:#555;margin-top:2px;">${g.side} · ${g.meal}${g.table?' · Table '+g.table:''}${g.phone?' · '+g.phone:''}</div></div>
-        <button onclick="remG(${g.id})" style="background:none;border:none;color:#333;font-size:18px;cursor:pointer;padding:0;">✕</button>
+        <div>
+          <div style="font-size:13px;font-weight:700;">${Sanitize.text(g.name)}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:2px;">${Sanitize.text(g.side)} · ${Sanitize.text(g.meal)}${g.table ? ' · Table ' + Sanitize.text(g.table) : ''}${g.phone ? ' · ' + Sanitize.text(g.phone) : ''}</div>
+        </div>
+        <button onclick="remG(${g.id})" style="background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:2px;line-height:1;">✕</button>
       </div>
       <div style="display:flex;gap:6px;">
         <button class="rsvpb ${g.rsvp==='Confirmed'?'ok':''}" onclick="setR(${g.id},'Confirmed')">✓ Yes</button>
-        <button class="rsvpb ${g.rsvp==='Pending'?'wt':''}"   onclick="setR(${g.id},'Pending')">⏳ Wait</button>
-        <button class="rsvpb ${g.rsvp==='Declined'?'no':''}"  onclick="setR(${g.id},'Declined')">✗ No</button>
+        <button class="rsvpb ${g.rsvp==='Pending'?'wt':''}" onclick="setR(${g.id},'Pending')">⏳ Wait</button>
+        <button class="rsvpb ${g.rsvp==='Declined'?'no':''}" onclick="setR(${g.id},'Declined')">✗ No</button>
       </div>
     </div>`).join('');
 }
-function exportPDF(){
-  if(!guests.length){alert('Pehle guests add karo!');return;}
-  const conf=guests.filter(g=>g.rsvp==='Confirmed').length,veg=guests.filter(g=>g.meal==='Veg').length;
-  const w=window.open('','_blank');
-  w.document.write(`<!DOCTYPE html><html><head><title>Guest List — SmartShaadi</title>
-  <style>body{font-family:Georgia,serif;color:#1a1a1a;padding:40px;max-width:800px;margin:0 auto;}h1{color:#C9A84C;font-size:28px;margin-bottom:4px;}.sub{color:#888;font-size:13px;margin-bottom:24px;}.stats{display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap;}.stat{background:#fdf8f0;padding:12px 20px;border-radius:10px;border-left:4px solid #C9A84C;}.sv{font-size:24px;font-weight:bold;color:#C9A84C;}.sl{font-size:11px;color:#888;}table{width:100%;border-collapse:collapse;font-size:13px;}th{background:#C9A84C;color:white;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #eee;}tr:nth-child(even){background:#fdf8f0;}.confirmed{color:#27AE60;font-weight:bold;}.pending{color:#F39C12;font-weight:bold;}.declined{color:#E74C3C;font-weight:bold;}.footer{margin-top:30px;font-size:11px;color:#aaa;text-align:center;}@media print{.pb{display:none!important;}}</style></head><body>
-  <h1>💍 SmartShaadi — Guest List</h1><div class="sub">Generated ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})} · smartshaadi.online/app</div>
-  <div class="stats"><div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total</div></div><div class="stat"><div class="sv">${conf}</div><div class="sl">Confirmed</div></div><div class="stat"><div class="sv">${veg}</div><div class="sl">Veg</div></div><div class="stat"><div class="sv">${guests.length-veg}</div><div class="sl">Non-Veg/Jain</div></div></div>
+
+function exportPDF() {
+  if (!guests.length) { showToast('⚠️ Pehle guests add karo!'); return; }
+  const conf = guests.filter(g => g.rsvp === 'Confirmed').length;
+  const veg = guests.filter(g => g.meal === 'Veg').length;
+  const pending = guests.filter(g => g.rsvp === 'Pending').length;
+  const declined = guests.filter(g => g.rsvp === 'Declined').length;
+  const dateStr = new Date().toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'});
+  const htmlContent = `<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Guest List — SmartShaadi</title>
+  <style>body{font-family:Georgia,serif;color:#1a1a1a;padding:32px;max-width:800px;margin:0 auto;}h1{color:#C9A84C;font-size:26px;border-bottom:3px solid #C9A84C;padding-bottom:10px;}.stats{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;}.stat{background:#fdf8f0;padding:12px 18px;border-radius:10px;border-left:4px solid #C9A84C;}.sv{font-size:22px;font-weight:bold;color:#C9A84C;}.sl{font-size:11px;color:#888;}table{width:100%;border-collapse:collapse;font-size:13px;}th{background:#C9A84C;color:white;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #eee;}tr:nth-child(even){background:#fdf8f0;}.badge{padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}.confirmed{background:#e8f5e9;color:#27AE60;}.pending{background:#fff3e0;color:#F39C12;}.declined{background:#fce4ec;color:#E74C3C;}.footer{margin-top:28px;font-size:11px;color:#aaa;text-align:center;border-top:1px solid #eee;padding-top:16px;}</style></head><body>
+  <h1>💍 SmartShaadi — Guest List</h1>
+  <div style="font-size:12px;color:#888;">Generated on ${dateStr} · smartshaadi.online/app</div>
+  <div class="stats"><div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total Guests</div></div><div class="stat"><div class="sv" style="color:#27AE60;">${conf}</div><div class="sl">Confirmed</div></div><div class="stat"><div class="sv" style="color:#F39C12;">${pending}</div><div class="sl">Pending</div></div><div class="stat"><div class="sv" style="color:#E74C3C;">${declined}</div><div class="sl">Declined</div></div><div class="stat"><div class="sv" style="color:#3498DB;">${veg}</div><div class="sl">Veg</div></div><div class="stat"><div class="sv" style="color:#9B59B6;">${guests.length-veg}</div><div class="sl">Non-Veg/Jain</div></div></div>
   <table><tr><th>#</th><th>Name</th><th>Side</th><th>Meal</th><th>RSVP</th><th>Table</th><th>Phone</th></tr>
-  ${guests.map((g,i)=>`<tr><td>${i+1}</td><td><b>${g.name}</b></td><td>${g.side}</td><td>${g.meal}</td><td class="${g.rsvp.toLowerCase()}">${g.rsvp}</td><td>${g.table||'—'}</td><td>${g.phone||'—'}</td></tr>`).join('')}
-  </table><div class="footer">SmartShaadi AI · smartshaadi.online</div>
-  <br/><button class="pb" onclick="window.print()" style="background:#C9A84C;color:white;border:none;padding:12px 28px;border-radius:8px;font-size:14px;cursor:pointer;">🖨️ Print / Save PDF</button>
-  </body></html>`);w.document.close();
+  ${guests.map((g,i) => `<tr><td style="color:#999;">${i+1}</td><td><strong>${g.name}</strong></td><td>${g.side}</td><td>${g.meal}</td><td><span class="badge ${g.rsvp.toLowerCase()}">${g.rsvp}</span></td><td>${g.table||'—'}</td><td>${g.phone||'—'}</td></tr>`).join('')}
+  </table><div class="footer">SmartShaadi AI v2 — India's #1 Free AI Wedding Planner<br>smartshaadi.online</div></body></html>`;
+  try {
+    const blob = new Blob([htmlContent], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'SmartShaadi-GuestList-' + new Date().toLocaleDateString('en-IN').replace(/\//g,'-') + '.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
+    showToast('📄 Guest list download ho rahi hai!');
+  } catch (e) {
+    const w = window.open('about:blank', '_blank');
+    if (w) { w.document.write(htmlContent); w.document.close(); }
+  }
 }
 
-// ══ BUDGET ══
-const BCATS=[{n:'Venue',icon:'🏛️',pct:30,c:'#C9A84C'},{n:'Catering',icon:'🍽️',pct:25,c:'#27AE60'},{n:'Decoration',icon:'🌸',pct:15,c:'#E91E8C'},{n:'Photography',icon:'📸',pct:10,c:'#3498DB'},{n:'Clothing',icon:'👗',pct:8,c:'#9B59B6'},{n:'Music/DJ',icon:'🎵',pct:5,c:'#E74C3C'},{n:'Transport',icon:'🚗',pct:4,c:'#F39C12'},{n:'Misc',icon:'✨',pct:3,c:'#888'}];
-let bTotal=1500000,bSpent={};
-function rBudget(){
-  const spent=BCATS.reduce((a,c)=>a+(bSpent[c.n]||0),0),rem=bTotal-spent,pct=bTotal?Math.min(100,Math.round(spent/bTotal*100)):0;
-  const c=document.getElementById('bcon');if(!c)return;
-  c.innerHTML=`<div class="card" style="border-color:rgba(39,174,96,.25);margin-bottom:14px;"><label class="lbl">Total Budget (₹)</label>
-    <input type="number" class="inp" value="${bTotal}" oninput="bTotal=Number(this.value)||0;rBudget()" style="color:var(--g);font-size:20px;font-weight:800;border-color:rgba(39,174,96,.25);"/>
-    <div style="display:flex;justify-content:space-between;margin-top:14px;">
-      <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:#E74C3C;">₹${spent.toLocaleString('en-IN')}</div><div style="font-size:10px;color:#666;">Spent</div></div>
-      <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:${rem<0?'#E74C3C':'#27AE60'};">₹${Math.abs(rem).toLocaleString('en-IN')}</div><div style="font-size:10px;color:#666;">${rem<0?'Over!':'Remaining'}</div></div>
-      <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:var(--g);">${pct}%</div><div style="font-size:10px;color:#666;">Used</div></div>
-    </div>
-    <div class="bbar" style="margin-top:14px;height:8px;"><div class="bf" style="width:${pct}%;background:${spent>bTotal?'#E74C3C':'linear-gradient(90deg,#27AE60,#2ecc71)'};"></div></div>
-  </div>
-  ${BCATS.map(cat=>{const alloc=Math.round(bTotal*cat.pct/100),s=bSpent[cat.n]||0,p=alloc?Math.min(100,Math.round(s/alloc*100)):0;return`
-  <div class="card" style="border-color:${cat.c}18;margin-bottom:10px;padding:14px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-      <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${cat.icon}</span><div><div style="font-size:13px;font-weight:700;color:#fff;">${cat.n}</div><div style="font-size:10px;color:#555;">Budget: ₹${alloc.toLocaleString('en-IN')} (${cat.pct}%)</div></div></div>
-      <div style="font-size:13px;font-weight:700;color:${s>alloc?'#E74C3C':cat.c};">₹${s.toLocaleString('en-IN')}</div>
-    </div>
-    <div class="bbar"><div class="bf" style="width:${p}%;background:${s>alloc?'#E74C3C':`linear-gradient(90deg,${cat.c},${cat.c}88)`};"></div></div>
-    <input type="number" class="inp" placeholder="Amount spent (₹)" value="${s||''}" style="margin-top:8px;font-size:12px;border-color:${cat.c}18;" oninput="bSpent['${cat.n}']=Number(this.value)||0;setTimeout(rBudget,400)"/>
-  </div>`}).join('')}`;
+/* ═══════════════════════════════════
+   SECTION 10: BUDGET
+   ═══════════════════════════════════ */
+const BCATS = [
+  {n:'Venue',icon:'🏛️',pct:30,c:'#C9A84C'},{n:'Catering',icon:'🍽️',pct:25,c:'#27AE60'},
+  {n:'Decoration',icon:'🌸',pct:15,c:'#E91E8C'},{n:'Photography',icon:'📸',pct:10,c:'#3498DB'},
+  {n:'Clothing',icon:'👗',pct:8,c:'#9B59B6'},{n:'Music/DJ',icon:'🎵',pct:5,c:'#E74C3C'},
+  {n:'Transport',icon:'🚗',pct:4,c:'#F39C12'},{n:'Misc',icon:'✨',pct:3,c:'#888'}
+];
+
+function loadBudget() {
+  App.bTotal = Store.get('budget_total', 1500000);
+  App.bSpent = Store.get('budget_spent', {});
 }
 
-// ══ TIMELINE ══
-const PHASES=[{p:'12 Months Before',icon:'🗓️',tasks:['Finalize budget','Book venue','Set wedding date','Start guest list']},{p:'9 Months Before',icon:'📋',tasks:['Book photographer','Book caterer','Shortlist decorator','Send save-the-dates']},{p:'6 Months Before',icon:'🎨',tasks:['Finalize theme','Book DJ/music','Order outfits','Plan honeymoon']},{p:'3 Months Before',icon:'💌',tasks:['Send invitations','Book makeup artist','Confirm vendors','Plan mehendi/sangeet']},{p:'1 Month Before',icon:'✅',tasks:['Final RSVP','Confirm seating','Final fittings','Pre-wedding shoot']},{p:'1 Week Before',icon:'🔥',tasks:['Vendor final calls','Pack bags','Confirm transport','Complete payments']},{p:'Wedding Day! 💍',icon:'💎',tasks:['Enjoy every moment!','Assign coordinator','Emergency kit ready','Breathe & smile 😊']}];
-let cTasks={};
-function toggleT(pi,ti){cTasks[`${pi}-${ti}`]=!cTasks[`${pi}-${ti}`];rTL();}
-function rTL(){
-  const c=document.getElementById('tlcon');if(!c)return;
-  c.innerHTML=PHASES.map((ph,pi)=>{
-    const done=ph.tasks.filter((_,ti)=>cTasks[`${pi}-${ti}`]).length,all=done===ph.tasks.length;
-    return`<div style="margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-        <div style="width:42px;height:42px;border-radius:50%;background:${all?'rgba(39,174,96,.15)':'rgba(255,87,34,.1)'};border:2px solid ${all?'rgba(39,174,96,.4)':'rgba(255,87,34,.25)'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${ph.icon}</div>
-        <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#fff;">${ph.p}</div><div style="font-size:10px;color:#555;">${done}/${ph.tasks.length} done</div></div>
-        ${all?'<div style="font-size:11px;color:#27AE60;font-weight:700;">✓ Done</div>':''}
+function saveBudget() {
+  Store.set('budget_total', App.bTotal);
+  Store.set('budget_spent', App.bSpent);
+}
+
+function rBudget() {
+  loadBudget();
+  const spent = BCATS.reduce((a, c) => a + (App.bSpent[c.n] || 0), 0);
+  const rem = App.bTotal - spent;
+  const pct = App.bTotal ? Math.min(100, Math.round(spent / App.bTotal * 100)) : 0;
+  const c = document.getElementById('bcon'); if (!c) return;
+  c.innerHTML = `
+    <div class="card" style="border-color:rgba(39,174,96,.25);margin-bottom:14px;">
+      <label class="lbl">Total Budget (₹)</label>
+      <input type="number" class="inp" value="${App.bTotal}" oninput="App.bTotal=Sanitize.number(this.value,0,999999999);saveBudget();rBudget()" style="color:var(--gold);font-size:20px;font-weight:800;border-color:rgba(39,174,96,.2);"/>
+      <div style="display:flex;justify-content:space-between;margin-top:14px;gap:8px;">
+        <div style="text-align:center;flex:1;background:var(--s3);border-radius:var(--r-sm);padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--red);">₹${spent.toLocaleString('en-IN')}</div><div style="font-size:10px;color:var(--text3);">Spent</div></div>
+        <div style="text-align:center;flex:1;background:var(--s3);border-radius:var(--r-sm);padding:10px;"><div style="font-size:16px;font-weight:800;color:${rem<0?'var(--red)':'var(--green)'};">₹${Math.abs(rem).toLocaleString('en-IN')}</div><div style="font-size:10px;color:var(--text3);">${rem<0?'Over!':'Remaining'}</div></div>
+        <div style="text-align:center;flex:1;background:var(--s3);border-radius:var(--r-sm);padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);">${pct}%</div><div style="font-size:10px;color:var(--text3);">Used</div></div>
       </div>
-      ${ph.tasks.map((task,ti)=>{const isDone=cTasks[`${pi}-${ti}`];return`<div class="task-r ${isDone?'dn':''}" onclick="toggleT(${pi},${ti})"><div class="tck ${isDone?'dn':''}">${isDone?'✓':''}</div><div style="font-size:12px;color:${isDone?'#4CAF50':'#bbb'};text-decoration:${isDone?'line-through':'none'};">${task}</div></div>`;}).join('')}
-    </div>`;}).join('');
+      <div class="pbar" style="margin-top:14px;height:8px;"><div class="pbar-fill" style="width:${pct}%;background:${spent>App.bTotal?'var(--red)':'linear-gradient(90deg,var(--green),#2ecc71)'};"></div></div>
+    </div>
+    ${BCATS.map(cat => {
+      const alloc = Math.round(App.bTotal * cat.pct / 100);
+      const s = App.bSpent[cat.n] || 0;
+      const p = alloc ? Math.min(100, Math.round(s / alloc * 100)) : 0;
+      return `<div class="card" style="border-color:${cat.c}18;margin-bottom:10px;padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">${cat.icon}</span>
+            <div><div style="font-size:13px;font-weight:700;">${cat.n}</div><div style="font-size:10px;color:var(--text3);">Budget: ₹${alloc.toLocaleString('en-IN')} (${cat.pct}%)</div></div>
+          </div>
+          <div style="font-size:13px;font-weight:700;color:${s>alloc?'var(--red)':cat.c};">₹${s.toLocaleString('en-IN')}</div>
+        </div>
+        <div class="pbar"><div class="pbar-fill" style="width:${p}%;background:${s>alloc?'var(--red)':cat.c};"></div></div>
+        <input type="number" class="inp" placeholder="Amount spent (₹)" value="${s||''}" style="margin-top:8px;font-size:12px;border-color:${cat.c}18;"
+          oninput="App.bSpent['${cat.n}']=Sanitize.number(this.value);saveBudget();"/>
+      </div>`;
+    }).join('')}`;
 }
 
-// ══ VENDOR APPLY ══
-let vTier='Featured';
-function setTier(t){vTier=t;}
-function rVA(submitted=false){
-  const c=document.getElementById('vacon');if(!c)return;
-  if(submitted){c.innerHTML=`<div style="padding:40px 20px;text-align:center;"><div style="font-size:60px;margin-bottom:16px;">🎉</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--g);margin-bottom:8px;">Application Received!</div><div style="font-size:13px;color:#666;line-height:1.7;margin-bottom:28px;">Hamari team 24 ghante mein WhatsApp pe contact karegi 📱</div><button onclick="go('home')" class="bg">Ghar Wapas →</button></div>`;return;}
-  const tiers=[{id:'Basic',price:'₹999/mo',perks:['Basic listing','Contact button','5 photos']},{id:'Featured',price:'₹1,999/mo',perks:['⭐ Top placement','WhatsApp leads','15 photos','Verified badge']},{id:'Premium',price:'₹2,999/mo',perks:['🏆 #1 position','Full analytics','Unlimited photos','Verified badge']}];
-  const cats=['Photography','Catering','Decoration','Music & DJ','Makeup','Transport','Venue','Other'];
-  c.innerHTML=`<div style="margin-bottom:20px;"><div style="font-size:12px;font-weight:700;color:var(--g);margin-bottom:12px;">Plan Choose Karo</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-    ${tiers.map(t=>`<div onclick="vTier='${t.id}';rVA()" style="border-radius:14px;padding:12px 8px;cursor:pointer;text-align:center;border:1px solid var(--br);background:${vTier===t.id?'linear-gradient(135deg,var(--g),var(--g2))':'var(--c2)'};">
-      <div style="font-size:12px;font-weight:800;color:${vTier===t.id?'#0D0B0E':'var(--g)'};">${t.id}</div>
-      <div style="font-size:11px;font-weight:700;color:${vTier===t.id?'#0D0B0E88':'#fff'};margin-bottom:8px;">${t.price}</div>
-      ${t.perks.map(p=>`<div style="font-size:9px;color:${vTier===t.id?'#0D0B0EAA':'#555'};margin-bottom:2px;">✓ ${p}</div>`).join('')}
-    </div>`).join('')}
-    </div></div>
+/* ═══════════════════════════════════
+   SECTION 11: TIMELINE
+   ═══════════════════════════════════ */
+const PHASES = [
+  {p:'12 Months Before',icon:'🗓️',tasks:['Finalize budget','Book venue','Set wedding date','Start guest list']},
+  {p:'9 Months Before',icon:'📋',tasks:['Book photographer','Book caterer','Shortlist decorator','Send save-the-dates']},
+  {p:'6 Months Before',icon:'🎨',tasks:['Finalize theme','Book DJ/music','Order outfits','Plan honeymoon']},
+  {p:'3 Months Before',icon:'💌',tasks:['Send invitations','Book makeup artist','Confirm vendors','Plan mehendi/sangeet']},
+  {p:'1 Month Before',icon:'✅',tasks:['Final RSVP','Confirm seating','Final fittings','Pre-wedding shoot']},
+  {p:'1 Week Before',icon:'🔥',tasks:['Vendor final calls','Pack bags','Confirm transport','Complete payments']},
+  {p:'Wedding Day! 💍',icon:'💎',tasks:['Enjoy every moment!','Assign coordinator','Emergency kit ready','Breathe & smile 😊']},
+];
+
+function loadTasks() { App.cTasks = Store.get('timeline_tasks', {}); }
+function saveTasks() { Store.set('timeline_tasks', App.cTasks); }
+
+function toggleT(pi, ti) {
+  const key = `${pi}-${ti}`;
+  App.cTasks[key] = !App.cTasks[key];
+  saveTasks();
+  rTL();
+  if (App.cTasks[key]) showToast('✅ Done!');
+}
+
+function rTL() {
+  loadTasks();
+  const savedDate = Store.get('wedding_date');
+  const wd = document.getElementById('wdate');
+  if (wd && savedDate) wd.value = savedDate;
+  const c = document.getElementById('tlcon'); if (!c) return;
+  c.innerHTML = PHASES.map((ph, pi) => {
+    const done = ph.tasks.filter((_,ti) => App.cTasks[`${pi}-${ti}`]).length;
+    const all = done === ph.tasks.length;
+    return `<div style="margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:42px;height:42px;border-radius:50%;background:${all?'rgba(39,174,96,.12)':'rgba(255,87,34,.08)'};border:2px solid ${all?'rgba(39,174,96,.35)':'rgba(255,87,34,.2)'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${ph.icon}</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:700;">${ph.p}</div><div style="font-size:10px;color:var(--text3);">${done}/${ph.tasks.length} done</div></div>
+        ${all ? '<div style="font-size:11px;color:var(--green);font-weight:700;">✓ Done</div>' : ''}
+      </div>
+      ${ph.tasks.map((task, ti) => {
+        const isDone = App.cTasks[`${pi}-${ti}`];
+        return `<div class="task-r ${isDone?'dn':''}" onclick="toggleT(${pi},${ti})">
+          <div class="tck ${isDone?'dn':''}">${isDone?'✓':''}</div>
+          <div style="font-size:12px;color:${isDone?'var(--green)':'var(--text2)'};text-decoration:${isDone?'line-through':'none'};">${Sanitize.text(task)}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════
+   SECTION 12: VENDOR SYSTEM
+   ═══════════════════════════════════ */
+const BASE_VENDORS = [
+  {id:'v1',name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'Delhi ke top wedding photographers. 8 saal ka experience. Candid + Traditional packages.',approved:true},
+  {id:'v2',name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine specialists. Veg + non-veg. Min 100 guests.',approved:true},
+  {id:'v3',name:'Floral Dreams Decor',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration team. Mandap + table decor + lighting.',approved:true},
+  {id:'v4',name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. State-of-art equipment. Live dhol available.',approved:true},
+  {id:'v5',name:'Priya Bridal Makeup',city:'Delhi',cat:'Makeup',rating:4.8,reviews:145,tier:'Premium',price:'₹15,000+',badge:'🏆 Verified',phone:'9811122233',desc:'HD + Airbrush bridal makeup. 12+ hours staying power. Trial session included.',approved:true},
+  {id:'v6',name:'Gulshan Photography',city:'Mumbai',cat:'Photography',rating:4.6,reviews:54,tier:'Basic',price:'₹25,000+',badge:'✓ Listed',phone:'9922334455',desc:'Candid + traditional photography packages. Pre-wedding shoots available.',approved:true},
+  {id:'v7',name:'Spice Route Catering',city:'Hyderabad',cat:'Catering',rating:4.7,reviews:76,tier:'Featured',price:'₹700/plate',badge:'⭐ Featured',phone:'9988776655',desc:'Hyderabadi biryani specialists. Veg + non-veg. Live counters available.',approved:true},
+  {id:'v8',name:'Mehndi Masters',city:'Jaipur',cat:'Makeup',rating:4.9,reviews:210,tier:'Premium',price:'₹8,000+',badge:'🏆 Verified',phone:'9876512345',desc:'Rajasthani + Arabic mehndi. Bridal + family packages. Home visit available.',approved:true},
+  {id:'v9',name:'Sound of Joy DJ',city:'Pune',cat:'Music & DJ',rating:4.5,reviews:43,tier:'Basic',price:'₹18,000+',badge:'✓ Listed',phone:'9900112233',desc:'Wedding DJ with live dhol. Pune + nearby areas. Bollywood + Marathi music.',approved:true},
+  {id:'v10',name:'Petal Decors',city:'Bangalore',cat:'Decoration',rating:4.6,reviews:58,tier:'Featured',price:'₹60,000+',badge:'⭐ Featured',phone:'9845678901',desc:'Modern + traditional decor. Floral + lighting specialist. Full venue setup.',approved:true},
+];
+
+function getVendors() {
+  try {
+    const stored = Store.get('vendors', []);
+    return [...BASE_VENDORS, ...stored.filter(v => v.approved)];
+  } catch { return BASE_VENDORS; }
+}
+function getPendingVendors() { return Store.get('vendors_pending', []); }
+
+function saveVendorPending(vendor) {
+  const pending = getPendingVendors();
+  pending.push({ ...vendor, id: 'v' + Date.now(), approved: false, submittedAt: new Date().toISOString() });
+  Store.set('vendors_pending', pending);
+}
+
+function approveVendor(id) {
+  const pending = getPendingVendors();
+  const vendor = pending.find(v => v.id === id);
+  if (!vendor) return;
+  vendor.approved = true;
+  const approved = Store.get('vendors', []);
+  approved.push(vendor);
+  Store.set('vendors', approved);
+  Store.set('vendors_pending', pending.filter(v => v.id !== id));
+}
+
+function filterCity(city, btn) {
+  App.vCityFilter = city;
+  document.querySelectorAll('#city-filter .btn-sm').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderVendorDir();
+}
+
+function filterCat(cat, btn) {
+  App.vCatFilter = cat;
+  document.querySelectorAll('#cat-filter .btn-sm').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderVendorDir();
+}
+
+function showLeadForm() {
+  const lf = document.getElementById('lead-form');
+  lf.style.display = lf.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleLeadCat(btn) {
+  btn.classList.toggle('on');
+}
+
+function submitLead() {
+  const name = Sanitize.text(document.getElementById('lead-name')?.value || '');
+  const phone = Sanitize.phone(document.getElementById('lead-phone')?.value || '');
+  const city = Sanitize.text(document.getElementById('lead-city')?.value || '');
+  if (!name || !phone || !city) { showToast('⚠️ Naam, phone aur city daalein!'); return; }
+  const cats = [];
+  document.querySelectorAll('#lead-cats .btn-sm.on').forEach(b => cats.push(b.textContent.replace(/[📸🍽️🌸🎵💄]/g,'').trim()));
+  const msg = encodeURIComponent(`🎯 New Vendor Lead - SmartShaadi\n\nNaam: ${name}\nPhone: ${phone}\nCity: ${city}\nCategories: ${cats.join(', ')||'All'}\n\nPlease match vendors!`);
+  setTimeout(() => window.open(`https://wa.me/919876543210?text=${msg}`, '_blank'), 300);
+  document.getElementById('lead-form').style.display = 'none';
+  showToast('🎯 Lead submitted! WhatsApp pe contact hoga.');
+}
+
+function renderVendorDir() {
+  const c = document.getElementById('vendor-dir-wrap'); if (!c) return;
+  const vendors = getVendors();
+  const filtered = vendors.filter(v =>
+    (App.vCityFilter === 'All' || v.city === App.vCityFilter) &&
+    (App.vCatFilter === 'All' || v.cat === App.vCatFilter)
+  );
+  if (!filtered.length) {
+    c.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);font-size:13px;">Is city/category mein abhi koi vendor nahi hai.<br><br><button onclick="go('vendor-apply')" class="btn-gold" style="max-width:200px;margin:12px auto;">Pehle Vendor Ban Jao →</button></div>`;
+    return;
+  }
+  c.innerHTML = filtered.map(v => {
+    const tierClass = v.tier === 'Premium' ? 'vbadge-premium' : v.tier === 'Featured' ? 'vbadge-featured' : 'vbadge-basic';
+    return `<div class="vcard">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+            <div style="font-size:14px;font-weight:800;">${Sanitize.text(v.name)}</div>
+            <div style="font-size:9px;padding:3px 8px;border-radius:20px;font-weight:700;${tierClass}" class="${tierClass}">${Sanitize.text(v.badge)}</div>
+          </div>
+          <div style="font-size:11px;color:var(--text3);">📍 ${Sanitize.text(v.city)} · ${Sanitize.text(v.cat)}</div>
+          <div style="font-size:11px;color:var(--gold);margin-top:2px;">⭐ ${v.rating} (${v.reviews} reviews)</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:6px;line-height:1.5;">${Sanitize.text(v.desc)}</div>
+        </div>
+        <div style="text-align:right;margin-left:10px;flex-shrink:0;">
+          <div style="font-size:15px;font-weight:800;color:var(--gold2);">${Sanitize.text(v.price)}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <a href="https://wa.me/91${Sanitize.phone(v.phone)}?text=${encodeURIComponent('Hi! SmartShaadi App se dekha. Wedding ke liye inquiry karna tha.')}" target="_blank" style="flex:1;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;text-align:center;display:block;">💬 WhatsApp</a>
+        <a href="tel:+91${Sanitize.phone(v.phone)}" style="flex:1;background:var(--s1);border:1px solid var(--border2);border-radius:10px;padding:10px;font-size:12px;color:var(--text2);text-decoration:none;text-align:center;display:block;">📞 Call</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════
+   SECTION 13: VENDOR APPLY
+   ═══════════════════════════════════ */
+function rVA(submitted = false) {
+  const c = document.getElementById('vacon'); if (!c) return;
+  if (submitted) {
+    c.innerHTML = `<div style="padding:40px 20px;text-align:center;"><div style="font-size:60px;margin-bottom:16px;">🎉</div><div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--gold);margin-bottom:8px;">Application Received!</div><div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:28px;">Hamari team 24 ghante mein WhatsApp pe contact karegi 📱</div><button onclick="go('home')" class="btn-gold">Ghar Wapas →</button></div>`;
+    return;
+  }
+  const tiers = [
+    {id:'Basic',price:'₹999/mo',perks:['Basic listing','Contact button','5 photos']},
+    {id:'Featured',price:'₹1,999/mo',perks:['⭐ Top placement','WhatsApp leads','15 photos','Verified badge']},
+    {id:'Premium',price:'₹2,999/mo',perks:['🏆 #1 position','Full analytics','Unlimited photos','Priority badge']},
+  ];
+  const cats = ['Photography','Catering','Decoration','Music & DJ','Makeup','Transport','Venue','Other'];
+  c.innerHTML = `
+    <div style="margin-bottom:20px;">
+      <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px;">Plan Choose Karo</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        ${tiers.map(t => `
+          <div onclick="App.vTier='${t.id}';rVA()" style="border-radius:var(--r-md);padding:12px 8px;cursor:pointer;text-align:center;border:1px solid var(--border2);background:${App.vTier===t.id?'linear-gradient(135deg,var(--gold),var(--gold2))':'var(--s2)'};transition:all .2s;">
+            <div style="font-size:12px;font-weight:800;color:${App.vTier===t.id?'#0A0809':'var(--gold)'};">${t.id}</div>
+            <div style="font-size:11px;font-weight:700;color:${App.vTier===t.id?'#0A080999':'var(--text)'};margin-bottom:8px;">${t.price}</div>
+            ${t.perks.map(p => `<div style="font-size:9px;color:${App.vTier===t.id?'#0A0809aa':'var(--text3)'};margin-bottom:2px;">✓ ${p}</div>`).join('')}
+          </div>`).join('')}
+      </div>
+    </div>
     <label class="lbl">Business Name *</label><input id="vn" class="inp" placeholder="Sharma Photography" style="margin-bottom:12px;"/>
     <label class="lbl">WhatsApp Number *</label><input id="vph" class="inp" placeholder="9876543210" style="margin-bottom:12px;"/>
     <label class="lbl">City *</label><input id="vci" class="inp" placeholder="Delhi / Mumbai / Jaipur" style="margin-bottom:12px;"/>
@@ -783,90 +1743,178 @@ function rVA(submitted=false){
     <label class="lbl">Description (2-3 lines)</label><textarea id="vds" class="inp" rows="3" placeholder="Hamare baare mein..." style="margin-bottom:14px;"></textarea>
     <label class="lbl" style="margin-bottom:10px;">Category *</label>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;" id="vcw">
-    ${cats.map(cat=>`<button onclick="this.parentNode.querySelectorAll('button').forEach(b=>{b.style.background='var(--bg)';b.style.borderColor='rgba(255,255,255,.08)';b.style.color='#666'});this.style.background='rgba(201,168,76,.15)';this.style.borderColor='var(--g)';this.style.color='var(--g)';this.style.fontWeight='700'" style="padding:7px 14px;border-radius:20px;font-size:11px;cursor:pointer;background:var(--bg);border:1px solid rgba(255,255,255,.08);color:#666;font-family:'DM Sans',sans-serif;">${cat}</button>`).join('')}
+      ${cats.map(cat => `<button onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on')" class="btn-sm">${cat}</button>`).join('')}
     </div>
-    <button onclick="subV()" class="bg">🚀 Application Submit Karo</button>
-    <div style="font-size:10px;color:#444;text-align:center;margin-top:8px;">24 ghante mein WhatsApp pe contact hoga</div>`;
+    <button onclick="subV()" class="btn-gold">🚀 Application Submit Karo</button>
+    <div style="font-size:10px;color:var(--text3);text-align:center;margin-top:8px;">24 ghante mein WhatsApp pe contact hoga</div>`;
 }
-function subV(){
-  const n=document.getElementById('vn')?.value?.trim(),p=document.getElementById('vph')?.value?.trim(),ci=document.getElementById('vci')?.value?.trim();
-  if(!n||!p||!ci){alert('Naam, phone aur city zaroori hain!');return;}
+
+function subV() {
+  const n = Sanitize.text(document.getElementById('vn')?.value || '');
+  const p = Sanitize.phone(document.getElementById('vph')?.value || '');
+  const ci = Sanitize.text(document.getElementById('vci')?.value || '');
+  const pr = Sanitize.text(document.getElementById('vpr')?.value || 'Contact for price');
+  const ds = Sanitize.text(document.getElementById('vds')?.value || '');
+  let selCat = 'Other';
+  document.querySelectorAll('#vcw button.on').forEach(btn => { selCat = btn.textContent; });
+  if (!n || !p || !ci) { showToast('⚠️ Naam, phone aur city zaroori hain!'); return; }
+  if (p.length < 10) { showToast('⚠️ Valid phone number daalein!'); return; }
+  const newVendor = { name:n, phone:p, city:ci, cat:selCat, price:pr, desc:ds||n+' — '+selCat+' in '+ci, tier:App.vTier, rating:0, reviews:0, badge:App.vTier==='Premium'?'🏆 Verified':App.vTier==='Featured'?'⭐ Featured':'✓ Listed', approved:false };
+  saveVendorPending(newVendor);
+  const adminPhone = '919876543210';
+  const waMsg = encodeURIComponent(`🆕 *New Vendor — SmartShaadi v2*\n\n👤 ${n}\n📞 ${p}\n📍 ${ci}\n🏷️ ${selCat}\n💰 ${pr}\n⭐ ${App.vTier}\n📝 ${ds||'—'}\n\nApprove: smartshaadi.online/app#admin`);
+  setTimeout(() => window.open('https://wa.me/' + adminPhone + '?text=' + waMsg, '_blank'), 500);
   rVA(true);
+  showToast('✅ Application submit ho gayi!');
 }
 
-// ══ INIT ══
-rTG(); rg(); uUB();
+/* ═══════════════════════════════════
+   SECTION 14: ADMIN PANEL
+   ═══════════════════════════════════ */
+const ADMIN_HASH = '2611'; // PIN — use hashing in production
 
-// ── Splash screen ──
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const s = document.getElementById('splash');
-    if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 400); }
-  }, 1800);
-});
+function rAdmin() {
+  const c = document.getElementById('admin-content'); if (!c) return;
+  if (!sessionStorage.getItem('ss_admin_auth')) {
+    c.innerHTML = `<div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:48px;margin-bottom:16px;">🔐</div>
+      <div style="font-size:18px;font-weight:800;margin-bottom:8px;">Admin Access</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:20px;">PIN enter karein</div>
+      <input id="pin-inp" class="inp" type="password" placeholder="PIN" maxlength="6" style="text-align:center;font-size:24px;letter-spacing:8px;margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkPin()"/>
+      <button onclick="checkPin()" class="btn-gold" style="max-width:200px;margin:0 auto;">Enter →</button>
+    </div>`;
+    return;
+  }
+  const pending = getPendingVendors();
+  if (!pending.length) {
+    c.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text3);font-size:13px;"><div style="font-size:48px;margin-bottom:12px;">✅</div>Koi pending application nahi hai!</div>`;
+    return;
+  }
+  c.innerHTML = `<div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:14px;">📋 ${pending.length} Pending Applications</div>
+    ${pending.map(v => `<div class="card" style="border-color:rgba(255,152,0,.2);margin-bottom:12px;">
+      <div style="font-size:14px;font-weight:800;margin-bottom:4px;">${Sanitize.text(v.name)}</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:2px;">📍 ${Sanitize.text(v.city)} · ${Sanitize.text(v.cat)} · ${Sanitize.text(v.tier)}</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:2px;">📞 ${Sanitize.text(v.phone)}</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:2px;">💰 ${Sanitize.text(v.price)}</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:10px;line-height:1.5;">${Sanitize.text(v.desc)}</div>
+      <div style="font-size:10px;color:var(--text3);margin-bottom:10px;">Submitted: ${new Date(v.submittedAt).toLocaleDateString('en-IN')}</div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="approveV('${v.id}')" style="flex:1;background:linear-gradient(135deg,var(--green),#2ecc71);border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--font-body);">✅ Approve</button>
+        <button onclick="rejectV('${v.id}')" style="flex:1;background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.25);border-radius:10px;padding:10px;font-size:12px;color:var(--red);cursor:pointer;font-family:var(--font-body);">❌ Reject</button>
+        <a href="https://wa.me/91${Sanitize.phone(v.phone)}" target="_blank" style="flex:1;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);border-radius:10px;padding:10px;font-size:12px;color:#25D366;text-decoration:none;text-align:center;display:block;">💬 Chat</a>
+      </div>
+    </div>`).join('')}`;
+}
 
-// ── Offline detection ──
+function checkPin() {
+  const pin = document.getElementById('pin-inp')?.value;
+  if (pin === ADMIN_HASH) { sessionStorage.setItem('ss_admin_auth', '1'); rAdmin(); }
+  else { showToast('❌ Wrong PIN!', 2000); }
+}
+
+function approveV(id) {
+  approveVendor(id);
+  showToast('✅ Vendor approved!');
+  rAdmin();
+}
+
+function rejectV(id) {
+  Store.set('vendors_pending', getPendingVendors().filter(v => v.id !== id));
+  showToast('🗑️ Application rejected.');
+  rAdmin();
+}
+
+/* ═══════════════════════════════════
+   SECTION 15: PWA + CONNECTIVITY
+   ═══════════════════════════════════ */
+// Offline detection
 function updateOnlineStatus() {
   const banner = document.getElementById('offline-banner');
+  const shell = document.getElementById('shell');
   if (!banner) return;
   if (!navigator.onLine) {
     banner.style.display = 'block';
-    // Add top padding to shell so content not hidden
-    document.getElementById('shell').style.paddingTop = '40px';
+    shell.style.paddingTop = '40px';
   } else {
     banner.style.display = 'none';
-    document.getElementById('shell').style.paddingTop = '0';
+    shell.style.paddingTop = '0';
   }
 }
-window.addEventListener('online',  updateOnlineStatus);
+window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 updateOnlineStatus();
 
-// ── Android Back Button handling ──
-// Uses History API to intercept back button
-const SCREENS = ['home','chat','guests','budget','timeline','vendor-dir','vendor-apply','tool'];
-let navHistory = ['home'];
-
-const _go = go; // save original
-go = function(id) {
-  if (id !== navHistory[navHistory.length - 1]) {
-    navHistory.push(id);
-    history.pushState({ screen: id }, '', '#' + id);
-  }
-  _go(id);
-};
-
-window.addEventListener('popstate', (e) => {
-  navHistory.pop();
-  const prev = navHistory[navHistory.length - 1] || 'home';
-  _go(prev); // use original go to avoid double push
+// Install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('install-banner');
+  if (banner) banner.style.display = 'block';
+});
+document.getElementById('install-btn')?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('install-banner').style.display = 'none';
+  if (outcome === 'accepted') showToast('🎉 App install ho gayi!');
 });
 
-// First state
-history.replaceState({ screen: 'home' }, '', '#home');
-
-// ── Input fields: prevent keyboard hiding ──
-document.addEventListener('focusin', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-    setTimeout(() => {
-      e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
-  }
-});
-
-// ── Service Worker ──
+// Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
-    .then(reg => console.log('SW registered'))
+    .then(() => {})
     .catch(() => {});
 }
 
-// ── Performance: preload fonts ──
-const link = document.createElement('link');
-link.rel = 'preload';
-link.as = 'style';
-link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700;800&display=swap';
-document.head.appendChild(link);
+// Input scroll into view on focus
+document.addEventListener('focusin', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+    setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+  }
+});
+
+// Secret admin: tap 7 times anywhere
+let adminTaps = 0, adminTimer;
+document.addEventListener('click', () => {
+  adminTaps++;
+  clearTimeout(adminTimer);
+  adminTimer = setTimeout(() => adminTaps = 0, 2000);
+  if (adminTaps >= 7) { adminTaps = 0; go('admin'); }
+});
+
+/* ═══════════════════════════════════
+   SECTION 16: INIT
+   ═══════════════════════════════════ */
+function init() {
+  Freemium.init();
+  rTG();
+  rg();
+  loadTasks();
+  loadBudget();
+  App.weddingDate = Store.get('wedding_date');
+  updateHomeCountdown();
+
+  // Sync wedding date to timeline input
+  const dateStr = App.weddingDate;
+  if (dateStr) {
+    const wdInp = document.getElementById('wdate');
+    if (wdInp) wdInp.value = dateStr;
+    const wdCd = document.getElementById('wdate-cd');
+    if (wdCd) wdCd.value = dateStr;
+  }
+
+  // Splash screen
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const s = document.getElementById('splash');
+      if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
+    }, 2000);
+  });
+}
+
+init();
 </script>
 </body>
 </html>
