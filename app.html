@@ -37,11 +37,12 @@
 
 /* ── Reset ── */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{background:var(--bg);color:var(--text);font-family:var(--font-body);height:100%;overflow:hidden;}
+html,body{background:var(--bg);color:var(--text);font-family:var(--font-body);height:100%;width:100%;overflow:hidden;}
 
-/* ── Shell ── */
-#shell{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden;}
-#wrap{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;}
+/* ── Shell — full screen on mobile, max 480px on desktop ── */
+#shell{display:flex;flex-direction:column;height:100dvh;width:100%;max-width:100%;margin:0;position:relative;overflow:hidden;}
+@media(min-width:520px){#shell{max-width:480px;margin:0 auto;}}
+#wrap{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;width:100%;}
 #wrap::-webkit-scrollbar{display:none;}
 
 /* ── Nav ── */
@@ -209,7 +210,7 @@ textarea.inp{resize:none;}
 .bbtn:active{opacity:.7;}
 
 /* ── Ad Overlay ── */
-#adbox{position:fixed;inset:0;background:rgba(10,8,9,.97);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;max-width:480px;margin:0 auto;}
+#adbox{position:fixed;inset:0;background:rgba(10,8,9,.97);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;}
 #adbox.on{display:flex;}
 
 /* ── Toast ── */
@@ -219,7 +220,7 @@ textarea.inp{resize:none;}
 #offline-banner{display:none;position:sticky;top:0;width:100%;background:var(--red);padding:9px 16px;z-index:998;text-align:center;font-size:12px;font-weight:700;color:#fff;}
 
 /* ── Install Prompt ── */
-#install-banner{display:none;position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:452px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;z-index:100;box-shadow:var(--shadow);animation:slideUp .3s ease;}
+#install-banner{display:none;position:fixed;bottom:calc(var(--nav-h) + 12px);left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:480px;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;z-index:100;box-shadow:var(--shadow);animation:slideUp .3s ease;}
 @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
 /* ── Splash ── */
