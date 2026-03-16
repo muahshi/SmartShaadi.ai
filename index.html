@@ -558,6 +558,17 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
       <div><div class="stat-num">24/7</div><div class="stat-lbl">AI Support</div></div>
       <div><div class="stat-num">Free</div><div class="stat-lbl">Forever</div></div>
     </div>
+    <!-- Wedding Countdown Widget -->
+    <div id="ss-hero-cd" style="display:none;">
+      <div class="hcd-days">0</div>
+      <div><div class="hcd-label">⏳ Din Baaki Hain</div><div class="hcd-task"></div></div>
+      <div class="hcd-arr">→</div>
+    </div>
+    <!-- Date Set CTA -->
+    <div id="ss-date-cta" style="display:none;">
+      <span>📅 <strong>Wedding date set karein</strong> — countdown + reminders paayein</span>
+      <span style="color:var(--gold);font-size:18px;">→</span>
+    </div>
   </div>
   <!-- HERO CARD: Illustrative example only -->
   <div class="hvis">
@@ -1203,10 +1214,11 @@ if('serviceWorker' in navigator){
 // ── Wedding Countdown ────────────────────────────────
 (function(){
   var DATE_KEY = 'ss_wedding_date';
-  var wDate = null;
-  try{ var ds = localStorage.getItem(DATE_KEY); if(ds) wDate = new Date(ds); }catch(e){}
 
-  function daysLeft(d){ var t=new Date(); t.setHours(0,0,0,0); return Math.ceil((d-t)/86400000); }
+  function daysLeft(d){
+    var t=new Date(); t.setHours(0,0,0,0);
+    return Math.ceil((new Date(d)-t)/86400000);
+  }
 
   function taskForDays(n){
     if(n>270) return 'Venue shortlist karo 🏛️';
@@ -1216,129 +1228,127 @@ if('serviceWorker' in navigator){
     if(n>60)  return 'Decor + caterer final karo 🌸';
     if(n>30)  return 'Guest RSVP final karo 👥';
     if(n>14)  return 'Sab vendors confirm karo ✅';
-    return 'Shaadi karib hai! Enjoy karo 🎉';
+    return 'Shaadi is hafte mein! Enjoy karo 🎉';
   }
 
-  function injectCountdown(){
-    var heroText = document.querySelector('.hero-text');
-    if(!heroText) return;
+  function getSavedDate(){
+    try{ return localStorage.getItem(DATE_KEY); }catch(e){ return null; }
+  }
 
-    if(wDate && daysLeft(wDate) > 0){
-      var cd = document.createElement('div');
-      cd.id = 'ss-hero-cd';
-      var days = daysLeft(wDate);
-      cd.innerHTML = '<div class="hcd-days">'+days+'</div>' +
-        '<div><div class="hcd-label">⏳ Din Baaki Hain</div><div class="hcd-task">'+taskForDays(days)+'</div></div>' +
-        '<div class="hcd-arr">→</div>';
-      cd.onclick = function(){ window.location.href='app.html#countdown'; };
-      cd.classList.add('show');
-      var stats = heroText.querySelector('.stats');
-      if(stats) heroText.insertBefore(cd, stats.nextSibling || null);
-      else heroText.appendChild(cd);
+  function updateCountdownUI(){
+    var savedDate = getSavedDate();
+    var cdEl = document.getElementById('ss-hero-cd');
+    var ctaEl = document.getElementById('ss-date-cta');
+
+    if(savedDate){
+      var days = daysLeft(savedDate);
+      if(days > 0){
+        // Show countdown
+        if(ctaEl) ctaEl.style.display = 'none';
+        if(cdEl){
+          cdEl.querySelector('.hcd-days').textContent = days;
+          cdEl.querySelector('.hcd-task').textContent = taskForDays(days);
+          cdEl.style.display = 'flex';
+        }
+      }
     } else {
-      var cta = document.createElement('div');
-      cta.id = 'ss-date-cta';
-      cta.classList.add('show');
-      cta.innerHTML = '<span>📅 <strong>Wedding date set karein</strong> — countdown + reminders paayein</span><span style="color:var(--gold);font-size:18px;">→</span>';
-      cta.onclick = openDateModal;
-      var stats = heroText.querySelector('.stats');
-      if(stats) heroText.insertBefore(cta, stats.nextSibling || null);
-      else heroText.appendChild(cta);
+      // Show date CTA
+      if(cdEl) cdEl.style.display = 'none';
+      if(ctaEl) ctaEl.style.display = 'flex';
     }
   }
 
   function openDateModal(){
-    var m = document.getElementById('ss-date-modal');
-    if(m){ 
-      m.classList.add('show');
-      document.body.style.overflow = 'hidden';
-      // Pre-fill min date as tomorrow
-      var inp = document.getElementById('ss-date-inp');
-      if(inp && !inp.value) {
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        inp.min = tomorrow.toISOString().split('T')[0];
-        // If date already saved, prefill it
-        try {
-          var saved = localStorage.getItem('ss_wedding_date');
-          if(saved) inp.value = saved;
-        } catch(e) {}
-      }
-      setTimeout(function(){ var inp2 = document.getElementById('ss-date-inp'); if(inp2) inp2.focus(); }, 300);
+    var modal = document.getElementById('ss-date-modal');
+    if(!modal) return;
+    // Prefill if already saved
+    var saved = getSavedDate();
+    var inp = document.getElementById('ss-date-inp');
+    if(inp){
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate()+1);
+      inp.min = tomorrow.toISOString().split('T')[0];
+      if(saved) inp.value = saved;
     }
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
   }
-
   window.showDateModal = openDateModal;
 
-  // Date modal save
-  var saveBtn = document.getElementById('ss-date-save-btn');
-  var skipBtn = document.getElementById('ss-date-skip-btn');
-  var modal = document.getElementById('ss-date-modal');
+  function closeDateModal(){
+    var modal = document.getElementById('ss-date-modal');
+    if(modal) modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
 
-  if(saveBtn) saveBtn.addEventListener('click', function(){
-    var inp = document.getElementById('ss-date-inp');
-    var val = inp.value;
-    
-    // Mobile fix: try reading from dataset or parse display value
-    if(!val || val.trim() === '') {
-      // Try to get from the input's displayed text (DD/MM/YYYY format on mobile)
-      var raw = inp.value || inp.getAttribute('value') || '';
-      if(!raw) {
-        alert('Pehle date select karein!');
-        inp.focus();
+  // Save button
+  var saveBtn = document.getElementById('ss-date-save-btn');
+  if(saveBtn){
+    saveBtn.addEventListener('click', function(){
+      var inp = document.getElementById('ss-date-inp');
+      var val = inp ? inp.value : '';
+
+      if(!val){
+        inp.style.borderColor = '#e07070';
+        setTimeout(function(){ inp.style.borderColor = ''; }, 2000);
+        alert('Pehle date select karein! Upar date field pe tap karein.');
         return;
       }
-    }
-    
-    // Validate date is in future
-    var parsed = new Date(val);
-    if(isNaN(parsed.getTime())) {
-      // Try DD/MM/YYYY parse
-      var parts = val.split(/[\/\-\.]/);
-      if(parts.length === 3) {
-        var day = parseInt(parts[0]), mon = parseInt(parts[1])-1, yr = parseInt(parts[2]);
-        if(yr < 100) yr += 2000;
-        parsed = new Date(yr, mon, day);
+
+      // Parse and validate
+      var d = new Date(val);
+      if(isNaN(d.getTime())){
+        alert('Valid date select karein!');
+        return;
       }
-    }
-    
-    if(isNaN(parsed.getTime())) {
-      alert('Valid date select karein!');
-      return;
-    }
-    
-    var today = new Date(); today.setHours(0,0,0,0);
-    if(parsed <= today) {
-      alert('Future ki date select karein!');
-      return;
-    }
-    
-    var saveVal = parsed.getFullYear() + '-' + 
-      String(parsed.getMonth()+1).padStart(2,'0') + '-' + 
-      String(parsed.getDate()).padStart(2,'0');
-    
-    try{ localStorage.setItem(DATE_KEY, saveVal); }catch(e){}
-    wDate = parsed;
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
-    var old = document.getElementById('ss-date-cta');
-    if(old) old.remove();
-    var oldCd = document.getElementById('ss-hero-cd');
-    if(oldCd) oldCd.remove();
-    injectCountdown();
-    setTimeout(showNotifStrip, 1500);
-  });
+      var today = new Date(); today.setHours(0,0,0,0);
+      if(d <= today){
+        alert('Future ki date chahiye!');
+        return;
+      }
 
-  if(skipBtn) skipBtn.addEventListener('click', function(){
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
-  });
+      // Save in YYYY-MM-DD format
+      var formatted = d.getFullYear()+'-'+
+        String(d.getMonth()+1).padStart(2,'0')+'-'+
+        String(d.getDate()).padStart(2,'0');
 
+      try{ localStorage.setItem(DATE_KEY, formatted); }catch(e){}
+
+      closeDateModal();
+      updateCountdownUI();
+      // Scroll to top so user sees countdown
+      window.scrollTo({top:0, behavior:'smooth'});
+      setTimeout(showNotifStrip, 2000);
+    });
+  }
+
+  // Skip button
+  var skipBtn = document.getElementById('ss-date-skip-btn');
+  if(skipBtn) skipBtn.addEventListener('click', closeDateModal);
+
+  // Modal backdrop click
+  var modal = document.getElementById('ss-date-modal');
   if(modal) modal.addEventListener('click', function(e){
-    if(e.target === modal) { modal.classList.remove('show'); document.body.style.overflow = ''; }
+    if(e.target === modal) closeDateModal();
   });
 
-  document.addEventListener('DOMContentLoaded', injectCountdown);
+  // Date CTA click
+  var ctaEl2 = document.getElementById('ss-date-cta');
+  if(ctaEl2) ctaEl2.addEventListener('click', openDateModal);
+
+  // Countdown click → app
+  var cdEl2 = document.getElementById('ss-hero-cd');
+  if(cdEl2) cdEl2.addEventListener('click', function(){
+    window.location.href = 'app.html#countdown';
+  });
+
+  // Init on DOM ready
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', updateCountdownUI);
+  } else {
+    updateCountdownUI();
+  }
+
 })();
 
 // ── PWA Install Banner ───────────────────────────────
