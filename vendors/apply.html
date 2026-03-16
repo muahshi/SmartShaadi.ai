@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Apply — SmartShaadi | List Your Wedding Business</title>
+<meta name="description" content="Apna wedding business SmartShaadi pe list karein. 1000+ couples daily. ₹999/month se shuru. Photography, catering, decoration, DJ, makeup sab categories.">
+<link rel="canonical" href="https://www.smartshaadi.online/vendors/apply.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0B0E;--bg2:#111018;--bg3:#18141F;--text:#F5EFE0;--muted:#9A9088;--gold:#C9A84C;--gl:#E8C97A;--gbd:rgba(201,168,76,.22);--gbg:rgba(201,168,76,.08);--div:rgba(201,168,76,.1);--green:#7ED3A0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;}
+a{text-decoration:none;color:inherit;}
+nav{position:sticky;top:0;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(10,8,16,.96);border-bottom:1px solid var(--div);z-index:100;backdrop-filter:blur(20px);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--gl);}
+.logo em{font-style:italic;color:var(--text);font-weight:300;}
+.wrap{max-width:680px;margin:0 auto;padding:3.5rem 1.5rem 6rem;}
+.hero-text{text-align:center;margin-bottom:3rem;}
+.eyebrow{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;margin-bottom:.6rem;}
+h1 em{font-style:italic;color:var(--gl);}
+.sub{color:var(--muted);font-size:.9rem;max-width:440px;margin:0 auto;}
+
+/* Plan cards */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:2.5rem;}
+.plan{background:var(--bg2);border:1.5px solid rgba(255,255,255,.06);border-radius:14px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .2s;}
+.plan:hover,.plan.selected{border-color:var(--gbd);background:var(--gbg);}
+.plan.featured-plan{background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.05));border-color:var(--gbd);}
+.plan-name{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:4px;}
+.plan-price{font-size:22px;font-weight:800;color:var(--text);margin:6px 0 2px;}
+.plan-period{font-size:10px;color:var(--muted);margin-bottom:10px;}
+.plan-feature{font-size:10px;color:rgba(245,239,224,.55);margin-bottom:3px;}
+.plan-badge{display:inline-block;background:var(--gold);color:var(--bg);font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:8px;}
+
+/* Form */
+.form-card{background:var(--bg2);border:1px solid var(--gbd);border-radius:16px;padding:2rem;}
+.form-card h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:1.5rem;color:var(--text);}
+.field{margin-bottom:1.1rem;}
+label{display:block;font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.38rem;}
+input,select,textarea{width:100%;background:var(--bg3);border:1.5px solid rgba(255,255,255,.07);border-radius:8px;padding:.72rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
+input:focus,select:focus,textarea:focus{border-color:var(--gbd);}
+input::placeholder,textarea::placeholder{color:var(--muted);}
+textarea{resize:vertical;min-height:100px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gl));border:none;border-radius:10px;padding:15px;font-size:.95rem;font-weight:800;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;margin-top:.5rem;}
+.submit-btn:hover{opacity:.88;}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+
+/* Success */
+#success-view{display:none;text-align:center;padding:3rem 2rem;}
+#success-view .big-emoji{font-size:64px;margin-bottom:16px;}
+
+/* Trust signals */
+.trust{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted);}
+.trust-item span{font-size:1rem;}
+
+/* Loading */
+.loading-overlay{display:none;position:fixed;inset:0;background:rgba(10,8,16,.9);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.loading-overlay.show{display:flex;}
+.spinner{width:40px;height:40px;border:3px solid rgba(201,168,76,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+footer{background:#0A0810;border-top:1px solid var(--div);padding:2rem;text-align:center;font-size:.74rem;color:var(--muted);}
+footer a{color:var(--gold);margin:0 .6rem;}
+@media(max-width:600px){
+  nav{padding:0 1rem;}
+  .wrap{padding:2.5rem 1rem 5rem;}
+  h1{font-size:1.9rem;}
+  .plans{grid-template-columns:1fr;}
+  .field-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div style="color:var(--gold);font-weight:700;">Payment process ho rahi hai...</div>
+</div>
+
+<nav>
+  <a href="../index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <a href="index.html" style="font-size:.8rem;color:var(--muted);">← Vendors Directory</a>
+</nav>
+
+<div class="wrap">
+  <div class="hero-text">
+    <div class="eyebrow">✦ SmartShaadi Partner Program</div>
+    <h1>Apna Business <em>List Karein</em></h1>
+    <p class="sub">1,000+ couples daily apni shaadi plan karte hain. Unse directly connect karein.</p>
+  </div>
+
+  <div class="trust">
+    <div class="trust-item"><span>✅</span> Verified listing</div>
+    <div class="trust-item"><span>💬</span> Direct WhatsApp leads</div>
+    <div class="trust-item"><span>🔄</span> Cancel anytime</div>
+    <div class="trust-item"><span>🔒</span> Razorpay secure payment</div>
+  </div>
+
+  <!-- Plan Selection -->
+  <div class="plans" id="plan-grid">
+    <div class="plan" id="plan-basic" onclick="selectPlan('basic',999)">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">₹999</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-feature">✓ Directory listing</div>
+      <div class="plan-feature">✓ Contact button</div>
+      <div class="plan-feature">✓ 5 photos</div>
+      <div class="plan-feature">✓ Basic badge</div>
+    </div>
+    <div class="plan featured-plan selected" id="plan-featured" onclick="selectPlan('featured',1999)">
+      <div class="plan-badge">POPULAR</div>
+      <div class="plan-name">⭐ Featured</div>
+      <div class="plan-price">₹1,999</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-feature">✓ Top of results</div>
+      <div class="plan-feature">✓ WhatsApp leads</div>
+      <div class="plan-feature">✓ 15 photos</div>
+      <div class="plan-feature">✓ Featured badge</div>
+    </div>
+    <div class="plan" id="plan-premium" onclick="selectPlan('premium',2999)">
+      <div class="plan-name">🏆 Premium</div>
+      <div class="plan-price">₹2,999</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-feature">✓ #1 position</div>
+      <div class="plan-feature">✓ Homepage spot</div>
+      <div class="plan-feature">✓ Unlimited photos</div>
+      <div class="plan-feature">✓ Analytics dashboard</div>
+    </div>
+  </div>
+
+  <!-- Application Form -->
+  <div class="form-card" id="form-view">
+    <h2>📝 Business Details</h2>
+
+    <div class="field">
+      <label>Business Name *</label>
+      <input type="text" id="vn" placeholder="Sharma Photography" required>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>WhatsApp Number *</label>
+        <input type="tel" id="vph" placeholder="9876543210" maxlength="10" required>
+      </div>
+      <div class="field">
+        <label>City *</label>
+        <input type="text" id="vci" placeholder="Delhi / Mumbai / Jaipur" required>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Category *</label>
+        <select id="vcat" required>
+          <option value="">Select Category</option>
+          <option>Photography</option>
+          <option>Catering</option>
+          <option>Decoration</option>
+          <option>Music & DJ</option>
+          <option>Makeup</option>
+          <option>Venue</option>
+          <option>Transport</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Starting Price</label>
+        <input type="text" id="vpr" placeholder="₹30,000 / ₹800 per plate">
+      </div>
+    </div>
+    <div class="field">
+      <label>Business Description (2-3 lines) *</label>
+      <textarea id="vdesc" placeholder="Apne business ke baare mein batao — experience, specialty, aur kya offer karte ho..." required></textarea>
+    </div>
+    <div class="field">
+      <label>Owner / Contact Name *</label>
+      <input type="text" id="vowner" placeholder="Rahul Sharma" required>
+    </div>
+    <div class="field">
+      <label>Email Address</label>
+      <input type="email" id="vemail" placeholder="business@email.com">
+    </div>
+
+    <div style="background:var(--gbg);border:1px solid var(--gbd);border-radius:10px;padding:14px;margin:1.2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:13px;font-weight:700;" id="selected-plan-name">⭐ Featured Plan</div>
+        <div style="font-size:11px;color:var(--muted);">Monthly subscription · Cancel anytime</div>
+      </div>
+      <div style="font-size:20px;font-weight:800;color:var(--gl);" id="selected-plan-price">₹1,999/mo</div>
+    </div>
+
+    <button class="submit-btn" id="pay-btn" onclick="initiatePayment()">
+      🔒 Secure Payment aur Apply Karein →
+    </button>
+    <p style="font-size:.74rem;color:var(--muted);text-align:center;margin-top:.6rem;">Razorpay secure payment · UPI, Card, Net Banking sab accepted</p>
+  </div>
+
+  <!-- Success View -->
+  <div id="success-view">
+    <div class="big-emoji">🎉</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:.6rem;">Application Received!</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">Payment successful! Hamari team 24 ghante mein aapki listing activate kar degi aur WhatsApp pe confirm karegi.</p>
+    <a href="index.html" style="background:var(--gold);color:var(--bg);padding:.8rem 2rem;border-radius:6px;font-weight:700;display:inline-block;">Vendor Directory Dekho →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Smart Shaadi AI. All rights reserved.</p>
+  <p style="margin-top:.5rem;"><a href="../index.html">Home</a><a href="index.html">Vendors</a><a href="../contact.html">Contact</a><a href="../privacy-policy.html">Privacy</a></p>
+</footer>
+
+<!-- Razorpay SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var selectedPlan = 'featured';
+var selectedAmount = 1999;
+
+function selectPlan(plan, amount){
+  selectedPlan = plan;
+  selectedAmount = amount;
+  document.querySelectorAll('.plan').forEach(function(p){ p.classList.remove('selected'); });
+  document.getElementById('plan-' + plan).classList.add('selected');
+  var names = {basic:'Basic Plan', featured:'⭐ Featured Plan', premium:'🏆 Premium Plan'};
+  document.getElementById('selected-plan-name').textContent = names[plan];
+  document.getElementById('selected-plan-price').textContent = '₹' + amount + '/mo';
+}
+
+function validate(){
+  var fields = [
+    {id:'vn', label:'Business Name'},
+    {id:'vph', label:'WhatsApp Number'},
+    {id:'vci', label:'City'},
+    {id:'vcat', label:'Category'},
+    {id:'vdesc', label:'Description'},
+    {id:'vowner', label:'Owner Name'}
+  ];
+  for(var i=0; i<fields.length; i++){
+    var el = document.getElementById(fields[i].id);
+    if(!el.value.trim()){ alert(fields[i].label + ' zaroori hai!'); el.focus(); return false; }
+  }
+  var ph = document.getElementById('vph').value.replace(/\D/g,'');
+  if(ph.length < 10){ alert('Valid 10-digit WhatsApp number daalein!'); return false; }
+  return true;
+}
+
+function initiatePayment(){
+  if(!validate()) return;
+
+  // NOTE: Razorpay KEY_ID replace karo apna actual key se
+  // razorpay.com pe account banao → Settings → API Keys
+  var RAZORPAY_KEY = 'rzp_test_REPLACE_WITH_YOUR_KEY';
+
+  var vendorData = {
+    name: document.getElementById('vn').value.trim(),
+    phone: document.getElementById('vph').value.trim(),
+    city: document.getElementById('vci').value.trim(),
+    category: document.getElementById('vcat').value,
+    price: document.getElementById('vpr').value.trim(),
+    desc: document.getElementById('vdesc').value.trim(),
+    owner: document.getElementById('vowner').value.trim(),
+    email: document.getElementById('vemail').value.trim(),
+    plan: selectedPlan,
+    amount: selectedAmount
+  };
+
+  // For now — direct Razorpay without server order
+  // When /api/razorpay-order.js is ready, replace with server call
+  var options = {
+    key: RAZORPAY_KEY,
+    amount: selectedAmount * 100, // in paise
+    currency: 'INR',
+    name: 'SmartShaadi AI',
+    description: 'Vendor Listing — ' + selectedPlan + ' Plan',
+    image: 'https://www.smartshaadi.online/icons/icon-192.png',
+    prefill: {
+      name: vendorData.owner,
+      email: vendorData.email || '',
+      contact: '91' + vendorData.phone
+    },
+    notes: {
+      business_name: vendorData.name,
+      city: vendorData.city,
+      category: vendorData.category,
+      plan: vendorData.plan
+    },
+    theme: { color: '#C9A84C' },
+    modal: { ondismiss: function(){ document.getElementById('loading').classList.remove('show'); } },
+    handler: function(response){
+      // Payment successful
+      document.getElementById('loading').classList.remove('show');
+      onPaymentSuccess(vendorData, response);
+    }
+  };
+
+  try{
+    var rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(resp){
+      document.getElementById('loading').classList.remove('show');
+      alert('Payment failed: ' + resp.error.description + '\nDobara try karein ya contact karein.');
+    });
+    rzp.open();
+  } catch(e){
+    alert('Payment gateway load nahi hua. Internet check karein aur dobara try karein.');
+  }
+}
+
+function onPaymentSuccess(vendorData, paymentResp){
+  // Send to admin via WhatsApp (immediate notification)
+  var msg = '🆕 *New Vendor Application — SmartShaadi*\n\n' +
+    '👤 ' + vendorData.name + '\n' +
+    '📞 ' + vendorData.phone + '\n' +
+    '📍 ' + vendorData.city + '\n' +
+    '🏷️ ' + vendorData.category + '\n' +
+    '💰 Plan: ' + vendorData.plan.toUpperCase() + ' (₹' + vendorData.amount + '/mo)\n' +
+    '💳 Payment ID: ' + paymentResp.razorpay_payment_id + '\n\n' +
+    'Activate karo: smartshaadi.online/vendors/admin.html';
+
+  // Show success
+  document.getElementById('form-view').style.display = 'none';
+  document.getElementById('plan-grid').style.display = 'none';
+  document.getElementById('success-view').style.display = 'block';
+
+  // Open WhatsApp to notify admin
+  setTimeout(function(){
+    window.open('https://wa.me/919876543210?text=' + encodeURIComponent(msg), '_blank');
+  }, 1500);
+
+  // Store in localStorage as backup
+  try{
+    var apps = JSON.parse(localStorage.getItem('ss_vendor_apps') || '[]');
+    apps.push({ ...vendorData, paymentId: paymentResp.razorpay_payment_id, timestamp: Date.now() });
+    localStorage.setItem('ss_vendor_apps', JSON.stringify(apps));
+  }catch(e){}
+}
+</script>
+</body>
+</html>
