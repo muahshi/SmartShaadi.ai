@@ -1,28 +1,28 @@
-// SmartShaadi Service Worker v2.0 — Play Store Ready
-const CACHE = 'smartshaadi-v2';
+// SmartShaadi Service Worker v3.0
+// Full push notification + offline + cache support
+const CACHE = 'smartshaadi-v3';
 const OFFLINE_URL = '/offline.html';
 
-// Files to cache immediately on install
 const PRECACHE = [
+  '/',
+  '/index.html',
   '/app.html',
   '/offline.html',
   '/manifest.json',
-  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700;800&display=swap',
+  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap',
 ];
 
-// ── INSTALL: cache core files ──
+// ── INSTALL ──
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE).then(cache => {
-      return cache.addAll(PRECACHE).catch(() => {
-        // Non-critical: some may fail (fonts etc), that's ok
-      });
+      return cache.addAll(PRECACHE).catch(() => {});
     })
   );
   self.skipWaiting();
 });
 
-// ── ACTIVATE: clean old caches ──
+// ── ACTIVATE ──
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
@@ -32,35 +32,25 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// ── FETCH: smart caching strategy ──
+// ── FETCH: Smart caching ──
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
+  if (url.pathname.startsWith('/api/') || url.hostname === 'api.groq.com') return;
+  if (e.request.method !== 'GET') return;
 
-  // Never cache API calls — always network
-  if (url.hostname === 'api.groq.com' || url.pathname.includes('/api/')) {
-    return; // pass through to network
-  }
-
-  // For navigation requests (HTML pages) — network first, fallback to cache
   if (e.request.mode === 'navigate') {
     e.respondWith(
       fetch(e.request)
         .then(response => {
-          // Cache fresh copy
           const clone = response.clone();
           caches.open(CACHE).then(cache => cache.put(e.request, clone));
           return response;
         })
-        .catch(() => {
-          // Network failed — try cache, then offline page
-          return caches.match(e.request)
-            .then(cached => cached || caches.match(OFFLINE_URL));
-        })
+        .catch(() => caches.match(e.request).then(cached => cached || caches.match(OFFLINE_URL)))
     );
     return;
   }
 
-  // For static assets — cache first, network fallback
   if (
     url.hostname === 'fonts.googleapis.com' ||
     url.hostname === 'fonts.gstatic.com' ||
@@ -73,8 +63,7 @@ self.addEventListener('fetch', e => {
         if (cached) return cached;
         return fetch(e.request).then(response => {
           if (response && response.status === 200) {
-            const clone = response.clone();
-            caches.open(CACHE).then(c => c.put(e.request, clone));
+            caches.open(CACHE).then(c => c.put(e.request, response.clone()));
           }
           return response;
         });
@@ -83,21 +72,64 @@ self.addEventListener('fetch', e => {
   }
 });
 
-// ── PUSH NOTIFICATIONS (future use) ──
+// ── PUSH NOTIFICATIONS ──
 self.addEventListener('push', e => {
-  const data = e.data ? e.data.json() : { title: 'SmartShaadi', body: 'Wedding reminder!' };
+  let data = { title: 'SmartShaadi 💍', body: 'Wedding reminder!', url: '/app.html' };
+  try { if (e.data) data = { ...data, ...e.data.json() }; } catch(err) {}
+
   e.waitUntil(
-    self.registration.showNotification(data.title || 'SmartShaadi 💍', {
-      body: data.body || 'Aapki shaadi ki planning yaad dilana chahte hain!',
+    self.registration.showNotification(data.title, {
+      body: data.body,
       icon: '/icons/icon-192.png',
       badge: '/icons/icon-96.png',
       vibrate: [200, 100, 200],
-      data: { url: data.url || '/app.html' }
+      tag: 'smartshaadi-reminder',
+      renotify: true,
+      data: { url: data.url || '/app.html' },
+      actions: [
+        { action: 'open', title: '📋 Planning Dekho' },
+        { action: 'dismiss', title: 'Baad mein' }
+      ]
     })
   );
 });
 
 self.addEventListener('notificationclick', e => {
   e.notification.close();
-  e.waitUntil(clients.openWindow(e.notification.data?.url || '/app.html'));
+  if (e.action === 'dismiss') return;
+  const url = e.notification.data?.url || '/app.html';
+  e.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(cs => {
+      for (const c of cs) {
+        if (c.url.includes(self.location.origin) && 'focus' in c) {
+          c.navigate(url);
+          return c.focus();
+        }
+      }
+      return clients.openWindow(url);
+    })
+  );
+});
+
+// ── BACKGROUND SYNC (offline form submit) ──
+self.addEventListener('sync', e => {
+  if (e.tag === 'sync-vendor-apply') {
+    e.waitUntil(syncVendorData());
+  }
+});
+
+async function syncVendorData() {
+  // Will sync vendor application when back online
+  const cache = await caches.open(CACHE);
+  // Implementation when backend is ready
+}
+
+// ── MESSAGE: client → sw ──
+self.addEventListener('message', e => {
+  if (e.data === 'skipWaiting') self.skipWaiting();
+  if (e.data?.type === 'SCHEDULE_REMINDER') {
+    // Store reminder data for push
+    const { daysLeft, weddingDate } = e.data;
+    // Would send to server if push subscription exists
+  }
 });
