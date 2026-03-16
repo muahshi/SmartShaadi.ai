@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi-IN">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6QPBQ6QZE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y6QPBQ6QZE');</script>
 
 <meta charset="UTF-8">
+<meta name="theme-color" content="#0A0810">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SmartShaadi">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Shaadi AI — India's #1 AI Wedding Planner | Free Tools 2026</title>
 <meta name="description" content="Smart Shaadi AI: India's best free AI wedding planner. Budget calculator, guest manager, venue comparison, RSVP tracker, timeline generator — plan your dream shaadi today!">
@@ -351,6 +356,85 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
   .ait-banner{padding:2rem 1.2rem}
   .ait-chips{gap:.4rem}
 }
+/* ── PWA Install Banner ── */
+#ss-pwa-banner{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);width:calc(100% - 32px);max-width:480px;background:linear-gradient(135deg,#18141F,#1E1926);border:1.5px solid rgba(201,168,76,.3);border-radius:18px;padding:14px 16px;z-index:9000;box-shadow:0 16px 48px rgba(0,0,0,.6);display:flex;align-items:center;gap:12px;transition:transform .4s cubic-bezier(.34,1.56,.64,1);font-family:'DM Sans',sans-serif;}
+#ss-pwa-banner.show{transform:translateX(-50%) translateY(0);}
+#ss-pwa-banner .pwa-icon{font-size:32px;flex-shrink:0;}
+#ss-pwa-banner .pwa-title{font-size:13px;font-weight:700;color:#F5EFE0;margin-bottom:2px;}
+#ss-pwa-banner .pwa-sub{font-size:10px;color:#9A9088;}
+#ss-pwa-banner .pwa-btn{background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:9px;padding:9px 16px;font-size:12px;font-weight:800;color:#0D0B0E;cursor:pointer;flex-shrink:0;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+#ss-pwa-banner .pwa-close{background:none;border:none;color:rgba(245,239,224,.3);font-size:18px;cursor:pointer;padding:2px 6px;line-height:1;flex-shrink:0;}
+
+/* ── Notification Strip ── */
+#ss-notif-strip{display:none;background:rgba(201,168,76,.07);border-bottom:1px solid rgba(201,168,76,.15);padding:9px 20px;text-align:center;font-family:'DM Sans',sans-serif;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+#ss-notif-strip.show{display:flex;}
+#ss-notif-strip p{font-size:12px;color:rgba(245,239,224,.65);margin:0;}
+#ss-notif-strip .ns-btn{background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.28);border-radius:20px;padding:4px 14px;font-size:11px;color:#C9A84C;cursor:pointer;font-weight:700;font-family:'DM Sans',sans-serif;}
+#ss-notif-strip .ns-close{background:none;border:none;color:rgba(245,239,224,.25);font-size:16px;cursor:pointer;padding:0 4px;line-height:1;}
+
+/* ── Hero Countdown Widget ── */
+#ss-hero-cd{display:none;background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.04));border:1px solid rgba(201,168,76,.25);border-radius:14px;padding:14px 18px;margin:1.4rem 0 0;cursor:pointer;transition:border-color .2s,transform .2s;}
+#ss-hero-cd:hover{border-color:rgba(201,168,76,.45);transform:translateY(-2px);}
+#ss-hero-cd.show{display:flex;align-items:center;gap:14px;}
+#ss-hero-cd .hcd-days{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-weight:700;color:#E8C97A;line-height:1;flex-shrink:0;}
+#ss-hero-cd .hcd-label{font-size:10px;color:#C9A84C;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;}
+#ss-hero-cd .hcd-task{font-size:13px;color:rgba(245,239,224,.65);}
+#ss-hero-cd .hcd-arr{color:rgba(201,168,76,.4);font-size:20px;margin-left:auto;}
+
+/* ── Date CTA (when no date set) ── */
+#ss-date-cta{display:none;align-items:center;gap:10px;background:rgba(201,168,76,.05);border:1px dashed rgba(201,168,76,.22);border-radius:11px;padding:11px 15px;margin:1.2rem 0 0;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+#ss-date-cta.show{display:flex;}
+#ss-date-cta:hover{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.09);}
+#ss-date-cta span{font-size:13px;color:rgba(245,239,224,.55);}
+#ss-date-cta strong{color:#C9A84C;}
+
+/* ── Date Modal ── */
+#ss-date-modal{position:fixed;inset:0;background:rgba(10,8,16,.95);z-index:9500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(12px);}
+#ss-date-modal.show{display:flex;}
+.sdm-box{background:#18141F;border:1.5px solid rgba(201,168,76,.25);border-radius:20px;padding:28px 22px;max-width:360px;width:100%;text-align:center;font-family:'DM Sans',sans-serif;}
+.sdm-box h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;color:#F5EFE0;margin-bottom:5px;}
+.sdm-box p{font-size:13px;color:#9A9088;margin-bottom:18px;}
+.sdm-box input[type=date]{width:100%;background:#111018;border:1.5px solid rgba(201,168,76,.22);border-radius:9px;padding:12px 14px;color:#E8C97A;font-size:16px;font-weight:700;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:14px;-webkit-appearance:none;}
+.sdm-box .sdm-go{width:100%;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:9px;padding:13px;font-size:14px;font-weight:800;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.sdm-box .sdm-skip{background:none;border:none;color:rgba(245,239,224,.28);font-size:12px;cursor:pointer;margin-top:9px;display:block;font-family:'DM Sans',sans-serif;}
+
+/* ── Vendor Showcase Section ── */
+.vendor-showcase{padding:3.5rem 2.4rem;background:var(--bg2);border-top:1px solid var(--divider);transition:var(--tr);}
+.vs-inner{max-width:1080px;margin:0 auto;}
+.vs-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem;flex-wrap:wrap;gap:.8rem;}
+.vs-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--text);}
+.vs-title em{font-style:italic;color:var(--gl);}
+.vs-link{font-size:.8rem;color:var(--gold);border:1px solid var(--gold-bd);padding:.38rem .9rem;border-radius:4px;background:var(--gold-bg);transition:all .2s;}
+.vs-link:hover{background:var(--gold-bd);}
+.vs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin-bottom:1.8rem;}
+.vs-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;transition:border-color .25s,transform .25s;}
+.vs-card:hover{border-color:var(--gold-bd);transform:translateY(-3px);}
+.vs-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px;}
+.vs-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.vs-meta{font-size:11px;color:var(--muted);}
+.vs-badge{font-size:9px;padding:2px 8px;border-radius:20px;font-weight:700;flex-shrink:0;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid var(--gold-bd2);}
+.vs-desc{font-size:12px;color:var(--faint);line-height:1.52;margin:8px 0 12px;}
+.vs-footer{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;}
+.vs-price{font-size:14px;font-weight:700;color:var(--gl);}
+.vs-rating{font-size:11px;color:var(--gold);}
+.vs-wa{display:block;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:8px;padding:9px;text-align:center;font-size:12px;font-weight:700;color:#fff;transition:opacity .2s;}
+.vs-wa:hover{opacity:.88;}
+.vs-cta{background:linear-gradient(135deg,var(--gold-bg),rgba(201,168,76,.03));border:1px dashed var(--gold-bd);border-radius:14px;padding:2rem;text-align:center;}
+.vs-cta h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.5rem;}
+.vs-cta p{font-size:.84rem;color:var(--muted);margin-bottom:1.4rem;}
+.vs-cta-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;max-width:440px;margin:0 auto 1.4rem;}
+.vs-plan{background:var(--bg3);border-radius:10px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.06);}
+.vs-plan.mid{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.06));border-color:var(--gold-bd);}
+.vs-plan-name{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:3px;}
+.vs-plan-price{font-size:18px;font-weight:800;color:var(--text);}
+.vs-plan-mo{font-size:9px;color:var(--muted);}
+.vs-cta-btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;}
+@media(max-width:600px){
+  .vs-grid{grid-template-columns:1fr;}
+  .vs-cta-plans{grid-template-columns:repeat(3,1fr);}
+  .vendor-showcase{padding:2.5rem 1.2rem;}
+}
+
 </style>
 </head>
 <body>
@@ -359,9 +443,9 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <a href="/" class="logo">Smart<em>Shaadi</em> 💍</a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
     <a href="#tools">Tools</a>
     <a href="ai-tools.html" class="nav-ai-tools">✨ 9 AI Tools</a>
     <a href="blogs.html">Magazine</a>
@@ -386,7 +470,7 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
     <button class="dr-theme-btn" onclick="toggleTheme()"><span id="drThemeIcon">☀️</span> <span id="drThemeLabel">Light Mode</span></button>
   </div>
   <div class="dr-sec">Main Pages</div>
-  <a href="index.html" onclick="clos()"><span class="mi">🏠</span> Home</a>
+  <a href="/" onclick="clos()"><span class="mi">🏠</span> Home</a>
   <a href="dashboard.html" onclick="clos()"><span class="mi">📊</span> Full Dashboard</a>
   <a href="blogs.html" onclick="clos()"><span class="mi">📖</span> Magazine & Blogs</a>
   <a href="about.html" onclick="clos()"><span class="mi">💡</span> About Us</a>
@@ -804,10 +888,38 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
 </section>
 
 <!-- FOOTER -->
+
+<!-- ══ VENDOR SHOWCASE ══════════════════════════════ -->
+<section class="vendor-showcase">
+  <div class="vs-inner">
+    <div class="vs-head">
+      <div>
+        <div style="font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;">✦ SmartShaadi Certified</div>
+        <h2 class="vs-title">Top <em>Wedding Vendors</em></h2>
+      </div>
+      <a href="vendors/index.html" class="vs-link">Saare Vendors Dekho →</a>
+    </div>
+    <div class="vs-grid" id="vs-grid"></div>
+    <div class="vs-cta">
+      <h3>📢 Apna Business <em style="font-style:italic;color:var(--gl);">List Karein</em></h3>
+      <p>1,000+ couples daily SmartShaadi pe apni shaadi plan karte hain</p>
+      <div class="vs-cta-plans">
+        <div class="vs-plan"><div class="vs-plan-name">Basic</div><div class="vs-plan-price">₹999</div><div class="vs-plan-mo">/month</div></div>
+        <div class="vs-plan mid"><div class="vs-plan-name">⭐ Featured</div><div class="vs-plan-price">₹1,999</div><div class="vs-plan-mo">/month</div></div>
+        <div class="vs-plan"><div class="vs-plan-name">🏆 Premium</div><div class="vs-plan-price">₹2,999</div><div class="vs-plan-mo">/month</div></div>
+      </div>
+      <div class="vs-cta-btns">
+        <a href="vendors/apply.html" class="btn-primary" style="display:inline-block;font-size:.84rem;">📝 Vendor Ban Jao →</a>
+        <a href="vendors/index.html" class="btn-outline" style="display:inline-block;font-size:.84rem;">🔍 Vendors Dekho</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="ftop">
     <div class="fb">
-      <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+      <a href="/" class="logo">Smart<em>Shaadi</em> 💍</a>
       <p>India ka #1 AI Wedding Planner. Technology aur tradition ka perfect milan — aapki dream shaadi ke liye.</p>
       <div class="fb-rating"><div class="fb-stars">★★★★★</div><div class="fb-rtxt">India's #1 Free AI Wedding Planner</div></div>
     </div>
@@ -842,7 +954,7 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
     <div class="fcol">
       <h4>Company</h4>
       <ul>
-        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="/">🏠 Home</a></li>
         <li><a href="about.html">💡 About Us</a></li>
         <li><a href="dashboard.html">📊 Dashboard</a></li>
         <li><a href="contact.html">📬 Contact Us</a></li>
@@ -1054,6 +1166,227 @@ document.addEventListener('DOMContentLoaded',function(){
   if(D.date){ document.getElementById('tl-date').value=D.date; genTimeline(); }
   renderGuests(); renderVenues(); renderRSVP(); updateOverview();
 });
+
+
+// ══════════════════════════════════════════════════════
+// SmartShaadi v3.0 — PWA + Countdown + Vendors + SW
+// ══════════════════════════════════════════════════════
+
+// ── Service Worker Register ──────────────────────────
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
+
+// ── Vendor Showcase Data + Render ────────────────────
+(function renderVendors(){
+  var VS = [
+    {name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:'4.9',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'200+ weddings. Candid + cinematic. 8 saal experience.'},
+    {name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:'4.8',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani + North Indian. Min 100 guests.'},
+    {name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:'4.9',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International. Live dhol available.'}
+  ];
+  var grid = document.getElementById('vs-grid');
+  if(!grid) return;
+  grid.innerHTML = VS.map(function(v){
+    var waMsg = encodeURIComponent('Hi! SmartShaadi se dekha. Wedding inquiry karna tha.');
+    return '<div class="vs-card">' +
+      '<div class="vs-card-top"><div><div class="vs-name">'+v.name+'</div><div class="vs-meta">📍 '+v.city+' · '+v.cat+'</div></div>' +
+      '<span class="vs-badge">'+v.badge+'</span></div>' +
+      '<div class="vs-desc">'+v.desc+'</div>' +
+      '<div class="vs-footer"><span class="vs-price">'+v.price+'</span><span class="vs-rating">⭐ '+v.rating+'</span></div>' +
+      '<a href="https://wa.me/91'+v.phone+'?text='+waMsg+'" target="_blank" class="vs-wa">💬 WhatsApp Contact</a>' +
+    '</div>';
+  }).join('');
+})();
+
+// ── Wedding Countdown ────────────────────────────────
+(function(){
+  var DATE_KEY = 'ss_wedding_date';
+  var wDate = null;
+  try{ var ds = localStorage.getItem(DATE_KEY); if(ds) wDate = new Date(ds); }catch(e){}
+
+  function daysLeft(d){ var t=new Date(); t.setHours(0,0,0,0); return Math.ceil((d-t)/86400000); }
+
+  function taskForDays(n){
+    if(n>270) return 'Venue shortlist karo 🏛️';
+    if(n>180) return 'Photographer book karo 📸';
+    if(n>120) return 'Invitations banao 💌';
+    if(n>90)  return 'Outfit shopping karo 👗';
+    if(n>60)  return 'Decor + caterer final karo 🌸';
+    if(n>30)  return 'Guest RSVP final karo 👥';
+    if(n>14)  return 'Sab vendors confirm karo ✅';
+    return 'Shaadi karib hai! Enjoy karo 🎉';
+  }
+
+  function injectCountdown(){
+    var heroText = document.querySelector('.hero-text');
+    if(!heroText) return;
+
+    if(wDate && daysLeft(wDate) > 0){
+      var cd = document.createElement('div');
+      cd.id = 'ss-hero-cd';
+      var days = daysLeft(wDate);
+      cd.innerHTML = '<div class="hcd-days">'+days+'</div>' +
+        '<div><div class="hcd-label">⏳ Din Baaki Hain</div><div class="hcd-task">'+taskForDays(days)+'</div></div>' +
+        '<div class="hcd-arr">→</div>';
+      cd.onclick = function(){ window.location.href='app.html#countdown'; };
+      cd.classList.add('show');
+      var stats = heroText.querySelector('.stats');
+      if(stats) heroText.insertBefore(cd, stats.nextSibling || null);
+      else heroText.appendChild(cd);
+    } else {
+      var cta = document.createElement('div');
+      cta.id = 'ss-date-cta';
+      cta.classList.add('show');
+      cta.innerHTML = '<span>📅 <strong>Wedding date set karein</strong> — countdown + reminders paayein</span><span style="color:var(--gold);font-size:18px;">→</span>';
+      cta.onclick = openDateModal;
+      var stats = heroText.querySelector('.stats');
+      if(stats) heroText.insertBefore(cta, stats.nextSibling || null);
+      else heroText.appendChild(cta);
+    }
+  }
+
+  function openDateModal(){
+    var m = document.getElementById('ss-date-modal');
+    if(m){ m.classList.add('show'); }
+  }
+
+  window.showDateModal = openDateModal;
+
+  // Date modal save
+  var saveBtn = document.getElementById('ss-date-save-btn');
+  var skipBtn = document.getElementById('ss-date-skip-btn');
+  var modal = document.getElementById('ss-date-modal');
+
+  if(saveBtn) saveBtn.addEventListener('click', function(){
+    var val = document.getElementById('ss-date-inp').value;
+    if(!val){ alert('Date select karein!'); return; }
+    try{ localStorage.setItem(DATE_KEY, val); }catch(e){}
+    wDate = new Date(val);
+    modal.classList.remove('show');
+    var old = document.getElementById('ss-date-cta');
+    if(old) old.remove();
+    injectCountdown();
+    setTimeout(showNotifStrip, 1500);
+  });
+
+  if(skipBtn) skipBtn.addEventListener('click', function(){
+    modal.classList.remove('show');
+  });
+
+  if(modal) modal.addEventListener('click', function(e){
+    if(e.target === modal) modal.classList.remove('show');
+  });
+
+  document.addEventListener('DOMContentLoaded', injectCountdown);
+})();
+
+// ── PWA Install Banner ───────────────────────────────
+(function(){
+  var dp = null;
+  var banner = document.getElementById('ss-pwa-banner');
+  var installBtn = document.getElementById('ss-pwa-install-btn');
+  var closeBtn = document.getElementById('ss-pwa-close-btn');
+
+  function shouldShow(){
+    try{
+      if(localStorage.getItem('ss_pwa_installed')) return false;
+      var d = localStorage.getItem('ss_pwa_dismissed');
+      if(d && Date.now()-parseInt(d) < 7*24*60*60*1000) return false;
+    }catch(e){}
+    return true;
+  }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); dp = e;
+    if(!shouldShow()) return;
+    var shown = false;
+    function show(){ if(!shown){ shown=true; banner.classList.add('show'); } }
+    setTimeout(show, 30000);
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > document.body.scrollHeight*0.4) show();
+    }, {once:true});
+  });
+
+  if(installBtn) installBtn.addEventListener('click', function(){
+    if(!dp) return;
+    dp.prompt();
+    dp.userChoice.then(function(r){
+      if(r.outcome==='accepted') try{ localStorage.setItem('ss_pwa_installed','1'); }catch(e){}
+      dp = null; banner.classList.remove('show');
+    });
+  });
+
+  if(closeBtn) closeBtn.addEventListener('click', function(){
+    banner.classList.remove('show');
+    try{ localStorage.setItem('ss_pwa_dismissed', Date.now()); }catch(e){}
+  });
+})();
+
+// ── Push Notification Opt-in ─────────────────────────
+function showNotifStrip(){
+  if(!('Notification' in window)) return;
+  if(Notification.permission !== 'default') return;
+  try{ if(localStorage.getItem('ss_notif_asked')) return; }catch(e){}
+  var strip = document.getElementById('ss-notif-strip');
+  if(strip) strip.classList.add('show');
+}
+
+var nBtn = document.getElementById('ss-notif-allow-btn');
+var nClose = document.getElementById('ss-notif-close-btn');
+if(nBtn) nBtn.addEventListener('click', function(){
+  Notification.requestPermission().then(function(p){
+    try{ localStorage.setItem('ss_notif_asked','1'); }catch(e){}
+    var strip = document.getElementById('ss-notif-strip');
+    if(strip) strip.classList.remove('show');
+    if(p==='granted'){
+      new Notification('SmartShaadi 💍', {body:'Reminders set ho gayi! Planning shuru karein.', icon:'/icons/icon-192.png'});
+    }
+  });
+});
+if(nClose) nClose.addEventListener('click', function(){
+  try{ localStorage.setItem('ss_notif_asked','1'); }catch(e){}
+  var strip = document.getElementById('ss-notif-strip');
+  if(strip) strip.classList.remove('show');
+});
+
+// Show notif strip after 60s if date is set
+setTimeout(function(){
+  try{ if(localStorage.getItem('ss_wedding_date') && !localStorage.getItem('ss_notif_asked')) showNotifStrip(); }catch(e){}
+}, 60000);
+
 </script>
+
+<!-- ══ PWA BANNER ══════════════════════════════════ -->
+<div id="ss-pwa-banner">
+  <span class="pwa-icon">💍</span>
+  <div style="flex:1;">
+    <div class="pwa-title">SmartShaadi App Install Karo</div>
+    <div class="pwa-sub">Home screen pe add karo — free, fast, offline bhi</div>
+  </div>
+  <button class="pwa-btn" id="ss-pwa-install-btn">Install</button>
+  <button class="pwa-close" id="ss-pwa-close-btn">✕</button>
+</div>
+
+<!-- ══ NOTIFICATION STRIP ══════════════════════════ -->
+<div id="ss-notif-strip">
+  <p>🔔 <strong>Wedding reminders paayein</strong> — important tasks miss mat karo</p>
+  <button class="ns-btn" id="ss-notif-allow-btn">Allow</button>
+  <button class="ns-close" id="ss-notif-close-btn">✕</button>
+</div>
+
+<!-- ══ DATE MODAL ═══════════════════════════════════ -->
+<div id="ss-date-modal">
+  <div class="sdm-box">
+    <div style="font-size:52px;margin-bottom:10px;">💍</div>
+    <h3>Shaadi Kab Hai?</h3>
+    <p>Date set karein — countdown, checklist aur reminders paayein</p>
+    <input type="date" id="ss-date-inp">
+    <button class="sdm-go" id="ss-date-save-btn">✨ Planning Shuru Karein</button>
+    <button class="sdm-skip" id="ss-date-skip-btn">Abhi nahi</button>
+  </div>
+</div>
+
 </body>
 </html>
