@@ -1,272 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us | Smart Shaadi AI — India's #1 AI Wedding Planner</title>
-  <meta name="description" content="Smart Shaadi AI se sampark karein. Wedding planning mein madad chahiye? Humse email ya contact form ke through baat karein.">
-  <link rel="canonical" href="https://www.smartshaadi.online/contact.html"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --primary: #b5451b;
-      --gold: #d4a017;
-      --dark: #1a1a2e;
-      --text: #333;
-      --bg: #fdf8f3;
-      --border: #e8d9c5;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Lato',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
-    nav {
-      background:#fff; border-bottom:2px solid var(--border);
-      padding:16px 24px; display:flex; align-items:center; justify-content:space-between;
-      position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.06);
-    }
-    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--primary); text-decoration:none; }
-    .nav-logo span { color:var(--gold); }
-    nav a.home-link { font-size:0.9rem; color:var(--primary); text-decoration:none; border:1.5px solid var(--primary); padding:6px 16px; border-radius:20px; transition:all 0.2s; }
-    nav a.home-link:hover { background:var(--primary); color:#fff; }
-
-    .hero {
-      background: linear-gradient(135deg, #2d5016 0%, #4a7c25 100%);
-      color:#fff; padding:60px 24px 50px; text-align:center;
-    }
-    .hero h1 { font-family:'Playfair Display',serif; font-size:2.4rem; margin-bottom:12px; }
-    .hero p { opacity:0.9; font-size:1rem; max-width:500px; margin:0 auto; }
-
-    .container { max-width:900px; margin:0 auto; padding:56px 24px; }
-
-    .contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:40px; margin-bottom:48px; }
-
-    /* INFO SIDE */
-    .info-side h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:20px; }
-    .info-card {
-      background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:20px 22px;
-      margin-bottom:16px; display:flex; gap:16px; align-items:flex-start;
-    }
-    .info-icon { font-size:1.8rem; flex-shrink:0; }
-    .info-card h3 { font-size:0.95rem; color:#777; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; }
-    .info-card p { font-size:0.97rem; color:var(--dark); font-weight:600; }
-    .info-card a { color:var(--primary); text-decoration:none; font-weight:600; }
-    .info-card a:hover { text-decoration:underline; }
-    .info-card .sub { font-size:0.85rem; color:#999; font-weight:400; margin-top:2px; }
-
-    .response-note {
-      background:linear-gradient(135deg,#fff8f0,#fdf2e5);
-      border:1.5px solid var(--gold);
-      border-radius:10px;
-      padding:16px 18px;
-      font-size:0.9rem;
-      color:#5a3e00;
-    }
-    .response-note strong { display:block; margin-bottom:4px; }
-
-    /* FORM SIDE */
-    .form-side h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:20px; }
-    form { background:#fff; border:1.5px solid var(--border); border-radius:12px; padding:28px; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .field { margin-bottom:18px; }
-    .field label { display:block; font-size:0.88rem; font-weight:700; color:#555; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.4px; }
-    .field input, .field select, .field textarea {
-      width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:8px;
-      font-family:'Lato',sans-serif; font-size:0.95rem; color:var(--dark); background:#fdf8f3;
-      transition:border-color 0.2s, box-shadow 0.2s; outline:none;
-    }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      border-color:var(--primary); box-shadow:0 0 0 3px rgba(181,69,27,0.1); background:#fff;
-    }
-    .field textarea { resize:vertical; min-height:120px; }
-    .submit-btn {
-      width:100%; padding:14px; background:var(--primary); color:#fff;
-      border:none; border-radius:8px; font-size:1rem; font-weight:700;
-      font-family:'Lato',sans-serif; cursor:pointer; transition:background 0.2s, transform 0.1s;
-    }
-    .submit-btn:hover { background:#8b2500; }
-    .submit-btn:active { transform:scale(0.99); }
-
-    /* FAQ */
-    .faq-section { margin-top:56px; }
-    .faq-section h2 { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--dark); text-align:center; margin-bottom:28px; }
-    .faq-section h2 span { color:var(--primary); }
-    .faq-item { background:#fff; border:1.5px solid var(--border); border-radius:10px; margin-bottom:12px; overflow:hidden; }
-    .faq-q { padding:18px 20px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
-    .faq-q:hover { background:#fdf2e5; }
-    .faq-q .arrow { transition:transform 0.2s; color:var(--primary); }
-    .faq-a { padding:0 20px 18px; font-size:0.95rem; color:#555; display:none; }
-    .faq-item.open .faq-a { display:block; }
-    .faq-item.open .arrow { transform:rotate(180deg); }
-
-    footer { background:var(--dark); color:rgba(255,255,255,0.7); text-align:center; padding:24px; font-size:0.85rem; }
-    footer a { color:var(--gold); text-decoration:none; margin:0 8px; }
-
-    @media(max-width:768px) {
-      .contact-layout { grid-template-columns:1fr; }
-      .form-row { grid-template-columns:1fr; }
-      .hero h1 { font-size:1.8rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Smart Shaadi AI — India's Wedding Planner</title>
+<meta name="description" content="Smart Shaadi AI se sampark karein. Koi sawaal, feedback, ya partnership ke liye contact karein. Hum 24-48 ghante mein jawab denge.">
+<link rel="canonical" href="https://www.smartshaadi.online/contact.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0B0E;--bg2:#111018;--bg3:#18141F;--text:#F5EFE0;--muted:#9A9088;--gold:#C9A84C;--gl:#E8C97A;--gold-bg:rgba(201,168,76,.08);--gold-bd:rgba(201,168,76,.22);--divider:rgba(201,168,76,.1);--faint:rgba(245,239,224,.48);}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(10,8,16,.96);border-bottom:1px solid var(--divider);z-index:100;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--gl);text-decoration:none;}
+.logo em{font-style:italic;color:var(--text);font-weight:300}
+.ncta{background:var(--gold);color:var(--bg)!important;font-weight:600;padding:.4rem .95rem;border-radius:3px;font-size:.8rem;text-decoration:none;}
+.wrap{max-width:860px;margin:0 auto;padding:5rem 2rem 6rem;}
+.hero-text{text-align:center;margin-bottom:3.5rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:.6rem;}
+h1 em{font-style:italic;color:var(--gl);}
+.sub{font-size:.95rem;color:var(--muted);max-width:480px;margin:0 auto;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
+.card{background:var(--bg2);border:1px solid var(--gold-bd);border-radius:14px;padding:1.8rem;transition:transform .2s;}
+.card:hover{transform:translateY(-3px);}
+.card-icon{font-size:2.2rem;margin-bottom:.9rem;}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;margin-bottom:.4rem;color:var(--text);}
+.card p{font-size:.84rem;color:var(--muted);margin-bottom:.9rem;}
+.card a{color:var(--gold);font-size:.88rem;font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-bd);}
+.card a:hover{color:var(--gl);}
+.form-card{background:var(--bg2);border:1px solid var(--gold-bd);border-radius:14px;padding:2rem;}
+.form-card h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;}
+label{display:block;font-size:.78rem;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem;}
+input,select,textarea{width:100%;background:var(--bg3);border:1.5px solid rgba(255,255,255,.06);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;margin-bottom:1.1rem;}
+input:focus,select:focus,textarea:focus{border-color:var(--gold-bd);}
+input::placeholder,textarea::placeholder{color:var(--muted);}
+textarea{resize:vertical;min-height:120px;}
+.submit-btn{background:var(--gold);color:var(--bg);border:none;border-radius:6px;padding:.88rem 2rem;font-size:.92rem;font-weight:700;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;transition:opacity .2s;}
+.submit-btn:hover{opacity:.88;}
+#msg{display:none;background:rgba(126,211,160,.1);border:1px solid rgba(126,211,160,.3);border-radius:8px;padding:1rem;text-align:center;color:#7ED3A0;font-size:.9rem;margin-top:1rem;}
+footer{text-align:center;padding:2rem;background:var(--bg2);border-top:1px solid var(--divider);font-size:.78rem;color:var(--muted);}
+footer a{color:var(--gold);text-decoration:none;margin:0 .6rem;}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}nav{padding:0 1rem;}}
+</style>
 </head>
 <body>
-
 <nav>
-  <a href="https://www.smartshaadi.online/index.html" class="nav-logo">Smart<span>Shaadi</span> 💍</a>
-  <a href="https://www.smartshaadi.online/index.html" class="home-link">← Home</a>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <a href="chatbot.html" class="ncta">AI Chatbot →</a>
 </nav>
-
-<div class="hero">
-  <h1>📬 Humse Sampark Karein</h1>
-  <p>Koi sawaal hai? Wedding planning mein madad chahiye? Hum yahan hain aapki help ke liye!</p>
-</div>
-
-<div class="container">
-
-  <div class="contact-layout">
-
-    <!-- INFO -->
-    <div class="info-side">
-      <h2>Contact Information</h2>
-
-      <div class="info-card">
-        <div class="info-icon">📧</div>
-        <div>
-          <h3>Email</h3>
-          <p><a href="mailto:muahshi.dev@gmail.com">muahshi.dev@gmail.com</a></p>
-          <p class="sub">General queries ke liye</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-icon">🌐</div>
-        <div>
-          <h3>Website</h3>
-          <p><a href="https://www.smartshaadi.online">www.smartshaadi.online</a></p>
-          <p class="sub">India's #1 Free AI Wedding Planner</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-icon">👤</div>
-        <div>
-          <h3>Founder</h3>
-          <p>Mubashir Hasan</p>
-          <p class="sub">Developer & Creator, Smart Shaadi AI</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-icon">🕐</div>
-        <div>
-          <h3>Working Hours</h3>
-          <p>Monday – Saturday</p>
-          <p class="sub">10:00 AM – 7:00 PM IST</p>
-        </div>
-      </div>
-
-      <div class="response-note">
-        <strong>⚡ Response Time</strong>
-        Hum typically 24–48 hours mein respond karte hain. Urgent matters ke liye email ke subject mein "URGENT" likhein.
-      </div>
-    </div>
-
-    <!-- FORM -->
-    <div class="form-side">
-      <h2>Message Bhejein</h2>
-      <form action="https://formspree.io/f/muahshi.dev@gmail.com" method="POST">
-        <div class="form-row">
-          <div class="field">
-            <label>Aapka Naam *</label>
-            <input type="text" name="name" placeholder="Jaise: Rahul Sharma" required />
-          </div>
-          <div class="field">
-            <label>Email Address *</label>
-            <input type="email" name="email" placeholder="aapka@email.com" required />
-          </div>
-        </div>
-        <div class="field">
-          <label>Subject *</label>
-          <select name="subject" required>
-            <option value="">-- Topic chunein --</option>
-            <option>Wedding Planning Help</option>
-            <option>AI Tool Related Query</option>
-            <option>Technical Issue / Bug Report</option>
-            <option>Business / Partnership</option>
-            <option>Advertising / AdSense</option>
-            <option>Privacy / Data Request</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Aapka Message *</label>
-          <textarea name="message" placeholder="Apna sawaal ya feedback yahan likhein..." required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">✉️ Message Bhejein →</button>
-      </form>
-    </div>
-
+<div class="wrap">
+  <div class="hero-text">
+    <h1>Hamare <em>Saath</em> Baat Karein</h1>
+    <p class="sub">Koi sawaal, feedback, partnership ya vendor inquiry — hum 24-48 ghante mein jawab denge.</p>
   </div>
-
-  <!-- FAQ -->
-  <div class="faq-section">
-    <h2>Aksar Pooche Jaane Wale <span>Sawaal</span></h2>
-
-    <div class="faq-item open">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        Kya Smart Shaadi AI ke tools bilkul free hain?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-a">Haan! Hamare saare 9 AI tools aur planning dashboard 100% free hain. Koi registration nahi, koi credit card nahi, koi hidden charges nahi.</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <h3>AI Chatbot — Instant Help</h3>
+      <p>Koi bhi wedding planning sawaal ke liye hamare AI chatbot se 24/7 baat karein. Hindi aur English dono mein instant jawab milta hai.</p>
+      <a href="chatbot.html">Chatbot Open Karein →</a>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        AI chatbot Hindi mein kaam karta hai?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-a">Bilkul! Hamara AI chatbot Hindi, English, aur Hinglish teeno mein kaam karta hai. Aap jis bhi language mein comfortable hain, usi mein baat kar sakte hain.</div>
+    <div class="card">
+      <div class="card-icon">📧</div>
+      <h3>Email Us</h3>
+      <p>General inquiries, feedback, aur partnership ke liye email karein. Team typically 24-48 hours mein respond karti hai.</p>
+      <a href="/cdn-cgi/l/email-protection#eb869e8a83988382c58f8e9dab8c868a8287c5888486"><span class="__cf_email__" data-cfemail="d6bba3b7bea5bebff8b2b3a096b1bbb7bfbaf8b5b9bb">[email&#160;protected]</span> →</a>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        Technical issue ya bug report kaise karein?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-a">Upar diye gaye contact form mein "Technical Issue / Bug Report" select karein aur detail mein describe karein kya problem aa rahi hai. Screenshot attach kar sakte hain email ke through.</div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Vendor Listing</h3>
+      <p>Apna wedding business SmartShaadi pe list karein. 1,000+ couples daily platform pe visit karte hain. ₹999/month se shuru.</p>
+      <a href="app.html#vendor-apply">Apply Now →</a>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        Privacy ya data deletion request ke liye kya karein?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-a">muahshi.dev@gmail.com par email karein subject mein "Data Deletion Request" likh kar. Hum 3-5 business days mein process karenge.</div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Partnership</h3>
+      <p>Collaboration, media inquiry, sponsored content, ya API access ke liye contact karein.</p>
+      <a href="/cdn-cgi/l/email-protection#016c7460697269682f65647741666c60686d2f626e6c3e7274636b6462753c516073756f64737269687121486f7074687378">Get In Touch →</a>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-        Business partnership ya collaboration ke liye kaun se details bhejein?
-        <span class="arrow">▼</span>
-      </div>
-      <div class="faq-a">Contact form mein "Business / Partnership" select karein aur apne proposal ki brief summary likhein. Hum interested proposals par within 48 hours respond karte hain.</div>
-    </div>
-
   </div>
-
+  <div class="form-card">
+    <h2>📬 Message Bhejein</h2>
+    <label for="name">Aapka Naam</label>
+    <input type="text" id="name" placeholder="Priya Sharma">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="priya@example.com">
+    <label for="subject">Subject</label>
+    <select id="subject">
+      <option>General Inquiry</option>
+      <option>Wedding Planning Help</option>
+      <option>Vendor Listing</option>
+      <option>Partnership / Business</option>
+      <option>Bug / Technical Issue</option>
+      <option>Feedback</option>
+      <option>Other</option>
+    </select>
+    <label for="msg-text">Aapka Message</label>
+    <textarea id="msg-text" placeholder="Apna sawaal ya message yahan likhein..."></textarea>
+    <button class="submit-btn" onclick="submitForm()">✉️ Message Bhejein →</button>
+    <div id="msg">✅ Shukriya! Hum 24-48 ghante mein aapse sampark karenge.</div>
+  </div>
 </div>
-
 <footer>
-  <p>© 2026 Smart Shaadi AI. All rights reserved.</p>
-  <p style="margin-top:8px;">
-    <a href="https://www.smartshaadi.online/index.html">Home</a>
-    <a href="https://www.smartshaadi.online/about.html">About</a>
-    <a href="https://www.smartshaadi.online/privacy-policy.html">Privacy Policy</a>
-    <a href="https://www.smartshaadi.online/terms.html">Terms</a>
-  </p>
+  <p>© 2026 Smart Shaadi AI. All rights reserved. Made with ❤️ for Indian Couples.</p>
+  <p style="margin-top:.5rem"><a href="index.html">Home</a><a href="about.html">About</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a></p>
 </footer>
-
-<script>
-  // FAQ toggle already handled by onclick, no extra JS needed
-</script>
-
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function submitForm(){
+  var n=document.getElementById('name').value, e=document.getElementById('email').value, s=document.getElementById('subject').value, m=document.getElementById('msg-text').value;
+  if(!n||!e||!m){alert('Sab field
