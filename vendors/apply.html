@@ -250,7 +250,7 @@ function initiatePayment(){
 
   // NOTE: Razorpay KEY_ID replace karo apna actual key se
   // razorpay.com pe account banao → Settings → API Keys
-  var RAZORPAY_KEY = 'rzp_test_REPLACE_WITH_YOUR_KEY';
+  var RAZORPAY_KEY = 'rzp_live_SS2ZQD42OlhSPb';
 
   var vendorData = {
     name: document.getElementById('vn').value.trim(),
@@ -307,32 +307,32 @@ function initiatePayment(){
 }
 
 function onPaymentSuccess(vendorData, paymentResp){
-  // Send to admin via WhatsApp (immediate notification)
-  var msg = '🆕 *New Vendor Application — SmartShaadi*\n\n' +
-    '👤 ' + vendorData.name + '\n' +
-    '📞 ' + vendorData.phone + '\n' +
-    '📍 ' + vendorData.city + '\n' +
-    '🏷️ ' + vendorData.category + '\n' +
-    '💰 Plan: ' + vendorData.plan.toUpperCase() + ' (₹' + vendorData.amount + '/mo)\n' +
-    '💳 Payment ID: ' + paymentResp.razorpay_payment_id + '\n\n' +
-    'Activate karo: smartshaadi.online/vendors/admin.html';
+  // Save to admin dashboard (localStorage — same key as admin.html reads)
+  try{
+    var apps = JSON.parse(localStorage.getItem('ss_vendor_apps') || '[]');
+    apps.push({
+      name: vendorData.name,
+      phone: vendorData.phone,
+      city: vendorData.city,
+      category: vendorData.category,
+      price: vendorData.price || 'Contact for price',
+      desc: vendorData.desc,
+      owner: vendorData.owner,
+      email: vendorData.email,
+      plan: vendorData.plan,
+      amount: vendorData.amount,
+      paymentId: paymentResp.razorpay_payment_id,
+      approved: false,
+      timestamp: Date.now(),
+      submittedAt: new Date().toISOString()
+    });
+    localStorage.setItem('ss_vendor_apps', JSON.stringify(apps));
+  } catch(e){}
 
-  // Show success
+  // Show success screen
   document.getElementById('form-view').style.display = 'none';
   document.getElementById('plan-grid').style.display = 'none';
   document.getElementById('success-view').style.display = 'block';
-
-  // Open WhatsApp to notify admin
-  setTimeout(function(){
-    window.open('https://wa.me/919876543210?text=' + encodeURIComponent(msg), '_blank');
-  }, 1500);
-
-  // Store in localStorage as backup
-  try{
-    var apps = JSON.parse(localStorage.getItem('ss_vendor_apps') || '[]');
-    apps.push({ ...vendorData, paymentId: paymentResp.razorpay_payment_id, timestamp: Date.now() });
-    localStorage.setItem('ss_vendor_apps', JSON.stringify(apps));
-  }catch(e){}
 }
 </script>
 </body>
