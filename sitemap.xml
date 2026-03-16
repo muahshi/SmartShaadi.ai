@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- MAIN PAGES -->
+  <!-- ═══════════════════════════════════
+       MAIN PAGES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/index.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -45,7 +47,9 @@
     <priority>0.40</priority>
   </url>
 
-  <!-- AI TOOLS HUB -->
+  <!-- ═══════════════════════════════════
+       AI TOOLS HUB
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/ai-tools.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -53,7 +57,9 @@
     <priority>0.99</priority>
   </url>
 
-  <!-- 9 AI AGENTS -->
+  <!-- ═══════════════════════════════════
+       9 AI AGENTS
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/ai-invitation-writer.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -109,7 +115,9 @@
     <priority>0.97</priority>
   </url>
 
-  <!-- AI CHATBOT & PLANNING TOOLS -->
+  <!-- ═══════════════════════════════════
+       AI CHATBOT & PLANNING TOOLS
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/chatbot.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -121,6 +129,12 @@
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.smartshaadi.online/app.html</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.96</priority>
   </url>
   <url>
     <loc>https://www.smartshaadi.online/wedding-budget-calculator-india-2026.html</loc>
@@ -147,7 +161,9 @@
     <priority>0.92</priority>
   </url>
 
-  <!-- CITY WEDDING COST GUIDES -->
+  <!-- ═══════════════════════════════════
+       CITY WEDDING COST GUIDES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-mumbai-wedding-cost-2026.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -179,7 +195,9 @@
     <priority>0.92</priority>
   </url>
 
-  <!-- SPECIAL GUIDES -->
+  <!-- ═══════════════════════════════════
+       SPECIAL GUIDES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/nri-wedding-blog.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -199,7 +217,9 @@
     <priority>0.88</priority>
   </url>
 
-  <!-- PRE-WEDDING & FUNCTION GUIDES -->
+  <!-- ═══════════════════════════════════
+       PRE-WEDDING & FUNCTION GUIDES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-mehendi-cost-2026.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -237,7 +257,9 @@
     <priority>0.86</priority>
   </url>
 
-  <!-- BUDGET ARTICLES -->
+  <!-- ═══════════════════════════════════
+       BUDGET ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-budget-2026.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -281,7 +303,9 @@
     <priority>0.89</priority>
   </url>
 
-  <!-- VENUE & CITY COMPARISON ARTICLES -->
+  <!-- ═══════════════════════════════════
+       VENUE & CITY COMPARISON ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-wedding-venue-cost-2026.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -313,7 +337,9 @@
     <priority>0.84</priority>
   </url>
 
-  <!-- DESTINATION WEDDING ARTICLES -->
+  <!-- ═══════════════════════════════════
+       DESTINATION WEDDING ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-destinations.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -327,7 +353,9 @@
     <priority>0.88</priority>
   </url>
 
-  <!-- SHOPPING ARTICLES -->
+  <!-- ═══════════════════════════════════
+       SHOPPING ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-market.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -359,7 +387,9 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- DECOR & CATERING ARTICLES -->
+  <!-- ═══════════════════════════════════
+       DECOR & CATERING ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-wedding-decor-cost-2026.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -403,7 +433,9 @@
     <priority>0.86</priority>
   </url>
 
-  <!-- AI & TECH ARTICLES -->
+  <!-- ═══════════════════════════════════
+       AI & TECH ARTICLES
+       ═══════════════════════════════════ -->
   <url>
     <loc>https://www.smartshaadi.online/blog-ai-hacks.html</loc>
     <lastmod>2026-03-14</lastmod>
@@ -427,6 +459,16 @@
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.84</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       BLOG BUDGET (LEGACY PAGE)
+       ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.smartshaadi.online/blog-budget.html</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>
