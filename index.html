@@ -1261,14 +1261,19 @@ if('serviceWorker' in navigator){
   function openDateModal(){
     var modal = document.getElementById('ss-date-modal');
     if(!modal) return;
-    // Prefill if already saved
+    // Prefill dropdowns if date already saved
     var saved = getSavedDate();
-    var inp = document.getElementById('ss-date-inp');
-    if(inp){
-      var tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate()+1);
-      inp.min = tomorrow.toISOString().split('T')[0];
-      if(saved) inp.value = saved;
+    if(saved){
+      var parts = saved.split('-');
+      if(parts.length === 3){
+        var dd2 = document.getElementById('ss-date-day');
+        var dm2 = document.getElementById('ss-date-month');
+        var dy2 = document.getElementById('ss-date-year');
+        if(dd2) dd2.value = parseInt(parts[2]);
+        if(dm2) dm2.value = parseInt(parts[1]);
+        if(dy2) dy2.value = parts[0];
+        updatePreview();
+      }
     }
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
@@ -1281,42 +1286,64 @@ if('serviceWorker' in navigator){
     document.body.style.overflow = '';
   }
 
+  // Populate day dropdown 1-31
+  (function(){
+    var dayEl = document.getElementById('ss-date-day');
+    if(!dayEl) return;
+    for(var i=1; i<=31; i++){
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = i < 10 ? '0'+i : i;
+      dayEl.appendChild(opt);
+    }
+  })();
+
+  // Live preview when dropdowns change
+  function updatePreview(){
+    var day = document.getElementById('ss-date-day').value;
+    var mon = document.getElementById('ss-date-month').value;
+    var yr  = document.getElementById('ss-date-year').value;
+    var prev = document.getElementById('ss-date-preview');
+    if(day && mon && yr){
+      var months = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+      prev.textContent = '📅 ' + day + ' ' + months[parseInt(mon)] + ' ' + yr;
+      prev.style.display = 'block';
+    } else {
+      prev.style.display = 'none';
+    }
+  }
+  var dd = document.getElementById('ss-date-day');
+  var dm = document.getElementById('ss-date-month');
+  var dy = document.getElementById('ss-date-year');
+  if(dd) dd.addEventListener('change', updatePreview);
+  if(dm) dm.addEventListener('change', updatePreview);
+  if(dy) dy.addEventListener('change', updatePreview);
+
   // Save button
   var saveBtn = document.getElementById('ss-date-save-btn');
   if(saveBtn){
     saveBtn.addEventListener('click', function(){
-      var inp = document.getElementById('ss-date-inp');
-      var val = inp ? inp.value : '';
+      var day = document.getElementById('ss-date-day').value;
+      var mon = document.getElementById('ss-date-month').value;
+      var yr  = document.getElementById('ss-date-year').value;
 
-      if(!val){
-        inp.style.borderColor = '#e07070';
-        setTimeout(function(){ inp.style.borderColor = ''; }, 2000);
-        alert('Pehle date select karein! Upar date field pe tap karein.');
+      if(!day || !mon || !yr){
+        alert('Din, Mahina aur Saal teeno select karein!');
         return;
       }
 
-      // Parse and validate
-      var d = new Date(val);
-      if(isNaN(d.getTime())){
-        alert('Valid date select karein!');
-        return;
-      }
+      var d = new Date(parseInt(yr), parseInt(mon)-1, parseInt(day));
       var today = new Date(); today.setHours(0,0,0,0);
       if(d <= today){
         alert('Future ki date chahiye!');
         return;
       }
 
-      // Save in YYYY-MM-DD format
-      var formatted = d.getFullYear()+'-'+
-        String(d.getMonth()+1).padStart(2,'0')+'-'+
-        String(d.getDate()).padStart(2,'0');
-
+      var formatted = yr + '-' + String(mon).padStart(2,'0') + '-' + String(day).padStart(2,'0');
       try{ localStorage.setItem(DATE_KEY, formatted); }catch(e){}
 
       closeDateModal();
       updateCountdownUI();
-      // Scroll to top so user sees countdown
       window.scrollTo({top:0, behavior:'smooth'});
       setTimeout(showNotifStrip, 2000);
     });
@@ -1451,7 +1478,43 @@ setTimeout(function(){
     <div style="font-size:52px;margin-bottom:10px;">💍</div>
     <h3>Shaadi Kab Hai?</h3>
     <p>Date set karein — countdown, checklist aur reminders paayein</p>
-    <input type="date" id="ss-date-inp">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+      <div>
+        <label style="display:block;font-size:10px;color:#C9A84C;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-family:'DM Sans',sans-serif;">Din</label>
+        <select id="ss-date-day" style="width:100%;background:#111018;border:1.5px solid rgba(201,168,76,.25);border-radius:9px;padding:11px 8px;color:#E8C97A;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;text-align:center;">
+          <option value="">DD</option>
+        </select>
+      </div>
+      <div>
+        <label style="display:block;font-size:10px;color:#C9A84C;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-family:'DM Sans',sans-serif;">Mahina</label>
+        <select id="ss-date-month" style="width:100%;background:#111018;border:1.5px solid rgba(201,168,76,.25);border-radius:9px;padding:11px 8px;color:#E8C97A;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;text-align:center;">
+          <option value="">MM</option>
+          <option value="1">Jan</option>
+          <option value="2">Feb</option>
+          <option value="3">Mar</option>
+          <option value="4">Apr</option>
+          <option value="5">May</option>
+          <option value="6">Jun</option>
+          <option value="7">Jul</option>
+          <option value="8">Aug</option>
+          <option value="9">Sep</option>
+          <option value="10">Oct</option>
+          <option value="11">Nov</option>
+          <option value="12">Dec</option>
+        </select>
+      </div>
+      <div>
+        <label style="display:block;font-size:10px;color:#C9A84C;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-family:'DM Sans',sans-serif;">Saal</label>
+        <select id="ss-date-year" style="width:100%;background:#111018;border:1.5px solid rgba(201,168,76,.25);border-radius:9px;padding:11px 8px;color:#E8C97A;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;text-align:center;">
+          <option value="">YYYY</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+        </select>
+      </div>
+    </div>
+    <div id="ss-date-preview" style="display:none;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:8px;text-align:center;font-size:12px;color:#C9A84C;margin-bottom:12px;font-family:'DM Sans',sans-serif;"></div>
     <button class="sdm-go" id="ss-date-save-btn">✨ Planning Shuru Karein</button>
     <button class="sdm-skip" id="ss-date-skip-btn">Abhi nahi</button>
   </div>
