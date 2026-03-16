@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartShaadi — Vendor Admin Panel</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0B0E;--bg2:#111018;--bg3:#18141F;--text:#F5EFE0;--muted:#9A9088;--gold:#C9A84C;--gl:#E8C97A;--gbd:rgba(201,168,76,.22);--gbg:rgba(201,168,76,.08);--div:rgba(201,168,76,.1);--green:#7ED3A0;--red:#e07070;--blue:#5DADE2;--orange:#F39C12;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+nav{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:var(--bg2);border-bottom:1px solid var(--div);}
+.nav-title{font-size:15px;font-weight:700;color:var(--gold);}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 58px);padding:20px;}
+.login-card{background:var(--bg2);border:1.5px solid var(--gbd);border-radius:18px;padding:2.5rem;max-width:360px;width:100%;text-align:center;}
+.login-card h2{font-size:1.6rem;margin-bottom:.4rem;color:var(--text);}
+.login-card p{font-size:.85rem;color:var(--muted);margin-bottom:1.8rem;}
+.pin-input{width:100%;background:var(--bg3);border:1.5px solid rgba(255,255,255,.08);border-radius:8px;padding:14px;color:var(--gl);font-size:24px;font-weight:800;text-align:center;letter-spacing:12px;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:12px;}
+.pin-input:focus{border-color:var(--gbd);}
+.login-btn{width:100%;background:var(--gold);border:none;border-radius:8px;padding:13px;font-size:.9rem;font-weight:700;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;}
+#main-screen{display:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:1.5rem;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1.8rem;}
+.stat{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;}
+.sv{font-size:22px;font-weight:800;margin-bottom:3px;}
+.sl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:0;}
+.tab{background:none;border:none;color:var(--muted);font-size:.84rem;font-weight:600;padding:.6rem 1.2rem;cursor:pointer;font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px;}
+.tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.panel{display:none;}
+.panel.on{display:block;}
+.vendor-row{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;margin-bottom:.7rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.vr-info{flex:1;min-width:200px;}
+.vr-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+.vr-meta{font-size:11px;color:var(--muted);}
+.vr-plan{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:700;white-space:nowrap;}
+.plan-premium{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid var(--gbd);}
+.plan-featured{background:rgba(93,173,226,.12);color:var(--blue);border:1px solid rgba(93,173,226,.3);}
+.plan-basic{background:rgba(255,255,255,.04);color:var(--muted);border:1px solid rgba(255,255,255,.1);}
+.vr-actions{display:flex;gap:.5rem;flex-wrap:wrap;}
+.btn-sm{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .15s;}
+.btn-approve{background:rgba(126,211,160,.15);color:var(--green);border:1px solid rgba(126,211,160,.3);}
+.btn-reject{background:rgba(224,112,112,.1);color:var(--red);border:1px solid rgba(224,112,112,.25);}
+.btn-wa{background:rgba(37,211,102,.12);color:#25D366;border:1px solid rgba(37,211,102,.25);}
+.btn-edit{background:var(--gbg);color:var(--gold);border:1px solid var(--gbd);}
+.btn-delete{background:rgba(224,112,112,.1);color:var(--red);border:1px solid rgba(224,112,112,.2);}
+.empty{text-align:center;padding:3rem;color:var(--muted);font-style:italic;}
+.add-form{background:var(--bg2);border:1px solid var(--gbd);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;}
+.add-form h3{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:1.2rem;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem;}
+input,select,textarea{width:100%;background:var(--bg3);border:1.5px solid rgba(255,255,255,.07);border-radius:8px;padding:.65rem .9rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s;}
+input:focus,select:focus{border-color:var(--gbd);}
+.save-btn{background:var(--gold);border:none;border-radius:8px;padding:11px 24px;font-size:.85rem;font-weight:700;color:#0D0B0E;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.logout-btn{background:rgba(224,112,112,.1);border:1px solid rgba(224,112,112,.25);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:700;color:var(--red);cursor:pointer;font-family:'DM Sans',sans-serif;}
+@media(max-width:600px){
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .fg{grid-template-columns:1fr;}
+  .vendor-row{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-title">🔐 SmartShaadi Admin</div>
+  <button class="logout-btn" onclick="logout()" id="logout-btn" style="display:none;">Logout</button>
+</nav>
+
+<!-- Login Screen -->
+<div id="login-screen">
+  <div class="login-card">
+    <div style="font-size:48px;margin-bottom:12px;">🔐</div>
+    <h2>Admin Access</h2>
+    <p>PIN enter karein</p>
+    <input type="password" class="pin-input" id="pin-inp" maxlength="6" placeholder="••••" onkeydown="if(event.key==='Enter')checkPin()">
+    <button class="login-btn" onclick="checkPin()">Enter →</button>
+    <div id="pin-error" style="color:var(--red);font-size:.82rem;margin-top:.5rem;display:none;">Wrong PIN!</div>
+  </div>
+</div>
+
+<!-- Main Admin Screen -->
+<div id="main-screen">
+<div class="wrap">
+
+  <div class="stats" id="stats-row">
+    <div class="stat"><div class="sv" style="color:var(--gold);" id="stat-total">0</div><div class="sl">Total Vendors</div></div>
+    <div class="stat"><div class="sv" style="color:var(--green);" id="stat-active">0</div><div class="sl">Active</div></div>
+    <div class="stat"><div class="sv" style="color:var(--orange);" id="stat-pending">0</div><div class="sl">Pending</div></div>
+    <div class="stat"><div class="sv" style="color:var(--blue);" id="stat-revenue">₹0</div><div class="sl">Est. Revenue/mo</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" onclick="showTab('pending',this)">⏳ Pending (<span id="pending-count">0</span>)</button>
+    <button class="tab" onclick="showTab('active',this)">✅ Active Vendors</button>
+    <button class="tab" onclick="showTab('add',this)">➕ Add Vendor</button>
+  </div>
+
+  <!-- Pending Applications -->
+  <div class="panel on" id="panel-pending">
+    <div id="pending-list"><div class="empty">Koi pending application nahi hai 🎉</div></div>
+  </div>
+
+  <!-- Active Vendors -->
+  <div class="panel" id="panel-active">
+    <div id="active-list"><div class="empty">Abhi koi active vendor nahi hai.</div></div>
+  </div>
+
+  <!-- Add Vendor Manually -->
+  <div class="panel" id="panel-add">
+    <div class="add-form">
+      <h3>➕ Manually Vendor Add Karein</h3>
+      <div class="fg">
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Business Name *</label><input id="a-name" placeholder="Sharma Photography"></div>
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">WhatsApp *</label><input id="a-phone" placeholder="9876543210"></div>
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">City *</label><input id="a-city" placeholder="Delhi"></div>
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Category *</label>
+          <select id="a-cat"><option>Photography</option><option>Catering</option><option>Decoration</option><option>Music & DJ</option><option>Makeup</option><option>Venue</option><option>Other</option></select>
+        </div>
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Plan</label>
+          <select id="a-plan"><option value="basic">Basic (₹999)</option><option value="featured">Featured (₹1,999)</option><option value="premium">Premium (₹2,999)</option></select>
+        </div>
+        <div><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Starting Price</label><input id="a-price" placeholder="₹30,000+"></div>
+      </div>
+      <div style="margin-bottom:.8rem;"><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Description</label><input id="a-desc" placeholder="Brief business description..."></div>
+      <div style="margin-bottom:1rem;"><label style="display:block;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;">Rating (1-5)</label><input id="a-rating" type="number" min="1" max="5" step="0.1" placeholder="4.8" style="max-width:150px;"></div>
+      <button class="save-btn" onclick="addVendorManually()">💾 Save Vendor</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+var ADMIN_PIN = '2611'; // Change this!
+var STORAGE_KEY = 'ss_admin_vendors';
+var PENDING_KEY = 'ss_vendor_apps';
+
+function checkPin(){
+  var pin = document.getElementById('pin-inp').value;
+  if(pin === ADMIN_PIN){
+    sessionStorage.setItem('ss_admin','1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('main-screen').style.display = 'block';
+    document.getElementById('logout-btn').style.display = 'block';
+    loadDashboard();
+  } else {
+    document.getElementById('pin-error').style.display = 'block';
+    document.getElementById('pin-inp').value = '';
+    document.getElementById('pin-inp').focus();
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem('ss_admin');
+  window.location.reload();
+}
+
+function showTab(id, btn){
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('panel-' + id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function getVendors(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch(e){ return []; } }
+function getPending(){ try{ return JSON.parse(localStorage.getItem(PENDING_KEY) || '[]'); }catch(e){ return []; } }
+function saveVendors(v){ localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); }
+
+var planPrices = {basic:999, featured:1999, premium:2999};
+
+function loadDashboard(){
+  var vendors = getVendors();
+  var pending = getPending().filter(function(p){ return !p.approved; });
+  var revenue = vendors.reduce(function(s,v){ return s + (planPrices[v.plan]||999); }, 0);
+
+  document.getElementById('stat-total').textContent = vendors.length + pending.length;
+  document.getElementById('stat-active').textContent = vendors.length;
+  document.getElementById('stat-pending').textContent = pending.length;
+  document.getElementById('stat-revenue').textContent = '₹' + revenue.toLocaleString('en-IN');
+  document.getElementById('pending-count').textContent = pending.length;
+
+  renderPending(pending);
+  renderActive(vendors);
+}
+
+function renderPending(pending){
+  var list = document.getElementById('pending-list');
+  if(!pending.length){ list.innerHTML = '<div class="empty">Koi pending application nahi! 🎉</div>'; return; }
+  list.innerHTML = pending.map(function(v, i){
+    var planClass = 'plan-' + (v.plan||'basic');
+    return '<div class="vendor-row">' +
+      '<div class="vr-info">' +
+        '<div class="vr-name">' + (v.name||'—') + ' <span class="vr-plan ' + planClass + '">' + (v.plan||'basic').toUpperCase() + '</span></div>' +
+        '<div class="vr-meta">📍 ' + (v.city||'—') + ' · ' + (v.category||'—') + ' · 📞 ' + (v.phone||'—') + '</div>' +
+        '<div class="vr-meta" style="margin-top:3px;">' + (v.desc||'') + '</div>' +
+        (v.paymentId ? '<div class="vr-meta" style="color:var(--green);margin-top:3px;">💳 Payment: ' + v.paymentId + '</div>' : '') +
+      '</div>' +
+      '<div class="vr-actions">' +
+        '<button class="btn-sm btn-approve" onclick="approvePending(' + i + ')">✅ Approve</button>' +
+        '<button class="btn-sm btn-reject" onclick="rejectPending(' + i + ')">❌ Reject</button>' +
+        '<a href="https://wa.me/91' + (v.phone||'') + '" target="_blank" class="btn-sm btn-wa" style="text-decoration:none;">💬 Chat</a>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderActive(vendors){
+  var list = document.getElementById('active-list');
+  if(!vendors.length){ list.innerHTML = '<div class="empty">Koi active vendor nahi.</div>'; return; }
+  list.innerHTML = vendors.map(function(v, i){
+    var planClass = 'plan-' + (v.tier||v.plan||'basic');
+    return '<div class="vendor-row">' +
+      '<div class="vr-info">' +
+        '<div class="vr-name">' + (v.name||'—') + ' <span class="vr-plan ' + planClass + '">' + (v.tier||v.plan||'basic').toUpperCase() + '</span></div>' +
+        '<div class="vr-meta">📍 ' + (v.city||'—') + ' · ' + (v.cat||v.category||'—') + ' · ' + (v.price||'—') + '</div>' +
+        '<div class="vr-meta" style="margin-top:2px;">⭐ ' + (v.rating||'—') + ' · 📞 ' + (v.phone||'—') + '</div>' +
+      '</div>' +
+      '<div class="vr-actions">' +
+        '<a href="https://wa.me/91' + (v.phone||'') + '" target="_blank" class="btn-sm btn-wa" style="text-decoration:none;">💬 Chat</a>' +
+        '<button class="btn-sm btn-delete" onclick="deleteVendor(' + i + ')">🗑️ Remove</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function approvePending(i){
+  var pending = getPending();
+  var vendor = pending[i];
+  pending.splice(i, 1);
+  localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+  // Add to active vendors
+  var vendors = getVendors();
+  vendors.push({
+    id: 'v' + Date.now(),
+    name: vendor.name, phone: vendor.phone, city: vendor.city,
+    cat: vendor.category, price: vendor.price||'Contact for price',
+    desc: vendor.desc, tier: vendor.plan||'basic',
+    rating: 4.5, reviews: 0,
+    badge: vendor.plan==='premium'?'🏆 Verified':vendor.plan==='featured'?'⭐ Featured':'✓ Listed',
+    approved: true, approvedAt: Date.now()
+  });
+  saveVendors(vendors);
+  // Notify vendor via WhatsApp
+  var msg = '🎉 *Congratulations!*\n\nAapki SmartShaadi listing *approve* ho gayi!\n\nBusiness: ' + vendor.name + '\nPlan: ' + (vendor.plan||'basic').toUpperCase() + '\n\nAapka profile ab live hai:\nhttps://www.smartshaadi.online/vendors/\n\n— SmartShaadi Team 💍';
+  window.open('https://wa.me/91' + vendor.phone + '?text=' + encodeURIComponent(msg), '_blank');
+  loadDashboard();
+  alert('✅ Vendor approved aur WhatsApp sent!');
+}
+
+function rejectPending(i){
+  if(!confirm('Reject karna chahte hain?')) return;
+  var pending = getPending();
+  pending.splice(i, 1);
+  localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+  loadDashboard();
+}
+
+function deleteVendor(i){
+  if(!confirm('Is vendor ko remove karna chahte hain?')) return;
+  var vendors = getVendors();
+  vendors.splice(i, 1);
+  saveVendors(vendors);
+  loadDashboard();
+}
+
+function addVendorManually(){
+  var name = document.getElementById('a-name').value.trim();
+  var phone = document.getElementById('a-phone').value.trim();
+  var city = document.getElementById('a-city').value.trim();
+  var cat = document.getElementById('a-cat').value;
+  var plan = document.getElementById('a-plan').value;
+  var price = document.getElementById('a-price').value.trim() || 'Contact for price';
+  var desc = document.getElementById('a-desc').value.trim();
+  var rating = parseFloat(document.getElementById('a-rating').value) || 4.5;
+
+  if(!name || !phone || !city){ alert('Name, phone aur city zaroori hain!'); return; }
+
+  var vendors = getVendors();
+  vendors.push({
+    id: 'v' + Date.now(), name, phone, city, cat, price, desc, tier: plan,
+    rating, reviews: 0,
+    badge: plan==='premium'?'🏆 Verified':plan==='featured'?'⭐ Featured':'✓ Listed',
+    approved: true, addedAt: Date.now()
+  });
+  saveVendors(vendors);
+  ['a-name','a-phone','a-city','a-price','a-desc','a-rating'].forEach(function(id){ document.getElementById(id).value=''; });
+  loadDashboard();
+  alert('✅ Vendor added!');
+}
+
+// Auto-login if session active
+if(sessionStorage.getItem('ss_admin')){
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('main-screen').style.display = 'block';
+  document.getElementById('logout-btn').style.display = 'block';
+  loadDashboard();
+}
+</script>
+</body>
+</html>
