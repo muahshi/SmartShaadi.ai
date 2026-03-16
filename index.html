@@ -1249,7 +1249,23 @@ if('serviceWorker' in navigator){
 
   function openDateModal(){
     var m = document.getElementById('ss-date-modal');
-    if(m){ m.classList.add('show'); }
+    if(m){ 
+      m.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      // Pre-fill min date as tomorrow
+      var inp = document.getElementById('ss-date-inp');
+      if(inp && !inp.value) {
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        inp.min = tomorrow.toISOString().split('T')[0];
+        // If date already saved, prefill it
+        try {
+          var saved = localStorage.getItem('ss_wedding_date');
+          if(saved) inp.value = saved;
+        } catch(e) {}
+      }
+      setTimeout(function(){ var inp2 = document.getElementById('ss-date-inp'); if(inp2) inp2.focus(); }, 300);
+    }
   }
 
   window.showDateModal = openDateModal;
@@ -1260,23 +1276,66 @@ if('serviceWorker' in navigator){
   var modal = document.getElementById('ss-date-modal');
 
   if(saveBtn) saveBtn.addEventListener('click', function(){
-    var val = document.getElementById('ss-date-inp').value;
-    if(!val){ alert('Date select karein!'); return; }
-    try{ localStorage.setItem(DATE_KEY, val); }catch(e){}
-    wDate = new Date(val);
+    var inp = document.getElementById('ss-date-inp');
+    var val = inp.value;
+    
+    // Mobile fix: try reading from dataset or parse display value
+    if(!val || val.trim() === '') {
+      // Try to get from the input's displayed text (DD/MM/YYYY format on mobile)
+      var raw = inp.value || inp.getAttribute('value') || '';
+      if(!raw) {
+        alert('Pehle date select karein!');
+        inp.focus();
+        return;
+      }
+    }
+    
+    // Validate date is in future
+    var parsed = new Date(val);
+    if(isNaN(parsed.getTime())) {
+      // Try DD/MM/YYYY parse
+      var parts = val.split(/[\/\-\.]/);
+      if(parts.length === 3) {
+        var day = parseInt(parts[0]), mon = parseInt(parts[1])-1, yr = parseInt(parts[2]);
+        if(yr < 100) yr += 2000;
+        parsed = new Date(yr, mon, day);
+      }
+    }
+    
+    if(isNaN(parsed.getTime())) {
+      alert('Valid date select karein!');
+      return;
+    }
+    
+    var today = new Date(); today.setHours(0,0,0,0);
+    if(parsed <= today) {
+      alert('Future ki date select karein!');
+      return;
+    }
+    
+    var saveVal = parsed.getFullYear() + '-' + 
+      String(parsed.getMonth()+1).padStart(2,'0') + '-' + 
+      String(parsed.getDate()).padStart(2,'0');
+    
+    try{ localStorage.setItem(DATE_KEY, saveVal); }catch(e){}
+    wDate = parsed;
     modal.classList.remove('show');
+    document.body.style.overflow = '';
     var old = document.getElementById('ss-date-cta');
     if(old) old.remove();
+    var oldCd = document.getElementById('ss-hero-cd');
+    if(oldCd) oldCd.remove();
     injectCountdown();
     setTimeout(showNotifStrip, 1500);
   });
 
   if(skipBtn) skipBtn.addEventListener('click', function(){
     modal.classList.remove('show');
+    document.body.style.overflow = '';
   });
 
   if(modal) modal.addEventListener('click', function(e){
-    if(e.target === modal) modal.classList.remove('show');
+    if(e.target === modal) { modal.classList.remove('show'); document.body.style.overflow = ''; }
   });
 
   document.addEventListener('DOMContentLoaded', injectCountdown);
