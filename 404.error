@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Redirecting... | SmartShaadi</title>
+<script>
+// GitHub Pages 404 redirect fix
+var path = window.location.pathname;
+var search = window.location.search;
+var hash = window.location.hash;
+// Redirect to home with the path encoded
+var redirectUrl = '/?p=' + encodeURIComponent(path + search + hash);
+window.location.replace(redirectUrl);
+</script>
+</head>
+<body></body>
+</html>
