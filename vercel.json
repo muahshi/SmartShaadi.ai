@@ -1,36 +1,13 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "framework": null,
-  "rewrites": [
-    { "source": "/ai-invitation-writer", "destination": "/ai-invitation-writer.html" },
-    { "source": "/ai-budget-calculator", "destination": "/ai-budget-calculator.html" },
-    { "source": "/ai-kundali-matching", "destination": "/ai-kundali-matching.html" },
-    { "source": "/ai-planning-timeline", "destination": "/ai-planning-timeline.html" },
-    { "source": "/ai-guest-manager", "destination": "/ai-guest-manager.html" },
-    { "source": "/ai-wedding-theme-generator", "destination": "/ai-wedding-theme-generator.html" },
-    { "source": "/ai-menu-planner", "destination": "/ai-menu-planner.html" },
-    { "source": "/ai-playlist-generator", "destination": "/ai-playlist-generator.html" },
-    { "source": "/ai-photography-shots", "destination": "/ai-photography-shots.html" },
-    { "source": "/ai-tools", "destination": "/ai-tools.html" },
-    { "source": "/chatbot", "destination": "/chatbot.html" },
-    { "source": "/blogs", "destination": "/blogs.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/dashboard", "destination": "/dashboard.html" },
-    { "source": "/embed", "destination": "/embed.html" }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "ALLOWALL" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     }
   ]
