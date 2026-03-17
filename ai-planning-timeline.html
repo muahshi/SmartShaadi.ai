@@ -1,302 +1,915 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Planning Timeline — Smart Shaadi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Free AI Wedding Planning Timeline — Month-wise Checklist 2026 | SmartShaadi</title>
+<meta name="description" content="Free AI Wedding Planning Timeline — month-by-month personalized checklist. Vendor booking schedule, task tracking, countdown, progress bar. Hindi mein. 100% Free!">
+<meta name="keywords" content="wedding planning timeline india, shaadi planning checklist, month wise wedding schedule, wedding task list india 2026, shaadi ki taiyari kaise karein">
+<link rel="canonical" href="https://smartshaadi.online/ai-planning-timeline.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Free AI Wedding Planning Timeline — Month-wise Checklist | SmartShaadi">
+<meta property="og:description" content="Month-by-month personalized wedding planning timeline. Task tracking, vendor schedule, countdown. Free!">
+<meta property="og:url" content="https://smartshaadi.online/ai-planning-timeline.html">
+<meta property="og:image" content="https://smartshaadi.online/og-image.jpg">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Planning Timeline","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wedding planning kab se shuru karni chahiye?","acceptedAnswer":{"@type":"Answer","text":"Ideal timing 9-12 months pehle hai. Venue aur photographer sabse pehle book karo. 6 months mein bhi acchi planning ho sakti hai."}},{"@type":"Question","name":"Kaunsa kaam sabse pehle karna chahiye?","acceptedAnswer":{"@type":"Answer","text":"Pehle venue aur date confirm karo, phir photographer, phir caterer. Yeh teen sabse jaldi book ho jaate hain."}},{"@type":"Question","name":"Wedding planning timeline free hai?","acceptedAnswer":{"@type":"Answer","text":"Haan, SmartShaadi ka AI Planning Timeline 100% free hai. Koi registration nahi."}}]}]}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
+
 <style>
-  :root {
-    --bg: #0f0f1a; --surface: #1a1a2e; --card: #16213e;
-    --gold: #f0c060; --gold2: #e8a020; --green: #4ade80;
-    --text: #f0ece8; --muted: #9090b0; --border: #2a2a4a;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; min-height: 100vh; }
+:root{
+  --bg:#080610;--bg2:#0D0B1C;--card:#121028;--card2:#181530;
+  --gold:#E8B84B;--gl:#F5D276;--gold-bg:rgba(232,184,75,.08);--gold-bd:rgba(232,184,75,.22);
+  --teal:#2DD4BF;--teal-bg:rgba(45,212,191,.08);--teal-bd:rgba(45,212,191,.28);
+  --rose:#F472B6;--rose-bg:rgba(244,114,182,.08);--rose-bd:rgba(244,114,182,.28);
+  --green:#4ADE80;--green-bg:rgba(74,222,128,.08);--green-bd:rgba(74,222,128,.28);
+  --blue:#60A5FA;--blue-bg:rgba(96,165,250,.08);--blue-bd:rgba(96,165,250,.28);
+  --orange:#FB923C;--red:#F87171;--purple:#C084FC;
+  --text:#F0ECFF;--muted:rgba(240,236,255,.52);--faint:rgba(240,236,255,.28);
+  --div:rgba(255,255,255,.07);--r:14px;--shadow:0 20px 56px rgba(0,0,0,.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.65}
+a{text-decoration:none;color:inherit}
+button{font-family:'DM Sans',sans-serif;cursor:pointer}
 
-  nav {
-    background: rgba(15,15,26,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
-  .logo span { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-badge { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #0f0f1a; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
 
-  .hero {
-    text-align: center; padding: 4rem 2rem 2rem;
-    background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.1) 0%, transparent 60%);
-  }
-  .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; animation: float 3s ease-in-out infinite; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--gold); }
-  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1rem; max-width: 500px; margin-inline: auto; }
-  .tag { display: inline-block; background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+/* NAV */
+nav{background:rgba(8,6,16,.94);backdrop-filter:blur(22px);border-bottom:1px solid var(--gold-bd);padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gl)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-r{display:flex;align-items:center;gap:.3rem}
+.nav-r a{font-size:.76rem;color:var(--muted);padding:.3rem .7rem;border-radius:6px;transition:all .2s}
+.nav-r a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#080610!important;font-weight:700!important;padding:.35rem .9rem!important;border-radius:6px!important}
+@media(max-width:640px){.nav-r .hn{display:none}}
 
-  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+/* HERO */
+.hero{position:relative;padding:56px 20px 44px;text-align:center;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(45,212,191,.14) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 85% 85%,rgba(232,184,75,.08) 0%,transparent 55%)}
+.cal-float{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.cf{position:absolute;opacity:.04;animation:floatUp linear infinite;font-size:2rem}
+@keyframes floatUp{0%{transform:translateY(110vh) rotate(var(--r,0deg))}100%{transform:translateY(-10%) rotate(var(--r,0deg))}}
+.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--teal-bg);border:1px solid var(--teal-bd);color:var(--teal);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem 1.1rem;border-radius:100px;margin-bottom:1.3rem;animation:fadeUp .5s ease both}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;display:inline-block}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,3.7rem);font-weight:700;line-height:1.1;margin-bottom:.9rem;animation:fadeUp .5s .07s ease both}
+h1 em{font-style:italic;color:var(--gl)}
+h1 strong{color:var(--teal)}
+.hero-sub{font-size:.97rem;color:var(--muted);max-width:560px;margin:0 auto 1.6rem;line-height:1.78;animation:fadeUp .5s .14s ease both}
+.hstats{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .5s .2s ease both}
+.hs-n{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gl);text-align:center}
+.hs-l{font-size:.64rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:.1rem;text-align:center}
+.hdiv{width:1px;background:var(--div);align-self:stretch}
 
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
-  .card-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+/* WRAP */
+.wrap{max-width:880px;margin:0 auto;padding:0 18px 80px;position:relative;z-index:1}
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+/* AD */
+.ad-w{background:var(--bg2);border:1px dashed var(--gold-bd);border-radius:10px;padding:.4rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
-  .field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .field.full { grid-column: 1/-1; }
-  label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-  input, select, textarea {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-    color: var(--text); padding: 0.75rem 1rem; font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(240,192,96,0.1); }
-  select option { background: var(--surface); }
-  textarea { resize: vertical; min-height: 80px; }
+/* CARD */
+.card{background:var(--card);border:1px solid var(--div);border-radius:var(--r);padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--gold),transparent)}
+.ct{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.ct::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-bd),transparent)}
 
-  .checklist { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; }
-  .check-item {
-    display: flex; align-items: center; gap: 0.6rem;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 0.6rem 0.8rem; cursor: pointer;
-    font-size: 0.82rem; transition: all 0.2s; user-select: none;
-  }
-  .check-item input[type=checkbox] { accent-color: var(--gold); width: 15px; height: 15px; }
-  .check-item:hover { border-color: var(--gold); }
+/* FORM */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+.f{margin-bottom:12px}
+.f label{display:block;font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:5px}
+.f label .opt{font-size:.7rem;color:var(--muted);font-weight:400}
+.fi{width:100%;padding:10px 13px;border-radius:9px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:var(--text);font-size:.87rem;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s,box-shadow .2s}
+.fi:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(45,212,191,.12)}
+.fi::placeholder{color:var(--faint)}
+select.fi option{background:#121028;color:var(--text)}
+textarea.fi{resize:vertical;min-height:68px;line-height:1.6}
 
-  .btn-generate {
-    width: 100%; padding: 1rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold2));
-    color: #0f0f1a; border: none; border-radius: 12px;
-    font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
-    cursor: pointer; transition: all 0.3s; margin-top: 1rem;
-  }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,192,96,0.3); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+/* CEREMONIES GRID */
+.cer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px}
+.cer-item{display:flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.02);border:1.5px solid var(--div);border-radius:9px;padding:10px 12px;cursor:pointer;transition:all .2s;user-select:none;font-size:.82rem;color:var(--muted)}
+.cer-item:hover{border-color:var(--teal-bd);color:var(--teal)}
+.cer-item.on{border-color:var(--teal-bd);background:var(--teal-bg);color:var(--teal);font-weight:600}
+.cer-cb{width:16px;height:16px;border-radius:4px;border:2px solid rgba(255,255,255,.2);background:transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cer-item.on .cer-cb{background:var(--teal);border-color:var(--teal)}
+.cer-tick{color:#fff;font-size:.65rem;display:none}
+.cer-item.on .cer-tick{display:block}
 
-  .loading { text-align: center; padding: 3rem; display: none; }
-  .spinner { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading p { color: var(--muted); font-size: 0.9rem; }
+/* GEN BTN */
+.gen-btn{width:100%;padding:17px;border-radius:12px;border:none;background:linear-gradient(135deg,#0d4a4a,#2dd4bf,#4ade80);color:#080610;font-size:1.02rem;font-weight:800;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .3s;box-shadow:0 6px 28px rgba(45,212,191,.35);letter-spacing:.04em;position:relative;overflow:hidden}
+.gen-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent);opacity:0;transition:opacity .3s}
+.gen-btn:hover::after{opacity:1}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(45,212,191,.5)}
+.gen-btn:disabled{background:rgba(255,255,255,.08);color:var(--muted);cursor:not-allowed;transform:none;box-shadow:none}
 
-  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: none; animation: slideIn 0.4s ease; }
-  @keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .result-header { background: linear-gradient(135deg, rgba(240,192,96,0.15), rgba(74,222,128,0.08)); border-bottom: 1px solid var(--border); padding: 1.2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .result-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; }
-  .action-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-  .btn-action { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'Poppins', sans-serif; transition: all 0.2s; }
-  .btn-action:hover { border-color: var(--gold); color: var(--gold); }
+/* PROGRESS */
+.prog-w{margin:14px 0;display:none}
+.prog-bar{height:2.5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;margin-bottom:12px}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s}
+.prog-steps{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap}
+.ps{font-size:.72rem;color:var(--faint);transition:color .3s;display:flex;align-items:center;gap:.3rem}
+.ps.done{color:var(--green)}.ps.active{color:var(--gold);animation:breathe 1.5s infinite}
+@keyframes breathe{0%,100%{opacity:.5}50%{opacity:1}}
 
-  /* TIMELINE STYLING */
-  .timeline-content { padding: 2rem; }
-  .timeline-raw { white-space: pre-wrap; line-height: 1.9; font-size: 0.92rem; color: var(--text); }
+/* ERR */
+.err{background:rgba(255,50,50,.07);border:1px solid rgba(255,50,50,.22);border-radius:10px;padding:12px 15px;color:#ff8a8a;font-size:.87rem;display:none;margin-bottom:14px}
 
-  /* Progress bar */
-  .progress-section { margin-bottom: 1.5rem; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
-  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--green)); border-radius: 3px; transition: width 1s ease; }
+/* ═══ RESULT ═══ */
+.result-w{display:none;animation:fadeUp .5s ease}
 
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--green); color: #0f0f1a; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
+/* COUNTDOWN + PROGRESS HEADER */
+.timeline-header{background:linear-gradient(135deg,rgba(45,212,191,.1),rgba(232,184,75,.06));border:1px solid var(--teal-bd);border-radius:16px;padding:24px;margin-bottom:18px}
+.th-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.th-main{}
+.th-couple{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gl);margin-bottom:.3rem}
+.th-sub{font-size:.8rem;color:var(--muted)}
+.th-badges{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:8px}
+.thb{font-size:.69rem;padding:.22rem .72rem;border-radius:100px;font-weight:600}
+.thb-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd)}
+.thb-gold{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-bd)}
+.thb-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bd)}
 
-  @media(max-width:480px){ nav { padding: 0.8rem 1rem; } .nav-links { display: none; } .card { padding: 1.3rem; } }
+/* COUNTDOWN */
+.countdown{display:flex;gap:12px;flex-wrap:wrap}
+.cd-box{text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--div);border-radius:10px;padding:12px 16px;min-width:68px}
+.cd-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gl);line-height:1;font-weight:700}
+.cd-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.15rem}
+
+/* OVERALL PROGRESS */
+.op-row{display:flex;align-items:center;gap:12px;margin-top:16px}
+.op-bar-wrap{flex:1;background:rgba(255,255,255,.05);border-radius:4px;height:8px;overflow:hidden}
+.op-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:4px;transition:width 1s ease}
+.op-pct{font-size:.82rem;font-weight:700;color:var(--teal);flex-shrink:0;min-width:36px;text-align:right}
+.op-label{font-size:.76rem;color:var(--muted)}
+.op-stats{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.os{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+.os strong{color:var(--text)}
+.os-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ═══ VISUAL TIMELINE ═══ */
+.timeline-wrap{position:relative}
+.tl-line{position:absolute;left:30px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),rgba(45,212,191,.1));pointer-events:none}
+
+/* MONTH BLOCK */
+.month-block{display:flex;gap:16px;margin-bottom:20px;position:relative;animation:fadeUp .4s ease both}
+.month-dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--teal);background:var(--bg);flex-shrink:0;margin-top:18px;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;font-size:.6rem;transition:all .3s}
+.month-dot.completed{background:var(--green);border-color:var(--green)}
+.month-dot.current{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px rgba(232,184,75,.5)}
+.month-dot.overdue{background:var(--red);border-color:var(--red);box-shadow:0 0 10px rgba(248,113,113,.4)}
+.month-card{flex:1;background:var(--card);border:1px solid var(--div);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.month-card:hover{border-color:rgba(45,212,191,.25)}
+.month-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;background:rgba(255,255,255,.02)}
+.month-hdr-left{display:flex;align-items:center;gap:10px}
+.month-num{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700;flex-shrink:0}
+.month-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text)}
+.month-range{font-size:.72rem;color:var(--muted);margin-top:.1rem}
+.month-hdr-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.month-prog-pill{font-size:.68rem;padding:.2rem .65rem;border-radius:100px;font-weight:700}
+.mp-done{background:rgba(74,222,128,.12);color:var(--green);border:1px solid rgba(74,222,128,.25)}
+.mp-pending{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-bd)}
+.mp-overdue{background:rgba(248,113,113,.1);color:var(--red);border:1px solid rgba(248,113,113,.25)}
+.month-chevron{color:var(--muted);transition:transform .3s;font-size:.78rem}
+.month-card.open .month-chevron{transform:rotate(180deg)}
+.month-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.month-card.open .month-body{max-height:2000px}
+.month-content{padding:14px 16px}
+
+/* TASK ITEMS */
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:.6rem 0;border-bottom:1px solid var(--div);cursor:pointer;transition:opacity .2s;user-select:none}
+.task-item:last-child{border-bottom:none}
+.task-item:hover{opacity:.85}
+.task-item.done .task-text{text-decoration:line-through;opacity:.5}
+.task-cb{width:18px;height:18px;border-radius:5px;border:2px solid rgba(255,255,255,.18);background:transparent;flex-shrink:0;margin-top:.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.task-item.done .task-cb{background:var(--green);border-color:var(--green)}
+.task-cb-tick{color:#fff;font-size:.7rem;display:none}
+.task-item.done .task-cb-tick{display:block}
+.task-body{flex:1}
+.task-text{font-size:.84rem;color:var(--text);line-height:1.55}
+.task-meta{display:flex;align-items:center;gap:.5rem;margin-top:.22rem;flex-wrap:wrap}
+.task-cat{font-size:.64rem;padding:.12rem .5rem;border-radius:3px;font-weight:600}
+.tc-venue{background:rgba(232,184,75,.1);color:var(--gold)}
+.tc-vendor{background:rgba(96,165,250,.1);color:var(--blue)}
+.tc-budget{background:rgba(74,222,128,.1);color:var(--green)}
+.tc-outfit{background:rgba(244,114,182,.1);color:var(--rose)}
+.tc-decor{background:rgba(192,132,252,.1);color:var(--purple)}
+.tc-ceremony{background:rgba(45,212,191,.1);color:var(--teal)}
+.tc-admin{background:rgba(251,146,60,.1);color:var(--orange)}
+.tc-urgent{background:rgba(248,113,113,.12);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+.task-date{font-size:.65rem;color:var(--faint)}
+.task-priority{font-size:.6rem;font-weight:700}
+.tp-high{color:var(--red)}
+.tp-med{color:var(--gold)}
+.tp-low{color:var(--teal)}
+
+/* MONTH TIPS */
+.month-tips{background:rgba(45,212,191,.04);border:1px solid var(--teal-bd);border-radius:8px;padding:10px 13px;margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.7}
+.month-tips strong{color:var(--teal)}
+
+/* VENDOR DEADLINES */
+.vd-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:.5rem 0;border-bottom:1px solid var(--div);font-size:.8rem}
+.vd-row:last-child{border-bottom:none}
+.vd-name{color:var(--text);font-weight:600;display:flex;align-items:center;gap:.4rem}
+.vd-dl{font-size:.72rem;color:var(--muted)}
+.vd-status{font-size:.66rem;font-weight:700;padding:.15rem .5rem;border-radius:3px}
+.vd-book{background:rgba(248,113,113,.1);color:var(--red)}
+.vd-done{background:rgba(74,222,128,.1);color:var(--green)}
+
+/* WEEK/DAY SECTIONS */
+.special-section{background:linear-gradient(135deg,rgba(232,184,75,.08),rgba(244,114,182,.05));border:1px solid var(--gold-bd);border-radius:12px;padding:18px;margin-bottom:14px}
+.ss-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gl);margin-bottom:12px;display:flex;align-items:center;gap:.5rem}
+
+/* ACTIONS */
+.act-row{display:flex;gap:.5rem;flex-wrap:wrap;margin:16px 0}
+.ab{padding:8px 15px;border-radius:8px;font-size:.78rem;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid;display:flex;align-items:center;gap:.3rem}
+.ab-copy{background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3);color:var(--green)}
+.ab-wa{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.3);color:#25d366}
+.ab-pdf{background:rgba(96,165,250,.08);border-color:rgba(96,165,250,.3);color:var(--blue)}
+.ab-regen{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)}
+.ab-clear{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.3);color:var(--red)}
+.ab:hover{opacity:.8;transform:translateY(-1px)}
+
+/* SHARE */
+.share-strip{background:var(--gold-bg);border:1px solid var(--gold-bd);border-radius:12px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:4px}
+.ss-txt h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gl);margin-bottom:.15rem}
+.ss-txt p{font-size:.76rem;color:var(--muted)}
+.ss-btns{display:flex;gap:.45rem;flex-wrap:wrap}
+.ssb{padding:7px 13px;border-radius:7px;font-size:.75rem;font-weight:600;border:1px solid var(--gold-bd);color:var(--gold);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+.ssb:hover{background:var(--gold-bg)}
+
+/* TIPS + FAQ + TOOLS */
+.tip-section{background:var(--bg2);border-radius:var(--r);padding:24px;margin:22px 0}
+.ts-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gl);margin-bottom:13px}
+.tl{list-style:none}
+.tl li{display:flex;gap:.65rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--div);font-size:.84rem;color:var(--muted);line-height:1.65}
+.tl li:last-child{border-bottom:none}
+.tl li strong{color:var(--text)}
+.st{font-family:'Playfair Display',serif;font-size:1.45rem;text-align:center;margin-bottom:16px;color:var(--text)}
+.st em{color:var(--gl);font-style:italic}
+.faq-item{border-bottom:1px solid var(--div)}
+.faq-q{width:100%;padding:14px 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-size:.88rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{font-size:1rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+.faq-q.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-inner{padding:0 0 14px;font-size:.84rem;color:var(--muted);line-height:1.78}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.tc{background:var(--card);border:1px solid var(--div);border-radius:10px;padding:12px;text-align:center;transition:all .25s;display:block}
+.tc:hover{border-color:var(--gold-bd);transform:translateY(-2px)}
+.tc-i{font-size:1.3rem;margin-bottom:.35rem}
+.tc-n{font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.12rem}
+.tc-d{font-size:.68rem;color:var(--muted)}
+
+footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5rem;text-align:center}
+.fl{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gl);margin-bottom:.4rem;display:inline-block}
+.fl em{font-style:italic;color:var(--text);font-weight:400}
+.flt{font-size:.74rem;color:var(--faint);margin-bottom:.65rem}
+.fll{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.fll a{font-size:.72rem;color:var(--muted);transition:color .2s}
+.fll a:hover{color:var(--gold)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--teal);color:#060e0e;padding:10px 22px;border-radius:100px;font-size:.83rem;font-weight:700;opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.vis{opacity:1;transform:none}
+
+@media(max-width:640px){
+  .g2,.g3{grid-template-columns:1fr}
+  .cer-grid{grid-template-columns:repeat(2,1fr)}
+  h1{font-size:2rem}
+  .card{padding:16px 14px}
+  .tl-line{left:20px}
+  .month-dot{width:16px;height:16px;margin-top:20px}
+  .month-block{gap:10px}
+}
+
+@media print{
+  nav,footer,.ad-w,.gen-btn,.act-row,.share-strip,.tip-section,.faq-item,.reveal{display:none!important}
+  body{background:#fff;color:#111}
+  .month-card,.timeline-header{border:1px solid #ddd;page-break-inside:avoid}
+  .month-body{max-height:none!important}
+  .tl-line{background:#ddd}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="logo">Smart Shaadi <span>💍</span></a>
-  <ul class="nav-links">
-    <li><a href="/ai-invitation-writer.html">Invitation</a></li>
-    <li><a href="/ai-budget-calculator.html">Budget</a></li>
-    <li><a href="/ai-menu-planner.html">Menu</a></li>
-  </ul>
-  <span class="nav-badge">✨ AI Powered</span>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-r">
+    <a href="index.html" class="hn">Home</a>
+    <a href="ai-invitation-writer.html" class="hn">💌 Invitation</a>
+    <a href="ai-budget-calculator.html" class="hn">💰 Budget</a>
+    <a href="ai-kundali-matching.html" class="hn">🔮 Kundali</a>
+    <a href="chatbot.html" class="nav-cta">AI Chatbot →</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <span class="hero-icon">📅</span>
-  <h1>AI Wedding Planning Timeline</h1>
-  <p>Month-by-month personalized planning schedule — kuch bhi miss mat karo!</p>
-  <span class="tag">🤖 Smart Planning · Reminders · Checklist</span>
+<section class="hero">
+  <div class="cal-float" id="calFloat"></div>
+  <div class="badge"><span class="badge-dot"></span> Interactive Task Manager — AI Powered</div>
+  <h1>AI Wedding <em>Planning</em><br><strong>Timeline</strong></h1>
+  <p class="hero-sub">Month-by-month personalized checklist — har task track karo, vendors schedule karo, countdown dekho. Kuch bhi miss mat karo! 📅</p>
+  <div class="hstats">
+    <div><div class="hs-n">12</div><div class="hs-l">Months Cover</div></div>
+    <div class="hdiv"></div>
+    <div><div class="hs-n">100+</div><div class="hs-l">Tasks</div></div>
+    <div class="hdiv"></div>
+    <div><div class="hs-n">Live</div><div class="hs-l">Progress</div></div>
+    <div class="hdiv"></div>
+    <div><div class="hs-n">Free</div><div class="hs-l">Forever</div></div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="ad-w">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- DETAILS FORM -->
+  <div class="card reveal">
+    <div class="ct">📅 Shaadi Ki Details Batao</div>
+    <div class="g2">
+      <div class="f"><label>Shaadi Ki Tarikh <span style="color:var(--rose)">*</span></label><input class="fi" type="date" id="wDate"></div>
+      <div class="f"><label>Planning Kab Se Shuru? </label>
+        <select class="fi" id="startFrom">
+          <option value="12">12 Mahine Pehle (Best!)</option>
+          <option value="9" selected>9 Mahine Pehle</option>
+          <option value="6">6 Mahine Pehle</option>
+          <option value="3">3 Mahine Pehle (Rush!)</option>
+          <option value="1">1 Mahina Pehle (Emergency!)</option>
+        </select>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="f"><label>Wedding Type</label>
+        <select class="fi" id="wType">
+          <option value="Big Fat Indian Wedding">🎊 Big Fat Indian</option>
+          <option value="Intimate Wedding (50-100 guests)" selected>💑 Intimate (50-100)</option>
+          <option value="Destination Wedding">✈️ Destination</option>
+          <option value="Traditional Hindu Wedding">🕉️ Traditional Hindu</option>
+          <option value="Muslim/Nikah Wedding">☪️ Muslim / Nikah</option>
+          <option value="Court + Small Reception">⚖️ Court + Reception</option>
+        </select>
+      </div>
+      <div class="f"><label>Budget</label>
+        <select class="fi" id="budget">
+          <option value="₹5-10 Lakh (Budget)">₹5-10L Budget</option>
+          <option value="₹10-25 Lakh (Mid-range)" selected>₹10-25L Mid</option>
+          <option value="₹25-50 Lakh (Premium)">₹25-50L Premium</option>
+          <option value="₹50 Lakh+ (Luxury)">₹50L+ Luxury</option>
+        </select>
+      </div>
+      <div class="f"><label>City / Location</label><input class="fi" type="text" id="city" placeholder="e.g. Delhi, Jaipur"></div>
+    </div>
+    <div class="g2">
+      <div class="f"><label>Expected Guests</label><input class="fi" type="number" id="guests" placeholder="e.g. 300" min="10" max="2000"></div>
+      <div class="f"><label>Couple Names <span class="opt">(optional)</span></label><input class="fi" type="text" id="names" placeholder="e.g. Priya & Rahul"></div>
+    </div>
+  </div>
+
+  <!-- CEREMONIES -->
+  <div class="card reveal">
+    <div class="ct">🎊 Kaunsi Ceremonies Hongi?</div>
+    <div class="cer-grid" id="cerGrid">
+      <div class="cer-item on" onclick="togCer(this)" data-val="Engagement"><div class="cer-cb"><span class="cer-tick">✓</span></div>💍 Engagement</div>
+      <div class="cer-item on" onclick="togCer(this)" data-val="Mehendi"><div class="cer-cb"><span class="cer-tick">✓</span></div>🌿 Mehendi</div>
+      <div class="cer-item on" onclick="togCer(this)" data-val="Haldi"><div class="cer-cb"><span class="cer-tick">✓</span></div>💛 Haldi</div>
+      <div class="cer-item on" onclick="togCer(this)" data-val="Sangeet"><div class="cer-cb"><span class="cer-tick">✓</span></div>🎵 Sangeet</div>
+      <div class="cer-item on" onclick="togCer(this)" data-val="Main Wedding"><div class="cer-cb"><span class="cer-tick">✓</span></div>💒 Main Wedding</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Reception"><div class="cer-cb"><span class="cer-tick">✓</span></div>🥂 Reception</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Roka Ceremony"><div class="cer-cb"><span class="cer-tick">✓</span></div>🙏 Roka</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Tilak Ceremony"><div class="cer-cb"><span class="cer-tick">✓</span></div>📿 Tilak</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Vidai"><div class="cer-cb"><span class="cer-tick">✓</span></div>🚗 Vidai</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Griha Pravesh"><div class="cer-cb"><span class="cer-tick">✓</span></div>🏠 Griha Pravesh</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Baraat"><div class="cer-cb"><span class="cer-tick">✓</span></div>🐴 Baraat</div>
+      <div class="cer-item" onclick="togCer(this)" data-val="Phera / Saptapadi"><div class="cer-cb"><span class="cer-tick">✓</span></div>🔥 Phera</div>
+    </div>
+  </div>
+
+  <!-- SPECIAL -->
+  <div class="card reveal">
+    <div class="ct">✨ Special Requirements</div>
+    <div class="f"><textarea class="fi" id="special" placeholder="e.g. Outdoor lawn wedding, drone photography, celebrity anchor, destination wedding in Udaipur, live band, phoolon ki baraat, specific religious rituals..."></textarea></div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">📅 AI Se Personalized Timeline Banao — Bilkul Free!</button>
+
+  <div class="prog-w" id="progW">
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-steps">
+      <div class="ps" id="ps1">📅 Dates Calculate Kar Raha Hai</div>
+      <div class="ps" id="ps2">📋 Tasks Generate Ho Rahe Hain</div>
+      <div class="ps" id="ps3">🏪 Vendor Schedule Bana Raha Hai</div>
+      <div class="ps" id="ps4">✨ Timeline Almost Ready!</div>
+    </div>
+  </div>
+  <div class="err" id="errBox"></div>
+
+  <!-- RESULT -->
+  <div class="result-w" id="resultW">
+
+    <!-- HEADER WITH COUNTDOWN -->
+    <div class="timeline-header">
+      <div class="th-top">
+        <div class="th-main">
+          <div class="th-couple" id="thCouple">Aapki Wedding Timeline</div>
+          <div class="th-sub" id="thSub">Loading details...</div>
+          <div class="th-badges" id="thBadges"></div>
+        </div>
+        <div class="countdown" id="countdown"></div>
+      </div>
+      <div class="op-label" id="opLabel">Overall Progress</div>
+      <div class="op-row">
+        <div class="op-bar-wrap"><div class="op-bar-fill" id="opFill" style="width:0%"></div></div>
+        <div class="op-pct" id="opPct">0%</div>
+      </div>
+      <div class="op-stats" id="opStats"></div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-wrap" id="timelineWrap">
+      <div class="tl-line"></div>
+      <div id="timelineBlocks"></div>
+    </div>
+
+    <div class="act-row">
+      <button class="ab ab-copy" onclick="copyAll()">📋 Copy Timeline</button>
+      <button class="ab ab-wa" onclick="waShare()">📱 WhatsApp</button>
+      <button class="ab ab-pdf" onclick="printIt()">🖨️ Print / PDF</button>
+      <button class="ab ab-regen" onclick="generate()">🔄 Regenerate</button>
+      <button class="ab ab-clear" onclick="clearProgress()">🗑️ Reset Progress</button>
+    </div>
+
+    <div class="share-strip">
+      <div class="ss-txt"><h4>📅 Dosto Ko Share Karo!</h4><p>Planning kar rahe doston ko zaroor batao!</p></div>
+      <div class="ss-btns">
+        <button class="ssb" onclick="shareTool()">📱 Share Tool</button>
+        <a href="ai-budget-calculator.html" class="ssb">💰 Budget</a>
+        <a href="ai-invitation-writer.html" class="ssb">💌 Invitation</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-w reveal">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tip-section reveal">
+    <h2 class="ts-title">💡 Wedding Planning Ke 6 Golden Tips</h2>
+    <ul class="tl">
+      <li><span>💒</span><div><strong>Venue sabse pehle book karo</strong> — Popular venues 9-12 mahine pehle book ho jaate hain. Yeh sabse important aur time-sensitive booking hai. Pehle venue, phir sab kuch!</div></li>
+      <li><span>📸</span><div><strong>Photographer 2nd priority</strong> — Achhe photographers bhi 8-10 mahine pehle fully booked hote hain. Portfolio dekho, reviews check karo, phir book karo.</div></li>
+      <li><span>📋</span><div><strong>Guest list pehle finalize karo</strong> — Venue size, catering cost, invitation count — sab guest list pe depend karta hai. Isko jaldi confirm karo.</div></li>
+      <li><span>🌸</span><div><strong>Decor aur caterer 4-5 mahine pehle</strong> — Inhe extra time milega best work dene ke liye. Multiple vendors se quotes lo, phir decide karo.</div></li>
+      <li><span>👗</span><div><strong>Bridal outfit 4-6 mahine pehle</strong> — Custom outfits mein 3-5 mahine lagte hain. Fitting sessions ke liye time chahiye. Der na karo.</div></li>
+      <li><span>💰</span><div><strong>10-15% contingency hamesha rakho</strong> — Unexpected kharche hamesha aate hain. Buffer ke bina stress aata hai. Smart planning = buffer planning.</div></li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <div class="reveal" style="margin:22px 0">
+    <h2 class="st" style="margin-bottom:16px">Aksar Pooche Jane Wale <em>Sawaal</em></h2>
+    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Wedding planning kab se shuru karni chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Ideal timing 9-12 mahine pehle hai. Venue aur photographer sabse pehle fully book hote hain isliye jaldi shuru karna zaroori hai. 6 mahine mein bhi acchi planning possible hai lekin kuch choices limited ho jaati hain. 3 mahine se kam time mein "rush planning" mode mein jaana padta hai.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Kaunsa kaam sabse pehle karna chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Priority order: (1) Date aur Venue confirm karo, (2) Photographer book karo, (3) Guest list finalize karo, (4) Caterer decide karo, (5) Decor theme choose karo. Yeh 5 kaam baaki sab ke foundation hain.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Destination wedding ke liye kitna extra time chahiye? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Destination wedding ke liye minimum 12 mahine planning chahiye. Travel logistics, hotel bookings guests ke liye, local vendors dhundhna, legal permissions — sab extra time lete hain. Udaipur, Goa jaisi popular destinations ki venue availability bhi 18+ mahine pehle se limited hoti hai.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Kya progress save hota hai? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Haan! Aapka task progress browser mein automatically save hota hai. Dobara page open karo — aapke ticked tasks yaad rahenge. "Reset Progress" button se sab clear kar sakte hain. Phone change karne ya incognito mode mein progress save nahi hoga.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">1 mahine mein shaadi possible hai? <span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Possible hai lekin challenging! 1 mahine mein simple court marriage + small reception ya intimate home wedding ho sakti hai. Grand wedding 1 mahine mein mushkil hai kyunki venues aur vendors available nahi milte. AI aapko 1-month emergency timeline bhi bana kar deta hai.</div></div></div>
+  </div>
+
+  <!-- OTHER TOOLS -->
+  <div class="reveal" style="margin:22px 0">
+    <h2 class="st" style="margin-bottom:14px">🤖 Aur Bhi <em>Free AI Tools</em></h2>
+    <div class="tg">
+      <a href="ai-invitation-writer.html" class="tc"><div class="tc-i">💌</div><div class="tc-n">Invitation Writer</div><div class="tc-d">Card + Website</div></a>
+      <a href="ai-budget-calculator.html" class="tc"><div class="tc-i">💰</div><div class="tc-n">Budget Calculator</div><div class="tc-d">City-wise breakdown</div></a>
+      <a href="ai-kundali-matching.html" class="tc"><div class="tc-i">🔮</div><div class="tc-n">Kundali Matching</div><div class="tc-d">Guna Milan + Doshas</div></a>
+      <a href="ai-menu-planner.html" class="tc"><div class="tc-i">🍽️</div><div class="tc-n">Menu Planner</div><div class="tc-d">Regional wedding menu</div></a>
+      <a href="ai-wedding-theme-generator.html" class="tc"><div class="tc-i">🎨</div><div class="tc-n">Theme Generator</div><div class="tc-d">Decor + palette</div></a>
+      <a href="ai-guest-manager.html" class="tc"><div class="tc-i">👥</div><div class="tc-n">Guest Manager</div><div class="tc-d">RSVP + seating</div></a>
+    </div>
+  </div>
+
+  <div class="ad-w reveal">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
 </div>
 
-<div class="container">
-  <div class="card">
-    <div class="card-title">📅 Apni Shaadi Ki Details Batao</div>
-    <div class="form-grid">
-      <div class="field">
-        <label>Shaadi Ki Tarikh (Wedding Date)</label>
-        <input type="date" id="weddingDate" />
-      </div>
-      <div class="field">
-        <label>Planning Shuru Kab Se? (Start From)</label>
-        <select id="startFrom">
-          <option value="12">12 Months Pehle</option>
-          <option value="9" selected>9 Months Pehle</option>
-          <option value="6">6 Months Pehle</option>
-          <option value="3">3 Months Pehle</option>
-          <option value="1">1 Month Pehle (Emergency!)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Wedding Type</label>
-        <select id="weddingType">
-          <option value="big fat indian">Big Fat Indian Wedding</option>
-          <option value="intimate">Intimate (50-100 guests)</option>
-          <option value="destination">Destination Wedding</option>
-          <option value="court">Court + Small Reception</option>
-          <option value="traditional">Traditional Ceremony Only</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Budget Range</label>
-        <select id="budget">
-          <option value="budget 5-10 lakh">₹5-10 Lakh (Budget)</option>
-          <option value="mid-range 10-25 lakh" selected>₹10-25 Lakh (Mid-range)</option>
-          <option value="premium 25-50 lakh">₹25-50 Lakh (Premium)</option>
-          <option value="luxury 50+ lakh">₹50 Lakh+ (Luxury)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Guests Expected</label>
-        <input type="number" id="guests" placeholder="e.g. 300" min="10" max="2000" />
-      </div>
-      <div class="field">
-        <label>City / Location</label>
-        <input type="text" id="city" placeholder="e.g. Delhi, Mumbai, Jaipur" />
-      </div>
-    </div>
+<footer>
+  <a href="index.html" class="fl">Smart<em>Shaadi</em> 💍</a>
+  <p class="flt">India's Free AI Wedding Planner — 9 AI Tools, Budget Calculator, Guest Manager & More</p>
+  <div class="fll">
+    <a href="index.html">Home</a><a href="blogs.html">Magazine</a><a href="dashboard.html">Dashboard</a>
+    <a href="chatbot.html">AI Chatbot</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
   </div>
+</footer>
 
-  <div class="card">
-    <div class="card-title">🎊 Kon Si Ceremonies Hogi?</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox" value="Engagement" checked> 💍 Engagement</label>
-      <label class="check-item"><input type="checkbox" value="Mehendi" checked> 🌿 Mehendi</label>
-      <label class="check-item"><input type="checkbox" value="Haldi" checked> 💛 Haldi</label>
-      <label class="check-item"><input type="checkbox" value="Sangeet" checked> 🎵 Sangeet</label>
-      <label class="check-item"><input type="checkbox" value="Main Wedding" checked> 💒 Main Wedding</label>
-      <label class="check-item"><input type="checkbox" value="Reception"> 🥂 Reception</label>
-      <label class="check-item"><input type="checkbox" value="Roka"> 🙏 Roka Ceremony</label>
-      <label class="check-item"><input type="checkbox" value="Tilak"> 📿 Tilak</label>
-      <label class="check-item"><input type="checkbox" value="Vidai"> 🚗 Vidai</label>
-      <label class="check-item"><input type="checkbox" value="Griha Pravesh"> 🏠 Griha Pravesh</label>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">✨ Special Requirements</div>
-    <div class="field">
-      <textarea id="special" placeholder="Kuch khas requirements? e.g. destination wedding, religious rituals, special performers, specific vendors..."></textarea>
-    </div>
-  </div>
-
-  <button class="btn-generate" onclick="generateTimeline()">
-    📅 Generate Month-wise Timeline — AI Se Banao
-  </button>
-
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <p>AI aapka detailed wedding timeline bana raha hai... 🗓️</p>
-  </div>
-
-  <div class="result-card" id="resultCard">
-    <div class="result-header">
-      <span class="result-title">📅 Aapka Personalized Wedding Timeline</span>
-      <div class="action-btns">
-        <button class="btn-action" onclick="copyTimeline()">📋 Copy</button>
-        <button class="btn-action" onclick="shareWhatsApp()">📱 WhatsApp</button>
-        <button class="btn-action" onclick="generateTimeline()">🔄 Regenerate</button>
-      </div>
-    </div>
-    <div class="timeline-content">
-      <div class="timeline-raw" id="timelineText"></div>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast">✅ Copied!</div>
+<div class="toast" id="toast"></div>
 
 <script>
-async function generateTimeline() {
-  const date = document.getElementById('weddingDate').value;
-  const months = document.getElementById('startFrom').value;
-  const type = document.getElementById('weddingType').value;
-  const budget = document.getElementById('budget').value;
-  const guests = document.getElementById('guests').value;
-  const city = document.getElementById('city').value;
-  const special = document.getElementById('special').value;
+// ── FLOATS ──
+(function(){
+  const c=document.getElementById('calFloat');
+  const syms=['📅','📋','✅','🗓️','📌','💒','🎊'];
+  for(let i=0;i<16;i++){
+    const s=document.createElement('span');s.className='cf';
+    s.textContent=syms[i%syms.length];
+    s.style.cssText=`left:${Math.random()*100}%;animation-duration:${20+Math.random()*22}s;animation-delay:-${Math.random()*30}s;--r:${-15+Math.random()*30}deg`;
+    c.appendChild(s);
+  }
+})();
 
-  const ceremonies = [...document.querySelectorAll('.check-item input:checked')].map(c => c.value).join(', ');
+// ── REVEAL ──
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');ro.unobserve(x.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-  const btn = document.querySelector('.btn-generate');
-  btn.disabled = true;
-  document.getElementById('loading').style.display = 'block';
-  document.getElementById('resultCard').style.display = 'none';
+// ── CEREMONY TOGGLE ──
+function togCer(el){el.classList.toggle('on');}
 
-  const systemPrompt = `You are an expert Indian wedding planner with 15+ years of experience. You create detailed, realistic month-by-month wedding planning timelines tailored to Indian weddings. Include specific tasks, deadlines, vendor bookings, and cultural ceremony preparations. Use Hindi + English mixed language (Hinglish). Be specific and actionable. Use emojis for each section.`;
+// ── PROGRESS ──
+let progInt;const pS=['ps1','ps2','ps3','ps4'];
+function startProg(){
+  document.getElementById('progW').style.display='block';
+  let v=0,si=0;
+  pS.forEach(s=>document.getElementById(s).className='ps');
+  document.getElementById('ps1').className='ps active';
+  progInt=setInterval(()=>{
+    v=Math.min(v+Math.random()*4+.8,88);
+    document.getElementById('progFill').style.width=v+'%';
+    const ni=Math.floor(v/25);
+    if(ni>si&&ni<4){document.getElementById(pS[si]).className='ps done';si=ni;document.getElementById(pS[si]).className='ps active';}
+  },380);
+}
+function stopProg(){
+  clearInterval(progInt);
+  pS.forEach(s=>document.getElementById(s).className='ps done');
+  document.getElementById('progFill').style.width='100%';
+  setTimeout(()=>{document.getElementById('progW').style.display='none';document.getElementById('progFill').style.width='0%';},600);
+}
 
-  const userPrompt = `Create a detailed month-by-month wedding planning timeline with these details:
+// ── STORED ──
+let storedTimeline=null;
+let weddingDate=null;
+const SAVE_KEY='ss_timeline_v2';
+const PROG_KEY='ss_timeline_prog_v2';
 
-Wedding Date: ${date || 'Not specified (plan from today)'}
-Planning Duration: ${months} months before wedding
-Wedding Type: ${type}
-Budget: ${budget}
-Expected Guests: ${guests || '200'} people
-City: ${city || 'Delhi NCR'}
-Ceremonies Planned: ${ceremonies}
-Special Requirements: ${special || 'Standard Indian wedding'}
+function loadProgress(){try{return JSON.parse(localStorage.getItem(PROG_KEY)||'{}');}catch(e){return {};}}
+function saveProgress(p){try{localStorage.setItem(PROG_KEY,JSON.stringify(p));}catch(e){}}
 
-Create a COMPLETE timeline covering EVERY month from planning start to wedding day. For each month include:
-1. 🎯 Month heading with timeframe (e.g., "9 MONTHS BEFORE — Month 1")
-2. Key tasks for that month (5-8 specific tasks)
-3. Vendor bookings needed
-4. Budget milestones
-5. ⚠️ Important warnings / things not to miss
+// ── GENERATE ──
+async function generate(){
+  const dateVal=document.getElementById('wDate').value;
+  if(!dateVal){showErr('⚠️ Shaadi ki tarikh zaroori hai!');return;}
+  const months=parseInt(document.getElementById('startFrom').value);
+  const wType=document.getElementById('wType').value;
+  const budget=document.getElementById('budget').value;
+  const guests=document.getElementById('guests').value||'200';
+  const city=document.getElementById('city').value||'Delhi';
+  const names=document.getElementById('names').value.trim();
+  const special=document.getElementById('special').value.trim();
+  const ceremonies=[...document.querySelectorAll('.cer-item.on')].map(c=>c.dataset.val).join(', ');
 
-Also include:
-- Week-before checklist
-- Day-before checklist  
-- Wedding day timeline
+  weddingDate=new Date(dateVal);
+  document.getElementById('genBtn').disabled=true;
+  document.getElementById('errBox').style.display='none';
+  document.getElementById('resultW').style.display='none';
+  startProg();
 
-Make it practical, detailed, and culturally relevant for Indian weddings. Use Hinglish language.`;
+  const sys=`You are India's best wedding planner. Respond ONLY with valid JSON. No text before or after. No markdown. Pure JSON only.
 
-  try {
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ system: systemPrompt, messages: [{role: 'user', content: userPrompt}] })
-    });
-    const data = await res.json();
-    const text = data.choices[0].message.content;
-    document.getElementById('timelineText').textContent = text;
-    document.getElementById('resultCard').style.display = 'block';
-    document.getElementById('resultCard').scrollIntoView({behavior: 'smooth', block: 'start'});
-  } catch(e) {
-    alert('Error: ' + e.message);
-  } finally {
-    btn.disabled = false;
-    document.getElementById('loading').style.display = 'none';
+Return this structure:
+{
+  "weddingDate": "${dateVal}",
+  "coupleName": "${names||'The Couple'}",
+  "city": "${city}",
+  "months": [
+    {
+      "monthNum": 1,
+      "title": "Month X — X Months Before Wedding",
+      "targetDate": "Month YYYY",
+      "phase": "Preparation|Booking|Finalization|Countdown|Wedding Week",
+      "tasks": [
+        {
+          "id": "m1t1",
+          "text": "<specific actionable task in Hinglish>",
+          "category": "venue|vendor|budget|outfit|decor|ceremony|admin|urgent",
+          "priority": "high|med|low",
+          "note": "<optional brief tip>"
+        }
+      ],
+      "vendorDeadlines": [
+        {"vendor": "<vendor name>", "deadline": "<book by when>", "urgency": "high|med"}
+      ],
+      "tip": "<one key tip for this month in Hinglish>",
+      "warning": "<one important warning>"
+    }
+  ],
+  "weekBefore": {
+    "title": "Wedding Se 1 Hafte Pehle",
+    "tasks": [<same task format>]
+  },
+  "dayBefore": {
+    "title": "Wedding Se 1 Din Pehle",
+    "tasks": [<same task format>]
+  },
+  "weddingDay": {
+    "title": "Wedding Ka Din 💒",
+    "tasks": [<same task format — hour by hour>]
   }
 }
 
-function copyTimeline() {
-  navigator.clipboard.writeText(document.getElementById('timelineText').textContent).then(() => {
-    const t = document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+Create ${months} months of planning PLUS week-before, day-before, and wedding day. Each month needs 6-9 specific, actionable tasks in Hinglish. Tasks must be realistic and specific to ${city}, ${wType}, ${budget}, ${guests} guests. Ceremonies: ${ceremonies}.`;
+
+  const usr=`Wedding: ${dateVal}, Type: ${wType}, Budget: ${budget}, Guests: ${guests}, City: ${city}, Ceremonies: ${ceremonies}, Planning duration: ${months} months${special?', Special: '+special:''}${names?', Names: '+names:''}. Generate complete JSON timeline.`;
+
+  try{
+    const res=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,messages:[{role:'user',content:usr}]})});
+    if(!res.ok)throw new Error('Server error '+res.status);
+    const data=await res.json();
+    const raw=data.choices[0].message.content;
+    let timeline;
+    try{
+      const cleaned=raw.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+      timeline=JSON.parse(cleaned);
+    }catch(e){
+      const match=raw.match(/\{[\s\S]*\}/);
+      if(match)timeline=JSON.parse(match[0]);
+      else throw new Error('JSON parse failed');
+    }
+    stopProg();
+    storedTimeline=timeline;
+    try{localStorage.setItem(SAVE_KEY,JSON.stringify({timeline,meta:{dateVal,wType,budget,guests,city,names}}));}catch(e){}
+    renderTimeline(timeline);
+    document.getElementById('resultW').style.display='block';
+    document.getElementById('resultW').scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(err){
+    stopProg();
+    showErr('⚠️ Kuch gadbad hui. Dobara try karein. ('+err.message+')');
+  }finally{
+    document.getElementById('genBtn').disabled=false;
+  }
+}
+
+// ── RENDER TIMELINE ──
+function renderTimeline(t){
+  const prog=loadProgress();
+  weddingDate=new Date(t.weddingDate||document.getElementById('wDate').value);
+
+  // Header
+  document.getElementById('thCouple').textContent=(t.coupleName||'Aapki') + ' Wedding Timeline 💍';
+  document.getElementById('thSub').textContent=`${t.city||''} • ${new Date(t.weddingDate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}`;
+  const badges=document.getElementById('thBadges');
+  const bdata=[
+    {t:document.getElementById('wType')?.value?.split('(')[0]?.trim()||'Wedding',c:'thb-teal'},
+    {t:document.getElementById('budget')?.value?.split(' ')[0]||'',c:'thb-gold'},
+    {t:(document.getElementById('guests')?.value||'200')+' Guests',c:'thb-rose'}
+  ];
+  badges.innerHTML=bdata.map(b=>`<span class="thb ${b.c}">${b.t}</span>`).join('');
+
+  // Countdown
+  updateCountdown();
+  setInterval(updateCountdown,60000);
+
+  // Collect ALL tasks for progress
+  const allMonths=[...(t.months||[])];
+  if(t.weekBefore)allMonths.push({...t.weekBefore,monthNum:'wb',title:t.weekBefore.title,phase:'Countdown'});
+  if(t.dayBefore)allMonths.push({...t.dayBefore,monthNum:'db',title:t.dayBefore.title,phase:'Countdown'});
+  if(t.weddingDay)allMonths.push({...t.weddingDay,monthNum:'wd',title:t.weddingDay.title,phase:'Wedding'});
+
+  const allTasks=allMonths.flatMap(m=>(m.tasks||[]).map(tk=>tk.id));
+  const doneTasks=allTasks.filter(id=>prog[id]);
+  updateProgress(doneTasks.length,allTasks.length);
+
+  // Render blocks
+  const container=document.getElementById('timelineBlocks');
+  container.innerHTML='';
+
+  const now=new Date();
+
+  allMonths.forEach((month,mi)=>{
+    const tasks=month.tasks||[];
+    const doneCount=tasks.filter(t=>prog[t.id]).length;
+    const total=tasks.length;
+    const isSpecial=['wb','db','wd'].includes(month.monthNum);
+
+    // Determine status
+    let dotCls='',progCls='mp-pending',progTxt=`${doneCount}/${total}`;
+    if(doneCount===total&&total>0){dotCls='completed';progCls='mp-done';progTxt='✓ Done';}
+
+    // Month block
+    const block=document.createElement('div');
+    block.className='month-block';
+    block.style.animationDelay=(mi*0.06)+'s';
+
+    const dotEl=document.createElement('div');
+    dotEl.className='month-dot '+dotCls;
+    dotEl.textContent=dotCls==='completed'?'✓':'';
+
+    const cardEl=document.createElement('div');
+    cardEl.className='month-card'+(mi<2?' open':'');
+    if(isSpecial)cardEl.style.borderColor='rgba(232,184,75,.35)';
+
+    // Header
+    const hdr=document.createElement('div');
+    hdr.className='month-header';
+    hdr.onclick=()=>cardEl.classList.toggle('open');
+    hdr.innerHTML=`
+      <div class="month-hdr-left">
+        <span class="month-num">${isSpecial?'🌟':('M'+month.monthNum)}</span>
+        <div>
+          <div class="month-name">${month.title||'Month '+month.monthNum}</div>
+          <div class="month-range">${month.targetDate||month.phase||''}</div>
+        </div>
+      </div>
+      <div class="month-hdr-right">
+        <span class="month-prog-pill ${progCls}">${progTxt}</span>
+        <span class="month-chevron">▼</span>
+      </div>`;
+
+    // Body
+    const body=document.createElement('div');
+    body.className='month-body';
+    let bodyHtml='<div class="month-content">';
+
+    // Tasks
+    tasks.forEach(task=>{
+      const isDone=!!prog[task.id];
+      const catClass='tc-'+(task.category||'vendor');
+      bodyHtml+=`<div class="task-item${isDone?' done':''}" id="ti_${task.id}" onclick="toggleTask('${task.id}','${month.monthNum}')">
+        <div class="task-cb"><span class="task-cb-tick">✓</span></div>
+        <div class="task-body">
+          <div class="task-text">${task.text||''}</div>
+          <div class="task-meta">
+            <span class="task-cat ${catClass}">${task.category||'task'}</span>
+            ${task.priority==='high'?'<span class="task-priority tp-high">● HIGH</span>':''}
+            ${task.note?`<span class="task-date">${task.note}</span>`:''}
+          </div>
+        </div>
+      </div>`;
+    });
+
+    // Vendor deadlines
+    if(month.vendorDeadlines&&month.vendorDeadlines.length){
+      bodyHtml+='<div style="margin-top:12px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px">🏪 Vendor Booking Deadlines</div>';
+      month.vendorDeadlines.forEach(v=>{
+        bodyHtml+=`<div class="vd-row"><span class="vd-name">📍 ${v.vendor||''}</span><span class="vd-dl">${v.deadline||''}</span><span class="vd-status ${v.urgency==='high'?'vd-book':'vd-done'}">${v.urgency==='high'?'Book Now':'On Track'}</span></div>`;
+      });
+    }
+
+    // Tip
+    if(month.tip){
+      bodyHtml+=`<div class="month-tips"><strong>💡 Tip:</strong> ${month.tip}${month.warning?`<br><strong style="color:var(--orange)">⚠️ Warning:</strong> ${month.warning}`:''}</div>`;
+    }
+
+    bodyHtml+='</div>';
+    body.innerHTML=bodyHtml;
+
+    cardEl.appendChild(hdr);
+    cardEl.appendChild(body);
+    block.appendChild(dotEl);
+    block.appendChild(cardEl);
+    container.appendChild(block);
   });
 }
 
-function shareWhatsApp() {
-  const text = document.getElementById('timelineText').textContent;
-  window.open(`https://wa.me/?text=${encodeURIComponent(text.substring(0, 1000) + '...\n\nSmartShaadi.online pe banao apna wedding timeline!')}`, '_blank');
+// ── TASK TOGGLE ──
+function toggleTask(id,monthNum){
+  const prog=loadProgress();
+  prog[id]=!prog[id];
+  saveProgress(prog);
+
+  const el=document.getElementById('ti_'+id);
+  if(el)el.classList.toggle('done',!!prog[id]);
+
+  // Recount for this month and overall
+  const allItems=document.querySelectorAll('.task-item');
+  const total=allItems.length;
+  const done=document.querySelectorAll('.task-item.done').length;
+  updateProgress(done,total);
+
+  // Update month pill
+  updateMonthPill(monthNum);
 }
+
+function updateMonthPill(monthNum){
+  // Find the month block and update its pill
+  const blocks=document.querySelectorAll('.month-block');
+  blocks.forEach(block=>{
+    const numEl=block.querySelector('.month-num');
+    if(!numEl)return;
+    const mn=numEl.textContent.replace('M','');
+    if(mn!==String(monthNum)&&!(monthNum==='wb'&&numEl.textContent.includes('🌟')))return;
+    const tasks=block.querySelectorAll('.task-item');
+    const done=block.querySelectorAll('.task-item.done');
+    const pill=block.querySelector('.month-prog-pill');
+    const dot=block.querySelector('.month-dot');
+    if(!pill)return;
+    if(done.length===tasks.length&&tasks.length>0){
+      pill.className='month-prog-pill mp-done';pill.textContent='✓ Done';
+      if(dot){dot.className='month-dot completed';dot.textContent='✓';}
+    }else{
+      pill.className='month-prog-pill mp-pending';pill.textContent=`${done.length}/${tasks.length}`;
+      if(dot)dot.className='month-dot';
+    }
+  });
+}
+
+function updateProgress(done,total){
+  const pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('opFill').style.width=pct+'%';
+  document.getElementById('opPct').textContent=pct+'%';
+  document.getElementById('opLabel').textContent=`Overall Progress — ${done} of ${total} tasks completed`;
+  document.getElementById('opStats').innerHTML=`
+    <div class="os"><span class="os-dot" style="background:var(--green)"></span><span><strong>${done}</strong> Completed</span></div>
+    <div class="os"><span class="os-dot" style="background:var(--gold)"></span><span><strong>${total-done}</strong> Remaining</span></div>
+    <div class="os"><span class="os-dot" style="background:var(--teal)"></span><span><strong>${pct}%</strong> Done</span></div>`;
+}
+
+function updateCountdown(){
+  if(!weddingDate)return;
+  const now=new Date();
+  const diff=weddingDate-now;
+  if(diff<0){document.getElementById('countdown').innerHTML='<div class="cd-box"><div class="cd-num">🎉</div><div class="cd-lbl">Completed!</div></div>';return;}
+  const days=Math.floor(diff/86400000);
+  const hrs=Math.floor((diff%86400000)/3600000);
+  const mins=Math.floor((diff%3600000)/60000);
+  document.getElementById('countdown').innerHTML=`
+    <div class="cd-box"><div class="cd-num">${Math.floor(days/30)}</div><div class="cd-lbl">Months</div></div>
+    <div class="cd-box"><div class="cd-num">${days%30}</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-box"><div class="cd-num">${hrs}</div><div class="cd-lbl">Hours</div></div>`;
+}
+
+function clearProgress(){
+  if(confirm('Sab tasks reset ho jaayenge. Sure?')){
+    try{localStorage.removeItem(PROG_KEY);}catch(e){}
+    document.querySelectorAll('.task-item.done').forEach(el=>el.classList.remove('done'));
+    document.querySelectorAll('.month-dot.completed').forEach(el=>{el.className='month-dot';el.textContent='';});
+    document.querySelectorAll('.month-prog-pill').forEach(pill=>{
+      const tasks=pill.closest('.month-block')?.querySelectorAll('.task-item');
+      if(tasks)pill.textContent='0/'+tasks.length;
+      pill.className='month-prog-pill mp-pending';
+    });
+    const total=document.querySelectorAll('.task-item').length;
+    updateProgress(0,total);
+    showToast('🗑️ Progress Reset!');
+  }
+}
+
+// ── COPY ──
+function copyAll(){
+  if(!storedTimeline){showToast('⚠️ Pehle timeline generate karein');return;}
+  let txt='📅 Wedding Planning Timeline — SmartShaadi.online\n\n';
+  (storedTimeline.months||[]).forEach(m=>{
+    txt+=`\n═══ ${m.title||'Month'} ═══\n`;
+    (m.tasks||[]).forEach(t=>txt+=`☐ ${t.text}\n`);
+    if(m.tip)txt+=`💡 ${m.tip}\n`;
+  });
+  if(storedTimeline.weekBefore){txt+=`\n═══ ${storedTimeline.weekBefore.title} ═══\n`;(storedTimeline.weekBefore.tasks||[]).forEach(t=>txt+=`☐ ${t.text}\n`);}
+  if(storedTimeline.weddingDay){txt+=`\n═══ ${storedTimeline.weddingDay.title} ═══\n`;(storedTimeline.weddingDay.tasks||[]).forEach(t=>txt+=`☐ ${t.text}\n`);}
+  txt+='\n🔗 https://smartshaadi.online/ai-planning-timeline.html';
+  navigator.clipboard.writeText(txt).then(()=>showToast('📋 Timeline Copied!'));
+}
+function waShare(){
+  if(!storedTimeline){showToast('⚠️ Pehle timeline generate karein');return;}
+  const firstMonth=storedTimeline.months?.[0];
+  const txt=`📅 Wedding Planning Timeline\n${storedTimeline.coupleName||''} • ${storedTimeline.city||''}\n\nMahina 1 ke tasks:\n${(firstMonth?.tasks||[]).slice(0,5).map(t=>'☐ '+t.text).join('\n')}\n\n...aur bahut kuch SmartShaadi.online pe!\n🔗 https://smartshaadi.online/ai-planning-timeline.html`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt));
+}
+function printIt(){window.print();}
+function shareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Planning Timeline — month-by-month task tracker!\n📅 https://smartshaadi.online/ai-planning-timeline.html'));}
+
+function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+function tfaq(btn){
+  const a=btn.nextElementSibling;const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.style.maxHeight='0';});
+  if(!isOpen){btn.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+}
+
+// Load saved timeline on page load
+(function(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');
+    if(saved&&saved.timeline&&saved.meta){
+      const m=saved.meta;
+      if(m.dateVal)document.getElementById('wDate').value=m.dateVal;
+      if(m.city)document.getElementById('city').value=m.city;
+      if(m.guests)document.getElementById('guests').value=m.guests;
+      if(m.names)document.getElementById('names').value=m.names;
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
