@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embed SmartShaadi AI Tools — Free Widget Code | SmartShaadi</title>
+<meta name="description" content="SmartShaadi ke free AI wedding tools apne blog ya website pe embed karo. Budget Calculator, Invitation Writer, Kundali Matching — sab free iframe codes yahan hain.">
+<link rel="canonical" href="https://smartshaadi.online/embed.html">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --bg:#06050F;--bg2:#0D0B1C;--card:#121028;
+  --gold:#E8B84B;--gl:#F5D276;--gold-bg:rgba(232,184,75,.08);--gold-bd:rgba(232,184,75,.22);
+  --teal:#2DD4BF;--teal-bg:rgba(45,212,191,.08);--teal-bd:rgba(45,212,191,.25);
+  --green:#4ADE80;--rose:#F472B6;--blue:#60A5FA;--purple:#C084FC;
+  --text:#F0ECFF;--muted:rgba(240,236,255,.52);--faint:rgba(240,236,255,.28);
+  --div:rgba(255,255,255,.07);--r:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.65}
+a{text-decoration:none;color:inherit}
+button{font-family:'DM Sans',sans-serif;cursor:pointer}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+nav{background:rgba(6,5,15,.95);backdrop-filter:blur(22px);border-bottom:1px solid var(--gold-bd);padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gl)}
+.logo em{font-style:italic;color:var(--text);font-weight:400}
+.nav-r a{font-size:.76rem;color:var(--muted);padding:.3rem .7rem;border-radius:6px;transition:all .2s}
+.nav-r a:hover{color:var(--gold);background:var(--gold-bg)}
+.nav-cta{background:var(--gold)!important;color:#06050f!important;font-weight:700!important;border-radius:6px!important}
+
+.hero{position:relative;padding:56px 20px 44px;text-align:center;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(45,212,191,.12) 0%,transparent 65%)}
+.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--teal-bg);border:1px solid var(--teal-bd);color:var(--teal);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem 1.1rem;border-radius:100px;margin-bottom:1.3rem}
+.bdot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;display:inline-block}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:.9rem}
+h1 em{font-style:italic;color:var(--gl)}
+h1 strong{color:var(--teal)}
+.hero-sub{font-size:.97rem;color:var(--muted);max-width:560px;margin:0 auto 1.5rem;line-height:1.8}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 80px;position:relative;z-index:1}
+
+.ad-w{background:var(--bg2);border:1px dashed var(--gold-bd);border-radius:10px;padding:.4rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+/* HOW TO SECTION */
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:24px 0}
+.how-step{background:var(--card);border:1px solid var(--div);border-radius:12px;padding:18px;text-align:center}
+.how-num{width:36px;height:36px;border-radius:50%;background:var(--teal-bg);border:1.5px solid var(--teal-bd);color:var(--teal);font-family:'Playfair Display',serif;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.how-t{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.how-d{font-size:.76rem;color:var(--muted);line-height:1.55}
+
+/* TOOL CARDS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:18px;margin-top:20px}
+.tool-embed-card{background:var(--card);border:1px solid var(--div);border-radius:var(--r);overflow:hidden;position:relative}
+.tool-embed-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.tec-header{padding:16px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--div)}
+.tec-icon{font-size:1.6rem}
+.tec-info{flex:1}
+.tec-name{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.tec-desc{font-size:.76rem;color:var(--muted)}
+.tec-badge{font-size:.64rem;padding:.2rem .6rem;border-radius:100px;font-weight:700;background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd)}
+
+/* TABS */
+.etabs{display:flex;gap:.4rem;padding:10px 18px;border-bottom:1px solid var(--div);overflow-x:auto;scrollbar-width:none}
+.etabs::-webkit-scrollbar{display:none}
+.etab{padding:.3rem .8rem;border-radius:6px;font-size:.73rem;font-weight:600;border:1px solid var(--div);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.etab.on{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)}
+
+/* CODE AREA */
+.code-area{padding:14px 18px}
+.code-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.code-box{position:relative}
+.code-pre{background:rgba(0,0,0,.4);border:1px solid var(--div);border-radius:8px;padding:12px 14px;font-size:.75rem;font-family:'Courier New',monospace;color:#a8e6cf;overflow-x:auto;white-space:pre;line-height:1.6;scrollbar-width:thin;scrollbar-color:var(--div) transparent}
+.code-copy-btn{position:absolute;top:8px;right:8px;padding:5px 10px;border-radius:6px;border:1px solid var(--div);background:rgba(255,255,255,.06);color:var(--muted);font-size:.68rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.code-copy-btn:hover{border-color:var(--teal-bd);color:var(--teal);background:var(--teal-bg)}
+.code-copy-btn.copied{border-color:rgba(74,222,128,.3);color:var(--green);background:rgba(74,222,128,.08)}
+
+/* PREVIEW */
+.preview-area{padding:14px 18px;display:none}
+.preview-area.show{display:block}
+.preview-frame{width:100%;height:400px;border:1px solid var(--div);border-radius:8px;overflow:hidden}
+.preview-frame iframe{width:100%;height:100%;border:none}
+
+/* SIZE OPTIONS */
+.size-opts{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:10px}
+.size-btn{padding:.3rem .7rem;border-radius:6px;font-size:.72rem;font-weight:600;border:1px solid var(--div);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.size-btn.on{background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)}
+
+/* CUSTOMIZE */
+.customize-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.cust-inp{padding:7px 10px;border-radius:7px;border:1px solid var(--div);background:rgba(255,255,255,.04);color:var(--text);font-size:.8rem;font-family:'DM Sans',sans-serif;outline:none;width:100px}
+.cust-inp:focus{border-color:var(--teal)}
+.cust-label{font-size:.75rem;color:var(--muted)}
+.update-btn{padding:7px 14px;border-radius:7px;border:none;background:var(--teal);color:#060e0e;font-size:.78rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s}
+.update-btn:hover{opacity:.85}
+
+/* FEATURE TAGS */
+.feat-tags{display:flex;gap:.3rem;flex-wrap:wrap;padding:0 18px 14px}
+.ft{font-size:.65rem;padding:.15rem .5rem;border-radius:3px;font-weight:600}
+.ft-free{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.2)}
+.ft-mobile{background:rgba(96,165,250,.1);color:var(--blue);border:1px solid rgba(96,165,250,.2)}
+.ft-no-reg{background:rgba(244,114,182,.1);color:var(--rose);border:1px solid rgba(244,114,182,.2)}
+.ft-ai{background:rgba(192,132,252,.1);color:var(--purple);border:1px solid rgba(192,132,252,.2)}
+
+/* SECTION TITLE */
+.sec-title{font-family:'Playfair Display',serif;font-size:1.5rem;text-align:center;margin:28px 0 16px;color:var(--text)}
+.sec-title em{color:var(--gl);font-style:italic}
+
+/* POLICY BOX */
+.policy-box{background:var(--card);border:1px solid var(--teal-bd);border-radius:12px;padding:20px;margin:24px 0}
+.pb-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:.5rem}
+.pb-list{list-style:none}
+.pb-list li{font-size:.84rem;color:var(--muted);padding:.45rem 0;border-bottom:1px solid var(--div);display:flex;align-items:flex-start;gap:.6rem;line-height:1.6}
+.pb-list li:last-child{border-bottom:none}
+.pb-list li strong{color:var(--text)}
+
+footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5rem;text-align:center}
+.fl{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gl);margin-bottom:.4rem;display:inline-block}
+.fl em{font-style:italic;color:var(--text);font-weight:400}
+.flt{font-size:.74rem;color:var(--faint);margin-bottom:.65rem}
+.fll{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.fll a{font-size:.72rem;color:var(--muted);transition:color .2s}
+.fll a:hover{color:var(--gold)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--green);color:#050e0b;padding:10px 22px;border-radius:100px;font-size:.83rem;font-weight:700;opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:640px){
+  .tools-grid{grid-template-columns:1fr}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-r" style="display:flex;gap:.3rem">
+    <a href="index.html">Home</a>
+    <a href="ai-tools.html">AI Tools</a>
+    <a href="chatbot.html" class="nav-cta">AI Chatbot →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge"><span class="bdot"></span> Free Embed — Koi Sign-up Nahi</div>
+  <h1>SmartShaadi AI Tools<br><em>Embed Karo</em> Apni<br><strong>Website Pe</strong></h1>
+  <p class="hero-sub">Apne blog, WordPress, wedding website ya kisi bhi page pe yeh free AI tools lagao — sirf ek iframe code copy karo aur paste karo. Koi account nahi, koi cost nahi! 🚀</p>
+</section>
+
+<div class="wrap">
+
+  <div class="ad-w">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- HOW TO -->
+  <h2 class="sec-title">Kaise Lagayein — <em>3 Simple Steps</em></h2>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <div class="how-t">Tool Chunein</div>
+      <div class="how-d">Neeche se apna pasandida tool select karo — Budget Calculator, Invitation Writer, ya koi bhi</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <div class="how-t">Code Copy Karein</div>
+      <div class="how-d">"Copy Code" button dabao — pura iframe code clipboard mein aa jaayega</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <div class="how-t">Paste Karein</div>
+      <div class="how-d">Apni website, blog post ya WordPress editor mein HTML mode mein paste karo — ho gaya!</div>
+    </div>
+  </div>
+
+  <!-- TOOLS GRID -->
+  <h2 class="sec-title">9 AI Tools — <em>Sab Embeddable</em></h2>
+  <div class="tools-grid" id="toolsGrid"></div>
+
+  <div class="ad-w" style="margin-top:24px">
+    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- POLICY -->
+  <div class="policy-box">
+    <div class="pb-title">📋 Embed Policy — Kya Allowed Hai?</div>
+    <ul class="pb-list">
+      <li><span>✅</span><div><strong>Free hai hamesha</strong> — Yeh tools embed karna bilkul free hai. Koi license fee nahi, koi monthly charge nahi.</div></li>
+      <li><span>✅</span><div><strong>Personal blogs</strong> — Wedding blogs, lifestyle sites, shaadi guide websites — sab pe use kar sakte ho.</div></li>
+      <li><span>✅</span><div><strong>Commercial sites</strong> — Wedding planning websites, vendor platforms pe bhi embed kar sakte ho.</div></li>
+      <li><span>✅</span><div><strong>App mein integrate</strong> — SmartShaadi app.html pe yeh tools already integrated hain.</div></li>
+      <li><span>⚠️</span><div><strong>Credit required</strong> — "Powered by SmartShaadi.online" attribution lagana zaroori hai — yeh code mein already included hai.</div></li>
+      <li><span>❌</span><div><strong>Re-branding nahi</strong> — SmartShaadi branding hata ke apni branding lagana allowed nahi hai.</div></li>
+    </ul>
+  </div>
+
+  <!-- WORDPRESS GUIDE -->
+  <h2 class="sec-title">WordPress Pe Kaise <em>Lagayein?</em></h2>
+  <div style="background:var(--card);border:1px solid var(--div);border-radius:12px;padding:20px;margin-bottom:24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--teal);margin-bottom:8px">📝 Block Editor (Gutenberg)</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.7">1. Post/Page open karo<br>2. "+" Add Block click karo<br>3. "Custom HTML" block chunein<br>4. Iframe code paste karo<br>5. Publish/Update karo</div>
+      </div>
+      <div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--gold);margin-bottom:8px">⌨️ Classic Editor</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.7">1. Post/Page open karo<br>2. "Text" tab click karo (Visual nahi)<br>3. Jahan show karein wahan paste karo<br>4. Publish/Update karo</div>
+      </div>
+      <div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--rose);margin-bottom:8px">🔧 Widget/Sidebar</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.7">1. Appearance → Widgets<br>2. "Custom HTML" widget add karo<br>3. Iframe code paste karo<br>4. Save karo</div>
+      </div>
+      <div>
+        <div style="font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:8px">💡 Elementor/Divi</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.7">1. Page builder open karo<br>2. HTML/Code widget add karo<br>3. Iframe code paste karo<br>4. Update karo</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="fl">Smart<em>Shaadi</em> 💍</a>
+  <p class="flt">India's Free AI Wedding Planner — 9 AI Tools, Budget Calculator, Guest Manager & More</p>
+  <div class="fll">
+    <a href="index.html">Home</a><a href="ai-tools.html">All Tools</a>
+    <a href="blogs.html">Magazine</a><a href="privacy-policy.html">Privacy</a><a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const BASE='https://www.smartshaadi.online';
+
+const TOOLS=[
+  {
+    id:'invitation',icon:'💌',name:'AI Invitation Writer',
+    desc:'6 languages, 8 styles, wedding website generator',
+    url:'/ai-invitation-writer.html',
+    color:'#F472B6',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:700
+  },
+  {
+    id:'budget',icon:'💰',name:'AI Budget Calculator',
+    desc:'City-wise breakdown, visual chart, vendor tips',
+    url:'/ai-budget-calculator.html',
+    color:'#4ADE80',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:750
+  },
+  {
+    id:'kundali',icon:'🔮',name:'AI Kundali Matching',
+    desc:'36 Guna Milan, Mangal Dosha, Shubh Muhurat',
+    url:'/ai-kundali-matching.html',
+    color:'#A78BFA',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:800
+  },
+  {
+    id:'theme',icon:'🎨',name:'AI Theme Generator',
+    desc:'Color palette, mood board, decor ideas',
+    url:'/ai-wedding-theme-generator.html',
+    color:'#C084FC',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:750
+  },
+  {
+    id:'timeline',icon:'📅',name:'AI Planning Timeline',
+    desc:'Month-wise checklist, task tracker, countdown',
+    url:'/ai-planning-timeline.html',
+    color:'#2DD4BF',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:800
+  },
+  {
+    id:'guest',icon:'👥',name:'AI Guest Manager',
+    desc:'Guest list, RSVP tracker, invitation sender',
+    url:'/ai-guest-manager.html',
+    color:'#14B8A6',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:850
+  },
+  {
+    id:'menu',icon:'🍽️',name:'AI Menu Planner',
+    desc:'Regional menu, quantity per guest, cost estimate',
+    url:'/ai-menu-planner.html',
+    color:'#FB923C',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:700
+  },
+  {
+    id:'playlist',icon:'🎵',name:'AI Playlist Generator',
+    desc:'Bollywood songs, Sangeet to Vidai',
+    url:'/ai-playlist-generator.html',
+    color:'#F59E0B',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:700
+  },
+  {
+    id:'photography',icon:'📸',name:'AI Photography Shot List',
+    desc:'100+ shots, ceremony-wise, share with photographer',
+    url:'/ai-photography-shots.html',
+    color:'#60A5FA',
+    features:['Free','Mobile Ready','No Sign-up','AI Powered'],
+    defaultH:700
+  }
+];
+
+const SIZES={
+  small:{w:'100%',h:500,label:'Small (500px)'},
+  medium:{w:'100%',h:700,label:'Medium (700px)'},
+  large:{w:'100%',h:900,label:'Large (900px)'},
+  full:{w:'100%',h:'100vh',label:'Full Height'},
+};
+
+const toolWidths={};
+const toolHeights={};
+
+function getIframeCode(tool,w,h){
+  const width=w||'100%';
+  const height=h||tool.defaultH;
+  return `<!-- SmartShaadi AI ${tool.name} Widget -->
+<iframe
+  src="${BASE}${tool.url}"
+  width="${width}"
+  height="${height}"
+  frameborder="0"
+  scrolling="yes"
+  loading="lazy"
+  title="${tool.name} — SmartShaadi.online"
+  allow="clipboard-write"
+  style="border:none;border-radius:12px;max-width:100%;display:block"
+></iframe>
+<p style="text-align:center;font-size:12px;margin-top:6px;color:#888">
+  Powered by <a href="https://www.smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a> — Free AI Wedding Tools
+</p>`;
+}
+
+function getResponsiveCode(tool){
+  return `<!-- SmartShaadi ${tool.name} — Responsive Embed -->
+<div style="position:relative;width:100%;padding-bottom:75%;height:0;overflow:hidden;border-radius:12px">
+  <iframe
+    src="${BASE}${tool.url}"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
+    frameborder="0"
+    scrolling="yes"
+    loading="lazy"
+    title="${tool.name}"
+    allow="clipboard-write"
+  ></iframe>
+</div>
+<p style="text-align:center;font-size:12px;margin-top:6px;color:#888">
+  Powered by <a href="https://www.smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a>
+</p>`;
+}
+
+function getWordPressCode(tool){
+  return `[html]
+<iframe src="${BASE}${tool.url}" width="100%" height="${tool.defaultH}" frameborder="0" scrolling="yes" loading="lazy" title="${tool.name}" allow="clipboard-write" style="border:none;border-radius:12px;max-width:100%"></iframe>
+<p style="text-align:center;font-size:12px">Powered by <a href="https://www.smartshaadi.online">SmartShaadi.online</a></p>
+[/html]`;
+}
+
+function getJsCode(tool){
+  return `<div id="ss-${tool.id}-widget"></div>
+<script>
+(function(){
+  var iframe=document.createElement('iframe');
+  iframe.src='${BASE}${tool.url}';
+  iframe.width='100%';
+  iframe.height='${tool.defaultH}';
+  iframe.frameBorder='0';
+  iframe.scrolling='yes';
+  iframe.loading='lazy';
+  iframe.title='${tool.name}';
+  iframe.allow='clipboard-write';
+  iframe.style.cssText='border:none;border-radius:12px;max-width:100%;display:block';
+  document.getElementById('ss-${tool.id}-widget').appendChild(iframe);
+  var credit=document.createElement('p');
+  credit.style.cssText='text-align:center;font-size:12px;margin-top:6px;color:#888';
+  credit.innerHTML='Powered by <a href="https://smartshaadi.online" target="_blank" style="color:#E8B84B">SmartShaadi.online</a>';
+  document.getElementById('ss-${tool.id}-widget').appendChild(credit);
+})();
+<\/script>`;
+}
+
+function buildCard(tool){
+  const card=document.createElement('div');
+  card.className='tool-embed-card';
+  card.style.setProperty('--tc',tool.color);
+  card.querySelector?.(':before');
+
+  const featColors={
+    'Free':'ft-free','Mobile Ready':'ft-mobile','No Sign-up':'ft-no-reg','AI Powered':'ft-ai'
+  };
+
+  card.innerHTML=`
+    <style>.tool-embed-card[data-id="${tool.id}"]::before{background:${tool.color}}</style>
+    <div class="tec-header">
+      <div class="tec-icon">${tool.icon}</div>
+      <div class="tec-info">
+        <div class="tec-name">${tool.name}</div>
+        <div class="tec-desc">${tool.desc}</div>
+      </div>
+      <span class="tec-badge">Embed Ready</span>
+    </div>
+    <div class="feat-tags">
+      ${tool.features.map(f=>`<span class="ft ${featColors[f]||'ft-free'}">${f}</span>`).join('')}
+    </div>
+    <div class="etabs">
+      <button class="etab on" onclick="switchTab('${tool.id}','iframe',this)">📋 Iframe</button>
+      <button class="etab" onclick="switchTab('${tool.id}','responsive',this)">📱 Responsive</button>
+      <button class="etab" onclick="switchTab('${tool.id}','wordpress',this)">🔵 WordPress</button>
+      <button class="etab" onclick="switchTab('${tool.id}','js',this)">⚡ JavaScript</button>
+      <button class="etab" onclick="switchTab('${tool.id}','preview',this)">👁️ Preview</button>
+    </div>
+    <div class="code-area" id="ca-${tool.id}">
+      <div class="code-label">📏 Size Chunein:</div>
+      <div class="size-opts">
+        <button class="size-btn" onclick="setSize('${tool.id}','small',this)">Small (500px)</button>
+        <button class="size-btn on" onclick="setSize('${tool.id}','medium',this)">Medium (700px)</button>
+        <button class="size-btn" onclick="setSize('${tool.id}','large',this)">Large (900px)</button>
+        <button class="size-btn" onclick="setSize('${tool.id}','custom',this)">Custom</button>
+      </div>
+      <div class="customize-row" id="custom-row-${tool.id}" style="display:none">
+        <span class="cust-label">Height:</span>
+        <input type="number" class="cust-inp" id="cust-h-${tool.id}" value="${tool.defaultH}" min="300" max="1200">
+        <span class="cust-label">px</span>
+        <button class="update-btn" onclick="updateCustom('${tool.id}')">Update</button>
+      </div>
+      <div class="code-label" style="margin-top:10px">Code:</div>
+      <div class="code-box">
+        <pre class="code-pre" id="code-${tool.id}">${escHtml(getIframeCode(tool,toolWidths[tool.id]||'100%',toolHeights[tool.id]||tool.defaultH))}</pre>
+        <button class="code-copy-btn" id="copybtn-${tool.id}" onclick="copyCode('${tool.id}')">📋 Copy</button>
+      </div>
+    </div>
+    <div class="preview-area" id="pa-${tool.id}">
+      <div class="code-label">Live Preview:</div>
+      <div class="preview-frame">
+        <iframe src="${BASE}${tool.url}" frameborder="0" loading="lazy" title="${tool.name}" allow="clipboard-write" style="width:100%;height:100%;border:none"></iframe>
+      </div>
+      <div style="font-size:.74rem;color:var(--muted);margin-top:8px;text-align:center">Yeh real tool hai — live preview mein try kar sakte hain!</div>
+    </div>`;
+  card.setAttribute('data-id',tool.id);
+  card.querySelector('.tool-embed-card::before');
+  return card;
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function switchTab(id,tab,btn){
+  const tool=TOOLS.find(t=>t.id===id);if(!tool)return;
+  const card=document.querySelector(`[data-id="${id}"]`);
+  card.querySelectorAll('.etab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+
+  const ca=document.getElementById('ca-'+id);
+  const pa=document.getElementById('pa-'+id);
+
+  if(tab==='preview'){
+    ca.style.display='none';pa.classList.add('show');
+  }else{
+    ca.style.display='block';pa.classList.remove('show');
+    const h=toolHeights[id]||tool.defaultH;
+    const w=toolWidths[id]||'100%';
+    let code='';
+    if(tab==='iframe')code=getIframeCode(tool,w,h);
+    else if(tab==='responsive')code=getResponsiveCode(tool);
+    else if(tab==='wordpress')code=getWordPressCode(tool);
+    else if(tab==='js')code=getJsCode(tool);
+    document.getElementById('code-'+id).textContent=escHtml(code);
+    document.getElementById('code-'+id).innerHTML=escHtml(code);
+  }
+}
+
+function setSize(id,size,btn){
+  const tool=TOOLS.find(t=>t.id===id);if(!tool)return;
+  const card=document.querySelector(`[data-id="${id}"]`);
+  card.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const customRow=document.getElementById('custom-row-'+id);
+  if(size==='custom'){
+    customRow.style.display='flex';
+  }else{
+    customRow.style.display='none';
+    const s=SIZES[size];
+    toolHeights[id]=s.h;
+    toolWidths[id]=s.w;
+    refreshCode(id);
+  }
+}
+
+function updateCustom(id){
+  const h=parseInt(document.getElementById('cust-h-'+id).value)||700;
+  toolHeights[id]=h;toolWidths[id]='100%';
+  refreshCode(id);showToast('✅ Updated!');
+}
+
+function refreshCode(id){
+  const tool=TOOLS.find(t=>t.id===id);if(!tool)return;
+  const h=toolHeights[id]||tool.defaultH;
+  const w=toolWidths[id]||'100%';
+  const activeTab=document.querySelector(`[data-id="${id}"] .etab.on`)?.textContent||'';
+  let code='';
+  if(activeTab.includes('Responsive'))code=getResponsiveCode(tool);
+  else if(activeTab.includes('WordPress'))code=getWordPressCode(tool);
+  else if(activeTab.includes('JavaScript'))code=getJsCode(tool);
+  else code=getIframeCode(tool,w,h);
+  document.getElementById('code-'+id).textContent=escHtml(code);
+  document.getElementById('code-'+id).innerHTML=escHtml(code);
+}
+
+function copyCode(id){
+  const pre=document.getElementById('code-'+id);
+  const text=pre.textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.getElementById('copybtn-'+id);
+    btn.textContent='✅ Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='📋 Copy';btn.classList.remove('copied');},2000);
+    showToast('📋 Embed Code Copied!');
+  });
+}
+
+function showToast(m){
+  const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+// Build all cards
+const grid=document.getElementById('toolsGrid');
+TOOLS.forEach(tool=>{grid.appendChild(buildCard(tool));});
+</script>
+</body>
+</html>
