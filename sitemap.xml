@@ -491,4 +491,14 @@
     <priority>0.88</priority>
   </url>
 
+  <!-- ═══════════════════════════════════
+       BLOGS FOLDER
+       ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.smartshaadi.online/blogs/bhopal-wedding-photography-2026.html</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
