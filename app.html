@@ -372,14 +372,7 @@ textarea.inp{resize:none;}
     </div>
   </div>
 
-  <!-- AI Status Banner -->
-  <div style="margin:10px 14px 0;">
-    <div id="ai-status-banner" class="card" style="padding:12px 14px;border-color:rgba(231,76,60,.25);">
-      <div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>
-    </div>
-  </div>
-
-  <!-- Quick action buttons -->
+    <!-- Quick action buttons -->
   <div style="padding:14px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
     <button onclick="go('chat')" class="btn-gold" style="font-size:13px;padding:14px;">🤖 AI Chat</button>
     <button onclick="go('countdown')" class="btn-ghost" style="color:var(--gold);">⏳ Countdown</button>
@@ -738,85 +731,6 @@ textarea.inp{resize:none;}
 </div>
 
 <!-- ████████ SETTINGS ████████ -->
-<div id="scr-settings" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div class="st">⚙️ <span style="color:var(--gold);">Settings</span></div>
-  </div>
-  <div style="padding:14px;">
-
-    <!-- Groq API Key -->
-    <div class="card" style="margin-bottom:14px;border-color:rgba(201,168,76,.25);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="font-size:28px;">🤖</div>
-        <div>
-          <div style="font-size:14px;font-weight:800;">Groq API Key</div>
-          <div style="font-size:11px;color:var(--text2);margin-top:2px;">AI tools ke liye zaroori — bilkul FREE!</div>
-        </div>
-        <div id="key-status" style="margin-left:auto;font-size:20px;">❌</div>
-      </div>
-      <div id="key-steps" style="background:var(--s3);border-radius:var(--r-md);padding:12px;margin-bottom:12px;border:1px solid var(--border2);">
-        <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:8px;">📋 Key kaise milegi? (2 min)</div>
-        <div style="font-size:11px;color:var(--text2);line-height:2;">
-          1️⃣ <a href="https://console.groq.com" target="_blank" style="color:var(--gold);font-weight:700;">console.groq.com</a> pe jao<br>
-          2️⃣ Free account banao (Google se login)<br>
-          3️⃣ <b style="color:var(--text);">API Keys</b> → <b style="color:var(--text);">Create API Key</b><br>
-          4️⃣ Key copy karo aur neeche paste karo 👇
-        </div>
-      </div>
-      <label class="lbl">Groq API Key</label>
-      <input id="groq-key-inp" class="inp" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx" style="margin-bottom:10px;font-family:monospace;letter-spacing:1px;" oninput="checkKeyStatus()"/>
-      <div style="display:flex;gap:8px;">
-        <button onclick="saveGroqKey()" class="btn-gold" style="flex:1;">💾 Save Key</button>
-        <button onclick="testGroqKey()" class="btn-ghost" style="flex:1;">🧪 Test</button>
-      </div>
-      <div id="key-msg" style="font-size:11px;margin-top:10px;text-align:center;min-height:16px;"></div>
-    </div>
-
-    <!-- Model info -->
-    <div class="card" style="margin-bottom:14px;">
-      <div style="font-size:13px;font-weight:800;margin-bottom:10px;">🧠 AI Model Info</div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">Model</span>
-        <span style="font-size:12px;font-weight:700;color:var(--gold);">Llama 3 8B</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">Speed</span>
-        <span style="font-size:12px;font-weight:700;color:var(--green);">⚡ Ultra Fast</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">Cost</span>
-        <span style="font-size:12px;font-weight:700;color:var(--green);">FREE</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;">
-        <span style="font-size:12px;color:var(--text2);">Limit</span>
-        <span style="font-size:12px;font-weight:700;">14,400 req/day</span>
-      </div>
-    </div>
-
-    <!-- App info -->
-    <div class="card" style="margin-bottom:14px;">
-      <div style="font-size:13px;font-weight:800;margin-bottom:10px;">📱 App Info</div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">Version</span>
-        <span style="font-size:12px;font-weight:700;color:var(--gold);">v2.0</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;">
-        <span style="font-size:12px;color:var(--text2);">Data Storage</span>
-        <span style="font-size:12px;font-weight:700;">LocalStorage</span>
-      </div>
-    </div>
-
-    <!-- Danger zone -->
-    <div class="card" style="border-color:rgba(231,76,60,.2);">
-      <div style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:10px;">⚠️ Danger Zone</div>
-      <button onclick="if(confirm('Sab data delete ho jayega. Sure?')){localStorage.clear();showToast('🗑️ Data cleared!');go('home');}" style="width:100%;padding:12px;background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.25);border-radius:var(--r-md);color:var(--red);font-weight:700;cursor:pointer;font-family:var(--font-body);font-size:13px;">🗑️ Clear All App Data</button>
-    </div>
-  </div>
-</div>
-</div>
-
 
 </div><!-- /wrap -->
 
@@ -827,7 +741,6 @@ textarea.inp{resize:none;}
   <button class="nb" id="nb-countdown" onclick="go('countdown')"><span class="ni">⏳</span><span class="nl">Countdown</span></button>
   <button class="nb" id="nb-guests" onclick="go('guests')"><span class="ni">👥</span><span class="nl">Guests</span></button>
   <button class="nb" id="nb-vendor-dir" onclick="go('vendor-dir')"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
-  <button class="nb" id="nb-settings" onclick="go('settings')"><span class="ni">⚙️</span><span class="nl">Settings</span></button>
 </nav>
 </div><!-- /shell -->
 
@@ -1123,7 +1036,6 @@ function openTool(id) {
   Freemium.consume();
   const t = TOOLS.find(x => x.id === id);
   if (!t) return;
-  // Open the full working tool page directly
   window.location.href = t.url;
 }
 
@@ -2037,7 +1949,6 @@ function saveGroqKey() {
   if (!val.startsWith('gsk_')) { showToast('⚠️ Valid Groq key "gsk_" se shuru hoti hai'); return; }
   AI.setKey(val);
   updateKeyStatusUI(true);
-  updateHomeAIStatus();
   document.getElementById('key-msg').innerHTML = '<span style="color:var(--green);font-weight:700;">✅ Key saved! AI ready hai 🎉</span>';
   showToast('🎉 Groq API key save ho gayi! AI ab kaam karega!');
 }
@@ -2052,8 +1963,7 @@ async function testGroqKey() {
     const reply = await AI.ask('You are a helpful assistant. Reply in one sentence only.', [{ role:'user', content:'Say "SmartShaadi AI ready hai!" in Hindi.' }]);
     if (msg) msg.innerHTML = '<span style="color:var(--green);font-weight:700;">✅ ' + reply.substring(0,80) + '</span>';
     updateKeyStatusUI(true);
-    updateHomeAIStatus();
-    showToast('🎉 AI kaam kar raha hai!');
+      showToast('🎉 AI kaam kar raha hai!');
   } catch(e) {
     if (msg) msg.innerHTML = '<span style="color:var(--red);">❌ ' + e.message + '</span>';
     showToast('❌ Key kaam nahi kar rahi');
@@ -2077,8 +1987,6 @@ function updateHomeAIStatus() {
    ═══════════════════════════════════ */
 function init() {
   Freemium.init();
-  updateHomeAIStatus();
-  rSettings();
   rTG();
   rg();
   loadTasks();
