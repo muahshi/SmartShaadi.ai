@@ -873,24 +873,47 @@ const App = {
    4B-2. GROQ AI MODULE
    ═══════════════════════════════════ */
 const AI = {
-  // Server route — key aur model sab server pe handle hota hai
-  API_URL: '/api/groq-agent',
+  GROQ_URL: 'https://api.groq.com/openai/v1/chat/completions',
+  MODEL: 'llama3-8b-8192',
+
+  getKey() {
+    return Store.get('groq_key', '');
+  },
+
+  setKey(k) {
+    Store.set('groq_key', k.trim());
+  },
 
   async ask(system, messages) {
-    const res = await fetch(this.API_URL, {
+    const key = this.getKey();
+    if (!key) {
+      go('settings');
+      throw new Error('Pehle Groq API key set karo ⚙️');
+    }
+    const res = await fetch(this.GROQ_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ system, messages })
+      headers: {
+        'Authorization': 'Bearer ' + key,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: this.MODEL,
+        max_tokens: 2048,
+        temperature: 0.8,
+        messages: [{ role: 'system', content: system }, ...messages]
+      })
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err?.error || 'Server error: ' + res.status);
+      throw new Error(err?.error?.message || 'API error: ' + res.status);
     }
     const d = await res.json();
     return d.choices?.[0]?.message?.content || 'Kuch error aaya, dobara try karein!';
   },
 
-  isConfigured() { return true; }
+  isConfigured() {
+    return !!this.getKey();
+  }
 };
 
 /* ═══════════════════════════════════
@@ -1100,12 +1123,8 @@ function openTool(id) {
   Freemium.consume();
   const t = TOOLS.find(x => x.id === id);
   if (!t) return;
-  App.currentTool = t;
-  App.TI = {};
-  document.getElementById('tool-name').textContent = t.name;
-  document.getElementById('tool-full-link').href = t.url;
-  renderToolForm(t);
-  go('tool');
+  // Open the full working tool page directly
+  window.location.href = t.url;
 }
 
 function renderToolForm(t, result = '', loading = false) {
@@ -2048,7 +2067,7 @@ function updateHomeAIStatus() {
     banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online — Groq Connected ⚡</span></div>';
     banner.style.borderColor = 'rgba(46,204,113,.2)';
   } else {
-    banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online ⚡</span></div>';
+    banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Tools Ready ⚡</span></div>';
     banner.style.borderColor = 'rgba(231,76,60,.25)';
   }
 }
