@@ -247,7 +247,7 @@ textarea.inp{resize:none;}
 <!-- ═══════════════════════════════
      SECTION 2: UI — Splash Screen
      ═══════════════════════════════ -->
-<div id="splash">
+<div id="splash" id="splash">
   <div style="text-align:center;">
     <div style="font-size:72px;margin-bottom:20px;animation:spinIn 1.2s cubic-bezier(.34,1.56,.64,1);">💍</div>
     <div style="font-family:var(--font-display);font-size:38px;font-weight:900;color:var(--text);line-height:1.1;animation:fadeUp .6s .4s both;">Smart<span style="color:var(--gold);">Shaadi</span></div>
@@ -260,6 +260,7 @@ textarea.inp{resize:none;}
   </div>
   <div style="position:absolute;bottom:36px;font-size:11px;color:var(--text3);letter-spacing:1px;">India's #1 Free AI Wedding Planner</div>
 </div>
+<script>setTimeout(function(){var s=document.getElementById('splash');if(s){s.style.opacity='0';setTimeout(function(){s.style.display='none'},450);}},2500);</script>
 
 <!-- Offline Banner -->
 <div id="offline-banner">📡 Internet nahi hai — AI tools offline kaam nahi karenge</div>
@@ -907,6 +908,25 @@ textarea.inp{resize:none;}
      ═══════════════════════════════════════════════ -->
 <script>
 'use strict';
+
+// ══ SPLASH — runs first, independent of everything ══
+(function(){
+  function hideSplash(){
+    var s=document.getElementById('splash');
+    if(!s)return;
+    s.style.transition='opacity 0.4s ease';
+    s.style.opacity='0';
+    setTimeout(function(){s.style.display='none';},450);
+  }
+  // Multiple fallbacks
+  setTimeout(hideSplash, 1800);
+  setTimeout(hideSplash, 3000);
+  setTimeout(hideSplash, 5000);
+  window.addEventListener('load', function(){ setTimeout(hideSplash,500); });
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(hideSplash,1800); });
+})();
+
+
 
 /* ═══════════════════════════════════
    4A. GLOBAL APP STATE
@@ -2196,17 +2216,9 @@ function init() {
     if (wdCd) wdCd.value = dateStr;
   }
 
-  // Splash screen — robust fix
-  function hideSplash() {
-    var s = document.getElementById('splash');
-    if (!s) return;
-    s.style.opacity = '0';
-    setTimeout(function(){ s.style.display = 'none'; }, 500);
-  }
-  setTimeout(hideSplash, 2000); // Always fires after 2s
 }
 
-init();
+try{ init(); } catch(e){ console.error("Init error:",e); }
 </script>
 </body>
 </html>
