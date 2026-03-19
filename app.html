@@ -372,6 +372,13 @@ textarea.inp{resize:none;}
     </div>
   </div>
 
+  <!-- AI Status Banner -->
+  <div style="margin:10px 14px 0;">
+    <div id="ai-status-banner" class="card" style="padding:12px 14px;border-color:rgba(231,76,60,.25);">
+      <div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>
+    </div>
+  </div>
+
   <!-- Quick action buttons -->
   <div style="padding:14px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
     <button onclick="go('chat')" class="btn-gold" style="font-size:13px;padding:14px;">🤖 AI Chat</button>
@@ -730,6 +737,87 @@ textarea.inp{resize:none;}
 </div>
 </div>
 
+<!-- ████████ SETTINGS ████████ -->
+<div id="scr-settings" class="scr">
+<div style="padding-bottom:24px;">
+  <div class="topbar">
+    <button onclick="go('home')" class="back-btn">← Wapas</button>
+    <div class="st">⚙️ <span style="color:var(--gold);">Settings</span></div>
+  </div>
+  <div style="padding:14px;">
+
+    <!-- Groq API Key -->
+    <div class="card" style="margin-bottom:14px;border-color:rgba(201,168,76,.25);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="font-size:28px;">🤖</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;">Groq API Key</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:2px;">AI tools ke liye zaroori — bilkul FREE!</div>
+        </div>
+        <div id="key-status" style="margin-left:auto;font-size:20px;">❌</div>
+      </div>
+      <div id="key-steps" style="background:var(--s3);border-radius:var(--r-md);padding:12px;margin-bottom:12px;border:1px solid var(--border2);">
+        <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:8px;">📋 Key kaise milegi? (2 min)</div>
+        <div style="font-size:11px;color:var(--text2);line-height:2;">
+          1️⃣ <a href="https://console.groq.com" target="_blank" style="color:var(--gold);font-weight:700;">console.groq.com</a> pe jao<br>
+          2️⃣ Free account banao (Google se login)<br>
+          3️⃣ <b style="color:var(--text);">API Keys</b> → <b style="color:var(--text);">Create API Key</b><br>
+          4️⃣ Key copy karo aur neeche paste karo 👇
+        </div>
+      </div>
+      <label class="lbl">Groq API Key</label>
+      <input id="groq-key-inp" class="inp" type="password" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx" style="margin-bottom:10px;font-family:monospace;letter-spacing:1px;" oninput="checkKeyStatus()"/>
+      <div style="display:flex;gap:8px;">
+        <button onclick="saveGroqKey()" class="btn-gold" style="flex:1;">💾 Save Key</button>
+        <button onclick="testGroqKey()" class="btn-ghost" style="flex:1;">🧪 Test</button>
+      </div>
+      <div id="key-msg" style="font-size:11px;margin-top:10px;text-align:center;min-height:16px;"></div>
+    </div>
+
+    <!-- Model info -->
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:800;margin-bottom:10px;">🧠 AI Model Info</div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
+        <span style="font-size:12px;color:var(--text2);">Model</span>
+        <span style="font-size:12px;font-weight:700;color:var(--gold);">Llama 3 8B</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
+        <span style="font-size:12px;color:var(--text2);">Speed</span>
+        <span style="font-size:12px;font-weight:700;color:var(--green);">⚡ Ultra Fast</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
+        <span style="font-size:12px;color:var(--text2);">Cost</span>
+        <span style="font-size:12px;font-weight:700;color:var(--green);">FREE</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;">
+        <span style="font-size:12px;color:var(--text2);">Limit</span>
+        <span style="font-size:12px;font-weight:700;">14,400 req/day</span>
+      </div>
+    </div>
+
+    <!-- App info -->
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:800;margin-bottom:10px;">📱 App Info</div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
+        <span style="font-size:12px;color:var(--text2);">Version</span>
+        <span style="font-size:12px;font-weight:700;color:var(--gold);">v2.0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;">
+        <span style="font-size:12px;color:var(--text2);">Data Storage</span>
+        <span style="font-size:12px;font-weight:700;">LocalStorage</span>
+      </div>
+    </div>
+
+    <!-- Danger zone -->
+    <div class="card" style="border-color:rgba(231,76,60,.2);">
+      <div style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:10px;">⚠️ Danger Zone</div>
+      <button onclick="if(confirm('Sab data delete ho jayega. Sure?')){localStorage.clear();showToast('🗑️ Data cleared!');go('home');}" style="width:100%;padding:12px;background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.25);border-radius:var(--r-md);color:var(--red);font-weight:700;cursor:pointer;font-family:var(--font-body);font-size:13px;">🗑️ Clear All App Data</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
 </div><!-- /wrap -->
 
 <!-- Bottom Nav -->
@@ -739,6 +827,7 @@ textarea.inp{resize:none;}
   <button class="nb" id="nb-countdown" onclick="go('countdown')"><span class="ni">⏳</span><span class="nl">Countdown</span></button>
   <button class="nb" id="nb-guests" onclick="go('guests')"><span class="ni">👥</span><span class="nl">Guests</span></button>
   <button class="nb" id="nb-vendor-dir" onclick="go('vendor-dir')"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
+  <button class="nb" id="nb-settings" onclick="go('settings')"><span class="ni">⚙️</span><span class="nl">Settings</span></button>
 </nav>
 </div><!-- /shell -->
 
@@ -777,6 +866,54 @@ const App = {
   bSpent: {},
   // Wedding date
   weddingDate: null,
+};
+
+
+/* ═══════════════════════════════════
+   4B-2. GROQ AI MODULE
+   ═══════════════════════════════════ */
+const AI = {
+  GROQ_URL: 'https://api.groq.com/openai/v1/chat/completions',
+  MODEL: 'llama3-8b-8192',
+
+  getKey() {
+    return Store.get('groq_key', '');
+  },
+
+  setKey(k) {
+    Store.set('groq_key', k.trim());
+  },
+
+  async ask(system, messages) {
+    const key = this.getKey();
+    if (!key) {
+      go('settings');
+      throw new Error('Pehle Groq API key set karo ⚙️');
+    }
+    const res = await fetch(this.GROQ_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + key,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: this.MODEL,
+        max_tokens: 2048,
+        temperature: 0.8,
+        messages: [{ role: 'system', content: system }, ...messages]
+      })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err?.error?.message || 'API error: ' + res.status);
+    }
+    const d = await res.json();
+    return d.choices?.[0]?.message?.content || 'Kuch error aaya, dobara try karein!';
+  },
+
+  isConfigured() {
+    return !!this.getKey();
+  }
 };
 
 /* ═══════════════════════════════════
@@ -881,6 +1018,7 @@ function _goCore(id) {
     'vendor-apply': rVA,
     admin: rAdmin,
     countdown: rCountdown,
+    settings: rSettings,
     report: () => {},
   };
   if (renders[id]) renders[id]();
@@ -1062,19 +1200,13 @@ async function runTool(id) {
   renderToolForm(t, '', true);
   try {
     const prompt = TP[id] ? TP[id](App.TI) : 'Help me plan my Indian wedding.';
-    const res = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: "You are SmartShaadi AI, India's expert wedding planner. Respond in warm Hinglish. Be detailed with Indian ₹ prices. Use clear sections and emojis.",
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-    const d = await res.json();
-    const txt = d.choices?.[0]?.message?.content || 'Kuch error aaya, dobara try karein!';
+    const txt = await AI.ask(
+      "You are SmartShaadi AI, India's expert wedding planner. Respond in warm Hinglish. Be detailed with Indian Rs prices. Use clear sections and emojis.",
+      [{ role: 'user', content: prompt }]
+    );
     renderToolForm(t, txt, false);
   } catch (e) {
-    renderToolForm(t, 'Error: ' + e.message + '\n\nWebsite pe jaake try karein: ' + t.url, false);
+    renderToolForm(t, 'AI Error: ' + e.message + '\n\nSettings mein Groq API key check karo', false);
   }
 }
 
@@ -1095,20 +1227,15 @@ async function sendChat() {
     document.querySelectorAll('#chat-wrap .mb:not(.typing-wrap)').forEach(b => {
       msgs.push({ role: b.classList.contains('me') ? 'user' : 'assistant', content: b.innerText });
     });
-    const r = await fetch('/api/groq-agent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: "You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish. Give Indian prices in ₹. Be helpful, warm, use emojis.",
-        messages: msgs
-      })
-    });
-    const d = await r.json();
+    const reply = await AI.ask(
+      "You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish. Give Indian prices in Rs. Be helpful, warm, use emojis.",
+      msgs
+    );
     removeTyping();
-    addMsg('ai', d.choices?.[0]?.message?.content || 'Dobara try karein 🙏');
+    addMsg('ai', reply);
   } catch (e) {
     removeTyping();
-    addMsg('ai', 'Thodi der mein try karein 🙏');
+    addMsg('ai', 'API key check karo Settings mein ⚙️ — ' + e.message);
   }
 }
 
@@ -1885,11 +2012,77 @@ document.addEventListener('click', () => {
   if (adminTaps >= 7) { adminTaps = 0; go('admin'); }
 });
 
+
+/* ═══════════════════════════════════
+   SECTION 17: SETTINGS & API KEY
+   ═══════════════════════════════════ */
+function rSettings() {
+  const key = AI.getKey();
+  const inp = document.getElementById('groq-key-inp');
+  if (inp && key) inp.value = key;
+  updateKeyStatusUI(!!key);
+}
+
+function checkKeyStatus() {
+  const val = document.getElementById('groq-key-inp')?.value || '';
+  updateKeyStatusUI(val.startsWith('gsk_') && val.length > 20);
+}
+
+function updateKeyStatusUI(valid) {
+  const status = document.getElementById('key-status');
+  const steps = document.getElementById('key-steps');
+  if (status) status.textContent = valid ? '✅' : '❌';
+  if (steps) steps.style.display = valid ? 'none' : 'block';
+}
+
+function saveGroqKey() {
+  const val = document.getElementById('groq-key-inp')?.value?.trim() || '';
+  if (!val) { showToast('⚠️ Key daalein!'); return; }
+  if (!val.startsWith('gsk_')) { showToast('⚠️ Valid Groq key "gsk_" se shuru hoti hai'); return; }
+  AI.setKey(val);
+  updateKeyStatusUI(true);
+  updateHomeAIStatus();
+  document.getElementById('key-msg').innerHTML = '<span style="color:var(--green);font-weight:700;">✅ Key saved! AI ready hai 🎉</span>';
+  showToast('🎉 Groq API key save ho gayi! AI ab kaam karega!');
+}
+
+async function testGroqKey() {
+  const val = document.getElementById('groq-key-inp')?.value?.trim() || '';
+  if (!val) { showToast('⚠️ Pehle key daalein'); return; }
+  AI.setKey(val);
+  const msg = document.getElementById('key-msg');
+  if (msg) msg.innerHTML = '<span style="color:var(--text2);">🔄 Testing...</span>';
+  try {
+    const reply = await AI.ask('You are a helpful assistant. Reply in one sentence only.', [{ role:'user', content:'Say "SmartShaadi AI ready hai!" in Hindi.' }]);
+    if (msg) msg.innerHTML = '<span style="color:var(--green);font-weight:700;">✅ ' + reply.substring(0,80) + '</span>';
+    updateKeyStatusUI(true);
+    updateHomeAIStatus();
+    showToast('🎉 AI kaam kar raha hai!');
+  } catch(e) {
+    if (msg) msg.innerHTML = '<span style="color:var(--red);">❌ ' + e.message + '</span>';
+    showToast('❌ Key kaam nahi kar rahi');
+  }
+}
+
+function updateHomeAIStatus() {
+  const banner = document.getElementById('ai-status-banner');
+  if (!banner) return;
+  if (AI.isConfigured()) {
+    banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online — Groq Connected ⚡</span></div>';
+    banner.style.borderColor = 'rgba(46,204,113,.2)';
+  } else {
+    banner.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>';
+    banner.style.borderColor = 'rgba(231,76,60,.25)';
+  }
+}
+
 /* ═══════════════════════════════════
    SECTION 16: INIT
    ═══════════════════════════════════ */
 function init() {
   Freemium.init();
+  updateHomeAIStatus();
+  rSettings();
   rTG();
   rg();
   loadTasks();
