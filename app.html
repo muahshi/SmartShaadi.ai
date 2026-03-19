@@ -1119,7 +1119,7 @@ function toggleTL(pi,ti){cTasks=S.get('tl_tasks',{});cTasks[`${pi}-${ti}`]=!cTas
    VENDORS
    ═══════════════════════════════════════ */
 const BASE_VENDORS=[
-  {id:'v1',name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'9876543210',desc:'Delhi ke top wedding photographers. 8 saal ka experience.'},
+  {id:'v1',name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'919575877759',desc:'Delhi ke top wedding photographers. 8 saal ka experience.'},
   {id:'v2',name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine. Min 100 guests.'},
   {id:'v3',name:'Floral Dreams Decor',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration. Mandap + lighting.'},
   {id:'v4',name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. Live dhol available.'},
@@ -1178,7 +1178,7 @@ function rVA(submitted=false){
     </div>
   </div>
   <label class="lbl">Business Name *</label><input id="vn" class="inp" placeholder="Sharma Photography" style="margin-bottom:12px;"/>
-  <label class="lbl">WhatsApp *</label><input id="vph" class="inp" placeholder="9876543210" style="margin-bottom:12px;"/>
+  <label class="lbl">WhatsApp *</label><input id="vph" class="inp" placeholder="9575877759" style="margin-bottom:12px;"/>
   <label class="lbl">City *</label><input id="vci" class="inp" placeholder="Delhi / Mumbai" style="margin-bottom:12px;"/>
   <label class="lbl">Starting Price</label><input id="vpr" class="inp" placeholder="₹30,000+" style="margin-bottom:12px;"/>
   <label class="lbl">Description</label><textarea id="vds" class="inp" rows="3" placeholder="Apne baare mein..." style="margin-bottom:14px;"></textarea>
@@ -1202,7 +1202,7 @@ function subV(){
   pending.push({id:'v'+Date.now(),name:n,phone:p,city:ci,cat:selCat,price:pr,desc:ds,tier:App.vTier,approved:false,submittedAt:new Date().toISOString()});
   S.set('vendors_pending',pending);
   const waMsg=encodeURIComponent(`🆕 New Vendor — SmartShaadi\n\n👤 ${n}\n📞 ${p}\n📍 ${ci}\n🏷️ ${selCat}\n💰 ${pr}\n⭐ ${App.vTier}\n📝 ${ds}`);
-  setTimeout(()=>window.open(`https://wa.me/919876543210?text=${waMsg}`,'_blank'),400);
+  setTimeout(()=>window.open(`https://wa.me/919575877759?text=${waMsg}`,'_blank'),400);
   rVA(true);showToast('✅ Application submit ho gayi!');
 }
 
