@@ -12,7 +12,9 @@
 <meta name="description" content="India's #1 Free AI Wedding Planner"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"/>
+<!-- Non-blocking font load -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"/></noscript>
 
 <!-- ═══════════════════════════════════════════
      SECTION 1: CSS — Design System + Components
@@ -2099,13 +2101,20 @@ function init() {
     if (wdCd) wdCd.value = dateStr;
   }
 
-  // Splash screen
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const s = document.getElementById('splash');
-      if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
-    }, 2000);
-  });
+  // Splash screen — robust fix
+  function hideSplash() {
+    const s = document.getElementById('splash');
+    if (!s || s.style.display === 'none') return;
+    s.style.opacity = '0';
+    setTimeout(() => { s.style.display = 'none'; }, 500);
+  }
+  // Immediate if already loaded, else on load event + hard fallback
+  if (document.readyState === 'complete') {
+    setTimeout(hideSplash, 1500);
+  } else {
+    window.addEventListener('load', () => setTimeout(hideSplash, 1500));
+  }
+  setTimeout(hideSplash, 4000); // Hard fallback — always fires
 }
 
 init();
