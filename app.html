@@ -316,12 +316,12 @@ textarea.inp{resize:none;}
       <div style="font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px;">🏆 Vendor hain? List Karein!</div>
       <div style="font-size:12px;color:var(--text3);margin-bottom:14px;">1000+ couples daily plan kar rahe hain</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
-        <div onclick="go('vendor-apply')" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">Basic</div><div style="font-size:10px;color:var(--text3);">₹999/mo</div></div>
-        <div onclick="go('vendor-apply')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;"><div style="font-size:12px;color:#0D0008;font-weight:800;">⭐ Featured</div><div style="font-size:10px;color:#0D000888;">₹1,999/mo</div></div>
-        <div onclick="go('vendor-apply')" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">🏆 Premium</div><div style="font-size:10px;color:var(--text3);">₹2,999/mo</div></div>
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">Basic</div><div style="font-size:10px;color:var(--text3);">₹999/mo</div></div>
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;"><div style="font-size:12px;color:#0D0008;font-weight:800;">⭐ Featured</div><div style="font-size:10px;color:#0D000888;">₹1,999/mo</div></div>
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">🏆 Premium</div><div style="font-size:10px;color:var(--text3);">₹2,999/mo</div></div>
       </div>
-      <button onclick="go('vendor-dir')" class="btn-ghost" style="margin-bottom:8px;">🔍 Verified Vendors Dekho</button>
-      <button onclick="go('vendor-apply')" class="btn-gold">📝 Vendor Ban Jao →</button>
+      <button onclick="window.location.href='/vendors/index.html'" class="btn-ghost" style="margin-bottom:8px;">🔍 Verified Vendors Dekho</button>
+      <button onclick="window.location.href='/vendors/apply.html'" class="btn-gold">📝 Vendor Ban Jao →</button>
     </div>
   </div>
 
@@ -488,8 +488,20 @@ textarea.inp{resize:none;}
   <div class="topbar">
     <button onclick="go('home')" class="back-btn">← Wapas</button>
     <div><div class="st">🏆 <span style="color:var(--gold);">Vendors</span></div></div>
-    <button onclick="go('vendor-apply')" class="btn-gold" style="width:auto;padding:9px 14px;font-size:12px;margin-left:auto;">+ List</button>
+    <button onclick="window.location.href='/vendors/index.html'" class="btn-gold" style="width:auto;padding:9px 14px;font-size:12px;margin-left:auto;">Full Page →</button>
   </div>
+  <!-- Full vendor page CTA -->
+  <div style="margin:12px 14px 0;">
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(255,45,85,.05));border-radius:18px;padding:16px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;gap:12px;">
+      <div style="font-size:28px;">🏆</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:800;">Full Vendor Directory</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px;">10+ verified vendors · Real reviews · Razorpay payment</div>
+      </div>
+      <button onclick="window.location.href='/vendors/index.html'" class="btn-gold" style="width:auto;padding:10px 14px;font-size:12px;">Open</button>
+    </div>
+  </div>
+
   <div style="padding:12px 14px 0;">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;" id="city-filter">
       <button class="btn-sm on" onclick="filterCity('All',this)">All</button>
@@ -514,7 +526,7 @@ textarea.inp{resize:none;}
   <div style="margin:8px 14px 0;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(255,45,85,.04));border-radius:18px;padding:16px;border:1px dashed var(--border);text-align:center;">
     <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:4px;">📢 Apna Business List Karein</div>
     <div style="font-size:11px;color:var(--text3);margin-bottom:12px;">1000+ couples daily · ₹999/mo se</div>
-    <button onclick="go('vendor-apply')" class="btn-gold" style="max-width:280px;margin:0 auto;">Apply Karein →</button>
+    <button onclick="window.location.href='/vendors/apply.html'" class="btn-gold" style="max-width:280px;margin:0 auto;">Apply Karein →</button>
   </div>
 </div>
 </div>
@@ -549,7 +561,7 @@ textarea.inp{resize:none;}
   <button class="nb" id="nb-chat" onclick="go('chat')"><span class="ni">🤖</span><span class="nl">AI Chat</span></button>
   <button class="nb" id="nb-countdown" onclick="go('countdown')"><span class="ni">⏳</span><span class="nl">Countdown</span></button>
   <button class="nb" id="nb-guests" onclick="go('guests')"><span class="ni">👥</span><span class="nl">Guests</span></button>
-  <button class="nb" id="nb-vendor-dir" onclick="go('vendor-dir')"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
+  <button class="nb" id="nb-vendor-dir" onclick="window.location.href='/vendors/index.html'"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
 </nav>
 </div><!-- /shell -->
 
