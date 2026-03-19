@@ -10,8 +10,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="SmartShaadi"/>
 <meta name="description" content="India's #1 Free AI Wedding Planner"/>
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"/>
@@ -379,31 +377,6 @@ textarea.inp{resize:none;}
     <div id="ai-status-banner" class="card" style="padding:12px 14px;border-color:rgba(231,76,60,.25);">
       <div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>
     </div>
-  </div>
-
-
-  <!-- AI Status + Setup -->
-  <div style="margin:10px 14px 0;" id="ai-home-banner">
-    <div style="background:var(--s2);border-radius:14px;padding:12px 14px;border:1px solid rgba(231,76,60,.3);">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div id="home-ai-dot" style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div>
-          <span id="home-ai-txt" style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Tap to setup</span>
-        </div>
-        <button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:6px 14px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- AdSense Banner Ad -->
-  <div style="margin:10px 14px 0;text-align:center;">
-    <ins class="adsbygoogle"
-      style="display:block;border-radius:12px;overflow:hidden;"
-      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-      data-ad-slot="XXXXXXXXXX"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
   <!-- Quick action buttons -->
@@ -844,91 +817,6 @@ textarea.inp{resize:none;}
 </div>
 </div>
 
-
-
-<!-- ████ SETTINGS ████ -->
-<div id="scr-settings" class="scr">
-<div style="padding-bottom:100px;">
-  <div style="background:var(--bg);padding:16px 14px 14px;border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:10;">
-    <button class="bbtn" onclick="go('home')" style="margin-bottom:10px;">← Wapas</button>
-    <div style="font-family:var(--font-display);font-size:22px;font-weight:700;">⚙️ Settings</div>
-  </div>
-  <div style="padding:14px;">
-
-    <!-- AI Status -->
-    <div id="settings-ai-status" style="background:var(--s2);border-radius:var(--r-lg);padding:14px;margin-bottom:14px;border:1px solid rgba(231,76,60,.3);">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div id="ai-dot" style="width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;"></div>
-        <div id="ai-status-txt" style="font-size:13px;font-weight:700;color:var(--red);">AI Offline — Key set karo</div>
-      </div>
-    </div>
-
-    <!-- Groq Setup -->
-    <div style="background:var(--s2);border-radius:var(--r-lg);padding:16px;border:1px solid rgba(201,168,76,.2);margin-bottom:14px;">
-      <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:12px;">🤖 Groq AI Key — FREE Setup</div>
-
-      <div style="background:var(--s3);border-radius:12px;padding:12px;margin-bottom:12px;border:1px solid var(--border2);">
-        <div style="font-size:11px;color:var(--gold);font-weight:800;margin-bottom:8px;">📋 Key kaise milegi? (2 minute)</div>
-        <div style="font-size:12px;color:var(--text2);line-height:2.2;">
-          1️⃣ <a href="https://console.groq.com" target="_blank" style="color:var(--gold);font-weight:800;text-decoration:none;">console.groq.com</a> pe jao<br>
-          2️⃣ Google se free signup karo<br>
-          3️⃣ API Keys → Create API Key<br>
-          4️⃣ Copy karke neeche paste karo 👇
-        </div>
-      </div>
-
-      <label style="font-size:11px;color:var(--text2);font-weight:700;display:block;margin-bottom:6px;">API KEY</label>
-      <input id="groq-inp" class="inp" type="password" placeholder="gsk_xxxxxxxxxxxxxxxx"
-        style="margin-bottom:12px;font-family:monospace;"
-        oninput="checkKey(this.value)"/>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <button onclick="saveKey()" class="bg" style="padding:13px;font-size:13px;">💾 Save</button>
-        <button onclick="testKey()" class="bgh" style="padding:13px;font-size:13px;">🧪 Test</button>
-      </div>
-      <div id="key-msg" style="font-size:12px;margin-top:10px;min-height:18px;text-align:center;font-weight:600;"></div>
-    </div>
-
-    <!-- AdSense info -->
-    <div style="background:var(--s2);border-radius:var(--r-lg);padding:16px;border:1px solid var(--border2);margin-bottom:14px;">
-      <div style="font-size:14px;font-weight:800;margin-bottom:12px;">💰 Monetization</div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">AdSense</span>
-        <span style="font-size:12px;font-weight:700;color:var(--green);">Active</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">Rewarded Ads</span>
-        <span style="font-size:12px;font-weight:700;color:var(--green);">Active</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;">
-        <span style="font-size:12px;color:var(--text2);">Vendor Listings</span>
-        <span style="font-size:12px;font-weight:700;color:var(--green);">Active</span>
-      </div>
-    </div>
-
-    <!-- App info -->
-    <div style="background:var(--s2);border-radius:var(--r-lg);padding:16px;border:1px solid var(--border2);margin-bottom:14px;">
-      <div style="font-size:14px;font-weight:800;margin-bottom:10px;">📱 App v2.1</div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);">
-        <span style="font-size:12px;color:var(--text2);">AI Model</span>
-        <span style="font-size:12px;font-weight:700;color:var(--gold);">Llama 3 — Free</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;">
-        <span style="font-size:12px;color:var(--text2);">Daily AI Limit</span>
-        <span style="font-size:12px;font-weight:700;">14,400 requests</span>
-      </div>
-    </div>
-
-    <!-- Danger -->
-    <div style="background:var(--s2);border-radius:var(--r-lg);padding:16px;border:1px solid rgba(231,76,60,.2);">
-      <div style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:10px;">⚠️ Danger Zone</div>
-      <button onclick="if(confirm('Sab data delete hoga. Sure?')){localStorage.clear();showToast('Data cleared!');location.reload();}"
-        style="width:100%;padding:12px;background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.25);border-radius:12px;color:var(--red);font-weight:700;cursor:pointer;font-family:var(--font-body);font-size:13px;">
-        🗑️ Clear All Data
-      </button>
-    </div>
-  </div>
-</div>
-</div>
 
 </div><!-- /wrap -->
 
@@ -1715,25 +1603,7 @@ function exportPDF() {
   <div class="stats"><div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total Guests</div></div><div class="stat"><div class="sv" style="color:#27AE60;">${conf}</div><div class="sl">Confirmed</div></div><div class="stat"><div class="sv" style="color:#F39C12;">${pending}</div><div class="sl">Pending</div></div><div class="stat"><div class="sv" style="color:#E74C3C;">${declined}</div><div class="sl">Declined</div></div><div class="stat"><div class="sv" style="color:#3498DB;">${veg}</div><div class="sl">Veg</div></div><div class="stat"><div class="sv" style="color:#9B59B6;">${guests.length-veg}</div><div class="sl">Non-Veg/Jain</div></div></div>
   <table><tr><th>#</th><th>Name</th><th>Side</th><th>Meal</th><th>RSVP</th><th>Table</th><th>Phone</th></tr>
   ${guests.map((g,i) => `<tr><td style="color:#999;">${i+1}</td><td><strong>${g.name}</strong></td><td>${g.side}</td><td>${g.meal}</td><td><span class="badge ${g.rsvp.toLowerCase()}">${g.rsvp}</span></td><td>${g.table||'—'}</td><td>${g.phone||'—'}</td></tr>`).join('')}
-  </table><div class="footer">SmartShaadi AI v2 — India's #1 Free AI Wedding Planner<br>smartshaadi.online</div>
-<script>
-// Splash hide — runs independently, cannot be blocked by app errors
-(function(){
-  var done=false;
-  function hide(){
-    if(done)return; done=true;
-    var s=document.getElementById('splash');
-    if(!s)return;
-    s.style.opacity='0';
-    setTimeout(function(){s.style.display='none';},400);
-  }
-  setTimeout(hide,1800);
-  setTimeout(hide,4000); // hard fallback
-  document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,1800);});
-  window.addEventListener('load',function(){setTimeout(hide,500);});
-})();
-</script>
-</body></html>`;
+  </table><div class="footer">SmartShaadi AI v2 — India's #1 Free AI Wedding Planner<br>smartshaadi.online</div></body></html>`;
   try {
     const blob = new Blob([htmlContent], {type:'text/html;charset=utf-8'});
     const url = URL.createObjectURL(blob);
@@ -2066,8 +1936,7 @@ function rAdmin() {
 
 function checkPin() {
   const pin = document.getElementById('pin-inp')?.value;
-  if (pin === ADMIN_HASH) { sessionStorage.setItem('ss_admin_auth', '1'); rAdmin();
-  if(id==='settings')updateAIStatus(); }
+  if (pin === ADMIN_HASH) { sessionStorage.setItem('ss_admin_auth', '1'); rAdmin(); }
   else { showToast('❌ Wrong PIN!', 2000); }
 }
 
@@ -2212,8 +2081,6 @@ function updateHomeAIStatus() {
    ═══════════════════════════════════ */
 function init() {
   Freemium.init();
-  setTimeout(updateAIStatus,50);
-  setTimeout(updateAIStatus, 100);
   updateHomeAIStatus();
   rSettings();
   rTG();
@@ -2232,102 +2099,16 @@ function init() {
     if (wdCd) wdCd.value = dateStr;
   }
 
+  // Splash screen
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const s = document.getElementById('splash');
+      if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
+    }, 2000);
+  });
 }
-
-/* ══════════════════════════════════
-   SETTINGS, GROQ KEY & AD LOGIC
-   ══════════════════════════════════ */
-function getKey(){ return localStorage.getItem('ss_groq_key')||''; }
-function setKey(k){ localStorage.setItem('ss_groq_key', k.trim()); }
-
-function checkKey(val){
-  var ok = val && val.trim().startsWith('gsk_') && val.trim().length > 20;
-  var msg = document.getElementById('key-msg');
-  if(msg) msg.innerHTML = ok ? '<span style="color:var(--green)">&#10003; Valid</span>' : '';
-}
-
-function saveKey(){
-  var inp = document.getElementById('groq-inp');
-  var val = inp ? inp.value.trim() : '';
-  if(!val){ showToast('Key paste karo!'); return; }
-  if(!val.startsWith('gsk_')){ showToast('Valid key "gsk_" se shuru hoti hai'); return; }
-  setKey(val);
-  updateAIStatus();
-  var msg = document.getElementById('key-msg');
-  if(msg) msg.innerHTML = '<span style="color:var(--green);font-weight:800;">Saved! Test karo.</span>';
-  showToast('Key save ho gayi!');
-}
-
-async function testKey(){
-  var val = (document.getElementById('groq-inp')||{}).value||'';
-  var key = val.trim() || getKey();
-  if(!key){ showToast('Pehle key daalo'); return; }
-  var msg = document.getElementById('key-msg');
-  if(msg) msg.innerHTML = '<span style="color:var(--text2);">Testing...</span>';
-  try {
-    var r = await fetch('https://api.groq.com/openai/v1/chat/completions',{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},
-      body:JSON.stringify({model:'llama3-8b-8192',max_tokens:30,
-        messages:[{role:'user',content:'Say hi in one word.'}]})
-    });
-    if(!r.ok){var e=await r.json().catch(function(){return{};});throw new Error(e&&e.error?e.error.message:'Error '+r.status);}
-    setKey(key);
-    updateAIStatus();
-    if(msg) msg.innerHTML = '<span style="color:var(--green);font-weight:800;">AI ready hai!</span>';
-    showToast('AI kaam kar raha hai!');
-  } catch(e){
-    if(msg) msg.innerHTML = '<span style="color:var(--red);">'+e.message+'</span>';
-    showToast('Key kaam nahi ki: '+e.message);
-  }
-}
-
-function updateAIStatus(){
-  var has = !!getKey();
-  var dot = document.getElementById('ai-dot');
-  var txt = document.getElementById('ai-status-txt');
-  var box = document.getElementById('settings-ai-status');
-  if(dot) dot.style.background = has ? 'var(--green)' : 'var(--red)';
-  if(txt){ txt.textContent = has ? 'AI Online - Groq Connected' : 'AI Offline - Key set karo'; txt.style.color = has?'var(--green)':'var(--red)'; }
-  if(box) box.style.borderColor = has ? 'rgba(46,204,113,.3)' : 'rgba(231,76,60,.3)';
-  var hdot = document.getElementById('home-ai-dot');
-  var htxt = document.getElementById('home-ai-txt');
-  var hbox = document.querySelector('#ai-home-banner > div');
-  if(hdot) hdot.style.background = has ? 'var(--green)' : 'var(--red)';
-  if(htxt){ htxt.textContent = has ? 'AI Online - Ready hai!' : 'AI Offline - Tap to setup'; htxt.style.color = has?'var(--green)':'var(--red)'; }
-  if(hbox) hbox.style.borderColor = has ? 'rgba(46,204,113,.3)' : 'rgba(231,76,60,.3)';
-  var inp = document.getElementById('groq-inp');
-  if(inp && !inp.value && getKey()) inp.value = getKey();
-}
-
-var adCount = 0;
-function showAd(){
-  adCount++;
-  if(adCount % 3 === 0){
-    setTimeout(function(){ document.getElementById('adbox').classList.add('on'); }, 1500);
-  }
-}
-
 
 init();
-</script>
-
-<script>
-// Splash hide — runs independently, cannot be blocked by app errors
-(function(){
-  var done=false;
-  function hide(){
-    if(done)return; done=true;
-    var s=document.getElementById('splash');
-    if(!s)return;
-    s.style.opacity='0';
-    setTimeout(function(){s.style.display='none';},400);
-  }
-  setTimeout(hide,1800);
-  setTimeout(hide,4000); // hard fallback
-  document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,1800);});
-  window.addEventListener('load',function(){setTimeout(hide,500);});
-})();
 </script>
 </body>
 </html>
