@@ -2071,7 +2071,7 @@ function updateHomeAIStatus() {
     banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online — Groq Connected ⚡</span></div>';
     banner.style.borderColor = 'rgba(46,204,113,.2)';
   } else {
-    banner.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>';
+    banner.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go(&quot;settings&quot;)" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>';
     banner.style.borderColor = 'rgba(231,76,60,.25)';
   }
 }
@@ -2099,16 +2099,25 @@ function init() {
     if (wdCd) wdCd.value = dateStr;
   }
 
-  // Splash screen
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const s = document.getElementById('splash');
-      if (s) { s.style.opacity = '0'; setTimeout(() => s.style.display = 'none', 500); }
-    }, 2000);
-  });
 }
 
 init();
+
+// Splash — independent of init, always fires
+(function(){
+  var done=false;
+  function hide(){
+    if(done)return; done=true;
+    var s=document.getElementById('splash');
+    if(!s)return;
+    s.style.opacity='0';
+    setTimeout(function(){s.style.display='none';},450);
+  }
+  setTimeout(hide,2000);
+  setTimeout(hide,4000);
+  window.addEventListener('load',function(){setTimeout(hide,500);});
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(hide,2000);});
+})();
 </script>
 </body>
 </html>
