@@ -873,27 +873,46 @@ const App = {
    4B-2. GROQ AI MODULE
    ═══════════════════════════════════ */
 const AI = {
-  // ── Apna Vercel API URL yahan daalo ──
-  // Same domain pe hai toh: '/api/groq-agent'
-  // Vercel pe alag project hai toh: 'https://your-project.vercel.app/api/groq-agent'
-  API_URL: '/api/groq-agent',
+  GROQ_URL: 'https://api.groq.com/openai/v1/chat/completions',
+  MODEL: 'llama-3.3-70b-versatile',
+
+  getKey() {
+    return Store.get('groq_key', '');
+  },
+
+  setKey(k) {
+    Store.set('groq_key', k.trim());
+  },
 
   async ask(system, messages) {
-    const res = await fetch(this.API_URL, {
+    const key = this.getKey();
+    if (!key) {
+      go('settings');
+      throw new Error('Pehle Groq API key set karo ⚙️');
+    }
+    const res = await fetch(this.GROQ_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ system, messages })
+      headers: {
+        'Authorization': 'Bearer ' + key,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: this.MODEL,
+        max_tokens: 2048,
+        temperature: 0.8,
+        messages: [{ role: 'system', content: system }, ...messages]
+      })
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err?.error || 'API Error: ' + res.status);
+      throw new Error(err?.error?.message || 'API error: ' + res.status);
     }
     const d = await res.json();
     return d.choices?.[0]?.message?.content || 'Kuch error aaya, dobara try karein!';
   },
 
   isConfigured() {
-    return true;
+    return !!this.getKey();
   }
 };
 
@@ -2052,7 +2071,7 @@ function updateHomeAIStatus() {
     banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online — Groq Connected ⚡</span></div>';
     banner.style.borderColor = 'rgba(46,204,113,.2)';
   } else {
-    banner.innerHTML = '<div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></div><span style="font-size:11px;color:var(--green);font-weight:700;">AI Online — Ready hai ⚡</span></div>';
+    banner.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:11px;color:var(--red);font-weight:700;">AI Offline — Setup needed</span></div><button onclick="go('settings')" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#0A0809;cursor:pointer;font-family:var(--font-body);">Setup ⚙️</button></div>';
     banner.style.borderColor = 'rgba(231,76,60,.25)';
   }
 }
@@ -2080,23 +2099,12 @@ function init() {
     if (wdCd) wdCd.value = dateStr;
   }
 
+  // Splash screen
 }
 
-init();
+;(function(){var d=false;function h(){if(d)return;d=true;var s=document.getElementById('splash');if(!s)return;s.style.opacity='0';setTimeout(function(){s.style.display='none'},400);}setTimeout(h,1800);setTimeout(h,4000);window.addEventListener('load',function(){setTimeout(h,500);});})();
 
-(function(){
-  var done=false;
-  function hide(){
-    if(done)return; done=true;
-    var s=document.getElementById('splash');
-    if(!s)return;
-    s.style.opacity='0';
-    setTimeout(function(){s.style.display='none';},400);
-  }
-  setTimeout(hide,1800);
-  setTimeout(hide,3500);
-  window.addEventListener('load',function(){setTimeout(hide,500);});
-})();
+init();
 </script>
 </body>
 </html>
