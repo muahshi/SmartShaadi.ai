@@ -167,6 +167,64 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
 </style>
 
 <meta property="og:image" content="https://www.smartshaadi.online/og-smartshaadi.jpg">
+
+<script>
+/* ══ PRO GUARD ══ */
+function isPro(){
+  try{
+    return localStorage.getItem('ss_pro_active')==='true' &&
+           Date.now()<parseInt(localStorage.getItem('ss_pro_expiry')||'0');
+  }catch(e){return false;}
+}
+
+function showProModal(url){
+  var existing=document.getElementById('pro-modal');
+  if(existing){existing.style.display='flex';existing.dataset.ret=url||'';return;}
+  var el=document.createElement('div');
+  el.id='pro-modal';
+  el.dataset.ret=url||'';
+  el.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);';
+  el.innerHTML=`
+    <div style="background:#1a1200;border-radius:24px;padding:28px 22px;max-width:380px;width:100%;border:1.5px solid rgba(201,168,76,.4);text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6);">
+      <button onclick="document.getElementById('pro-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#5A4A20;font-size:22px;cursor:pointer;line-height:1;">✕</button>
+      <div style="font-size:52px;margin-bottom:10px;">🔒</div>
+      <div style="font-family:Georgia,serif;font-size:26px;font-weight:700;color:#C9A84C;margin-bottom:8px;">Pro Feature</div>
+      <div style="font-size:14px;color:#B8A070;margin-bottom:20px;line-height:1.7;">Yeh AI tool <b style="color:#FFF8E8;">SmartShaadi Pro</b> mein available hai.<br>₹199/month mein 10 powerful AI tools unlock karo.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;text-align:left;">
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Invitation Writer</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Kundali Matching</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Budget AI</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Menu Planner</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Theme Generator</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Photo Shots +5 more</div>
+      </div>
+      <div style="background:rgba(201,168,76,.08);border-radius:12px;padding:12px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;">
+        <span style="font-size:13px;color:#5A4A20;text-decoration:line-through;">₹999</span>
+        <span style="font-family:Georgia,serif;font-size:28px;color:#C9A84C;font-weight:700;">₹199<span style="font-size:13px;color:#8A7040;">/mo</span></span>
+        <span style="background:rgba(46,204,113,.15);color:#4ADE80;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;">80% OFF</span>
+      </div>
+      <button onclick="goToApp()" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:14px;color:#0A0800;font-weight:800;font-size:16px;cursor:pointer;margin-bottom:10px;letter-spacing:.3px;box-shadow:0 6px 24px rgba(201,168,76,.3);">
+        🔓 ₹199/mo — Abhi Unlock Karo
+      </button>
+      <div style="font-size:11px;color:#5A4A20;">🔒 Razorpay secure · UPI, Card, Net Banking · Cancel anytime</div>
+    </div>`;
+  el.addEventListener('click',function(ev){if(ev.target===el)el.style.display='none';});
+  document.body.appendChild(el);
+}
+
+function goToApp(){
+  var m=document.getElementById('pro-modal');
+  localStorage.setItem('ss_pro_return',m?m.dataset.ret:'');
+  window.location.href='/app#buy-pro';
+}
+
+function proUse(url,e){
+  if(e){e.preventDefault();e.stopPropagation();}
+  if(isPro()){ window.open(url,'_blank'); return; }
+  showProModal(url);
+}
+</script>
+
 </head>
 <body>
 <nav>
@@ -178,7 +236,7 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="embed.html">Embed</a></li>
   </ul>
-  <a href="chatbot.html" class="nav-cta">AI Chatbot</a>
+  <a href="chatbot.html" class="nav-cta" onclick="proUse('chatbot.html',event)">🔒 AI Chatbot</a>
 </nav>
 <div class="bc"><a href="index.html">Home</a> &rsaquo; <strong style="color:var(--gold)">9 Free AI Wedding Planning Tools</strong></div>
 <div class="ad-w" style="margin:10px auto">
@@ -186,12 +244,12 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 <section class="hero">
-  <div class="hero-badge">&#127470;&#127475; India's Best Free AI Wedding Tools 2026</div>
-  <h1>13 <span class="hl">AI Wedding</span> Tools<br><span class="hl2">Bilkul Free,</span> Bilkul Smart &#128141;</h1>
-  <p class="hero-sub">Invitation likhna ho, budget banana ho, kundali milani ho ya DJ playlist — saari planning ab AI se ek click mein. <strong style="color:var(--gold)">Hindi + English, 100% Free.</strong></p>
+  <div class="hero-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.3);">&#127470;&#127475; India's Best Pro AI Wedding Tools — ₹199/mo</div>
+  <h1>13 <span class="hl">AI Wedding</span> Tools<br><span class="hl2">Pro Plan</span> — ₹199/mo &#128141;</h1>
+  <p class="hero-sub">Invitation likhna ho, budget banana ho, kundali milani ho ya DJ playlist — saari planning ab AI se ek click mein. <strong style="color:var(--gold)">Hindi + English. ₹199/mo — Sab Unlock.</strong></p>
   <div class="hstats">
     <div class="hs"><span class="num">13</span><span class="lbl">AI Tools</span></div>
-    <div class="hs"><span class="num">100%</span><span class="lbl">Free Forever</span></div>
+    <div class="hs"><span class="num">₹199</span><span class="lbl">Per Month</span></div>
     <div class="hs"><span class="num">3,400+</span><span class="lbl">Couples Helped</span></div>
     <div class="hs"><span class="num">6</span><span class="lbl">Languages</span></div>
   </div>
@@ -208,7 +266,7 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
   <div id="ptRight" style="font-size:.82rem;color:var(--muted)">Koi bhi tool use karo — yahan track hoga!</div>
 </div>
 <div class="filter-sec">
-  <button class="fb on" onclick="setFilter('all',this)">All (13)</button>
+  <button class="fb on" onclick="setFilter('all',this)">All (13) 🔒</button>
   <button class="fb" onclick="setFilter('planning',this)">&#128197; Planning</button>
   <button class="fb" onclick="setFilter('creative',this)">&#127912; Creative</button>
   <button class="fb" onclick="setFilter('ritual',this)">&#128591; Rituals</button>
@@ -216,9 +274,9 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
   <button class="fb" onclick="setFilter('entertainment',this)">&#127925; Entertainment</button>
 </div>
 <section class="tools-sec">
-  <div class="sec-lbl">Free AI Tools</div>
+  <div class="sec-lbl" style="display:flex;align-items:center;gap:8px;">Pro AI Tools <span style="background:rgba(201,168,76,.15);color:#C9A84C;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;border:1px solid rgba(201,168,76,.3);">🔒 ₹199/mo</span></div>
   <h2 class="sec-h">Apni Shaadi Plan Karein — AI Ki Madad Se</h2>
-  <p class="sec-sub">Har tool AI se powered. Koi account nahi, koi payment nahi — sirf results. Apni website pe embed bhi kar sakte ho!</p>
+  <p class="sec-sub">Powerful AI tools — sirf ₹199/month. Razorpay se secure payment karo, aur saari shaadi planning ek jagah karo!</p>
   <div class="tools-grid" id="toolsGrid"></div>
   <div id="noRes"><div style="font-size:2.5rem;margin-bottom:1rem">&#128269;</div><p>Koi tool nahi mila. Doosra keyword try karein!</p></div>
 </section>
@@ -228,7 +286,7 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
 </div>
 <div class="share-sec">
   <div class="share-box">
-    <div class="sb-txt"><h3>&#128140; Dosto Ko Bhi Batao!</h3><p>Koi bhi shaadi plan kar raha ho — yeh 9 free tools zaroor kaam aayenge!</p></div>
+    <div class="sb-txt"><h3>&#128140; Apni Planning Share Karo!</h3><p>SmartShaadi Pro plan share karo dosto ke saath — ₹199/mo mein sab plan!</p></div>
     <div class="sb-btns">
       <a href="https://wa.me/?text=SmartShaadi%20ke%209%20free%20AI%20wedding%20tools%20dekho!%20https://www.smartshaadi.online/ai-tools.html" target="_blank" class="sbb sbb-wa">&#128241; WhatsApp</a>
       <button class="sbb sbb-cp" onclick="copyLink()">&#128279; Link Copy</button>
@@ -324,7 +382,7 @@ function buildCards(){
     html+='<div class="tc-btns">';
     html+='<button class="btn-preview" id="prev_'+t.id+'" onclick="togglePrev(\''+t.id+'\')">👁️ Preview</button>';
     html+='<button class="btn-embed" onclick="toggleEmb(\''+t.id+'\')">🔗 Embed</button>';
-    html+='<a href="'+BASE+t.url+'" class="btn-use" target="_blank" onclick="markUsed(\''+t.id+'\')">Use →</a>';
+    html+='<button class="btn-use" onclick="proUse(BASE+t.url,event);markUsed(\''+t.id+'\')">🔓 Use →</button>';
     html+='</div></div>';
     // Preview panel
     html+='<div class="preview-panel" id="pp_'+t.id+'">';
@@ -334,7 +392,7 @@ function buildCards(){
     html+='<div class="pp-sample-lbl" style="font-size:.66rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:6px">📄 SAMPLE OUTPUT</div>';
     html+='<div class="pp-sample" id="pps_'+t.id+'"></div>';
     html+='<div class="pp-steps" id="ppst_'+t.id+'"></div>';
-    html+='<div class="pp-cta"><a href="'+BASE+t.url+'" class="pp-use" target="_blank" onclick="markUsed(\''+t.id+'\')">🚀 Tool Use Karein — Free!</a>';
+    html+='<div class="pp-cta"><button class="pp-use" onclick="proUse(BASE+t.url,event);markUsed(\''+t.id+'\')">🚀 Tool Use Karein — Pro!</button>';
     html+='<button class="pp-wa" onclick="waTool(\''+t.id+'\')">📱 WhatsApp Share</button></div>';
     html+='</div></div>';
     // Embed panel
@@ -430,6 +488,22 @@ function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.c
 function tfaq(btn){var a=btn.nextElementSibling;var isOpen=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(function(q){q.classList.remove('open');q.nextElementSibling.style.maxHeight='0';});if(!isOpen){btn.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}}
 
 buildCards();
+// Show Pro status
+if(isPro()){
+  var b=document.createElement('div');
+  b.style.cssText='position:fixed;bottom:20px;right:20px;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.4);border-radius:12px;padding:12px 18px;font-size:13px;color:#4ADE80;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3);';
+  b.textContent='✅ Pro Active — Sab Tools Unlocked!';
+  document.body.appendChild(b);
+  setTimeout(function(){b.style.transition='opacity .5s';b.style.opacity='0';setTimeout(function(){b.remove();},500);},4000);
+} else {
+  // Show sticky "Unlock Pro" bar at bottom
+  var bar=document.createElement('div');
+  bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:888;background:linear-gradient(135deg,#1a1200,#2a1800);border-top:1.5px solid rgba(201,168,76,.4);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;';
+  bar.innerHTML='<div><div style="font-size:13px;font-weight:800;color:#C9A84C;">🔒 Pro Plan — ₹199/mo</div><div style="font-size:11px;color:#8A7040;">13 AI tools · Razorpay secure</div></div><button onclick="showProModal()" style="background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;padding:10px 20px;color:#0A0800;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap;">Unlock Karo →</button>';
+  document.body.appendChild(bar);
+  // Add padding to body so content isn't hidden behind bar
+  document.body.style.paddingBottom='70px';
+}
 </script>
 </body>
 </html>
