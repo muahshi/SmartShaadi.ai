@@ -994,62 +994,8 @@ footer{background:var(--bg4);border-top:1px solid var(--divider);padding:4rem 2.
   </div>
 </footer>
 
+<script src="/pro-guard.js"></script>
 <script>
-// ══ PRO GUARD (index.html) ══
-function isPro(){
-  try{
-    return localStorage.getItem('ss_pro_active')==='true' &&
-           Date.now()<JSON.parse(localStorage.getItem('ss_pro_expiry')||'0');
-  }catch(e){return false;}
-}
-
-function showProModal(retUrl){
-  var existing=document.getElementById('pro-modal');
-  if(existing){existing.style.display='flex';if(retUrl)existing.dataset.ret=retUrl;return;}
-  var el=document.createElement('div');
-  el.id='pro-modal';
-  el.dataset.ret=retUrl||'';
-  el.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);';
-  el.innerHTML=`
-    <div style="background:#1a1200;border-radius:24px;padding:28px 22px;max-width:380px;width:100%;border:1.5px solid rgba(201,168,76,.4);text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6);">
-      <button onclick="document.getElementById('pro-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#5A4A20;font-size:22px;cursor:pointer;line-height:1;">✕</button>
-      <div style="font-size:52px;margin-bottom:10px;">🔒</div>
-      <div style="font-family:Georgia,serif;font-size:26px;font-weight:700;color:#C9A84C;margin-bottom:8px;">Pro Feature</div>
-      <div style="font-size:14px;color:#B8A070;margin-bottom:20px;line-height:1.7;">Yeh AI tool <b style="color:#FFF8E8;">SmartShaadi Pro</b> mein available hai.<br>₹199/month mein 13 powerful AI tools unlock karo.</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;text-align:left;">
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Invitation Writer</div>
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Kundali Matching</div>
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Budget AI</div>
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Menu Planner</div>
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Theme Generator</div>
-        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ +8 aur tools</div>
-      </div>
-      <div style="background:rgba(201,168,76,.08);border-radius:12px;padding:12px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;">
-        <span style="font-size:13px;color:#5A4A20;text-decoration:line-through;">₹999</span>
-        <span style="font-family:Georgia,serif;font-size:28px;color:#C9A84C;font-weight:700;">₹199<span style="font-size:13px;color:#8A7040;">/mo</span></span>
-        <span style="background:rgba(46,204,113,.15);color:#4ADE80;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;">80% OFF</span>
-      </div>
-      <button onclick="goToAppBuy()" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:14px;color:#0A0800;font-weight:800;font-size:16px;cursor:pointer;margin-bottom:10px;letter-spacing:.3px;box-shadow:0 6px 24px rgba(201,168,76,.3);">
-        🔓 ₹199/mo — Abhi Unlock Karo
-      </button>
-      <div style="font-size:11px;color:#5A4A20;">🔒 Razorpay secure · UPI, Card, Net Banking · Cancel anytime</div>
-    </div>`;
-  el.addEventListener('click',function(ev){if(ev.target===el)el.style.display='none';});
-  document.body.appendChild(el);
-}
-
-function goToAppBuy(){
-  var m=document.getElementById('pro-modal');
-  if(m) localStorage.setItem('ss_pro_return',m.dataset.ret||'');
-  window.location.href='/app.html#buy-pro';
-}
-
-function goProTool(url, e){
-  if(e){e.preventDefault();e.stopPropagation();}
-  if(isPro()){window.location.href=url;return;}
-  showProModal(url);
-}
-
 // ── DATA ──
 var D = {budget:0,type:'local',guests:[],venues:[],date:''};
 (function(){
