@@ -1348,7 +1348,8 @@ function rTG(){
 
 function openTool(url){
   // Pro check — if active, open directly
-  if(S.get('pro_active') && Date.now() < S.get('pro_expiry',0)){
+  if(SS_PRO.isProLocal()){
+    SS_PRO.verifyWithServer();
     window.location.href=url;return;
   }
   // Not pro — show buy prompt
@@ -1389,13 +1390,23 @@ function openRazorpay(key){
     prefill: {name:(A.bride||'')+' & '+(A.groom||''), email:'', contact:''},
     theme: {color:'#C9A84C'},
     modal: {ondismiss:()=>{}},
-    handler: function(resp){
-      S.set('pro_active',true);
-      S.set('pro_expiry',Date.now()+(30*24*60*60*1000));
-      S.set('pro_payment_id',resp.razorpay_payment_id);
-      unlockProUI();
-      toast('🎉 Pro Plan Active! Sab AI Tools unlock ho gaye!');
-      boom();
+    handler: async function(resp){
+      toast('⏳ Verifying payment...');
+      var ok = await SS_PRO.activateAfterPayment(
+        resp.razorpay_payment_id,
+        resp.razorpay_order_id,
+        resp.razorpay_signature
+      );
+      if(ok){
+        // Also set legacy keys for app.html internal UI
+        S.set('pro_active', true);
+        S.set('pro_expiry', Date.now()+(30*24*60*60*1000));
+        unlockProUI();
+        toast('🎉 Pro Plan Active! Sab AI Tools unlock ho gaye!');
+        boom();
+      } else {
+        toast('⚠️ Verification failed — screenshot lo aur contact karo');
+      }
     }
   };
   try{new Razorpay(opts).open();}
@@ -2048,7 +2059,7 @@ function updateSmartBanner(){
     // All details filled — show Pro upsell streak
     const cTasks = S.get('cktasks',{});
     const done = Object.values(cTasks).filter(Boolean).length;
-    const isPro = S.get('pro_active') && Date.now() < S.get('pro_expiry',0);
+    const isPro = SS_PRO.isProLocal();
     if(isPro){
       el.innerHTML = `<div style="background:rgba(46,204,113,.08);border-radius:16px;padding:13px 16px;border:1px solid rgba(46,204,113,.25);">
         <div style="display:flex;align-items:center;gap:10px;">
@@ -2194,5 +2205,6 @@ function initApp(){
   window.addEventListener('load',function(){setTimeout(hideSplash,800);});
 })();
 </script>
+<script src="/pro-guard.js"></script>
 </body>
 </html>
