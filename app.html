@@ -592,6 +592,91 @@ textarea.inp{resize:none;}
 </div><!-- /app -->
 
 <script>
+// ═══ ONBOARDING — self-contained, no dependencies ═══
+var _obStep = 1;
+var _wtype = 'Budget';
+
+function selType(el, v) {
+  _wtype = v;
+  var chips = document.querySelectorAll('#ob-type-grid .ob-chip');
+  chips.forEach(function(c) { c.classList.remove('on'); });
+  el.classList.add('on');
+}
+
+function obGo(step) {
+  // Validate
+  if (step === 2) {
+    var bride = (document.getElementById('ob-bride').value || '').trim();
+    var groom = (document.getElementById('ob-groom').value || '').trim();
+    if (!bride && !groom) {
+      alert('Kam se kam ek naam daalein!');
+      return;
+    }
+  }
+  if (step === 3) {
+    var dt = document.getElementById('ob-date').value || '';
+    var ct = (document.getElementById('ob-city').value || '').trim();
+    if (!dt) { alert('Wedding date zaroori hai!'); return; }
+    if (!ct) { alert('City zaroori hai!'); return; }
+  }
+
+  // Hide all, show target
+  for (var i = 1; i <= 3; i++) {
+    var el = document.getElementById('ob-s' + i);
+    if (el) el.style.display = 'none';
+  }
+  var show = document.getElementById('ob-s' + step);
+  if (show) { show.style.display = 'flex'; }
+  _obStep = step;
+
+  var prog = document.getElementById('ob-prog');
+  if (prog) prog.style.width = (step / 3 * 100) + '%';
+
+  var body = document.querySelector('.ob-body');
+  if (body) body.scrollTop = 0;
+}
+
+function obFinish() {
+  var bud = parseFloat(document.getElementById('ob-budget').value) || 0;
+  if (!bud) { alert('Budget daalein! (e.g. 1500000)'); return; }
+
+  // Save all data
+  var data = {
+    bride: (document.getElementById('ob-bride').value || 'Bride').trim(),
+    groom: (document.getElementById('ob-groom').value || 'Groom').trim(),
+    date: document.getElementById('ob-date').value || null,
+    city: (document.getElementById('ob-city').value || 'India').trim(),
+    guests: parseInt(document.getElementById('ob-guests').value) || 0,
+    budget: bud,
+    wtype: _wtype,
+    isPro: false
+  };
+
+  try {
+    localStorage.setItem('ss_ob_done', 'true');
+    localStorage.setItem('ss_wdata', JSON.stringify(data));
+  } catch(e) {}
+
+  // Hide onboard, show app
+  var ob = document.getElementById('onboard');
+  if (ob) ob.style.display = 'none';
+
+  var app = document.getElementById('app');
+  if (app) app.style.display = 'flex';
+
+  var fab = document.getElementById('chat-fab');
+  if (fab) fab.style.display = 'flex';
+
+  // Trigger confetti + dashboard
+  try { boom(); } catch(e) {}
+  try { loadData(); renderAll(); showPage('pg-dash'); } catch(e) {
+    // Fallback: reload page which will now see ob_done=true
+    try { showPage('pg-dash'); } catch(e2) {}
+  }
+}
+</script>
+
+<script>
 'use strict';
 
 /* ══════════════════════════════════════
@@ -691,60 +776,7 @@ function toast(msg,d=3000){
 /* ══════════════════════════════════════
    ONBOARDING
 ══════════════════════════════════════ */
-let obStep=1,wtype='Budget';
-
-function selType(el,v){
-  document.querySelectorAll('#ob-type-grid .ob-chip').forEach(c=>c.classList.remove('on'));
-  el.classList.add('on');wtype=v;
-}
-
-function obGo(step){
-  // Validate current step before advancing
-  if(step===2){
-    var bride=(document.getElementById('ob-bride').value||'').trim();
-    var groom=(document.getElementById('ob-groom').value||'').trim();
-    if(!bride&&!groom){toast('⚠️ Kam se kam ek naam daalein!');return;}
-    W.bride=esc(bride)||'Bride'; W.groom=esc(groom)||'Groom';
-  }
-  if(step===3){
-    var date2=document.getElementById('ob-date').value||'';
-    var city2=(document.getElementById('ob-city').value||'').trim();
-    if(!date2){toast('⚠️ Wedding date zaroori hai!');return;}
-    if(!city2){toast('⚠️ City zaroori hai!');return;}
-    W.date=date2;
-    W.city=esc(city2);
-    W.guests=n(document.getElementById('ob-guests').value,0,100000);
-  }
-  // Hide all steps, show target
-  ['ob-s1','ob-s2','ob-s3'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el){el.style.display='none';el.classList.remove('on');}
-  });
-  var target=document.getElementById('ob-s'+step);
-  if(target){
-    target.style.display='flex';
-    target.classList.add('on');
-    // scroll to top
-    var body=document.querySelector('.ob-body');
-    if(body)body.scrollTop=0;
-  }
-  obStep=step;
-  var prog=document.getElementById('ob-prog');
-  if(prog)prog.style.width=(step/3*100)+'%';
-}
-
-function obFinish(){
-  var bud=n(document.getElementById('ob-budget').value,0,9e8);
-  if(!bud){toast('⚠️ Budget daalein!');return;}
-  W.budget=bud; W.wtype=wtype;
-  S.s('ob_done',true); saveData();
-  document.getElementById('onboard').style.display='none';
-  document.getElementById('app').style.display='flex';
-  document.getElementById('chat-fab').style.display='flex';
-  boom();
-  try{renderAll();}catch(e){}
-  try{showPage('pg-dash');}catch(e){}
-}
+// obGo/selType/obFinish moved to own script above
 
 /* ══════════════════════════════════════
    NAVIGATION
