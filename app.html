@@ -233,7 +233,7 @@ textarea.inp{resize:none;}
   <div class="ob-body">
 
     <!-- Step 1: Names -->
-    <div class="ob-step on" id="ob-s1">
+    <div class="ob-step on" id="ob-s1" style="display:flex;">
       <div class="ob-emoji">💑</div>
       <div class="ob-title">Apni Dream <span style="color:var(--g);">Shaadi</span> Plan Karein</div>
       <div class="ob-sub">SmartShaadi AI aapki wedding ko perfect banayega — free mein, Hindi mein, 2 minute mein!</div>
@@ -243,7 +243,7 @@ textarea.inp{resize:none;}
     </div>
 
     <!-- Step 2: Date + City -->
-    <div class="ob-step" id="ob-s2">
+    <div class="ob-step" id="ob-s2" style="display:none;">
       <div class="ob-emoji">📍</div>
       <div class="ob-title">Wedding <span style="color:var(--g);">Details</span></div>
       <div class="ob-sub">Yeh batao — AI tumhare liye personalized plan banayega</div>
@@ -255,7 +255,7 @@ textarea.inp{resize:none;}
     </div>
 
     <!-- Step 3: Budget + Type -->
-    <div class="ob-step" id="ob-s3">
+    <div class="ob-step" id="ob-s3" style="display:none;">
       <div class="ob-emoji">💰</div>
       <div class="ob-title">Budget aur <span style="color:var(--g);">Style</span></div>
       <div class="ob-sub">Apna total budget batao — AI accordingly plan karega</div>
@@ -699,33 +699,51 @@ function selType(el,v){
 }
 
 function obGo(step){
+  // Validate current step before advancing
   if(step===2){
-    const bride=document.getElementById('ob-bride').value.trim();
-    const groom=document.getElementById('ob-groom').value.trim();
-    if(!bride&&!groom){toast('⚠️ Naam daalein!');return;}
-    W.bride=esc(bride)||'Bride';W.groom=esc(groom)||'Groom';
+    var bride=(document.getElementById('ob-bride').value||'').trim();
+    var groom=(document.getElementById('ob-groom').value||'').trim();
+    if(!bride&&!groom){toast('⚠️ Kam se kam ek naam daalein!');return;}
+    W.bride=esc(bride)||'Bride'; W.groom=esc(groom)||'Groom';
   }
   if(step===3){
-    W.date=document.getElementById('ob-date').value||null;
-    W.city=esc(document.getElementById('ob-city').value)||'India';
+    var date2=document.getElementById('ob-date').value||'';
+    var city2=(document.getElementById('ob-city').value||'').trim();
+    if(!date2){toast('⚠️ Wedding date zaroori hai!');return;}
+    if(!city2){toast('⚠️ City zaroori hai!');return;}
+    W.date=date2;
+    W.city=esc(city2);
     W.guests=n(document.getElementById('ob-guests').value,0,100000);
   }
-  document.getElementById('ob-s'+obStep).classList.remove('on');
+  // Hide all steps, show target
+  ['ob-s1','ob-s2','ob-s3'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){el.style.display='none';el.classList.remove('on');}
+  });
+  var target=document.getElementById('ob-s'+step);
+  if(target){
+    target.style.display='flex';
+    target.classList.add('on');
+    // scroll to top
+    var body=document.querySelector('.ob-body');
+    if(body)body.scrollTop=0;
+  }
   obStep=step;
-  document.getElementById('ob-s'+step).classList.add('on');
-  document.getElementById('ob-prog').style.width=(step/3*100)+'%';
+  var prog=document.getElementById('ob-prog');
+  if(prog)prog.style.width=(step/3*100)+'%';
 }
 
 function obFinish(){
-  W.budget=n(document.getElementById('ob-budget').value,0,9e8);
-  W.wtype=wtype;
-  S.s('ob_done',true);saveData();
+  var bud=n(document.getElementById('ob-budget').value,0,9e8);
+  if(!bud){toast('⚠️ Budget daalein!');return;}
+  W.budget=bud; W.wtype=wtype;
+  S.s('ob_done',true); saveData();
   document.getElementById('onboard').style.display='none';
   document.getElementById('app').style.display='flex';
   document.getElementById('chat-fab').style.display='flex';
   boom();
-  showPage('pg-dash');
-  renderAll();
+  try{renderAll();}catch(e){}
+  try{showPage('pg-dash');}catch(e){}
 }
 
 /* ══════════════════════════════════════
