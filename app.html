@@ -550,7 +550,43 @@ textarea.inp{resize:none;}
 <div style="padding-bottom:24px;">
 
   <!-- HERO -->
-  <div class="dash-hero">
+  <!-- OLD-STYLE TOP HEADER like Image 2 -->
+  <div style="background:linear-gradient(160deg,var(--c2) 0%,var(--bg) 80%);padding:28px 18px 16px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08),transparent);pointer-events:none;"></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;font-weight:700;">India's #1 Free</div>
+        <div style="font-family:var(--fd);font-size:30px;font-weight:700;line-height:1.1;">Smart<span style="color:var(--gold);">Shaadi</span> 💍</div>
+        <div style="font-size:11px;color:var(--txt3);margin-top:4px;">AI Wedding Planner · Forever Free</div>
+      </div>
+      <a href="https://www.smartshaadi.online" style="text-decoration:none;">
+        <div style="background:rgba(201,168,76,.1);border:1px solid var(--bdr);border-radius:var(--r1);padding:9px 12px;text-align:center;">
+          <div style="font-size:16px;">🌐</div>
+          <div style="font-size:9px;color:var(--gold);margin-top:2px;font-weight:700;">Website</div>
+        </div>
+      </a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;">
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(201,168,76,.2);"><div style="font-size:14px;font-weight:800;color:var(--gold);">10</div><div style="font-size:9px;color:var(--txt3);">AI Tools</div></div>
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(46,204,113,.2);"><div style="font-size:13px;font-weight:800;color:var(--green);">Free</div><div style="font-size:9px;color:var(--txt3);">Forever</div></div>
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(52,152,219,.2);"><div style="font-size:13px;font-weight:800;color:var(--blue);">PDF</div><div style="font-size:9px;color:var(--txt3);">Export</div></div>
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(233,30,140,.2);"><div style="font-size:13px;font-weight:800;color:var(--pink);">24/7</div><div style="font-size:9px;color:var(--txt3);">Support</div></div>
+    </div>
+  </div>
+
+  <!-- FREE USES BAR -->
+  <div style="margin:12px 14px 0;">
+    <div style="background:var(--c2);border-radius:16px;padding:13px;border:1px solid var(--bdr);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <div style="font-size:13px;font-weight:700;">🎁 Free Uses Today</div>
+        <span id="uses-pill" style="background:var(--goldglow);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;">3/3</span>
+      </div>
+      <div class="pbar" style="height:6px;margin-bottom:5px;"><div id="uses-bar" class="pfill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
+      <div style="font-size:11px;color:var(--txt3);">Har tool ek use · Ad dekho = +3 free uses</div>
+    </div>
+  </div>
+
+  <div class="dash-hero" style="padding:14px 18px 16px;">
     <div class="dash-name" id="dash-name">Namaste, <span>Priya & Rahul!</span></div>
     <div class="dash-date" id="dash-date">Wedding date set karein ⬇️</div>
 
@@ -619,10 +655,47 @@ textarea.inp{resize:none;}
     </div>
   </div>
 
-  <!-- AI TOOLS section -->
+  <!-- AI TOOLS section — PRO -->
   <div style="padding:18px 14px 0;">
-    <div class="sh"><div class="sh-t">✨ AI <span>Tools</span></div><span class="pill">10 Free</span></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;" id="tgrid"></div>
+    <div class="sh">
+      <div class="sh-t">✨ AI <span>Tools</span></div>
+      <span id="tools-badge" style="background:rgba(255,45,85,.12);color:#FF6B8A;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;">🔒 Pro</span>
+    </div>
+    <!-- Pro upsell card BEFORE tools -->
+    <div id="tools-locked-cta" style="background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(255,87,34,.06));border-radius:20px;padding:18px;border:1px solid rgba(201,168,76,.3);margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="font-size:36px;">🔓</div>
+        <div>
+          <div style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--gold);">AI Tools Unlock Karo</div>
+          <div style="font-size:12px;color:var(--txt2);margin-top:2px;">10 powerful AI tools — sirf ₹199/month</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;">
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">💌 Invite</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Writer</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🔮 Kundali</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Matching</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🎨 Theme</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Generator</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🍽️ Menu</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Planner</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">📸 Shots</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">150+ List</div></div>
+        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🤝 Nego</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">tiator</div></div>
+      </div>
+      <button onclick="buyProTools()" style="width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:var(--r1);color:#0A0800;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 24px rgba(201,168,76,.3);letter-spacing:.3px;">
+        🔓 Unlock AI Tools — ₹199/mo
+      </button>
+      <div style="text-align:center;margin-top:8px;font-size:10px;color:var(--txt3);">Razorpay secure payment · UPI, Card, Net Banking</div>
+    </div>
+    <!-- Blurred tools preview -->
+    <div style="position:relative;">
+      <div style="filter:blur(3px);pointer-events:none;opacity:.5;" id="tgrid-wrap">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;" id="tgrid"></div>
+      </div>
+      <div onclick="buyProTools()" style="position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <div style="background:rgba(10,8,0,.85);border:1px solid var(--bdr3);border-radius:16px;padding:14px 24px;text-align:center;">
+          <div style="font-size:24px;margin-bottom:6px;">🔒</div>
+          <div style="font-size:13px;font-weight:800;color:var(--gold);">Unlock karo ₹199/mo</div>
+          <div style="font-size:11px;color:var(--txt2);margin-top:3px;">Tap to subscribe</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- INVITATION PREVIEW CARD -->
@@ -654,17 +727,27 @@ textarea.inp{resize:none;}
     </div>
   </div>
 
-  <!-- PRO UPSELL -->
+  <!-- VENDOR CTA — Old style -->
   <div style="padding:18px 14px 0;">
-    <div class="card-pro">
-      <div style="font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:4px;">Unlock <span style="color:var(--gold);">Pro Plan</span></div>
-      <div style="font-size:13px;color:var(--txt2);margin-bottom:14px;line-height:1.6;">Premium templates, unlimited AI uses, detailed reports</div>
-      <div style="display:flex;gap:8px;margin-bottom:14px;" class="pro-blur">
-        <div style="flex:1;background:var(--c3);border-radius:var(--r1);padding:10px;text-align:center;font-size:11px;color:var(--gold);font-weight:700;">✓ Unlimited AI</div>
-        <div style="flex:1;background:var(--c3);border-radius:var(--r1);padding:10px;text-align:center;font-size:11px;color:var(--gold);font-weight:700;">✓ PDF Export</div>
-        <div style="flex:1;background:var(--c3);border-radius:var(--r1);padding:10px;text-align:center;font-size:11px;color:var(--gold);font-weight:700;">✓ Priorities</div>
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(232,201,122,.04));border-radius:22px;padding:18px;border:1px dashed rgba(201,168,76,.25);">
+      <div style="font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px;">🏆 Vendor hain? List Karein!</div>
+      <div style="font-size:12px;color:var(--txt3);margin-bottom:14px;line-height:1.5;">1000+ couples daily apni shaadi plan kar rahe hain</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--bdr);">
+          <div style="font-size:12px;color:var(--gold);font-weight:700;">Basic</div>
+          <div style="font-size:10px;color:var(--txt3);">₹999/mo</div>
+        </div>
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;">
+          <div style="font-size:12px;color:#0A0800;font-weight:800;">⭐ Featured</div>
+          <div style="font-size:10px;color:#0A080888;">₹1,999/mo</div>
+        </div>
+        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--bdr);">
+          <div style="font-size:12px;color:var(--gold);font-weight:700;">🏆 Premium</div>
+          <div style="font-size:10px;color:var(--txt3);">₹2,999/mo</div>
+        </div>
       </div>
-      <a href="/vendors/apply.html" class="btn-gold" style="display:block;text-align:center;text-decoration:none;font-size:14px;padding:14px;">✨ Unlock Pro — ₹199/mo</a>
+      <a href="/vendors/index.html" class="btn-ghost" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;">🔍 Verified Vendors Dekho</a>
+      <a href="/vendors/apply.html" class="btn-gold" style="display:block;text-align:center;text-decoration:none;">📝 Vendor Ban Jao →</a>
     </div>
   </div>
 
@@ -1005,8 +1088,8 @@ function showApp(){
 /* ══ FREEMIUM ══ */
 const FM={
   init(){const today=new Date().toDateString();if(S.get('fdate')!==today){S.set('fdate',today);S.set('fuses',3);}A.uses=S.get('fuses',3);},
-  use(){A.uses=Math.max(0,A.uses-1);S.set('fuses',A.uses);},
-  add(n){A.uses+=n;S.set('fuses',A.uses);toast('🎉 +'+n+' free uses mili!');}
+  use(){A.uses=Math.max(0,A.uses-1);S.set('fuses',A.uses);this.ui();},
+  add(n){A.uses+=n;S.set('fuses',A.uses);this.ui();toast('🎉 +'+n+' free uses mili!');}
 };
 function closeAd(grant){document.getElementById('adbox').classList.remove('on');if(grant)FM.add(3);}
 
@@ -1053,8 +1136,65 @@ function rTG(){
 }
 
 function openTool(url){
+  // Check if pro subscriber
+  if(S.get('pro_active')){
+    window.location.href=url;return;
+  }
   if(A.uses<=0){document.getElementById('adbox').classList.add('on');return;}
   FM.use();window.location.href=url;
+}
+
+function buyProTools(){
+  // Check Razorpay
+  if(typeof Razorpay==='undefined'){
+    // Load Razorpay script dynamically
+    const sc=document.createElement('script');
+    sc.src='https://checkout.razorpay.com/v1/checkout.js';
+    sc.onload=()=>openRazorpay();
+    document.head.appendChild(sc);
+  } else {
+    openRazorpay();
+  }
+}
+
+function openRazorpay(){
+  const opts={
+    key:'rzp_live_XXXXXXXXXXXX', // ← Apni Razorpay Live Key yahan daalo
+    amount:19900, // ₹199 in paise
+    currency:'INR',
+    name:'SmartShaadi',
+    description:'AI Tools Pro Plan — 1 Month',
+    image:'https://www.smartshaadi.online/icons/icon-192.png',
+    prefill:{name:(A.bride||'')+' & '+(A.groom||''),email:'',contact:''},
+    theme:{color:'#C9A84C'},
+    modal:{ondismiss:()=>{}},
+    handler:function(resp){
+      // Payment success
+      S.set('pro_active',true);
+      S.set('pro_expiry',Date.now()+(30*24*60*60*1000));
+      S.set('pro_payment_id',resp.razorpay_payment_id);
+      // Update UI
+      const cta=document.getElementById('tools-locked-cta');if(cta)cta.style.display='none';
+      const wrap=document.getElementById('tgrid-wrap');if(wrap){wrap.style.filter='';wrap.style.opacity='1';wrap.style.pointerEvents='auto';}
+      const badge=document.getElementById('tools-badge');if(badge){badge.textContent='✅ Pro Active';badge.style.background='rgba(46,204,113,.12)';badge.style.color='var(--green)';}
+      // Remove lock overlay
+      const overlays=document.querySelectorAll('#tgrid-wrap + div');overlays.forEach(el=>el.remove());
+      toast('🎉 Pro Plan Active! Sab AI Tools unlock ho gaye!');boom();
+    }
+  };
+  try{new Razorpay(opts).open();}catch(e){toast('Payment open karne mein error: '+e.message);}
+}
+
+// Check pro status on load
+function checkProStatus(){
+  const expiry=S.get('pro_expiry',0);
+  if(expiry && Date.now()<expiry){
+    const cta=document.getElementById('tools-locked-cta');if(cta)cta.style.display='none';
+    const wrap=document.getElementById('tgrid-wrap');if(wrap){wrap.style.filter='';wrap.style.opacity='1';wrap.style.pointerEvents='auto';}
+    const badge=document.getElementById('tools-badge');if(badge){badge.textContent='✅ Pro Active';badge.style.background='rgba(46,204,113,.12)';badge.style.color='var(--green)';}
+    // Remove lock overlay
+    setTimeout(()=>{const overlays=document.querySelectorAll('#tgrid-wrap + div');overlays.forEach(el=>el.remove());},100);
+  }
 }
 
 /* ══ DASHBOARD RENDER ══ */
@@ -1303,7 +1443,7 @@ function rg(){
   const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
   const veg=guests.filter(g=>g.meal==='Veg').length;
   const pct=guests.length?Math.round(conf/guests.length*100):0;
-  const se=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  const se2=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};const se=(id,v)=>{se2(id,v);};
   se('gt',guests.length);se('gc',conf);se('gp',guests.filter(g=>g.rsvp==='Pending').length);se('gv',veg);
   const bar=document.getElementById('gbar');if(bar)bar.style.width=pct+'%';
   const pp=document.getElementById('gpct');if(pp)pp.textContent=pct+'%';
@@ -1451,7 +1591,7 @@ document.addEventListener('click',()=>{_at++;clearTimeout(_atm);_atm=setTimeout(
 /* ══ INIT ══ */
 function initApp(){
   FM.init();
-  rTG();rg();rDash();rNotes();rChecklist();
+  rTG();rg();rDash();rNotes();rChecklist();checkProStatus();
   // Sync date to timeline inputs
   if(A.wDate){
     const di=document.getElementById('inv-date-inp');if(di)di.value=A.wDate;
