@@ -574,20 +574,16 @@ textarea.inp{resize:none;}
     </div>
   </div>
 
-  <!-- FREE USES BAR -->
-  <div style="margin:12px 14px 0;">
-    <div style="background:var(--c2);border-radius:16px;padding:13px;border:1px solid var(--bdr);">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-        <div style="font-size:13px;font-weight:700;">🎁 Free Uses Today</div>
-        <span id="uses-pill" style="background:var(--goldglow);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;">3/3</span>
-      </div>
-      <div class="pbar" style="height:6px;margin-bottom:5px;"><div id="uses-bar" class="pfill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
-      <div style="font-size:11px;color:var(--txt3);">Har tool ek use · Ad dekho = +3 free uses</div>
-    </div>
+  <!-- SMART BANNER — setup prompt OR planning streak -->
+  <div style="margin:12px 14px 0;" id="smart-banner">
+    <!-- filled at runtime by updateSmartBanner() -->
   </div>
 
   <div class="dash-hero" style="padding:14px 18px 16px;">
-    <div class="dash-name" id="dash-name">Namaste, <span>Priya & Rahul!</span></div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;">
+      <div class="dash-name" id="dash-name" style="margin-bottom:0;">Namaste, <span>Priya & Rahul!</span></div>
+      <button onclick="openEditModal()" title="Edit details" style="background:rgba(201,168,76,.12);border:1px solid var(--bdr);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer;color:var(--gold);flex-shrink:0;margin-left:8px;margin-top:2px;">✏️</button>
+    </div>
     <div class="dash-date" id="dash-date">Wedding date set karein ⬇️</div>
 
     <!-- countdown ring -->
@@ -890,6 +886,38 @@ textarea.inp{resize:none;}
 </div>
 </div>
 
+<!-- EDIT DETAILS MODAL -->
+<div id="edit-modal" style="position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.9);display:none;align-items:flex-end;backdrop-filter:blur(8px);">
+  <div style="width:100%;background:var(--c1);border-radius:28px 28px 0 0;border:1px solid var(--bdr);border-bottom:none;padding:20px 20px calc(20px + var(--safe));max-height:90dvh;overflow-y:auto;animation:slideUp .3s cubic-bezier(.4,0,.2,1);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-family:var(--fd);font-size:22px;font-weight:700;">✏️ Edit <span style="color:var(--gold);">Details</span></div>
+      <button onclick="closeEditModal()" style="background:var(--c2);border:1px solid var(--bdr2);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--txt2);cursor:pointer;">✕ Close</button>
+    </div>
+    <label class="lbl">Bride ka Naam</label>
+    <input id="ed-bride" class="inp" placeholder="Priya Sharma" style="margin-bottom:12px;"/>
+    <label class="lbl">Groom ka Naam</label>
+    <input id="ed-groom" class="inp" placeholder="Rahul Gupta" style="margin-bottom:12px;"/>
+    <label class="lbl">Wedding Date</label>
+    <input type="date" id="ed-date" class="inp" style="margin-bottom:12px;color:var(--gold);font-weight:700;"/>
+    <label class="lbl">City</label>
+    <input id="ed-city" class="inp" placeholder="Delhi, Mumbai, Jaipur..." style="margin-bottom:12px;"/>
+    <label class="lbl">Total Guests</label>
+    <input type="number" id="ed-guests" class="inp" placeholder="200" style="margin-bottom:12px;"/>
+    <label class="lbl">Total Budget (₹)</label>
+    <input type="number" id="ed-budget" class="inp" placeholder="1500000" style="margin-bottom:16px;"/>
+    <label class="lbl" style="margin-bottom:10px;">Wedding Vibe</label>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;" id="ed-vibe-chips">
+      <div class="ob-chip" data-v="Budget-Friendly">💰 Budget-Friendly</div>
+      <div class="ob-chip" data-v="Luxurious">💎 Luxurious</div>
+      <div class="ob-chip" data-v="Destination">✈️ Destination</div>
+      <div class="ob-chip" data-v="Traditional">🪔 Traditional</div>
+      <div class="ob-chip" data-v="Modern">🎊 Modern</div>
+    </div>
+    <button onclick="saveEditModal()" class="btn-gold" style="font-size:15px;padding:15px;">💾 Save & Update Dashboard</button>
+  </div>
+</div>
+
+
 </div><!-- /wrap -->
 
 <!-- BOTTOM NAV -->
@@ -1136,12 +1164,12 @@ function rTG(){
 }
 
 function openTool(url){
-  // Check if pro subscriber
-  if(S.get('pro_active')){
+  // Pro check — if active, open directly
+  if(S.get('pro_active') && Date.now() < S.get('pro_expiry',0)){
     window.location.href=url;return;
   }
-  if(A.uses<=0){document.getElementById('adbox').classList.add('on');return;}
-  FM.use();window.location.href=url;
+  // Not pro — show buy prompt
+  buyProTools();
 }
 
 function buyProTools(){
@@ -1159,7 +1187,7 @@ function buyProTools(){
 
 function openRazorpay(){
   const opts={
-    key:'rzp_live_XXXXXXXXXXXX', // ← Apni Razorpay Live Key yahan daalo
+    key:'rzp_test_XXXXXXXXXXXX', // ← Razorpay Dashboard se Live Key copy karo
     amount:19900, // ₹199 in paise
     currency:'INR',
     name:'SmartShaadi',
@@ -1255,6 +1283,7 @@ function rDash(){
 
   // Tools grid
   rTG();
+  updateSmartBanner();
 }
 
 function rVendorQuick(){
@@ -1579,6 +1608,150 @@ function addTyping(){
 }
 function removeTyping(){document.getElementById('ctind')?.remove();}
 
+/* ══ SMART BANNER ══ */
+function updateSmartBanner(){
+  const el = document.getElementById('smart-banner');
+  if(!el) return;
+  const bride = A.bride || S.get('bride','');
+  const groom = A.groom || S.get('groom','');
+  const wdate = A.wDate || S.get('wdate','');
+  const budget = A.bTotal || S.get('btotal',0);
+  const hasDetails = bride || groom;
+  const hasFull = bride && wdate && budget;
+
+  if(!hasDetails){
+    // No details — prompt to fill
+    el.innerHTML = `<div style="background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(255,87,34,.06));border-radius:16px;padding:14px 16px;border:1px solid rgba(201,168,76,.3);cursor:pointer;" onclick="openEditModal()">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:28px;">✏️</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:800;color:var(--gold);">Apni Wedding Details Bharo!</div>
+          <div style="font-size:11px;color:var(--txt2);margin-top:2px;">Personalized dashboard ready hoga — countdown, budget, checklist!</div>
+        </div>
+        <div style="font-size:12px;color:var(--gold);font-weight:700;">Fill →</div>
+      </div>
+    </div>`;
+  } else if(!hasFull){
+    // Partial — prompt to complete
+    const missing = [];
+    if(!wdate) missing.push('Wedding Date');
+    if(!budget) missing.push('Budget');
+    el.innerHTML = `<div style="background:rgba(255,152,0,.08);border-radius:16px;padding:14px 16px;border:1px solid rgba(255,152,0,.25);cursor:pointer;" onclick="openEditModal()">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:24px;">⚡</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:800;color:#FF9800;">Profile Complete Karo!</div>
+          <div style="font-size:11px;color:var(--txt2);margin-top:2px;">Missing: ${missing.join(', ')} — tap to fill</div>
+        </div>
+        <div style="font-size:12px;color:#FF9800;font-weight:700;">Update ✏️</div>
+      </div>
+    </div>`;
+  } else {
+    // All details filled — show Pro upsell streak
+    const cTasks = S.get('cktasks',{});
+    const done = Object.values(cTasks).filter(Boolean).length;
+    const isPro = S.get('pro_active') && Date.now() < S.get('pro_expiry',0);
+    if(isPro){
+      el.innerHTML = `<div style="background:rgba(46,204,113,.08);border-radius:16px;padding:13px 16px;border:1px solid rgba(46,204,113,.25);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="font-size:22px;">✅</div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:800;color:var(--green);">Pro Plan Active!</div><div style="font-size:11px;color:var(--txt2);margin-top:1px;">Sabhi AI Tools unlock hain · ${done} tasks complete</div></div>
+          <div style="font-size:11px;color:var(--green);font-weight:700;">Active ✓</div>
+        </div>
+      </div>`;
+    } else {
+      el.innerHTML = `<div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(255,45,85,.05));border-radius:16px;padding:13px 16px;border:1px solid rgba(201,168,76,.25);cursor:pointer;" onclick="buyProTools()">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="font-size:24px;">🔒</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:800;color:var(--gold);">AI Tools Lock Hain!</div>
+            <div style="font-size:11px;color:var(--txt2);margin-top:1px;">₹199/mo mein unlock karo — 10 powerful tools</div>
+          </div>
+          <button onclick="event.stopPropagation();buyProTools()" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:800;color:#0A0800;cursor:pointer;">Unlock</button>
+        </div>
+      </div>`;
+    }
+  }
+}
+
+/* ══ EDIT MODAL ══ */
+function openEditModal(){
+  const m = document.getElementById('edit-modal');
+  if(!m) return;
+  // Pre-fill with saved data
+  const bride = A.bride || S.get('bride','');
+  const groom = A.groom || S.get('groom','');
+  const wdate = A.wDate || S.get('wdate','');
+  const city = A.city || S.get('city','');
+  const guests = A.guests || S.get('guests_count',200);
+  const budget = A.bTotal || S.get('btotal',1500000);
+  const vibe = A.wType || S.get('wtype','Budget-Friendly');
+
+  const ids = {
+    'ed-bride': bride, 'ed-groom': groom, 'ed-date': wdate,
+    'ed-city': city, 'ed-guests': guests||'', 'ed-budget': budget||''
+  };
+  Object.entries(ids).forEach(([id,val])=>{const e=document.getElementById(id);if(e)e.value=val||'';});
+
+  // Set vibe chip
+  document.querySelectorAll('#ed-vibe-chips .ob-chip').forEach(ch=>{
+    ch.classList.toggle('sel', ch.dataset.v === vibe);
+    ch.onclick = ()=>{
+      document.querySelectorAll('#ed-vibe-chips .ob-chip').forEach(c=>c.classList.remove('sel'));
+      ch.classList.add('sel');
+    };
+  });
+
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEditModal(){
+  const m = document.getElementById('edit-modal');
+  if(m) m.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function saveEditModal(){
+  const bride = document.getElementById('ed-bride')?.value?.trim();
+  const groom = document.getElementById('ed-groom')?.value?.trim();
+  const wdate = document.getElementById('ed-date')?.value;
+  const city = document.getElementById('ed-city')?.value?.trim();
+  const guests = parseInt(document.getElementById('ed-guests')?.value)||200;
+  const budget = parseFloat(document.getElementById('ed-budget')?.value)||1500000;
+  const vibe = document.querySelector('#ed-vibe-chips .ob-chip.sel')?.dataset?.v || 'Budget-Friendly';
+
+  if(bride) A.bride = bride;
+  if(groom) A.groom = groom;
+  if(wdate) A.wDate = wdate;
+  if(city) A.city = city;
+  A.guests = guests;
+  A.bTotal = budget;
+  A.wType = vibe;
+
+  // Save all to localStorage
+  if(bride) S.set('bride', bride);
+  if(groom) S.set('groom', groom);
+  if(wdate) S.set('wdate', wdate);
+  if(city) S.set('city', city);
+  S.set('guests_count', guests);
+  S.set('btotal', budget);
+  S.set('wtype', vibe);
+  S.set('ob_done', true);
+
+  closeEditModal();
+  rDash(); // Re-render dashboard with new data
+  updateSmartBanner();
+  toast('✅ Details save ho gayi! Dashboard update ho gaya!');
+  boom();
+}
+
+// Close edit modal on backdrop click
+document.getElementById('edit-modal')?.addEventListener('click', function(e){
+  if(e.target === this) closeEditModal();
+});
+
+
 /* ══ PWA ══ */
 window.addEventListener('online',()=>{const b=document.getElementById('off-bar');if(b)b.style.display='none';});
 window.addEventListener('offline',()=>{const b=document.getElementById('off-bar');if(b)b.style.display='block';});
@@ -1591,7 +1764,7 @@ document.addEventListener('click',()=>{_at++;clearTimeout(_atm);_atm=setTimeout(
 /* ══ INIT ══ */
 function initApp(){
   FM.init();
-  rTG();rg();rDash();rNotes();rChecklist();checkProStatus();
+  rTG();rg();rDash();rNotes();rChecklist();checkProStatus();setTimeout(updateSmartBanner,100);
   // Sync date to timeline inputs
   if(A.wDate){
     const di=document.getElementById('inv-date-inp');if(di)di.value=A.wDate;
