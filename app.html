@@ -4,1048 +4,871 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <title>SmartShaadi — AI Wedding Planner</title>
-<meta name="theme-color" content="#0D0008"/>
+<meta name="theme-color" content="#080508"/>
+<meta name="description" content="India's #1 AI Wedding Planner — Plan your dream wedding in minutes"/>
 <link rel="manifest" href="/manifest.json"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+
 <style>
-/* ═══════════════ TOKENS ═══════════════ */
+/* ══════════════════════════════════════
+   DESIGN SYSTEM
+══════════════════════════════════════ */
 :root{
-  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#FFF0B3;
-  --red:#FF2D55;--red2:#FF6B8A;--red3:rgba(255,45,85,.15);
-  --bg:#0D0008;--s1:#140010;--s2:#1C0018;--s3:#240020;
-  --border:rgba(201,168,76,.15);--border2:rgba(255,255,255,.07);
-  --text:#FFF0F5;--text2:#C4A0B0;--text3:#6B4A58;
-  --green:#2ECC71;--blue:#3498DB;--orange:#FF9800;
-  --font-d:'Playfair Display',Georgia,serif;
-  --font-b:'Plus Jakarta Sans',sans-serif;
-  --nav-h:66px;
-  --safe:max(env(safe-area-inset-bottom),8px);
+  --g:#C9A84C; --g2:#E8C97A; --g3:#FFF2C0;
+  --r:#D4AF37; /* royal gold */
+  --bg:#080508; --bg2:#0F0B10; --bg3:#160F18; --bg4:#1D1420;
+  --card:rgba(255,255,255,.035); --card2:rgba(255,255,255,.055);
+  --border:rgba(201,168,76,.14); --border2:rgba(255,255,255,.07);
+  --text:#F5EED8; --t2:#B8A882; --t3:#6B5F50; --t4:#3A3028;
+  --green:#2ECC71; --blue:#3498DB; --red:#E74C3C; --pink:#FF6B9D;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'Plus Jakarta Sans',system-ui,sans-serif;
+  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:28px;
+  --nav:64px; --safe:max(env(safe-area-inset-bottom),8px);
+  --sh:0 4px 24px rgba(0,0,0,.5);
+  --sh-g:0 8px 32px rgba(201,168,76,.18);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{background:var(--bg);color:var(--text);font-family:var(--font-b);height:100%;width:100%;overflow:hidden;}
 
-/* ═══════════════ CANVAS BG ═══════════════ */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+/* ══ CANVAS PARTICLES ══ */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7;}
 
-/* ═══════════════ SHELL ═══════════════ */
-#shell{position:relative;z-index:1;display:flex;flex-direction:column;height:100dvh;width:100%;}
-#wrap{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
-#wrap::-webkit-scrollbar{display:none;}
+/* ══ APP SHELL ══ */
+#app{position:relative;z-index:1;height:100dvh;width:100%;display:flex;flex-direction:column;}
+#pages{flex:1;overflow:hidden;position:relative;}
+.page{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:none;padding-bottom:80px;}
+.page::-webkit-scrollbar{display:none;}
+.page.active{display:block;animation:pgIn .35s cubic-bezier(.4,0,.2,1);}
+@keyframes pgIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
-/* ═══════════════ SPLASH ═══════════════ */
-#splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 50% 40%,#2a0020,#0D0008 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease;}
-.splash-ring{font-size:80px;animation:ringDrop 1.2s cubic-bezier(.34,1.56,.64,1) both;}
-@keyframes ringDrop{0%{transform:translateY(-80px) rotate(-30deg) scale(.3);opacity:0;}100%{transform:translateY(0) rotate(0) scale(1);opacity:1;}}
-.splash-title{font-family:var(--font-d);font-size:42px;font-weight:900;margin-top:16px;animation:fadeUp .7s .5s both;}
-.splash-sub{font-size:12px;color:var(--text3);letter-spacing:3px;text-transform:uppercase;margin-top:8px;animation:fadeUp .7s .7s both;}
-.splash-dots{display:flex;gap:8px;margin-top:36px;animation:fadeUp .7s .9s both;}
-.splash-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:bnc .9s infinite;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-@keyframes bnc{0%,80%,100%{transform:translateY(0);opacity:.4;}40%{transform:translateY(-7px);opacity:1;}}
+/* ══ BOTTOM NAV ══ */
+#nav{display:flex;background:rgba(8,5,8,.97);border-top:1px solid var(--border2);backdrop-filter:blur(24px);padding:6px 0 var(--safe);height:var(--nav);flex-shrink:0;z-index:100;}
+.nav-btn{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;transition:transform .15s;font-family:var(--font-b);}
+.nav-btn:active{transform:scale(.88);}
+.nav-btn .ico{font-size:20px;transition:transform .2s;}
+.nav-btn .lbl{font-size:9px;font-weight:600;color:var(--t3);letter-spacing:.3px;}
+.nav-btn.on .lbl{color:var(--g);font-weight:800;}
+.nav-btn.on .ico{transform:scale(1.2);}
+.nav-dot{width:4px;height:4px;background:var(--g);border-radius:50%;}
 
-/* ═══════════════ ONBOARDING ═══════════════ */
-#onboard{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;background:linear-gradient(160deg,#1a0015,#0D0008 60%);}
-.ob-step{display:none;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:32px 24px;text-align:center;}
-.ob-step.on{display:flex;animation:fadeUp .4s both;}
-.ob-emoji{font-size:64px;margin-bottom:20px;}
-.ob-title{font-family:var(--font-d);font-size:28px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.2;}
-.ob-sub{font-size:14px;color:var(--text2);margin-bottom:32px;line-height:1.6;}
-.ob-inp{width:100%;background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;color:var(--text);font-size:18px;font-family:var(--font-b);font-weight:600;outline:none;text-align:center;margin-bottom:16px;}
-.ob-inp:focus{border-color:var(--gold);}
-.ob-inp::placeholder{color:var(--text3);}
-.ob-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--red),#FF6B35);border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font-b);box-shadow:0 8px 32px rgba(255,45,85,.3);transition:transform .15s;}
-.ob-btn:active{transform:scale(.97);}
-.ob-skip{margin-top:16px;font-size:12px;color:var(--text3);cursor:pointer;padding:8px;}
+/* ══ SPLASH ══ */
+#splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 50% 35%,#1a1000,#080508 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease;}
+.sp-ring{font-size:76px;animation:ringIn 1.3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes ringIn{0%{transform:translateY(-60px) scale(.2) rotate(-20deg);opacity:0;}100%{transform:none;opacity:1;}}
+.sp-brand{font-family:var(--font-d);font-size:44px;font-weight:700;margin-top:14px;background:linear-gradient(135deg,#fff 30%,var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadeUp .7s .5s both;}
+.sp-tag{font-size:11px;color:var(--t3);letter-spacing:3px;text-transform:uppercase;animation:fadeUp .7s .7s both;}
+.sp-dots{display:flex;gap:8px;margin-top:36px;animation:fadeUp .7s .9s both;}
+.sp-dot{width:7px;height:7px;border-radius:50%;background:var(--g);animation:bounce .9s infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4;}40%{transform:translateY(-8px);opacity:1;}}
 
-/* ═══════════════ NAV ═══════════════ */
-#bnav{display:flex;background:rgba(13,0,8,.97);border-top:1px solid var(--border2);backdrop-filter:blur(24px);padding:6px 0 var(--safe);flex-shrink:0;height:var(--nav-h);position:relative;z-index:50;}
-.nb{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;transition:transform .15s;}
-.nb:active{transform:scale(.88);}
-.nb .ni{font-size:20px;line-height:1;transition:transform .2s;}
-.nb .nl{font-size:9px;font-weight:600;color:var(--text3);letter-spacing:.3px;}
-.nb.on .nl{color:var(--gold);font-weight:800;}
-.nb.on .ni{transform:scale(1.2);}
-.ndot{width:4px;height:4px;background:var(--gold);border-radius:50%;margin-top:1px;}
+/* ══ ONBOARDING ══ */
+#onboard{position:fixed;inset:0;z-index:500;background:var(--bg);display:none;flex-direction:column;}
+.ob-progress{height:3px;background:var(--bg3);flex-shrink:0;}
+.ob-prog-fill{height:100%;background:linear-gradient(90deg,var(--g),var(--g2));transition:width .4s ease;}
+.ob-body{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:32px 24px 40px;}
+.ob-step{display:none;flex-direction:column;animation:fadeUp .35s both;}
+.ob-step.on{display:flex;}
+.ob-emoji{font-size:56px;margin-bottom:20px;text-align:center;}
+.ob-title{font-family:var(--font-d);font-size:30px;font-weight:700;text-align:center;line-height:1.2;margin-bottom:10px;}
+.ob-sub{font-size:14px;color:var(--t2);text-align:center;line-height:1.7;margin-bottom:32px;}
+.ob-field{margin-bottom:16px;}
+.ob-label{font-size:11px;color:var(--t2);font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.ob-inp{width:100%;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--r-md);padding:14px 16px;color:var(--text);font-size:16px;font-family:var(--font-b);font-weight:500;outline:none;transition:border-color .2s;}
+.ob-inp:focus{border-color:var(--g);}
+.ob-inp::placeholder{color:var(--t4);}
+.ob-select-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ob-chip{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--r-md);padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s;font-size:13px;font-weight:600;color:var(--t2);}
+.ob-chip.on{background:rgba(201,168,76,.12);border-color:var(--g);color:var(--g);}
+.ob-chip .ob-chip-icon{font-size:24px;display:block;margin-bottom:5px;}
+.ob-next{width:100%;padding:16px;background:linear-gradient(135deg,var(--g),var(--g2));border:none;border-radius:var(--r-md);color:#080508;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font-b);box-shadow:var(--sh-g);margin-top:8px;transition:transform .15s;}
+.ob-next:active{transform:scale(.97);}
+.ob-back{background:none;border:none;color:var(--t3);font-size:13px;cursor:pointer;padding:12px;font-family:var(--font-b);text-align:center;width:100%;}
 
-/* ═══════════════ SCREENS ═══════════════ */
-.scr{display:none;}
-.scr.on{display:block;animation:scrIn .3s cubic-bezier(.4,0,.2,1);}
-@keyframes scrIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-#scr-tool{display:none;flex-direction:column;}
-#scr-tool.on{display:flex;}
+/* ══ CARDS ══ */
+.card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r-lg);padding:18px;}
+.card-gold{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.04));border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;}
+.card-pro{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(139,90,43,.06));border:1px solid rgba(201,168,76,.25);border-radius:var(--r-lg);padding:18px;position:relative;overflow:hidden;}
 
-/* ═══════════════ TOPBAR ═══════════════ */
-.topbar{background:rgba(13,0,8,.95);padding:13px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:10px;flex-shrink:0;backdrop-filter:blur(20px);position:sticky;top:0;z-index:40;}
-.back-btn{background:rgba(255,255,255,.07);border:1px solid var(--border2);border-radius:10px;padding:7px 12px;color:var(--text2);font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-b);transition:all .15s;}
-.back-btn:active{transform:scale(.94);}
+/* ══ BUTTONS ══ */
+.btn{width:100%;padding:14px;border:none;border-radius:var(--r-md);font-size:14px;font-weight:800;cursor:pointer;font-family:var(--font-b);transition:all .15s;letter-spacing:.3px;}
+.btn:active{transform:scale(.97);}
+.btn-gold{background:linear-gradient(135deg,var(--g),var(--g2));color:#080508;box-shadow:var(--sh-g);}
+.btn-ghost{background:var(--card2);border:1.5px solid var(--border);color:var(--g);}
+.btn-sm{padding:9px 16px;width:auto;font-size:12px;border-radius:10px;}
+.btn-red{background:linear-gradient(135deg,#FF6B9D,#C9184A);color:#fff;}
 
-/* ═══════════════ CARDS ═══════════════ */
-.card{background:rgba(255,255,255,.04);border-radius:20px;padding:16px;border:1px solid var(--border);}
-.card-red{background:rgba(255,45,85,.06);border-radius:20px;padding:16px;border:1px solid rgba(255,45,85,.2);}
-
-/* ═══════════════ BUTTONS ═══════════════ */
-.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:14px;padding:14px;color:#0D0008;font-weight:800;font-size:14px;cursor:pointer;width:100%;font-family:var(--font-b);box-shadow:0 6px 24px rgba(201,168,76,.2);transition:all .15s;letter-spacing:.3px;}
-.btn-gold:active{transform:scale(.97);}
-.btn-red{background:linear-gradient(135deg,var(--red),#FF6B35);border:none;border-radius:14px;padding:14px;color:#fff;font-weight:800;font-size:14px;cursor:pointer;width:100%;font-family:var(--font-b);box-shadow:0 6px 24px rgba(255,45,85,.25);transition:all .15s;}
-.btn-red:active{transform:scale(.97);}
-.btn-ghost{background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:14px;padding:12px 16px;color:var(--gold);font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font-b);width:100%;transition:all .15s;}
-.btn-ghost:active{transform:scale(.97);}
-.btn-sm{background:rgba(255,255,255,.05);border:1px solid var(--border2);border-radius:8px;padding:7px 14px;color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-b);white-space:nowrap;transition:all .15s;}
-.btn-sm.on{background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold);font-weight:700;}
-.btn-sm:active{transform:scale(.94);}
-
-/* ═══════════════ MISC ═══════════════ */
-.inp{width:100%;background:rgba(255,255,255,.05);border:1.5px solid var(--border2);border-radius:12px;padding:12px 14px;color:var(--text);font-size:14px;outline:none;font-family:var(--font-b);transition:border-color .2s;}
-.inp:focus{border-color:var(--gold);}
-.inp::placeholder{color:var(--text3);}
+/* ══ MISC ══ */
+.inp{width:100%;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--r-sm);padding:12px 14px;color:var(--text);font-size:14px;outline:none;font-family:var(--font-b);}
+.inp:focus{border-color:var(--g);}
+.inp::placeholder{color:var(--t4);}
 textarea.inp{resize:none;}
-.lbl{font-size:10px;color:var(--text2);margin-bottom:5px;display:block;font-weight:700;letter-spacing:.8px;text-transform:uppercase;}
-.pill{background:rgba(201,168,76,.12);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;}
-.pill-red{background:rgba(255,45,85,.12);color:var(--red2);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;}
-.pbar{height:6px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;}
-.pfill{height:100%;border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1);}
-.sep{height:1px;background:var(--border2);margin:14px 0;}
-.st{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--text);}
-.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.sb{background:rgba(255,255,255,.04);border-radius:14px;padding:11px 6px;text-align:center;border:1px solid var(--border2);}
+.lbl{font-size:10px;color:var(--t2);font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;display:block;}
+.pill{background:rgba(201,168,76,.12);color:var(--g);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-flex;align-items:center;gap:4px;}
+.pill-green{background:rgba(46,204,113,.1);color:var(--green);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;}
+.pill-pro{background:linear-gradient(135deg,var(--g),var(--g2));color:#080508;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:800;}
+.pbar{height:7px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;}
+.pfill{height:100%;border-radius:4px;transition:width .7s cubic-bezier(.4,0,.2,1);}
+.section-title{font-family:var(--font-d);font-size:22px;font-weight:700;margin-bottom:4px;}
+.section-sub{font-size:12px;color:var(--t3);margin-bottom:16px;}
+.divider{height:1px;background:var(--border2);margin:18px 0;}
+.tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--g);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.tag::before,.tag::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* ═══════════════ CHAT ═══════════════ */
-.mb{max-width:82%;padding:12px 15px;border-radius:18px;font-size:13px;line-height:1.65;}
-.mb.ai{background:var(--s2);color:#eee;border:1px solid var(--border);border-bottom-left-radius:5px;}
-.mb.me{background:linear-gradient(135deg,var(--red),#FF6B35);color:#fff;border-bottom-right-radius:5px;font-weight:500;}
-.qc{flex-shrink:0;background:var(--s2);border:1.5px solid var(--border);border-radius:20px;padding:7px 14px;font-size:11px;color:var(--gold);cursor:pointer;white-space:nowrap;font-family:var(--font-b);font-weight:600;}
+/* ══ TOPBAR ══ */
+.topbar{background:rgba(8,5,8,.96);padding:13px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:40;backdrop-filter:blur(20px);}
+.back{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:7px 12px;color:var(--t2);font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-b);transition:all .15s;}
 
-/* ═══════════════ RSVP ═══════════════ */
-.rsvpb{flex:1;padding:8px 4px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid var(--border2);background:rgba(0,0,0,.3);color:var(--text3);font-family:var(--font-b);font-weight:600;transition:all .15s;}
-.rsvpb.ok{background:rgba(46,204,113,.12);border-color:var(--green);color:var(--green);}
-.rsvpb.wt{background:rgba(255,152,0,.12);border-color:var(--orange);color:var(--orange);}
-.rsvpb.no{background:rgba(255,45,85,.12);border-color:var(--red);color:var(--red2);}
+/* ══ CHAT ══ */
+#chat-fab{position:fixed;bottom:calc(var(--nav) + 16px);right:16px;z-index:200;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--g2));border:none;cursor:pointer;font-size:22px;box-shadow:0 8px 32px rgba(201,168,76,.35);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+#chat-fab:active{transform:scale(.9);}
+#chat-fab .pulse{position:absolute;inset:0;border-radius:50%;background:rgba(201,168,76,.3);animation:pulseRing 2s infinite;}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.7);opacity:0;}}
+#chat-panel{position:fixed;inset:0;z-index:300;display:none;flex-direction:column;background:var(--bg2);}
+#chat-panel.open{display:flex;animation:slideUp .3s ease;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.chat-header{background:var(--bg3);padding:14px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.bot-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--g2));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+#chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+#chat-msgs::-webkit-scrollbar{display:none;}
+.msg{max-width:84%;padding:12px 16px;border-radius:18px;font-size:13px;line-height:1.65;}
+.msg.bot{background:var(--bg3);color:var(--t2);border:1px solid var(--border2);border-bottom-left-radius:5px;align-self:flex-start;}
+.msg.user{background:linear-gradient(135deg,var(--g),var(--g2));color:#080508;border-bottom-right-radius:5px;align-self:flex-end;font-weight:600;}
+.chat-suggestions{padding:8px 16px 4px;display:flex;gap:8px;overflow-x:auto;flex-shrink:0;}
+.chat-suggestions::-webkit-scrollbar{display:none;}
+.sug{flex-shrink:0;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:11px;color:var(--g);cursor:pointer;font-family:var(--font-b);font-weight:600;white-space:nowrap;}
+.chat-input-bar{padding:10px 16px 12px;background:var(--bg3);border-top:1px solid var(--border2);display:flex;gap:8px;flex-shrink:0;}
+.chat-inp{flex:1;background:var(--bg2);border:1.5px solid var(--border2);border-radius:24px;padding:12px 16px;color:var(--text);font-size:13px;outline:none;font-family:var(--font-b);}
+.chat-inp:focus{border-color:var(--g);}
+.chat-send{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--g2));border:none;font-size:16px;cursor:pointer;flex-shrink:0;}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block;animation:bounce .9s infinite;}
 
-/* ═══════════════ TASK ═══════════════ */
-.task-r{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;border:1px solid var(--border2);background:rgba(255,255,255,.03);margin-left:48px;transition:all .2s;}
-.task-r.dn{background:rgba(46,204,113,.06);border-color:rgba(46,204,113,.2);}
-.tck{width:20px;height:20px;border-radius:50%;border:2px solid var(--text3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .2s;}
-.tck.dn{background:var(--green);border-color:var(--green);}
+/* ══ PRO BLUR ══ */
+.pro-blur{filter:blur(4px);pointer-events:none;user-select:none;}
+.pro-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(8,5,8,.7);border-radius:var(--r-lg);cursor:pointer;gap:8px;}
 
-/* ═══════════════ VENDOR ═══════════════ */
-.vcard{background:rgba(255,255,255,.03);border-radius:18px;padding:15px;border:1px solid var(--border2);margin-bottom:10px;transition:border-color .2s;}
+/* ══ CONFETTI ══ */
+#confetti{position:fixed;inset:0;z-index:8000;pointer-events:none;display:none;}
 
-/* ═══════════════ AD BOX ═══════════════ */
-#adbox{position:fixed;inset:0;background:rgba(13,0,8,.97);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;}
-#adbox.on{display:flex;}
+/* ══ TOAST ══ */
+#toast{position:fixed;bottom:calc(var(--nav) + 12px);left:50%;transform:translateX(-50%);background:var(--bg4);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:24px;font-size:13px;font-weight:700;z-index:9000;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:var(--sh);}
 
-/* ═══════════════ TOAST ═══════════════ */
-#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--s3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:24px;font-size:13px;font-weight:700;z-index:9999;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;}
+/* ══ OFFLINE ══ */
+#offline{display:none;background:var(--red);padding:8px;text-align:center;font-size:11px;font-weight:700;color:#fff;position:fixed;top:0;left:0;right:0;z-index:999;}
 
-/* ═══════════════ OFFLINE ═══════════════ */
-#offline-banner{display:none;background:var(--red);padding:9px;text-align:center;font-size:12px;font-weight:700;color:#fff;position:sticky;top:0;z-index:998;}
-
-/* ═══════════════ CONFETTI ═══════════════ */
-#confetti-canvas{position:fixed;inset:0;z-index:8000;pointer-events:none;display:none;}
-
-/* ═══════════════ COUNTDOWN HERO ═══════════════ */
-.days-num{font-family:var(--font-d);font-size:72px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold3),var(--red2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
-
-/* ═══════════════ PULSE ═══════════════ */
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
-@keyframes heartbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.15);}28%{transform:scale(1);}}
-.heartbeat{animation:heartbeat 1.5s infinite;}
-
-/* ═══════════════ TOOL SCREEN ═══════════════ */
-#tool-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0 100px;}
-#tool-body::-webkit-scrollbar{display:none;}
+/* ══ ANIMATIONS ══ */
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+.shimmer{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 2s infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.float{animation:float 3s ease-in-out infinite;}
 </style>
 </head>
 <body>
 
-<!-- ═══ ANIMATED BACKGROUND CANVAS ═══ -->
-<canvas id="bg-canvas"></canvas>
-<canvas id="confetti-canvas"></canvas>
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
 
-<!-- ═══ SPLASH ═══ -->
+<!-- CONFETTI -->
+<canvas id="confetti"></canvas>
+
+<!-- SPLASH -->
 <div id="splash">
-  <div class="splash-ring heartbeat">💍</div>
-  <div class="splash-title">Smart<span style="color:var(--gold);">Shaadi</span></div>
-  <div class="splash-sub">AI Wedding Planner · India's #1</div>
-  <div class="splash-dots">
-    <div class="splash-dot" style="animation-delay:0s"></div>
-    <div class="splash-dot" style="animation-delay:.2s"></div>
-    <div class="splash-dot" style="animation-delay:.4s"></div>
+  <div class="sp-ring float">💍</div>
+  <div class="sp-brand">SmartShaadi</div>
+  <div class="sp-tag">AI Wedding Planner · India's #1</div>
+  <div class="sp-dots">
+    <div class="sp-dot" style="animation-delay:0s"></div>
+    <div class="sp-dot" style="animation-delay:.2s"></div>
+    <div class="sp-dot" style="animation-delay:.4s"></div>
   </div>
-  <div style="position:absolute;bottom:40px;font-size:11px;color:var(--text3);">Made with ❤️ for Indian Weddings</div>
+  <div style="position:absolute;bottom:36px;font-size:11px;color:var(--t4);letter-spacing:1px;">Made with ❤️ for Indian Weddings</div>
 </div>
 
-<!-- ═══ ONBOARDING ═══ -->
+<!-- OFFLINE BANNER -->
+<div id="offline">📡 Internet nahi — AI features offline kaam nahi karenge</div>
+
+<!-- ONBOARDING -->
 <div id="onboard">
-  <!-- Step 1: Names -->
-  <div class="ob-step on" id="ob1">
-    <div class="ob-emoji">💑</div>
-    <div class="ob-title">Apni Shaadi<br><span style="color:var(--gold);">Plan Karein!</span></div>
-    <div class="ob-sub">SmartShaadi AI se aapki dream wedding plan hogi — free mein, Hindi mein!</div>
-    <input class="ob-inp" id="ob-bride" placeholder="Bride ka naam (e.g. Priya)" maxlength="30"/>
-    <input class="ob-inp" id="ob-groom" placeholder="Groom ka naam (e.g. Rahul)" maxlength="30"/>
-    <button class="ob-btn" onclick="obNext(1)">Aage Badho ❤️</button>
-    <div class="ob-skip" onclick="obSkip()">Skip → Guest ki tarah dekho</div>
-  </div>
-  <!-- Step 2: Date + Budget -->
-  <div class="ob-step" id="ob2">
-    <div class="ob-emoji">📅</div>
-    <div class="ob-title">Wedding <span style="color:var(--red2);">Details</span></div>
-    <div class="ob-sub">Countdown shuru hoga — aur AI tumhari date ke hisaab se plan karega!</div>
-    <label class="lbl" style="color:var(--text2);align-self:flex-start;margin-bottom:4px;">Wedding Date</label>
-    <input type="date" class="ob-inp" id="ob-date" style="font-size:16px;"/>
-    <label class="lbl" style="color:var(--text2);align-self:flex-start;margin-bottom:4px;margin-top:8px;">Total Budget (₹)</label>
-    <input type="number" class="ob-inp" id="ob-budget" placeholder="e.g. 1500000" style="font-size:16px;"/>
-    <button class="ob-btn" onclick="obNext(2)">Planning Shuru Karo 🚀</button>
-  </div>
-  <!-- Step 3: Ready -->
-  <div class="ob-step" id="ob3">
-    <div class="ob-emoji" id="ob3-emoji">🎉</div>
-    <div class="ob-title" id="ob3-title">Ready hai <span style="color:var(--gold);">Priya!</span></div>
-    <div class="ob-sub">Tumhari personal wedding dashboard tayaar ho rahi hai...</div>
-    <div style="width:100%;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-bottom:24px;">
-      <div id="ob-loader" style="height:100%;width:0%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:2px;transition:width 1.5s ease;"></div>
-    </div>
-    <button class="ob-btn" id="ob3-btn" onclick="obDone()" style="display:none;">Dashboard Dekho 💍</button>
-  </div>
-</div>
+  <div class="ob-progress"><div class="ob-prog-fill" id="ob-prog" style="width:20%;"></div></div>
+  <div class="ob-body">
 
-<!-- ═══ AD OVERLAY ═══ -->
-<div id="adbox">
-  <div style="background:var(--s2);border-radius:24px;padding:24px 20px;border:1px solid var(--border);text-align:center;width:100%;max-width:360px;">
-    <div style="font-size:44px;margin-bottom:12px;">⚡</div>
-    <div style="font-family:var(--font-d);font-size:22px;color:var(--gold);margin-bottom:6px;">3 Free Uses Ho Gayi!</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;">Ek short ad dekho — <b style="color:var(--gold);">+3 free uses</b> paao</div>
-    <div style="background:rgba(255,255,255,.04);border-radius:14px;padding:14px;margin-bottom:16px;text-align:left;border:1px solid var(--border2);">
-      <div style="font-size:9px;color:var(--text3);margin-bottom:6px;letter-spacing:1px;">📢 SPONSORED</div>
-      <div style="font-size:14px;font-weight:800;color:var(--gold);">Sharma Photography, Delhi</div>
-      <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">⭐ 4.9 · 200+ weddings · ₹35,000 se</div>
-      <div style="display:flex;gap:8px;">
-        <button onclick="closeAd(true)" class="btn-gold" style="flex:1;padding:10px;font-size:12px;">📞 Contact</button>
-        <button onclick="closeAd(true)" style="flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border2);border-radius:10px;padding:10px;font-size:12px;color:var(--text2);cursor:pointer;font-family:var(--font-b);">Skip →</button>
+    <!-- Step 1: Names -->
+    <div class="ob-step on" id="ob-s1">
+      <div class="ob-emoji">💑</div>
+      <div class="ob-title">Apni Dream <span style="color:var(--g);">Shaadi</span> Plan Karein</div>
+      <div class="ob-sub">SmartShaadi AI aapki wedding ko perfect banayega — free mein, Hindi mein, 2 minute mein!</div>
+      <div class="ob-field"><label class="ob-label">Bride ka Naam</label><input class="ob-inp" id="ob-bride" placeholder="e.g. Priya Sharma" maxlength="40"/></div>
+      <div class="ob-field"><label class="ob-label">Groom ka Naam</label><input class="ob-inp" id="ob-groom" placeholder="e.g. Rahul Gupta" maxlength="40"/></div>
+      <button class="ob-next" onclick="obGo(2)">Aage Badho →</button>
+    </div>
+
+    <!-- Step 2: Date + City -->
+    <div class="ob-step" id="ob-s2">
+      <div class="ob-emoji">📍</div>
+      <div class="ob-title">Wedding <span style="color:var(--g);">Details</span></div>
+      <div class="ob-sub">Yeh batao — AI tumhare liye personalized plan banayega</div>
+      <div class="ob-field"><label class="ob-label">Wedding Date</label><input type="date" class="ob-inp" id="ob-date"/></div>
+      <div class="ob-field"><label class="ob-label">City</label><input class="ob-inp" id="ob-city" placeholder="e.g. Delhi, Mumbai, Jaipur"/></div>
+      <div class="ob-field"><label class="ob-label">Guests (approximately)</label><input type="number" class="ob-inp" id="ob-guests" placeholder="e.g. 200"/></div>
+      <button class="ob-next" onclick="obGo(3)">Aage Badho →</button>
+      <button class="ob-back" onclick="obGo(1)">← Wapas</button>
+    </div>
+
+    <!-- Step 3: Budget + Type -->
+    <div class="ob-step" id="ob-s3">
+      <div class="ob-emoji">💰</div>
+      <div class="ob-title">Budget aur <span style="color:var(--g);">Style</span></div>
+      <div class="ob-sub">Apna total budget batao — AI accordingly plan karega</div>
+      <div class="ob-field"><label class="ob-label">Total Budget (₹)</label><input type="number" class="ob-inp" id="ob-budget" placeholder="e.g. 1500000"/></div>
+      <div class="ob-field" style="margin-bottom:8px;"><label class="ob-label">Wedding Type</label></div>
+      <div class="ob-select-grid" id="ob-type-grid">
+        <div class="ob-chip on" onclick="selType(this,'Budget')" data-v="Budget"><span class="ob-chip-icon">💫</span>Budget</div>
+        <div class="ob-chip" onclick="selType(this,'Grand')" data-v="Grand"><span class="ob-chip-icon">🏰</span>Grand</div>
+        <div class="ob-chip" onclick="selType(this,'Luxury')" data-v="Luxury"><span class="ob-chip-icon">👑</span>Luxury</div>
+        <div class="ob-chip" onclick="selType(this,'Destination')" data-v="Destination"><span class="ob-chip-icon">✈️</span>Destination</div>
       </div>
+      <button class="ob-next" style="margin-top:20px;" onclick="obFinish()">🚀 Dashboard Banao!</button>
+      <button class="ob-back" onclick="obGo(2)">← Wapas</button>
     </div>
-    <button onclick="closeAd(false)" style="background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:var(--font-b);">← Ghar Wapas</button>
+
   </div>
 </div>
 
-<!-- ═══ MAIN SHELL ═══ -->
-<div id="shell">
-<div id="offline-banner">📡 Internet nahi — AI offline</div>
-<div id="wrap">
+<!-- AI CHAT FAB + PANEL -->
+<button id="chat-fab" onclick="toggleChat()">
+  <div class="pulse"></div>
+  🤖
+</button>
 
-<!-- ████ HOME ████ -->
-<div id="scr-home" class="scr on">
-<div style="padding-bottom:24px;">
-
-  <!-- HERO -->
-  <div style="padding:28px 18px 20px;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--s2),var(--bg) 70%);">
-    <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,85,.08),transparent);pointer-events:none;"></div>
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-      <div>
-        <div id="home-greeting" style="font-size:13px;color:var(--red2);font-weight:700;margin-bottom:6px;">💍 Namaste!</div>
-        <div style="font-family:var(--font-d);font-size:28px;font-weight:900;line-height:1.1;">Smart<span style="color:var(--gold);">Shaadi</span></div>
-        <div style="font-size:11px;color:var(--text3);margin-top:4px;">AI Wedding Planner · Free Forever</div>
-      </div>
-      <a href="https://www.smartshaadi.online" style="text-decoration:none;">
-        <div style="background:rgba(201,168,76,.1);border:1px solid var(--border);border-radius:12px;padding:9px 12px;text-align:center;">
-          <div style="font-size:16px;">🌐</div>
-          <div style="font-size:9px;color:var(--gold);margin-top:2px;font-weight:700;">Website</div>
-        </div>
-      </a>
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="bot-avatar">🤖</div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:700;">ShaadiBot AI</div>
+      <div style="font-size:10px;color:var(--green);">● Online · Hindi & English</div>
     </div>
-    <div class="sg" style="margin-top:16px;">
-      <div class="sb" style="border-color:rgba(201,168,76,.2);"><div style="font-size:15px;font-weight:800;color:var(--gold);">10</div><div style="font-size:9px;color:var(--text3);">AI Tools</div></div>
-      <div class="sb" style="border-color:rgba(46,204,113,.2);"><div style="font-size:14px;font-weight:800;color:var(--green);">Free</div><div style="font-size:9px;color:var(--text3);">Forever</div></div>
-      <div class="sb" style="border-color:rgba(52,152,219,.2);"><div style="font-size:14px;font-weight:800;color:var(--blue);">PDF</div><div style="font-size:9px;color:var(--text3);">Export</div></div>
-      <div class="sb" style="border-color:rgba(255,45,85,.2);"><div style="font-size:14px;font-weight:800;color:var(--red2);">24/7</div><div style="font-size:9px;color:var(--text3);">AI Help</div></div>
-    </div>
+    <button onclick="toggleChat()" style="background:none;border:none;color:var(--t2);font-size:20px;cursor:pointer;padding:4px;">✕</button>
   </div>
-
-  <!-- COUNTDOWN WIDGET -->
-  <div id="home-countdown" style="margin:14px 14px 0;display:none;">
-    <div style="background:linear-gradient(135deg,rgba(255,45,85,.1),rgba(201,168,76,.08));border-radius:22px;padding:20px;border:1px solid rgba(255,45,85,.2);cursor:pointer;" onclick="go('countdown')">
-      <div style="font-size:10px;color:var(--red2);letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:10px;">💍 Shaadi Countdown</div>
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px;">
-        <div class="days-num" id="home-days">—</div>
-        <div style="font-size:18px;color:var(--text2);font-weight:600;">din baaki</div>
-      </div>
-      <div class="pbar"><div class="pfill" id="home-prog" style="background:linear-gradient(90deg,var(--red),var(--gold));"></div></div>
-      <div style="display:flex;justify-content:space-between;margin-top:8px;">
-        <span style="font-size:11px;color:var(--text3);" id="home-tasks-done">0 tasks done</span>
-        <span style="font-size:11px;color:var(--gold);font-weight:700;">Plan dekho →</span>
-      </div>
-    </div>
+  <div id="chat-msgs">
+    <div class="msg bot">Namaste! 🙏 Main ShaadiBot hoon — aapki wedding plan karne mein help karunga. Budget, venue, vendors, invitation — kuch bhi poochho!</div>
   </div>
-
-  <!-- FREE USES -->
-  <div style="margin:12px 14px 0;">
-    <div class="card" style="padding:13px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-        <div style="font-size:13px;font-weight:700;">🎁 Free Uses Today</div>
-        <span id="uses-pill" class="pill">3/3</span>
-      </div>
-      <div class="pbar" style="height:6px;"><div id="uses-bar" class="pfill" style="width:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));"></div></div>
-      <div style="font-size:11px;color:var(--text3);margin-top:5px;">Har tool ek use · Ad dekho = +3</div>
-    </div>
+  <div class="chat-suggestions" id="chat-sugs">
+    <div class="sug" onclick="chatSend('5 lakh mein wedding plan karo')">5 lakh plan 💰</div>
+    <div class="sug" onclick="chatSend('Invitation likhke do')">Invitation ✉️</div>
+    <div class="sug" onclick="chatSend('Best vendors suggest karo Delhi mein')">Vendors 🏆</div>
+    <div class="sug" onclick="chatSend('Sangeet ke liye song list do')">Songs 🎵</div>
+    <div class="sug" onclick="chatSend('Kundali matching kya hoti hai')">Kundali 🔮</div>
   </div>
-
-  <!-- QUICK ACTIONS -->
-  <div style="padding:12px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <button onclick="go('chat')" class="btn-red" style="font-size:13px;padding:14px;">🤖 AI Chat</button>
-    <button onclick="go('countdown')" class="btn-ghost">⏳ Countdown</button>
-    <button onclick="go('guests')" class="btn-ghost" style="color:#1ABC9C;border-color:rgba(26,188,156,.25);">👥 Guests + PDF</button>
-    <button onclick="go('budget')" class="btn-ghost" style="color:var(--green);border-color:rgba(46,204,113,.25);">💰 Budget</button>
-  </div>
-
-  <!-- AI TOOLS GRID -->
-  <div style="padding:18px 14px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="st">✨ AI <span style="color:var(--gold);">Tools</span></div>
-      <span class="pill">10 Free</span>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="tgrid"></div>
-  </div>
-
-  <!-- VENDOR CTA -->
-  <div style="padding:18px 14px 0;">
-    <div style="background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(255,45,85,.04));border-radius:22px;padding:18px;border:1px dashed rgba(201,168,76,.25);">
-      <div style="font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px;">🏆 Vendor hain? List Karein!</div>
-      <div style="font-size:12px;color:var(--text3);margin-bottom:14px;">1000+ couples daily plan kar rahe hain</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
-        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">Basic</div><div style="font-size:10px;color:var(--text3);">₹999/mo</div></div>
-        <div onclick="window.location.href='/vendors/apply.html'" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;"><div style="font-size:12px;color:#0D0008;font-weight:800;">⭐ Featured</div><div style="font-size:10px;color:#0D000888;">₹1,999/mo</div></div>
-        <div onclick="window.location.href='/vendors/apply.html'" style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;border:1px solid var(--border);"><div style="font-size:12px;color:var(--gold);font-weight:700;">🏆 Premium</div><div style="font-size:10px;color:var(--text3);">₹2,999/mo</div></div>
-      </div>
-      <button onclick="window.location.href='/vendors/index.html'" class="btn-ghost" style="margin-bottom:8px;">🔍 Verified Vendors Dekho</button>
-      <button onclick="window.location.href='/vendors/apply.html'" class="btn-gold">📝 Vendor Ban Jao →</button>
-    </div>
-  </div>
-
-</div>
-</div><!-- /home -->
-
-<!-- ████ TOOL SCREEN ████ -->
-<div id="scr-tool" class="scr">
-  <div class="topbar">
-    <button onclick="goBack()" class="back-btn">← Back</button>
-    <div id="tool-name" style="font-size:15px;font-weight:800;flex:1;"></div>
-    <a id="tool-full-link" href="#" target="_blank" style="background:rgba(201,168,76,.1);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--gold);text-decoration:none;font-weight:700;">🌐 Full</a>
-  </div>
-  <div id="tool-body"></div>
-</div>
-
-<!-- ████ CHAT ████ -->
-<div id="scr-chat" class="scr">
-  <div style="display:flex;flex-direction:column;height:calc(100dvh - var(--nav-h));">
-    <div class="topbar">
-      <button onclick="go('home')" class="back-btn">← Wapas</button>
-      <div style="display:flex;align-items:center;gap:10px;flex:1;">
-        <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--red),#FF6B35);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;" class="heartbeat">🤖</div>
-        <div><div style="font-size:14px;font-weight:700;">SmartShaadi AI</div><div style="font-size:10px;color:var(--green);">● Online · Hindi & English</div></div>
-      </div>
-    </div>
-    <div id="chat-wrap" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;">
-      <div style="display:flex;"><div class="mb ai">Namaste! 🙏 Budget, venue, kundali, vendors — kuch bhi poochho! Hindi ya English dono chalega. ❤️</div></div>
-    </div>
-    <div style="padding:8px 14px 4px;display:flex;gap:8px;overflow-x:auto;flex-shrink:0;">
-      <button class="qc" onclick="sc('Budget plan chahiye')">Budget 💰</button>
-      <button class="qc" onclick="sc('Venue suggest karo')">Venue 🏛️</button>
-      <button class="qc" onclick="sc('Kundali check karo')">Kundali 🔮</button>
-      <button class="qc" onclick="sc('Catering cost Delhi')">Catering 🍽️</button>
-      <button class="qc" onclick="sc('Sangeet songs list')">Songs 🎵</button>
-    </div>
-    <div style="padding:8px 14px 10px;background:var(--bg);border-top:1px solid var(--border2);flex-shrink:0;">
-      <div style="display:flex;gap:8px;">
-        <input id="ci" class="inp" placeholder="Apna sawaal poochho..." style="border-radius:24px;flex:1;" onkeydown="if(event.key==='Enter')sendChat()"/>
-        <button onclick="sendChat()" style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--red),#FF6B35);border:none;font-size:18px;cursor:pointer;flex-shrink:0;box-shadow:0 4px 16px rgba(255,45,85,.3);">➤</button>
-      </div>
-    </div>
+  <div class="chat-input-bar">
+    <input class="chat-inp" id="chat-inp" placeholder="Apna sawaal poochho..." onkeydown="if(event.key==='Enter')chatSend()"/>
+    <button class="chat-send" onclick="chatSend()">➤</button>
   </div>
 </div>
 
-<!-- ████ COUNTDOWN ████ -->
-<div id="scr-countdown" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div class="st">⏳ <span style="color:var(--gold);">Countdown</span></div>
-  </div>
-  <div style="padding:14px;">
-    <div class="card" style="margin-bottom:14px;border-color:rgba(201,168,76,.2);">
-      <label class="lbl">Wedding Date Set Karo</label>
-      <input type="date" id="wdate-cd" class="inp" style="color:var(--gold);font-size:16px;font-weight:700;" onchange="saveWDate(this.value)"/>
-    </div>
-    <div id="cd-hero" style="display:none;">
-      <div style="background:linear-gradient(135deg,rgba(255,45,85,.1),rgba(201,168,76,.06));border-radius:24px;padding:24px;border:1px solid rgba(255,45,85,.2);text-align:center;margin-bottom:14px;">
-        <div style="font-size:11px;color:var(--red2);letter-spacing:2px;font-weight:700;margin-bottom:10px;">SHAADI MEIN SIRF</div>
-        <div class="days-num" id="cd-days">—</div>
-        <div style="font-size:20px;color:var(--text2);font-weight:600;margin-top:6px;">din baaki hain 💍</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;">
-          <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-weeks">—</div><div style="font-size:9px;color:var(--text3);">Weeks</div></div>
-          <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-months">—</div><div style="font-size:9px;color:var(--text3);">Months</div></div>
-          <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px;"><div style="font-size:16px;font-weight:800;color:var(--gold);" id="cd-datestr">—</div><div style="font-size:9px;color:var(--text3);">Date</div></div>
-        </div>
-      </div>
-      <div class="card" style="margin-bottom:14px;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><div style="font-size:13px;font-weight:800;">📋 Planning Progress</div><span id="cd-pct" class="pill">0%</span></div>
-        <div class="pbar" style="height:8px;margin-bottom:6px;"><div class="pfill" id="cd-pbar" style="background:linear-gradient(90deg,var(--red),var(--gold));"></div></div>
-        <div style="font-size:11px;color:var(--text3);" id="cd-ptxt">0 tasks complete</div>
-      </div>
-      <div id="cd-today-wrap" style="display:none;">
-        <div style="font-size:13px;font-weight:800;margin-bottom:10px;">🔥 Aaj Ke Tasks</div>
-        <div id="cd-today-list"></div>
-      </div>
-      <div id="cd-pending-wrap" style="display:none;margin-top:10px;">
-        <div style="font-size:13px;font-weight:800;margin-bottom:10px;">📅 Upcoming</div>
-        <div id="cd-pending-list"></div>
-      </div>
-      <div id="cd-done-wrap" style="display:none;margin-top:10px;">
-        <div style="font-size:13px;font-weight:800;margin-bottom:10px;">✅ Completed</div>
-        <div id="cd-done-list"></div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- ████ GUESTS ████ -->
-<div id="scr-guests" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div><div class="st">👥 <span style="color:#1ABC9C;">Guests</span></div><div style="font-size:11px;color:var(--text3);margin-top:1px;" id="gsub">0 guests</div></div>
-    <button onclick="exportPDF()" style="background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:12px;padding:10px 16px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--font-b);margin-left:auto;">📄 PDF</button>
-  </div>
-  <div style="padding:14px 14px 0;">
-    <div class="sg" style="margin-bottom:10px;">
-      <div class="sb" style="border-color:rgba(201,168,76,.2);"><div id="gt" style="font-size:18px;font-weight:800;color:var(--gold);">0</div><div style="font-size:9px;color:var(--text3);">Total</div></div>
-      <div class="sb" style="border-color:rgba(46,204,113,.2);"><div id="gc" style="font-size:18px;font-weight:800;color:var(--green);">0</div><div style="font-size:9px;color:var(--text3);">Confirmed</div></div>
-      <div class="sb" style="border-color:rgba(255,152,0,.2);"><div id="gp" style="font-size:18px;font-weight:800;color:var(--orange);">0</div><div style="font-size:9px;color:var(--text3);">Pending</div></div>
-      <div class="sb" style="border-color:rgba(52,152,219,.2);"><div id="gv" style="font-size:18px;font-weight:800;color:var(--blue);">0</div><div style="font-size:9px;color:var(--text3);">Veg</div></div>
-    </div>
-    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px;"><span>RSVP Progress</span><span id="gpct">0%</span></div>
-    <div class="pbar" style="margin-bottom:12px;"><div id="gbar" class="pfill" style="background:linear-gradient(90deg,#1ABC9C,#2ecc71);"></div></div>
-    <input id="gsrch" class="inp" placeholder="🔍 Guest search..." style="margin-bottom:10px;" oninput="rg()"/>
-    <button id="gftog" onclick="tgf()" style="width:100%;padding:13px;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:14px;color:var(--text2);font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font-b);">+ Naya Guest Add Karo</button>
-    <div id="gf" style="display:none;margin-top:12px;">
-      <div class="card" style="border-color:rgba(26,188,156,.2);">
-        <input id="gfn" class="inp" placeholder="Poora naam *" style="margin-bottom:10px;"/>
-        <input id="gfph" class="inp" placeholder="Phone (optional)" style="margin-bottom:10px;"/>
-        <input id="gftb" class="inp" placeholder="Table number" style="margin-bottom:10px;"/>
-        <div style="display:flex;gap:8px;margin-bottom:10px;">
-          <button onclick="sGF('side','Bride')" id="sb-bride" class="btn-sm" style="flex:1;">Bride Side</button>
-          <button onclick="sGF('side','Groom')" id="sb-groom" class="btn-sm" style="flex:1;">Groom Side</button>
-        </div>
-        <div style="display:flex;gap:8px;margin-bottom:14px;">
-          <button onclick="sGF('meal','Veg')" id="sm-veg" class="btn-sm" style="flex:1;">🌱 Veg</button>
-          <button onclick="sGF('meal','Non-Veg')" id="sm-nonveg" class="btn-sm" style="flex:1;">🍗 Non-Veg</button>
-          <button onclick="sGF('meal','Jain')" id="sm-jain" class="btn-sm" style="flex:1;">🙏 Jain</button>
-        </div>
-        <button onclick="addG()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:12px;color:#fff;font-weight:800;font-size:13px;cursor:pointer;font-family:var(--font-b);">✅ Add Guest</button>
-      </div>
-    </div>
-    <div id="glist" style="margin-top:14px;"></div>
-    <button onclick="exportPDF()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:14px;color:#fff;font-weight:800;font-size:14px;cursor:pointer;margin-top:10px;font-family:var(--font-b);">📄 Full Guest List PDF</button>
-  </div>
-</div>
-</div>
-
-<!-- ████ BUDGET ████ -->
-<div id="scr-budget" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div class="st">💰 Budget <span style="color:var(--green);">Tracker</span></div>
-  </div>
-  <div style="padding:14px;" id="bcon"></div>
-</div>
-</div>
-
-<!-- ████ TIMELINE ████ -->
-<div id="scr-timeline" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div class="st">📅 <span style="color:var(--orange);">Timeline</span></div>
-  </div>
-  <div style="padding:14px;">
-    <div class="card" style="border-color:rgba(255,152,0,.2);margin-bottom:18px;">
-      <label class="lbl">Wedding Date</label>
-      <input type="date" id="wdate" class="inp" style="color:var(--orange);font-size:15px;font-weight:700;" onchange="rTL()"/>
-    </div>
-    <div id="tlcon"></div>
-  </div>
-</div>
-</div>
-
-<!-- ████ VENDOR DIR ████ -->
-<div id="scr-vendor-dir" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div><div class="st">🏆 <span style="color:var(--gold);">Vendors</span></div></div>
-    <button onclick="window.location.href='/vendors/index.html'" class="btn-gold" style="width:auto;padding:9px 14px;font-size:12px;margin-left:auto;">Full Page →</button>
-  </div>
-  <!-- Full vendor page CTA -->
-  <div style="margin:12px 14px 0;">
-    <div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(255,45,85,.05));border-radius:18px;padding:16px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;gap:12px;">
-      <div style="font-size:28px;">🏆</div>
-      <div style="flex:1;">
-        <div style="font-size:13px;font-weight:800;">Full Vendor Directory</div>
-        <div style="font-size:11px;color:var(--text2);margin-top:2px;">10+ verified vendors · Real reviews · Razorpay payment</div>
-      </div>
-      <button onclick="window.location.href='/vendors/index.html'" class="btn-gold" style="width:auto;padding:10px 14px;font-size:12px;">Open</button>
-    </div>
-  </div>
-
-  <div style="padding:12px 14px 0;">
-    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;" id="city-filter">
-      <button class="btn-sm on" onclick="filterCity('All',this)">All</button>
-      <button class="btn-sm" onclick="filterCity('Delhi',this)">Delhi</button>
-      <button class="btn-sm" onclick="filterCity('Mumbai',this)">Mumbai</button>
-      <button class="btn-sm" onclick="filterCity('Jaipur',this)">Jaipur</button>
-      <button class="btn-sm" onclick="filterCity('Bangalore',this)">Bangalore</button>
-      <button class="btn-sm" onclick="filterCity('Hyderabad',this)">Hyderabad</button>
-    </div>
-  </div>
-  <div style="padding:8px 14px 0;">
-    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;" id="cat-filter">
-      <button class="btn-sm on" onclick="filterCat('All',this)">All</button>
-      <button class="btn-sm" onclick="filterCat('Photography',this)">📸</button>
-      <button class="btn-sm" onclick="filterCat('Catering',this)">🍽️</button>
-      <button class="btn-sm" onclick="filterCat('Decoration',this)">🌸</button>
-      <button class="btn-sm" onclick="filterCat('Music & DJ',this)">🎵</button>
-      <button class="btn-sm" onclick="filterCat('Makeup',this)">💄</button>
-    </div>
-  </div>
-  <div id="vendor-dir-wrap" style="padding:12px 14px 0;"></div>
-  <div style="margin:8px 14px 0;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(255,45,85,.04));border-radius:18px;padding:16px;border:1px dashed var(--border);text-align:center;">
-    <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:4px;">📢 Apna Business List Karein</div>
-    <div style="font-size:11px;color:var(--text3);margin-bottom:12px;">1000+ couples daily · ₹999/mo se</div>
-    <button onclick="window.location.href='/vendors/apply.html'" class="btn-gold" style="max-width:280px;margin:0 auto;">Apply Karein →</button>
-  </div>
-</div>
-</div>
-
-<!-- ████ VENDOR APPLY ████ -->
-<div id="scr-vendor-apply" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('vendor-dir')" class="back-btn">← Wapas</button>
-    <div class="st">📝 <span style="color:var(--gold);">Vendor Apply</span></div>
-  </div>
-  <div style="padding:14px;" id="vacon"></div>
-</div>
-</div>
-
-<!-- ████ ADMIN ████ -->
-<div id="scr-admin" class="scr">
-<div style="padding-bottom:24px;">
-  <div class="topbar">
-    <button onclick="go('home')" class="back-btn">← Wapas</button>
-    <div class="st">🔐 <span style="color:var(--red2);">Admin</span></div>
-  </div>
-  <div style="padding:14px;" id="admin-content"></div>
-</div>
-</div>
-
-</div><!-- /wrap -->
-
-<!-- BOTTOM NAV -->
-<nav id="bnav">
-  <button class="nb on" id="nb-home" onclick="go('home')"><span class="ni">🏠</span><span class="nl">Home</span><div class="ndot"></div></button>
-  <button class="nb" id="nb-chat" onclick="go('chat')"><span class="ni">🤖</span><span class="nl">AI Chat</span></button>
-  <button class="nb" id="nb-countdown" onclick="go('countdown')"><span class="ni">⏳</span><span class="nl">Countdown</span></button>
-  <button class="nb" id="nb-guests" onclick="go('guests')"><span class="ni">👥</span><span class="nl">Guests</span></button>
-  <button class="nb" id="nb-vendor-dir" onclick="window.location.href='/vendors/index.html'"><span class="ni">🏆</span><span class="nl">Vendors</span></button>
-</nav>
-</div><!-- /shell -->
-
+<!-- TOAST -->
 <div id="toast"></div>
+
+<!-- MAIN APP -->
+<div id="app" style="display:none;">
+
+  <div id="pages">
+
+    <!-- ═══════════════════════════════
+         PAGE: HOME / LANDING
+    ═══════════════════════════════ -->
+    <div class="page active" id="pg-home">
+
+      <!-- HERO -->
+      <div style="min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px 32px;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.08),transparent 70%);">
+        <div style="font-size:52px;margin-bottom:16px;" class="float">💍</div>
+        <div style="font-family:var(--font-d);font-size:38px;font-weight:700;line-height:1.1;margin-bottom:10px;">Your AI <span style="color:var(--g);">Wedding</span><br>Planner</div>
+        <div style="font-size:14px;color:var(--t2);margin-bottom:28px;line-height:1.6;">Plan your dream shaadi in minutes —<br>powered by AI, made for India 🇮🇳</div>
+        <button id="hero-cta" onclick="heroStart()" class="btn btn-gold" style="max-width:280px;font-size:16px;padding:16px 32px;border-radius:var(--r-xl);">✨ Start Planning Free</button>
+        <div style="margin-top:16px;font-size:11px;color:var(--t3);">10,000+ couples planning their wedding ❤️</div>
+
+        <!-- Social proof -->
+        <div style="margin-top:28px;display:flex;gap:20px;justify-content:center;">
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--g);">10+</div><div style="font-size:10px;color:var(--t3);">AI Tools</div></div>
+          <div style="width:1px;background:var(--border2);"></div>
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--g);">Free</div><div style="font-size:10px;color:var(--t3);">Forever</div></div>
+          <div style="width:1px;background:var(--border2);"></div>
+          <div style="text-align:center;"><div style="font-size:20px;font-weight:800;color:var(--g);">2 min</div><div style="font-size:10px;color:var(--t3);">Setup</div></div>
+        </div>
+      </div>
+
+      <!-- FEATURES PREVIEW -->
+      <div style="padding:0 16px;">
+        <div class="tag" style="margin-bottom:20px;">Features</div>
+        <div style="display:grid;gap:12px;">
+          <div class="card-gold" style="display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="heroStart()">
+            <div style="font-size:32px;">📊</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:3px;">Personal Dashboard</div><div style="font-size:12px;color:var(--t3);">Budget + Timeline + Checklist ek jagah</div></div>
+            <div style="margin-left:auto;color:var(--g);font-size:18px;">→</div>
+          </div>
+          <div class="card-gold" style="display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="heroStart()">
+            <div style="font-size:32px;">🤖</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:3px;">ShaadiBot AI</div><div style="font-size:12px;color:var(--t3);">24/7 wedding assistant — Hindi mein</div></div>
+            <div style="margin-left:auto;color:var(--g);font-size:18px;">→</div>
+          </div>
+          <div class="card-gold" style="display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="heroStart()">
+            <div style="font-size:32px;">💌</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:3px;">AI Invitation Writer</div><div style="font-size:12px;color:var(--t3);">Beautiful invites in seconds</div></div>
+            <div style="margin-left:auto;color:var(--g);font-size:18px;">→</div>
+          </div>
+          <div class="card-gold" style="display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="heroStart()">
+            <div style="font-size:32px;">🏆</div>
+            <div><div style="font-size:14px;font-weight:700;margin-bottom:3px;">Vendor Directory</div><div style="font-size:12px;color:var(--t3);">Verified photographers, caterers, more</div></div>
+            <div style="margin-left:auto;color:var(--g);font-size:18px;">→</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIRAL FOOTER -->
+      <div style="margin:24px 16px;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));border:1px solid var(--border);border-radius:var(--r-xl);padding:20px;text-align:center;">
+        <div style="font-size:13px;color:var(--t2);margin-bottom:12px;">Made with SmartShaadi ❤️ — Share karo!</div>
+        <a href="https://wa.me/?text=India%20ka%20best%20free%20AI%20Wedding%20Planner%20dekho%20%F0%9F%92%8D%0Ahttps://smartshaadi.online/app.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:12px;padding:10px 20px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;">💬 WhatsApp pe Share Karo</a>
+      </div>
+
+    </div><!-- /pg-home -->
+
+    <!-- ═══════════════════════════════
+         PAGE: DASHBOARD
+    ═══════════════════════════════ -->
+    <div class="page" id="pg-dash">
+      <div style="padding:20px 16px 0;">
+
+        <!-- Greeting -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;">
+          <div>
+            <div style="font-size:11px;color:var(--g);font-weight:700;letter-spacing:1px;margin-bottom:6px;">💍 WELCOME BACK</div>
+            <div id="dash-names" style="font-family:var(--font-d);font-size:26px;font-weight:700;line-height:1.2;"></div>
+            <div id="dash-sub" style="font-size:12px;color:var(--t3);margin-top:4px;"></div>
+          </div>
+          <button onclick="shareWedding()" style="background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:12px;padding:9px;font-size:18px;cursor:pointer;flex-shrink:0;">💬</button>
+        </div>
+
+        <!-- Countdown hero -->
+        <div id="dash-countdown" class="card-gold" style="margin-bottom:16px;text-align:center;cursor:pointer;" onclick="showPage('pg-plan')">
+          <div style="font-size:10px;color:var(--g);letter-spacing:2px;font-weight:700;margin-bottom:10px;">SHAADI MEIN SIRF</div>
+          <div id="dash-days" style="font-family:var(--font-d);font-size:64px;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--g),var(--g3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></div>
+          <div style="font-size:16px;color:var(--t2);font-weight:500;margin:6px 0 12px;">din baaki hain</div>
+          <div class="pbar"><div class="pfill" id="dash-prog" style="background:linear-gradient(90deg,var(--g),var(--g2));"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--t3);">
+            <span id="dash-tasks-txt">Loading...</span>
+            <span style="color:var(--g);font-weight:700;">Plan dekho →</span>
+          </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+          <div class="card" style="cursor:pointer;" onclick="showPage('pg-budget')">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:6px;">💰 Budget</div>
+            <div id="dash-budget-txt" style="font-size:18px;font-weight:800;color:var(--g);"></div>
+            <div id="dash-budget-used" style="font-size:10px;color:var(--t3);margin-top:3px;"></div>
+            <div class="pbar" style="margin-top:8px;height:4px;"><div class="pfill" id="dash-b-bar" style="background:var(--g);"></div></div>
+          </div>
+          <div class="card" style="cursor:pointer;" onclick="showPage('pg-guests')">
+            <div style="font-size:11px;color:var(--t3);margin-bottom:6px;">👥 Guests</div>
+            <div id="dash-guests-txt" style="font-size:18px;font-weight:800;color:var(--blue);"></div>
+            <div id="dash-guests-conf" style="font-size:10px;color:var(--t3);margin-top:3px;"></div>
+            <div class="pbar" style="margin-top:8px;height:4px;"><div class="pfill" id="dash-g-bar" style="background:var(--blue);"></div></div>
+          </div>
+        </div>
+
+        <!-- Today's tasks -->
+        <div class="card" style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div style="font-size:14px;font-weight:800;">🔥 Aaj Ke Tasks</div>
+            <button onclick="showPage('pg-plan')" class="btn btn-ghost btn-sm" style="padding:6px 12px;font-size:11px;">Sab Dekho</button>
+          </div>
+          <div id="dash-tasks"></div>
+        </div>
+
+        <!-- AI Tools Quick Access -->
+        <div class="tag" style="margin-bottom:14px;">AI Tools</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;" id="tools-grid"></div>
+
+        <!-- Pro Section -->
+        <div class="card-pro" style="margin-bottom:16px;position:relative;">
+          <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle,rgba(201,168,76,.2),transparent);border-radius:50%;transform:translate(20px,-20px);pointer-events:none;"></div>
+          <div class="pill-pro" style="margin-bottom:10px;display:inline-flex;">👑 PRO PLAN</div>
+          <div style="font-size:18px;font-weight:800;margin-bottom:4px;">Unlock Premium Features</div>
+          <div style="font-size:12px;color:var(--t2);margin-bottom:14px;line-height:1.6;">Vendor analytics · Priority AI · Unlimited tools · Download PDF reports</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <div style="font-family:var(--font-d);font-size:32px;font-weight:700;color:var(--g);">₹199<span style="font-size:14px;color:var(--t3);">/mo</span></div>
+            <div style="font-size:11px;color:var(--t3);line-height:1.5;">Cancel anytime<br>UPI · Card accepted</div>
+          </div>
+          <button onclick="unlockPro()" class="btn btn-gold">🚀 Pro Unlock Karein → ₹199/mo</button>
+        </div>
+
+        <!-- Share viral CTA -->
+        <div style="background:linear-gradient(135deg,rgba(37,211,102,.07),rgba(37,211,102,.02));border:1px solid rgba(37,211,102,.2);border-radius:var(--r-lg);padding:16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <div style="font-size:28px;">💬</div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:700;">Friends ko batao!</div><div style="font-size:11px;color:var(--t3);margin-top:2px;">Made with SmartShaadi ❤️</div></div>
+          <button onclick="shareWedding()" class="btn" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;width:auto;padding:10px 16px;font-size:12px;border-radius:12px;">Share</button>
+        </div>
+
+      </div>
+    </div><!-- /pg-dash -->
+
+    <!-- ═══════════════════════════════
+         PAGE: PLAN (Timeline + Checklist)
+    ═══════════════════════════════ -->
+    <div class="page" id="pg-plan">
+      <div style="padding:20px 16px 0;">
+        <div style="margin-bottom:20px;">
+          <div class="section-title">📅 Wedding <span style="color:var(--g);">Plan</span></div>
+          <div class="section-sub">Timeline + Tasks — sab ek jagah</div>
+        </div>
+
+        <!-- Progress -->
+        <div class="card" style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-size:13px;font-weight:700;">Overall Progress</div>
+            <span class="pill" id="plan-pct">0%</span>
+          </div>
+          <div class="pbar" style="height:10px;"><div class="pfill" id="plan-bar" style="background:linear-gradient(90deg,var(--g),var(--g2));"></div></div>
+          <div style="font-size:11px;color:var(--t3);margin-top:6px;" id="plan-txt">Loading...</div>
+        </div>
+
+        <div id="timeline-con"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════
+         PAGE: BUDGET
+    ═══════════════════════════════ -->
+    <div class="page" id="pg-budget">
+      <div style="padding:20px 16px 0;">
+        <div style="margin-bottom:20px;">
+          <div class="section-title">💰 Budget <span style="color:var(--green);">Tracker</span></div>
+          <div class="section-sub">Kharcha track karo — under budget raho</div>
+        </div>
+        <div id="budget-con"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════
+         PAGE: GUESTS
+    ═══════════════════════════════ -->
+    <div class="page" id="pg-guests">
+      <div style="padding:20px 16px 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div><div class="section-title">👥 <span style="color:#1ABC9C;">Guests</span></div><div id="g-sub" class="section-sub">0 guests added</div></div>
+          <button onclick="exportGuestPDF()" style="background:linear-gradient(135deg,#1ABC9C,#2ecc71);border:none;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--font-b);">📄 PDF</button>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
+          <div class="card" style="text-align:center;padding:12px 6px;"><div id="g-total" style="font-size:18px;font-weight:800;color:var(--g);">0</div><div style="font-size:9px;color:var(--t3);">Total</div></div>
+          <div class="card" style="text-align:center;padding:12px 6px;"><div id="g-conf" style="font-size:18px;font-weight:800;color:var(--green);">0</div><div style="font-size:9px;color:var(--t3);">Confirmed</div></div>
+          <div class="card" style="text-align:center;padding:12px 6px;"><div id="g-pend" style="font-size:18px;font-weight:800;color:#FF9800;">0</div><div style="font-size:9px;color:var(--t3);">Pending</div></div>
+          <div class="card" style="text-align:center;padding:12px 6px;"><div id="g-veg" style="font-size:18px;font-weight:800;color:var(--blue);">0</div><div style="font-size:9px;color:var(--t3);">Veg</div></div>
+        </div>
+        <div class="pbar" style="margin-bottom:14px;"><div class="pfill" id="g-bar" style="background:linear-gradient(90deg,#1ABC9C,#2ecc71);"></div></div>
+
+        <!-- Add guest -->
+        <div class="card" style="margin-bottom:14px;">
+          <div style="font-size:13px;font-weight:800;color:var(--g);margin-bottom:12px;">+ Guest Add Karo</div>
+          <input class="inp" id="gn" placeholder="Poora naam *" style="margin-bottom:10px;"/>
+          <input class="inp" id="gph" placeholder="Phone (optional)" style="margin-bottom:10px;"/>
+          <div style="display:flex;gap:8px;margin-bottom:10px;">
+            <button onclick="gSide('Bride')" id="gsb" class="btn btn-ghost btn-sm" style="flex:1;">Bride Side</button>
+            <button onclick="gSide('Groom')" id="gsg" class="btn btn-ghost btn-sm" style="flex:1;">Groom Side</button>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <button onclick="gMeal('Veg')" id="gmv" class="btn btn-ghost btn-sm" style="flex:1;font-size:11px;">🌱 Veg</button>
+            <button onclick="gMeal('Non-Veg')" id="gmnv" class="btn btn-ghost btn-sm" style="flex:1;font-size:11px;">🍗 Non-Veg</button>
+            <button onclick="gMeal('Jain')" id="gmj" class="btn btn-ghost btn-sm" style="flex:1;font-size:11px;">🙏 Jain</button>
+          </div>
+          <button onclick="addGuest()" class="btn" style="background:linear-gradient(135deg,#1ABC9C,#2ecc71);color:#fff;">✅ Add Guest</button>
+        </div>
+
+        <!-- Search + List -->
+        <input class="inp" id="g-search" placeholder="🔍 Search guests..." oninput="renderGuests()" style="margin-bottom:12px;"/>
+        <div id="g-list"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════
+         PAGE: MORE (Tools + Vendors)
+    ═══════════════════════════════ -->
+    <div class="page" id="pg-more">
+      <div style="padding:20px 16px 0;">
+
+        <!-- AI Tools -->
+        <div class="section-title" style="margin-bottom:4px;">✨ AI <span style="color:var(--g);">Tools</span></div>
+        <div class="section-sub">Tap karo — AI se kaam karwao</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;" id="more-tools-grid"></div>
+
+        <!-- Vendor CTA -->
+        <div class="tag" style="margin-bottom:14px;">Vendors</div>
+        <div class="card-gold" style="margin-bottom:10px;display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="window.location.href='/vendors/index.html'">
+          <div style="font-size:32px;">🏆</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:700;">Verified Vendor Directory</div><div style="font-size:11px;color:var(--t3);margin-top:2px;">10+ photographers, caterers, DJs aur more</div></div>
+          <div style="color:var(--g);font-size:20px;">→</div>
+        </div>
+        <div class="card-gold" style="margin-bottom:24px;display:flex;align-items:center;gap:14px;cursor:pointer;" onclick="window.location.href='/vendors/apply.html'">
+          <div style="font-size:32px;">📝</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:700;">Vendor Ban Jao</div><div style="font-size:11px;color:var(--t3);margin-top:2px;">₹999/mo se — 1000+ couples tak pahuncho</div></div>
+          <div style="color:var(--g);font-size:20px;">→</div>
+        </div>
+
+        <!-- Pro features -->
+        <div class="tag" style="margin-bottom:14px;">Premium</div>
+        <div class="card-pro" style="margin-bottom:10px;position:relative;overflow:hidden;">
+          <div class="pill-pro" style="margin-bottom:10px;display:inline-flex;">👑 PRO</div>
+          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">Unlock Pro — ₹199/mo</div>
+          <div style="margin-bottom:14px;">
+            <div style="font-size:12px;color:var(--t2);padding:5px 0;border-bottom:1px solid var(--border2);">✓ Unlimited AI tool uses</div>
+            <div style="font-size:12px;color:var(--t2);padding:5px 0;border-bottom:1px solid var(--border2);">✓ Vendor analytics & direct contact</div>
+            <div style="font-size:12px;color:var(--t2);padding:5px 0;border-bottom:1px solid var(--border2);">✓ PDF reports download</div>
+            <div style="font-size:12px;color:var(--t2);padding:5px 0;">✓ Priority AI responses</div>
+          </div>
+          <button onclick="unlockPro()" class="btn btn-gold">🚀 Abhi Unlock Karein</button>
+        </div>
+
+        <!-- Website -->
+        <a href="https://www.smartshaadi.online" style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border2);border-radius:var(--r-lg);padding:14px;text-decoration:none;margin-bottom:8px;">
+          <div style="font-size:24px;">🌐</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text);">SmartShaadi Website</div><div style="font-size:11px;color:var(--t3);">30+ articles, guides, tools</div></div>
+          <div style="margin-left:auto;color:var(--g);">→</div>
+        </a>
+
+      </div>
+    </div>
+
+  </div><!-- /pages -->
+
+  <!-- NAV -->
+  <nav id="nav">
+    <button class="nav-btn" id="nav-home" onclick="showPage('pg-home')"><span class="ico">🏠</span><span class="lbl">Home</span></button>
+    <button class="nav-btn" id="nav-dash" onclick="showPage('pg-dash')"><span class="ico">📊</span><span class="lbl">Dashboard</span></button>
+    <button class="nav-btn" id="nav-plan" onclick="showPage('pg-plan')"><span class="ico">📅</span><span class="lbl">Plan</span></button>
+    <button class="nav-btn" id="nav-budget" onclick="showPage('pg-budget')"><span class="ico">💰</span><span class="lbl">Budget</span></button>
+    <button class="nav-btn" id="nav-more" onclick="showPage('pg-more')"><span class="ico">✨</span><span class="lbl">More</span></button>
+  </nav>
+
+</div><!-- /app -->
 
 <script>
 'use strict';
 
-/* ═══════════════════════════════════════
-   ANIMATED BACKGROUND — Hearts, Rings, Confetti
-   ═══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   PARTICLES ENGINE
+══════════════════════════════════════ */
 (function(){
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-
-  const SYMBOLS = ['❤️','💍','🌸','✨','💕','🎊','💖','🌺','💫'];
-  const COLORS = ['#FF2D55','#FF6B8A','#C9A84C','#E8C97A','#FF9BAD','#FFB3C6','#FFF0B3'];
-
-  function resize(){
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function createParticle(){
-    const sym = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
-    return {
-      x: Math.random()*W,
-      y: H + 30,
-      size: 14 + Math.random()*18,
-      speedY: -(0.4 + Math.random()*0.8),
-      speedX: (Math.random()-0.5)*0.5,
-      rotation: Math.random()*360,
-      rotSpeed: (Math.random()-0.5)*1.5,
-      opacity: 0.15 + Math.random()*0.35,
-      symbol: sym,
-      wobble: Math.random()*Math.PI*2,
-      wobbleSpeed: 0.02 + Math.random()*0.02,
-    };
-  }
-
-  // Init particles
+  const c=document.getElementById('particles'),ctx=c.getContext('2d');
+  let W,H,parts=[];
+  const SYMS=['❤️','💍','🌸','✨','💕','🌺','💖','⭐','🎊'];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function mkPart(){return{x:Math.random()*W,y:H+20,sy:-(0.3+Math.random()*.7),sx:(Math.random()-.5)*.4,size:12+Math.random()*16,rot:Math.random()*360,rotS:(Math.random()-.5)*1.2,op:.1+Math.random()*.25,sym:SYMS[Math.floor(Math.random()*SYMS.length)],w:Math.random()*Math.PI*2,ws:.015+Math.random()*.02};}
   resize();
-  for(let i=0;i<28;i++){
-    const p = createParticle();
-    p.y = Math.random()*H; // scatter on init
-    particles.push(p);
-  }
-
+  for(let i=0;i<25;i++){const p=mkPart();p.y=Math.random()*H;parts.push(p);}
   function draw(){
     ctx.clearRect(0,0,W,H);
-    particles.forEach((p,i)=>{
-      p.y += p.speedY;
-      p.x += p.speedX + Math.sin(p.wobble)*0.3;
-      p.wobble += p.wobbleSpeed;
-      p.rotation += p.rotSpeed;
-      if(p.y < -40) particles[i] = createParticle();
-
-      ctx.save();
-      ctx.globalAlpha = p.opacity;
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rotation * Math.PI/180);
-      ctx.font = p.size+'px serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(p.symbol, 0, 0);
-      ctx.restore();
+    parts.forEach((p,i)=>{
+      p.y+=p.sy;p.x+=p.sx+Math.sin(p.w)*.25;p.w+=p.ws;p.rot+=p.rotS;
+      if(p.y<-30)parts[i]=mkPart();
+      ctx.save();ctx.globalAlpha=p.op;ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+      ctx.font=p.size+'px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(p.sym,0,0);ctx.restore();
     });
     requestAnimationFrame(draw);
   }
-  draw();
-  window.addEventListener('resize', resize);
+  draw();window.addEventListener('resize',resize);
 })();
 
-/* ═══════════════════════════════════════
-   CONFETTI BURST
-   ═══════════════════════════════════════ */
-function launchConfetti(){
-  const canvas = document.getElementById('confetti-canvas');
-  canvas.style.display = 'block';
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const pieces = [];
-  const colors = ['#FF2D55','#C9A84C','#FF6B8A','#E8C97A','#2ECC71','#3498DB','#FF9800','#FFF0B3'];
-  for(let i=0;i<120;i++){
-    pieces.push({
-      x: canvas.width/2 + (Math.random()-0.5)*200,
-      y: canvas.height/3,
-      vx: (Math.random()-0.5)*12,
-      vy: -8 - Math.random()*8,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      size: 6+Math.random()*8,
-      rot: Math.random()*360,
-      rotV: (Math.random()-0.5)*8,
-      gravity: 0.3+Math.random()*0.2,
-      shape: Math.random()>0.5?'rect':'circle',
-    });
-  }
-  let frame=0;
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    pieces.forEach(p=>{
-      p.vy+=p.gravity; p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV;
-      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
-      ctx.fillStyle=p.color; ctx.globalAlpha=Math.max(0,1-frame/90);
-      if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.size/2,0,Math.PI*2);ctx.fill();}
-      else{ctx.fillRect(-p.size/2,-p.size/4,p.size,p.size/2);}
-      ctx.restore();
-    });
-    frame++;
-    if(frame<100) requestAnimationFrame(animate);
-    else{ctx.clearRect(0,0,canvas.width,canvas.height);canvas.style.display='none';}
-  }
-  animate();
+/* ══════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════ */
+function boom(){
+  const c=document.getElementById('confetti');c.style.display='block';
+  const ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
+  const colors=['#C9A84C','#E8C97A','#FF6B9D','#2ECC71','#3498DB','#FF9800','#FFF2C0'];
+  const ps=Array.from({length:100},()=>({
+    x:innerWidth/2+(Math.random()-.5)*300,y:innerHeight*.3,
+    vx:(Math.random()-.5)*14,vy:-7-Math.random()*7,
+    c:colors[Math.floor(Math.random()*colors.length)],
+    s:5+Math.random()*8,rot:Math.random()*360,rv:(Math.random()-.5)*8,g:.35
+  }));
+  let f=0;
+  (function go(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ps.forEach(p=>{p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.rot+=p.rv;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.c;ctx.globalAlpha=Math.max(0,1-f/80);
+      ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);ctx.restore();});
+    if(++f<90)requestAnimationFrame(go);
+    else{ctx.clearRect(0,0,c.width,c.height);c.style.display='none';}
+  })();
 }
 
-/* ═══════════════════════════════════════
-   STATE
-   ═══════════════════════════════════════ */
-const App = {
-  uses:3, gSide:'Bride', gMeal:'Veg',
-  TI:{}, navHistory:['home'],
-  vCityFilter:'All', vCatFilter:'All', vTier:'Featured',
-  cTasks:{}, bTotal:1500000, bSpent:{},
-  weddingDate:null, brideName:'', groomName:'',
-};
-
-/* ═══════════════════════════════════════
-   STORE
-   ═══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   STORE (localStorage safe wrappers)
+══════════════════════════════════════ */
 const S={
-  get(k,d=null){try{const v=localStorage.getItem('ss_'+k);return v!==null?JSON.parse(v):d;}catch{return d;}},
-  set(k,v){try{localStorage.setItem('ss_'+k,JSON.stringify(v));}catch{}},
+  g:(k,d=null)=>{try{const v=localStorage.getItem('ss_'+k);return v!==null?JSON.parse(v):d;}catch{return d;}},
+  s:(k,v)=>{try{localStorage.setItem('ss_'+k,JSON.stringify(v));}catch{}},
 };
 
-/* ═══════════════════════════════════════
+/* ══════════════════════════════════════
    SANITIZE
-   ═══════════════════════════════════════ */
+══════════════════════════════════════ */
 const esc=s=>typeof s==='string'?s.replace(/[<>&"'`]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c])).trim().substring(0,500):'';
-const num=(v,mn=0,mx=9e8)=>{const n=parseFloat(v);return isNaN(n)?mn:Math.min(mx,Math.max(mn,n));};
-const phone=s=>typeof s==='string'?s.replace(/\D/g,'').substring(0,12):'';
+const n=(v,mn=0,mx=9e8)=>{const x=parseFloat(v);return isNaN(x)?mn:Math.min(mx,Math.max(mn,x));};
+const ph=s=>typeof s==='string'?s.replace(/\D/g,'').substring(0,12):'';
 
-/* ═══════════════════════════════════════
-   ONBOARDING
-   ═══════════════════════════════════════ */
-function obNext(step){
-  if(step===1){
-    const bride=document.getElementById('ob-bride').value.trim();
-    const groom=document.getElementById('ob-groom').value.trim();
-    if(!bride&&!groom){showToast('Naam daalein!');return;}
-    App.brideName=esc(bride)||'Bride'; App.groomName=esc(groom)||'Groom';
-    S.set('bride',App.brideName); S.set('groom',App.groomName);
-    document.getElementById('ob1').classList.remove('on');
-    document.getElementById('ob2').classList.add('on');
-  } else if(step===2){
-    const date=document.getElementById('ob-date').value;
-    const budget=document.getElementById('ob-budget').value;
-    if(date){App.weddingDate=date;S.set('wedding_date',date);}
-    if(budget){App.bTotal=num(budget);S.set('budget_total',App.bTotal);}
-    document.getElementById('ob2').classList.remove('on');
-    document.getElementById('ob3').classList.add('on');
-    const t=document.getElementById('ob3-title');
-    if(t)t.innerHTML=`Ready hai <span style="color:var(--gold);">${App.brideName}!</span>`;
-    // Animate loader
-    setTimeout(()=>{
-      document.getElementById('ob-loader').style.width='100%';
-      setTimeout(()=>{document.getElementById('ob3-btn').style.display='block';},1600);
-    },100);
-    launchConfetti();
-  }
+/* ══════════════════════════════════════
+   WEDDING DATA
+══════════════════════════════════════ */
+let W={bride:'',groom:'',date:null,city:'',guests:0,budget:0,wtype:'Budget',isPro:false};
+let guests=[];
+let bSpent={};
+let tasks={};
+
+function loadData(){
+  const d=S.g('wdata',null);
+  if(d){W={...W,...d};}
+  guests=S.g('guests',[]);
+  bSpent=S.g('bspent',{});
+  tasks=S.g('tasks',{});
 }
+function saveData(){S.s('wdata',W);}
+function saveTasks(){S.s('tasks',tasks);}
+function saveGuests(){S.s('guests',guests);}
+function saveBSpent(){S.s('bspent',bSpent);}
 
-function obSkip(){
-  S.set('ob_done',true);
-  document.getElementById('onboard').style.display='none';
-  init();
-}
-
-function obDone(){
-  S.set('ob_done',true);
-  document.getElementById('onboard').style.display='none';
-  init();
-  launchConfetti();
-}
-
-/* ═══════════════════════════════════════
-   FREEMIUM
-   ═══════════════════════════════════════ */
-const Freemium={
-  init(){
-    const today=new Date().toDateString();
-    if(S.get('date')!==today){S.set('date',today);S.set('uses',3);}
-    App.uses=S.get('uses',3); this.ui();
-  },
-  consume(){App.uses=Math.max(0,App.uses-1);S.set('uses',App.uses);this.ui();},
-  add(n){App.uses+=n;S.set('uses',App.uses);this.ui();},
-  ui(){
-    const pct=Math.min(100,(App.uses/3)*100);
-    const b=document.getElementById('uses-bar'),p=document.getElementById('uses-pill');
-    if(b){b.style.width=pct+'%';b.style.background=App.uses===0?'var(--red)':'linear-gradient(90deg,var(--gold),var(--gold2))';}
-    if(p)p.textContent=App.uses+'/3';
-  }
-};
-function closeAd(grant){document.getElementById('adbox').classList.remove('on');if(grant)Freemium.add(3);}
-
-/* ═══════════════════════════════════════
+/* ══════════════════════════════════════
    TOAST
-   ═══════════════════════════════════════ */
+══════════════════════════════════════ */
 let _tt;
-function showToast(msg,d=3000){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.opacity='1';
+function toast(msg,d=3000){
+  const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';
   clearTimeout(_tt);_tt=setTimeout(()=>t.style.opacity='0',d);
 }
 
-/* ═══════════════════════════════════════
+/* ══════════════════════════════════════
+   ONBOARDING
+══════════════════════════════════════ */
+let obStep=1,wtype='Budget';
+
+function selType(el,v){
+  document.querySelectorAll('#ob-type-grid .ob-chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');wtype=v;
+}
+
+function obGo(step){
+  if(step===2){
+    const bride=document.getElementById('ob-bride').value.trim();
+    const groom=document.getElementById('ob-groom').value.trim();
+    if(!bride&&!groom){toast('⚠️ Naam daalein!');return;}
+    W.bride=esc(bride)||'Bride';W.groom=esc(groom)||'Groom';
+  }
+  if(step===3){
+    W.date=document.getElementById('ob-date').value||null;
+    W.city=esc(document.getElementById('ob-city').value)||'India';
+    W.guests=n(document.getElementById('ob-guests').value,0,100000);
+  }
+  document.getElementById('ob-s'+obStep).classList.remove('on');
+  obStep=step;
+  document.getElementById('ob-s'+step).classList.add('on');
+  document.getElementById('ob-prog').style.width=(step/3*100)+'%';
+}
+
+function obFinish(){
+  W.budget=n(document.getElementById('ob-budget').value,0,9e8);
+  W.wtype=wtype;
+  S.s('ob_done',true);saveData();
+  document.getElementById('onboard').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('chat-fab').style.display='flex';
+  boom();
+  showPage('pg-dash');
+  renderAll();
+}
+
+/* ══════════════════════════════════════
    NAVIGATION
-   ═══════════════════════════════════════ */
-function _goCore(id){
-  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
-  document.querySelectorAll('.nb').forEach(b=>{b.classList.remove('on');const d=b.querySelector('.ndot');if(d)d.remove();});
-  const s=document.getElementById('scr-'+id);
-  if(s){s.classList.add('on');document.getElementById('wrap').scrollTop=0;}
-  const nb=document.getElementById('nb-'+id);
-  if(nb){nb.classList.add('on');const d=document.createElement('div');d.className='ndot';nb.appendChild(d);}
-  const renders={budget:rBudget,timeline:rTL,guests:rg,'vendor-dir':renderVendorDir,'vendor-apply':rVA,admin:rAdmin,countdown:rCountdown};
-  if(renders[id])renders[id]();
-}
-function go(id){
-  if(id!==App.navHistory[App.navHistory.length-1]){App.navHistory.push(id);history.pushState({screen:id},'','#'+id);}
-  _goCore(id);
-}
-function goBack(){App.navHistory.pop();_goCore(App.navHistory[App.navHistory.length-1]||'home');}
-window.addEventListener('popstate',()=>{App.navHistory.pop();_goCore(App.navHistory[App.navHistory.length-1]||'home');});
-history.replaceState({screen:'home'},'','#home');
+══════════════════════════════════════ */
+let curPage='pg-home';
 
-/* ═══════════════════════════════════════
-   TOOLS GRID
-   ═══════════════════════════════════════ */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  const pg=document.getElementById(id);if(pg){pg.classList.add('active');pg.scrollTop=0;}
+  const navMap={'pg-home':'nav-home','pg-dash':'nav-dash','pg-plan':'nav-plan','pg-budget':'nav-budget','pg-guests':'nav-more','pg-more':'nav-more'};
+  const nb=document.getElementById(navMap[id]);if(nb)nb.classList.add('on');
+  curPage=id;
+  // Re-render
+  if(id==='pg-dash')renderDash();
+  if(id==='pg-plan')renderPlan();
+  if(id==='pg-budget')renderBudget();
+  if(id==='pg-guests')renderGuests();
+  if(id==='pg-more')renderMoreTools();
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+function heroStart(){
+  if(S.g('ob_done')){
+    document.getElementById('app').style.display='flex';
+    document.getElementById('chat-fab').style.display='flex';
+    showPage('pg-dash');renderAll();
+  } else {
+    document.getElementById('onboard').style.display='flex';
+  }
+}
+
+/* ══════════════════════════════════════
+   AI TOOLS CONFIG
+══════════════════════════════════════ */
 const TOOLS=[
-  {id:'invitation',icon:'💌',name:'Invitation Writer',desc:'Beautiful invite banao',color:'#C9A84C',url:'/ai-invitation-writer.html',badge:'✨ New'},
-  {id:'kundali',icon:'🔮',name:'Kundali Matching',desc:'36 Guna Milan',color:'#9B59B6',url:'/ai-kundali-matching.html',badge:''},
-  {id:'budget',icon:'💰',name:'Budget Planner',desc:'Smart breakdown',color:'#27AE60',url:'/ai-budget-calculator.html',badge:''},
-  {id:'playlist',icon:'🎵',name:'Playlist Gen',desc:'Sangeet to Vidaai',color:'#E74C3C',url:'/ai-playlist-generator.html',badge:''},
-  {id:'menu',icon:'🍽️',name:'Menu Planner',desc:'Full menu + costs',color:'#F39C12',url:'/ai-menu-planner.html',badge:''},
-  {id:'photos',icon:'📸',name:'Photo Shots',desc:'150+ must shots',color:'#3498DB',url:'/ai-photography-shots.html',badge:''},
-  {id:'theme',icon:'🎨',name:'Theme Gen',desc:'Decor + palette',color:'#E91E8C',url:'/ai-wedding-theme-generator.html',badge:''},
-  {id:'timeline',icon:'📅',name:'Timeline',desc:'AI milestones',color:'#FF5722',url:'/ai-planning-timeline.html',badge:''},
-  {id:'chatbot',icon:'🤖',name:'AI Chatbot',desc:'24/7 assistant',color:'#8E44AD',url:'/chatbot.html',badge:'🔥'},
-  {id:'negotiation',icon:'🤝',name:'Vendor Negotiator',desc:'Best price script',color:'#16A085',url:'/wedding-vendor-negotiation-bot.html',badge:'🔥'},
+  {id:'inv',icon:'💌',name:'Invitation Writer',desc:'Beautiful invite',color:'#C9A84C',url:'/ai-invitation-writer.html'},
+  {id:'kun',icon:'🔮',name:'Kundali Matching',desc:'36 Guna Milan',color:'#9B59B6',url:'/ai-kundali-matching.html'},
+  {id:'bud',icon:'📊',name:'Budget Calculator',desc:'Smart breakdown',color:'#27AE60',url:'/ai-budget-calculator.html'},
+  {id:'pla',icon:'🎵',name:'Playlist Gen',desc:'Sangeet songs',color:'#E74C3C',url:'/ai-playlist-generator.html'},
+  {id:'men',icon:'🍽️',name:'Menu Planner',desc:'Full menu + cost',color:'#F39C12',url:'/ai-menu-planner.html'},
+  {id:'pho',icon:'📸',name:'Photo Shots',desc:'150+ shot list',color:'#3498DB',url:'/ai-photography-shots.html'},
+  {id:'thm',icon:'🎨',name:'Theme Gen',desc:'Decor + palette',color:'#E91E8C',url:'/ai-wedding-theme-generator.html'},
+  {id:'tl',icon:'📅',name:'Timeline',desc:'AI milestones',color:'#FF5722',url:'/ai-planning-timeline.html'},
+  {id:'bot',icon:'🤖',name:'AI Chatbot',desc:'24/7 assistant',color:'#8E44AD',url:'/chatbot.html'},
+  {id:'neg',icon:'🤝',name:'Vendor Negotiator',desc:'Best price script',color:'#16A085',url:'/wedding-vendor-negotiation-bot.html'},
 ];
 
-function rTG(){
-  const g=document.getElementById('tgrid');if(!g)return;
-  g.innerHTML=TOOLS.map(t=>`
-    <div style="background:rgba(255,255,255,.04);border-radius:18px;padding:14px 12px;cursor:pointer;position:relative;border:1px solid ${t.color}22;transition:transform .15s,box-shadow .15s;active:scale(.97)"
-      onclick="openTool('${t.id}')"
-      ontouchstart="this.style.transform='scale(.96)'"
-      ontouchend="this.style.transform=''">
-      ${t.badge?`<div style="position:absolute;top:8px;right:8px;font-size:8px;padding:2px 7px;border-radius:20px;font-weight:700;background:${t.color}22;color:${t.color};">${t.badge}</div>`:''}
-      <div style="font-size:28px;margin-bottom:8px;">${t.icon}</div>
-      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px;padding-right:${t.badge?'36px':'0'};">${esc(t.name)}</div>
-      <div style="font-size:10px;color:var(--text3);line-height:1.4;">${esc(t.desc)}</div>
-      <div style="margin-top:8px;font-size:10px;font-weight:700;color:${t.color};">Use Now →</div>
-    </div>`).join('');
+function mkToolCard(t,mini=false){
+  return`<div style="background:rgba(255,255,255,.035);border:1px solid ${t.color}20;border-radius:18px;padding:${mini?'12px 10px':'14px 12px'};cursor:pointer;transition:transform .15s;"
+    onclick="window.location.href='${t.url}'"
+    ontouchstart="this.style.transform='scale(.96)'" ontouchend="this.style.transform=''">
+    <div style="font-size:${mini?'22':'26'}px;margin-bottom:7px;">${t.icon}</div>
+    <div style="font-size:${mini?'11':'12'}px;font-weight:700;color:var(--text);margin-bottom:2px;">${esc(t.name)}</div>
+    <div style="font-size:10px;color:var(--t3);">${esc(t.desc)}</div>
+    <div style="margin-top:7px;font-size:10px;font-weight:700;color:${t.color};">Open →</div>
+  </div>`;
 }
 
-function openTool(id){
-  if(App.uses<=0){document.getElementById('adbox').classList.add('on');return;}
-  Freemium.consume();
-  const t=TOOLS.find(x=>x.id===id);
-  if(!t)return;
-  window.location.href=t.url;
-}
+/* ══════════════════════════════════════
+   DASHBOARD RENDER
+══════════════════════════════════════ */
+function renderDash(){
+  // Names
+  const dn=document.getElementById('dash-names');
+  if(dn)dn.innerHTML=`${esc(W.bride)} <span style="color:var(--g);">& ${esc(W.groom)}</span>`;
+  const ds=document.getElementById('dash-sub');
+  if(ds)ds.textContent=W.city?`📍 ${W.city} · ${W.wtype} Wedding`:'Welcome to your dashboard';
 
-/* ═══════════════════════════════════════
-   CHAT
-   ═══════════════════════════════════════ */
-function sc(t){document.getElementById('ci').value=t;}
-async function sendChat(){
-  const inp=document.getElementById('ci');const text=inp.value.trim();if(!text)return;
-  inp.value='';addMsg('me',text);addTyping();
-  try{
-    const msgs=[];
-    document.querySelectorAll('#chat-wrap .mb').forEach(b=>{if(!b.querySelector('span.td'))msgs.push({role:b.classList.contains('me')?'user':'assistant',content:b.innerText});});
-    const r=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:`You are SmartShaadi AI, India's best wedding planning assistant. Reply in warm Hinglish. Give Indian prices in Rs. Be helpful, warm, use emojis. The couple planning is ${App.brideName} & ${App.groomName}.`,messages:msgs})});
-    const d=await r.json();
-    removeTyping();addMsg('ai',d.choices?.[0]?.message?.content||'Dobara try karein 🙏');
-  }catch(e){removeTyping();addMsg('ai','Thodi der mein try karein 🙏 — '+e.message);}
-}
-function addMsg(role,text){
-  const w=document.getElementById('chat-wrap');
-  const wrap=document.createElement('div');wrap.style.display='flex';
-  if(role==='me')wrap.style.justifyContent='flex-end';
-  const b=document.createElement('div');b.className='mb '+role;b.textContent=text;
-  wrap.appendChild(b);w.appendChild(wrap);w.scrollTop=w.scrollHeight;
-}
-function addTyping(){
-  const w=document.getElementById('chat-wrap');
-  const d=document.createElement('div');d.id='tind';d.style.display='flex';
-  d.innerHTML='<div class="mb ai" style="padding:12px 16px;"><span class="td" style="width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;animation:bnc .9s infinite;"></span><span class="td" style="width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;animation:bnc .9s infinite;animation-delay:.2s;margin:0 5px;"></span><span class="td" style="width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;animation:bnc .9s infinite;animation-delay:.4s;"></span></div>';
-  w.appendChild(d);w.scrollTop=w.scrollHeight;
-}
-function removeTyping(){document.getElementById('tind')?.remove();}
+  // Countdown
+  if(W.date){
+    const today=new Date();today.setHours(0,0,0,0);
+    const wed=new Date(W.date);
+    const days=Math.ceil((wed-today)/86400000);
+    const dd=document.getElementById('dash-days');if(dd)dd.textContent=days>0?days:'🎉';
+  } else {
+    const dd=document.getElementById('dash-days');if(dd)dd.textContent='—';
+  }
 
-/* ═══════════════════════════════════════
-   COUNTDOWN
-   ═══════════════════════════════════════ */
-const PHASE_TASKS=[
-  {label:'12 Months Before',tasks:['Budget finalize karo','Venue book karo','Wedding date set karo','Guest list shuru karo'],mb:12},
-  {label:'9 Months Before',tasks:['Photographer book karo','Caterer book karo','Decorator shortlist karo','Save-the-dates bhejo'],mb:9},
-  {label:'6 Months Before',tasks:['Theme finalize karo','DJ/Music book karo','Outfits order karo','Honeymoon plan karo'],mb:6},
-  {label:'3 Months Before',tasks:['Invitations bhejo','Makeup artist book karo','Vendors confirm karo','Mehendi/Sangeet plan karo'],mb:3},
-  {label:'1 Month Before',tasks:['Final RSVP lo','Seating confirm karo','Final fittings karo','Pre-wedding shoot karo'],mb:1},
-  {label:'1 Week Before',tasks:['Vendor final calls karo','Bags pack karo','Transport confirm karo','Payments complete karo'],mb:0.25},
-  {label:'Wedding Day! 💍',tasks:['Har pal enjoy karo!','Coordinator assign karo','Emergency kit ready rakho','Muskurao aur shine karo ✨'],mb:0},
-];
-
-function saveWDate(v){S.set('wedding_date',v);App.weddingDate=v;const w=document.getElementById('wdate');if(w)w.value=v;updateHomeCountdown();}
-
-function rCountdown(){
-  const dateStr=App.weddingDate||S.get('wedding_date');
-  const inp=document.getElementById('wdate-cd');if(inp&&dateStr)inp.value=dateStr;
-  const hero=document.getElementById('cd-hero');
-  if(!dateStr){if(hero)hero.style.display='none';return;}
-  if(hero)hero.style.display='block';
-  const today=new Date();today.setHours(0,0,0,0);
-  const wed=new Date(dateStr);
-  const days=Math.ceil((wed-today)/86400000);
-  document.getElementById('cd-days').textContent=days>0?days:'🎉';
-  document.getElementById('cd-weeks').textContent=Math.max(0,Math.ceil(days/7));
-  document.getElementById('cd-months').textContent=Math.max(0,Math.ceil(days/30));
-  document.getElementById('cd-datestr').textContent=wed.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-  const cTasks=S.get('cd_tasks',{});
-  const total=PHASE_TASKS.reduce((a,p)=>a+p.tasks.length,0);
-  const done=Object.values(cTasks).filter(Boolean).length;
+  // Progress
+  const total=PHASES.reduce((a,p)=>a+p.tasks.length,0);
+  const done=Object.values(tasks).filter(Boolean).length;
   const pct=total?Math.round(done/total*100):0;
-  document.getElementById('cd-pbar').style.width=pct+'%';
-  document.getElementById('cd-pct').textContent=pct+'%';
-  document.getElementById('cd-ptxt').textContent=done+' of '+total+' tasks';
-  const todayT=[],pendingT=[],doneT=[];
-  PHASE_TASKS.forEach((ph,pi)=>{
-    ph.tasks.forEach((task,ti)=>{
-      const key=pi+'-'+ti,isDone=cTasks[key];
-      const obj={key,label:task,phase:ph.label};
-      if(isDone)doneT.push(obj);
-      else if(days<=ph.mb*30+30)todayT.push(obj);
-      else pendingT.push(obj);
+  const pb=document.getElementById('dash-prog');if(pb)pb.style.width=pct+'%';
+  const pt=document.getElementById('dash-tasks-txt');if(pt)pt.textContent=`${done}/${total} tasks complete`;
+
+  // Budget
+  const spent=Object.values(bSpent).reduce((a,b)=>a+b,0);
+  const bt=document.getElementById('dash-budget-txt');
+  if(bt)bt.textContent=W.budget?`₹${(W.budget/100000).toFixed(1)}L`:'Set budget';
+  const bu=document.getElementById('dash-budget-used');
+  if(bu)bu.textContent=W.budget?`₹${(spent/100000).toFixed(1)}L used`:'';
+  const bb=document.getElementById('dash-b-bar');
+  if(bb)bb.style.width=W.budget?Math.min(100,(spent/W.budget*100))+'%':'0%';
+
+  // Guests
+  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
+  const gt=document.getElementById('dash-guests-txt');if(gt)gt.textContent=guests.length||W.guests||'0';
+  const gc=document.getElementById('dash-guests-conf');if(gc)gc.textContent=guests.length?`${conf} confirmed`:'Add guests';
+  const gb=document.getElementById('dash-g-bar');
+  if(gb)gb.style.width=guests.length?Math.min(100,(conf/guests.length*100))+'%':'0%';
+
+  // Today's tasks
+  const tt=document.getElementById('dash-tasks');
+  if(tt){
+    const today=new Date();today.setHours(0,0,0,0);
+    const todayTasks=[];
+    PHASES.forEach((ph,pi)=>{
+      ph.tasks.forEach((task,ti)=>{
+        const key=`${pi}-${ti}`;
+        if(!tasks[key])todayTasks.push({key,label:task,phase:ph.label});
+      });
     });
-  });
-  renderCDList('cd-today-wrap','cd-today-list',todayT,cTasks);
-  renderCDList('cd-pending-wrap','cd-pending-list',pendingT.slice(0,6),cTasks);
-  renderCDList('cd-done-wrap','cd-done-list',doneT.slice(0,5),cTasks);
+    const show=todayTasks.slice(0,3);
+    tt.innerHTML=show.length?show.map(t=>`
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border2);cursor:pointer;" onclick="toggleTask('${t.key}')">
+        <div style="width:18px;height:18px;border-radius:50%;border:2px solid var(--t3);flex-shrink:0;"></div>
+        <div><div style="font-size:12px;font-weight:600;">${esc(t.label)}</div><div style="font-size:10px;color:var(--t3);">${esc(t.phase)}</div></div>
+      </div>`).join('')
+    :'<div style="font-size:13px;color:var(--green);text-align:center;padding:12px;">✅ Sab tasks done! Aaj ke liye kaam khatam 🎉</div>';
+  }
+
+  // Tools grid (4 quick tools)
+  const tg=document.getElementById('tools-grid');
+  if(tg)tg.innerHTML=TOOLS.slice(0,4).map(t=>mkToolCard(t,true)).join('');
 }
 
-function renderCDList(wrapId,listId,tasks,cTasks){
-  const wrap=document.getElementById(wrapId),list=document.getElementById(listId);
-  if(!wrap||!list)return;
-  wrap.style.display=tasks.length?'block':'none';
-  list.innerHTML=tasks.map(t=>`
-    <div class="task-r ${cTasks[t.key]?'dn':''}" onclick="toggleCDTask('${t.key}')">
-      <div class="tck ${cTasks[t.key]?'dn':''}">${cTasks[t.key]?'✓':''}</div>
-      <div style="flex:1;"><div style="font-size:12px;color:${cTasks[t.key]?'var(--green)':'var(--text)'};text-decoration:${cTasks[t.key]?'line-through':'none'};">${esc(t.label)}</div>
-      <div style="font-size:10px;color:var(--text3);">${esc(t.phase)}</div></div>
-    </div>`).join('');
-}
+/* ══════════════════════════════════════
+   PLANNING PHASES
+══════════════════════════════════════ */
+const PHASES=[
+  {p:'12 Months Before',icon:'🗓️',tasks:['Budget finalize karo','Venue book karo','Wedding date set karo','Guest list shuru karo']},
+  {p:'9 Months Before',icon:'📋',tasks:['Photographer book karo','Caterer book karo','Decorator shortlist karo','Save-the-dates bhejo']},
+  {p:'6 Months Before',icon:'🎨',tasks:['Theme finalize karo','DJ/Music book karo','Outfits order karo','Honeymoon plan karo']},
+  {p:'3 Months Before',icon:'💌',tasks:['Invitations bhejo','Makeup artist book karo','Vendors confirm karo','Mehendi/Sangeet plan karo']},
+  {p:'1 Month Before',icon:'✅',tasks:['Final RSVP lo','Seating finalize karo','Final fittings karo','Pre-wedding shoot karo']},
+  {p:'1 Week Before',icon:'🔥',tasks:['Vendor final calls karo','Bags pack karo','Transport confirm karo','Payments complete karo']},
+  {p:'Wedding Day! 💍',icon:'💎',tasks:['Har pal enjoy karo!','Coordinator assign karo','Emergency kit ready rakho','Muskurao aur shine karo ✨']},
+];
 
-function toggleCDTask(key){
-  const cTasks=S.get('cd_tasks',{});
-  cTasks[key]=!cTasks[key];
-  S.set('cd_tasks',cTasks);
-  if(cTasks[key]){showToast('✅ Task done!');launchConfetti();}
-  rCountdown();updateHomeCountdown();
-}
-
-function updateHomeCountdown(){
-  const dateStr=App.weddingDate||S.get('wedding_date');
-  const widget=document.getElementById('home-countdown');if(!widget)return;
-  if(!dateStr){widget.style.display='none';return;}
-  widget.style.display='block';
-  const today=new Date();today.setHours(0,0,0,0);
-  const days=Math.ceil((new Date(dateStr)-today)/86400000);
-  if(days<0){widget.style.display='none';return;}
-  document.getElementById('home-days').textContent=days;
-  const cTasks=S.get('cd_tasks',{});
-  const total=PHASE_TASKS.reduce((a,p)=>a+p.tasks.length,0);
-  const done=Object.values(cTasks).filter(Boolean).length;
+function renderPlan(){
+  const total=PHASES.reduce((a,p)=>a+p.tasks.length,0);
+  const done=Object.values(tasks).filter(Boolean).length;
   const pct=total?Math.round(done/total*100):0;
-  const pb=document.getElementById('home-prog');if(pb)pb.style.width=pct+'%';
-  const td=document.getElementById('home-tasks-done');if(td)td.textContent=done+' tasks done';
-}
-
-/* ═══════════════════════════════════════
-   GUESTS
-   ═══════════════════════════════════════ */
-let guests=S.get('guests',[
-  {id:1,name:'Anjali Sharma',side:'Bride',meal:'Veg',rsvp:'Confirmed',phone:'',table:'1'},
-  {id:2,name:'Vikram Singh',side:'Groom',meal:'Non-Veg',rsvp:'Pending',phone:'',table:'2'}
-]);
-
-function saveGuests(){S.set('guests',guests);}
-
-function sGF(f,v){
-  if(f==='side'){App.gSide=v;['bride','groom'].forEach(s=>{const b=document.getElementById('sb-'+s);if(b)b.classList.toggle('on',s.charAt(0).toUpperCase()+s.slice(1)===v);});}
-  else{App.gMeal=v;[{id:'sm-veg',val:'Veg'},{id:'sm-nonveg',val:'Non-Veg'},{id:'sm-jain',val:'Jain'}].forEach(m=>{const b=document.getElementById(m.id);if(b)b.classList.toggle('on',m.val===v);});}
-}
-
-function tgf(){
-  const f=document.getElementById('gf'),b=document.getElementById('gftog');
-  const open=f.style.display==='none'||!f.style.display;
-  f.style.display=open?'block':'none';
-  b.textContent=open?'✕ Close':'+ Naya Guest Add Karo';
-  b.style.color=open?'var(--red2)':'var(--text2)';
-}
-
-function addG(){
-  const n=esc(document.getElementById('gfn')?.value||'');
-  if(!n){showToast('Naam daalein!');return;}
-  guests.push({id:Date.now(),name:n,side:App.gSide,meal:App.gMeal,rsvp:'Pending',
-    phone:phone(document.getElementById('gfph')?.value||''),
-    table:esc(document.getElementById('gftb')?.value||'')});
-  saveGuests();
-  ['gfn','gfph','gftb'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  tgf();rg();showToast('✅ Guest add ho gaya!');launchConfetti();
-}
-
-function setR(id,s){guests=guests.map(g=>g.id===id?{...g,rsvp:s}:g);saveGuests();rg();if(s==='Confirmed')showToast('🎉 RSVP Confirmed!');}
-function remG(id){guests=guests.filter(g=>g.id!==id);saveGuests();rg();}
-
-function rg(){
-  const srch=(document.getElementById('gsrch')?.value||'').toLowerCase();
-  const f=guests.filter(g=>g.name.toLowerCase().includes(srch));
-  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
-  const veg=guests.filter(g=>g.meal==='Veg').length;
-  const pct=guests.length?Math.round(conf/guests.length*100):0;
-  const se=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  se('gt',guests.length);se('gc',conf);se('gp',guests.filter(g=>g.rsvp==='Pending').length);se('gv',veg);
-  const bar=document.getElementById('gbar');if(bar)bar.style.width=pct+'%';
-  const pp=document.getElementById('gpct');if(pp)pp.textContent=pct+'%';
-  const sub=document.getElementById('gsub');if(sub)sub.textContent=guests.length+' guests';
-  const list=document.getElementById('glist');if(!list)return;
-  list.innerHTML=!f.length?'<div style="text-align:center;padding:30px;color:var(--text3);">Koi nahi mila 🔍</div>':
-    f.map(g=>`<div style="background:rgba(255,255,255,.03);border-radius:14px;padding:12px 14px;border:1px solid var(--border2);margin-bottom:8px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-        <div><div style="font-size:13px;font-weight:700;">${esc(g.name)}</div><div style="font-size:10px;color:var(--text3);margin-top:2px;">${esc(g.side)} · ${esc(g.meal)}${g.table?' · Table '+esc(g.table):''}</div></div>
-        <button onclick="remG(${g.id})" style="background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;">✕</button>
+  const pb=document.getElementById('plan-bar');if(pb)pb.style.width=pct+'%';
+  const pp=document.getElementById('plan-pct');if(pp)pp.textContent=pct+'%';
+  const pt=document.getElementById('plan-txt');if(pt)pt.textContent=`${done} of ${total} tasks complete`;
+  const c=document.getElementById('timeline-con');if(!c)return;
+  c.innerHTML=PHASES.map((ph,pi)=>{
+    const done2=ph.tasks.filter((_,ti)=>tasks[`${pi}-${ti}`]).length;
+    const all=done2===ph.tasks.length;
+    return`<div style="margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:${all?'rgba(46,204,113,.1)':'rgba(201,168,76,.07)'};border:2px solid ${all?'rgba(46,204,113,.3)':'var(--border)'};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">${ph.icon}</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:700;">${ph.p}</div><div style="font-size:10px;color:var(--t3);">${done2}/${ph.tasks.length} done</div></div>
+        ${all?'<span class="pill-green" style="font-size:10px;padding:3px 8px;">✓ Done</span>':''}
       </div>
-      <div style="display:flex;gap:6px;">
-        <button class="rsvpb ${g.rsvp==='Confirmed'?'ok':''}" onclick="setR(${g.id},'Confirmed')">✓ Yes</button>
-        <button class="rsvpb ${g.rsvp==='Pending'?'wt':''}" onclick="setR(${g.id},'Pending')">⏳ Wait</button>
-        <button class="rsvpb ${g.rsvp==='Declined'?'no':''}" onclick="setR(${g.id},'Declined')">✗ No</button>
-      </div>
-    </div>`).join('');
+      ${ph.tasks.map((task,ti)=>{const isDone=tasks[`${pi}-${ti}`];return`
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;border:1px solid ${isDone?'rgba(46,204,113,.2)':'var(--border2)'};background:${isDone?'rgba(46,204,113,.05)':'var(--card)'};margin-left:54px;transition:all .2s;"
+          onclick="toggleTask('${pi}-${ti}')">
+          <div style="width:20px;height:20px;border-radius:50%;border:2px solid ${isDone?'var(--green)':'var(--t3)'};background:${isDone?'var(--green)':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all .2s;">${isDone?'✓':''}</div>
+          <div style="font-size:12px;color:${isDone?'var(--green)':'var(--t2)'};text-decoration:${isDone?'line-through':'none'};">${esc(task)}</div>
+        </div>`}).join('')}
+    </div>`;}).join('');
 }
 
-function exportPDF(){
-  if(!guests.length){showToast('Pehle guests add karo!');return;}
-  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
-  const veg=guests.filter(g=>g.meal==='Veg').length;
-  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Guest List — SmartShaadi</title>
-  <style>body{font-family:Georgia,serif;padding:32px;max-width:800px;margin:0 auto;}h1{color:#C9A84C;border-bottom:3px solid #C9A84C;padding-bottom:10px;}
-  .stats{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;}.stat{background:#fdf8f0;padding:12px 18px;border-radius:10px;border-left:4px solid #C9A84C;}
-  .sv{font-size:22px;font-weight:bold;color:#C9A84C;}.sl{font-size:11px;color:#888;}table{width:100%;border-collapse:collapse;}th{background:#C9A84C;color:white;padding:10px;}td{padding:9px;border-bottom:1px solid #eee;}
-  tr:nth-child(even){background:#fdf8f0;}.badge{padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}.confirmed{background:#e8f5e9;color:#27AE60;}.pending{background:#fff3e0;color:#F39C12;}.declined{background:#fce4ec;color:#E74C3C;}</style></head><body>
-  <h1>💍 SmartShaadi — Guest List</h1><p style="color:#888;font-size:12px;">${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</p>
-  <div class="stats"><div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total</div></div><div class="stat"><div class="sv" style="color:#27AE60;">${conf}</div><div class="sl">Confirmed</div></div><div class="stat"><div class="sv" style="color:#3498DB;">${veg}</div><div class="sl">Veg</div></div></div>
-  <table><tr><th>#</th><th>Name</th><th>Side</th><th>Meal</th><th>RSVP</th><th>Table</th></tr>
-  ${guests.map((g,i)=>`<tr><td>${i+1}</td><td><strong>${g.name}</strong></td><td>${g.side}</td><td>${g.meal}</td><td><span class="badge ${g.rsvp.toLowerCase()}">${g.rsvp}</span></td><td>${g.table||'—'}</td></tr>`).join('')}
-  </table><p style="margin-top:28px;font-size:11px;color:#aaa;text-align:center;">SmartShaadi AI · smartshaadi.online</p></body></html>`;
-  try{
-    const blob=new Blob([html],{type:'text/html'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');a.href=url;a.download='GuestList.html';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(url),3000);
-    showToast('📄 PDF download ho rahi hai!');
-  }catch{showToast('⚠️ Browser mein open karo');}
+function toggleTask(key){
+  tasks[key]=!tasks[key];saveTasks();
+  if(tasks[key]){toast('✅ Task complete!');boom();}
+  if(curPage==='pg-plan')renderPlan();
+  if(curPage==='pg-dash')renderDash();
 }
 
-/* ═══════════════════════════════════════
+/* ══════════════════════════════════════
    BUDGET
-   ═══════════════════════════════════════ */
+══════════════════════════════════════ */
 const BCATS=[
   {n:'Venue',icon:'🏛️',pct:30,c:'#C9A84C'},{n:'Catering',icon:'🍽️',pct:25,c:'#27AE60'},
   {n:'Decoration',icon:'🌸',pct:15,c:'#E91E8C'},{n:'Photography',icon:'📸',pct:10,c:'#3498DB'},
@@ -1053,217 +876,224 @@ const BCATS=[
   {n:'Transport',icon:'🚗',pct:4,c:'#F39C12'},{n:'Misc',icon:'✨',pct:3,c:'#888'}
 ];
 
-function rBudget(){
-  App.bTotal=S.get('budget_total',1500000);App.bSpent=S.get('budget_spent',{});
-  const spent=BCATS.reduce((a,c)=>a+(App.bSpent[c.n]||0),0);
-  const rem=App.bTotal-spent;const pct=App.bTotal?Math.min(100,Math.round(spent/App.bTotal*100)):0;
-  const c=document.getElementById('bcon');if(!c)return;
-  c.innerHTML=`<div class="card" style="border-color:rgba(46,204,113,.2);margin-bottom:14px;">
+function renderBudget(){
+  const c=document.getElementById('budget-con');if(!c)return;
+  const total=W.budget||0;
+  const spent=BCATS.reduce((a,x)=>a+(bSpent[x.n]||0),0);
+  const rem=total-spent;
+  const pct=total?Math.min(100,Math.round(spent/total*100)):0;
+  c.innerHTML=`
+  <div style="background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:var(--r-lg);padding:18px;margin-bottom:16px;">
     <label class="lbl">Total Budget (₹)</label>
-    <input type="number" class="inp" value="${App.bTotal}" style="color:var(--gold);font-size:20px;font-weight:800;border-color:rgba(46,204,113,.2);margin-bottom:12px;"
-      oninput="App.bTotal=num(this.value);S.set('budget_total',App.bTotal);rBudget()"/>
-    <div style="display:flex;gap:8px;margin-bottom:10px;">
-      <div style="flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:var(--red2);">₹${spent.toLocaleString('en-IN')}</div><div style="font-size:10px;color:var(--text3);">Spent</div></div>
-      <div style="flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:${rem<0?'var(--red)':'var(--green)'};">₹${Math.abs(rem).toLocaleString('en-IN')}</div><div style="font-size:10px;color:var(--text3);">${rem<0?'Over!':'Left'}</div></div>
-      <div style="flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:var(--gold);">${pct}%</div><div style="font-size:10px;color:var(--text3);">Used</div></div>
+    <input type="number" class="inp" value="${total||''}" placeholder="e.g. 1500000" style="color:var(--g);font-size:20px;font-weight:800;margin-bottom:14px;"
+      oninput="W.budget=n(this.value);saveData();"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+      <div style="background:var(--bg3);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:15px;font-weight:800;color:#E74C3C;">₹${(spent/1e5).toFixed(1)}L</div><div style="font-size:9px;color:var(--t3);">Spent</div></div>
+      <div style="background:var(--bg3);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:15px;font-weight:800;color:${rem<0?'#E74C3C':'var(--green)'};">₹${(Math.abs(rem)/1e5).toFixed(1)}L</div><div style="font-size:9px;color:var(--t3);">${rem<0?'Over!':'Left'}</div></div>
+      <div style="background:var(--bg3);border-radius:12px;padding:10px;text-align:center;"><div style="font-size:15px;font-weight:800;color:var(--g);">${pct}%</div><div style="font-size:9px;color:var(--t3);">Used</div></div>
     </div>
-    <div class="pbar" style="height:8px;"><div class="pfill" style="width:${pct}%;background:${spent>App.bTotal?'var(--red)':'linear-gradient(90deg,var(--green),#2ecc71)'};"></div></div>
+    <div class="pbar" style="height:9px;"><div class="pfill" style="width:${pct}%;background:${spent>total&&total>0?'#E74C3C':'linear-gradient(90deg,var(--green),#2ecc71)'};"></div></div>
   </div>
-  ${BCATS.map(cat=>{const alloc=Math.round(App.bTotal*cat.pct/100);const s=App.bSpent[cat.n]||0;const p=alloc?Math.min(100,Math.round(s/alloc*100)):0;
-  return`<div class="card" style="border-color:${cat.c}18;margin-bottom:10px;padding:14px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-      <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${cat.icon}</span>
-        <div><div style="font-size:13px;font-weight:700;">${cat.n}</div><div style="font-size:10px;color:var(--text3);">₹${alloc.toLocaleString('en-IN')} (${cat.pct}%)</div></div></div>
-      <div style="font-size:13px;font-weight:700;color:${s>alloc?'var(--red)':cat.c};">₹${s.toLocaleString('en-IN')}</div></div>
-    <div class="pbar"><div class="pfill" style="width:${p}%;background:${s>alloc?'var(--red)':cat.c};"></div></div>
-    <input type="number" class="inp" placeholder="Amount spent (₹)" value="${s||''}" style="margin-top:8px;font-size:12px;"
-      oninput="App.bSpent['${cat.n}']=num(this.value);S.set('budget_spent',App.bSpent);"/>
-  </div>`;}).join('')}`;
-}
-
-/* ═══════════════════════════════════════
-   TIMELINE
-   ═══════════════════════════════════════ */
-const PHASES=[
-  {p:'12 Months Before',icon:'🗓️',tasks:['Budget finalize','Venue book karo','Wedding date set karo','Guest list banao']},
-  {p:'9 Months Before',icon:'📋',tasks:['Photographer book karo','Caterer book karo','Decorator shortlist karo','Save-the-dates bhejo']},
-  {p:'6 Months Before',icon:'🎨',tasks:['Theme finalize karo','DJ book karo','Outfits order karo','Honeymoon plan karo']},
-  {p:'3 Months Before',icon:'💌',tasks:['Invitations bhejo','Makeup book karo','Vendors confirm karo','Mehendi/Sangeet plan']},
-  {p:'1 Month Before',icon:'✅',tasks:['Final RSVP lo','Seating confirm karo','Final fittings','Pre-wedding shoot']},
-  {p:'1 Week Before',icon:'🔥',tasks:['Vendor final calls','Bags pack karo','Transport confirm','Payments complete']},
-  {p:'Wedding Day! 💍',icon:'💎',tasks:['Har pal enjoy karo!','Coordinator assign karo','Emergency kit ready','Smile & shine ✨']},
-];
-let cTasks={};
-function rTL(){
-  cTasks=S.get('tl_tasks',{});
-  const dateStr=App.weddingDate||S.get('wedding_date');
-  const wd=document.getElementById('wdate');if(wd&&dateStr)wd.value=dateStr;
-  const c=document.getElementById('tlcon');if(!c)return;
-  c.innerHTML=PHASES.map((ph,pi)=>{
-    const done=ph.tasks.filter((_,ti)=>cTasks[`${pi}-${ti}`]).length,all=done===ph.tasks.length;
-    return`<div style="margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-        <div style="width:42px;height:42px;border-radius:50%;background:${all?'rgba(46,204,113,.1)':'rgba(255,45,85,.06)'};border:2px solid ${all?'rgba(46,204,113,.3)':'rgba(255,45,85,.15)'};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${ph.icon}</div>
-        <div style="flex:1;"><div style="font-size:13px;font-weight:700;">${ph.p}</div><div style="font-size:10px;color:var(--text3);">${done}/${ph.tasks.length} done</div></div>
-        ${all?'<div style="font-size:11px;color:var(--green);font-weight:700;">✓ Done</div>':''}
-      </div>
-      ${ph.tasks.map((task,ti)=>{const isDone=cTasks[`${pi}-${ti}`];return`<div class="task-r ${isDone?'dn':''}" onclick="toggleTL(${pi},${ti})">
-        <div class="tck ${isDone?'dn':''}">${isDone?'✓':''}</div>
-        <div style="font-size:12px;color:${isDone?'var(--green)':'var(--text2)'};text-decoration:${isDone?'line-through':'none'};">${esc(task)}</div>
-      </div>`;}).join('')}
-    </div>`;}).join('');
-}
-function toggleTL(pi,ti){cTasks=S.get('tl_tasks',{});cTasks[`${pi}-${ti}`]=!cTasks[`${pi}-${ti}`];S.set('tl_tasks',cTasks);if(cTasks[`${pi}-${ti}`]){showToast('✅ Done!');launchConfetti();}rTL();}
-
-/* ═══════════════════════════════════════
-   VENDORS
-   ═══════════════════════════════════════ */
-const BASE_VENDORS=[
-  {id:'v1',name:'Sharma Photography',city:'Delhi',cat:'Photography',rating:4.9,reviews:127,tier:'Premium',price:'₹35,000+',badge:'🏆 Verified',phone:'919575877759',desc:'Delhi ke top wedding photographers. 8 saal ka experience.'},
-  {id:'v2',name:'Royal Caterers',city:'Jaipur',cat:'Catering',rating:4.8,reviews:89,tier:'Featured',price:'₹850/plate',badge:'⭐ Featured',phone:'9812345678',desc:'Rajasthani aur North Indian cuisine. Min 100 guests.'},
-  {id:'v3',name:'Floral Dreams Decor',city:'Mumbai',cat:'Decoration',rating:4.7,reviews:67,tier:'Premium',price:'₹80,000+',badge:'🏆 Verified',phone:'9898989898',desc:'Mumbai ki best floral decoration. Mandap + lighting.'},
-  {id:'v4',name:'DJ Ravi Entertainment',city:'Bangalore',cat:'Music & DJ',rating:4.9,reviews:203,tier:'Featured',price:'₹25,000+',badge:'⭐ Featured',phone:'9901234567',desc:'Bollywood + International music. Live dhol available.'},
-  {id:'v5',name:'Priya Bridal Makeup',city:'Delhi',cat:'Makeup',rating:4.8,reviews:145,tier:'Premium',price:'₹15,000+',badge:'🏆 Verified',phone:'9811122233',desc:'HD + Airbrush bridal makeup. Trial session included.'},
-  {id:'v6',name:'Gulshan Photography',city:'Mumbai',cat:'Photography',rating:4.6,reviews:54,tier:'Basic',price:'₹25,000+',badge:'✓ Listed',phone:'9922334455',desc:'Candid + traditional photography. Pre-wedding shoots.'},
-  {id:'v7',name:'Spice Route Catering',city:'Hyderabad',cat:'Catering',rating:4.7,reviews:76,tier:'Featured',price:'₹700/plate',badge:'⭐ Featured',phone:'9988776655',desc:'Hyderabadi biryani specialists. Live counters available.'},
-  {id:'v8',name:'Mehndi Masters',city:'Jaipur',cat:'Makeup',rating:4.9,reviews:210,tier:'Premium',price:'₹8,000+',badge:'🏆 Verified',phone:'9876512345',desc:'Rajasthani + Arabic mehndi. Home visit available.'},
-];
-function getVendors(){try{return[...BASE_VENDORS,...(S.get('vendors',[])).filter(v=>v.approved)];}catch{return BASE_VENDORS;}}
-function getPending(){return S.get('vendors_pending',[]);}
-
-function filterCity(city,btn){App.vCityFilter=city;document.querySelectorAll('#city-filter .btn-sm').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderVendorDir();}
-function filterCat(cat,btn){App.vCatFilter=cat;document.querySelectorAll('#cat-filter .btn-sm').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderVendorDir();}
-
-function renderVendorDir(){
-  const c=document.getElementById('vendor-dir-wrap');if(!c)return;
-  const vendors=getVendors();
-  const filtered=vendors.filter(v=>(App.vCityFilter==='All'||v.city===App.vCityFilter)&&(App.vCatFilter==='All'||v.cat===App.vCatFilter));
-  if(!filtered.length){c.innerHTML=`<div style="text-align:center;padding:40px;color:var(--text3);">Koi vendor nahi mila.<br><br><button onclick="go('vendor-apply')" class="btn-gold" style="max-width:200px;margin:12px auto;">Vendor Ban Jao →</button></div>`;return;}
-  c.innerHTML=filtered.map(v=>`
-    <div class="vcard">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
-            <div style="font-size:14px;font-weight:800;">${esc(v.name)}</div>
-            <div style="font-size:9px;padding:2px 8px;border-radius:20px;font-weight:700;background:${v.tier==='Premium'?'rgba(201,168,76,.15)':'rgba(255,255,255,.06)'};color:${v.tier==='Premium'?'var(--gold)':v.tier==='Featured'?'var(--blue)':'var(--text3)'};">${esc(v.badge)}</div>
-          </div>
-          <div style="font-size:11px;color:var(--text3);">📍 ${esc(v.city)} · ${esc(v.cat)}</div>
-          <div style="font-size:11px;color:var(--gold);margin-top:2px;">⭐ ${v.rating} (${v.reviews})</div>
-          <div style="font-size:11px;color:var(--text2);margin-top:5px;line-height:1.5;">${esc(v.desc)}</div>
+  ${BCATS.map(cat=>{
+    const alloc=Math.round(total*cat.pct/100),s=bSpent[cat.n]||0,p=alloc?Math.min(100,Math.round(s/alloc*100)):0;
+    return`<div style="background:var(--card);border:1px solid ${cat.c}18;border-radius:var(--r-md);padding:14px;margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:18px;">${cat.icon}</span>
+          <div><div style="font-size:13px;font-weight:700;">${cat.n}</div><div style="font-size:10px;color:var(--t3);">Budget: ₹${alloc.toLocaleString('en-IN')}</div></div>
         </div>
-        <div style="font-size:15px;font-weight:800;color:var(--gold2);margin-left:10px;flex-shrink:0;">${esc(v.price)}</div>
+        <div style="font-size:13px;font-weight:700;color:${s>alloc&&alloc>0?'#E74C3C':cat.c};">₹${s.toLocaleString('en-IN')}</div>
       </div>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <a href="https://wa.me/91${phone(v.phone)}?text=${encodeURIComponent('Hi! SmartShaadi App se dekha. Wedding inquiry karna tha.')}" target="_blank" style="flex:1;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;text-align:center;display:block;">💬 WhatsApp</a>
-        <a href="tel:+91${phone(v.phone)}" style="flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:10px;padding:10px;font-size:12px;color:var(--text2);text-decoration:none;text-align:center;display:block;">📞 Call</a>
+      <div class="pbar"><div class="pfill" style="width:${p}%;background:${s>alloc&&alloc>0?'#E74C3C':cat.c};"></div></div>
+      <input type="number" class="inp" value="${s||''}" placeholder="Kharcha daalo (₹)" style="margin-top:10px;font-size:13px;"
+        onchange="bSpent['${cat.n}']=n(this.value);saveBSpent();"/>
+    </div>`;}).join('')}`;
+}
+
+/* ══════════════════════════════════════
+   GUESTS
+══════════════════════════════════════ */
+let gSide='Bride',gMealSel='Veg';
+
+function gSide(v){
+  gSide=v;
+  document.getElementById('gsb').style.borderColor=v==='Bride'?'var(--g)':'var(--border2)';
+  document.getElementById('gsb').style.color=v==='Bride'?'var(--g)':'var(--t2)';
+  document.getElementById('gsg').style.borderColor=v==='Groom'?'var(--g)':'var(--border2)';
+  document.getElementById('gsg').style.color=v==='Groom'?'var(--g)':'var(--t2)';
+}
+
+function gMeal(v){
+  gMealSel=v;
+  ['gmv','gmnv','gmj'].forEach(id=>{
+    const m={'gmv':'Veg','gmnv':'Non-Veg','gmj':'Jain'}[id];
+    const el=document.getElementById(id);
+    el.style.borderColor=m===v?'var(--g)':'var(--border2)';
+    el.style.color=m===v?'var(--g)':'var(--t2)';
+  });
+}
+
+function addGuest(){
+  const nm=esc(document.getElementById('gn').value.trim());
+  if(!nm){toast('⚠️ Naam daalein!');return;}
+  guests.push({id:Date.now(),name:nm,phone:ph(document.getElementById('gph').value||''),side:gSide,meal:gMealSel,rsvp:'Pending'});
+  saveGuests();
+  document.getElementById('gn').value='';document.getElementById('gph').value='';
+  renderGuests();toast('✅ Guest added!');boom();
+}
+
+function setRSVP(id,s){guests=guests.map(g=>g.id===id?{...g,rsvp:s}:g);saveGuests();renderGuests();}
+function removeGuest(id){guests=guests.filter(g=>g.id!==id);saveGuests();renderGuests();}
+
+function renderGuests(){
+  const srch=(document.getElementById('g-search')?.value||'').toLowerCase();
+  const f=guests.filter(g=>g.name.toLowerCase().includes(srch));
+  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
+  const veg=guests.filter(g=>g.meal==='Veg').length;
+  const pct=guests.length?Math.round(conf/guests.length*100):0;
+  const se=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  se('g-total',guests.length);se('g-conf',conf);
+  se('g-pend',guests.filter(g=>g.rsvp==='Pending').length);se('g-veg',veg);
+  const gb=document.getElementById('g-bar');if(gb)gb.style.width=pct+'%';
+  const sub=document.getElementById('g-sub');if(sub)sub.textContent=`${guests.length} guests · ${pct}% confirmed`;
+  const list=document.getElementById('g-list');if(!list)return;
+  list.innerHTML=!f.length?'<div style="text-align:center;padding:30px;color:var(--t3);">Koi nahi mila 🔍</div>':
+    f.map(g=>`<div style="background:var(--card);border:1px solid var(--border2);border-radius:var(--r-md);padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+        <div><div style="font-size:13px;font-weight:700;">${esc(g.name)}</div><div style="font-size:10px;color:var(--t3);">${esc(g.side)} · ${esc(g.meal)}${g.phone?' · '+esc(g.phone):''}</div></div>
+        <button onclick="removeGuest(${g.id})" style="background:none;border:none;color:var(--t3);font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <button onclick="setRSVP(${g.id},'Confirmed')" style="flex:1;padding:8px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid ${g.rsvp==='Confirmed'?'var(--green)':'var(--border2)'};background:${g.rsvp==='Confirmed'?'rgba(46,204,113,.1)':'var(--bg3)'};color:${g.rsvp==='Confirmed'?'var(--green)':'var(--t3)'};font-family:var(--font-b);font-weight:600;">✓ Yes</button>
+        <button onclick="setRSVP(${g.id},'Pending')" style="flex:1;padding:8px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid ${g.rsvp==='Pending'?'#FF9800':'var(--border2)'};background:${g.rsvp==='Pending'?'rgba(255,152,0,.1)':'var(--bg3)'};color:${g.rsvp==='Pending'?'#FF9800':'var(--t3)'};font-family:var(--font-b);font-weight:600;">⏳ Wait</button>
+        <button onclick="setRSVP(${g.id},'Declined')" style="flex:1;padding:8px;border-radius:8px;font-size:10px;cursor:pointer;border:1px solid ${g.rsvp==='Declined'?'#E74C3C':'var(--border2)'};background:${g.rsvp==='Declined'?'rgba(231,76,60,.1)':'var(--bg3)'};color:${g.rsvp==='Declined'?'#E74C3C':'var(--t3)'};font-family:var(--font-b);font-weight:600;">✗ No</button>
       </div>
     </div>`).join('');
 }
 
-/* ═══════════════════════════════════════
-   VENDOR APPLY
-   ═══════════════════════════════════════ */
-function rVA(submitted=false){
-  const c=document.getElementById('vacon');if(!c)return;
-  if(submitted){c.innerHTML=`<div style="text-align:center;padding:40px;"><div style="font-size:60px;margin-bottom:16px;">🎉</div><div style="font-family:var(--font-d);font-size:24px;color:var(--gold);margin-bottom:8px;">Application Mili!</div><div style="font-size:13px;color:var(--text2);margin-bottom:28px;">24 ghante mein WhatsApp pe contact hoga 📱</div><button onclick="go('home')" class="btn-gold">Home →</button></div>`;return;}
-  const cats=['Photography','Catering','Decoration','Music & DJ','Makeup','Transport','Venue','Other'];
-  const tiers=[{id:'Basic',price:'₹999/mo'},{id:'Featured',price:'₹1,999/mo'},{id:'Premium',price:'₹2,999/mo'}];
-  c.innerHTML=`<div style="margin-bottom:20px;">
-    <div style="font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.5px;margin-bottom:12px;">PLAN CHOOSE KARO</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-      ${tiers.map(t=>`<div onclick="App.vTier='${t.id}';rVA()" style="border-radius:14px;padding:12px 8px;cursor:pointer;text-align:center;border:1px solid var(--border);background:${App.vTier===t.id?'linear-gradient(135deg,var(--gold),var(--gold2))':'rgba(255,255,255,.04)'};">
-        <div style="font-size:12px;font-weight:800;color:${App.vTier===t.id?'#0D0008':'var(--gold)'};">${t.id}</div>
-        <div style="font-size:11px;color:${App.vTier===t.id?'#0D000899':'var(--text)'};">${t.price}</div>
-      </div>`).join('')}
-    </div>
+function exportGuestPDF(){
+  if(!guests.length){toast('⚠️ Pehle guests add karo!');return;}
+  const conf=guests.filter(g=>g.rsvp==='Confirmed').length;
+  const veg=guests.filter(g=>g.meal==='Veg').length;
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Guest List — SmartShaadi</title>
+  <style>body{font-family:Georgia,serif;padding:32px;max-width:800px;margin:0 auto;}h1{color:#C9A84C;border-bottom:3px solid #C9A84C;padding-bottom:10px;margin-bottom:16px;}
+  .stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}.stat{background:#fdf8f0;padding:12px 18px;border-radius:10px;border-left:4px solid #C9A84C;}
+  .sv{font-size:22px;font-weight:bold;color:#C9A84C;}.sl{font-size:11px;color:#888;}table{width:100%;border-collapse:collapse;}
+  th{background:#C9A84C;color:white;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #eee;}tr:nth-child(even){background:#fdf8f0;}
+  .ok{background:#e8f5e9;color:#27AE60;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}
+  .pending{background:#fff3e0;color:#F39C12;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}
+  .no{background:#fce4ec;color:#E74C3C;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold;}</style></head><body>
+  <h1>💍 SmartShaadi — ${esc(W.bride)} & ${esc(W.groom)} Guest List</h1>
+  <div class="stats">
+    <div class="stat"><div class="sv">${guests.length}</div><div class="sl">Total</div></div>
+    <div class="stat"><div class="sv" style="color:#27AE60">${conf}</div><div class="sl">Confirmed</div></div>
+    <div class="stat"><div class="sv" style="color:#3498DB">${veg}</div><div class="sl">Veg</div></div>
   </div>
-  <label class="lbl">Business Name *</label><input id="vn" class="inp" placeholder="Sharma Photography" style="margin-bottom:12px;"/>
-  <label class="lbl">WhatsApp *</label><input id="vph" class="inp" placeholder="9575877759" style="margin-bottom:12px;"/>
-  <label class="lbl">City *</label><input id="vci" class="inp" placeholder="Delhi / Mumbai" style="margin-bottom:12px;"/>
-  <label class="lbl">Starting Price</label><input id="vpr" class="inp" placeholder="₹30,000+" style="margin-bottom:12px;"/>
-  <label class="lbl">Description</label><textarea id="vds" class="inp" rows="3" placeholder="Apne baare mein..." style="margin-bottom:14px;"></textarea>
-  <label class="lbl" style="margin-bottom:10px;">Category *</label>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;" id="vcw">
-    ${cats.map(cat=>`<button onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on')" class="btn-sm">${cat}</button>`).join('')}
-  </div>
-  <button onclick="subV()" class="btn-gold">🚀 Apply Karo</button>`;
+  <table><tr><th>#</th><th>Name</th><th>Side</th><th>Meal</th><th>RSVP</th></tr>
+  ${guests.map((g,i)=>`<tr><td>${i+1}</td><td><strong>${g.name}</strong></td><td>${g.side}</td><td>${g.meal}</td><td><span class="${g.rsvp==='Confirmed'?'ok':g.rsvp==='Declined'?'no':'pending'}">${g.rsvp}</span></td></tr>`).join('')}
+  </table><p style="margin-top:28px;text-align:center;font-size:11px;color:#aaa;">Made with SmartShaadi ❤️ · smartshaadi.online</p></body></html>`;
+  try{const blob=new Blob([html],{type:'text/html'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='GuestList.html';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),3000);toast('📄 PDF download ho rahi hai!');}
+  catch{toast('Browser mein open karo');}
 }
 
-function subV(){
-  const n=esc(document.getElementById('vn')?.value||'');
-  const p=phone(document.getElementById('vph')?.value||'');
-  const ci=esc(document.getElementById('vci')?.value||'');
-  if(!n||!p||!ci){showToast('Naam, phone aur city zaroori!');return;}
-  if(p.length<10){showToast('Valid phone daalein');return;}
-  const selCat=document.querySelector('#vcw button.on')?.textContent||'Other';
-  const pr=esc(document.getElementById('vpr')?.value||'');
-  const ds=esc(document.getElementById('vds')?.value||'');
-  const pending=getPending();
-  pending.push({id:'v'+Date.now(),name:n,phone:p,city:ci,cat:selCat,price:pr,desc:ds,tier:App.vTier,approved:false,submittedAt:new Date().toISOString()});
-  S.set('vendors_pending',pending);
-  const waMsg=encodeURIComponent(`🆕 New Vendor — SmartShaadi\n\n👤 ${n}\n📞 ${p}\n📍 ${ci}\n🏷️ ${selCat}\n💰 ${pr}\n⭐ ${App.vTier}\n📝 ${ds}`);
-  setTimeout(()=>window.open(`https://wa.me/919575877759?text=${waMsg}`,'_blank'),400);
-  rVA(true);showToast('✅ Application submit ho gayi!');
+/* ══════════════════════════════════════
+   MORE TOOLS
+══════════════════════════════════════ */
+function renderMoreTools(){
+  const g=document.getElementById('more-tools-grid');
+  if(g)g.innerHTML=TOOLS.map(t=>mkToolCard(t)).join('');
 }
 
-/* ═══════════════════════════════════════
-   ADMIN
-   ═══════════════════════════════════════ */
-const ADMIN_PIN='2611';
-function rAdmin(){
-  const c=document.getElementById('admin-content');if(!c)return;
-  if(!sessionStorage.getItem('ss_admin')){
-    c.innerHTML=`<div style="text-align:center;padding:40px;">
-      <div style="font-size:48px;margin-bottom:16px;">🔐</div>
-      <input id="pin-inp" class="inp" type="password" placeholder="PIN" maxlength="6" style="text-align:center;font-size:24px;letter-spacing:8px;margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkPin()"/>
-      <button onclick="checkPin()" class="btn-gold" style="max-width:200px;margin:0 auto;">Enter →</button>
-    </div>`;return;
+/* ══════════════════════════════════════
+   AI CHAT
+══════════════════════════════════════ */
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const panel=document.getElementById('chat-panel');
+  panel.classList.toggle('open',chatOpen);
+  if(chatOpen){
+    const inp=document.getElementById('chat-inp');if(inp)inp.focus();
   }
-  const pending=getPending();
-  if(!pending.length){c.innerHTML='<div style="text-align:center;padding:40px;color:var(--text3);">✅ Koi pending application nahi</div>';return;}
-  c.innerHTML=`<div style="font-size:13px;font-weight:700;color:var(--red2);margin-bottom:14px;">${pending.length} Pending</div>
-    ${pending.map(v=>`<div class="card" style="margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:800;margin-bottom:4px;">${esc(v.name)}</div>
-      <div style="font-size:11px;color:var(--text2);">${esc(v.city)} · ${esc(v.cat)} · ${esc(v.tier)} · ${esc(v.phone)}</div>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <button onclick="approveV('${v.id}')" style="flex:1;background:linear-gradient(135deg,var(--green),#2ecc71);border:none;border-radius:10px;padding:10px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--font-b);">✅ Approve</button>
-        <button onclick="rejectV('${v.id}')" style="flex:1;background:rgba(255,45,85,.1);border:1px solid rgba(255,45,85,.25);border-radius:10px;padding:10px;font-size:12px;color:var(--red2);cursor:pointer;font-family:var(--font-b);">❌ Reject</button>
-      </div>
-    </div>`).join('')}`;
-}
-function checkPin(){const p=document.getElementById('pin-inp')?.value;if(p===ADMIN_PIN){sessionStorage.setItem('ss_admin','1');rAdmin();}else showToast('Wrong PIN!');}
-function approveV(id){
-  const pending=getPending();const v=pending.find(x=>x.id===id);if(!v)return;
-  v.approved=true;const approved=S.get('vendors',[]);approved.push(v);S.set('vendors',approved);S.set('vendors_pending',pending.filter(x=>x.id!==id));
-  showToast('✅ Vendor approved!');rAdmin();
-}
-function rejectV(id){S.set('vendors_pending',getPending().filter(v=>v.id!==id));showToast('Rejected.');rAdmin();}
-
-/* ═══════════════════════════════════════
-   HOME GREETING
-   ═══════════════════════════════════════ */
-function updateGreeting(){
-  const g=document.getElementById('home-greeting');if(!g)return;
-  const bride=App.brideName||S.get('bride','');
-  const groom=App.groomName||S.get('groom','');
-  if(bride&&groom)g.innerHTML=`💍 Namaste ${esc(bride)} & ${esc(groom)}!`;
-  else if(bride)g.innerHTML=`💍 Namaste ${esc(bride)}!`;
-  else g.innerHTML='💍 Namaste! Apni Shaadi Plan Karein';
 }
 
-/* ═══════════════════════════════════════
-   PWA
-   ═══════════════════════════════════════ */
-function updateOnlineStatus(){
-  const b=document.getElementById('offline-banner');
-  const s=document.getElementById('shell');
-  if(!b)return;
-  if(!navigator.onLine){b.style.display='block';if(s)s.style.paddingTop='38px';}
-  else{b.style.display='none';if(s)s.style.paddingTop='0';}
+async function chatSend(preset){
+  const inp=document.getElementById('chat-inp');
+  const text=preset||(inp?inp.value.trim():'');
+  if(!text)return;
+  if(inp)inp.value='';
+  addChatMsg('user',text);
+  addTyping();
+  try{
+    const context=`Wedding planning for ${W.bride||'Bride'} & ${W.groom||'Groom'} in ${W.city||'India'}. Budget: Rs ${W.budget||'not set'}. Guests: ${W.guests||'not set'}. Type: ${W.wtype}.`;
+    const r=await fetch('/api/groq-agent',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system:`You are ShaadiBot, India's best AI wedding planning assistant for SmartShaadi. Reply in warm Hinglish. Be helpful, specific with Indian Rs prices. Use emojis. Context: ${context}`,
+        messages:[{role:'user',content:text}]
+      })});
+    const d=await r.json();
+    removeTyping();
+    addChatMsg('bot',d.choices?.[0]?.message?.content||'Dobara try karein 🙏');
+  }catch(e){
+    removeTyping();
+    addChatMsg('bot','Thodi der mein try karein 🙏');
+  }
 }
-window.addEventListener('online',updateOnlineStatus);
-window.addEventListener('offline',updateOnlineStatus);
-updateOnlineStatus();
+
+function addChatMsg(role,text){
+  const w=document.getElementById('chat-msgs');if(!w)return;
+  const d=document.createElement('div');
+  d.className='msg '+(role==='user'?'user':'bot');
+  d.textContent=text;
+  w.appendChild(d);w.scrollTop=w.scrollHeight;
+}
+
+function addTyping(){
+  const w=document.getElementById('chat-msgs');if(!w)return;
+  const d=document.createElement('div');d.id='typing';d.className='msg bot';
+  d.style.padding='12px 16px';
+  d.innerHTML='<span class="typing-dot" style="animation-delay:0s"></span><span class="typing-dot" style="margin:0 4px;animation-delay:.2s"></span><span class="typing-dot" style="animation-delay:.4s"></span>';
+  w.appendChild(d);w.scrollTop=w.scrollHeight;
+}
+function removeTyping(){document.getElementById('typing')?.remove();}
+
+/* ══════════════════════════════════════
+   SHARE + PRO
+══════════════════════════════════════ */
+function shareWedding(){
+  const msg=`💍 ${W.bride} & ${W.groom} ki shaadi ${W.date?'on '+new Date(W.date).toLocaleDateString('en-IN'):'coming soon'}!\n\nHam SmartShaadi AI se plan kar rahe hain — India ka #1 free wedding planner!\nhttps://smartshaadi.online/app.html\n\nMade with SmartShaadi ❤️`;
+  if(navigator.share){navigator.share({title:'SmartShaadi',text:msg});}
+  else{const url=`https://wa.me/?text=${encodeURIComponent(msg)}`;window.open(url,'_blank');}
+}
+
+function unlockPro(){
+  window.location.href='/vendors/apply.html';
+}
+
+/* ══════════════════════════════════════
+   RENDER ALL
+══════════════════════════════════════ */
+function renderAll(){
+  renderDash();renderPlan();renderBudget();renderGuests();renderMoreTools();
+}
+
+/* ══════════════════════════════════════
+   OFFLINE
+══════════════════════════════════════ */
+function updateOnline(){
+  const b=document.getElementById('offline');
+  if(!navigator.onLine)b.style.display='block';
+  else b.style.display='none';
+}
+window.addEventListener('online',updateOnline);
+window.addEventListener('offline',updateOnline);
+updateOnline();
+
+/* ══════════════════════════════════════
+   ADMIN (secret)
+══════════════════════════════════════ */
+let _at=0,_atm;
+document.addEventListener('click',()=>{_at++;clearTimeout(_atm);_atm=setTimeout(()=>_at=0,2000);if(_at>=7){_at=0;toast('🔐 Admin: smartshaadi.online/vendors/admin.html');}});
 
 document.addEventListener('focusin',e=>{
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')
@@ -1272,46 +1102,32 @@ document.addEventListener('focusin',e=>{
 
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
 
-// Admin secret — 7 taps
-let _at=0,_atm;
-document.addEventListener('click',()=>{_at++;clearTimeout(_atm);_atm=setTimeout(()=>_at=0,2000);if(_at>=7){_at=0;go('admin');}});
+/* ══════════════════════════════════════
+   INIT + SPLASH
+══════════════════════════════════════ */
+loadData();
 
-/* ═══════════════════════════════════════
-   INIT
-   ═══════════════════════════════════════ */
-function init(){
-  App.brideName=S.get('bride','');
-  App.groomName=S.get('groom','');
-  App.weddingDate=S.get('wedding_date',null);
-  App.bTotal=S.get('budget_total',1500000);
-  App.bSpent=S.get('budget_spent',{});
-  Freemium.init();
-  rTG();rg();updateGreeting();updateHomeCountdown();
-  const dateStr=App.weddingDate;
-  if(dateStr){const w=document.getElementById('wdate');if(w)w.value=dateStr;}
-}
-
-// ═══ SPLASH + ONBOARDING LOGIC ═══
 ;(function(){
   var done=false;
   function hideSplash(){
     if(done)return;done=true;
-    var s=document.getElementById('splash');
-    if(!s)return;
-    s.style.opacity='0';
+    var sp=document.getElementById('splash');
+    if(!sp)return;
+    sp.style.opacity='0';
     setTimeout(function(){
-      s.style.display='none';
-      // Show onboarding if first time, else init
-      var obDone=false;
-      try{obDone=!!localStorage.getItem('ss_ob_done');}catch(e){}
-      if(!obDone){
-        document.getElementById('onboard').style.display='flex';
+      sp.style.display='none';
+      var obDone=false;try{obDone=!!localStorage.getItem('ss_ob_done');}catch(e){}
+      if(obDone){
+        document.getElementById('app').style.display='flex';
+        document.getElementById('chat-fab').style.display='flex';
+        renderAll();
+        showPage('pg-dash');
       } else {
-        init();
+        document.getElementById('onboard').style.display='flex';
       }
     },500);
   }
-  setTimeout(hideSplash,2200);
+  setTimeout(hideSplash,2000);
   setTimeout(hideSplash,4000);
   window.addEventListener('load',function(){setTimeout(hideSplash,800);});
 })();
