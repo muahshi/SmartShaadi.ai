@@ -1267,6 +1267,12 @@ document.addEventListener('DOMContentLoaded',()=>{
       obType=ch.dataset.v;
     });
   });
+  });
+  // Auto-trigger Razorpay if redirected from pro modal
+  if(window.location.hash==='#buy-pro'){
+    setTimeout(()=>buyProTools(),800);
+    history.replaceState(null,'',window.location.pathname);
+  }
 });
 
 function saveUserData(){
