@@ -187,6 +187,42 @@ textarea.inp{resize:none;}
   </div>
   <div style="position:absolute;bottom:36px;font-size:11px;color:var(--t4);letter-spacing:1px;">Made with ❤️ for Indian Weddings</div>
 </div>
+<script>
+// SPLASH KILLER — runs immediately after splash HTML, independent of all other JS
+(function(){
+  var _d=false;
+  function kill(){
+    if(_d)return; _d=true;
+    var s=document.getElementById('splash');
+    if(!s)return;
+    s.style.transition='opacity 0.5s ease';
+    s.style.opacity='0';
+    setTimeout(function(){
+      s.style.display='none';
+      try{
+        var done=!!localStorage.getItem('ss_ob_done');
+        var app=document.getElementById('app');
+        var ob=document.getElementById('onboard');
+        var fab=document.getElementById('chat-fab');
+        if(done){
+          if(app)app.style.display='flex';
+          if(fab)fab.style.display='flex';
+          if(typeof renderAll==='function')try{renderAll();}catch(e){}
+          if(typeof showPage==='function')try{showPage('pg-dash');}catch(e){}
+        } else {
+          if(ob)ob.style.display='flex';
+        }
+      }catch(e){ /* safe fallback */ }
+    }, 500);
+  }
+  // Fire at multiple times — whichever hits first wins
+  setTimeout(kill, 1800);
+  setTimeout(kill, 3000);
+  setTimeout(kill, 5000);
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(kill, 1000); });
+  window.addEventListener('load', function(){ setTimeout(kill, 300); });
+})();
+</script>
 
 <!-- OFFLINE BANNER -->
 <div id="offline">📡 Internet nahi — AI features offline kaam nahi karenge</div>
@@ -1107,30 +1143,7 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch
 ══════════════════════════════════════ */
 loadData();
 
-;(function(){
-  var done=false;
-  function hideSplash(){
-    if(done)return;done=true;
-    var sp=document.getElementById('splash');
-    if(!sp)return;
-    sp.style.opacity='0';
-    setTimeout(function(){
-      sp.style.display='none';
-      var obDone=false;try{obDone=!!localStorage.getItem('ss_ob_done');}catch(e){}
-      if(obDone){
-        document.getElementById('app').style.display='flex';
-        document.getElementById('chat-fab').style.display='flex';
-        renderAll();
-        showPage('pg-dash');
-      } else {
-        document.getElementById('onboard').style.display='flex';
-      }
-    },500);
-  }
-  setTimeout(hideSplash,2000);
-  setTimeout(hideSplash,4000);
-  window.addEventListener('load',function(){setTimeout(hideSplash,800);});
-})();
+// splash handled by inline script above init
 </script>
 </body>
 </html>
