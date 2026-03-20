@@ -32,7 +32,7 @@
    RESET & BASE
 ══════════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{background:var(--bg);color:var(--txt);font-family:var(--fb);height:100%;width:100%;overflow:hidden;}
+html,body{background:var(--bg);color:var(--txt);font-family:var(--fb);height:100%;width:100%;overflow:hidden;font-size:16px;}
 input,textarea,select{font-family:var(--fb);}
 a{text-decoration:none;color:inherit;}
 button{font-family:var(--fb);cursor:pointer;}
@@ -149,7 +149,7 @@ button{font-family:var(--fb);cursor:pointer;}
 .nb{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;transition:transform .15s;}
 .nb:active{transform:scale(.88);}
 .nb-i{font-size:20px;line-height:1;transition:transform .2s;}
-.nb-l{font-size:9px;font-weight:600;color:var(--txt3);letter-spacing:.3px;}
+.nb-l{font-size:11px;font-weight:600;color:var(--txt3);letter-spacing:.3px;}
 .nb.on .nb-l{color:var(--gold);font-weight:800;}
 .nb.on .nb-i{transform:scale(1.18);}
 .ndot{width:4px;height:4px;background:var(--gold);border-radius:50%;margin-top:1px;}
@@ -209,7 +209,7 @@ button{font-family:var(--fb);cursor:pointer;}
 /* ══════════════════════════════════════════
    CARDS
 ══════════════════════════════════════════ */
-.card{background:var(--c2);border-radius:var(--r2);padding:16px;border:1px solid var(--bdr);}
+.card{background:var(--c2);border-radius:var(--r2);padding:18px;border:1px solid var(--bdr);}
 .card-sm{background:var(--c2);border-radius:var(--r1);padding:12px;border:1px solid var(--bdr2);}
 .card-glass{
   background:rgba(201,168,76,.05);
@@ -243,11 +243,11 @@ button{font-family:var(--fb);cursor:pointer;}
 /* ══════════════════════════════════════════
    FORM
 ══════════════════════════════════════════ */
-.inp{width:100%;background:var(--c1);border:1.5px solid var(--bdr2);border-radius:var(--r1);padding:12px 14px;color:var(--txt);font-size:14px;outline:none;transition:border-color .2s;}
+.inp{width:100%;background:var(--c1);border:1.5px solid var(--bdr2);border-radius:var(--r1);padding:14px 16px;color:var(--txt);font-size:15px;outline:none;transition:border-color .2s;}
 .inp:focus{border-color:var(--gold);}
 .inp::placeholder{color:var(--txt3);}
 textarea.inp{resize:none;}
-.lbl{font-size:10px;color:var(--txt2);margin-bottom:5px;display:block;font-weight:700;letter-spacing:.8px;text-transform:uppercase;}
+.lbl{font-size:12px;color:var(--txt2);margin-bottom:6px;display:block;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
 
 /* ══════════════════════════════════════════
    SECTION HEADER
@@ -255,7 +255,7 @@ textarea.inp{resize:none;}
 .sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .sh-t{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--txt);}
 .sh-t span{color:var(--gold);}
-.pill{background:var(--goldglow);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;display:inline-block;}
+.pill{background:var(--goldglow);color:var(--gold);font-size:12px;padding:4px 12px;border-radius:20px;font-weight:700;display:inline-block;}
 .pill-g{background:rgba(46,204,113,.1);color:var(--green);font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;}
 
 /* ══════════════════════════════════════════
@@ -265,7 +265,7 @@ textarea.inp{resize:none;}
 .ck-item.done{background:rgba(46,204,113,.06);border-color:rgba(46,204,113,.2);}
 .ck-box{width:20px;height:20px;border-radius:6px;border:2px solid var(--txt3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s;}
 .ck-box.done{background:var(--green);border-color:var(--green);}
-.ck-txt{font-size:13px;flex:1;}
+.ck-txt{font-size:15px;flex:1;}
 .ck-txt.done{text-decoration:line-through;color:var(--txt3);}
 
 /* ══════════════════════════════════════════
@@ -655,63 +655,167 @@ textarea.inp{resize:none;}
   </div>
 
   <!-- AI TOOLS section — PRO -->
-  <div style="padding:18px 14px 0;">
-    <div class="sh">
-      <div class="sh-t">✨ AI <span>Tools</span></div>
-      <span id="tools-badge" style="background:rgba(255,45,85,.12);color:#FF6B8A;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;">🔒 Pro</span>
+  <div style="padding:20px 14px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div style="font-family:var(--fd);font-size:24px;font-weight:700;">✨ AI <span style="color:var(--gold);">Tools</span></div>
+      <span id="tools-badge" style="background:rgba(201,168,76,.15);color:var(--gold);font-size:11px;padding:4px 12px;border-radius:20px;font-weight:700;border:1px solid var(--bdr);">🔒 Pro Only</span>
     </div>
-    <!-- Pro upsell card BEFORE tools -->
-    <div id="tools-locked-cta" style="background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(255,87,34,.06));border-radius:20px;padding:18px;border:1px solid rgba(201,168,76,.3);margin-bottom:14px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-        <div style="font-size:36px;">🔓</div>
+
+    <!-- PRO PITCH CARD -->
+    <div id="tools-locked-cta" onclick="buyProTools()" style="cursor:pointer;background:linear-gradient(135deg,#1a1200,#2a1800);border-radius:24px;padding:20px;border:1.5px solid rgba(201,168,76,.4);margin-bottom:16px;position:relative;overflow:hidden;">
+      <!-- Glow effect -->
+      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.2),transparent);pointer-events:none;"></div>
+
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🤖</div>
         <div>
-          <div style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--gold);">AI Tools Unlock Karo</div>
-          <div style="font-size:12px;color:var(--txt2);margin-top:2px;">10 powerful AI tools — sirf ₹199/month</div>
+          <div style="font-family:var(--fd);font-size:22px;font-weight:700;color:var(--gold);line-height:1.1;">10 AI Tools</div>
+          <div style="font-size:13px;color:var(--txt2);margin-top:3px;">Sirf <b style="color:var(--txt);">₹199/month</b> mein sab kuch</div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;">
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">💌 Invite</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Writer</div></div>
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🔮 Kundali</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Matching</div></div>
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🎨 Theme</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Generator</div></div>
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🍽️ Menu</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">Planner</div></div>
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">📸 Shots</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">150+ List</div></div>
-        <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--bdr2);"><div style="font-size:11px;color:var(--gold);font-weight:700;">🤝 Nego</div><div style="font-size:9px;color:var(--txt3);margin-top:2px;">tiator</div></div>
+
+      <!-- What you get — big and clear -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">💌</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">Invitation Writer</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">AI se beautiful wedding card</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">🔮</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">Kundali Matching</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">36 Guna Milan AI se</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">🎨</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">Theme Generator</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">Decor + colors + tips</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">🍽️</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">Menu Planner</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">Full menu + cost estimate</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">📸</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">150+ Photo Shots</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">Must-have wedding shots</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:12px 10px;border:1px solid rgba(201,168,76,.2);">
+          <div style="font-size:20px;margin-bottom:4px;">🤝</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt);">Vendor Negotiator</div>
+          <div style="font-size:11px;color:var(--txt3);margin-top:2px;">Best price script</div>
+        </div>
       </div>
-      <button onclick="buyProTools()" style="width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:var(--r1);color:#0A0800;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 24px rgba(201,168,76,.3);letter-spacing:.3px;">
-        🔓 Unlock AI Tools — ₹199/mo
+
+      <!-- Price comparison -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:16px;padding:12px;background:rgba(0,0,0,.3);border-radius:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:12px;color:var(--txt3);text-decoration:line-through;">₹999+</div>
+          <div style="font-size:11px;color:var(--txt3);">Market price</div>
+        </div>
+        <div style="font-size:20px;">→</div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--fd);font-size:28px;font-weight:700;color:var(--gold);">₹199</div>
+          <div style="font-size:11px;color:var(--txt2);">per month</div>
+        </div>
+        <div style="background:rgba(46,204,113,.15);border-radius:8px;padding:6px 10px;border:1px solid rgba(46,204,113,.3);">
+          <div style="font-size:11px;color:var(--green);font-weight:700;">80% OFF</div>
+        </div>
+      </div>
+
+      <button style="width:100%;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:14px;color:#0A0800;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 32px rgba(201,168,76,.4);letter-spacing:.5px;">
+        🔓 Unlock Sab Tools — ₹199/mo
       </button>
-      <div style="text-align:center;margin-top:8px;font-size:10px;color:var(--txt3);">Razorpay secure payment · UPI, Card, Net Banking</div>
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:10px;">
+        <div style="font-size:11px;color:var(--txt3);">🔒 Razorpay secure</div>
+        <div style="font-size:11px;color:var(--txt3);">✓ UPI, Card, Net Banking</div>
+        <div style="font-size:11px;color:var(--txt3);">↩ Cancel anytime</div>
+      </div>
     </div>
+
     <!-- Blurred tools preview -->
     <div style="position:relative;">
-      <div style="filter:blur(3px);pointer-events:none;opacity:.5;" id="tgrid-wrap">
+      <div style="filter:blur(4px);pointer-events:none;opacity:.4;" id="tgrid-wrap">
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;" id="tgrid"></div>
       </div>
-      <div onclick="buyProTools()" style="position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-        <div style="background:rgba(10,8,0,.85);border:1px solid var(--bdr3);border-radius:16px;padding:14px 24px;text-align:center;">
-          <div style="font-size:24px;margin-bottom:6px;">🔒</div>
-          <div style="font-size:13px;font-weight:800;color:var(--gold);">Unlock karo ₹199/mo</div>
-          <div style="font-size:11px;color:var(--txt2);margin-top:3px;">Tap to subscribe</div>
+      <div onclick="buyProTools()" style="position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(10,8,0,.3);">
+        <div style="background:rgba(10,8,0,.9);border:1.5px solid var(--bdr3);border-radius:20px;padding:18px 28px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.6);">
+          <div style="font-size:32px;margin-bottom:8px;">🔒</div>
+          <div style="font-size:16px;font-weight:800;color:var(--gold);">Pro Mein Unlock Hoga</div>
+          <div style="font-size:13px;color:var(--txt2);margin-top:4px;">₹199/mo · Tap karo</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- INVITATION PREVIEW CARD -->
-  <div style="padding:18px 14px 0;">
-    <div class="sh"><div class="sh-t">💌 Invitation <span>Preview</span></div></div>
-    <div id="invite-preview-card" style="background:linear-gradient(135deg,#2d1f0a,#1a1000);border-radius:var(--r2);padding:24px 20px;border:2px solid rgba(201,168,76,.3);text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12),transparent);pointer-events:none;"></div>
-      <div style="font-size:22px;margin-bottom:8px;">🌸</div>
-      <div style="font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">With Blessings of God</div>
-      <div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--txt);margin-bottom:4px;" id="inv-names">Priya 💍 Rahul</div>
-      <div style="font-size:12px;color:rgba(201,168,76,.7);margin-bottom:3px;" id="inv-date">Date TBD</div>
-      <div style="font-size:11px;color:var(--txt3);" id="inv-city">City TBD</div>
-      <div style="font-size:20px;margin:10px 0;">🌺 🪔 🌺</div>
-      <div style="font-size:9px;color:var(--txt3);letter-spacing:2px;">Made with SmartShaadi ❤️</div>
-      <button onclick="shareWA()" class="btn-wa" style="margin-top:14px;font-size:13px;">💬 Share on WhatsApp</button>
+  <!-- INVITATION PREVIEW CARD — 3 Templates -->
+  <div style="padding:20px 14px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div style="font-family:var(--fd);font-size:22px;font-weight:700;">💌 Invitation <span style="color:var(--gold);">Preview</span></div>
+      <div style="display:flex;gap:6px;" id="inv-tmpl-dots">
+        <div onclick="setInvTemplate(0)" style="width:22px;height:6px;border-radius:3px;background:var(--gold);cursor:pointer;" class="itdot"></div>
+        <div onclick="setInvTemplate(1)" style="width:22px;height:6px;border-radius:3px;background:rgba(255,255,255,.15);cursor:pointer;" class="itdot"></div>
+        <div onclick="setInvTemplate(2)" style="width:22px;height:6px;border-radius:3px;background:rgba(255,255,255,.15);cursor:pointer;" class="itdot"></div>
+      </div>
     </div>
+
+    <!-- Template 0: Royal Gold -->
+    <div id="inv-t0" class="inv-tmpl" style="background:linear-gradient(160deg,#2d1f0a,#1a0d00,#2d1f0a);border-radius:24px;padding:28px 20px;border:2px solid rgba(201,168,76,.5);text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.18),transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(201,168,76,.1),transparent 60%);pointer-events:none;"></div>
+      <div style="font-size:28px;margin-bottom:8px;">🌸</div>
+      <div style="font-size:10px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;font-weight:600;">With Blessings of God</div>
+      <div id="inv-names" style="font-family:var(--fd);font-size:28px;font-weight:700;color:var(--txt);margin-bottom:6px;line-height:1.2;">Priya 💍 Rahul</div>
+      <div id="inv-date" style="font-size:14px;color:rgba(201,168,76,.8);margin-bottom:4px;font-weight:600;"></div>
+      <div id="inv-city" style="font-size:13px;color:var(--txt3);margin-bottom:12px;"></div>
+      <div style="width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto;"></div>
+      <div id="inv-msg-preview" style="font-size:13px;color:var(--txt2);font-style:italic;margin-bottom:14px;line-height:1.6;"></div>
+      <div style="font-size:22px;margin:8px 0;">🌺 🪔 🌺</div>
+      <div style="font-size:10px;color:var(--txt3);letter-spacing:2px;margin-top:8px;">Made with SmartShaadi ❤️</div>
+    </div>
+
+    <!-- Template 1: Floral Pink -->
+    <div id="inv-t1" class="inv-tmpl" style="display:none;background:linear-gradient(160deg,#1a0010,#0d0008,#1a0010);border-radius:24px;padding:28px 20px;border:2px solid rgba(233,30,140,.4);text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(233,30,140,.12),transparent 60%);pointer-events:none;"></div>
+      <div style="font-size:28px;margin-bottom:8px;">🌺</div>
+      <div style="font-size:10px;color:#E91E8C;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;font-weight:600;">You're Invited</div>
+      <div id="inv-names-t1" style="font-family:var(--fd);font-size:28px;font-weight:700;color:var(--txt);margin-bottom:6px;">Priya 💍 Rahul</div>
+      <div id="inv-date-t1" style="font-size:14px;color:rgba(233,30,140,.8);margin-bottom:4px;font-weight:600;"></div>
+      <div id="inv-city-t1" style="font-size:13px;color:var(--txt3);margin-bottom:12px;"></div>
+      <div style="width:60%;height:1px;background:linear-gradient(90deg,transparent,#E91E8C,transparent);margin:12px auto;"></div>
+      <div id="inv-msg-t1" style="font-size:13px;color:var(--txt2);font-style:italic;margin-bottom:14px;line-height:1.6;"></div>
+      <div style="font-size:22px;margin:8px 0;">🌸 💕 🌸</div>
+      <div style="font-size:10px;color:var(--txt3);letter-spacing:2px;margin-top:8px;">Made with SmartShaadi ❤️</div>
+    </div>
+
+    <!-- Template 2: Royal Blue -->
+    <div id="inv-t2" class="inv-tmpl" style="display:none;background:linear-gradient(160deg,#000d1a,#000814,#000d1a);border-radius:24px;padding:28px 20px;border:2px solid rgba(52,152,219,.4);text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(52,152,219,.12),transparent 60%);pointer-events:none;"></div>
+      <div style="font-size:28px;margin-bottom:8px;">👑</div>
+      <div style="font-size:10px;color:#3498DB;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;font-weight:600;">Royal Wedding</div>
+      <div id="inv-names-t2" style="font-family:var(--fd);font-size:28px;font-weight:700;color:var(--txt);margin-bottom:6px;">Priya 💍 Rahul</div>
+      <div id="inv-date-t2" style="font-size:14px;color:rgba(52,152,219,.9);margin-bottom:4px;font-weight:600;"></div>
+      <div id="inv-city-t2" style="font-size:13px;color:var(--txt3);margin-bottom:12px;"></div>
+      <div style="width:60%;height:1px;background:linear-gradient(90deg,transparent,#3498DB,transparent);margin:12px auto;"></div>
+      <div id="inv-msg-t2" style="font-size:13px;color:var(--txt2);font-style:italic;margin-bottom:14px;line-height:1.6;"></div>
+      <div style="font-size:22px;margin:8px 0;">🕯️ 💎 🕯️</div>
+      <div style="font-size:10px;color:var(--txt3);letter-spacing:2px;margin-top:8px;">Made with SmartShaadi ❤️</div>
+    </div>
+
+    <!-- Share buttons -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+      <button onclick="shareInviteImage()" style="padding:14px;background:linear-gradient(135deg,#25D366,#128C7E);border:none;border-radius:14px;color:#fff;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span>📸</span> Image Share
+      </button>
+      <button onclick="shareWA()" style="padding:14px;background:rgba(37,211,102,.15);border:1.5px solid rgba(37,211,102,.4);border-radius:14px;color:#25D366;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span>💬</span> Text Share
+      </button>
+    </div>
+    <div style="text-align:center;margin-top:8px;font-size:12px;color:var(--txt3);">Image share = photo + details WhatsApp pe jayegi</div>
   </div>
+
+  <!-- Hidden canvas for image generation -->
+  <canvas id="inv-canvas" style="display:none;"></canvas>
 
   <!-- VENDOR SUGGESTIONS -->
   <div style="padding:18px 14px 0;">
@@ -753,7 +857,7 @@ textarea.inp{resize:none;}
   <!-- SHARE FOOTER -->
   <div style="padding:18px 14px 0;text-align:center;">
     <div style="font-size:12px;color:var(--txt3);margin-bottom:10px;">Made with SmartShaadi ❤️ — Share karein!</div>
-    <button onclick="shareWA()" class="btn-wa" style="max-width:280px;margin:0 auto;">💬 Share Your Plan</button>
+    <div style="display:flex;gap:10px;max-width:340px;margin:0 auto;"><button onclick="shareInviteImage()" class="btn-wa" style="flex:1;">📸 Share Image</button><button onclick="shareWA()" style="flex:1;background:rgba(37,211,102,.15);border:1.5px solid rgba(37,211,102,.4);border-radius:14px;padding:12px;color:#25D366;font-weight:800;cursor:pointer;font-size:13px;">💬 Text</button></div>
   </div>
 
 </div>
@@ -1160,9 +1264,9 @@ function rTG(){
     <div class="tool-card" style="border-color:${t.c}20;" onclick="openTool('${t.url}')" ontouchstart="this.style.transform='scale(.96)'" ontouchend="this.style.transform=''">
       ${t.badge?`<div class="tool-card-badge" style="background:${t.c}22;color:${t.c};">${t.badge}</div>`:''}
       <div style="font-size:26px;margin-bottom:8px;">${t.icon}</div>
-      <div style="font-size:12px;font-weight:700;color:var(--txt);margin-bottom:3px;padding-right:${t.badge?'30px':'0'};">${esc(t.name)}</div>
-      <div style="font-size:10px;color:var(--txt3);line-height:1.4;">${esc(t.desc)}</div>
-      <div style="margin-top:8px;font-size:10px;font-weight:700;color:${t.c};">Use Now →</div>
+      <div style="font-size:14px;font-weight:700;color:var(--txt);margin-bottom:4px;padding-right:${t.badge?'34px':'0'};">${esc(t.name)}</div>
+      <div style="font-size:12px;color:var(--txt3);line-height:1.4;">${esc(t.desc)}</div>
+      <div style="margin-top:10px;font-size:12px;font-weight:700;color:${t.c};">Use Now →</div>
     </div>`).join('');
 }
 
@@ -1321,20 +1425,28 @@ function updateInvitePreview(){
   const b=A.bride||S.get('bride','')||'Bride';
   const g=A.groom||S.get('groom','')||'Groom';
   const city=A.city||S.get('city','')||'';
-  const wdate=document.getElementById('inv-date-inp')?.value||A.wDate||'';
+  const wdate=document.getElementById('inv-date-inp')?.value||A.wDate||S.get('wdate','')||'';
   const venue=document.getElementById('inv-venue')?.value||'';
   const msg=document.getElementById('inv-msg')?.value||'Hamare saath khushi mein shamil hain...';
+  const names=b+' 💍 '+g;
+  const dateStr=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'';
+  const place=venue||city||'';
 
-  const ns=[document.getElementById('inv-names'),document.getElementById('inv-prev-names')];
-  ns.forEach(el=>{if(el)el.textContent=b+' 💍 '+g;});
-  const ds=[document.getElementById('inv-date'),document.getElementById('inv-prev-date')];
-  ds.forEach(el=>{if(el)el.textContent=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';});
-  const cs=[document.getElementById('inv-city')];
-  cs.forEach(el=>{if(el)el.textContent=venue||city||'Venue TBD';});
-  const vs=[document.getElementById('inv-prev-venue')];
-  vs.forEach(el=>{if(el)el.textContent=venue||city||'Venue TBD';});
-  const ms=[document.getElementById('inv-prev-msg')];
-  ms.forEach(el=>{if(el)el.textContent=msg;});
+  // Update all templates
+  ['','t1','t2'].forEach((s,i)=>{
+    const sfx=s?'-'+s:'';
+    const ne=document.getElementById('inv-names'+sfx);if(ne)ne.textContent=names;
+    const de=document.getElementById('inv-date'+sfx);if(de)de.textContent=dateStr;
+    const ce=document.getElementById('inv-city'+sfx);if(ce)ce.textContent=place;
+    const me=document.getElementById('inv-msg'+sfx||'inv-msg-preview');if(me)me.textContent=msg;
+  });
+  // Also update msg-preview
+  const mp=document.getElementById('inv-msg-preview');if(mp)mp.textContent=msg;
+  // Also update invite screen preview
+  const pn=document.getElementById('inv-prev-names');if(pn)pn.textContent=names;
+  const pd=document.getElementById('inv-prev-date');if(pd)pd.textContent=dateStr;
+  const pv=document.getElementById('inv-prev-venue');if(pv)pv.textContent=place;
+  const pm=document.getElementById('inv-prev-msg');if(pm)pm.textContent=msg;
 }
 function rInvite(){
   // Populate date from user data
@@ -1343,16 +1455,154 @@ function rInvite(){
   updateInvitePreview();
 }
 
+// Template switcher
+let curInvTemplate = 0;
+function setInvTemplate(n){
+  curInvTemplate = n;
+  for(let i=0;i<3;i++){
+    const el=document.getElementById('inv-t'+i);
+    if(el) el.style.display = i===n ? 'block' : 'none';
+  }
+  document.querySelectorAll('.itdot').forEach((d,i)=>{
+    d.style.background = i===n ? 'var(--gold)' : 'rgba(255,255,255,.15)';
+  });
+  updateInvitePreview();
+}
+
 function shareWA(){
   const b=A.bride||S.get('bride','')||'Bride';
   const g=A.groom||S.get('groom','')||'Groom';
   const wdate=A.wDate||S.get('wdate','');
-  const city=A.city||S.get('city','')||'';
-  const venue=document.getElementById('inv-venue')?.value||city||'Venue TBD';
+  const city=A.city||S.get('city','')||'India';
+  const venue=document.getElementById('inv-venue')?.value||city;
   const msg=document.getElementById('inv-msg')?.value||'Hamare saath khushi mein shamil hain!';
   const dateStr=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';
   const text=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n\n📅 ${dateStr}\n📍 ${venue}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
   window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+}
+
+async function shareInviteImage(){
+  const b=A.bride||S.get('bride','')||'Bride';
+  const g=A.groom||S.get('groom','')||'Groom';
+  const wdate=A.wDate||S.get('wdate','');
+  const city=document.getElementById('inv-venue')?.value||A.city||S.get('city','')||'India';
+  const msg=document.getElementById('inv-msg')?.value||'Hamare saath khushi mein shamil hain!';
+  const dateStr=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';
+
+  // Canvas-based image generation
+  const canvas=document.getElementById('inv-canvas');
+  const ctx=canvas.getContext('2d');
+  const W=800, H=1000;
+  canvas.width=W; canvas.height=H;
+
+  // Templates colors
+  const tmpls=[
+    {bg1:'#2d1f0a',bg2:'#1a0d00',accent:'#C9A84C',sub:'#E8C97A',emojis:'🌸 🪔 🌸'},
+    {bg1:'#1a0010',bg2:'#0d0008',accent:'#E91E8C',sub:'#FF6B8A',emojis:'🌺 💕 🌺'},
+    {bg1:'#000d1a',bg2:'#000814',accent:'#3498DB',sub:'#5DADE2',emojis:'🕯️ 💎 🕯️'},
+  ];
+  const t=tmpls[curInvTemplate];
+
+  // Background gradient
+  const grad=ctx.createLinearGradient(0,0,W,H);
+  grad.addColorStop(0,t.bg1); grad.addColorStop(.5,t.bg2); grad.addColorStop(1,t.bg1);
+  ctx.fillStyle=grad; ctx.fillRect(0,0,W,H);
+
+  // Gold border
+  ctx.strokeStyle=t.accent; ctx.lineWidth=4;
+  ctx.strokeRect(20,20,W-40,H-40);
+  ctx.strokeStyle=t.accent+'66'; ctx.lineWidth=1.5;
+  ctx.strokeRect(32,32,W-64,H-64);
+
+  // Radial glow top
+  const glow=ctx.createRadialGradient(W/2,0,0,W/2,0,400);
+  glow.addColorStop(0,t.accent+'30'); glow.addColorStop(1,'transparent');
+  ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
+
+  // Top emoji
+  ctx.font='52px serif'; ctx.textAlign='center';
+  ctx.fillText('🌸',W/2,120);
+
+  // "With Blessings of God"
+  ctx.fillStyle=t.accent; ctx.font='600 22px "Plus Jakarta Sans", sans-serif';
+  ctx.letterSpacing='6px';
+  ctx.fillText('WITH BLESSINGS OF GOD',W/2,180);
+
+  // Divider line
+  ctx.strokeStyle=t.accent+'80'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(W/2-120,210); ctx.lineTo(W/2+120,210); ctx.stroke();
+
+  // Names — big and beautiful
+  ctx.fillStyle='#FFF8E8';
+  ctx.font='bold 64px Georgia, serif';
+  ctx.fillText(b+' 💍 '+g, W/2, 310);
+
+  // Date
+  ctx.fillStyle=t.sub; ctx.font='600 28px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('📅 '+dateStr, W/2, 380);
+
+  // Venue
+  ctx.fillStyle='#8A7040'; ctx.font='24px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('📍 '+city, W/2, 425);
+
+  // Divider
+  ctx.strokeStyle=t.accent+'60'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(W/2-150,460); ctx.lineTo(W/2+150,460); ctx.stroke();
+
+  // Message
+  ctx.fillStyle='#C4A070'; ctx.font='italic 22px Georgia, serif';
+  // Word wrap for message
+  const words=msg.split(' '); let line=''; let y=510;
+  for(const word of words){
+    const test=line+word+' ';
+    if(ctx.measureText(test).width>580 && line){
+      ctx.fillText(line,W/2,y); line=word+' '; y+=34;
+    } else { line=test; }
+  }
+  if(line) ctx.fillText(line,W/2,y);
+
+  // Bottom emojis
+  ctx.font='36px serif';
+  ctx.fillText(t.emojis,W/2,y+70);
+
+  // Divider
+  y=y+110;
+  ctx.strokeStyle=t.accent+'40'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(W/2-100,y); ctx.lineTo(W/2+100,y); ctx.stroke();
+
+  // Branding
+  ctx.fillStyle=t.accent+'99'; ctx.font='600 18px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('Made with SmartShaadi ❤️', W/2, y+36);
+  ctx.fillStyle=t.accent+'60'; ctx.font='16px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText('smartshaadi.online/app', W/2, y+60);
+
+  // Convert to image and share
+  try {
+    canvas.toBlob(async function(blob){
+      const file = new File([blob], 'SmartShaadi-Invite.png', {type:'image/png'});
+      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+        const dateStr2=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';
+        await navigator.share({
+          files:[file],
+          title:b+' & '+g+' ki Shaadi',
+          text:'💍 '+b+' & '+g+' ki Shaadi Mein Aapka Swagat Hai!\n📅 '+dateStr2+'\nMade with SmartShaadi ❤️\nhttps://smartshaadi.online/app'
+        });
+        toast('💬 Image share ho gayi!');
+      } else {
+        // Fallback: download image + open WhatsApp
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');a.href=url;a.download='SmartShaadi-Invite.png';
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
+        setTimeout(()=>URL.revokeObjectURL(url),3000);
+        const text2=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n📅 ${dateStr}\n📍 ${city}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
+        setTimeout(()=>window.open('https://wa.me/?text='+encodeURIComponent(text2),'_blank'),800);
+        toast('📸 Image download + WhatsApp open ho raha hai!');
+      }
+    }, 'image/png');
+  } catch(e) {
+    toast('Share karo: '+e.message);
+    shareWA();
+  }
 }
 
 /* ══ CHECKLIST ══ */
