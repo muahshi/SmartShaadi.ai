@@ -1723,13 +1723,12 @@ function openRazorpay(key){
       S.set('pro_expiry', exp);
       S.set('pro_payment_id', pid);
 
-      // ── UNLOCK UI IMMEDIATELY ──
+      // ── UNLOCK UI IMMEDIATELY — don't wait for server ──
       unlockProUI();
+      toast('🎉 Pro Plan Active! Sab AI Tools unlock ho gaye!');
       boom();
-      // Show recovery code toast
-      SS_PRO._onSuccess('', pid, exp, false);
 
-      // ── SERVER TOKEN (background) ──
+      // ── SERVER TOKEN (background, non-blocking) ──
       try {
         var r = await fetch('/api/verify-payment', {
           method: 'POST',
@@ -1737,8 +1736,10 @@ function openRazorpay(key){
           body: JSON.stringify({razorpay_payment_id: pid, razorpay_order_id: resp.razorpay_order_id, razorpay_signature: resp.razorpay_signature})
         });
         var j = await r.json();
-        if(j.success && j.token) SS_PRO.saveLocal({token: j.token, payment_id: pid, expires_at: j.expires_at});
-      } catch(e){ console.log('Server token:', e.message); }
+        if(j.success && j.token){
+          SS_PRO.saveLocal({token: j.token, payment_id: pid, expires_at: j.expires_at});
+        }
+      } catch(e){ console.log('Server token (non-critical):', e.message); }
     }
   };
   try{new Razorpay(opts).open();}
