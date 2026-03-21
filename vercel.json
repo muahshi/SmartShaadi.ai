@@ -5,8 +5,8 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{"type": "host", "value": "smartshaadi.online"}],
-      "destination": "https://www.smartshaadi.online/$1",
+      "has": [{"type": "host", "value": "www.smartshaadi.online"}],
+      "destination": "https://smartshaadi.online/$1",
       "permanent": true
     }
   ],
