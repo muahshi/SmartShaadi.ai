@@ -1748,6 +1748,8 @@ function openRazorpay(key){
 
 function unlockProUI(){
   const cta=document.getElementById('tools-locked-cta');if(cta)cta.style.display='none';
+  // Sync SS_PRO local keys
+  try{if(!localStorage.getItem('ss_pro_token'))localStorage.setItem('ss_pro_token','local_'+localStorage.getItem('ss_pro_pid'));}catch(e){}
   const wrap=document.getElementById('tgrid-wrap');
   if(wrap){wrap.style.filter='';wrap.style.opacity='1';wrap.style.pointerEvents='auto';}
   const badge=document.getElementById('tools-badge');
