@@ -641,7 +641,7 @@ textarea.inp{resize:none;}
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;">
       <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(201,168,76,.2);"><div style="font-size:14px;font-weight:800;color:var(--gold);">10</div><div style="font-size:9px;color:var(--txt3);">AI Tools</div></div>
-      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(201,168,76,.2);cursor:pointer;" onclick="buyProTools()"><div style="font-size:13px;font-weight:800;color:var(--gold);">Pro 🔓</div><div style="font-size:9px;color:var(--txt3);">₹199/mo</div></div>
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(201,168,76,.2);cursor:pointer;" onclick="SS_PRO.showModal()"><div style="font-size:13px;font-weight:800;color:var(--gold);">Pro 🔓</div><div style="font-size:9px;color:var(--txt3);">₹199/mo</div></div>
       <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(52,152,219,.2);"><div style="font-size:13px;font-weight:800;color:var(--blue);">PDF</div><div style="font-size:9px;color:var(--txt3);">Export</div></div>
       <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:10px 6px;text-align:center;border:1px solid rgba(233,30,140,.2);"><div style="font-size:13px;font-weight:800;color:var(--pink);">24/7</div><div style="font-size:9px;color:var(--txt3);">Support</div></div>
     </div>
@@ -732,7 +732,7 @@ textarea.inp{resize:none;}
     </div>
 
     <!-- PRO PITCH CARD -->
-    <div id="tools-locked-cta" onclick="buyProTools()" style="cursor:pointer;background:linear-gradient(135deg,#1a1200,#2a1800);border-radius:24px;padding:20px;border:1.5px solid rgba(201,168,76,.4);margin-bottom:16px;position:relative;overflow:hidden;">
+    <div id="tools-locked-cta" onclick="SS_PRO.showModal()" style="cursor:pointer;background:linear-gradient(135deg,#1a1200,#2a1800);border-radius:24px;padding:20px;border:1.5px solid rgba(201,168,76,.4);margin-bottom:16px;position:relative;overflow:hidden;">
       <!-- Glow effect -->
       <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.2),transparent);pointer-events:none;"></div>
 
@@ -809,7 +809,7 @@ textarea.inp{resize:none;}
       <div style="filter:blur(4px);pointer-events:none;opacity:.4;" id="tgrid-wrap">
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;" id="tgrid"></div>
       </div>
-      <div onclick="buyProTools()" style="position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(10,8,0,.3);">
+      <div onclick="SS_PRO.showModal()" style="position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(10,8,0,.3);">
         <div style="background:rgba(10,8,0,.9);border:1.5px solid var(--bdr3);border-radius:20px;padding:18px 28px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.6);">
           <div style="font-size:32px;margin-bottom:8px;">🔒</div>
           <div style="font-size:16px;font-weight:800;color:var(--gold);">Pro Mein Unlock Hoga</div>
@@ -1587,7 +1587,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   // Auto-trigger Razorpay if redirected from pro modal
   if(window.location.hash==='#buy-pro'){
-    setTimeout(()=>buyProTools(),800);
+    setTimeout(()=>SS_PRO.showModal(),800);
     history.replaceState(null,'',window.location.pathname);
   }
 });
@@ -1669,8 +1669,8 @@ function openTool(url){
     SS_PRO.verifyWithServer();
     window.location.href=url;return;
   }
-  // Not pro — show buy prompt
-  buyProTools();
+  // Not pro — show SS_PRO modal (with OTP login)
+  SS_PRO.showModal(url);
 }
 
 async function buyProTools(){
@@ -2404,14 +2404,14 @@ function updateSmartBanner(){
         </div>
       </div>`;
     } else {
-      el.innerHTML = `<div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(255,45,85,.05));border-radius:16px;padding:13px 16px;border:1px solid rgba(201,168,76,.25);cursor:pointer;" onclick="buyProTools()">
+      el.innerHTML = `<div style="background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(255,45,85,.05));border-radius:16px;padding:13px 16px;border:1px solid rgba(201,168,76,.25);cursor:pointer;" onclick="SS_PRO.showModal()">
         <div style="display:flex;align-items:center;gap:10px;">
           <div style="font-size:24px;">🔒</div>
           <div style="flex:1;">
             <div style="font-size:13px;font-weight:800;color:var(--gold);">AI Tools Lock Hain!</div>
             <div style="font-size:11px;color:var(--txt2);margin-top:1px;">₹199/mo mein unlock karo — 10 powerful tools</div>
           </div>
-          <button onclick="event.stopPropagation();buyProTools()" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:800;color:#0A0800;cursor:pointer;">Unlock</button>
+          <button onclick="event.stopPropagation();SS_PRO.showModal()" style="background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:800;color:#0A0800;cursor:pointer;">Unlock</button>
         </div>
       </div>`;
     }
