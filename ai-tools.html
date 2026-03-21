@@ -169,9 +169,11 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
 <meta property="og:image" content="https://www.smartshaadi.online/og-smartshaadi.jpg">
 
 <script>
-/* ══ SmartShaadi Pro Guard — Inline v3 ══ */
+/* ══ SmartShaadi Pro Guard v5 — OTP Login + Recovery ══ */
 const SS_PRO=(function(){
-  const K={token:'ss_pro_token',pid:'ss_pro_pid',exp:'ss_pro_exp',cache:'ss_pro_cache',la:'ss_pro_active',le:'ss_pro_expiry'};
+  const K={token:'ss_pro_token',pid:'ss_pro_pid',exp:'ss_pro_exp',
+           cache:'ss_pro_cache',la:'ss_pro_active',le:'ss_pro_expiry',
+           phone:'ss_pro_phone'};
   const CACHE=30*60*1000;
   function _g(k){try{return localStorage.getItem(k);}catch(e){return null;}}
   function _s(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -181,13 +183,14 @@ const SS_PRO=(function(){
     var t=_g(K.token),p=_g(K.pid),e=parseInt(_g(K.exp)||'0');
     if(t&&p&&Date.now()<e)return true;
     var la=_g(K.la),le=parseInt(_g(K.le)||'0');
-    if(la==='true'&&Date.now()<le)return true;
+    if((la==='true'||la==='"true"')&&Date.now()<le)return true;
     return false;
   }
 
   function saveLocal(d){
-    _s(K.token,d.token);_s(K.pid,d.payment_id);_s(K.exp,String(d.expires_at));_s(K.cache,String(Date.now()));
-    _s(K.la,'true');_s(K.le,String(d.expires_at));
+    _s(K.token,d.token);_s(K.pid,d.payment_id);_s(K.exp,String(d.expires_at));
+    _s(K.cache,String(Date.now()));_s(K.la,'true');_s(K.le,String(d.expires_at));
+    if(d.phone)_s(K.phone,d.phone);
   }
 
   function clearLocal(){Object.values(K).forEach(function(k){_d(k);});}
@@ -198,7 +201,8 @@ const SS_PRO=(function(){
     if(Date.now()>e){clearLocal();return false;}
     if(Date.now()-c<CACHE)return true;
     try{
-      var r=await fetch('/api/check-pro',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t,payment_id:p,expires_at:e})});
+      var r=await fetch('/api/check-pro',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({token:t,payment_id:p,expires_at:e})});
       var j=await r.json();
       if(j.valid){_s(K.cache,String(Date.now()));return true;}
       if(j.reason==='expired')clearLocal();
@@ -208,54 +212,201 @@ const SS_PRO=(function(){
 
   async function activateAfterPayment(pid,oid,sig){
     try{
-      var r=await fetch('/api/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({razorpay_payment_id:pid,razorpay_order_id:oid,razorpay_signature:sig})});
+      var r=await fetch('/api/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({razorpay_payment_id:pid,razorpay_order_id:oid,razorpay_signature:sig})});
       var j=await r.json();
       if(j.success&&j.token){saveLocal({token:j.token,payment_id:j.payment_id,expires_at:j.expires_at});return true;}
       return false;
     }catch(e){return false;}
   }
 
+  // ── OTP LOGIN ──
+  var _otpPhone='';
+  async function sendOTP(phone){
+    try{
+      var r=await fetch('/api/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({phone:phone})});
+      return await r.json();
+    }catch(e){return{success:false,error:'Network error'};}
+  }
+
+  async function verifyOTP(phone,otp){
+    try{
+      var r=await fetch('/api/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({phone:phone,otp:otp})});
+      var j=await r.json();
+      if(j.success&&j.token){
+        saveLocal({token:j.token,payment_id:j.payment_id,expires_at:j.expires_at,phone:j.phone});
+        return{success:true};
+      }
+      return{success:false,error:j.error||'Invalid OTP'};
+    }catch(e){return{success:false,error:'Network error'};}
+  }
+
   async function manualActivate(pid){
     if(!pid)return alert('Payment ID do');
     var ok=await activateAfterPayment(pid,null,null);
-    if(ok){alert('Pro activated! Refresh karo.');}
+    if(ok){alert('✅ Pro activated! Refresh karo.');}
     else{
       var exp=Date.now()+30*24*60*60*1000;
-      _s(K.la,'true');_s(K.le,String(exp));_s(K.pid,pid);_s(K.exp,String(exp));
-      alert('Pro activated (local). Refresh karo.');
+      _s(K.la,'true');_s(K.le,String(exp));_s(K.pid,pid);_s(K.exp,String(exp));_s(K.token,'local_'+pid);
+      alert('✅ Pro activated (local). Refresh karo.');
     }
   }
 
+  // ── MODAL ──
   function showModal(retUrl){
     var ex=document.getElementById('ss-pro-modal');
     if(ex){ex.style.display='flex';if(retUrl)ex.dataset.ret=retUrl;return;}
     var el=document.createElement('div');
     el.id='ss-pro-modal';el.dataset.ret=retUrl||'';
-    el.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);';
-    el.innerHTML='<div style="background:#1a1200;border-radius:24px;padding:28px 22px;max-width:380px;width:100%;border:1.5px solid rgba(201,168,76,.4);text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6);">'
-      +'<button onclick="document.getElementById('ss-pro-modal').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#5A4A20;font-size:22px;cursor:pointer;">✕</button>'
-      +'<div style="font-size:52px;margin-bottom:10px;">🔒</div>'
-      +'<div style="font-family:Georgia,serif;font-size:26px;font-weight:700;color:#C9A84C;margin-bottom:8px;">Pro Feature</div>'
-      +'<div style="font-size:14px;color:#B8A070;margin-bottom:20px;line-height:1.7;">Yeh AI tool <b style="color:#FFF8E8;">SmartShaadi Pro</b> mein available hai.<br>₹199/month mein 13 powerful AI tools unlock karo.</div>'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;text-align:left;">'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Invitation Writer</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Kundali Matching</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Budget AI</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Menu Planner</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ Theme Generator</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;font-size:12px;color:#C9A84C;">✓ +8 aur tools</div>'
+    el.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);';
+
+    el.innerHTML=
+      '<div id="ss-pm-wrap" style="background:#1a1200;border-radius:24px;padding:0;max-width:380px;width:100%;border:1.5px solid rgba(201,168,76,.4);position:relative;box-shadow:0 20px 60px rgba(0,0,0,.7);overflow:hidden;">'
+
+      // ── BUY VIEW ──
+      +'<div id="ss-pm-buy" style="padding:26px 22px;">'
+      +'<button onclick="document.getElementById(\'ss-pro-modal\').style.display=\'none\'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#5A4A20;font-size:22px;cursor:pointer;z-index:2;">✕</button>'
+      +'<div style="text-align:center;margin-bottom:16px;">'
+      +'<div style="font-size:44px;margin-bottom:6px;">🔒</div>'
+      +'<div style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#C9A84C;">Pro Feature</div>'
+      +'<div style="font-size:12px;color:#B8A070;margin-top:4px;">₹199/month · 13 AI tools · Razorpay secure</div>'
       +'</div>'
-      +'<div style="background:rgba(201,168,76,.08);border-radius:12px;padding:12px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;">'
-      +'<span style="font-size:13px;color:#5A4A20;text-decoration:line-through;">₹999</span>'
-      +'<span style="font-family:Georgia,serif;font-size:28px;color:#C9A84C;font-weight:700;">₹199<span style="font-size:13px;color:#8A7040;">/mo</span></span>'
-      +'<span style="background:rgba(46,204,113,.15);color:#4ADE80;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:700;">80% OFF</span>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;">'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Invitation Writer</div>'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Kundali Matching</div>'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Budget AI</div>'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Menu Planner</div>'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Theme Generator</div>'
+      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ +8 aur tools</div>'
       +'</div>'
-      +'<button id="ss-pro-buy-btn" style="width:100%;padding:16px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:14px;color:#0A0800;font-weight:800;font-size:16px;cursor:pointer;margin-bottom:10px;box-shadow:0 6px 24px rgba(201,168,76,.3);">🔓 ₹199/mo — Abhi Unlock Karo</button>'
-      +'<div style="font-size:11px;color:#5A4A20;">🔒 Razorpay secure · UPI, Card, Net Banking · Cancel anytime</div>'
-      +'</div>';
+      +'<div style="background:rgba(201,168,76,.08);border-radius:10px;padding:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:14px;">'
+      +'<span style="font-size:12px;color:#5A4A20;text-decoration:line-through;">₹999</span>'
+      +'<span style="font-family:Georgia,serif;font-size:26px;color:#C9A84C;font-weight:700;">₹199<span style="font-size:12px;color:#8A7040;">/mo</span></span>'
+      +'<span style="background:rgba(46,204,113,.15);color:#4ADE80;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;">80% OFF</span>'
+      +'</div>'
+      +'<button id="ss-pro-buy-btn" style="width:100%;padding:14px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:12px;color:#0A0800;font-weight:800;font-size:15px;cursor:pointer;margin-bottom:10px;">🔓 ₹199/mo — Abhi Unlock Karo</button>'
+      // Divider
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">'
+      +'<div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>'
+      +'<span style="font-size:11px;color:#5A4A20;">Pehle se Pro hai?</span>'
+      +'<div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>'
+      +'</div>'
+      +'<button onclick="SS_PRO._showOTPView()" style="width:100%;padding:11px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:10px;color:#C9A84C;font-weight:700;font-size:13px;cursor:pointer;">📱 Phone se Login Karo</button>'
+      +'</div>'
+
+      // ── OTP VIEW — PHONE STEP ──
+      +'<div id="ss-pm-otp-phone" style="display:none;padding:26px 22px;">'
+      +'<button onclick="SS_PRO._showBuyView()" style="background:none;border:none;color:#5A4A20;font-size:13px;cursor:pointer;margin-bottom:16px;display:flex;align-items:center;gap:4px;">← Wapas</button>'
+      +'<div style="text-align:center;margin-bottom:20px;">'
+      +'<div style="font-size:40px;margin-bottom:6px;">📱</div>'
+      +'<div style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#C9A84C;">Phone se Login</div>'
+      +'<div style="font-size:12px;color:#B8A070;margin-top:4px;">Apna registered phone number daalo</div>'
+      +'</div>'
+      +'<div style="margin-bottom:8px;">'
+      +'<div style="display:flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;overflow:hidden;">'
+      +'<span style="padding:12px 10px 12px 14px;font-size:13px;color:#8A7040;font-weight:700;border-right:1px solid rgba(201,168,76,.15);">+91</span>'
+      +'<input id="ss-otp-phone" type="tel" maxlength="10" placeholder="10 digit mobile number" style="flex:1;background:transparent;border:none;padding:12px;color:#F5EFE0;font-size:14px;outline:none;font-family:monospace;" />'
+      +'</div>'
+      +'</div>'
+      +'<div id="ss-otp-phone-msg" style="font-size:11px;color:#f87171;min-height:16px;margin-bottom:10px;"></div>'
+      +'<button id="ss-otp-send-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;color:#0A0800;font-weight:800;font-size:14px;cursor:pointer;">OTP Bhejo →</button>'
+      +'<div style="font-size:10px;color:#5A4A20;text-align:center;margin-top:10px;">Sirf registered users ka Pro activate hoga</div>'
+      +'</div>'
+
+      // ── OTP VIEW — CODE STEP ──
+      +'<div id="ss-pm-otp-code" style="display:none;padding:26px 22px;">'
+      +'<button id="ss-otp-back-btn" style="background:none;border:none;color:#5A4A20;font-size:13px;cursor:pointer;margin-bottom:16px;display:flex;align-items:center;gap:4px;">← Wapas</button>'
+      +'<div style="text-align:center;margin-bottom:20px;">'
+      +'<div style="font-size:40px;margin-bottom:6px;">🔑</div>'
+      +'<div style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#C9A84C;">OTP Enter Karo</div>'
+      +'<div id="ss-otp-sent-to" style="font-size:12px;color:#B8A070;margin-top:4px;"></div>'
+      +'</div>'
+      +'<input id="ss-otp-code" type="number" maxlength="6" placeholder="6-digit OTP" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:14px;color:#E8C97A;font-size:22px;font-family:monospace;letter-spacing:8px;text-align:center;outline:none;margin-bottom:8px;box-sizing:border-box;" />'
+      +'<div id="ss-otp-code-msg" style="font-size:11px;color:#f87171;min-height:16px;margin-bottom:10px;text-align:center;"></div>'
+      +'<button id="ss-otp-verify-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;color:#0A0800;font-weight:800;font-size:14px;cursor:pointer;margin-bottom:10px;">✅ Verify Karo</button>'
+      +'<button id="ss-otp-resend-btn" style="width:100%;padding:10px;background:transparent;border:1px solid rgba(201,168,76,.2);border-radius:10px;color:#8A7040;font-size:12px;cursor:pointer;" disabled>Resend OTP (60s)</button>'
+      +'</div>'
+
+      +'</div>'; // ss-pm-wrap
+
     el.addEventListener('click',function(ev){if(ev.target===el)el.style.display='none';});
     document.body.appendChild(el);
+
+    // Wire buy button
     document.getElementById('ss-pro-buy-btn').onclick=function(){SS_PRO.startPayment();};
+
+    // Wire OTP send
+    document.getElementById('ss-otp-send-btn').onclick=async function(){
+      var phone=document.getElementById('ss-otp-phone').value.trim().replace(/\D/g,'');
+      var msg=document.getElementById('ss-otp-phone-msg');
+      var btn=document.getElementById('ss-otp-send-btn');
+      if(phone.length!==10){msg.textContent='Valid 10-digit number daalo';return;}
+      btn.textContent='⏳ Bhej raha hai...';btn.disabled=true;
+      var r=await SS_PRO.sendOTP(phone);
+      if(r.success){
+        _otpPhone=phone;
+        document.getElementById('ss-pm-otp-phone').style.display='none';
+        document.getElementById('ss-pm-otp-code').style.display='block';
+        document.getElementById('ss-otp-sent-to').textContent='OTP bheja +91 '+phone.slice(0,4)+'******'+phone.slice(-2)+' pe';
+        // Resend countdown
+        var sec=60;
+        var rb=document.getElementById('ss-otp-resend-btn');
+        var t=setInterval(function(){
+          sec--;rb.textContent='Resend OTP ('+sec+'s)';
+          if(sec<=0){clearInterval(t);rb.textContent='Resend OTP';rb.disabled=false;}
+        },1000);
+      }else{
+        msg.style.color='#f87171';msg.textContent=r.error||'Error — dobara try karo';
+        btn.textContent='OTP Bhejo →';btn.disabled=false;
+      }
+    };
+
+    // Wire OTP verify
+    document.getElementById('ss-otp-verify-btn').onclick=async function(){
+      var otp=document.getElementById('ss-otp-code').value.trim();
+      var msg=document.getElementById('ss-otp-code-msg');
+      var btn=document.getElementById('ss-otp-verify-btn');
+      if(otp.length!==6){msg.textContent='6-digit OTP daalo';return;}
+      btn.textContent='⏳ Verify ho raha hai...';btn.disabled=true;
+      var r=await SS_PRO.verifyOTP(_otpPhone,otp);
+      if(r.success){
+        el.style.display='none';
+        _onSuccess(el.dataset.ret,null,null,true);
+      }else{
+        msg.textContent=r.error||'Galat OTP — dobara try karo';
+        btn.textContent='✅ Verify Karo';btn.disabled=false;
+      }
+    };
+
+    // Resend
+    document.getElementById('ss-otp-resend-btn').onclick=async function(){
+      if(!_otpPhone)return;
+      this.disabled=true;this.textContent='⏳ Bhej raha hai...';
+      var r=await SS_PRO.sendOTP(_otpPhone);
+      if(r.success){
+        this.textContent='✅ OTP bhej diya!';
+        var sec=60,btn=this;
+        var t=setInterval(function(){sec--;btn.textContent='Resend ('+sec+'s)';
+          if(sec<=0){clearInterval(t);btn.textContent='Resend OTP';btn.disabled=false;}},1000);
+      }else{this.textContent='Resend OTP';this.disabled=false;}
+    };
+
+    // Back buttons
+    document.getElementById('ss-otp-back-btn').onclick=function(){
+      document.getElementById('ss-pm-otp-code').style.display='none';
+      document.getElementById('ss-pm-otp-phone').style.display='block';
+    };
+  }
+
+  function _showBuyView(){
+    var buy=document.getElementById('ss-pm-buy'),ph=document.getElementById('ss-pm-otp-phone'),cd=document.getElementById('ss-pm-otp-code');
+    if(buy)buy.style.display='block';if(ph)ph.style.display='none';if(cd)cd.style.display='none';
+  }
+  function _showOTPView(){
+    var buy=document.getElementById('ss-pm-buy'),ph=document.getElementById('ss-pm-otp-phone');
+    if(buy)buy.style.display='none';if(ph)ph.style.display='block';
   }
 
   async function startPayment(){
@@ -269,24 +420,39 @@ const SS_PRO=(function(){
       var key=(await r.json()).key;
       if(!key)throw new Error('Key missing');
       if(typeof Razorpay==='undefined'){
-        await new Promise(function(res,rej){var sc=document.createElement('script');sc.src='https://checkout.razorpay.com/v1/checkout.js';sc.onload=res;sc.onerror=rej;document.head.appendChild(sc);});
+        await new Promise(function(res,rej){
+          var sc=document.createElement('script');
+          sc.src='https://checkout.razorpay.com/v1/checkout.js';
+          sc.onload=res;sc.onerror=rej;document.head.appendChild(sc);
+        });
       }
       new Razorpay({
         key:key,amount:19900,currency:'INR',
         name:'SmartShaadi',description:'Pro Plan — 13 AI Tools · 1 Month',
         image:'https://www.smartshaadi.online/icons/icon-192.png',
         theme:{color:'#C9A84C'},
+        prefill:{contact:''},
         modal:{ondismiss:function(){if(btn){btn.textContent='🔓 ₹199/mo — Abhi Unlock Karo';btn.disabled=false;}}},
         handler:async function(resp){
           if(btn)btn.textContent='✅ Activating...';
-          // Always save locally first
+          var pid=resp.razorpay_payment_id;
           var exp=Date.now()+30*24*60*60*1000;
-          _s(K.la,'true');_s(K.le,String(exp));_s(K.pid,resp.razorpay_payment_id);_s(K.exp,String(exp));
-          // Get secure token from server
-          try{await activateAfterPayment(resp.razorpay_payment_id,resp.razorpay_order_id,resp.razorpay_signature);}
-          catch(e){console.warn('Token fetch failed (non-critical):',e);}
+          // Guaranteed local save immediately
+          try{localStorage.setItem('ss_pro_active','true');}catch(e){}
+          try{localStorage.setItem('ss_pro_expiry',String(exp));}catch(e){}
+          try{localStorage.setItem('ss_pro_pid',pid);}catch(e){}
+          try{localStorage.setItem('ss_pro_exp',String(exp));}catch(e){}
+          try{localStorage.setItem('ss_pro_token','local_'+pid);}catch(e){}
+          // Close modal, unlock UI
           if(modal)modal.style.display='none';
-          _onSuccess(retUrl);
+          _onSuccess(retUrl,pid,exp,false);
+          // Background: get secure token
+          try{
+            var sr=await fetch('/api/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({razorpay_payment_id:pid,razorpay_order_id:resp.razorpay_order_id,razorpay_signature:resp.razorpay_signature})});
+            var sj=await sr.json();
+            if(sj.success&&sj.token)saveLocal({token:sj.token,payment_id:pid,expires_at:sj.expires_at});
+          }catch(e){}
         }
       }).open();
     }catch(e){
@@ -295,17 +461,15 @@ const SS_PRO=(function(){
     }
   }
 
-  function _onSuccess(retUrl){
-    var t=document.getElementById('ss-pro-toast')||_makeToast();
-    t.textContent='🎉 Pro Active! Sab AI Tools unlock ho gaye!';t.style.opacity='1';
-    setTimeout(function(){t.style.opacity='0';},4000);
-    setTimeout(function(){if(retUrl)window.location.href=retUrl;else window.location.reload();},1200);
-  }
-
-  function _makeToast(){
-    var t=document.createElement('div');t.id='ss-pro-toast';
-    t.style.cssText='position:fixed;bottom:6rem;left:50%;transform:translateX(-50%);z-index:10000;background:#4ADE80;color:#0a0800;padding:14px 24px;border-radius:12px;font-weight:800;font-size:15px;opacity:0;transition:opacity .4s;pointer-events:none;white-space:nowrap;';
-    document.body.appendChild(t);return t;
+  function _onSuccess(retUrl,pid,exp,isOTP){
+    var msg=isOTP
+      ?'<div style="font-size:15px;font-weight:800;color:#4ADE80;">✅ Phone verified! Pro Active!</div><div style="font-size:12px;color:#B8A070;margin-top:4px;">Agle baar bhi isi phone se login karo.</div>'
+      :'<div style="font-size:15px;font-weight:800;color:#4ADE80;">🎉 Pro Active! Sab AI Tools unlock ho gaye!</div><div style="font-size:12px;color:#B8A070;margin-top:4px;">Agle baar phone se login karo — koi data delete hone ki chinta nahi.</div>';
+    var toast=document.createElement('div');
+    toast.style.cssText='position:fixed;top:0;left:0;right:0;z-index:10001;background:#1a1200;border-bottom:2px solid #C9A84C;padding:16px 20px;text-align:center;';
+    toast.innerHTML=msg
+      +'<button onclick="this.parentElement.remove();'+(retUrl?"window.location.href='"+retUrl+"'":"window.location.reload()")+'" style="margin-top:12px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:8px;padding:10px 28px;color:#0A0800;font-weight:800;font-size:13px;cursor:pointer;display:block;width:100%;max-width:280px;margin-left:auto;margin-right:auto;">✓ Continue →</button>';
+    document.body.appendChild(toast);
   }
 
   async function gate(url,e){
@@ -314,11 +478,13 @@ const SS_PRO=(function(){
     showModal(url);return false;
   }
 
-  return{isProLocal,verifyWithServer,activateAfterPayment,saveLocal,clearLocal,manualActivate,showModal,startPayment,gate,_onSuccess};
+  return{isProLocal,verifyWithServer,activateAfterPayment,saveLocal,clearLocal,
+         manualActivate,showModal,startPayment,gate,_onSuccess,_showBuyView,_showOTPView,
+         sendOTP,verifyOTP};
 })();
-
 function proUse(url,e){SS_PRO.gate(url,e);}
 function goProTool(url,e){SS_PRO.gate(url,e);}
+
 </script>
 
 </head>
