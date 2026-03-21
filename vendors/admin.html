@@ -242,7 +242,7 @@ function approvePending(i){
   });
   saveVendors(vendors);
   // Notify vendor via WhatsApp
-  var msg = '🎉 *Congratulations!*\n\nAapki SmartShaadi listing *approve* ho gayi!\n\nBusiness: ' + vendor.name + '\nPlan: ' + (vendor.plan||'basic').toUpperCase() + '\n\nAapka profile ab live hai:\nhttps://www.smartshaadi.online/vendors/\n\n— SmartShaadi Team 💍';
+  var msg = '🎉 *Congratulations!*\n\nAapki SmartShaadi listing *approve* ho gayi!\n\nBusiness: ' + vendor.name + '\nPlan: ' + (vendor.plan||'basic').toUpperCase() + '\n\nAapka profile ab live hai:\nhttps://smartshaadi.online/vendors/\n\n— SmartShaadi Team 💍';
   window.open('https://wa.me/91' + vendor.phone + '?text=' + encodeURIComponent(msg), '_blank');
   loadDashboard();
   alert('✅ Vendor approved aur WhatsApp sent!');
