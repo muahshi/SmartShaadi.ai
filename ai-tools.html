@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>13 Free AI Wedding Planning Tools India 2026 | SmartShaadi</title>
+<title>13 Free AI Wedding Tools India 2026 | SmartShaadi</title>
 <meta name="description" content="Budget calculator, invitation writer, kundali matching, menu planner — 13 free AI tools for Indian weddings.">
 <meta name="keywords" content="free wedding planning tools india 2026, AI wedding planner india, shaadi planning tools free, wedding budget calculator, kundali matching online free">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.smartshaadi.online/ai-tools.html">
-<meta property="og:title" content="13 Pro AI Wedding Tools — SmartShaadi India">
+<meta property="og:title" content="13 Free AI Wedding Tools — SmartShaadi India">
 <meta property="og:description" content="Invitation se kundali tak — saari wedding planning AI se free mein.">
 <meta property="og:url" content="https://www.smartshaadi.online/ai-tools.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Free AI Wedding Planning Tools India 2026","url":"https://www.smartshaadi.online/ai-tools.html","numberOfItems":13,"itemListElement":[{"@type":"ListItem","position":1,"name":"AI Wedding Invitation Writer","url":"https://www.smartshaadi.online/ai-invitation-writer.html"},{"@type":"ListItem","position":2,"name":"AI Planning Timeline","url":"https://www.smartshaadi.online/ai-planning-timeline.html"},{"@type":"ListItem","position":3,"name":"AI Theme Generator","url":"https://www.smartshaadi.online/ai-wedding-theme-generator.html"},{"@type":"ListItem","position":4,"name":"AI Budget Calculator","url":"https://www.smartshaadi.online/ai-budget-calculator.html"},{"@type":"ListItem","position":5,"name":"AI Menu Planner","url":"https://www.smartshaadi.online/ai-menu-planner.html"},{"@type":"ListItem","position":6,"name":"AI Kundali Matching","url":"https://www.smartshaadi.online/ai-kundali-matching.html"},{"@type":"ListItem","position":7,"name":"AI Photography Shot List","url":"https://www.smartshaadi.online/ai-photography-shots.html"},{"@type":"ListItem","position":8,"name":"AI Guest Manager","url":"https://www.smartshaadi.online/ai-guest-manager.html"},{"@type":"ListItem","position":9,"name":"AI Playlist Generator","url":"https://www.smartshaadi.online/ai-playlist-generator.html"}]}</script>
@@ -168,324 +168,7 @@ footer p{color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
 
 <meta property="og:image" content="https://www.smartshaadi.online/og-smartshaadi.jpg">
 
-<script>
-/* ══ SmartShaadi Pro Guard v5 — OTP Login + Recovery ══ */
-const SS_PRO=(function(){
-  const K={token:'ss_pro_token',pid:'ss_pro_pid',exp:'ss_pro_exp',
-           cache:'ss_pro_cache',la:'ss_pro_active',le:'ss_pro_expiry',
-           phone:'ss_pro_phone'};
-  const CACHE=30*60*1000;
-  function _g(k){try{return localStorage.getItem(k);}catch(e){return null;}}
-  function _s(k,v){try{localStorage.setItem(k,v);}catch(e){}}
-  function _d(k){try{localStorage.removeItem(k);}catch(e){}}
 
-  function isProLocal(){
-    var t=_g(K.token),p=_g(K.pid),e=parseInt(_g(K.exp)||'0');
-    if(t&&p&&Date.now()<e)return true;
-    var la=_g(K.la),le=parseInt(_g(K.le)||'0');
-    if((la==='true'||la==='"true"')&&Date.now()<le)return true;
-    return false;
-  }
-
-  function saveLocal(d){
-    _s(K.token,d.token);_s(K.pid,d.payment_id);_s(K.exp,String(d.expires_at));
-    _s(K.cache,String(Date.now()));_s(K.la,'true');_s(K.le,String(d.expires_at));
-    if(d.phone)_s(K.phone,d.phone);
-  }
-
-  function clearLocal(){Object.values(K).forEach(function(k){_d(k);});}
-
-  async function verifyWithServer(){
-    var t=_g(K.token),p=_g(K.pid),e=parseInt(_g(K.exp)||'0'),c=parseInt(_g(K.cache)||'0');
-    if(!t||!p)return isProLocal();
-    if(Date.now()>e){clearLocal();return false;}
-    if(Date.now()-c<CACHE)return true;
-    try{
-      var r=await fetch('/api/check-pro',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({token:t,payment_id:p,expires_at:e})});
-      var j=await r.json();
-      if(j.valid){_s(K.cache,String(Date.now()));return true;}
-      if(j.reason==='expired')clearLocal();
-      return false;
-    }catch(e){return isProLocal();}
-  }
-
-  async function activateAfterPayment(pid,oid,sig){
-    try{
-      var r=await fetch('/api/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({razorpay_payment_id:pid,razorpay_order_id:oid,razorpay_signature:sig})});
-      var j=await r.json();
-      if(j.success&&j.token){saveLocal({token:j.token,payment_id:j.payment_id,expires_at:j.expires_at});return true;}
-      return false;
-    }catch(e){return false;}
-  }
-
-  // ── OTP LOGIN ──
-  var _otpPhone='';
-  async function sendOTP(phone){
-    try{
-      var r=await fetch('/api/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({phone:phone})});
-      return await r.json();
-    }catch(e){return{success:false,error:'Network error'};}
-  }
-
-  async function verifyOTP(phone,otp){
-    try{
-      var r=await fetch('/api/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({phone:phone,otp:otp})});
-      var j=await r.json();
-      if(j.success&&j.token){
-        saveLocal({token:j.token,payment_id:j.payment_id,expires_at:j.expires_at,phone:j.phone});
-        return{success:true};
-      }
-      return{success:false,error:j.error||'Invalid OTP'};
-    }catch(e){return{success:false,error:'Network error'};}
-  }
-
-  async function manualActivate(pid){
-    if(!pid)return alert('Payment ID do');
-    var ok=await activateAfterPayment(pid,null,null);
-    if(ok){alert('✅ Pro activated! Refresh karo.');}
-    else{
-      var exp=Date.now()+30*24*60*60*1000;
-      _s(K.la,'true');_s(K.le,String(exp));_s(K.pid,pid);_s(K.exp,String(exp));_s(K.token,'local_'+pid);
-      alert('✅ Pro activated (local). Refresh karo.');
-    }
-  }
-
-  // ── MODAL ──
-  function showModal(retUrl){
-    var ex=document.getElementById('ss-pro-modal');
-    if(ex){ex.style.display='flex';if(retUrl)ex.dataset.ret=retUrl;return;}
-    var el=document.createElement('div');
-    el.id='ss-pro-modal';el.dataset.ret=retUrl||'';
-    el.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);';
-
-    el.innerHTML=
-      '<div id="ss-pm-wrap" style="background:#1a1200;border-radius:24px;padding:0;max-width:380px;width:100%;border:1.5px solid rgba(201,168,76,.4);position:relative;box-shadow:0 20px 60px rgba(0,0,0,.7);overflow:hidden;">'
-
-      // ── BUY VIEW ──
-      +'<div id="ss-pm-buy" style="padding:26px 22px;">'
-      +'<button onclick="document.getElementById(\'ss-pro-modal\').style.display=\'none\'" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#5A4A20;font-size:22px;cursor:pointer;z-index:2;">✕</button>'
-      +'<div style="text-align:center;margin-bottom:16px;">'
-      +'<div style="font-size:44px;margin-bottom:6px;">🔒</div>'
-      +'<div style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#C9A84C;">Pro Feature</div>'
-      +'<div style="font-size:12px;color:#B8A070;margin-top:4px;">₹199/month · 13 AI tools · Razorpay secure</div>'
-      +'</div>'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:14px;">'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Invitation Writer</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Kundali Matching</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Budget AI</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Menu Planner</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ Theme Generator</div>'
-      +'<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;font-size:11px;color:#C9A84C;">✓ +8 aur tools</div>'
-      +'</div>'
-      +'<div style="background:rgba(201,168,76,.08);border-radius:10px;padding:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:14px;">'
-      +'<span style="font-size:12px;color:#5A4A20;text-decoration:line-through;">₹999</span>'
-      +'<span style="font-family:Georgia,serif;font-size:26px;color:#C9A84C;font-weight:700;">₹199<span style="font-size:12px;color:#8A7040;">/mo</span></span>'
-      +'<span style="background:rgba(46,204,113,.15);color:#4ADE80;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;">80% OFF</span>'
-      +'</div>'
-      +'<button id="ss-pro-buy-btn" style="width:100%;padding:14px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:12px;color:#0A0800;font-weight:800;font-size:15px;cursor:pointer;margin-bottom:10px;">🔓 ₹199/mo — Abhi Unlock Karo</button>'
-      // Divider
-      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">'
-      +'<div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>'
-      +'<span style="font-size:11px;color:#5A4A20;">Pehle se Pro hai?</span>'
-      +'<div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>'
-      +'</div>'
-      +'<button onclick="SS_PRO._showOTPView()" style="width:100%;padding:11px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:10px;color:#C9A84C;font-weight:700;font-size:13px;cursor:pointer;">📱 Phone se Login Karo</button>'
-      +'</div>'
-
-      // ── OTP VIEW — PHONE STEP ──
-      +'<div id="ss-pm-otp-phone" style="display:none;padding:26px 22px;">'
-      +'<button onclick="SS_PRO._showBuyView()" style="background:none;border:none;color:#5A4A20;font-size:13px;cursor:pointer;margin-bottom:16px;display:flex;align-items:center;gap:4px;">← Wapas</button>'
-      +'<div style="text-align:center;margin-bottom:20px;">'
-      +'<div style="font-size:40px;margin-bottom:6px;">📱</div>'
-      +'<div style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#C9A84C;">Phone se Login</div>'
-      +'<div style="font-size:12px;color:#B8A070;margin-top:4px;">Apna registered phone number daalo</div>'
-      +'</div>'
-      +'<div style="margin-bottom:8px;">'
-      +'<div style="display:flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;overflow:hidden;">'
-      +'<span style="padding:12px 10px 12px 14px;font-size:13px;color:#8A7040;font-weight:700;border-right:1px solid rgba(201,168,76,.15);">+91</span>'
-      +'<input id="ss-otp-phone" type="tel" maxlength="10" placeholder="10 digit mobile number" style="flex:1;background:transparent;border:none;padding:12px;color:#F5EFE0;font-size:14px;outline:none;font-family:monospace;" />'
-      +'</div>'
-      +'</div>'
-      +'<div id="ss-otp-phone-msg" style="font-size:11px;color:#f87171;min-height:16px;margin-bottom:10px;"></div>'
-      +'<button id="ss-otp-send-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;color:#0A0800;font-weight:800;font-size:14px;cursor:pointer;">OTP Bhejo →</button>'
-      +'<div style="font-size:10px;color:#5A4A20;text-align:center;margin-top:10px;">Sirf registered users ka Pro activate hoga</div>'
-      +'</div>'
-
-      // ── OTP VIEW — CODE STEP ──
-      +'<div id="ss-pm-otp-code" style="display:none;padding:26px 22px;">'
-      +'<button id="ss-otp-back-btn" style="background:none;border:none;color:#5A4A20;font-size:13px;cursor:pointer;margin-bottom:16px;display:flex;align-items:center;gap:4px;">← Wapas</button>'
-      +'<div style="text-align:center;margin-bottom:20px;">'
-      +'<div style="font-size:40px;margin-bottom:6px;">🔑</div>'
-      +'<div style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#C9A84C;">OTP Enter Karo</div>'
-      +'<div id="ss-otp-sent-to" style="font-size:12px;color:#B8A070;margin-top:4px;"></div>'
-      +'</div>'
-      +'<input id="ss-otp-code" type="number" maxlength="6" placeholder="6-digit OTP" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:14px;color:#E8C97A;font-size:22px;font-family:monospace;letter-spacing:8px;text-align:center;outline:none;margin-bottom:8px;box-sizing:border-box;" />'
-      +'<div id="ss-otp-code-msg" style="font-size:11px;color:#f87171;min-height:16px;margin-bottom:10px;text-align:center;"></div>'
-      +'<button id="ss-otp-verify-btn" style="width:100%;padding:13px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;color:#0A0800;font-weight:800;font-size:14px;cursor:pointer;margin-bottom:10px;">✅ Verify Karo</button>'
-      +'<button id="ss-otp-resend-btn" style="width:100%;padding:10px;background:transparent;border:1px solid rgba(201,168,76,.2);border-radius:10px;color:#8A7040;font-size:12px;cursor:pointer;" disabled>Resend OTP (60s)</button>'
-      +'</div>'
-
-      +'</div>'; // ss-pm-wrap
-
-    el.addEventListener('click',function(ev){if(ev.target===el)el.style.display='none';});
-    document.body.appendChild(el);
-
-    // Wire buy button
-    document.getElementById('ss-pro-buy-btn').onclick=function(){SS_PRO.startPayment();};
-
-    // Wire OTP send
-    document.getElementById('ss-otp-send-btn').onclick=async function(){
-      var phone=document.getElementById('ss-otp-phone').value.trim().replace(/\D/g,'');
-      var msg=document.getElementById('ss-otp-phone-msg');
-      var btn=document.getElementById('ss-otp-send-btn');
-      if(phone.length!==10){msg.textContent='Valid 10-digit number daalo';return;}
-      btn.textContent='⏳ Bhej raha hai...';btn.disabled=true;
-      var r=await SS_PRO.sendOTP(phone);
-      if(r.success){
-        _otpPhone=phone;
-        document.getElementById('ss-pm-otp-phone').style.display='none';
-        document.getElementById('ss-pm-otp-code').style.display='block';
-        document.getElementById('ss-otp-sent-to').textContent='OTP bheja +91 '+phone.slice(0,4)+'******'+phone.slice(-2)+' pe';
-        // Resend countdown
-        var sec=60;
-        var rb=document.getElementById('ss-otp-resend-btn');
-        var t=setInterval(function(){
-          sec--;rb.textContent='Resend OTP ('+sec+'s)';
-          if(sec<=0){clearInterval(t);rb.textContent='Resend OTP';rb.disabled=false;}
-        },1000);
-      }else{
-        msg.style.color='#f87171';msg.textContent=r.error||'Error — dobara try karo';
-        btn.textContent='OTP Bhejo →';btn.disabled=false;
-      }
-    };
-
-    // Wire OTP verify
-    document.getElementById('ss-otp-verify-btn').onclick=async function(){
-      var otp=document.getElementById('ss-otp-code').value.trim();
-      var msg=document.getElementById('ss-otp-code-msg');
-      var btn=document.getElementById('ss-otp-verify-btn');
-      if(otp.length!==6){msg.textContent='6-digit OTP daalo';return;}
-      btn.textContent='⏳ Verify ho raha hai...';btn.disabled=true;
-      var r=await SS_PRO.verifyOTP(_otpPhone,otp);
-      if(r.success){
-        el.style.display='none';
-        _onSuccess(el.dataset.ret,null,null,true);
-      }else{
-        msg.textContent=r.error||'Galat OTP — dobara try karo';
-        btn.textContent='✅ Verify Karo';btn.disabled=false;
-      }
-    };
-
-    // Resend
-    document.getElementById('ss-otp-resend-btn').onclick=async function(){
-      if(!_otpPhone)return;
-      this.disabled=true;this.textContent='⏳ Bhej raha hai...';
-      var r=await SS_PRO.sendOTP(_otpPhone);
-      if(r.success){
-        this.textContent='✅ OTP bhej diya!';
-        var sec=60,btn=this;
-        var t=setInterval(function(){sec--;btn.textContent='Resend ('+sec+'s)';
-          if(sec<=0){clearInterval(t);btn.textContent='Resend OTP';btn.disabled=false;}},1000);
-      }else{this.textContent='Resend OTP';this.disabled=false;}
-    };
-
-    // Back buttons
-    document.getElementById('ss-otp-back-btn').onclick=function(){
-      document.getElementById('ss-pm-otp-code').style.display='none';
-      document.getElementById('ss-pm-otp-phone').style.display='block';
-    };
-  }
-
-  function _showBuyView(){
-    var buy=document.getElementById('ss-pm-buy'),ph=document.getElementById('ss-pm-otp-phone'),cd=document.getElementById('ss-pm-otp-code');
-    if(buy)buy.style.display='block';if(ph)ph.style.display='none';if(cd)cd.style.display='none';
-  }
-  function _showOTPView(){
-    var buy=document.getElementById('ss-pm-buy'),ph=document.getElementById('ss-pm-otp-phone');
-    if(buy)buy.style.display='none';if(ph)ph.style.display='block';
-  }
-
-  async function startPayment(){
-    var modal=document.getElementById('ss-pro-modal');
-    var retUrl=modal?modal.dataset.ret:'';
-    var btn=document.getElementById('ss-pro-buy-btn');
-    if(btn){btn.textContent='⏳ Loading...';btn.disabled=true;}
-    try{
-      var r=await fetch('/api/razorpay-config');
-      if(!r.ok)throw new Error('Config error');
-      var key=(await r.json()).key;
-      if(!key)throw new Error('Key missing');
-      if(typeof Razorpay==='undefined'){
-        await new Promise(function(res,rej){
-          var sc=document.createElement('script');
-          sc.src='https://checkout.razorpay.com/v1/checkout.js';
-          sc.onload=res;sc.onerror=rej;document.head.appendChild(sc);
-        });
-      }
-      new Razorpay({
-        key:key,amount:19900,currency:'INR',
-        name:'SmartShaadi',description:'Pro Plan — 13 AI Tools · 1 Month',
-        image:'https://www.smartshaadi.online/icons/icon-192.png',
-        theme:{color:'#C9A84C'},
-        prefill:{contact:''},
-        modal:{ondismiss:function(){if(btn){btn.textContent='🔓 ₹199/mo — Abhi Unlock Karo';btn.disabled=false;}}},
-        handler:async function(resp){
-          if(btn)btn.textContent='✅ Activating...';
-          var pid=resp.razorpay_payment_id;
-          var exp=Date.now()+30*24*60*60*1000;
-          // Guaranteed local save immediately
-          try{localStorage.setItem('ss_pro_active','true');}catch(e){}
-          try{localStorage.setItem('ss_pro_expiry',String(exp));}catch(e){}
-          try{localStorage.setItem('ss_pro_pid',pid);}catch(e){}
-          try{localStorage.setItem('ss_pro_exp',String(exp));}catch(e){}
-          try{localStorage.setItem('ss_pro_token','local_'+pid);}catch(e){}
-          // Close modal, unlock UI
-          if(modal)modal.style.display='none';
-          _onSuccess(retUrl,pid,exp,false);
-          // Background: get secure token
-          try{
-            var sr=await fetch('/api/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},
-              body:JSON.stringify({razorpay_payment_id:pid,razorpay_order_id:resp.razorpay_order_id,razorpay_signature:resp.razorpay_signature})});
-            var sj=await sr.json();
-            if(sj.success&&sj.token)saveLocal({token:sj.token,payment_id:pid,expires_at:sj.expires_at});
-          }catch(e){}
-        }
-      }).open();
-    }catch(e){
-      alert('Payment error: '+e.message);
-      if(btn){btn.textContent='🔓 ₹199/mo — Abhi Unlock Karo';btn.disabled=false;}
-    }
-  }
-
-  function _onSuccess(retUrl,pid,exp,isOTP){
-    var msg=isOTP
-      ?'<div style="font-size:15px;font-weight:800;color:#4ADE80;">✅ Phone verified! Pro Active!</div><div style="font-size:12px;color:#B8A070;margin-top:4px;">Agle baar bhi isi phone se login karo.</div>'
-      :'<div style="font-size:15px;font-weight:800;color:#4ADE80;">🎉 Pro Active! Sab AI Tools unlock ho gaye!</div><div style="font-size:12px;color:#B8A070;margin-top:4px;">Agle baar phone se login karo — koi data delete hone ki chinta nahi.</div>';
-    var toast=document.createElement('div');
-    toast.style.cssText='position:fixed;top:0;left:0;right:0;z-index:10001;background:#1a1200;border-bottom:2px solid #C9A84C;padding:16px 20px;text-align:center;';
-    toast.innerHTML=msg
-      +'<button onclick="this.parentElement.remove();'+(retUrl?"window.location.href='"+retUrl+"'":"window.location.reload()")+'" style="margin-top:12px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:8px;padding:10px 28px;color:#0A0800;font-weight:800;font-size:13px;cursor:pointer;display:block;width:100%;max-width:280px;margin-left:auto;margin-right:auto;">✓ Continue →</button>';
-    document.body.appendChild(toast);
-  }
-
-  async function gate(url,e){
-    if(e){e.preventDefault();e.stopPropagation();}
-    if(isProLocal()){verifyWithServer();if(url)window.location.href=url;return true;}
-    showModal(url);return false;
-  }
-
-  return{isProLocal,verifyWithServer,activateAfterPayment,saveLocal,clearLocal,
-         manualActivate,showModal,startPayment,gate,_onSuccess,_showBuyView,_showOTPView,
-         sendOTP,verifyOTP};
-})();
-function proUse(url,e){SS_PRO.gate(url,e);}
-function goProTool(url,e){SS_PRO.gate(url,e);}
-
-</script>
 
 </head>
 <body>
@@ -498,20 +181,20 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="embed.html">Embed</a></li>
   </ul>
-  <a href="chatbot.html" class="nav-cta" onclick="proUse('chatbot.html',event)">🔒 AI Chatbot</a>
+  <a href="chatbot.html" class="nav-cta" onclick="window.open('chatbot.html','_self')">🤖 AI Chatbot</a>
 </nav>
-<div class="bc"><a href="index.html">Home</a> &rsaquo; <strong style="color:var(--gold)">13 Pro AI Wedding Planning Tools</strong></div>
+<div class="bc"><a href="index.html">Home</a> &rsaquo; <strong style="color:var(--gold)">13 Free AI Wedding Planning Tools</strong></div>
 <div class="ad-w" style="margin:10px auto">
   <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 <section class="hero">
-  <div class="hero-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.3);">&#127470;&#127475; India's Best Pro AI Wedding Tools — ₹199/mo</div>
-  <h1>13 <span class="hl">AI Wedding</span> Tools<br><span class="hl2">Pro Plan</span> — ₹199/mo &#128141;</h1>
-  <p class="hero-sub">Invitation likhna ho, budget banana ho, kundali milani ho ya DJ playlist — saari planning ab AI se ek click mein. <strong style="color:var(--gold)">Hindi + English. ₹199/mo — Sab Unlock.</strong></p>
+  <div class="hero-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.3);">&#127470;&#127475; India's Best Free AI Wedding Tools</div>
+  <h1>13 <span class="hl">AI Wedding</span> Tools<br><span class="hl2">Bilkul Free</span> — Use Karein &#128141;</h1>
+  <p class="hero-sub">Invitation likhna ho, budget banana ho, kundali milani ho ya DJ playlist — saari planning ab AI se ek click mein. <strong style="color:var(--gold)">Hindi + English. 100% Free — Sab Unlock.</strong></p>
   <div class="hstats">
     <div class="hs"><span class="num">13</span><span class="lbl">AI Tools</span></div>
-    <div class="hs"><span class="num">₹199</span><span class="lbl">Per Month</span></div>
+    <div class="hs"><span class="num">Free</span><span class="lbl">Forever</span></div>
     <div class="hs"><span class="num">3,400+</span><span class="lbl">Couples Helped</span></div>
     <div class="hs"><span class="num">6</span><span class="lbl">Languages</span></div>
   </div>
@@ -522,13 +205,13 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
 </section>
 <div class="prog-tracker">
   <div class="pt-l">
-    <div><div class="pt-lbl">&#128202; Aapki Wedding Planning Progress</div><div class="pt-sub" id="ptSub">0/9 tools use kiye — start karein!</div></div>
+    <div><div class="pt-lbl">&#128202; Aapki Wedding Planning Progress</div><div class="pt-sub" id="ptSub">0/13 tools use kiye — start karein!</div></div>
     <div class="pt-dots" id="ptDots"></div>
   </div>
   <div id="ptRight" style="font-size:.82rem;color:var(--muted)">Koi bhi tool use karo — yahan track hoga!</div>
 </div>
 <div class="filter-sec">
-  <button class="fb on" onclick="setFilter('all',this)">All (13) 🔒</button>
+  <button class="fb on" onclick="setFilter('all',this)">All (13)</button>
   <button class="fb" onclick="setFilter('planning',this)">&#128197; Planning</button>
   <button class="fb" onclick="setFilter('creative',this)">&#127912; Creative</button>
   <button class="fb" onclick="setFilter('ritual',this)">&#128591; Rituals</button>
@@ -536,9 +219,9 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
   <button class="fb" onclick="setFilter('entertainment',this)">&#127925; Entertainment</button>
 </div>
 <section class="tools-sec">
-  <div class="sec-lbl" style="display:flex;align-items:center;gap:8px;">Pro AI Tools <span style="background:rgba(201,168,76,.15);color:#C9A84C;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;border:1px solid rgba(201,168,76,.3);">🔒 ₹199/mo</span></div>
+  <div class="sec-lbl" style="display:flex;align-items:center;gap:8px;">Free AI Tools <span style="background:rgba(201,168,76,.15);color:#C9A84C;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;border:1px solid rgba(201,168,76,.3);">✅ Free</span></div>
   <h2 class="sec-h">Apni Shaadi Plan Karein — AI Ki Madad Se</h2>
-  <p class="sec-sub">Powerful AI tools — sirf ₹199/month. Razorpay se secure payment karo, aur saari shaadi planning ek jagah karo!</p>
+  <p class="sec-sub">Powerful AI tools — bilkul free! Saari shaadi planning ek jagah karo!</p>
   <div class="tools-grid" id="toolsGrid"></div>
   <div id="noRes"><div style="font-size:2.5rem;margin-bottom:1rem">&#128269;</div><p>Koi tool nahi mila. Doosra keyword try karein!</p></div>
 </section>
@@ -548,9 +231,9 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
 </div>
 <div class="share-sec">
   <div class="share-box">
-    <div class="sb-txt"><h3>&#128140; Apni Planning Share Karo!</h3><p>SmartShaadi Pro plan share karo dosto ke saath — ₹199/mo mein 13 AI tools!</p></div>
+    <div class="sb-txt"><h3>&#128140; Apni Planning Share Karo!</h3><p>SmartShaadi ke 13 free AI wedding tools share karo!</p></div>
     <div class="sb-btns">
-      <a href="https://wa.me/?text=SmartShaadi%20ke%2013%20Pro%20AI%20wedding%20tools%20dekho!%20Sirf%20%E2%82%B9199%2Fmo%20%F0%9F%92%8D%20https://www.smartshaadi.online/ai-tools.html" target="_blank" class="sbb sbb-wa">&#128241; WhatsApp</a>
+      <a href="https://wa.me/?text=SmartShaadi%20ke%2013%20free%20AI%20wedding%20tools%20dekho!%20%F0%9F%92%8D%20https://www.smartshaadi.online/ai-tools.html" target="_blank" class="sbb sbb-wa">&#128241; WhatsApp</a>
       <button class="sbb sbb-cp" onclick="copyLink()">&#128279; Link Copy</button>
     </div>
   </div>
@@ -558,7 +241,7 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
 <div class="seo-sec">
   <div class="seo-grid">
     <div class="seo-card"><h3>&#127470;&#127475; India-Specific AI</h3><p>Har tool Indian weddings ke liye trained. North Indian, South Indian, Punjabi, Bengali — sab regional contexts mein accurate. Hindi + English dono mein.</p></div>
-    <div class="seo-card"><h3>&#128080; Pro Plan — ₹199/mo</h3><p>Sirf ₹199/month mein 13 powerful AI tools unlock karo. Razorpay se secure payment — UPI, Card, Net Banking. Cancel anytime.</p></div>
+    <div class="seo-card"><h3>&#128080; Free — Sab Tools</h3><p>Koi subscription nahi, koi registration nahi. 13 powerful AI tools — seedha use karein, bilkul free!</p></div>
     <div class="seo-card"><h3>&#128279; Embed On Any Site</h3><p>Wedding blogger ho? Apni website pe yeh tools embed karo. Har tool ka ready embed code hai. Copy karo, paste karo — readers ko direct benefit.</p></div>
     <div class="seo-card"><h3>&#128241; WhatsApp Ready</h3><p>Har tool ka output directly WhatsApp pe share karo — caterer ko, photographer ko, family ko. One click mein sab ready.</p></div>
   </div>
@@ -569,13 +252,13 @@ function goProTool(url,e){SS_PRO.gate(url,e);}
 </div>
 <div class="faq-sec">
   <h2 class="faq-h">Aksar Pooche Jane Wale Sawaal</h2>
-  <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Kya yeh AI wedding tools bilkul free hain? <span class="faq-arr">&#9660;</span></button><div class="faq-a"><div class="faq-a-i">SmartShaadi ke 13 AI tools <b>Pro Plan</b> mein available hain — sirf ₹199/month. Razorpay se secure payment karo, aur sab tools instantly unlock ho jaate hain. Dashboard, Guest Manager aur Budget Planner bilkul free hain.</div></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Kya yeh AI wedding tools bilkul free hain? <span class="faq-arr">&#9660;</span></button><div class="faq-a"><div class="faq-a-i">Haan! SmartShaadi ke saare 13 AI tools 100% free hain. Koi registration, credit card ya subscription nahi chahiye. Seedha use karein!</div></div></div>
   <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Preview button kya dikhata hai? <span class="faq-arr">&#9660;</span></button><div class="faq-a"><div class="faq-a-i">Preview click karne par tool ki features, sample output (AI ka generated example) aur 3-step process dikh ti hai. Is se samajh aata hai tool se kya milega — phir "Use Tool" click karo.</div></div></div>
   <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">In tools ko apni website pe kaise embed karein? <span class="faq-arr">&#9660;</span></button><div class="faq-a"><div class="faq-a-i">Har tool card pe "Embed" button hai — click karo, code copy karo, apni site mein paste karo. WordPress, Blogger, ya kisi bhi HTML site pe kaam karta hai.</div></div></div>
   <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">AI wedding invitation Hindi mein kaise banayein? <span class="faq-arr">&#9660;</span></button><div class="faq-a"><div class="faq-a-i">AI Invitation Writer mein couple ka naam, tarikh, jagah bharein — AI instant mein Hindi, English ya Hinglish mein beautiful invitation likhta hai.</div></div></div>
 </div>
 <footer>
-  <p>SmartShaadi.online — India's #1 AI Wedding Planner | 13 Pro AI Tools · ₹199/mo</p>
+  <p>SmartShaadi.online — India's #1 Free AI Wedding Planner | 13 AI Tools — 100% Free</p>
   <div class="f-links">
     <a href="index.html">Home</a><a href="ai-tools.html">AI Tools</a><a href="blogs.html">Magazine</a>
     <a href="embed.html">Embed Tools</a><a href="chatbot.html">AI Chatbot</a>
@@ -611,7 +294,7 @@ function markUsed(id){var u=getUsed();if(u.indexOf(id)<0){u.push(id);try{localSt
 function updateProgress(){
   var used=getUsed();
   var pct=Math.round(used.length/TOOLS.length*100);
-  document.getElementById('ptSub').textContent=used.length+'/9 tools use kiye'+(used.length>0?' — '+pct+'% complete!':' — start karein!');
+  document.getElementById('ptSub').textContent=used.length+'/13 tools use kiye'+(used.length>0?' — '+pct+'% complete!':' — start karein!');
   var pr=document.getElementById('ptRight');
   if(used.length===9){pr.innerHTML='🎉 <strong style="color:var(--green)">Sab tools use kar liye — Shaadi ready!</strong>';}
   else if(used.length>0){pr.innerHTML='<strong style="color:var(--green)">'+pct+'%</strong> planning complete!';}
@@ -640,11 +323,11 @@ function buildCards(){
     html+=badge;
     html+='<div class="tc-top"><div class="tc-ico">'+t.ico+'</div><div class="tc-info"><div class="tc-name">'+t.name+'</div><div class="tc-line">'+t.line+'</div></div></div>';
     html+='<div class="tc-tags">'+tags+'</div>';
-    html+='<div class="tc-foot"><div class="tc-meta"><span class="tc-dot"></span><span class="tc-count">'+t.count+' used</span><span>·</span><span style=\"color:var(--gold);font-weight:700;\">Pro 🔒</span></div>';
+    html+='<div class="tc-foot"><div class="tc-meta"><span class="tc-dot"></span><span class="tc-count">'+t.count+' used</span><span>·</span><span style=\"color:var(--gold);font-weight:700;\">Pro</span></div>';
     html+='<div class="tc-btns">';
     html+='<button class="btn-preview" id="prev_'+t.id+'" onclick="togglePrev(\''+t.id+'\')">👁️ Preview</button>';
     html+='<button class="btn-embed" onclick="toggleEmb(\''+t.id+'\')">🔗 Embed</button>';
-    html+='<button class="btn-use" onclick="proUse(BASE+t.url,event);markUsed(\''+t.id+'\')">🔓 Use →</button>';
+    html+='<a class="btn-use" href="'+BASE+t.url+'" onclick="markUsed(\''+t.id+'\')" style="text-decoration:none;">✨ Use →</a>';
     html+='</div></div>';
     // Preview panel
     html+='<div class="preview-panel" id="pp_'+t.id+'">';
@@ -654,7 +337,7 @@ function buildCards(){
     html+='<div class="pp-sample-lbl" style="font-size:.66rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:6px">📄 SAMPLE OUTPUT</div>';
     html+='<div class="pp-sample" id="pps_'+t.id+'"></div>';
     html+='<div class="pp-steps" id="ppst_'+t.id+'"></div>';
-    html+='<div class="pp-cta"><button class="pp-use" onclick="proUse(BASE+t.url,event);markUsed(\''+t.id+'\')">🚀 Tool Use Karein — Pro!</button>';
+    html+='<div class="pp-cta"><a class="pp-use" href="'+BASE+t.url+'" onclick="markUsed(\''+t.id+'\')">🚀 Tool Use Karein — Free!</a>';
     html+='<button class="pp-wa" onclick="waTool(\''+t.id+'\')">📱 WhatsApp Share</button></div>';
     html+='</div></div>';
     // Embed panel
@@ -720,7 +403,7 @@ function waEmbed(id){
 }
 function waTool(id){
   var t=TOOLS.find(function(x){return x.id===id;});if(!t)return;
-  window.open('https://wa.me/?text='+encodeURIComponent(t.name+' — Pro AI tool! Sirf ₹199/mo \n'+BASE+t.url));
+  window.open('https://wa.me/?text='+encodeURIComponent(t.name+' — Free AI tool! \n'+BASE+t.url));
 }
 
 var curFilter='all';
@@ -757,15 +440,8 @@ if(SS_PRO.isProLocal()){
   b.textContent='✅ Pro Active — Sab Tools Unlocked!';
   document.body.appendChild(b);
   setTimeout(function(){b.style.transition='opacity .5s';b.style.opacity='0';setTimeout(function(){b.remove();},500);},4000);
-} else {
-  // Show sticky "Unlock Pro" bar at bottom
-  var bar=document.createElement('div');
-  bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:888;background:linear-gradient(135deg,#1a1200,#2a1800);border-top:1.5px solid rgba(201,168,76,.4);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;';
-  bar.innerHTML='<div><div style="font-size:13px;font-weight:800;color:#C9A84C;">🔒 Pro Plan — ₹199/mo</div><div style="font-size:11px;color:#8A7040;">13 AI tools · Razorpay secure</div></div><button onclick="SS_PRO.showModal()" style="background:linear-gradient(135deg,#C9A84C,#E8C97A);border:none;border-radius:10px;padding:10px 20px;color:#0A0800;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap;">Unlock Karo →</button>';
-  document.body.appendChild(bar);
-  // Add padding to body so content isn't hidden behind bar
-  document.body.style.paddingBottom='70px';
-}
+
+
 </script>
 </body>
 </html>
