@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartShaadi — Marketing Content Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-bg: rgba(201,168,76,0.07);
+    --gold-bd: rgba(201,168,76,0.25);
+    --bg: #08060E;
+    --bg2: #0F0C18;
+    --bg3: #16121F;
+    --text: #F5EFE0;
+    --muted: #A89070;
+    --green: #4ADE80;
+    --red: #F87171;
+    --blue: #60A5FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Ambient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: -20%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -30%;
+    right: -20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(139,92,246,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--gold-bd);
+    margin-bottom: 2rem;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo-mark {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .logo-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .logo-text p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .badge {
+    margin-left: auto;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-bd);
+    color: var(--gold);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 1rem 0 2rem;
+  }
+
+  .hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero h2 span { color: var(--gold); }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Input section */
+  .input-section {
+    background: var(--bg2);
+    border: 1px solid var(--gold-bd);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold-bd);
+  }
+
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .input-grid { grid-template-columns: 1fr; }
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--text);
+    padding: 0.65rem 0.9rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .field textarea { resize: vertical; min-height: 80px; }
+
+  .field select option { background: var(--bg3); }
+
+  .full-width { grid-column: 1 / -1; }
+
+  /* Platform toggles */
+  .platforms {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .platform-btn {
+    background: var(--bg3);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--muted);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .platform-btn.active {
+    background: var(--gold-bg);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Generate button */
+  .generate-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #08060E;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    transition: opacity 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .generate-btn:hover { opacity: 0.92; }
+  .generate-btn:active { transform: scale(0.99); }
+  .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Loading */
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--gold-bd);
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .loading.show { display: block; }
+
+  .spinner {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--gold-bd);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading p { color: var(--muted); font-size: 0.9rem; }
+  .loading .loading-step {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+  }
+
+  /* Results */
+  .results { display: none; }
+  .results.show { display: block; }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .results-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+  }
+
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--gold-bd);
+    color: var(--muted);
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Content cards */
+  .content-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .content-card {
+    background: var(--bg2);
+    border: 1px solid var(--gold-bd);
+    border-radius: 14px;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content-card:nth-child(1) { animation-delay: 0.05s; }
+  .content-card:nth-child(2) { animation-delay: 0.15s; }
+  .content-card:nth-child(3) { animation-delay: 0.25s; }
+  .content-card:nth-child(4) { animation-delay: 0.35s; }
+
+  .card-header {
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .card-platform {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .platform-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .platform-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+
+  .platform-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .copy-btn {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-bd);
+    color: var(--gold);
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .copy-btn:hover { background: rgba(201,168,76,0.15); }
+  .copy-btn.copied { color: var(--green); border-color: var(--green); background: rgba(74,222,128,0.08); }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-content {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .char-count {
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* Platform colors */
+  .quora .platform-icon { background: rgba(185,43,39,0.15); }
+  .instagram .platform-icon { background: rgba(225,48,108,0.15); }
+  .whatsapp .platform-icon { background: rgba(37,211,102,0.15); }
+  .facebook .platform-icon { background: rgba(24,119,242,0.15); }
+  .twitter .platform-icon { background: rgba(29,161,242,0.15); }
+
+  /* Tips section */
+  .tips-section {
+    margin-top: 1.5rem;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .tips-section h4 {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.85rem;
+  }
+
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tip-item {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tip-item::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Error */
+  .error-msg {
+    display: none;
+    background: rgba(248,113,113,0.08);
+    border: 1px solid rgba(248,113,113,0.3);
+    color: var(--red);
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .error-msg.show { display: block; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    margin-top: 3rem;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-mark">💍</div>
+      <div class="logo-text">
+        <h1>SmartShaadi AI</h1>
+        <p>Marketing Content Agent</p>
+      </div>
+      <div class="badge">Phase 1</div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2>Ek Blog → <span>5 Platform Content</span><br>AI Se Ek Click Mein</h2>
+    <p>Blog topic daalo, agent automatically Quora, Instagram, WhatsApp, Facebook aur Twitter ke liye ready content banayega — SmartShaadi branding ke saath.</p>
+  </div>
+
+  <!-- Input Section -->
+  <div class="input-section">
+    <div class="section-label">📝 Content Details</div>
+
+    <div class="input-grid">
+      <div class="field">
+        <label>Blog / Topic Title *</label>
+        <input type="text" id="blogTitle" placeholder="e.g. Delhi Wedding Budget 2026" />
+      </div>
+      <div class="field">
+        <label>Blog URL (optional)</label>
+        <input type="url" id="blogUrl" placeholder="https://smartshaadi.online/blog-..." />
+      </div>
+      <div class="field full-width">
+        <label>Blog Summary (2-3 lines mein batao kya hai is blog mein)</label>
+        <textarea id="blogSummary" placeholder="e.g. Delhi mein 2026 mein average wedding ka budget ₹15-25 lakh ho gaya hai. Is blog mein hum batate hain kaise ₹10 lakh mein bhi Delhi shaadi ho sakti hai..."></textarea>
+      </div>
+      <div class="field">
+        <label>Target Audience</label>
+        <select id="targetAudience">
+          <option value="indian-couples">Indian Couples (18-35)</option>
+          <option value="nri-couples">NRI Couples</option>
+          <option value="parents">Wedding Planning Parents</option>
+          <option value="budget-brides">Budget-Conscious Brides</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Content Tone</label>
+        <select id="contentTone">
+          <option value="hinglish-friendly">Hinglish (Friendly)</option>
+          <option value="hindi-warm">Pure Hindi (Warm)</option>
+          <option value="english-pro">English (Professional)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:1.25rem;">🎯 Platforms Select Karo</div>
+    <div class="platforms">
+      <button class="platform-btn active" data-platform="quora" onclick="togglePlatform(this)">🔴 Quora</button>
+      <button class="platform-btn active" data-platform="instagram" onclick="togglePlatform(this)">📸 Instagram</button>
+      <button class="platform-btn active" data-platform="whatsapp" onclick="togglePlatform(this)">💬 WhatsApp</button>
+      <button class="platform-btn active" data-platform="facebook" onclick="togglePlatform(this)">💙 Facebook</button>
+      <button class="platform-btn" data-platform="twitter" onclick="togglePlatform(this)">🐦 Twitter/X</button>
+    </div>
+
+    <button class="generate-btn" id="generateBtn" onclick="generateContent()">
+      ✨ Content Generate Karo
+    </button>
+  </div>
+
+  <!-- Error -->
+  <div class="error-msg" id="errorMsg"></div>
+
+  <!-- Loading -->
+  <div class="loading" id="loadingDiv">
+    <div class="spinner"></div>
+    <p>AI content bana raha hai...</p>
+    <div class="loading-step" id="loadingStep">Blog topic analyse ho raha hai...</div>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="resultsDiv">
+    <div class="results-header">
+      <h3>✅ Content Ready Hai</h3>
+      <button class="reset-btn" onclick="resetForm()">← Naya Generate</button>
+    </div>
+
+    <div class="content-cards" id="contentCards"></div>
+
+    <div class="tips-section" id="tipsSection"></div>
+  </div>
+
+  <footer>
+    Powered by <a href="https://smartshaadi.online">SmartShaadi AI</a> &nbsp;·&nbsp;
+    India ka #1 Free AI Wedding Planning Platform
+  </footer>
+
+</div>
+
+<script>
+const PLATFORM_CONFIG = {
+  quora: {
+    name: 'Quora Answer',
+    sub: 'Question-Answer format',
+    icon: '🔴',
+    cssClass: 'quora',
+    chars: '~800-1200 chars recommended',
+    instructions: `Write a detailed, helpful Quora answer. Start with a direct answer to an implied question, then provide 3-4 specific tips with numbers/data. End with a soft mention of SmartShaadi AI tool. Use a friendly expert tone. Include ₹ figures where relevant. Format with line breaks for readability. Language: {tone}.`
+  },
+  instagram: {
+    name: 'Instagram Caption',
+    sub: 'Post + Stories copy',
+    icon: '📸',
+    cssClass: 'instagram',
+    chars: '~150-300 chars + hashtags',
+    instructions: `Write an engaging Instagram caption. Start with a hook line (bold statement or question). Add 2-3 punchy tips. End with a CTA to visit SmartShaadi.online. Add 15-20 relevant hashtags on new lines. Use emojis naturally. Language: {tone}.`
+  },
+  whatsapp: {
+    name: 'WhatsApp Message',
+    sub: 'Group broadcast ready',
+    icon: '💬',
+    cssClass: 'whatsapp',
+    chars: '~200-400 chars (concise)',
+    instructions: `Write a WhatsApp broadcast message. Short, conversational, uses *bold* formatting. Include a key tip or saving from the blog. Add the blog link at end. Must feel like a helpful friend sharing info, not marketing. Language: {tone}.`
+  },
+  facebook: {
+    name: 'Facebook Post',
+    sub: 'Page post format',
+    icon: '💙',
+    cssClass: 'facebook',
+    chars: '~300-500 chars',
+    instructions: `Write a Facebook post. Start with an attention-grabbing first line. Share 2-3 valuable insights from the blog. Include a question to drive comments. End with CTA and link. Use emojis moderately. Language: {tone}.`
+  },
+  twitter: {
+    name: 'Twitter/X Thread',
+    sub: '3-tweet thread',
+    icon: '🐦',
+    cssClass: 'twitter',
+    chars: '3 tweets, 280 chars each',
+    instructions: `Write a 3-tweet thread. Tweet 1: Hook/surprising fact. Tweet 2: Main tip or insight. Tweet 3: CTA with link to SmartShaadi. Label as 1/3, 2/3, 3/3. No hashtags in thread (add separately). Language: {tone}.`
+  }
+};
+
+const TONE_MAP = {
+  'hinglish-friendly': 'Hinglish (mix of Hindi and English, warm and conversational like talking to a friend)',
+  'hindi-warm': 'Pure Hindi, warm and helpful',
+  'english-pro': 'Professional English, clear and helpful'
+};
+
+let activePlatforms = new Set(['quora', 'instagram', 'whatsapp', 'facebook']);
+
+function togglePlatform(btn) {
+  const p = btn.dataset.platform;
+  if (activePlatforms.has(p)) {
+    if (activePlatforms.size === 1) return;
+    activePlatforms.delete(p);
+    btn.classList.remove('active');
+  } else {
+    activePlatforms.add(p);
+    btn.classList.add('active');
+  }
+}
+
+const loadingSteps = [
+  'Blog topic analyse ho raha hai...',
+  'Target audience samajh raha hai...',
+  'Platform-wise content draft ho raha hai...',
+  'SmartShaadi branding add ho rahi hai...',
+  'Final polish ho raha hai...'
+];
+
+let stepInterval;
+
+function startLoadingAnimation() {
+  let i = 0;
+  const el = document.getElementById('loadingStep');
+  el.textContent = loadingSteps[0];
+  stepInterval = setInterval(() => {
+    i = (i + 1) % loadingSteps.length;
+    el.textContent = loadingSteps[i];
+  }, 1800);
+}
+
+function stopLoadingAnimation() {
+  clearInterval(stepInterval);
+}
+
+async function generateContent() {
+  const title = document.getElementById('blogTitle').value.trim();
+  const url = document.getElementById('blogUrl').value.trim();
+  const summary = document.getElementById('blogSummary').value.trim();
+  const audience = document.getElementById('targetAudience').value;
+  const toneKey = document.getElementById('contentTone').value;
+
+  if (!title) {
+    showError('Blog title zaroori hai!');
+    return;
+  }
+
+  hideError();
+  showLoading(true);
+  startLoadingAnimation();
+
+  const tone = TONE_MAP[toneKey];
+  const platforms = Array.from(activePlatforms);
+  const urlNote = url ? `Blog URL: ${url}` : '';
+  const summaryNote = summary ? `\nBlog Summary: ${summary}` : '';
+
+  const platformInstructions = platforms.map(p => {
+    const cfg = PLATFORM_CONFIG[p];
+    return `## ${cfg.name}\n${cfg.instructions.replace('{tone}', tone)}`;
+  }).join('\n\n');
+
+  const prompt = `You are a social media content writer for SmartShaadi AI — India's #1 Free AI Wedding Planning Platform (smartshaadi.online).
+
+Blog Topic: ${title}
+${urlNote}${summaryNote}
+Target Audience: ${audience}
+Tone: ${tone}
+
+Generate marketing content for the following platforms. Each platform content must be READY TO USE — no placeholders. Always naturally mention SmartShaadi AI or link to smartshaadi.online.
+
+${platformInstructions}
+
+IMPORTANT:
+- Content must feel genuine, not spammy
+- Include specific numbers/savings where possible
+- SmartShaadi mention should feel helpful, not forced
+- Respond in this EXACT JSON format (nothing else):
+
+{
+  "platforms": {
+    ${platforms.map(p => `"${p}": { "content": "...", "tip": "..." }`).join(',\n    ')}
+  },
+  "postingTips": ["tip1", "tip2", "tip3"]
+}`;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 3000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+
+    if (!response.ok) throw new Error(`API Error: ${response.status}`);
+
+    const data = await response.json();
+    const raw = data.content?.[0]?.text || '';
+
+    let parsed;
+    try {
+      const clean = raw.replace(/```json|```/g, '').trim();
+      parsed = JSON.parse(clean);
+    } catch {
+      throw new Error('Response parse nahi hua. Dobara try karo.');
+    }
+
+    stopLoadingAnimation();
+    showLoading(false);
+    renderResults(parsed, platforms);
+
+  } catch (err) {
+    stopLoadingAnimation();
+    showLoading(false);
+    showError('Kuch problem aayi: ' + err.message);
+  }
+}
+
+function renderResults(data, platforms) {
+  const cardsEl = document.getElementById('contentCards');
+  cardsEl.innerHTML = '';
+
+  platforms.forEach(p => {
+    const cfg = PLATFORM_CONFIG[p];
+    const pData = data.platforms?.[p];
+    if (!pData) return;
+
+    const content = pData.content || '';
+    const tip = pData.tip || '';
+
+    const card = document.createElement('div');
+    card.className = `content-card ${cfg.cssClass}`;
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-platform">
+          <div class="platform-icon">${cfg.icon}</div>
+          <div>
+            <div class="platform-name">${cfg.name}</div>
+            <div class="platform-sub">${cfg.sub}</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this, \`${escapeForAttr(content)}\`)">
+          📋 Copy
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">${escapeHtml(content)}</div>
+        ${tip ? `<div class="char-count">💡 ${escapeHtml(tip)}</div>` : ''}
+        <div class="char-count">${cfg.chars}</div>
+      </div>
+    `;
+    cardsEl.appendChild(card);
+  });
+
+  // Tips
+  const tips = data.postingTips || [];
+  const tipsEl = document.getElementById('tipsSection');
+  if (tips.length) {
+    tipsEl.innerHTML = `
+      <h4>🚀 Posting Tips</h4>
+      <div class="tips-list">
+        ${tips.map(t => `<div class="tip-item">${escapeHtml(t)}</div>`).join('')}
+      </div>
+    `;
+  }
+
+  document.getElementById('resultsDiv').classList.add('show');
+  document.getElementById('resultsDiv').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyContent(btn, content) {
+  navigator.clipboard.writeText(content).then(() => {
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function escapeForAttr(str) {
+  return str.replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$');
+}
+
+function showLoading(show) {
+  document.getElementById('loadingDiv').classList.toggle('show', show);
+  document.getElementById('generateBtn').disabled = show;
+  document.getElementById('input-section')?.classList.toggle('hide', show);
+}
+
+function hideError() {
+  const el = document.getElementById('errorMsg');
+  el.classList.remove('show');
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function resetForm() {
+  document.getElementById('resultsDiv').classList.remove('show');
+  document.getElementById('blogTitle').value = '';
+  document.getElementById('blogUrl').value = '';
+  document.getElementById('blogSummary').value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
+
