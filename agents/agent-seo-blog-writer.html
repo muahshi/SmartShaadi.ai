@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartShaadi — SEO Blog Writer Agent</title>
 <link rel="canonical" href="https://smartshaadi.online/agents/agent-seo-blog-writer.html">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--gold:#C9A84C;--gold-light:#E8C96A;--gold-bg:rgba(201,168,76,0.07);--gold-bd:rgba(201,168,76,0.25);--bg:#08060E;--bg2:#0F0C18;--bg3:#16121F;--text:#F5EFE0;--muted:#A89070;--green:#4ADE80;--red:#F87171;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
-body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;z-index:0;}
 .container{max-width:960px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1;}
 header{padding:1.75rem 0 1.25rem;border-bottom:1px solid var(--gold-bd);margin-bottom:2rem;}
 .header-inner{display:flex;align-items:center;gap:1rem;}
@@ -47,44 +47,34 @@ header{padding:1.75rem 0 1.25rem;border-bottom:1px solid var(--gold-bd);margin-b
 .error-msg.show{display:block;}
 .results{display:none;}
 .results.show{display:block;}
-.result-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.25rem;}
+.result-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;}
 .result-top h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);}
 .btn-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
 .act-btn{background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:#08060E;padding:0.45rem 1.1rem;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity 0.15s;}
 .act-btn:hover{opacity:0.88;}
 .out-btn{background:transparent;border:1px solid var(--gold-bd);color:var(--muted);padding:0.4rem 0.9rem;border-radius:8px;font-size:0.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
 .out-btn:hover{border-color:var(--gold);color:var(--gold);}
-.meta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1.5rem;}
+.meta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1.25rem;}
 @media(max-width:500px){.meta-row{grid-template-columns:1fr 1fr;}}
 .meta-card{background:var(--bg2);border:1px solid var(--gold-bd);border-radius:10px;padding:0.9rem;text-align:center;}
 .meta-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);font-weight:700;line-height:1;}
 .meta-lbl{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px;}
 .view-tabs{display:flex;gap:0;border:1px solid var(--gold-bd);border-radius:10px;overflow:hidden;margin-bottom:1.25rem;}
-.view-tab{flex:1;background:transparent;border:none;color:var(--muted);padding:0.65rem 0.5rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;transition:all 0.2s;border-right:1px solid var(--gold-bd);}
+.view-tab{flex:1;background:transparent;border:none;color:var(--muted);padding:0.65rem 0.5rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;transition:all 0.2s;border-right:1px solid var(--gold-bd);}
 .view-tab:last-child{border-right:none;}
 .view-tab.active{background:var(--gold-bg);color:var(--gold);}
 .preview-pane{display:none;}
 .preview-pane.active{display:block;}
-.html-code-box{background:#0a0a0a;border:1px solid var(--gold-bd);border-radius:12px;padding:1.25rem;font-family:'Courier New',monospace;font-size:0.73rem;line-height:1.6;color:#90EE90;overflow-x:auto;white-space:pre-wrap;word-break:break-all;max-height:520px;overflow-y:auto;}
-.html-code-box::-webkit-scrollbar{width:4px;height:4px;}
-.html-code-box::-webkit-scrollbar-thumb{background:var(--gold-bd);border-radius:2px;}
-.blog-preview{background:white;color:#1a1a1a;border-radius:12px;padding:2rem;font-family:Georgia,serif;line-height:1.8;font-size:0.95rem;max-height:600px;overflow-y:auto;}
-.blog-preview::-webkit-scrollbar{width:4px;}
-.blog-preview::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px;}
-.blog-preview h1{font-size:1.5rem;margin-bottom:0.75rem;line-height:1.3;}
-.blog-preview h2{font-size:1.15rem;margin:1.5rem 0 0.6rem;font-family:Georgia,serif;}
-.blog-preview p{margin-bottom:0.9rem;color:#333;}
-.blog-preview .case-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border-left:3px solid #C9A84C;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 8px 8px 0;}
-.blog-preview .case-box h3{color:#C9A84C;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;}
-.blog-preview .promo-box{background:#f8f4ff;border:1px solid #ddd;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:8px;}
-.blog-preview .promo-box h3{color:#7c3aed;font-size:0.95rem;margin-bottom:0.5rem;}
-.blog-preview .faq-item{border-bottom:1px solid #eee;padding:0.75rem 0;}
-.blog-preview .faq-item:last-child{border-bottom:none;}
-.blog-preview .faq-q{font-weight:700;color:#222;margin-bottom:0.25rem;font-size:0.9rem;}
-.blog-preview .faq-a{color:#555;font-size:0.875rem;line-height:1.6;}
-.blog-preview .schema-note{background:#f5f5f5;padding:0.5rem 0.8rem;border-radius:6px;font-family:monospace;font-size:0.7rem;color:#888;margin-top:1.5rem;}
-.info-note{background:rgba(201,168,76,0.06);border:1px solid var(--gold-bd);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:1.25rem;font-size:0.82rem;color:var(--muted);line-height:1.6;}
-.info-note strong{color:var(--gold);}
+.code-box{background:#060408;border:1px solid var(--gold-bd);border-radius:12px;padding:1.25rem;font-family:'Courier New',monospace;font-size:0.72rem;line-height:1.6;color:#90EE90;overflow-x:auto;white-space:pre-wrap;word-break:break-all;max-height:550px;overflow-y:auto;}
+.code-box::-webkit-scrollbar{width:4px;height:4px;}
+.code-box::-webkit-scrollbar-thumb{background:var(--gold-bd);border-radius:2px;}
+
+/* Blog preview iframe style */
+.preview-wrap{border:1px solid var(--gold-bd);border-radius:12px;overflow:hidden;height:600px;}
+.preview-wrap iframe{width:100%;height:100%;border:none;}
+
+.info-tip{background:rgba(201,168,76,0.05);border:1px solid var(--gold-bd);border-radius:10px;padding:0.85rem 1.1rem;margin-bottom:1.25rem;font-size:0.82rem;color:var(--muted);line-height:1.6;}
+.info-tip strong{color:var(--gold);}
 footer{text-align:center;padding:2rem 0;color:var(--muted);font-size:0.78rem;border-top:1px solid rgba(201,168,76,0.1);margin-top:3rem;}
 footer a{color:var(--gold);text-decoration:none;}
 </style>
@@ -104,8 +94,8 @@ footer a{color:var(--gold);text-decoration:none;}
   </header>
 
   <div class="hero">
-    <h2>Keyword Daalo →<br><span>GitHub-Ready HTML Blog</span></h2>
-    <p>Ek keyword daao — poori SmartShaadi blog HTML file ban jayegi. Download karo, GitHub pe upload karo, live ho jao.</p>
+    <h2>Keyword Daalo →<br><span>SmartShaadi-Style HTML Blog</span></h2>
+    <p>Tumhare existing blogs jaisa exact design — dark/light mode, nav, footer, data tables, FAQ schema, case study — sab kuch generate hoga. Seedha GitHub pe upload karo.</p>
   </div>
 
   <div class="input-card">
@@ -113,7 +103,7 @@ footer a{color:var(--gold);text-decoration:none;}
     <div class="grid2">
       <div class="field">
         <label>Main Keyword / Topic *</label>
-        <input type="text" id="keyword" placeholder="e.g. South Indian wedding budget 2026" />
+        <input type="text" id="keyword" placeholder="e.g. Hyderabad wedding cost 2026" />
       </div>
       <div class="field">
         <label>Blog Category</label>
@@ -127,8 +117,8 @@ footer a{color:var(--gold);text-decoration:none;}
         </select>
       </div>
       <div class="field">
-        <label>Target City (optional)</label>
-        <input type="text" id="city" placeholder="e.g. Chennai, Hyderabad" />
+        <label>Target City</label>
+        <input type="text" id="city" placeholder="e.g. Hyderabad" />
       </div>
       <div class="field">
         <label>Word Count</label>
@@ -139,18 +129,35 @@ footer a{color:var(--gold);text-decoration:none;}
         </select>
       </div>
       <div class="field full">
-        <label>Extra Context (optional)</label>
-        <textarea id="context" placeholder="Specific points cover karne hain? e.g. 2026 ke prices, specific rituals, vendor tips..."></textarea>
+        <label>Related Blog Links (for "Yeh Bhi Padhein" section)</label>
+        <input type="text" id="relatedBlogs" placeholder="e.g. blog-mumbai-wedding-cost-2026, blog-budget-2026, blog-catering-cost-2026" />
+      </div>
+      <div class="field full">
+        <label>Relevant SmartShaadi Tool (for promo)</label>
+        <select id="toolPromo">
+          <option value="wedding-budget-calculator-india-2026.html|🧮 Budget Calculator|Free mein apna wedding budget calculate karo">🧮 Budget Calculator</option>
+          <option value="ai-kundali-matching.html|⭐ AI Kundali Matching|36 Guna Milan free mein check karo">⭐ Kundali Matching</option>
+          <option value="ai-invitation-writer.html|💌 AI Invitation Writer|6 languages mein beautiful invitations banao">💌 Invitation Writer</option>
+          <option value="ai-menu-planner.html|🍽️ AI Menu Planner|Wedding menu AI se plan karo">🍽️ Menu Planner</option>
+          <option value="ai-wedding-theme-generator.html|🎨 Theme Generator|Wedding theme aur colors AI se choose karo">🎨 Theme Generator</option>
+          <option value="wedding-vendor-negotiation-bot.html|🤝 Vendor Negotiation Bot|20-30% discount scripts ready">🤝 Vendor Bot</option>
+          <option value="ai-planning-timeline.html|📅 Planning Timeline|9 milestone wedding timeline banao">📅 Planning Timeline</option>
+          <option value="ai-tools.html|✨ 13 AI Tools|Saare free AI wedding tools ek jagah">✨ All 13 AI Tools</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Extra Context / Special Points</label>
+        <textarea id="context" placeholder="Specific tips, 2026 prices, local vendor info, special rituals ya koi bhi extra information jo blog mein aani chahiye..."></textarea>
       </div>
     </div>
-    <button class="gen-btn" id="genBtn" onclick="generateBlog()">✨ Blog HTML Generate Karo</button>
+    <button class="gen-btn" id="genBtn" onclick="generateBlog()">✨ Blog Generate Karo</button>
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
 
   <div class="loading" id="loadingDiv">
     <div class="spinner"></div>
-    <p style="color:var(--muted);font-size:0.88rem;">Blog likh raha hoon...</p>
+    <p style="color:var(--muted);font-size:0.88rem;">SmartShaadi-style blog ban raha hai...</p>
     <div class="loading-step" id="loadingStep"></div>
   </div>
 
@@ -159,35 +166,31 @@ footer a{color:var(--gold);text-decoration:none;}
       <h3>✅ Blog Ready!</h3>
       <div class="btn-row">
         <button class="act-btn" id="dlBtn" onclick="downloadHTML()">⬇️ HTML Download</button>
-        <button class="act-btn" id="cpBtn" onclick="copyHTML()">📋 HTML Copy</button>
+        <button class="act-btn" id="cpBtn" onclick="copyHTML()">📋 Copy HTML</button>
         <button class="out-btn" onclick="resetForm()">← Naya Blog</button>
       </div>
     </div>
 
-    <div class="info-note">
-      💡 <strong>GitHub pe kaise daalo:</strong> Download karo → GitHub repo mein jaao → "Add file" → Download ki file upload karo → Commit → Live! File name already correct hai (blog-keyword-name.html).
+    <div class="info-tip">
+      💡 <strong>GitHub deploy:</strong> Download karo → GitHub repo → "Add file" → Upload → Commit → 2 min mein live! File name automatically correct hoga (blog-keyword.html).
     </div>
 
     <div class="meta-row" id="metaRow"></div>
 
     <div class="view-tabs">
-      <button class="view-tab active" onclick="switchView('preview',this)">👁️ Preview</button>
+      <button class="view-tab active" onclick="switchView('preview',this)">👁️ Live Preview</button>
       <button class="view-tab" onclick="switchView('html',this)">💻 Full HTML</button>
-      <button class="view-tab" onclick="switchView('schema',this)">🔧 Schema</button>
-      <button class="view-tab" onclick="switchView('meta',this)">🏷️ Meta Tags</button>
+      <button class="view-tab" onclick="switchView('meta',this)">🏷️ Meta + Schema</button>
     </div>
 
     <div class="preview-pane active" id="pane-preview">
-      <div class="blog-preview" id="blogPreview"></div>
+      <div class="preview-wrap"><iframe id="blogIframe" title="Blog Preview"></iframe></div>
     </div>
     <div class="preview-pane" id="pane-html">
-      <div class="html-code-box" id="htmlCodeBox"></div>
-    </div>
-    <div class="preview-pane" id="pane-schema">
-      <div class="html-code-box" id="schemaBox"></div>
+      <div class="code-box" id="htmlCodeBox"></div>
     </div>
     <div class="preview-pane" id="pane-meta">
-      <div class="html-code-box" id="metaBox"></div>
+      <div class="code-box" id="metaBox"></div>
     </div>
   </div>
 
@@ -195,20 +198,24 @@ footer a{color:var(--gold);text-decoration:none;}
 </div>
 
 <script>
-const STEPS=['Keyword analyse ho raha hai...','Blog outline ban rahi hai...','Sections likh rahe hain...','Case study add ho rahi hai...','FAQs generate ho rahe hain...','HTML structure ban rahi hai...','Schema markup add ho raha hai...','Final polish ho raha hai...'];
-let stepInt,generatedHTML='',generatedSlug='';
+const STEPS=['Keyword analyse ho raha hai...','Blog outline ban raha hai...','Intro + sections likh rahe hain...','Data tables add ho rahi hain...','Real couple story likh raha hoon...','FAQs generate ho rahe hain...','SmartShaadi design apply ho rahi hai...','Nav, footer, schema add ho raha hai...','Final polish...'];
+let stepInt, generatedHTML='', generatedSlug='';
 
-function startLoading(){let i=0;document.getElementById('loadingStep').textContent=STEPS[0];stepInt=setInterval(()=>{i=(i+1)%STEPS.length;document.getElementById('loadingStep').textContent=STEPS[i];},2000);}
+function startLoading(){let i=0;document.getElementById('loadingStep').textContent=STEPS[0];stepInt=setInterval(()=>{i=(i+1)%STEPS.length;document.getElementById('loadingStep').textContent=STEPS[i];},2200);}
 function stopLoading(){clearInterval(stepInt);}
 function switchView(name,btn){document.querySelectorAll('.view-tab').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.preview-pane').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('pane-'+name).classList.add('active');}
 
 async function generateBlog(){
   const keyword=document.getElementById('keyword').value.trim();
   if(!keyword){showError('Keyword daalna zaroori hai!');return;}
+
   const category=document.getElementById('category').value;
   const city=document.getElementById('city').value.trim();
   const wordCount=document.getElementById('wordCount').value;
   const context=document.getElementById('context').value.trim();
+  const relatedRaw=document.getElementById('relatedBlogs').value.trim();
+  const toolVal=document.getElementById('toolPromo').value;
+  const [toolUrl,toolName,toolDesc]=toolVal.split('|');
 
   hideError();
   document.getElementById('loadingDiv').classList.add('show');
@@ -219,45 +226,58 @@ async function generateBlog(){
   const slug=keyword.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-');
   generatedSlug='blog-'+slug+'.html';
   const canonicalUrl='https://smartshaadi.online/blog-'+slug+'.html';
+  const today=new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
+  const isoDate=new Date().toISOString().split('T')[0];
+
+  // Related blogs array
+  const relatedArr = relatedRaw ? relatedRaw.split(',').map(s=>s.trim()).filter(Boolean) : ['blog-budget-2026','blog-catering-cost-2026','blog-mumbai-wedding-cost-2026','blog-photography-2026'];
 
   const prompt=`You are a senior SEO content writer for SmartShaadi AI — India's #1 Free AI Wedding Planning Platform at smartshaadi.online.
+
+Write a complete, high-quality wedding blog post for this topic.
 
 Keyword: ${keyword}
 Category: ${category}
 ${city?'City: '+city:''}
-Word Count: ${wordCount}
-${context?'Context: '+context:''}
+Word Count Target: ${wordCount} words
+${context?'Extra Instructions: '+context:''}
 
-Write a complete SEO blog. Return ONLY this JSON (no extra text):
+Return ONLY this exact JSON structure (no extra text, no markdown):
 
 {
-  "metaTitle": "SEO title under 60 chars",
-  "metaDescription": "150-160 char description with keyword",
-  "h1": "Engaging H1 title with keyword",
-  "wordCount": 2000,
+  "metaTitle": "SEO title 55-60 chars max, include keyword",
+  "metaDescription": "150-160 char description with keyword and benefit",
+  "h1Title": "Engaging blog title with keyword — can be longer",
+  "eyebrowTag": "Short tag like Budget Guide or City Guide",
   "readingTime": "8 min read",
-  "sectionCount": 5,
-  "faqCount": 5,
-  "intro": "Write 3 paragraphs separated by newlines. Include keyword in first sentence. Add rupee amounts. Hook readers.",
-  "mainSections": [
-    {"h2": "Section heading", "content": "Write 300-350 words of helpful content. Include rupee amounts. Hinglish tone. Separate paragraphs with newlines."}
+  "wordCountActual": 2000,
+  "intro": "Write 3 full paragraphs separated by double newlines. Start with keyword in first sentence. Include specific ₹ amounts. Create urgency and value.",
+  "sections": [
+    {
+      "h2": "Section H2 heading",
+      "paragraphs": "Write 3-4 paragraphs of content separated by double newlines. Include ₹ amounts, percentages, specific advice.",
+      "hasTable": true,
+      "tableHtml": "<table class='data-table'><thead><tr><th>Category</th><th>Budget</th><th>Premium</th></tr></thead><tbody><tr><td>Example</td><td>₹X</td><td>₹Y</td></tr></tbody></table>"
+    }
   ],
-  "caseStudyCouple": "Indian couple name — City, Month Year",
-  "caseStudyStory": "Write 120-150 words. Real-feeling story. Specific rupee amounts saved. How SmartShaadi AI helped. Natural mention.",
-  "toolPromoH3": "Relevant tool heading",
-  "toolPromoContent": "Write 2 paragraphs. Mention specific SmartShaadi tool. Natural link to smartshaadi.online. Helpful not spammy.",
-  "conclusion": "Write 2 strong paragraphs. CTA to use SmartShaadi AI tools.",
+  "highlightBox": "One key tip or insight to show in a gold highlight box",
+  "caseStudyCouple": "Indian name pair — City, Month Year",
+  "caseStudyStory": "Write 130-150 words. Specific rupee amounts. How SmartShaadi AI tools helped. Real feeling. Include tool name.",
+  "toolPromoContent": "Write 2 paragraphs about why readers should use SmartShaadi tools for this topic. Natural, helpful tone. Include link mention.",
+  "conclusion": "Write 2 strong paragraphs. Summarize key points. CTA to use SmartShaadi AI.",
   "faqs": [
-    {"q": "Question with keyword variation", "a": "2-3 sentence answer with specific data and rupee amounts"}
-  ]
+    {"q": "Question with keyword", "a": "2-3 sentence specific answer with ₹ amounts and data"}
+  ],
+  "savingTip": "One specific money-saving tip for a saving tip box"
 }
 
-Important rules:
-- Minimum 5 items in mainSections array
-- Minimum 5 items in faqs array
-- All text in Hinglish (warm, helpful, like talking to a friend)
-- Include specific rupee amounts everywhere
-- Real Indian couple names in case study`;
+Rules:
+- Minimum 5 sections, minimum 5 FAQs
+- At least 2-3 sections should have hasTable:true with relevant data tables
+- All content Hinglish (Hindi+English mix, warm helpful tone)
+- Specific ₹ rupee amounts throughout
+- Real-feeling Indian names in case study
+- SmartShaadi mentions natural and helpful`;
 
   try{
     const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({max_tokens:4000,messages:[{role:'user',content:prompt}]})});
@@ -269,144 +289,358 @@ Important rules:
     const d=JSON.parse(clean);
     stopLoading();
     document.getElementById('loadingDiv').classList.remove('show');
-    renderResults(d,canonicalUrl);
+    buildBlog(d, canonicalUrl, today, isoDate, relatedArr, toolUrl, toolName, toolDesc);
   }catch(e){
     stopLoading();
     document.getElementById('loadingDiv').classList.remove('show');
     document.getElementById('genBtn').disabled=false;
-    showError('Error: '+e.message+'\n\nTip: Dobara try karo — Groq kabhi kabhi timeout deta hai.');
+    showError('Error: '+e.message+'\n\nDobara try karo — Groq kabhi kabhi timeout deta hai.');
   }
 }
 
-function renderResults(d,canonicalUrl){
-  document.getElementById('metaRow').innerHTML=`
-    <div class="meta-card"><div class="meta-val">${d.wordCount||2000}</div><div class="meta-lbl">Words</div></div>
-    <div class="meta-card"><div class="meta-val">${d.readingTime||'8 min'}</div><div class="meta-lbl">Read Time</div></div>
-    <div class="meta-card"><div class="meta-val">${(d.faqs||[]).length}</div><div class="meta-lbl">FAQs</div></div>
-    <div class="meta-card"><div class="meta-val">${(d.mainSections||[]).length}</div><div class="meta-lbl">Sections</div></div>`;
-
-  // Build schemas
+function buildBlog(d, canonicalUrl, today, isoDate, relatedArr, toolUrl, toolName, toolDesc){
+  // FAQ Schema
   const faqSchemaItems=(d.faqs||[]).map(f=>({"@type":"Question","name":f.q||'',acceptedAnswer:{"@type":"Answer","text":f.a||''}}));
-  const faqSchema=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqSchemaItems},null,2);
-  const articleSchema=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":d.metaTitle||'',description:d.metaDescription||'',url:canonicalUrl,publisher:{"@type":"Organization",name:"SmartShaadi AI",url:"https://smartshaadi.online"},datePublished:new Date().toISOString().split('T')[0],dateModified:new Date().toISOString().split('T')[0]},null,2);
-
-  // Build paragraphs helper
-  const paras=(text)=>(text||'').split('\n').filter(l=>l.trim()).map(l=>`    <p>${hesc(l)}</p>`).join('\n');
+  const faqSchema=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqSchemaItems});
+  const articleSchema=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":d.metaTitle||'',description:d.metaDescription||'',url:canonicalUrl,publisher:{"@type":"Organization",name:"Smart Shaadi AI",url:"https://smartshaadi.online"},mainEntityOfPage:{"@type":"WebPage","@id":canonicalUrl},datePublished:isoDate,dateModified:isoDate});
 
   // Sections HTML
-  const sectionsHTML=(d.mainSections||[]).map(s=>`
-    <h2>${hesc(s.h2||s.heading||'')}</h2>
-${paras(s.content||'')}`).join('\n');
+  const sectionsHTML=(d.sections||[]).map(s=>{
+    const paras=(s.paragraphs||'').split('\n\n').filter(p=>p.trim()).map(p=>`<p>${hesc(p.trim())}</p>`).join('\n');
+    const tbl=(s.hasTable && s.tableHtml) ? s.tableHtml : '';
+    return `
+    <h2>${hesc(s.h2||'')}</h2>
+${paras}
+${tbl}`;
+  }).join('\n');
 
   // FAQ HTML
   const faqHTML=(d.faqs||[]).map(f=>`
-        <div class="faq-item">
-          <div class="faq-question">❓ ${hesc(f.q||f.question||'')}</div>
-          <div class="faq-answer">${hesc(f.a||f.answer||'')}</div>
-        </div>`).join('');
+      <div class="faq-item">
+        <div class="faq-q">❓ ${hesc(f.q||f.question||'')}</div>
+        <div class="faq-a">${hesc(f.a||f.answer||'')}</div>
+      </div>`).join('');
 
-  // FULL HTML FILE
+  // Intro paragraphs
+  const introHTML=(d.intro||'').split('\n\n').filter(p=>p.trim()).map(p=>`<p>${hesc(p.trim())}</p>`).join('\n    ');
+
+  // Conclusion
+  const conclusionHTML=(d.conclusion||'').split('\n\n').filter(p=>p.trim()).map(p=>`<p>${hesc(p.trim())}</p>`).join('\n    ');
+
+  // Case study paragraphs
+  const caseHTML=(d.caseStudyStory||'').split('\n\n').filter(p=>p.trim()).map(p=>`<p>${hesc(p.trim())}</p>`).join('\n      ');
+
+  // Tool promo paragraphs
+  const toolPromoHTML=(d.toolPromoContent||'').split('\n\n').filter(p=>p.trim()).map(p=>`<p>${hesc(p.trim())}</p>`).join('\n      ');
+
+  // Related articles HTML
+  const relEmojis=['💰','🏙️','🍽️','📸','🎨','🏛️','✈️','💍'];
+  const relatedHTML=relatedArr.slice(0,4).map((r,i)=>{
+    const name=r.replace('blog-','').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    return `<a href="${r}.html" class="related-card"><span class="related-emoji">${relEmojis[i%relEmojis.length]}</span><div><strong>${name}</strong><span>SmartShaadi Guide</span></div></a>`;
+  }).join('\n');
+
+  // BUILD FULL HTML
   generatedHTML=`<!DOCTYPE html>
-<html lang="hi">
+<html lang="hi-IN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${hesc(d.metaTitle||'')}</title>
-  <meta name="description" content="${hesc(d.metaDescription||'')}">
-  <link rel="canonical" href="${canonicalUrl}">
-  <meta property="og:title" content="${hesc(d.metaTitle||'')}">
-  <meta property="og:description" content="${hesc(d.metaDescription||'')}">
-  <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:type" content="article">
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="/style.css">
-  <script type="application/ld+json">
-${articleSchema}
-  <\/script>
-  <script type="application/ld+json">
-${faqSchema}
-  <\/script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${hesc(d.metaTitle||'')}</title>
+<meta name="description" content="${hesc(d.metaDescription||'')}">
+<link rel="canonical" href="${canonicalUrl}">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${hesc(d.metaTitle||'')}">
+<meta property="og:description" content="${hesc(d.metaDescription||'')}">
+<meta property="og:url" content="${canonicalUrl}">
+<meta property="og:image" content="https://smartshaadi.online/og-image.jpg">
+<meta property="og:site_name" content="Smart Shaadi AI">
+<script type="application/ld+json">${articleSchema}<\/script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0B0E;--bg2:#111018;--bg3:#18141F;--bg4:#0A0810;--card:rgba(18,15,26,0.97);--nav-bg:rgba(10,8,16,0.95);--gold:#C9A84C;--gl:#E8C97A;--gold-bg:rgba(201,168,76,0.08);--gold-bg2:rgba(201,168,76,0.04);--gold-bd:rgba(201,168,76,0.22);--gold-bd2:rgba(201,168,76,0.10);--text:#F5EFE0;--muted:#9A9088;--faint:rgba(245,239,224,0.48);--divider:rgba(201,168,76,0.10);--div2:rgba(245,239,224,0.05);--green:#7ED3A0;--red:#e07070;--shadow:0 24px 64px rgba(0,0,0,0.55);--tr:background 0.35s ease,color 0.35s ease;}
+@media(prefers-color-scheme:light){:root{--bg:#FAF8F4;--bg2:#F2EDE3;--bg3:#FFFFFF;--bg4:#EDE8DF;--card:#FFFFFF;--nav-bg:rgba(250,248,244,0.96);--gold:#7A5210;--gl:#5C3D0A;--gold-bg:rgba(122,82,16,0.07);--gold-bg2:rgba(122,82,16,0.04);--gold-bd:rgba(122,82,16,0.24);--gold-bd2:rgba(122,82,16,0.13);--text:#1A1410;--muted:#6B5E50;--faint:rgba(26,20,16,0.52);--divider:rgba(122,82,16,0.13);--div2:rgba(26,20,16,0.07);--shadow:0 12px 40px rgba(0,0,0,0.11);}}
+[data-theme="dark"]{--bg:#0D0B0E;--bg2:#111018;--bg3:#18141F;--bg4:#0A0810;--card:rgba(18,15,26,0.97);--nav-bg:rgba(10,8,16,0.95);--gold:#C9A84C;--gl:#E8C97A;--gold-bg:rgba(201,168,76,0.08);--gold-bg2:rgba(201,168,76,0.04);--gold-bd:rgba(201,168,76,0.22);--gold-bd2:rgba(201,168,76,0.10);--text:#F5EFE0;--muted:#9A9088;--faint:rgba(245,239,224,0.48);--divider:rgba(201,168,76,0.10);--div2:rgba(245,239,224,0.05);--shadow:0 24px 64px rgba(0,0,0,0.55);}
+[data-theme="light"]{--bg:#FAF8F4;--bg2:#F2EDE3;--bg3:#FFFFFF;--bg4:#EDE8DF;--card:#FFFFFF;--nav-bg:rgba(250,248,244,0.96);--gold:#7A5210;--gl:#5C3D0A;--gold-bg:rgba(122,82,16,0.07);--gold-bg2:rgba(122,82,16,0.04);--gold-bd:rgba(122,82,16,0.24);--gold-bd2:rgba(122,82,16,0.13);--text:#1A1410;--muted:#6B5E50;--faint:rgba(26,20,16,0.52);--divider:rgba(122,82,16,0.13);--div2:rgba(26,20,16,0.07);--shadow:0 12px 40px rgba(0,0,0,0.11);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;transition:var(--tr);font-size:16px;}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2.4rem;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--divider);transition:var(--tr);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gl);letter-spacing:.02em;flex-shrink:0;}
+.logo em{font-style:italic;color:var(--text);font-weight:300}
+.nav-links{display:flex;align-items:center;gap:.15rem}
+.nav-links a{padding:.38rem .78rem;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);border-radius:4px;transition:color .2s,background .2s;}
+.nav-links a:hover{color:var(--gl);background:var(--gold-bg)}
+.nav-links .ncta{background:var(--gold);color:var(--bg)!important;font-weight:600;padding:.42rem 1rem;border-radius:3px;font-size:.8rem;margin-left:.3rem;}
+.hbg{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;background:none;border:1px solid var(--gold-bg);border-radius:6px;gap:5px;}
+.hbg span{display:block;width:18px;height:1.5px;background:var(--gl);transition:all .35s;transform-origin:center}
+.hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.drawer{position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--bg);z-index:850;overflow-y:auto;padding:1.2rem 1.5rem 4rem;transform:translateX(110%);transition:transform .38s cubic-bezier(.77,0,.18,1);border-top:1px solid var(--divider);}
+.drawer.open{transform:translateX(0)}
+.dr-sec{font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin:1.4rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--gold-bg);}
+.drawer a{display:flex;align-items:center;gap:.7rem;padding:.7rem 0;font-size:.94rem;color:var(--faint);border-bottom:1px solid var(--div2);transition:color .2s,padding-left .2s;}
+.drawer a:hover{color:var(--gl);padding-left:.35rem}
+.mi{font-size:.92rem;width:22px;text-align:center}
+.dr-cta{display:flex!important;justify-content:center;background:var(--gold)!important;color:var(--bg)!important;border-radius:4px;padding:.85rem!important;font-weight:600!important;margin-top:1.4rem;font-size:.86rem!important;letter-spacing:.04em;}
+.blog-hero{padding:5.5rem 2.4rem 2.5rem;max-width:780px;margin:0 auto;}
+.blog-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold-bg);border:1px solid var(--gold-bd);padding:.3rem .9rem;border-radius:100px;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.blog-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:400;line-height:1.12;color:var(--text);margin-bottom:1rem;}
+.blog-hero h1 em{font-style:italic;color:var(--gl)}
+.blog-meta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;font-size:.78rem;color:var(--muted);margin-bottom:1.8rem;padding-bottom:1.4rem;border-bottom:1px solid var(--divider);}
+.blog-meta span{display:flex;align-items:center;gap:.3rem;}
+.blog-wrap{max-width:780px;margin:0 auto;padding:0 2.4rem 5rem;}
+.blog-content h2{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;color:var(--text);margin:2.4rem 0 .9rem;line-height:1.2;}
+.blog-content h2 em{font-style:italic;color:var(--gl)}
+.blog-content h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gl);margin:1.8rem 0 .6rem;}
+.blog-content p{font-size:.97rem;line-height:1.85;color:var(--faint);margin-bottom:1.2rem;}
+.blog-content strong{color:var(--text);font-weight:600;}
+.blog-content ul,.blog-content ol{padding-left:1.4rem;margin-bottom:1.2rem;}
+.blog-content li{font-size:.97rem;line-height:1.8;color:var(--faint);margin-bottom:.5rem;}
+.blog-content li::marker{color:var(--gold);}
+.blog-content a{color:var(--gold);text-decoration:underline;text-decoration-color:var(--gold-bd);}
+.highlight-box{background:var(--gold-bg);border:1px solid var(--gold-bd);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:1.2rem 1.4rem;margin:1.8rem 0;}
+.highlight-box p{color:var(--text);margin:0;font-size:.94rem;}
+.highlight-box strong{color:var(--gl);}
+.saving-tip{background:rgba(126,211,160,0.07);border:1px solid rgba(126,211,160,0.25);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:1.1rem 1.4rem;margin:1.8rem 0;}
+.saving-tip p{color:var(--text);margin:0;font-size:.93rem;}
+.data-table{width:100%;border-collapse:collapse;margin:1.6rem 0;font-size:.88rem;overflow:hidden;border-radius:8px;}
+.data-table th{background:var(--gold-bg);color:var(--gold);font-weight:600;padding:.7rem 1rem;text-align:left;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--gold-bd);}
+.data-table td{padding:.65rem 1rem;border-bottom:1px solid var(--div2);color:var(--faint);}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:var(--gold-bg2);}
+.human-story{background:linear-gradient(135deg,var(--gold-bg),var(--gold-bg2));border:1px solid var(--gold-bd);border-radius:12px;padding:1.6rem;margin:2.5rem 0;}
+.human-story .eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.human-story h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.8rem;}
+.human-story p{font-size:.93rem;color:var(--faint);line-height:1.8;margin-bottom:.8rem;}
+.human-story p:last-child{margin-bottom:0;}
+.ss-tool-promo{background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border:1px solid var(--gold-bd);border-radius:12px;padding:1.4rem 1.6rem;margin:2rem 0;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+.ss-tool-promo .promo-text{flex:1;min-width:200px;}
+.ss-tool-promo .promo-eyebrow{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.ss-tool-promo h4{font-size:1rem;margin-bottom:.4rem;color:var(--text);}
+.ss-tool-promo p{font-size:.85rem;color:var(--muted);margin:0;}
+.ss-tool-promo a{background:var(--gold);color:var(--bg);padding:.75rem 1.4rem;border-radius:6px;font-size:.85rem;font-weight:700;white-space:nowrap;text-decoration:none;}
+.faq-section{margin:3rem 0;}
+.faq-section h2{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;color:var(--text);margin-bottom:1.4rem;}
+.faq-item{border-bottom:1px solid var(--divider);padding:1.1rem 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{font-weight:600;color:var(--text);margin-bottom:.45rem;font-size:.95rem;}
+.faq-a{color:var(--faint);line-height:1.75;font-size:.92rem;}
+.related-section{background:var(--bg2);border-top:1px solid var(--divider);padding:2.5rem 2.4rem;}
+.related-inner{max-width:780px;margin:0 auto;}
+.related-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text);margin-bottom:1.2rem;}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;}
+@media(max-width:500px){.related-grid{grid-template-columns:1fr;}}
+.related-card{background:var(--bg3);border:1px solid var(--gold-bd2);border-radius:8px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;transition:border-color .2s,background .2s;}
+.related-card:hover{border-color:var(--gold-bd);background:var(--gold-bg2);}
+.related-emoji{font-size:1.4rem;}
+.related-card strong{display:block;font-size:.88rem;color:var(--text);margin-bottom:.15rem;}
+.related-card span{font-size:.76rem;color:var(--muted);}
+footer{background:var(--bg2);border-top:1px solid var(--divider);padding:3rem 2.4rem 1.5rem;}
+.ftop{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
+@media(max-width:700px){.ftop{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.ftop{grid-template-columns:1fr;}}
+.fb p{font-size:.82rem;color:var(--muted);margin-top:.6rem;line-height:1.6;}
+.fcol h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.fcol li{margin-bottom:.4rem;}
+.fcol a{font-size:.83rem;color:var(--muted);transition:color .2s;}
+.fcol a:hover{color:var(--gl);}
+.fbot{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--divider);flex-wrap:wrap;gap:.8rem;}
+.fcopy{font-size:.75rem;color:var(--muted);}
+.fleg{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.fleg a{font-size:.75rem;color:var(--muted);transition:color .2s;}
+.fleg a:hover{color:var(--gl);}
+@media(max-width:768px){nav{padding:0 1.4rem;}.nav-links{display:none;}.hbg{display:flex;}.blog-hero,.blog-wrap{padding-left:1.4rem;padding-right:1.4rem;}.related-section{padding:2rem 1.4rem;}footer{padding:2.5rem 1.4rem 1.2rem;}}
+</style>
 </head>
 <body>
 
-<!-- Navigation include karo yahan -->
+<nav>
+  <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+  <div class="nav-links">
+    <a href="ai-tools.html">Tools</a>
+    <a href="blogs.html">Blog</a>
+    <a href="vendors/index.html">Vendors</a>
+    <a href="chatbot.html">AI Chat</a>
+    <a href="wedding-budget-calculator-india-2026.html" class="ncta">Free Calculator</a>
+  </div>
+  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
 
-<main class="blog-post">
-<article>
+<div class="drawer" id="drawer">
+  <div class="dr-sec">Free AI Tools</div>
+  <a href="ai-tools.html"><span class="mi">✨</span>All 13 AI Tools</a>
+  <a href="wedding-budget-calculator-india-2026.html"><span class="mi">🧮</span>Budget Calculator</a>
+  <a href="ai-invitation-writer.html"><span class="mi">💌</span>Invitation Writer</a>
+  <a href="ai-kundali-matching.html"><span class="mi">⭐</span>Kundali Matching</a>
+  <a href="chatbot.html"><span class="mi">🤖</span>AI Wedding Chatbot</a>
+  <div class="dr-sec">Guides</div>
+  <a href="blogs.html"><span class="mi">📖</span>All Blog Articles</a>
+  <a href="vendors/index.html"><span class="mi">🏪</span>Vendor Directory</a>
+  <a href="dr-cta" href="wedding-budget-calculator-india-2026.html" class="dr-cta">🚀 Free Budget Calculator</a>
+</div>
 
-<header class="blog-header">
-  <h1>${hesc(d.h1||d.metaTitle||'')}</h1>
-  <div class="blog-meta-info">
-    <span>📅 ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</span>
+<div class="blog-hero">
+  <div class="blog-eyebrow">📖 ${hesc(d.eyebrowTag||'Wedding Guide')}</div>
+  <h1>${hesc(d.h1Title||d.metaTitle||'')}</h1>
+  <div class="blog-meta">
+    <span>📅 ${today}</span>
     <span>⏱️ ${d.readingTime||'8 min read'}</span>
     <span>✍️ SmartShaadi Team</span>
+    <span>🇮🇳 India</span>
   </div>
-</header>
-
-${paras(d.intro||'')}
-${sectionsHTML}
-
-<!-- Real Couple Story -->
-<div class="human-story" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:1.5rem;margin:2.5rem 0;">
-  <div style="color:#C9A84C;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">✦ Real Couple Story</div>
-  <h3 style="font-size:1.05rem;margin-bottom:0.75rem;color:#1a1a1a;">${hesc(d.caseStudyCouple||'')}</h3>
-${paras(d.caseStudyStory||'')}
 </div>
 
-<!-- SmartShaadi Tool Promo -->
-<div class="ss-tool-promo" style="background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:1.5rem;margin:2.5rem 0;">
-  <h3 style="color:#C9A84C;margin-bottom:0.75rem;">💡 ${hesc(d.toolPromoH3||'SmartShaadi AI Tool')}</h3>
-${paras(d.toolPromoContent||'')}
-  <p style="margin-top:1rem;"><a href="https://smartshaadi.online/ai-tools.html" style="display:inline-block;background:#C9A84C;color:#08060E;padding:0.5rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.875rem;">🚀 Free Tool Use Karo →</a></p>
+<div class="blog-wrap">
+  <div class="blog-content">
+
+    ${introHTML}
+
+    <div class="highlight-box">
+      <p>💡 <strong>Pro Tip:</strong> ${hesc(d.highlightBox||'SmartShaadi AI tools se apna wedding budget free mein plan karo — smartshaadi.online')}</p>
+    </div>
+
+    ${sectionsHTML}
+
+    <div class="saving-tip">
+      <p>💰 <strong>Saving Tip:</strong> ${hesc(d.savingTip||'SmartShaadi AI Budget Calculator use karke exact savings calculate karo.')}</p>
+    </div>
+
+    <!-- Real Couple Story -->
+    <div class="human-story">
+      <div class="eyebrow">✦ Real Couple Story</div>
+      <h3>${hesc(d.caseStudyCouple||'')}</h3>
+      ${caseHTML}
+    </div>
+
+    <!-- SmartShaadi Tool Promo -->
+    <div class="ss-tool-promo">
+      <div class="promo-text">
+        <div class="promo-eyebrow">✦ Free AI Tool — SmartShaadi</div>
+        <h4>${toolName||'SmartShaadi AI Tool'}</h4>
+        ${toolPromoHTML}
+      </div>
+      <a href="/${toolUrl||'ai-tools.html'}">Try Free →</a>
+    </div>
+
+    ${conclusionHTML}
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2>❓ Aksar Poochhe Jaane Wale Sawaal</h2>
+      ${faqHTML}
+    </div>
+
+  </div>
 </div>
 
-${paras(d.conclusion||'')}
+<script type="application/ld+json">${faqSchema}<\/script>
 
-<!-- FAQ Section -->
-<section class="faq-section" style="margin:3rem 0;">
-  <h2 style="margin-bottom:1.25rem;">❓ Aksar Poochhe Jaane Wale Sawaal</h2>
-  <div class="faq-container">${faqHTML}
+<!-- Related Articles -->
+<div class="related-section">
+  <div class="related-inner">
+    <div class="related-title">Yeh Bhi Padhein</div>
+    <div class="related-grid">
+      ${relatedHTML}
+    </div>
   </div>
-</section>
+</div>
 
-</article>
-</main>
+<footer>
+  <div class="ftop">
+    <div class="fb">
+      <a href="index.html" class="logo">Smart<em>Shaadi</em> 💍</a>
+      <p>India ka #1 AI Wedding Planner. Technology aur tradition ka perfect milan.</p>
+    </div>
+    <div class="fcol">
+      <h4>Free Tools</h4>
+      <ul>
+        <li><a href="wedding-budget-calculator-india-2026.html">🧮 Budget Calculator</a></li>
+        <li><a href="destination-wedding-calculator-india-2026.html">✈️ Destination Calc</a></li>
+        <li><a href="whatsapp-invite-generator.html">💬 WhatsApp Invites</a></li>
+        <li><a href="wedding-vendor-negotiation-bot.html">🤝 Vendor Bot</a></li>
+        <li><a href="chatbot.html">🤖 AI Chatbot</a></li>
+        <li><a href="ai-tools.html">✨ All AI Tools</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Top Articles</h4>
+      <ul>
+        <li><a href="blog-budget-2026.html">💰 Budget Guide 2026</a></li>
+        <li><a href="blog-catering-cost-2026.html">🍽️ Catering Cost</a></li>
+        <li><a href="blog-mumbai-wedding-cost-2026.html">🏙️ Mumbai Wedding</a></li>
+        <li><a href="blog-delhi-wedding-cost-2026.html">🏛️ Delhi Wedding</a></li>
+        <li><a href="blog-photography-2026.html">📸 Photography Guide</a></li>
+        <li><a href="blogs.html">📖 All Articles →</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="about.html">💡 About Us</a></li>
+        <li><a href="contact.html">📬 Contact</a></li>
+        <li><a href="privacy-policy.html">🔒 Privacy</a></li>
+        <li><a href="terms.html">📄 Terms</a></li>
+        <li><a href="sitemap.xml">🗺️ Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <div class="fcopy">© 2026 Smart Shaadi AI. Made with ❤️ for Indian Couples.</div>
+    <div class="fleg">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
 
-<!-- Footer include karo yahan -->
-
-<style>
-.blog-post{max-width:820px;margin:0 auto;padding:2rem 1.5rem;}
-.blog-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid #eee;}
-.blog-header h1{font-size:clamp(1.4rem,4vw,2rem);line-height:1.3;margin-bottom:0.75rem;color:#1a1a1a;}
-.blog-meta-info{display:flex;gap:1.25rem;font-size:0.8rem;color:#888;flex-wrap:wrap;}
-article h2{font-size:1.25rem;margin:2rem 0 0.75rem;line-height:1.3;color:#1a1a1a;}
-article p{margin-bottom:1rem;line-height:1.78;color:#333;}
-.faq-item{border-bottom:1px solid #eee;padding:1rem 0;}
-.faq-item:last-child{border-bottom:none;}
-.faq-question{font-weight:700;margin-bottom:0.4rem;color:#1a1a1a;}
-.faq-answer{color:#555;line-height:1.65;font-size:0.925rem;}
-@media(max-width:600px){.blog-post{padding:1.5rem 1rem;}}
-</style>
-
+<script>
+var hbg=document.getElementById('hbg'),drw=document.getElementById('drawer');
+hbg.addEventListener('click',function(){var o=drw.classList.toggle('open');hbg.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+function clos(){drw.classList.remove('open');hbg.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('click',function(e){if(!hbg.contains(e.target)&&!drw.contains(e.target))clos();});
+var pref=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',pref);
+<\/script>
 </body>
 </html>`;
 
-  // Populate all panes
-  document.getElementById('htmlCodeBox').textContent=generatedHTML;
-  document.getElementById('schemaBox').textContent='=== FAQ Schema (JSON-LD) ===\n\n'+faqSchema+'\n\n\n=== Article Schema (JSON-LD) ===\n\n'+articleSchema;
-  document.getElementById('metaBox').textContent=`File Name: ${generatedSlug}\n\n<title>${d.metaTitle||''}</title>\n<meta name="description" content="${d.metaDescription||''}">\n<link rel="canonical" href="${canonicalUrl}">\n<meta property="og:title" content="${d.metaTitle||''}">\n<meta property="og:description" content="${d.metaDescription||''}">\n<meta property="og:url" content="${canonicalUrl}">`;
+  // Update meta info
+  document.getElementById('metaRow').innerHTML=`
+    <div class="meta-card"><div class="meta-val">${d.wordCountActual||2000}</div><div class="meta-lbl">Words</div></div>
+    <div class="meta-card"><div class="meta-val">${d.readingTime||'8 min'}</div><div class="meta-lbl">Read Time</div></div>
+    <div class="meta-card"><div class="meta-val">${(d.faqs||[]).length}</div><div class="meta-lbl">FAQs</div></div>
+    <div class="meta-card"><div class="meta-val">${(d.sections||[]).length}</div><div class="meta-lbl">Sections</div></div>`;
 
-  // Blog preview
-  let pv=`<h1>${hesc(d.h1||d.metaTitle||'')}</h1><p style="color:#999;font-size:0.78rem;margin-bottom:1.5rem;">📅 ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})} &nbsp;·&nbsp; ${d.readingTime||'8 min read'} &nbsp;·&nbsp; SmartShaadi Team</p>`;
-  (d.intro||'').split('\n').filter(l=>l.trim()).forEach(l=>{pv+=`<p>${hesc(l)}</p>`;});
-  (d.mainSections||[]).forEach(s=>{pv+=`<h2>${hesc(s.h2||s.heading||'')}</h2>`;(s.content||'').split('\n').filter(l=>l.trim()).forEach(l=>{pv+=`<p>${hesc(l)}</p>`;});});
-  pv+=`<div class="case-box"><h3>✦ Real Couple Story</h3><p><strong>${hesc(d.caseStudyCouple||'')}</strong></p><p>${hesc(d.caseStudyStory||'')}</p></div>`;
-  pv+=`<div class="promo-box"><h3>💡 ${hesc(d.toolPromoH3||'')}</h3><p>${hesc(d.toolPromoContent||'')}</p></div>`;
-  (d.conclusion||'').split('\n').filter(l=>l.trim()).forEach(l=>{pv+=`<p>${hesc(l)}</p>`;});
-  pv+=`<h2>❓ Aksar Poochhe Jaane Wale Sawaal</h2>`;
-  (d.faqs||[]).forEach(f=>{pv+=`<div class="faq-item"><div class="faq-q">❓ ${hesc(f.q||f.question||'')}</div><div class="faq-a">${hesc(f.a||f.answer||'')}</div></div>`;});
-  pv+=`<div class="schema-note">✅ FAQ Schema + Article Schema — head tag mein included hai HTML file mein</div>`;
-  document.getElementById('blogPreview').innerHTML=pv;
+  // Code box
+  document.getElementById('htmlCodeBox').textContent=generatedHTML;
+
+  // Meta box
+  document.getElementById('metaBox').textContent=`FILE NAME: ${generatedSlug}
+
+=== META TAGS ===
+<title>${d.metaTitle||''}</title>
+<meta name="description" content="${d.metaDescription||''}">
+<link rel="canonical" href="${canonicalUrl}">
+
+=== ARTICLE SCHEMA ===
+${articleSchema}
+
+=== FAQ SCHEMA ===
+${faqSchema}`;
+
+  // Live preview via iframe
+  const iframe=document.getElementById('blogIframe');
+  const doc=iframe.contentDocument||iframe.contentWindow.document;
+  doc.open();doc.write(generatedHTML);doc.close();
 
   document.getElementById('resultsDiv').classList.add('show');
   document.getElementById('resultsDiv').scrollIntoView({behavior:'smooth',block:'start'});
@@ -416,21 +650,15 @@ article p{margin-bottom:1rem;line-height:1.78;color:#333;}
 function downloadHTML(){
   if(!generatedHTML)return;
   const blob=new Blob([generatedHTML],{type:'text/html;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download=generatedSlug||'blog.html';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=generatedSlug||'blog.html';document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
-
 function copyHTML(){
   if(!generatedHTML)return;
   navigator.clipboard.writeText(generatedHTML).then(()=>{
-    const b=document.getElementById('cpBtn');
-    b.textContent='✅ Copied!';
-    setTimeout(()=>b.textContent='📋 HTML Copy',2000);
+    const b=document.getElementById('cpBtn');b.textContent='✅ Copied!';
+    setTimeout(()=>b.textContent='📋 Copy HTML',2000);
   });
 }
-
 function hesc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.classList.add('show');}
 function hideError(){document.getElementById('errorMsg').classList.remove('show');}
