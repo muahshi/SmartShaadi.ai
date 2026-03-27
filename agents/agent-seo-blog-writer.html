@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartShaadi — SEO Blog Writer Agent</title>
+<link rel="canonical" href="https://smartshaadi.online/agents/agent-seo-blog-writer.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C96A;
+  --gold-bg: rgba(201,168,76,0.07); --gold-bd: rgba(201,168,76,0.25);
+  --bg: #08060E; --bg2: #0F0C18; --bg3: #16121F;
+  --text: #F5EFE0; --muted: #A89070; --green: #4ADE80; --red: #F87171;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; }
+body::before { content:''; position:fixed; top:-30%; left:-20%; width:70%; height:70%; background:radial-gradient(ellipse,rgba(201,168,76,0.06) 0%,transparent 70%); pointer-events:none; z-index:0; }
+
+.container { max-width:920px; margin:0 auto; padding:0 1.5rem; position:relative; z-index:1; }
+
+header { padding:2rem 0 1.5rem; border-bottom:1px solid var(--gold-bd); margin-bottom:2rem; }
+.header-inner { display:flex; align-items:center; gap:1rem; }
+.logo-mark { width:42px; height:42px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.logo-text h1 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:700; color:var(--gold); line-height:1; }
+.logo-text p { font-size:0.72rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-top:2px; }
+.badge { margin-left:auto; background:var(--gold-bg); border:1px solid var(--gold-bd); color:var(--gold); font-size:0.68rem; padding:0.25rem 0.7rem; border-radius:20px; letter-spacing:0.06em; text-transform:uppercase; }
+.back-btn { color:var(--muted); font-size:0.82rem; text-decoration:none; display:flex; align-items:center; gap:0.3rem; margin-right:0.5rem; }
+.back-btn:hover { color:var(--gold); }
+
+.hero { text-align:center; padding:1rem 0 2rem; }
+.hero h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,5vw,2.8rem); font-weight:700; line-height:1.2; margin-bottom:0.75rem; }
+.hero h2 span { color:var(--gold); }
+.hero p { color:var(--muted); font-size:0.95rem; max-width:540px; margin:0 auto; line-height:1.6; }
+
+.input-section { background:var(--bg2); border:1px solid var(--gold-bd); border-radius:16px; padding:1.75rem; margin-bottom:1.5rem; }
+.section-label { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+.section-label::after { content:''; flex:1; height:1px; background:var(--gold-bd); }
+.input-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+@media(max-width:600px){ .input-grid { grid-template-columns:1fr; } }
+.field label { display:block; font-size:0.8rem; color:var(--muted); margin-bottom:0.4rem; }
+.field input,.field select,.field textarea { width:100%; background:var(--bg3); border:1px solid rgba(201,168,76,0.2); color:var(--text); padding:0.65rem 0.9rem; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.88rem; outline:none; transition:border-color 0.2s; }
+.field input:focus,.field select:focus,.field textarea:focus { border-color:var(--gold); }
+.field textarea { resize:vertical; min-height:70px; }
+.field select option { background:var(--bg3); }
+.full-width { grid-column:1 / -1; }
+
+.checkbox-grid { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.checkbox-item { background:var(--bg3); border:1px solid rgba(201,168,76,0.2); color:var(--muted); padding:0.4rem 0.9rem; border-radius:20px; font-size:0.8rem; cursor:pointer; transition:all 0.2s; user-select:none; }
+.checkbox-item.active { background:var(--gold-bg); border-color:var(--gold); color:var(--gold); }
+
+.generate-btn { width:100%; background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:#08060E; border:none; padding:0.9rem; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600; cursor:pointer; margin-top:1.25rem; transition:opacity 0.2s,transform 0.1s; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+.generate-btn:hover { opacity:0.92; }
+.generate-btn:active { transform:scale(0.99); }
+.generate-btn:disabled { opacity:0.5; cursor:not-allowed; }
+
+.loading { display:none; text-align:center; padding:2.5rem; background:var(--bg2); border:1px solid var(--gold-bd); border-radius:16px; margin-bottom:1.5rem; }
+.loading.show { display:block; }
+.spinner { width:36px; height:36px; border:2px solid var(--gold-bd); border-top-color:var(--gold); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 1rem; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading p { color:var(--muted); font-size:0.9rem; }
+.loading-step { color:var(--gold); font-size:0.85rem; margin-top:0.5rem; min-height:1.2em; }
+
+.results { display:none; }
+.results.show { display:block; }
+.results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.75rem; }
+.results-header h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--gold); }
+.btn-row { display:flex; gap:0.5rem; }
+.reset-btn,.copy-all-btn { background:transparent; border:1px solid var(--gold-bd); color:var(--muted); padding:0.4rem 0.9rem; border-radius:8px; font-size:0.8rem; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+.reset-btn:hover,.copy-all-btn:hover { border-color:var(--gold); color:var(--gold); }
+
+/* Blog preview */
+.blog-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.25rem; }
+@media(max-width:500px){ .blog-meta { grid-template-columns:1fr 1fr; } }
+.meta-card { background:var(--bg2); border:1px solid var(--gold-bd); border-radius:10px; padding:0.9rem; text-align:center; }
+.meta-card .val { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--gold); font-weight:700; }
+.meta-card .lbl { font-size:0.72rem; color:var(--muted); margin-top:2px; text-transform:uppercase; letter-spacing:0.05em; }
+
+.blog-output { background:var(--bg2); border:1px solid var(--gold-bd); border-radius:14px; overflow:hidden; margin-bottom:1.25rem; }
+.output-header { padding:1rem 1.25rem; border-bottom:1px solid rgba(201,168,76,0.12); display:flex; align-items:center; justify-content:space-between; }
+.output-title { font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:0.5rem; }
+.copy-btn { background:var(--gold-bg); border:1px solid var(--gold-bd); color:var(--gold); padding:0.3rem 0.75rem; border-radius:6px; font-size:0.75rem; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+.copy-btn:hover { background:rgba(201,168,76,0.15); }
+.copy-btn.copied { color:var(--green); border-color:var(--green); background:rgba(74,222,128,0.08); }
+.output-body { padding:1.25rem; }
+.output-content { font-size:0.875rem; line-height:1.75; color:var(--text); white-space:pre-wrap; word-break:break-word; }
+
+.schema-box { background:var(--bg3); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:1rem; font-family:monospace; font-size:0.75rem; color:#90EE90; line-height:1.6; overflow-x:auto; white-space:pre-wrap; word-break:break-all; }
+
+.error-msg { display:none; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.3); color:var(--red); padding:1rem 1.25rem; border-radius:10px; font-size:0.875rem; margin-bottom:1.5rem; }
+.error-msg.show { display:block; }
+
+footer { text-align:center; padding:2rem 0; color:var(--muted); font-size:0.78rem; border-top:1px solid rgba(201,168,76,0.1); margin-top:3rem; }
+footer a { color:var(--gold); text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-inner">
+      <a href="/agents/" class="back-btn">← Back</a>
+      <div class="logo-mark">✍️</div>
+      <div class="logo-text">
+        <h1>SmartShaadi AI</h1>
+        <p>SEO Blog Writer Agent</p>
+      </div>
+      <div class="badge">Phase 2</div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2>Keyword Daalo →<br><span>SEO-Ready Blog Ready</span></h2>
+    <p>Ek keyword daao — poora blog draft, FAQ schema, canonical tag, case study, word count, meta description — sab kuch ek click mein.</p>
+  </div>
+
+  <div class="input-section">
+    <div class="section-label">🎯 Blog Details</div>
+    <div class="input-grid">
+      <div class="field">
+        <label>Main Keyword / Topic *</label>
+        <input type="text" id="keyword" placeholder="e.g. Mumbai wedding budget 2026" />
+      </div>
+      <div class="field">
+        <label>Blog Category</label>
+        <select id="category">
+          <option value="budget">Budget Guide</option>
+          <option value="city">City Guide</option>
+          <option value="vendor">Vendor/Cost Guide</option>
+          <option value="planning">Planning Guide</option>
+          <option value="ai">AI Tools Guide</option>
+          <option value="shopping">Shopping Guide</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Target City (if applicable)</label>
+        <input type="text" id="city" placeholder="e.g. Mumbai, Delhi, Jaipur" />
+      </div>
+      <div class="field">
+        <label>Word Count Target</label>
+        <select id="wordCount">
+          <option value="1200">~1200 words (Quick read)</option>
+          <option value="2000" selected>~2000 words (Standard)</option>
+          <option value="3000">~3000 words (Comprehensive)</option>
+        </select>
+      </div>
+      <div class="field full-width">
+        <label>Additional Context (optional)</label>
+        <textarea id="context" placeholder="Koi specific points jo cover karne hain? e.g. 2026 ke new prices, specific vendors, seasonal tips..."></textarea>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:1rem;">📦 Blog Elements</div>
+    <div class="checkbox-grid" id="elementsGrid">
+      <span class="checkbox-item active" data-el="intro">✅ SEO Intro</span>
+      <span class="checkbox-item active" data-el="sections">📋 Main Sections</span>
+      <span class="checkbox-item active" data-el="casestudy">👫 Real Couple Story</span>
+      <span class="checkbox-item active" data-el="faq">❓ 5 FAQs</span>
+      <span class="checkbox-item active" data-el="schema">🔧 FAQ Schema JSON</span>
+      <span class="checkbox-item active" data-el="meta">🏷️ Meta Description</span>
+      <span class="checkbox-item active" data-el="toolpromo">💡 Tool Promo</span>
+      <span class="checkbox-item active" data-el="canonical">🔗 Canonical Tag</span>
+    </div>
+
+    <button class="generate-btn" id="generateBtn" onclick="generateBlog()">
+      ✨ Blog Generate Karo
+    </button>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <div class="loading" id="loadingDiv">
+    <div class="spinner"></div>
+    <p>AI blog likh raha hai...</p>
+    <div class="loading-step" id="loadingStep"></div>
+  </div>
+
+  <div class="results" id="resultsDiv">
+    <div class="results-header">
+      <h3>✅ Blog Ready Hai</h3>
+      <div class="btn-row">
+        <button class="copy-all-btn" onclick="copyAll()">📋 Sab Copy Karo</button>
+        <button class="reset-btn" onclick="resetForm()">← Naya Blog</button>
+      </div>
+    </div>
+
+    <div class="blog-meta" id="blogMeta"></div>
+    <div id="blogSections"></div>
+  </div>
+
+  <footer>Powered by <a href="https://smartshaadi.online">SmartShaadi AI</a> &nbsp;·&nbsp; India ka #1 Free AI Wedding Planning Platform</footer>
+</div>
+
+<script>
+const steps = ['Keyword research ho rahi hai...','Blog structure ban rahi hai...','Sections likh rahe hain...','Case study add ho rahi hai...','FAQs generate ho rahe hain...','Schema markup ban raha hai...','Final polish ho raha hai...'];
+let stepInt;
+
+function startLoading() {
+  let i = 0;
+  const el = document.getElementById('loadingStep');
+  el.textContent = steps[0];
+  stepInt = setInterval(() => { i=(i+1)%steps.length; el.textContent=steps[i]; }, 2000);
+}
+
+function stopLoading() { clearInterval(stepInt); }
+
+document.querySelectorAll('.checkbox-item').forEach(el => {
+  el.addEventListener('click', () => el.classList.toggle('active'));
+});
+
+function getActiveElements() {
+  return Array.from(document.querySelectorAll('.checkbox-item.active')).map(e => e.dataset.el);
+}
+
+async function generateBlog() {
+  const keyword = document.getElementById('keyword').value.trim();
+  if (!keyword) { showError('Keyword zaroori hai!'); return; }
+
+  const category = document.getElementById('category').value;
+  const city = document.getElementById('city').value.trim();
+  const wordCount = document.getElementById('wordCount').value;
+  const context = document.getElementById('context').value.trim();
+  const elements = getActiveElements();
+
+  hideError();
+  document.getElementById('loadingDiv').classList.add('show');
+  document.getElementById('generateBtn').disabled = true;
+  startLoading();
+
+  const cityNote = city ? `Target City: ${city}` : '';
+  const contextNote = context ? `Additional Context: ${context}` : '';
+
+  const slug = keyword.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-');
+  const canonicalUrl = `https://smartshaadi.online/blog-${slug}.html`;
+
+  const prompt = `You are a senior SEO content writer for SmartShaadi AI — India's #1 Free AI Wedding Planning Platform (smartshaadi.online).
+
+Keyword: ${keyword}
+Category: ${category}
+${cityNote}
+Word Count Target: ${wordCount} words
+${contextNote}
+
+Write a complete, SEO-optimized wedding blog post. The blog should rank on Google India for this keyword.
+
+Generate the following elements (return as JSON only, no markdown backticks):
+
+{
+  "metaTitle": "SEO title under 60 chars",
+  "metaDescription": "compelling meta description 150-160 chars with keyword",
+  "canonicalUrl": "${canonicalUrl}",
+  "slug": "blog-${slug}.html",
+  "estimatedWordCount": number,
+  "readingTime": "X min read",
+  "intro": "2-3 paragraph SEO intro with keyword in first line, hook, and what reader will learn. Include ₹ figures.",
+  "sections": [
+    {"heading": "H2 heading", "content": "300-400 word section content with specific tips, data, ₹ amounts"}
+  ],
+  "caseStudy": {
+    "coupleName": "Indian couple name — City, Month Year",
+    "story": "150 word real-feeling case study with specific budget saved using SmartShaadi tools"
+  },
+  "faqs": [
+    {"question": "FAQ question", "answer": "2-3 sentence answer with specific data"}
+  ],
+  "faqSchema": "complete FAQPage JSON-LD schema string (escaped properly for JSON)",
+  "toolPromo": "2 paragraph tool promo section — mention specific SmartShaadi tool relevant to this topic. Link naturally.",
+  "conclusion": "Strong 2 para conclusion with CTA to use SmartShaadi AI",
+  "articleSchema": "complete Article JSON-LD schema string"
+}
+
+Rules:
+- All content in Hinglish (mix of Hindi and English — warm, helpful tone)
+- Include specific ₹ amounts and percentages
+- 5 FAQs minimum
+- 4-5 main sections minimum
+- SmartShaadi mentions must feel natural, not forced
+- Real-feeling couple names and stories
+- Return ONLY valid JSON`;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        max_tokens: 4000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    if (!res.ok) throw new Error('API Error ' + res.status);
+    const data = await res.json();
+    const raw = data.content?.[0]?.text || '';
+    const clean = raw.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+    stopLoading();
+    document.getElementById('loadingDiv').classList.remove('show');
+    renderBlog(parsed, elements);
+  } catch(e) {
+    stopLoading();
+    document.getElementById('loadingDiv').classList.remove('show');
+    document.getElementById('generateBtn').disabled = false;
+    showError('Error: ' + e.message);
+  }
+}
+
+function renderBlog(d, elements) {
+  // Meta cards
+  document.getElementById('blogMeta').innerHTML = `
+    <div class="meta-card"><div class="val">${d.estimatedWordCount||'~2000'}</div><div class="lbl">Words</div></div>
+    <div class="meta-card"><div class="val">${d.readingTime||'8 min'}</div><div class="lbl">Read Time</div></div>
+    <div class="meta-card"><div class="val">${(d.faqs||[]).length}</div><div class="lbl">FAQs</div></div>
+  `;
+
+  const sections = document.getElementById('blogSections');
+  sections.innerHTML = '';
+  const allContent = [];
+
+  // Canonical + Meta
+  if (elements.includes('canonical')) {
+    const code = `<link rel="canonical" href="${d.canonicalUrl}">\n<title>${d.metaTitle}</title>\n<meta name="description" content="${d.metaDescription}">`;
+    allContent.push('=== HEAD TAGS ===\n' + code);
+    addCard(sections, '🔗 Head Tags (Canonical + Meta)', code, 'schema-box');
+  }
+
+  // Intro
+  if (elements.includes('intro') && d.intro) {
+    allContent.push('=== INTRO ===\n' + d.intro);
+    addCard(sections, '📖 Blog Intro', d.intro);
+  }
+
+  // Sections
+  if (elements.includes('sections') && d.sections) {
+    const sec = d.sections.map(s => `## ${s.heading}\n\n${s.content}`).join('\n\n---\n\n');
+    allContent.push('=== MAIN SECTIONS ===\n' + sec);
+    addCard(sections, `📋 Main Sections (${d.sections.length})`, sec);
+  }
+
+  // Case Study
+  if (elements.includes('casestudy') && d.caseStudy) {
+    const cs = `✦ Real Couple Story\n${d.caseStudy.coupleName}\n\n${d.caseStudy.story}`;
+    allContent.push('=== CASE STUDY ===\n' + cs);
+    addCard(sections, '👫 Real Couple Story', cs);
+  }
+
+  // Tool Promo
+  if (elements.includes('toolpromo') && d.toolPromo) {
+    allContent.push('=== TOOL PROMO ===\n' + d.toolPromo);
+    addCard(sections, '💡 SmartShaadi Tool Promo', d.toolPromo);
+  }
+
+  // FAQs
+  if (elements.includes('faq') && d.faqs) {
+    const faqText = d.faqs.map((f,i) => `Q${i+1}: ${f.question}\nA: ${f.answer}`).join('\n\n');
+    allContent.push('=== FAQS ===\n' + faqText);
+    addCard(sections, `❓ FAQs (${d.faqs.length})`, faqText);
+  }
+
+  // Conclusion
+  if (d.conclusion) {
+    allContent.push('=== CONCLUSION ===\n' + d.conclusion);
+    addCard(sections, '🏁 Conclusion', d.conclusion);
+  }
+
+  // Schema
+  if (elements.includes('schema') && d.faqSchema) {
+    allContent.push('=== FAQ SCHEMA ===\n' + d.faqSchema);
+    addCard(sections, '🔧 FAQ Schema JSON-LD', d.faqSchema, 'schema-box');
+  }
+  if (d.articleSchema) {
+    allContent.push('=== ARTICLE SCHEMA ===\n' + d.articleSchema);
+    addCard(sections, '🔧 Article Schema JSON-LD', d.articleSchema, 'schema-box');
+  }
+
+  window._allBlogContent = allContent.join('\n\n' + '='.repeat(50) + '\n\n');
+  document.getElementById('resultsDiv').classList.add('show');
+  document.getElementById('resultsDiv').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function addCard(parent, title, content, contentClass) {
+  const card = document.createElement('div');
+  card.className = 'blog-output';
+  const id = 'c_' + Math.random().toString(36).substr(2,6);
+  card.innerHTML = `
+    <div class="output-header">
+      <div class="output-title">${title}</div>
+      <button class="copy-btn" id="${id}" onclick="copySection('${id}', \`${esc(content)}\`)">📋 Copy</button>
+    </div>
+    <div class="output-body">
+      <div class="${contentClass || 'output-content'}">${escHtml(content)}</div>
+    </div>`;
+  parent.appendChild(card);
+}
+
+function copySection(id, content) {
+  navigator.clipboard.writeText(content).then(() => {
+    const btn = document.getElementById(id);
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function copyAll() {
+  if (window._allBlogContent) {
+    navigator.clipboard.writeText(window._allBlogContent).then(() => {
+      const btn = document.querySelector('.copy-all-btn');
+      btn.textContent = '✅ Sab Copy Ho Gaya!';
+      setTimeout(() => btn.textContent = '📋 Sab Copy Karo', 2000);
+    });
+  }
+}
+
+function esc(s) { return s.replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$'); }
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function showError(m) { const e=document.getElementById('errorMsg'); e.textContent=m; e.classList.add('show'); }
+function hideError() { document.getElementById('errorMsg').classList.remove('show'); }
+function resetForm() {
+  document.getElementById('resultsDiv').classList.remove('show');
+  document.getElementById('keyword').value='';
+  document.getElementById('generateBtn').disabled=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
