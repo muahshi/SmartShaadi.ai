@@ -721,7 +721,7 @@ IMPORTANT:
 - Content must feel genuine, not spammy
 - Include specific numbers/savings where possible
 - SmartShaadi mention should feel helpful, not forced
-- Respond in this EXACT JSON format (nothing else):
+- OUTPUT ONLY RAW JSON. No explanation, no markdown, no backticks. Start your response with { and end with }
 
 {
   "platforms": {
@@ -735,7 +735,6 @@ IMPORTANT:
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
         max_tokens: 3000,
         messages: [{ role: "user", content: prompt }]
       })
@@ -748,10 +747,16 @@ IMPORTANT:
 
     let parsed;
     try {
-      const clean = raw.replace(/```json|```/g, '').trim();
+      // Robust parsing — strip any markdown, find JSON object
+      let clean = raw.replace(/```json|```/gi, '').trim();
+      // Extract first { ... } block if extra text present
+      const jsonMatch = clean.match(/\{[\s\S]*\}/);
+      if (jsonMatch) clean = jsonMatch[0];
       parsed = JSON.parse(clean);
     } catch {
-      throw new Error('Response parse nahi hua. Dobara try karo.');
+      // Last resort — try to build fallback from raw text
+      console.error('Raw response:', raw);
+      throw new Error('Response parse nahi hua. Raw: ' + raw.substring(0, 200));
     }
 
     stopLoadingAnimation();
