@@ -17,8 +17,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3031340680723255" crossorigin="anonymous"></script>
-
 <style>
 :root{
   --bg:#050407;--bg2:#09070F;--card:#0E0B18;--card2:#13102A;
@@ -298,8 +296,7 @@ footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5r
 <div class="wrap">
 
   <div class="ad-w">
-    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    
   </div>
 
   <!-- STEP 1: VIBE -->
@@ -461,8 +458,7 @@ footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5r
   </div>
 
   <div class="ad-w reveal">
-    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    
   </div>
 
   <!-- THEME REFERENCE -->
@@ -517,8 +513,7 @@ footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5r
   </div>
 
   <div class="ad-w reveal">
-    <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-3031340680723255" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    
   </div>
 
 </div>
@@ -777,7 +772,7 @@ function copyAll(){
     t+=`\n═══ ${sec.title?.toUpperCase()||'SECTION'} ═══\n`;
     (sec.items||[]).forEach((item,i)=>t+=`${i+1}. ${item.title}${item.desc?' — '+item.desc:''}\n`);
   });
-  t+=`\n🔗 https://www.smartshaadi.online/ai-wedding-theme-generator.html`;
+  t+=`\n🔗 https://smartshaadi.online/ai-wedding-theme-generator.html`;
   navigator.clipboard.writeText(t).then(()=>showToast('📋 Full theme copied!'));
 }
 
@@ -797,10 +792,10 @@ function copyDecorBrief(){
 function waShare(){
   if(!storedTheme)return;
   const pal=(storedTheme.palette||[]).map(c=>c.name+' ('+c.hex+')').join(', ');
-  const t=`🎨 Wedding Theme: ${storedTheme.themeName||selectedVibe}\n\nColor Palette: ${pal}\n\n${storedTheme.topTip||''}\n\n🔗 Free Tool: https://www.smartshaadi.online/ai-wedding-theme-generator.html`;
+  const t=`🎨 Wedding Theme: ${storedTheme.themeName||selectedVibe}\n\nColor Palette: ${pal}\n\n${storedTheme.topTip||''}\n\n🔗 Free Tool: https://smartshaadi.online/ai-wedding-theme-generator.html`;
   window.open('https://wa.me/?text='+encodeURIComponent(t));
 }
-function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Theme Generator!\n🎨 Color palette + decor ideas + mood board.\nhttps://www.smartshaadi.online/ai-wedding-theme-generator.html'));}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Theme Generator!\n🎨 Color palette + decor ideas + mood board.\nhttps://smartshaadi.online/ai-wedding-theme-generator.html'));}
 
 function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
