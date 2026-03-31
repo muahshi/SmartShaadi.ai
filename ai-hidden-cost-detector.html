@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Hidden Cost Detector — Wedding Ke Chhupe Kharche Pakadon | SmartShaadi</title>
+<meta name="description" content="Wedding planning mein hidden costs detect karo AI se — venue, catering, decoration ke chhupe charges. Total surprise bill se bachao. Free tool!">
+<link rel="canonical" href="https://smartshaadi.online/ai-hidden-cost-detector.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-bg: rgba(201,168,76,0.07);
+  --gold-bd: rgba(201,168,76,0.2);
+  --bg: #0C0800;
+  --bg2: #140F00;
+  --card: #161000;
+  --card2: #1E1600;
+  --text: #F5F0E0;
+  --muted: #9A8A60;
+  --dim: #4A3F20;
+  --red: #F87171;
+  --red-bg: rgba(248,113,113,0.08);
+  --red-bd: rgba(248,113,113,0.25);
+  --orange: #FB923C;
+  --orange-bg: rgba(251,146,60,0.08);
+  --orange-bd: rgba(251,146,60,0.25);
+  --green: #4ADE80;
+  --green-bg: rgba(74,222,128,0.07);
+  --r: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(12,8,0,0.94); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--gold-bd);
+  padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 54px;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--text); text-decoration: none; }
+.nav-logo em { color: var(--gold); font-style: italic; }
+.nav-back { font-size: .8rem; color: var(--muted); text-decoration: none; }
+
+.hero {
+  padding: 3rem 1.5rem 2.5rem; text-align: center;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(248,113,113,0.08) 0%, transparent 65%);
+  border-bottom: 1px solid var(--gold-bd);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--red-bg); border: 1px solid var(--red-bd);
+  color: var(--red); font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; padding: .28rem .9rem; border-radius: 100px; font-weight: 700; margin-bottom: 1.2rem;
+}
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: .8rem; }
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero p { color: var(--muted); font-size: .95rem; max-width: 520px; margin: 0 auto; }
+
+.page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* QUOTE INPUT */
+.quote-section { background: var(--card); border: 1px solid var(--gold-bd); border-radius: 18px; padding: 1.6rem; margin-bottom: 1.5rem; }
+.sec-title { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 1.2rem; }
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:600px) { .input-grid { grid-template-columns: 1fr; } }
+.input-group { }
+.input-group label { display: block; font-size: .75rem; font-weight: 600; color: var(--muted); margin-bottom: .35rem; }
+.input-group input, .input-group select, .input-group textarea {
+  width: 100%; background: var(--bg2); border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 8px; padding: .65rem .9rem; font-size: .87rem;
+  color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; outline: none;
+  transition: border-color .2s;
+}
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus { border-color: var(--gold); }
+.input-group select option { background: #140F00; }
+.input-group textarea { resize: vertical; min-height: 80px; }
+.input-group.full { grid-column: 1 / -1; }
+
+/* CHECKLIST */
+.checklist-section { background: var(--card); border: 1px solid var(--gold-bd); border-radius: 18px; padding: 1.6rem; margin-bottom: 1.5rem; }
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .8rem; }
+@media(max-width:600px) { .check-grid { grid-template-columns: 1fr; } }
+.check-item {
+  display: flex; align-items: center; gap: .7rem;
+  background: var(--card2); border-radius: 8px; padding: .65rem .9rem;
+  cursor: pointer; border: 1px solid transparent; transition: all .2s;
+}
+.check-item:hover { border-color: var(--gold-bd); }
+.check-item.checked { background: var(--red-bg); border-color: var(--red-bd); }
+.check-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--red); flex-shrink: 0; cursor: pointer; }
+.check-item label { font-size: .82rem; cursor: pointer; line-height: 1.4; }
+.check-item.checked label { color: var(--red); }
+
+/* DETECT BTN */
+.detect-btn {
+  width: 100%; background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: #fff; border: none; border-radius: 10px;
+  padding: .95rem; font-size: .92rem; font-weight: 800;
+  cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all .2s; display: flex; align-items: center; justify-content: center; gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+.detect-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(239,68,68,0.3); }
+.detect-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* RESULTS */
+.results { display: none; }
+.results.show { display: block; }
+
+/* TOTAL ALERT */
+.total-alert {
+  background: var(--red-bg); border: 1px solid var(--red-bd);
+  border-radius: 14px; padding: 1.4rem 1.6rem; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.total-alert-icon { font-size: 2.5rem; }
+.total-num { font-family: 'DM Mono', monospace; font-size: 2rem; color: var(--red); font-weight: 500; }
+.total-label { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+.total-pct { font-family: 'DM Mono', monospace; font-size: 1.2rem; color: var(--orange); font-weight: 500; margin-left: auto; text-align: center; }
+.total-pct-label { font-size: .7rem; color: var(--muted); }
+
+/* COST ITEMS */
+.costs-by-category { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+.category-group { background: var(--card); border: 1px solid var(--gold-bd); border-radius: 14px; overflow: hidden; }
+.category-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1.2rem; cursor: pointer;
+  border-bottom: 1px solid var(--gold-bd);
+}
+.category-header:hover { background: var(--card2); }
+.cat-h-left { display: flex; align-items: center; gap: .6rem; }
+.cat-h-icon { font-size: 1.2rem; }
+.cat-h-name { font-size: .88rem; font-weight: 700; }
+.cat-h-count { font-size: .68rem; background: var(--red-bg); color: var(--red); border-radius: 100px; padding: .12rem .45rem; font-weight: 700; }
+.cat-h-total { font-family: 'DM Mono', monospace; font-size: .9rem; color: var(--red); font-weight: 500; }
+.cat-items { padding: .8rem 1.2rem; display: flex; flex-direction: column; gap: .7rem; }
+.cost-item { display: flex; align-items: flex-start; gap: .8rem; }
+.cost-severity {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: .45rem;
+}
+.sev-high { background: var(--red); }
+.sev-med { background: var(--orange); }
+.sev-low { background: var(--gold); }
+.cost-info { flex: 1; }
+.cost-name { font-size: .83rem; font-weight: 600; margin-bottom: .2rem; }
+.cost-desc { font-size: .76rem; color: var(--muted); line-height: 1.5; }
+.cost-amount { font-family: 'DM Mono', monospace; font-size: .85rem; color: var(--orange); font-weight: 500; white-space: nowrap; padding-top: .1rem; }
+
+/* AI TIPS */
+.ai-tips { background: var(--card); border: 1px solid var(--gold-bd); border-radius: 14px; padding: 1.4rem; margin-bottom: 1.5rem; }
+.ai-loading { text-align: center; padding: 2rem; }
+.spin { width: 36px; height: 36px; border: 2px solid var(--dim); border-top-color: var(--red); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 1rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ai-text { font-size: .87rem; line-height: 1.85; color: #E8DCBA; white-space: pre-wrap; }
+
+/* PROTECTION TIPS */
+.protection { background: var(--green-bg); border: 1px solid rgba(74,222,128,0.2); border-radius: 14px; padding: 1.4rem; margin-bottom: 1.5rem; }
+.prot-title { font-size: .78rem; font-weight: 700; color: var(--green); margin-bottom: .8rem; }
+.prot-list { display: flex; flex-direction: column; gap: .5rem; }
+.prot-list li { font-size: .82rem; color: #A0C8B0; display: flex; gap: .5rem; list-style: none; }
+.prot-list li::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid var(--gold-bd); margin-top: 2rem; }
+footer p { font-size: .78rem; color: var(--dim); margin-bottom: .6rem; }
+.footer-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+.footer-links a { font-size: .76rem; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--gold); }
+@media(max-width:600px) { .hero h1 { font-size: 1.6rem; } .total-alert { flex-direction: column; } .total-pct { margin-left: 0; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Smart<em>Shaadi</em> 💍</a>
+  <a href="/ai-tools.html" class="nav-back">← Saare Tools</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🔍 Hidden Cost Detector</div>
+  <h1>Wedding Ke Chhupe <em>Kharche</em> Pakadon</h1>
+  <p>Vendors jo nahi bataate — woh sab AI detect karega. Apni quotes ki details daalo aur discover karo kitne extra charges aa sakte hain.</p>
+</div>
+
+<div class="page">
+
+  <!-- QUOTE DETAILS -->
+  <div class="quote-section">
+    <div class="sec-title">📋 Apni Wedding Details Bharein</div>
+    <div class="input-grid">
+      <div class="input-group">
+        <label>City</label>
+        <select id="city">
+          <option>Delhi NCR</option><option>Mumbai</option><option>Bangalore</option>
+          <option>Hyderabad</option><option>Jaipur</option><option>Pune</option>
+          <option>Bhopal / Indore</option><option>Kolkata</option><option>Ahmedabad</option>
+          <option>Lucknow</option><option>Chandigarh</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Guests</label>
+        <select id="guests">
+          <option value="75">~75 guests</option>
+          <option value="150" selected>~150 guests</option>
+          <option value="250">~250 guests</option>
+          <option value="400">~400 guests</option>
+          <option value="500">500+ guests</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Venue Type</label>
+        <select id="venue">
+          <option value="hotel">5-Star Hotel</option>
+          <option value="banquet" selected>Banquet Hall</option>
+          <option value="farmhouse">Farmhouse</option>
+          <option value="resort">Resort</option>
+          <option value="community">Community Hall</option>
+          <option value="destination">Destination Venue</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Season</label>
+        <select id="season">
+          <option value="peak">Peak Season (Oct–Feb)</option>
+          <option value="offpeak">Off-Season (Mar–Sep)</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Quoted Venue Price (₹)</label>
+        <input type="number" id="venuePrice" placeholder="e.g. 200000" value="200000">
+      </div>
+      <div class="input-group">
+        <label>Quoted Catering (₹/plate)</label>
+        <input type="number" id="cateringPerPlate" placeholder="e.g. 900" value="900">
+      </div>
+      <div class="input-group full">
+        <label>Vendor Quote Mein Kya Likha Hai (optional — paste karein)</label>
+        <textarea id="quoteText" placeholder="Vendor ka quote ya terms yahan paste karein — AI specific hidden costs dhundhega..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="checklist-section">
+    <div class="sec-title">⚠️ Kaunse Vendors Hire Kiye Hain?</div>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.8rem">Jo hire kiye hain unhe check karein — AI unke specific hidden costs detect karega:</p>
+    <div class="check-grid" id="vendorChecklist"></div>
+  </div>
+
+  <button class="detect-btn" id="detectBtn" onclick="detectCosts()">
+    <span>🔍</span> Hidden Costs Detect Karo — AI se
+  </button>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+
+    <div class="total-alert">
+      <div class="total-alert-icon">⚠️</div>
+      <div>
+        <div class="total-num" id="totalHidden">₹0</div>
+        <div class="total-label">Estimated Hidden Costs</div>
+      </div>
+      <div class="total-pct">
+        <div id="pctOfBudget">0%</div>
+        <div class="total-pct-label">of quoted<br>budget</div>
+      </div>
+    </div>
+
+    <div class="costs-by-category" id="costsContainer"></div>
+
+    <div class="ai-tips">
+      <div style="font-size:.9rem;font-weight:700;margin-bottom:1rem">🤖 AI Deep Analysis & Vendor-Specific Warnings</div>
+      <div class="ai-loading" id="aiLoading">
+        <div class="spin"></div>
+        <p style="font-size:.82rem;color:var(--muted)">Hidden costs analyze ho rahi hain...</p>
+      </div>
+      <div id="aiText" style="display:none"></div>
+    </div>
+
+    <div class="protection">
+      <div class="prot-title">✅ Khud Ko Kaise Protect Karein</div>
+      <ul class="prot-list" id="protList"></ul>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>SmartShaadi.online — India's #1 Free AI Wedding Planner</p>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/ai-tools.html">All Tools</a>
+    <a href="/ai-vendor-price-predictor.html">Price Predictor</a>
+    <a href="/wedding-vendor-negotiation-bot.html">Negotiation Bot</a>
+    <a href="/privacy-policy.html">Privacy</a>
+  </div>
+</footer>
+
+<script>
+const VENDORS_LIST = [
+  { id: 'venue', label: '🏛️ Venue / Banquet' },
+  { id: 'caterer', label: '🍽️ Caterer' },
+  { id: 'decorator', label: '🌸 Decorator' },
+  { id: 'photographer', label: '📸 Photographer' },
+  { id: 'videographer', label: '🎬 Videographer' },
+  { id: 'dj', label: '🎵 DJ / Band' },
+  { id: 'makeup', label: '💄 Makeup Artist' },
+  { id: 'mehendi', label: '🪻 Mehendi Artist' },
+  { id: 'tent', label: '⛺ Tent / Shamiana' },
+  { id: 'pandit', label: '🕉️ Pandit / Priest' },
+  { id: 'transport', label: '🚗 Guest Transport' },
+  { id: 'florist', label: '💐 Florist' },
+];
+
+const HIDDEN_COSTS = {
+  venue: [
+    { name: 'GST on Venue', desc: 'Most banquet halls 18% GST charge karte hain quote ke upar.', mult: 0.18, sev: 'high' },
+    { name: 'Electricity / Generator', desc: 'Backup generator + electricity charges — ₹8K-25K separate. Quote mein aksar nahi hota.', fixed: [8000, 25000], sev: 'high' },
+    { name: 'Parking Charges', desc: 'Valet ya security staff for parking — ₹5K-20K.', fixed: [5000, 20000], sev: 'med' },
+    { name: 'Security Deposit', desc: 'Refundable deposit ₹10K-50K upfront — lock up capital.', fixed: [10000, 50000], sev: 'low' },
+    { name: 'Cleaning Charges', desc: 'Post-event cleaning ₹3K-10K — often "fine print" mein.', fixed: [3000, 10000], sev: 'med' },
+    { name: 'Overtime Charges', desc: 'Event time extend hone pe ₹5K-15K per hour.', fixed: [5000, 15000], sev: 'high' },
+    { name: 'Liquor License (if applicable)', desc: 'License + corkage fees ₹15K-50K if serving alcohol.', fixed: [0, 50000], sev: 'med' },
+  ],
+  caterer: [
+    { name: 'Service Charge', desc: '10-15% service charge on per-plate rate — often separately billed.', pct: 0.12, sev: 'high' },
+    { name: 'GST on Catering', desc: '5-18% GST depending on venue type — outdoor events mein zyada.', pct: 0.08, sev: 'high' },
+    { name: 'Serving Staff Overtime', desc: 'Extra staff hours pe ₹200-400/staff/hour after agreed time.', fixed: [3000, 12000], sev: 'med' },
+    { name: 'Crockery / Cutlery Rental', desc: 'Premium crockery per-plate ₹50-200 extra if not included.', ppGuest: [50, 150], sev: 'med' },
+    { name: 'Live Counter Charges', desc: 'Chaat, ice cream, dosa — ₹5K-15K per live counter.', fixed: [5000, 30000], sev: 'med' },
+    { name: 'Wastage Guarantee', desc: 'Caterer minimum guarantee se 10-15% zyada charge karta hai "wastage" ke naam pe.', pct: 0.12, sev: 'high' },
+  ],
+  decorator: [
+    { name: 'GST on Decoration', desc: '18% GST on decoration services — often not in initial quote.', pct: 0.18, sev: 'high' },
+    { name: 'Installation Labour', desc: 'Separate labour charges ₹5K-20K for complex setups.', fixed: [5000, 20000], sev: 'med' },
+    { name: 'Fresh Flower Premium', desc: 'Seasonal flower price fluctuation — final bill 20-30% upar aa sakta hai.', pct: 0.20, sev: 'med' },
+    { name: 'Damage Deposit', desc: 'Refundable damage security ₹5K-25K for rental items.', fixed: [5000, 25000], sev: 'low' },
+    { name: 'Breakdown Charges', desc: 'Post-event item removal — ₹3K-8K extra if not included.', fixed: [3000, 8000], sev: 'low' },
+  ],
+  photographer: [
+    { name: 'Travel + Accommodation', desc: 'If photographer not local — travel ₹2K-15K, hotel ₹2K-6K/night.', fixed: [2000, 20000], sev: 'med' },
+    { name: 'Album Charges', desc: 'Physical album ₹8K-40K often NOT included in basic package.', fixed: [8000, 40000], sev: 'high' },
+    { name: 'Extra Hours Charge', desc: 'Beyond agreed hours ₹3K-10K per hour.', fixed: [3000, 10000], sev: 'med' },
+    { name: 'Reels / Short Film Extra', desc: 'Social media reel separately ₹5K-20K if not in package.', fixed: [5000, 20000], sev: 'med' },
+    { name: 'Prints / USB Drive', desc: 'Printed copies ya USB ₹2K-8K — "digital delivery" mein shaamil nahi.', fixed: [2000, 8000], sev: 'low' },
+  ],
+  videographer: [
+    { name: 'Drone Footage Extra', desc: 'Aerial shots ₹5K-20K additional — rarely included in base package.', fixed: [5000, 20000], sev: 'med' },
+    { name: 'Music Licensing', desc: 'Copyrighted songs use karne pe ₹2K-10K extra ya restrictions.', fixed: [2000, 10000], sev: 'low' },
+    { name: 'Extra Edits', desc: 'Revision rounds beyond 2-3 — ₹1K-3K per revision.', fixed: [1000, 5000], sev: 'low' },
+    { name: 'Travel Charges', desc: 'Outstation travel ₹3K-15K if not covered.', fixed: [3000, 15000], sev: 'med' },
+  ],
+  dj: [
+    { name: 'Sound System Upgrade', desc: 'Better speakers ya subwoofer ₹5K-20K extra for large venues.', fixed: [5000, 20000], sev: 'med' },
+    { name: 'Lighting Rig Extra', desc: 'DJ lights separate ₹3K-15K if not mentioned.', fixed: [3000, 15000], sev: 'med' },
+    { name: 'MC / Anchor Charges', desc: 'Announcements / hosting ₹5K-25K if not in package.', fixed: [5000, 25000], sev: 'med' },
+    { name: 'Overtime Rate', desc: 'Per hour after agreed time ₹2K-8K.', fixed: [2000, 8000], sev: 'high' },
+    { name: 'Power / Generator', desc: 'DJ ke liye dedicated power backup ₹2K-5K if not provided by venue.', fixed: [2000, 5000], sev: 'low' },
+  ],
+  makeup: [
+    { name: 'Trial Session Charge', desc: 'Pre-wedding trial ₹2K-6K — often not in base package.', fixed: [2000, 6000], sev: 'med' },
+    { name: 'Family Members Extra', desc: 'Each additional family member ₹1.5K-4K per person.', fixed: [3000, 16000], sev: 'high' },
+    { name: 'Touch-up Charges', desc: 'Full-day touch-up ₹3K-8K if not specified.', fixed: [3000, 8000], sev: 'med' },
+    { name: 'Travel + Accommodation', desc: 'If artist not local ₹2K-10K extra.', fixed: [2000, 10000], sev: 'med' },
+    { name: 'Early Morning Surcharge', desc: '5-7 AM start pe 20-30% extra charge common hai.', pct: 0.25, sev: 'med' },
+  ],
+  mehendi: [
+    { name: 'Extra Hands Charge', desc: 'Beyond bride — each additional hand ₹300-1000 per hand.', fixed: [1500, 8000], sev: 'med' },
+    { name: 'Elaborate Design Premium', desc: 'Complex designs beyond agreed scope — ₹1K-5K extra.', fixed: [1000, 5000], sev: 'med' },
+    { name: 'Travel Charges', desc: 'Distance-based travel ₹500-3000.', fixed: [500, 3000], sev: 'low' },
+  ],
+  tent: [
+    { name: 'AC / Cooling Charges', desc: 'Air conditioning ₹30-60/sq ft extra — major cost in summer.', fixed: [30000, 100000], sev: 'high' },
+    { name: 'Flooring Extra', desc: 'Carpet ya tiles flooring ₹10-30/sq ft additional.', fixed: [10000, 40000], sev: 'med' },
+    { name: 'Lighting Inside Tent', desc: 'Chandelier ya decorative lighting ₹10K-50K — not always included.', fixed: [10000, 50000], sev: 'med' },
+    { name: 'Weather Damage Risk', desc: 'Wind/rain damage — check if covered in their insurance or yours.', fixed: [0, 30000], sev: 'high' },
+    { name: 'Setup Extra Days', desc: 'Tent 2-3 days pehle lagti hai — site ke extra days rent.', fixed: [5000, 15000], sev: 'low' },
+  ],
+  pandit: [
+    { name: 'Dakshina + Samagri', desc: 'Religious items + priest dakshina ₹5K-30K — often negotiable.', fixed: [5000, 30000], sev: 'med' },
+    { name: 'Overtime Pheras', desc: 'If ceremony longer than expected ₹1K-5K extra.', fixed: [1000, 5000], sev: 'low' },
+    { name: 'Muhurat Change Charge', desc: 'If date/time changes ₹1K-3K re-calculation fee.', fixed: [1000, 3000], sev: 'low' },
+  ],
+  transport: [
+    { name: 'Fuel Surcharge', desc: '10-15% fuel surcharge — especially post-budget petroleum prices.', pct: 0.12, sev: 'med' },
+    { name: 'Driver Allowance', desc: 'Driver food + overtime ₹500-1500 per vehicle per day.', fixed: [2000, 8000], sev: 'low' },
+    { name: 'Night Surcharge', desc: 'After 11 PM returns — 25-30% extra per vehicle.', pct: 0.28, sev: 'med' },
+    { name: 'Toll Charges', desc: 'Highway tolls — ₹500-3000 depending on distance.', fixed: [500, 3000], sev: 'low' },
+  ],
+  florist: [
+    { name: 'Seasonal Flower Premium', desc: 'Off-season flowers 30-50% zyada. Rose peak pe ₹200/dozen.', pct: 0.3, sev: 'med' },
+    { name: 'Replacement Guarantee', desc: 'Wilted flower replacement — check if included.', fixed: [2000, 8000], sev: 'low' },
+    { name: 'Setup Labour', desc: 'Flower arrangement labour ₹3K-10K if separate.', fixed: [3000, 10000], sev: 'med' },
+  ],
+};
+
+const COMMON_HIDDEN = [
+  { name: '🎊 Wedding Night Stay', desc: 'Couple ke liye bridal suite ₹3K-15K — often forgotten in planning.', fixed: [3000, 15000], sev: 'med', cat: 'misc' },
+  { name: '🧹 Post-Wedding Cleanup', desc: 'Venue ki cleaning after event ₹3K-10K if not included.', fixed: [3000, 10000], sev: 'low', cat: 'misc' },
+  { name: '🎁 Vendor Tips (Customary)', desc: 'Caterer, photographer, decorator ko tip ₹5K-20K — cultural expectation.', fixed: [5000, 20000], sev: 'low', cat: 'misc' },
+  { name: '💊 Emergency Medical', desc: 'First aid + emergency budget ₹2K-5K hamesha ready rakhein.', fixed: [2000, 5000], sev: 'low', cat: 'misc' },
+  { name: '📱 Last-Minute Additions', desc: 'Extra chairs, tables, linens — ₹2K-8K for unplanned guests.', fixed: [2000, 8000], sev: 'med', cat: 'misc' },
+];
+
+function buildChecklist() {
+  document.getElementById('vendorChecklist').innerHTML = VENDORS_LIST.map(v =>
+    `<div class="check-item" onclick="toggleCheck(this, '${v.id}')">
+      <input type="checkbox" id="chk_${v.id}" onchange="event.stopPropagation()">
+      <label for="chk_${v.id}">${v.label}</label>
+    </div>`
+  ).join('');
+}
+
+function toggleCheck(el, id) {
+  const chk = document.getElementById('chk_' + id);
+  chk.checked = !chk.checked;
+  el.classList.toggle('checked', chk.checked);
+}
+
+function getChecked() {
+  return VENDORS_LIST.filter(v => document.getElementById('chk_' + v.id)?.checked).map(v => v.id);
+}
+
+function estimateCost(cost, guests, perPlate) {
+  if (cost.fixed) return (cost.fixed[0] + cost.fixed[1]) / 2;
+  if (cost.mult) return perPlate * guests * cost.mult;
+  if (cost.pct) return perPlate * guests * cost.pct;
+  if (cost.ppGuest) return guests * (cost.ppGuest[0] + cost.ppGuest[1]) / 2;
+  return 5000;
+}
+
+function formatINR(n) {
+  if (n >= 100000) return '₹' + (n/100000).toFixed(1) + 'L';
+  if (n >= 1000) return '₹' + (n/1000).toFixed(0) + 'K';
+  return '₹' + Math.round(n);
+}
+
+async function detectCosts() {
+  const btn = document.getElementById('detectBtn');
+  const checked = getChecked();
+  const city = document.getElementById('city').value;
+  const guests = parseInt(document.getElementById('guests').value);
+  const venuePrice = parseInt(document.getElementById('venuePrice').value) || 200000;
+  const perPlate = parseInt(document.getElementById('cateringPerPlate').value) || 900;
+  const season = document.getElementById('season').value;
+  const venueType = document.getElementById('venue').value;
+  const quoteText = document.getElementById('quoteText').value;
+
+  if (checked.length === 0) {
+    alert('Kripya kam se kam ek vendor check karein.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '🔍 Detecting...';
+  document.getElementById('results').classList.add('show');
+  document.getElementById('aiLoading').style.display = 'block';
+  document.getElementById('aiText').style.display = 'none';
+
+  // Calculate hidden costs
+  let allCosts = [];
+  let totalHidden = 0;
+
+  checked.forEach(vendorId => {
+    const costs = HIDDEN_COSTS[vendorId] || [];
+    costs.forEach(c => {
+      const amt = estimateCost(c, guests, perPlate);
+      totalHidden += amt;
+      allCosts.push({ ...c, cat: vendorId, amt });
+    });
+  });
+
+  // Add common hidden
+  COMMON_HIDDEN.forEach(c => {
+    const amt = estimateCost(c, guests, perPlate);
+    totalHidden += amt;
+    allCosts.push({ ...c, amt });
+  });
+
+  // Season premium
+  if (season === 'peak') totalHidden *= 1.12;
+
+  const quotedTotal = venuePrice + (perPlate * guests);
+  const pct = Math.round((totalHidden / quotedTotal) * 100);
+
+  document.getElementById('totalHidden').textContent = formatINR(totalHidden);
+  document.getElementById('pctOfBudget').textContent = pct + '%';
+
+  // Group by category
+  const grouped = {};
+  allCosts.forEach(c => {
+    if (!grouped[c.cat]) grouped[c.cat] = [];
+    grouped[c.cat].push(c);
+  });
+
+  const catNames = {
+    venue:'🏛️ Venue Charges', caterer:'🍽️ Catering Extras', decorator:'🌸 Decoration Extras',
+    photographer:'📸 Photography Extras', videographer:'🎬 Videography Extras',
+    dj:'🎵 DJ/Music Extras', makeup:'💄 Makeup Extras', mehendi:'🪻 Mehendi Extras',
+    tent:'⛺ Tent Extras', pandit:'🕉️ Pandit Extras', transport:'🚗 Transport Extras',
+    florist:'💐 Florist Extras', misc:'🎊 Miscellaneous'
+  };
+
+  let html = '';
+  Object.entries(grouped).forEach(([cat, costs]) => {
+    const catTotal = costs.reduce((a,c) => a + c.amt, 0);
+    html += `<div class="category-group">
+      <div class="category-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none'">
+        <div class="cat-h-left">
+          <div class="cat-h-name">${catNames[cat] || cat}</div>
+          <div class="cat-h-count">${costs.length} items</div>
+        </div>
+        <div class="cat-h-total">${formatINR(catTotal)}</div>
+      </div>
+      <div class="cat-items">
+        ${costs.map(c => `
+          <div class="cost-item">
+            <div class="cost-severity sev-${c.sev}"></div>
+            <div class="cost-info">
+              <div class="cost-name">${c.name}</div>
+              <div class="cost-desc">${c.desc}</div>
+            </div>
+            <div class="cost-amount">${formatINR(c.amt)}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  });
+  document.getElementById('costsContainer').innerHTML = html;
+
+  // Protection tips
+  const protTips = [
+    'Har vendor se written itemized quote maango — verbal nahi chalega',
+    'GST aur service charge explicitly mention ho — inclusive ya exclusive?',
+    'Overtime rate upfront fix karo aur contract mein likhao',
+    'Security deposits refundable conditions likh ke lo',
+    'Cancellation policy both ways clear honi chahiye',
+    `Buffer: Total quoted budget ka ${Math.min(pct + 5, 20)}% extra rakhein — aaj ki analysis ke basis pe`,
+    'SmartShaadi Vendor Negotiation Bot se exact scripts milte hain yeh sab negotiate karne ke liye',
+  ];
+  document.getElementById('protList').innerHTML = protTips.map(t => `<li>${t}</li>`).join('');
+
+  // AI Analysis
+  const vendorNames = checked.map(v => VENDORS_LIST.find(x => x.id === v)?.label || v).join(', ');
+  const prompt = `Tu SmartShaadi AI expert hai jise Indian wedding vendor contracts ka deep knowledge hai.
+
+User ki situation:
+City: ${city}
+Guests: ${guests}
+Venue Type: ${venueType}
+Quoted Venue: ₹${venuePrice.toLocaleString()}
+Catering per plate: ₹${perPlate}
+Season: ${season === 'peak' ? 'Peak (15-20% premium)' : 'Off-season'}
+Vendors hired: ${vendorNames}
+Estimated hidden costs found: ${formatINR(totalHidden)} (${pct}% of quoted budget)
+${quoteText ? `Quote text provided: "${quoteText.substring(0, 300)}"` : ''}
+
+Hindi mein ek targeted analysis do:
+
+**🚨 ${city} Mein Sabse Common Cheating Tactics**
+Is city ke vendors ke specific patterns batao.
+
+**💬 Negotiation Script (Ready to use)**
+Ek Hinglish script jo sab hidden charges address kare — vendor se kya bolein.
+
+**📋 Must-Ask Questions (Top 5)**
+Before finalizing contract, yeh 5 questions zaroor poochho.
+
+**🛡️ Contract Mein Yeh Clauses Add Karein**
+3 specific legal protective clauses.
+
+Short rakho, actionable rakho. Hindi mein.`;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 900,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await resp.json();
+    const text = data.content?.map(b => b.text || '').join('') || '';
+    document.getElementById('aiLoading').style.display = 'none';
+    document.getElementById('aiText').innerHTML = `<div class="ai-text">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')}</div>`;
+    document.getElementById('aiText').style.display = 'block';
+  } catch(e) {
+    document.getElementById('aiLoading').style.display = 'none';
+    document.getElementById('aiText').innerHTML = '<p style="color:#F87171;font-size:.85rem">Error. Internet check karein.</p>';
+    document.getElementById('aiText').style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<span>🔍</span> Hidden Costs Detect Karo — AI se';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+buildChecklist();
+</script>
+</body>
+</html>
