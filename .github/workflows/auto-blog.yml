@@ -4,7 +4,7 @@
 # Kya karta hai:
 # - Har Sunday raat 11 PM IST (5:30 PM UTC) automatically run hota hai
 # - Manual trigger bhi possible hai (workflow_dispatch)
-# - Anthropic API se naya blog generate karta hai
+# - Groq API se naya blog generate karta hai
 # - Git mein auto-commit aur push karta hai
 # - Vercel automatically deploy karta hai GitHub se
 
@@ -45,7 +45,7 @@ jobs:
           fetch-depth: 0
 
       # ── STEP 2: Node.js setup ─────────────────────────────────────────────
-      - name: ⚙️ Setup Node.js 20
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -61,15 +61,15 @@ jobs:
       # ── STEP 4: Environment check ─────────────────────────────────────────
       - name: 🔑 Verify API Key
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          if [ -z "$ANTHROPIC_API_KEY" ]; then
-            echo "❌ ERROR: ANTHROPIC_API_KEY secret not set!"
+          if [ -z "$GROQ_API_KEY" ]; then
+            echo "❌ ERROR: GROQ_API_KEY secret not set!"
             echo "GitHub repo → Settings → Secrets → Actions → New secret"
-            echo "Name: ANTHROPIC_API_KEY"
+            echo "Name: GROQ_API_KEY"
             exit 1
           fi
-          echo "✅ API key verified (length: ${#ANTHROPIC_API_KEY})"
+          echo "✅ API key verified (length: ${#GROQ_API_KEY})"
 
       # ── STEP 5: Optional topic override ───────────────────────────────────
       - name: 🎯 Handle Topic Override
@@ -88,7 +88,7 @@ jobs:
       # ── STEP 7: RUN THE BRAIN ─────────────────────────────────────────────
       - name: 🧠 Generate Blog Post
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TOPIC_OVERRIDE: ${{ env.TOPIC_OVERRIDE }}
           FORCE_REGENERATE: ${{ env.FORCE_REGENERATE }}
         run: |
@@ -165,4 +165,3 @@ jobs:
           echo "| Branch | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "📄 [View SmartShaadi Blog](https://smartshaadi.online/blogs.html)" >> $GITHUB_STEP_SUMMARY
-
