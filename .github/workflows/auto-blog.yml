@@ -1,29 +1,19 @@
 # SmartShaadi Auto-Blog GitHub Action
 # File: .github/workflows/auto-blog.yml
-#
-# Kya karta hai:
-# - Har Sunday raat 11 PM IST (5:30 PM UTC) automatically run hota hai
-# - Manual trigger bhi possible hai (workflow_dispatch)
-# - Groq API se naya blog generate karta hai
-# - Git mein auto-commit aur push karta hai
-# - Vercel automatically deploy karta hai GitHub se
 
 name: 🤖 SmartShaadi Auto Blog Generator
 
 on:
-  # ── SCHEDULED RUN ── Har Sunday 11 PM IST (5:30 PM UTC)
   schedule:
     - cron: '30 17 * * 0'
-
-  # ── MANUAL TRIGGER ── GitHub Actions tab se manually bhi run kar sakte ho
   workflow_dispatch:
     inputs:
       topic_override:
-        description: 'Custom topic slug (optional — leave blank for auto-select)'
+        description: 'Custom topic slug (optional)'
         required: false
         default: ''
       force_regenerate:
-        description: 'Force regenerate even if file exists (true/false)'
+        description: 'Force regenerate (true/false)'
         required: false
         default: 'false'
 
@@ -34,134 +24,76 @@ jobs:
     timeout-minutes: 15
 
     permissions:
-      contents: write   # Git push ke liye zaroori
+      contents: write
 
     steps:
-      # ── STEP 1: Repo checkout ──────────────────────────────────────────────
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      # ── STEP 2: Node.js setup ─────────────────────────────────────────────
+      # ── FIX: Node setup ko simplified kar diya ──
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: 20  # Quotes hata diye aur cache bhi remove kar diya filhal
 
-      # ── STEP 3: Dependencies install ──────────────────────────────────────
       - name: 📦 Install Dependencies
         run: |
-          # axios for API calls (lightweight, reliable)
-          npm install axios --no-save
+          npm install axios
           echo "✅ Dependencies installed"
 
-      # ── STEP 4: Environment check ─────────────────────────────────────────
       - name: 🔑 Verify API Key
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           if [ -z "$GROQ_API_KEY" ]; then
             echo "❌ ERROR: GROQ_API_KEY secret not set!"
-            echo "GitHub repo → Settings → Secrets → Actions → New secret"
-            echo "Name: GROQ_API_KEY"
             exit 1
           fi
-          echo "✅ API key verified (length: ${#GROQ_API_KEY})"
+          echo "✅ API key verified"
 
-      # ── STEP 5: Optional topic override ───────────────────────────────────
       - name: 🎯 Handle Topic Override
         if: ${{ github.event.inputs.topic_override != '' }}
-        run: |
-          echo "Custom topic requested: ${{ github.event.inputs.topic_override }}"
-          echo "TOPIC_OVERRIDE=${{ github.event.inputs.topic_override }}" >> $GITHUB_ENV
+        run: echo "TOPIC_OVERRIDE=${{ github.event.inputs.topic_override }}" >> $GITHUB_ENV
 
-      # ── STEP 6: Handle force regenerate ───────────────────────────────────
       - name: 🔄 Handle Force Regenerate
         if: ${{ github.event.inputs.force_regenerate == 'true' }}
-        run: |
-          echo "Force regenerate enabled"
-          echo "FORCE_REGENERATE=true" >> $GITHUB_ENV
+        run: echo "FORCE_REGENERATE=true" >> $GITHUB_ENV
 
-      # ── STEP 7: RUN THE BRAIN ─────────────────────────────────────────────
       - name: 🧠 Generate Blog Post
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TOPIC_OVERRIDE: ${{ env.TOPIC_OVERRIDE }}
           FORCE_REGENERATE: ${{ env.FORCE_REGENERATE }}
-        run: |
-          echo "🚀 Starting blog generation..."
-          node scripts/generate-blog.js
-          echo "✅ Blog generation complete"
+        run: node scripts/generate-blog.js
 
-      # ── STEP 8: Check if any files changed ────────────────────────────────
       - name: 🔍 Check for Changes
         id: check_changes
         run: |
           git status
           if git diff --quiet && git diff --staged --quiet; then
-            echo "No changes detected (blog may already exist)"
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
-            echo "Changes detected — new blog created"
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            git diff --name-only
           fi
 
-      # ── STEP 9: Git config ────────────────────────────────────────────────
       - name: 👤 Configure Git Identity
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           git config --global user.name "SmartShaadi Bot"
           git config --global user.email "bot@smartshaadi.online"
 
-      # ── STEP 10: Commit aur Push ──────────────────────────────────────────
       - name: 📤 Commit & Push New Blog
         if: steps.check_changes.outputs.has_changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Stage all changes
           git add -A
+          git commit -m "🤖 Auto-blog update | $(date)"
+          git push origin main
 
-          # Get the new file name for commit message
-          NEW_FILES=$(git diff --staged --name-only | grep '\.html$' | head -5 | tr '\n' ', ')
-
-          # Commit
-          git commit -m "🤖 Auto-blog: ${NEW_FILES} | $(date +'%Y-%m-%d %H:%M IST')"
-
-          # Push (with retry)
-          for i in 1 2 3; do
-            git push origin main && break || {
-              echo "Push attempt $i failed, retrying..."
-              sleep 5
-              git pull --rebase origin main
-            }
-          done
-
-          echo "✅ Successfully pushed to GitHub"
-          echo "🚀 Vercel will auto-deploy in ~30 seconds"
-
-      # ── STEP 11: Skip notice ──────────────────────────────────────────────
-      - name: ℹ️ No Changes Notice
-        if: steps.check_changes.outputs.has_changes == 'false'
-        run: |
-          echo "ℹ️  No new blog generated (topic for this week may already exist)"
-          echo "💡 Use 'force_regenerate: true' in workflow_dispatch to override"
-
-      # ── STEP 12: Summary ──────────────────────────────────────────────────
       - name: 📊 Job Summary
         if: always()
-        run: |
-          echo "## 🤖 SmartShaadi Auto-Blog Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Run Date | $(date +'%Y-%m-%d %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY
-          echo "| Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Changes | ${{ steps.check_changes.outputs.has_changes }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Branch | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📄 [View SmartShaadi Blog](https://smartshaadi.online/blogs.html)" >> $GITHUB_STEP_SUMMARY
+        run: echo "Job finished with status ${{ job.status }}"
