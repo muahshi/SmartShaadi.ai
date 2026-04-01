@@ -61,7 +61,7 @@ function injectInternalLinks(htmlContent, currentSlug, urlMap) {
     if (linksAdded >= MAX_LINKS || usedUrls.has(url)) continue;
     const regex = new RegExp(`(?<!<a[^>]*>)\\b(${keyword})\\b(?![^<]*</a>)`, 'i');
     if (regex.test(result)) {
-      const relUrl = url.replace('https://smartshaadi.online', '');
+      const relUrl = url.replace('[https://smartshaadi.online](https://smartshaadi.online)', '');
       result = result.replace(regex, `<a href="${relUrl}" title="${title}">$1</a>`);
       usedUrls.add(url);
       linksAdded++;
@@ -83,9 +83,9 @@ function wrapInTemplate(topic, bodyContent, date) {
 <title>${topic.title} | Smart Shaadi AI</title>
 <meta name="description" content="${topic.keyFocus} - Complete guide with budget breakdown and expert tips.">
 <link rel="canonical" href="${canonical}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+<link href="[https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap)" rel="stylesheet">
 <style>
 :root{--gold:#C9A84C;--gold-bg:rgba(201,168,76,0.08);--gold-bd:rgba(201,168,76,0.25);--bg:#0A0800;--card:#111008;--text:#F5EFE0;--muted:#A89070;--green:#4ADE80;--r:16px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -151,22 +151,26 @@ async function main() {
   CONTENT STRUCTURE:
   1. Detailed Introduction.
   2. Budget Table (Category, Cost Range, Tips).
-  3. 'Bhopal Case Study' - comparing costs.
+  3. 'Bhopal Case Study' - comparing costs based on personal experience.
   4. 'Day vs Night' wedding logic.
   5. Local SEO tips and Vendor selection.
   6. Conclusion with FAQ.
   
-  Use only HTML tags (h2, h3, p, table, ul, li). Do not use Markdown. 1800+ words.`;
+  IMPORTANT: Use only HTML tags (h2, h3, p, table, ul, li). Do not use Markdown backticks or any other text. Start directly with the content. 1800+ words.`;
 
   try {
     console.log('📡 Calling Groq...');
-    const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
+    const response = await axios.post('[https://api.groq.com/openai/v1/chat/completions](https://api.groq.com/openai/v1/chat/completions)', {
         model: 'llama-3.3-70b-versatile',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7
       }, { headers: { 'Authorization': `Bearer ${apiKey}` } });
 
-    const blogHtml = response.data.choices[0].message.content;
+    let blogHtml = response.data.choices[0].message.content;
+    
+    // Safety Fix: Removing any markdown code blocks if AI accidentally adds them
+    blogHtml = blogHtml.replace(/```html|```/g, '').trim();
+
     const finalHtml = wrapInTemplate(topic, injectInternalLinks(blogHtml, topic.slug, loadUrlMap()), date);
 
     fs.writeFileSync(outputPath, finalHtml, 'utf-8');
