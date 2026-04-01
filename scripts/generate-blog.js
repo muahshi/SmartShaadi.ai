@@ -257,7 +257,7 @@ async function main() {
   const topic = getTopicForToday();
   const date = getTodayDate();
   
-  // FIX: Path setup to save in root directory instead of scripts folder
+  // FIX: Path fixed to process.cwd() to save in root directory
   const outputPath = path.join(process.cwd(), topic.slug + '.html');
 
   if (fs.existsSync(outputPath) && process.env.FORCE_REGENERATE !== 'true') {
@@ -266,14 +266,23 @@ async function main() {
   }
 
   const apiKey = process.env.GROQ_API_KEY;
-  const prompt = `Tu SmartShaadi.online ka expert content writer hai. Ek comprehensive wedding planning blog likhna hai.
+  // PROMPT UPDATE: Including personal experience sections & local SEO as per instructions [cite: 2026-02-22]
+  const prompt = `Tu SmartShaadi.online ka expert content writer hai. Ek highly detailed professional wedding planning blog likhna hai jo rank kare.
 TOPIC: ${topic.title}
 KEY FOCUS: ${topic.keyFocus}
 DATE: ${date}
 
-REQUIREMENTS: 1500+ words, Hinglish, Expert Tone.
-SECTIONS: Intro, Budget Overview, Comparison Table, Case Study (Bhopal), Day vs Night, Tool Promo, FAQ.
-Use pure HTML tags only.`;
+REQUIREMENTS:
+- Word Count: 1800+ words (very detailed) [cite: 2026-02-22]
+- Language: Natural Hinglish (Expert & Friendly)
+- Sections to Include:
+  1. Detailed Budget Overview with Breakdown Table.
+  2. 'Bhopal Case Study' section (Personal experience comparison). [cite: 2026-02-22]
+  3. 'Day vs Night' wedding comparison section. [cite: 2026-02-22]
+  4. Local SEO Tips for ${topic.title}. [cite: 2026-02-22]
+  5. Expert Vendor Selection Tips.
+  6. FAQ section.
+- Formatting: Use semantic HTML (h2, h3, p, table, ul, ol). No Markdown.`;
 
   try {
     console.log('📡 Calling Groq (Llama 3.3)...');
