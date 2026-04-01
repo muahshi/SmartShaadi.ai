@@ -256,7 +256,9 @@ function updateSitemap(topic, date) {
 async function main() {
   const topic = getTopicForToday();
   const date = getTodayDate();
-  const outputPath = path.join(__dirname, '..', topic.slug + '.html');
+  
+  // FIX: Path setup to save in root directory instead of scripts folder
+  const outputPath = path.join(process.cwd(), topic.slug + '.html');
 
   if (fs.existsSync(outputPath) && process.env.FORCE_REGENERATE !== 'true') {
     console.log(`ℹ️ ${topic.slug}.html exists. Skipping.`);
