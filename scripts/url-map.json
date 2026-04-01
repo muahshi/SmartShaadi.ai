@@ -2,412 +2,824 @@
   "https://smartshaadi.online/": {
     "slug": "home",
     "title": "SmartShaadi AI — Free Wedding Planner",
-    "keywords": ["SmartShaadi", "AI wedding planner", "free wedding planning", "shaadi planning AI"]
+    "keywords": [
+      "SmartShaadi",
+      "AI wedding planner",
+      "free wedding planning",
+      "shaadi planning AI"
+    ]
   },
   "https://smartshaadi.online/app.html": {
     "slug": "app",
     "title": "Wedding Dashboard",
-    "keywords": ["wedding dashboard", "wedding planner app", "planning dashboard", "shaadi planner"]
+    "keywords": [
+      "wedding dashboard",
+      "wedding planner app",
+      "planning dashboard",
+      "shaadi planner"
+    ]
   },
   "https://smartshaadi.online/ai-tools.html": {
     "slug": "ai-tools",
     "title": "13 Free AI Tools",
-    "keywords": ["AI tools", "free AI tools", "wedding AI tools", "13 AI tools", "AI wedding tools"]
+    "keywords": [
+      "AI tools",
+      "free AI tools",
+      "wedding AI tools",
+      "13 AI tools",
+      "AI wedding tools"
+    ]
   },
   "https://smartshaadi.online/blogs.html": {
     "slug": "blogs",
     "title": "Wedding Guides & Blogs",
-    "keywords": ["wedding guides", "wedding blog", "shaadi guides", "wedding articles"]
+    "keywords": [
+      "wedding guides",
+      "wedding blog",
+      "shaadi guides",
+      "wedding articles"
+    ]
   },
   "https://smartshaadi.online/ai-invitation-writer.html": {
     "slug": "ai-invitation-writer",
     "title": "AI Invitation Writer",
-    "keywords": ["invitation writer", "AI invitation", "wedding invitation generator", "digital invitation", "shaadi card AI"]
+    "keywords": [
+      "invitation writer",
+      "AI invitation",
+      "wedding invitation generator",
+      "digital invitation",
+      "shaadi card AI"
+    ]
   },
   "https://smartshaadi.online/ai-kundali-matching.html": {
     "slug": "ai-kundali-matching",
     "title": "AI Kundali Matching",
-    "keywords": ["kundali matching", "kundali milan", "horoscope matching", "36 guna milan", "Mangal Dosha check", "Nadi Dosha"]
+    "keywords": [
+      "kundali matching",
+      "kundali milan",
+      "horoscope matching",
+      "36 guna milan",
+      "Mangal Dosha check",
+      "Nadi Dosha"
+    ]
   },
   "https://smartshaadi.online/ai-budget-calculator.html": {
     "slug": "ai-budget-calculator",
     "title": "AI Budget Calculator",
-    "keywords": ["budget calculator", "AI budget calculator", "wedding calculator", "shaadi budget AI"]
+    "keywords": [
+      "budget calculator",
+      "AI budget calculator",
+      "wedding calculator",
+      "shaadi budget AI"
+    ]
   },
   "https://smartshaadi.online/ai-menu-planner.html": {
     "slug": "ai-menu-planner",
     "title": "AI Menu Planner",
-    "keywords": ["menu planner", "wedding menu", "AI menu planner", "catering menu AI"]
+    "keywords": [
+      "menu planner",
+      "wedding menu",
+      "AI menu planner",
+      "catering menu AI"
+    ]
   },
   "https://smartshaadi.online/ai-photography-shots.html": {
     "slug": "ai-photography-shots",
     "title": "AI Photography Shot List",
-    "keywords": ["photography shot list", "wedding photography shots", "photo list", "shot list generator"]
+    "keywords": [
+      "photography shot list",
+      "wedding photography shots",
+      "photo list",
+      "shot list generator"
+    ]
   },
   "https://smartshaadi.online/ai-wedding-theme-generator.html": {
     "slug": "ai-wedding-theme-generator",
     "title": "AI Theme Generator",
-    "keywords": ["theme generator", "wedding theme", "AI theme generator", "wedding decor theme"]
+    "keywords": [
+      "theme generator",
+      "wedding theme",
+      "AI theme generator",
+      "wedding decor theme"
+    ]
   },
   "https://smartshaadi.online/ai-guest-manager.html": {
     "slug": "ai-guest-manager",
     "title": "AI Guest Manager",
-    "keywords": ["guest manager", "guest list", "RSVP tracker", "guest management", "wedding guests"]
+    "keywords": [
+      "guest manager",
+      "guest list",
+      "RSVP tracker",
+      "guest management",
+      "wedding guests"
+    ]
   },
   "https://smartshaadi.online/ai-planning-timeline.html": {
     "slug": "ai-planning-timeline",
     "title": "AI Planning Timeline",
-    "keywords": ["planning timeline", "wedding timeline", "shaadi timeline", "wedding schedule"]
+    "keywords": [
+      "planning timeline",
+      "wedding timeline",
+      "shaadi timeline",
+      "wedding schedule"
+    ]
   },
   "https://smartshaadi.online/ai-playlist-generator.html": {
     "slug": "ai-playlist-generator",
     "title": "AI Playlist Generator",
-    "keywords": ["playlist generator", "wedding playlist", "sangeet playlist", "baraat songs", "wedding songs list"]
+    "keywords": [
+      "playlist generator",
+      "wedding playlist",
+      "sangeet playlist",
+      "baraat songs",
+      "wedding songs list"
+    ]
   },
   "https://smartshaadi.online/whatsapp-invite-generator.html": {
     "slug": "whatsapp-invite-generator",
     "title": "WhatsApp Invite Generator",
-    "keywords": ["WhatsApp invite", "digital invitation", "WhatsApp wedding invite", "WhatsApp invitation"]
+    "keywords": [
+      "WhatsApp invite",
+      "digital invitation",
+      "WhatsApp wedding invite",
+      "WhatsApp invitation"
+    ]
   },
   "https://smartshaadi.online/wedding-vendor-negotiation-bot.html": {
     "slug": "wedding-vendor-negotiation-bot",
     "title": "Vendor Negotiation Bot",
-    "keywords": ["vendor negotiation", "negotiation bot", "vendor negotiate", "negotiation script", "vendor bargain"]
+    "keywords": [
+      "vendor negotiation",
+      "negotiation bot",
+      "vendor negotiate",
+      "negotiation script",
+      "vendor bargain"
+    ]
   },
   "https://smartshaadi.online/chatbot.html": {
     "slug": "chatbot",
     "title": "AI Wedding Chatbot",
-    "keywords": ["AI chatbot", "wedding chatbot", "AI se baat", "AI assistant", "wedding AI chat"]
+    "keywords": [
+      "AI chatbot",
+      "wedding chatbot",
+      "AI se baat",
+      "AI assistant",
+      "wedding AI chat"
+    ]
   },
   "https://smartshaadi.online/wedding-budget-calculator-india-2026.html": {
     "slug": "wedding-budget-calculator-india-2026",
     "title": "Wedding Budget Calculator India 2026",
-    "keywords": ["wedding budget calculator", "budget calculator 2026", "shaadi budget calculator", "wedding cost calculator"]
+    "keywords": [
+      "wedding budget calculator",
+      "budget calculator 2026",
+      "shaadi budget calculator",
+      "wedding cost calculator"
+    ]
   },
   "https://smartshaadi.online/destination-wedding-calculator-india-2026.html": {
     "slug": "destination-wedding-calculator-india-2026",
     "title": "Destination Wedding Calculator",
-    "keywords": ["destination wedding calculator", "destination wedding cost", "destination shaadi calculator"]
+    "keywords": [
+      "destination wedding calculator",
+      "destination wedding cost",
+      "destination shaadi calculator"
+    ]
   },
   "https://smartshaadi.online/ai-budget-optimizer.html": {
     "slug": "ai-budget-optimizer",
     "title": "AI Budget Optimizer",
-    "keywords": ["budget optimizer", "AI budget optimizer", "live budget tool", "wedding budget optimize"]
+    "keywords": [
+      "budget optimizer",
+      "AI budget optimizer",
+      "live budget tool",
+      "wedding budget optimize"
+    ]
   },
   "https://smartshaadi.online/ai-vendor-price-predictor.html": {
     "slug": "ai-vendor-price-predictor",
     "title": "Vendor Price Predictor",
-    "keywords": ["vendor price predictor", "vendor rates AI", "price prediction", "wedding vendor rates"]
+    "keywords": [
+      "vendor price predictor",
+      "vendor rates AI",
+      "price prediction",
+      "wedding vendor rates"
+    ]
   },
   "https://smartshaadi.online/ai-hidden-cost-detector.html": {
     "slug": "ai-hidden-cost-detector",
     "title": "Hidden Cost Detector",
-    "keywords": ["hidden cost detector", "hidden wedding costs", "unexpected charges", "wedding hidden costs"]
+    "keywords": [
+      "hidden cost detector",
+      "hidden wedding costs",
+      "unexpected charges",
+      "wedding hidden costs"
+    ]
   },
   "https://smartshaadi.online/blog-budget-2026.html": {
     "slug": "blog-budget-2026",
     "title": "Indian Wedding Budget Guide 2026",
-    "keywords": ["wedding budget 2026", "wedding budget guide", "budget planning guide", "shaadi budget 2026"]
+    "keywords": [
+      "wedding budget 2026",
+      "wedding budget guide",
+      "budget planning guide",
+      "shaadi budget 2026"
+    ]
   },
   "https://smartshaadi.online/blog-5-lakh-wedding.html": {
     "slug": "blog-5-lakh-wedding",
     "title": "5 Lakh Wedding Plan",
-    "keywords": ["5 lakh wedding", "5 lakh mein shaadi", "budget wedding India", "kam budget shaadi"]
+    "keywords": [
+      "5 lakh wedding",
+      "5 lakh mein shaadi",
+      "budget wedding India",
+      "kam budget shaadi"
+    ]
   },
   "https://smartshaadi.online/blog-200-guest-wedding-budget-india-2026.html": {
     "slug": "blog-200-guest-wedding-budget-india-2026",
     "title": "200 Guest Wedding Budget",
-    "keywords": ["200 guest wedding", "200 guests budget", "large wedding budget", "200 log ki shaadi"]
+    "keywords": [
+      "200 guest wedding",
+      "200 guests budget",
+      "large wedding budget",
+      "200 log ki shaadi"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-cost-2026.html": {
     "slug": "blog-wedding-cost-2026",
     "title": "Wedding Cost India 2026",
-    "keywords": ["wedding cost 2026", "shaadi ka kharcha", "wedding expenses India", "shaadi cost"]
+    "keywords": [
+      "wedding cost 2026",
+      "shaadi ka kharcha",
+      "wedding expenses India",
+      "shaadi cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-venue-cost-2026.html": {
     "slug": "blog-wedding-venue-cost-2026",
     "title": "Wedding Venue Cost 2026",
-    "keywords": ["venue cost", "wedding venue", "banquet hall cost", "venue booking cost"]
+    "keywords": [
+      "venue cost",
+      "wedding venue",
+      "banquet hall cost",
+      "venue booking cost"
+    ]
   },
   "https://smartshaadi.online/blog-catering-cost-2026.html": {
     "slug": "blog-catering-cost-2026",
     "title": "Catering Cost Per Plate 2026",
-    "keywords": ["catering cost", "per plate rate", "wedding catering", "catering per plate", "khana cost"]
+    "keywords": [
+      "catering cost",
+      "per plate rate",
+      "wedding catering",
+      "catering per plate",
+      "khana cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-saving-tips.html": {
     "slug": "blog-wedding-saving-tips",
     "title": "Wedding Saving Tips 2026",
-    "keywords": ["wedding saving tips", "shaadi mein bachat", "budget saving tips", "wedding savings"]
+    "keywords": [
+      "wedding saving tips",
+      "shaadi mein bachat",
+      "budget saving tips",
+      "wedding savings"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-checklist.html": {
     "slug": "blog-wedding-checklist",
     "title": "Indian Wedding Checklist 2026",
-    "keywords": ["wedding checklist", "shaadi checklist", "wedding planning checklist", "shaadi planning list"]
+    "keywords": [
+      "wedding checklist",
+      "shaadi checklist",
+      "wedding planning checklist",
+      "shaadi planning list"
+    ]
   },
   "https://smartshaadi.online/blog-ai-hacks.html": {
     "slug": "blog-ai-hacks",
     "title": "AI Wedding Hacks 2026",
-    "keywords": ["AI wedding hacks", "AI planning tips", "AI se shaadi plan", "wedding AI tips"]
+    "keywords": [
+      "AI wedding hacks",
+      "AI planning tips",
+      "AI se shaadi plan",
+      "wedding AI tips"
+    ]
   },
   "https://smartshaadi.online/blog-ai-wedding-planner.html": {
     "slug": "blog-ai-wedding-planner",
     "title": "AI Wedding Planner Guide",
-    "keywords": ["AI wedding planner guide", "AI planner", "how to use AI planner"]
+    "keywords": [
+      "AI wedding planner guide",
+      "AI planner",
+      "how to use AI planner"
+    ]
   },
   "https://smartshaadi.online/blog-ai-wedding-planner-reasons.html": {
     "slug": "blog-ai-wedding-planner-reasons",
     "title": "10 Reasons to Use AI Planner",
-    "keywords": ["reasons to use AI planner", "AI planner benefits", "why use AI wedding planner"]
+    "keywords": [
+      "reasons to use AI planner",
+      "AI planner benefits",
+      "why use AI wedding planner"
+    ]
   },
   "https://smartshaadi.online/blog-delhi-wedding-cost-2026.html": {
     "slug": "blog-delhi-wedding-cost-2026",
     "title": "Delhi Wedding Cost 2026",
-    "keywords": ["Delhi wedding cost", "Delhi shaadi budget", "Delhi NCR wedding", "Delhi wedding budget 2026"]
+    "keywords": [
+      "Delhi wedding cost",
+      "Delhi shaadi budget",
+      "Delhi NCR wedding",
+      "Delhi wedding budget 2026"
+    ]
   },
   "https://smartshaadi.online/blog-mumbai-wedding-cost-2026.html": {
     "slug": "blog-mumbai-wedding-cost-2026",
     "title": "Mumbai Wedding Cost 2026",
-    "keywords": ["Mumbai wedding cost", "Mumbai shaadi budget", "Mumbai wedding 2026"]
+    "keywords": [
+      "Mumbai wedding cost",
+      "Mumbai shaadi budget",
+      "Mumbai wedding 2026"
+    ]
   },
   "https://smartshaadi.online/blog-bangalore-wedding-cost-2026.html": {
     "slug": "blog-bangalore-wedding-cost-2026",
     "title": "Bangalore Wedding Cost 2026",
-    "keywords": ["Bangalore wedding cost", "Bangalore shaadi budget", "Bangalore wedding 2026"]
+    "keywords": [
+      "Bangalore wedding cost",
+      "Bangalore shaadi budget",
+      "Bangalore wedding 2026"
+    ]
   },
   "https://smartshaadi.online/blog-hyderabad-wedding-cost-2026.html": {
     "slug": "blog-hyderabad-wedding-cost-2026",
     "title": "Hyderabad Wedding Cost 2026",
-    "keywords": ["Hyderabad wedding cost", "Hyderabad shaadi budget", "Hyderabad wedding 2026"]
+    "keywords": [
+      "Hyderabad wedding cost",
+      "Hyderabad shaadi budget",
+      "Hyderabad wedding 2026"
+    ]
   },
   "https://smartshaadi.online/blog-pune-wedding-cost-2026.html": {
     "slug": "blog-pune-wedding-cost-2026",
     "title": "Pune Wedding Cost 2026",
-    "keywords": ["Pune wedding cost", "Pune shaadi budget", "Pune wedding 2026"]
+    "keywords": [
+      "Pune wedding cost",
+      "Pune shaadi budget",
+      "Pune wedding 2026"
+    ]
   },
   "https://smartshaadi.online/blog-bhopal-vs-jaipur-wedding-cost.html": {
     "slug": "blog-bhopal-vs-jaipur-wedding-cost",
     "title": "Bhopal vs Jaipur Wedding Cost",
-    "keywords": ["Bhopal vs Jaipur wedding", "Bhopal wedding cost", "Jaipur wedding cost", "tier 2 city wedding"]
+    "keywords": [
+      "Bhopal vs Jaipur wedding",
+      "Bhopal wedding cost",
+      "Jaipur wedding cost",
+      "tier 2 city wedding"
+    ]
   },
   "https://smartshaadi.online/blog-indore-vs-bhopal-wedding-cost.html": {
     "slug": "blog-indore-vs-bhopal-wedding-cost",
     "title": "Indore vs Bhopal Wedding Cost",
-    "keywords": ["Indore vs Bhopal wedding", "Indore wedding cost", "Indore shaadi budget"]
+    "keywords": [
+      "Indore vs Bhopal wedding",
+      "Indore wedding cost",
+      "Indore shaadi budget"
+    ]
   },
   "https://smartshaadi.online/blog-destination-wedding-cost.html": {
     "slug": "blog-destination-wedding-cost",
     "title": "Destination Wedding Cost 2026",
-    "keywords": ["destination wedding cost", "destination shaadi budget", "destination wedding India"]
+    "keywords": [
+      "destination wedding cost",
+      "destination shaadi budget",
+      "destination wedding India"
+    ]
   },
   "https://smartshaadi.online/blog-destinations.html": {
     "slug": "blog-destinations",
     "title": "Destination Wedding Places India",
-    "keywords": ["destination wedding", "Rajasthan wedding", "destination shaadi", "best wedding destinations India"]
+    "keywords": [
+      "destination wedding",
+      "Rajasthan wedding",
+      "destination shaadi",
+      "best wedding destinations India"
+    ]
   },
   "https://smartshaadi.online/blog-market.html": {
     "slug": "blog-market",
     "title": "Top Indian Wedding Markets",
-    "keywords": ["wedding markets India", "Indian wedding shopping", "shaadi bazaar", "wedding market"]
+    "keywords": [
+      "wedding markets India",
+      "Indian wedding shopping",
+      "shaadi bazaar",
+      "wedding market"
+    ]
   },
   "https://smartshaadi.online/blog-delhi-markets.html": {
     "slug": "blog-delhi-markets",
     "title": "Delhi Wedding Markets 2026",
-    "keywords": ["Delhi wedding markets", "Chandni Chowk", "Delhi shopping", "Delhi bridal market"]
+    "keywords": [
+      "Delhi wedding markets",
+      "Chandni Chowk",
+      "Delhi shopping",
+      "Delhi bridal market"
+    ]
   },
   "https://smartshaadi.online/blog-chandni-chowk-shopping-2026.html": {
     "slug": "blog-chandni-chowk-shopping-2026",
     "title": "Chandni Chowk Shopping Guide",
-    "keywords": ["Chandni Chowk shopping", "Delhi bridal market", "Chandni Chowk lehenga", "Chandni Chowk jewelry"]
+    "keywords": [
+      "Chandni Chowk shopping",
+      "Delhi bridal market",
+      "Chandni Chowk lehenga",
+      "Chandni Chowk jewelry"
+    ]
   },
   "https://smartshaadi.online/blog-decoration-cost-2026.html": {
     "slug": "blog-decoration-cost-2026",
     "title": "Decoration Cost Guide 2026",
-    "keywords": ["decoration cost", "wedding decoration", "shaadi decoration", "decor kharcha"]
+    "keywords": [
+      "decoration cost",
+      "wedding decoration",
+      "shaadi decoration",
+      "decor kharcha"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-decor-cost-2026.html": {
     "slug": "blog-wedding-decor-cost-2026",
     "title": "Wedding Decor Cost 2026",
-    "keywords": ["wedding decor cost", "decor budget", "decoration budget", "flower decor cost"]
+    "keywords": [
+      "wedding decor cost",
+      "decor budget",
+      "decoration budget",
+      "flower decor cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-decoration-cost-2026.html": {
     "slug": "blog-wedding-decoration-cost-2026",
     "title": "Wedding Decoration Cost Ultimate Guide",
-    "keywords": ["wedding decoration cost", "flower decoration", "mandap decoration", "full decoration cost"]
+    "keywords": [
+      "wedding decoration cost",
+      "flower decoration",
+      "mandap decoration",
+      "full decoration cost"
+    ]
   },
   "https://smartshaadi.online/blog-mandap-decoration-cost-2026.html": {
     "slug": "blog-mandap-decoration-cost-2026",
     "title": "Mandap Decoration Cost 2026",
-    "keywords": ["mandap decoration", "mandap cost", "wedding mandap", "mandap design cost"]
+    "keywords": [
+      "mandap decoration",
+      "mandap cost",
+      "wedding mandap",
+      "mandap design cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-stage-cost-2026.html": {
     "slug": "blog-wedding-stage-cost-2026",
     "title": "Wedding Stage Cost 2026",
-    "keywords": ["stage decoration", "wedding stage", "stage cost", "stage design cost"]
+    "keywords": [
+      "stage decoration",
+      "wedding stage",
+      "stage cost",
+      "stage design cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-tent-shamiana-cost-2026.html": {
     "slug": "blog-wedding-tent-shamiana-cost-2026",
     "title": "Wedding Tent & Shamiana Cost 2026",
-    "keywords": ["tent cost", "shamiana cost", "wedding tent", "shaadi shamiana"]
+    "keywords": [
+      "tent cost",
+      "shamiana cost",
+      "wedding tent",
+      "shaadi shamiana"
+    ]
   },
   "https://smartshaadi.online/blog-photography-2026.html": {
     "slug": "blog-photography-2026",
     "title": "Wedding Photography Guide 2026",
-    "keywords": ["wedding photography", "photographer cost", "candid photography", "wedding photos"]
+    "keywords": [
+      "wedding photography",
+      "photographer cost",
+      "candid photography",
+      "wedding photos"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-photography-2026.html": {
     "slug": "blog-wedding-photography-2026",
     "title": "Wedding Photography Cost Audit",
-    "keywords": ["wedding photography cost", "photographer rates", "photo package"]
+    "keywords": [
+      "wedding photography cost",
+      "photographer rates",
+      "photo package"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-photography-cost-2026.html": {
     "slug": "blog-wedding-photography-cost-2026",
     "title": "Photography Cost Masterclass 2026",
-    "keywords": ["photography cost", "photographer hire", "wedding photographer", "photography package India"]
+    "keywords": [
+      "photography cost",
+      "photographer hire",
+      "wedding photographer",
+      "photography package India"
+    ]
   },
   "https://smartshaadi.online/blog-dulhan-makeup-cost-2026.html": {
     "slug": "blog-dulhan-makeup-cost-2026",
     "title": "Dulhan Makeup Cost 2026",
-    "keywords": ["bridal makeup cost", "dulhan makeup", "makeup artist cost", "bridal makeup artist"]
+    "keywords": [
+      "bridal makeup cost",
+      "dulhan makeup",
+      "makeup artist cost",
+      "bridal makeup artist"
+    ]
   },
   "https://smartshaadi.online/blog-mehendi-cost-2026.html": {
     "slug": "blog-mehendi-cost-2026",
     "title": "Mehendi Ceremony Cost 2026",
-    "keywords": ["mehendi cost", "mehendi artist", "henna cost", "mehendi ceremony"]
+    "keywords": [
+      "mehendi cost",
+      "mehendi artist",
+      "henna cost",
+      "mehendi ceremony"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-dj-music-cost-2026.html": {
     "slug": "blog-wedding-dj-music-cost-2026",
     "title": "Wedding DJ Cost 2026",
-    "keywords": ["DJ cost", "wedding DJ", "DJ rates", "DJ hire India"]
+    "keywords": [
+      "DJ cost",
+      "wedding DJ",
+      "DJ rates",
+      "DJ hire India"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-invitation-card-cost-2026.html": {
     "slug": "blog-wedding-invitation-card-cost-2026",
     "title": "Invitation Card Cost 2026",
-    "keywords": ["invitation card cost", "wedding card", "invitation design", "shaadi card cost"]
+    "keywords": [
+      "invitation card cost",
+      "wedding card",
+      "invitation design",
+      "shaadi card cost"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-jewelry-audit-2026.html": {
     "slug": "blog-wedding-jewelry-audit-2026",
     "title": "Wedding Jewelry Audit 2026",
-    "keywords": ["wedding jewelry", "jewelry audit", "bridal jewelry cost", "gold jewelry wedding"]
+    "keywords": [
+      "wedding jewelry",
+      "jewelry audit",
+      "bridal jewelry cost",
+      "gold jewelry wedding"
+    ]
   },
   "https://smartshaadi.online/blog-guest-cost.html": {
     "slug": "blog-guest-cost",
     "title": "Guest List Cost Calculator",
-    "keywords": ["guest list cost", "per guest cost", "guest management", "guest count cost"]
+    "keywords": [
+      "guest list cost",
+      "per guest cost",
+      "guest management",
+      "guest count cost"
+    ]
   },
   "https://smartshaadi.online/blog-honeymoon-budget-india-2026.html": {
     "slug": "blog-honeymoon-budget-india-2026",
     "title": "Honeymoon Budget India 2026",
-    "keywords": ["honeymoon budget", "honeymoon cost India", "honeymoon planning India", "honeymoon destinations"]
+    "keywords": [
+      "honeymoon budget",
+      "honeymoon cost India",
+      "honeymoon planning India",
+      "honeymoon destinations"
+    ]
   },
   "https://smartshaadi.online/blog-middle-class-truth.html": {
     "slug": "blog-middle-class-truth",
     "title": "Middle Class Wedding Truth",
-    "keywords": ["middle class wedding", "realistic wedding budget", "budget shaadi truth", "middle class shaadi"]
+    "keywords": [
+      "middle class wedding",
+      "realistic wedding budget",
+      "budget shaadi truth",
+      "middle class shaadi"
+    ]
   },
   "https://smartshaadi.online/blog-planner-vs-diy.html": {
     "slug": "blog-planner-vs-diy",
     "title": "Wedding Planner vs DIY 2026",
-    "keywords": ["wedding planner vs DIY", "planner cost", "DIY wedding", "wedding planner fee"]
+    "keywords": [
+      "wedding planner vs DIY",
+      "planner cost",
+      "DIY wedding",
+      "wedding planner fee"
+    ]
   },
   "https://smartshaadi.online/blog-court-vs-traditional.html": {
     "slug": "blog-court-vs-traditional",
     "title": "Court vs Traditional Wedding",
-    "keywords": ["court marriage vs traditional", "court wedding", "registered marriage", "court shaadi"]
+    "keywords": [
+      "court marriage vs traditional",
+      "court wedding",
+      "registered marriage",
+      "court shaadi"
+    ]
   },
   "https://smartshaadi.online/blog-future-ai.html": {
     "slug": "blog-future-ai",
     "title": "Future of AI Weddings 2026",
-    "keywords": ["future of AI weddings", "AI wedding trends 2026", "wedding technology future"]
+    "keywords": [
+      "future of AI weddings",
+      "AI wedding trends 2026",
+      "wedding technology future"
+    ]
   },
   "https://smartshaadi.online/blog-zero-waste-wedding-2026.html": {
     "slug": "blog-zero-waste-wedding-2026",
     "title": "Zero-Waste Wedding 2026",
-    "keywords": ["zero waste wedding", "eco-friendly wedding", "sustainable shaadi", "green wedding India"]
+    "keywords": [
+      "zero waste wedding",
+      "eco-friendly wedding",
+      "sustainable shaadi",
+      "green wedding India"
+    ]
   },
   "https://smartshaadi.online/blog-budget.html": {
     "slug": "blog-budget",
     "title": "Smart Wedding Budgeting Strategy",
-    "keywords": ["wedding budgeting strategy", "smart budgeting", "budget allocation", "shaadi budget planning"]
+    "keywords": [
+      "wedding budgeting strategy",
+      "smart budgeting",
+      "budget allocation",
+      "shaadi budget planning"
+    ]
   },
   "https://smartshaadi.online/blog-budget-calculator.html": {
     "slug": "blog-budget-calculator",
     "title": "Budget Calculator Guide",
-    "keywords": ["budget calculator guide", "how to use budget calculator", "calculator tips"]
+    "keywords": [
+      "budget calculator guide",
+      "how to use budget calculator",
+      "calculator tips"
+    ]
   },
   "https://smartshaadi.online/blog-catering.html": {
     "slug": "blog-catering",
     "title": "Top Budget Caterers Delhi",
-    "keywords": ["Delhi caterers", "budget catering", "catering guide Delhi", "best caterers Delhi"]
+    "keywords": [
+      "Delhi caterers",
+      "budget catering",
+      "catering guide Delhi",
+      "best caterers Delhi"
+    ]
   },
   "https://smartshaadi.online/nri-wedding-blog.html": {
     "slug": "nri-wedding-blog",
     "title": "NRI Wedding Planning Guide",
-    "keywords": ["NRI wedding", "NRI shaadi India", "overseas wedding planning", "NRI wedding planning"]
+    "keywords": [
+      "NRI wedding",
+      "NRI shaadi India",
+      "overseas wedding planning",
+      "NRI wedding planning"
+    ]
   },
   "https://smartshaadi.online/jaipur-ai-case-study.html": {
     "slug": "jaipur-ai-case-study",
     "title": "Jaipur AI Wedding Case Study",
-    "keywords": ["Jaipur wedding AI", "AI case study", "real wedding story", "Jaipur shaadi case study"]
+    "keywords": [
+      "Jaipur wedding AI",
+      "AI case study",
+      "real wedding story",
+      "Jaipur shaadi case study"
+    ]
   },
   "https://smartshaadi.online/jaipur-ai-wedding-case-study.html": {
     "slug": "jaipur-ai-wedding-case-study",
     "title": "Sahil & Soha Jaipur Case Study",
-    "keywords": ["Jaipur AI wedding", "wedding case study", "real couple story"]
+    "keywords": [
+      "Jaipur AI wedding",
+      "wedding case study",
+      "real couple story"
+    ]
   },
   "https://smartshaadi.online/vendors/index.html": {
     "slug": "vendors-index",
     "title": "Wedding Vendor Directory",
-    "keywords": ["wedding vendors", "vendor directory", "certified vendors", "wedding vendor list"]
+    "keywords": [
+      "wedding vendors",
+      "vendor directory",
+      "certified vendors",
+      "wedding vendor list"
+    ]
   },
   "https://smartshaadi.online/vendors/apply.html": {
     "slug": "vendors-apply",
     "title": "List Your Wedding Business",
-    "keywords": ["list your business", "vendor listing", "vendor registration", "vendor ban jao"]
+    "keywords": [
+      "list your business",
+      "vendor listing",
+      "vendor registration",
+      "vendor ban jao"
+    ]
   },
   "https://smartshaadi.online/blog-kolkata-wedding-cost-2026.html": {
     "slug": "blog-kolkata-wedding-cost-2026",
     "title": "Kolkata Wedding Cost 2026",
-    "keywords": ["Kolkata wedding cost", "Bengali wedding budget", "Kolkata shaadi", "Gaye Holud cost", "Bou Bhaat"]
+    "keywords": [
+      "Kolkata wedding cost",
+      "Bengali wedding budget",
+      "Kolkata shaadi",
+      "Gaye Holud cost",
+      "Bou Bhaat"
+    ]
   },
   "https://smartshaadi.online/blog-haldi-ceremony-cost-2026.html": {
     "slug": "blog-haldi-ceremony-cost-2026",
     "title": "Haldi Ceremony Cost 2026",
-    "keywords": ["haldi ceremony cost", "haldi decoration", "haldi planning", "haldi outfit"]
+    "keywords": [
+      "haldi ceremony cost",
+      "haldi decoration",
+      "haldi planning",
+      "haldi outfit"
+    ]
   },
   "https://smartshaadi.online/blog-engagement-ceremony-guide-2026.html": {
     "slug": "blog-engagement-ceremony-guide-2026",
     "title": "Engagement Ceremony Guide 2026",
-    "keywords": ["engagement ceremony", "ring ceremony", "engagement planning", "sagai planning"]
+    "keywords": [
+      "engagement ceremony",
+      "ring ceremony",
+      "engagement planning",
+      "sagai planning"
+    ]
   },
   "https://smartshaadi.online/blog-wedding-band-baaja-cost-2026.html": {
     "slug": "blog-wedding-band-baaja-cost-2026",
     "title": "Wedding Band Baaja Cost 2026",
-    "keywords": ["band baaja cost", "baraat music", "wedding band", "dhol wala", "baraat band"]
+    "keywords": [
+      "band baaja cost",
+      "baraat music",
+      "wedding band",
+      "dhol wala",
+      "baraat band"
+    ]
   },
   "https://smartshaadi.online/blog-shaadi-card-design-2026.html": {
     "slug": "blog-shaadi-card-design-2026",
     "title": "Shaadi Card Design Guide 2026",
-    "keywords": ["shaadi card design", "wedding invitation wording", "invitation samples", "wedding card wording"]
+    "keywords": [
+      "shaadi card design",
+      "wedding invitation wording",
+      "invitation samples",
+      "wedding card wording"
+    ]
   },
   "https://smartshaadi.online/about.html": {
     "slug": "about",
     "title": "About SmartShaadi",
-    "keywords": ["about SmartShaadi", "SmartShaadi team", "wedding planning platform"]
+    "keywords": [
+      "about SmartShaadi",
+      "SmartShaadi team",
+      "wedding planning platform"
+    ]
   },
   "https://smartshaadi.online/contact.html": {
     "slug": "contact",
     "title": "Contact SmartShaadi",
-    "keywords": ["contact us", "SmartShaadi contact", "get in touch"]
+    "keywords": [
+      "contact us",
+      "SmartShaadi contact",
+      "get in touch"
+    ]
   },
   "https://smartshaadi.online/privacy-policy.html": {
     "slug": "privacy-policy",
     "title": "Privacy Policy",
-    "keywords": ["privacy policy", "data policy"]
+    "keywords": [
+      "privacy policy",
+      "data policy"
+    ]
   },
   "https://smartshaadi.online/terms.html": {
     "slug": "terms",
     "title": "Terms & Conditions",
-    "keywords": ["terms and conditions", "terms of service"]
+    "keywords": [
+      "terms and conditions",
+      "terms of service"
+    ]
+  },
+  "https://smartshaadi.online/blog-wedding-photographer-how-to-choose.html": {
+    "slug": "blog-wedding-photographer-how-to-choose",
+    "title": "Wedding Photographer Kaise Chunein 2026 — Complete Selection Guide",
+    "keywords": [
+      "wedding",
+      "photographer",
+      "choose",
+      "India",
+      "select"
+    ]
   }
 }
-
