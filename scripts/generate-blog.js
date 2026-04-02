@@ -711,12 +711,13 @@ try {
 
 // ─── UPDATE blogs.html ────────────────────────────────────────────────────────
 function addToBlogsPage(topic, date) {
-  // path.join(process.cwd()) — root se resolve karo
   const p = path.join(process.cwd(), 'blogs.html');
   if (!fs.existsSync(p)) { console.warn('⚠️  blogs.html not found.'); return; }
-  let content = fs.readFileSync(p, 'utf-8');
-  if (content.includes(topic.slug + '.html')) {
-    console.log('ℹ️  Card already in blogs.html — skipping card add.');
+  let html = fs.readFileSync(p, 'utf-8');
+
+  // Already exists check
+  if (html.includes(topic.slug + '.html')) {
+    console.log('ℹ️  Card already in blogs.html — skipping.');
     return;
   }
   console.log(`📝 Adding card for: ${topic.slug}`);
@@ -727,11 +728,42 @@ function addToBlogsPage(topic, date) {
       <div class="acard-body"><span class="acard-cat">${topic.category}</span><div class="acard-title">${topic.title}</div><div class="acard-desc">SmartShaadi AI Team ka in-depth guide — real data, honest pricing, Hinglish mein. Published ${date}.</div><div class="acard-footer"><div class="acard-read">Read Guide →</div><div class="acard-meta">${topic.readTime}</div></div></div>
     </a>`;
 
-  const ins = content.lastIndexOf('</a>\n    </div>');
-  if (ins === -1) { console.warn('⚠️  blogs.html insertion point not found.'); return; }
-  content = content.slice(0, ins + 4) + card + '\n' + content.slice(ins + 4);
-  fs.writeFileSync(p, content, 'utf-8');
-  console.log('✅ blogs.html — new card added');
+  // Try multiple insertion patterns — order matters (most specific first)
+  const PATTERNS = [
+    '<!-- END NEW BLOGS -->',   // Primary: explicit marker in your blogs.html
+    '</a>\n    <!-- END',       // Variant with newline before comment
+    '</a>\n\n<footer',         // Fallback: before footer
+    '</a>\n<footer',            // Fallback variant
+  ];
+
+  let inserted = false;
+  for (const pattern of PATTERNS) {
+    const idx = html.lastIndexOf(pattern);
+    if (idx !== -1) {
+      // Insert card BEFORE the found pattern
+      html = html.slice(0, idx) + card + '\n    ' + html.slice(idx);
+      inserted = true;
+      console.log(`✅ Inserted using pattern: "${pattern.replace(/\n/g, '\\n')}"`);
+      break;
+    }
+  }
+
+  if (!inserted) {
+    // Last resort: insert before </footer>
+    const footerIdx = html.lastIndexOf('<footer');
+    if (footerIdx !== -1) {
+      html = html.slice(0, footerIdx) + card + '\n\n' + html.slice(footerIdx);
+      inserted = true;
+      console.log('✅ Inserted before <footer> (last resort)');
+    } else {
+      console.error('❌ Could not find insertion point in blogs.html!');
+      console.error('   Add <!-- END NEW BLOGS --> comment before </footer> in blogs.html');
+      return;
+    }
+  }
+
+  fs.writeFileSync(p, html, 'utf-8');
+  console.log('✅ blogs.html updated successfully');
 }
 
 // ─── UPDATE sitemap.xml ───────────────────────────────────────────────────────
