@@ -17,112 +17,6 @@ const path = require('path');
 const https = require('https');
 
 // ─── TOPIC QUEUE ──────────────────────────────────────────────────────────────
-const BLOG_TOPICS = [
-  {
-    slug: 'blog-chennai-wedding-cost-2026',
-    title: 'Chennai Wedding Cost 2026 — South Indian Shaadi Ka Complete Budget',
-    category: 'City Guide',
-    catTag: 'city budget',
-    emoji: '🏛️',
-    gradient: 'linear-gradient(135deg,#0a1208 0%,#121e08 100%)',
-    readTime: '13 min read',
-    searchTerms: 'Chennai wedding cost 2026 South Indian shaadi budget Tamil wedding Mylapore OMR',
-    keyFocus: 'Chennai mein 2026 mein wedding ka realistic budget. South Indian traditions — Nalangu, Kashi Yatra. Mylapore vs Velachery vs OMR venues. Vegetarian catering domination. Silk saree costs.',
-    caseStudyCity: 'Chennai',
-    relatedTool: { href: '/wedding-budget-calculator-india-2026.html', name: '🧮 Budget Calculator 2026', desc: 'Chennai wedding ka exact budget 2 minute mein — city-wise breakdown free!' }
-  },
-  {
-    slug: 'blog-chandigarh-wedding-cost-2026',
-    title: 'Chandigarh Wedding Cost 2026 — Punjabi Shaadi Ka Complete Guide',
-    category: 'City Guide',
-    catTag: 'city budget',
-    emoji: '🌾',
-    gradient: 'linear-gradient(135deg,#100a1a 0%,#1a1028 100%)',
-    readTime: '12 min read',
-    searchTerms: 'Chandigarh wedding cost 2026 Punjabi shaadi budget tricity Mohali Panchkula',
-    keyFocus: 'Chandigarh tricity (Chandigarh + Mohali + Panchkula) mein 2026 wedding budget. Punjabi traditions — Anand Karaj, Giddha. Sector 17 vs Mohali venues. Dhol culture aur lavish buffet.',
-    caseStudyCity: 'Chandigarh',
-    relatedTool: { href: '/ai-vendor-price-predictor.html', name: '📊 Vendor Price Predictor', desc: 'Chandigarh mein vendor ka sahi rate jaano — AI se, free!' }
-  },
-  {
-    slug: 'blog-sangeet-ceremony-cost-2026',
-    title: 'Sangeet Ceremony Cost 2026 — Planning, Decoration aur Complete Guide',
-    category: 'Ceremony Guide',
-    catTag: 'planning budget',
-    emoji: '🎵',
-    gradient: 'linear-gradient(135deg,#0a0818 0%,#10101e 100%)',
-    readTime: '11 min read',
-    searchTerms: 'sangeet ceremony cost 2026 decoration choreography DJ live music planning',
-    keyFocus: 'Sangeet ceremony budget — DJ vs live singer, choreography cost, decoration themes. Day sangeet vs night sangeet cost difference. DIY performance vs hired choreographer.',
-    caseStudyCity: 'Indore',
-    relatedTool: { href: '/ai-playlist-generator.html', name: '🎵 AI Playlist Generator', desc: 'Sangeet ki perfect playlist AI se banao — baraat se pheras tak, free!' }
-  },
-  {
-    slug: 'blog-bridal-lehenga-cost-2026',
-    title: 'Bridal Lehenga Cost 2026 — Designer se Budget Tak Sahi Choice Karo',
-    category: 'Shopping Guide',
-    catTag: 'shopping budget',
-    emoji: '👗',
-    gradient: 'linear-gradient(135deg,#120508 0%,#1e0812 100%)',
-    readTime: '11 min read',
-    searchTerms: 'bridal lehenga cost 2026 India designer budget affordable rent buy',
-    keyFocus: 'Bridal lehenga ki realistic pricing — local market vs designer boutique vs rent. Alteration costs, blouse stitching, dupatta. Delhi markets vs Mumbai vs Surat wholesale. Budget 30K se 5L+ tak.',
-    caseStudyCity: 'Bhopal',
-    relatedTool: { href: '/blog-chandni-chowk-shopping-2026.html', name: '🛍️ Chandni Chowk Guide', desc: 'Delhi ke best wedding markets mein lehenga kahan se lein — complete guide!' }
-  },
-  {
-    slug: 'blog-ahmedabad-wedding-cost-2026',
-    title: 'Ahmedabad Wedding Cost 2026 — Gujarati Shaadi Ka Complete Budget',
-    category: 'City Guide',
-    catTag: 'city budget',
-    emoji: '🌺',
-    gradient: 'linear-gradient(135deg,#0e1008 0%,#181a08 100%)',
-    readTime: '12 min read',
-    searchTerms: 'Ahmedabad wedding cost 2026 Gujarati shaadi budget Navratri season venue',
-    keyFocus: 'Ahmedabad mein Gujarati wedding traditions — Garba night, Mameru, Pithi. Navratri season pe wedding ka extra cost. SG Highway vs old city venues. Fully vegetarian catering culture.',
-    caseStudyCity: 'Vadodara',
-    relatedTool: { href: '/ai-budget-optimizer.html', name: '⚡ Budget Optimizer', desc: 'Live slider se budget optimize karo — city-wise AI analysis free!' }
-  },
-  {
-    slug: 'blog-wedding-return-gifts-2026',
-    title: 'Wedding Return Gifts Guide 2026 — Budget, Ideas aur Packaging Tips',
-    category: 'Planning Guide',
-    catTag: 'planning budget',
-    emoji: '🎁',
-    gradient: 'linear-gradient(135deg,#0a1205 0%,#121e08 100%)',
-    readTime: '10 min read',
-    searchTerms: 'wedding return gifts 2026 India budget ideas favors packaging bulk order',
-    keyFocus: 'Return gift ideas for different budgets (₹50 to ₹500 per person). Bulk ordering guide, personalization cost. Corporate gift vendors vs local market. Packaging tips jo photos mein achhe lagte hain.',
-    caseStudyCity: 'Nagpur',
-    relatedTool: { href: '/ai-guest-manager.html', name: '👥 AI Guest Manager', desc: 'Guest list manage karo aur return gift count calculate karo — free!' }
-  },
-  {
-    slug: 'blog-wedding-photographer-how-to-choose',
-    title: 'Wedding Photographer Kaise Chunein 2026 — Complete Selection Guide',
-    category: 'Vendor Guide',
-    catTag: 'vendor',
-    emoji: '📷',
-    gradient: 'linear-gradient(135deg,#080510 0%,#100818 100%)',
-    readTime: '12 min read',
-    searchTerms: 'wedding photographer choose 2026 India how to select candid portfolio contract',
-    keyFocus: 'Photographer selection criteria — portfolio review kaise karein, contract checklist, red flags. Instagram vs real work difference. Candid vs traditional. Package comparison guide.',
-    caseStudyCity: 'Pune',
-    relatedTool: { href: '/ai-photography-shots.html', name: '📸 Photography Shot List', desc: 'Photographer ko brief karne ke liye 100+ shot list AI se banao — free!' }
-  },
-  {
-    slug: 'blog-wedding-catering-menu-2026',
-    title: 'Wedding Catering Menu Guide 2026 — Veg, Non-Veg, Live Counters',
-    category: 'Vendor Guide',
-    catTag: 'vendor budget',
-    emoji: '🍛',
-    gradient: 'linear-gradient(135deg,#120500 0%,#1e0800 100%)',
-    readTime: '11 min read',
-    searchTerms: 'wedding catering menu 2026 veg non-veg live counters India per plate cost',
-    keyFocus: 'Complete catering menu planning — starters, main course, live counters, desserts. Per-plate cost breakdown. Wastage control tricks. North vs South Indian catering style differences.',
-    caseStudyCity: 'Lucknow',
-    relatedTool: { href: '/ai-menu-planner.html', name: '🍽️ AI Menu Planner', desc: 'Wedding ka complete menu AI se plan karo — guests count ke hisaab se, free!' }
-  }
-];
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 
@@ -130,36 +24,6 @@ function getTodayDate() {
   return new Date().toISOString().split('T')[0];
 }
 
-function getTopicForToday() {
-  // Manual override check — highest priority
-  const override = process.env.TOPIC_OVERRIDE || '';
-  if (override) {
-    const found = BLOG_TOPICS.find(t => t.slug === override);
-    if (found) { console.log(`🎯 Topic override: ${found.slug}`); return found; }
-    console.warn(`⚠️  Override slug "${override}" not found. Using auto-select.`);
-  }
-
-  // Smart sequential selection:
-  // Pehle aise topic dhundho jo REPO MEIN EXIST NAHI KARTA
-  // Isse same topic repeat nahi hoga
-  const force = process.env.FORCE_REGENERATE === 'true';
-  if (!force) {
-    for (const topic of BLOG_TOPICS) {
-      const filePath = path.join(process.cwd(), topic.slug + '.html');
-      if (!fs.existsSync(filePath)) {
-        console.log(`✅ Auto-selected ungenerated topic: ${topic.slug}`);
-        return topic;
-      }
-    }
-    // Agar sab exist karte hain toh week-based fallback
-    console.log('ℹ️  All topics already generated. Using week-based rotation.');
-  }
-
-  const weekNum = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
-  const topic = BLOG_TOPICS[weekNum % BLOG_TOPICS.length];
-  console.log(`🔄 Week-based topic: ${topic.slug}`);
-  return topic;
-}
 
 function loadUrlMap() {
   const p = path.join(__dirname, 'url-map.json');
@@ -950,7 +814,7 @@ async function main() {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) throw new Error('❌ GROQ_API_KEY environment variable not set! Add it to GitHub Secrets.');
 
-  const topic = getTopicForToday();
+  const topic = await getNextTopic(apiKey);
   const date  = getTodayDate();
 
   // ── path.join(process.cwd()) — GitHub Actions root se resolve ──
@@ -963,7 +827,7 @@ async function main() {
     // Extra safety: try to find next ungenerated topic
     console.log(`⚠️  ${topic.slug}.html already exists even after smart selection!`);
     console.log('   This means all topics in queue are generated.');
-    console.log('   Add new topics to BLOG_TOPICS array in generate-blog.js');
+    console.log('   Add new topics to MANUAL_TOPICS array in scripts/topics.js');
     process.exit(0);
   }
 
@@ -1013,4 +877,9 @@ main().catch(err => {
   console.error('\n❌ FATAL ERROR:', err.message);
   if (err.stack) console.error(err.stack);
   process.exit(1);
-});
+});// ─── TOPIC MANAGEMENT ────────────────────────────────────────────────────────
+// Topics scripts/topics.js se aate hain — wahan add karo naye topics
+// generate-blog.js ko touch karne ki zaroorat nahi
+const { getNextTopic } = require('./topics.js');
+
+
