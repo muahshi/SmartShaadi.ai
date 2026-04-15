@@ -102,15 +102,14 @@ function injectInternalLinks(html, currentSlug, urlMap) {
  * - Cormorant Garamond headings, Plus Jakarta Sans body
  * - Dark footer with all links
  */
-function buildTemplate(topic, bodyHtml, date) {
+function buildTemplate(topic, bodyHtml, date, schemaBlocks) {
   const canonical = `https://smartshaadi.online/${topic.slug}.html`;
   const plainText = bodyHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const metaDesc = plainText.slice(0, 155) + '...';
 
-  // FAQ JSON-LD — extract from body if present, else generic
-  const faqMatch = bodyHtml.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-  const faqSchema = faqMatch ? faqMatch[0] : '';
-  const cleanBody = faqMatch ? bodyHtml.replace(faqMatch[0], '') : bodyHtml;
+  // FAQ JSON-LD now handled by schema-generator.js
+  // Remove any existing JSON-LD from AI response (schema-generator builds proper ones)
+  const cleanBody = bodyHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, '').trim();
 
   return `<!DOCTYPE html>
 <html lang="hi-IN">
@@ -128,10 +127,7 @@ function buildTemplate(topic, bodyHtml, date) {
 <meta property="og:image" content="https://smartshaadi.online/og-shaadi.jpg">
 <meta property="og:site_name" content="Smart Shaadi AI">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"${topic.title}","description":"${metaDesc}","url":"${canonical}","datePublished":"${date}","dateModified":"${date}","author":{"@type":"Organization","name":"Smart Shaadi AI","url":"https://smartshaadi.online"},"publisher":{"@type":"Organization","name":"Smart Shaadi AI","url":"https://smartshaadi.online","logo":{"@type":"ImageObject","url":"https://smartshaadi.online/icons/icon-192.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"${canonical}"}}
-</script>
-${faqSchema}
+${schemaBlocks}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -854,9 +850,14 @@ async function main() {
   const urlMap = loadUrlMap();
   const linkedHtml = injectInternalLinks(cleanedHtml, topic.slug, urlMap);
 
-  // ── WRAP IN MASTER TEMPLATE ────────────────────────────────────────
+
+  // ── GENERATE ALL SCHEMAS ─────────────────────────────────────────────────
+  console.log('📊 Generating JSON-LD schemas (Article + FAQ + HowTo + SoftwareApp)...');
+  const schemaBlocks = buildAllSchemas(topic, linkedHtml, date);
+
+  // ── WRAP IN MASTER TEMPLATE ──────────────────────────────────────────────
   console.log('🏗️  Building final HTML with master template...');
-  const finalHtml = buildTemplate(topic, linkedHtml, date);
+  const finalHtml = buildTemplate(topic, linkedHtml, date, schemaBlocks);
 
   // ── SAVE HTML FILE (process.cwd() = repo root in GitHub Actions) ───
   fs.writeFileSync(outputPath, finalHtml, 'utf-8');
@@ -881,5 +882,6 @@ main().catch(err => {
 // Topics scripts/topics.js se aate hain — wahan add karo naye topics
 // generate-blog.js ko touch karne ki zaroorat nahi
 const { getNextTopic } = require('./topics.js');
+const { buildAllSchemas } = require('./schema-generator.js');
 
 
