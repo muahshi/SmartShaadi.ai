@@ -6,11 +6,11 @@
 <title>Free AI Wedding Photography Shot List Generator India 2026 | SmartShaadi</title>
 <meta name="description" content="Free AI Wedding Photography Shot List India 2026. Ceremony-wise shots — Mehendi, Haldi, Sangeet, Baraat, Vidai. Pose directions. Photographer brief WhatsApp ready. 100+ shots. Free!">
 <meta name="keywords" content="wedding photography shot list india, shaadi photography checklist, wedding shots list hindi, candid wedding photography list, wedding photographer brief india 2026">
-<link rel="canonical" href="https://smartshaadi.online/ai-photography-shots.html">
+<link rel="canonical" href="https://www.smartshaadi.online/ai-photography-shots.html">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Free AI Wedding Photography Shot List + Photographer Brief | SmartShaadi">
 <meta property="og:description" content="100+ shots, pose directions, ceremony-wise checklist, photographer brief. Koi moment miss mat hone do!">
-<meta property="og:url" content="https://smartshaadi.online/ai-photography-shots.html">
+<meta property="og:url" content="https://www.smartshaadi.online/ai-photography-shots.html">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Photography Shot List Generator","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wedding photography mein kaunse shots must-have hote hain?","acceptedAnswer":{"@type":"Answer","text":"Must-have: Bridal prep, First look, Ring exchange close-up, Pheras/rituals, Vidai emotional farewell, Family portraits, Candid reception moments, Golden hour couple shots."}},{"@type":"Question","name":"Photographer ko brief kaise dein?","acceptedAnswer":{"@type":"Answer","text":"Ceremony-wise shot list, must-have aur avoid shots, family list, special moments — sab written mein WhatsApp karo meeting se 3 din pehle."}},{"@type":"Question","name":"Indian wedding mein kitne photographers chahiye?","acceptedAnswer":{"@type":"Answer","text":"300+ guests: 2 photographers minimum. 500+ guests: 3 photographers ideal."}},{"@type":"Question","name":"Golden hour kya hota hai wedding photography mein?","acceptedAnswer":{"@type":"Answer","text":"Sunset se 30-60 minute pehle ka time golden hour hota hai. Soft warm light milti hai jo couple portraits ko cinematic bana deti hai."}},{"@type":"Question","name":"Shot list photographer ko kab dein?","acceptedAnswer":{"@type":"Answer","text":"Wedding se 3-5 din pehle photographer ko WhatsApp karo. Day-of list kaam nahi aati — prepare karne ka time chahiye."}}]}]}</script>
 
@@ -928,7 +928,7 @@ function copyAll(){
     t+=`\n═══ ${sec.name?.toUpperCase()||'SECTION'} ═══\n`;
     (sec.shots||[]).forEach((s,i)=>t+=`${i+1}. ${s.name}${s.desc?' — '+s.desc:''}\n`);
   });
-  t+='\n🔗 https://smartshaadi.online/ai-photography-shots.html';
+  t+='\n🔗 https://www.smartshaadi.online/ai-photography-shots.html';
   navigator.clipboard.writeText(t).then(()=>showToast('📋 Full list copied!'));
 }
 function copyBrief(){navigator.clipboard.writeText(storedBrief).then(()=>showToast('📋 Brief copied!'));}
@@ -937,7 +937,7 @@ function copyBrief(){navigator.clipboard.writeText(storedBrief).then(()=>showToa
 function sendToPhotographer(){
   const phone=document.getElementById('photogPhone').value.replace(/\D/g,'');
   if(!storedBrief){showToast('⚠️ Pehle shot list generate karein!');return;}
-  const msg=storedBrief.substring(0,3000)+'...\n\n(Full list: https://smartshaadi.online/ai-photography-shots.html)';
+  const msg=storedBrief.substring(0,3000)+'...\n\n(Full list: https://www.smartshaadi.online/ai-photography-shots.html)';
   if(phone.length>=10){window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`,'_blank');}
   else{window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');}
   showToast('📱 WhatsApp Opened!');
@@ -949,10 +949,10 @@ function waShare(){
   const secs=storedSections?.sections||[];
   let t=`📸 ${bride} & ${groom} ki Wedding Shot List\n\n`;
   secs.slice(0,4).forEach(s=>t+=`${s.icon||'📸'} ${s.name}: ${s.shots?.length||0} shots\n`);
-  t+=`\n🔗 https://smartshaadi.online/ai-photography-shots.html`;
+  t+=`\n🔗 https://www.smartshaadi.online/ai-photography-shots.html`;
   window.open('https://wa.me/?text='+encodeURIComponent(t));
 }
-function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Photography Shot List!\n📸 100+ shots + pose directions + photographer brief.\nhttps://smartshaadi.online/ai-photography-shots.html'));}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Photography Shot List!\n📸 100+ shots + pose directions + photographer brief.\nhttps://www.smartshaadi.online/ai-photography-shots.html'));}
 
 function clearChecks(){
   if(!confirm('Sab shots uncheck ho jaayenge?'))return;
