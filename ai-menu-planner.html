@@ -6,11 +6,11 @@
 <title>Free AI Wedding Menu Planner India 2026 — Quantity Calculator + Caterer Brief | SmartShaadi</title>
 <meta name="description" content="India ka Free AI Wedding Menu Planner. Regional cuisine menu + automatic quantity calculator for 50-1000 guests + per-plate cost + caterer note WhatsApp ready. North Indian, Punjabi, South Indian, Bengali, Gujarati. Free!">
 <meta name="keywords" content="wedding menu planner india, shaadi ka menu, wedding catering menu hindi, north indian wedding menu 2026, wedding food quantity calculator india, per plate cost wedding india">
-<link rel="canonical" href="https://smartshaadi.online/ai-menu-planner.html">
+<link rel="canonical" href="https://www.smartshaadi.online/ai-menu-planner.html">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Free AI Wedding Menu Planner India 2026 | SmartShaadi">
 <meta property="og:description" content="Quantity calculator + caterer brief WhatsApp ready. 50-1000 guests. Regional menus. Free!">
-<meta property="og:url" content="https://smartshaadi.online/ai-menu-planner.html">
+<meta property="og:url" content="https://www.smartshaadi.online/ai-menu-planner.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Menu Planner India","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Indian wedding mein per plate kharcha kitna hota hai 2026?","acceptedAnswer":{"@type":"Answer","text":"2026 mein per plate: Budget ₹400-700, Mid ₹700-1200, Premium ₹1200-2000, Luxury ₹2000+. City ke hisab se vary karta hai."}},{"@type":"Question","name":"500 guests ke liye kitna khana chahiye?","acceptedAnswer":{"@type":"Answer","text":"500 guests: Chawal 100 kg, Dal 60 kg, Sabzi 90 kg, Paneer 22 kg, Sweets 40 kg. Hamesha 15% extra buffer rakhein."}},{"@type":"Question","name":"Caterer se negotiate kaise karein?","acceptedAnswer":{"@type":"Answer","text":"3 caterers se quotes lo, exact quantity list lekar jaao, written agreement lo, advance 20% se zyada mat do."}},{"@type":"Question","name":"Live counters worth it hain?","acceptedAnswer":{"@type":"Answer","text":"Haan! Chaat + Paan counter — sabse popular. Fresh food, entertainment, premium feel. ₹600 ki shaadi ₹1500 wali lagti hai live counters se."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -798,7 +798,7 @@ Use Hinglish in descriptions. Real Indian dish names. Include all major sections
     // Caterer note
     const noteLines=menu.catererNoteLines||[];
     const savingTips=menu.savingTips||[];
-    const catNote=`👨‍🍳 WEDDING CATERER BRIEF\n${'═'.repeat(38)}\nGuests: ${guests} | Budget: ₹${pp}/plate | Total: ${fmtINR(total)}\nCity: ${city} | Season: ${season}\nCuisine: ${cuisines.join(', ')}\nDietary: ${diets.join(', ')||'Veg + Non-Veg'}\nLive Counters: ${counters.join(', ')||'Chaat, Sweets, Paan'}\n\n📋 INSTRUCTIONS:\n${noteLines.map((l,i)=>`${i+1}. ${l}`).join('\n')}\n\n💰 SAVING TIPS:\n${savingTips.map(t=>'• '+t).join('\n')}\n\n⚖️ KEY QUANTITIES (with 15% buffer):\n${QTY.slice(0,6).map(q=>`• ${q.n}: ${Math.ceil(q.r*guests*1.15)} ${q.u}`).join('\n')}\n\n🔗 Generated: https://smartshaadi.online/ai-menu-planner.html`;
+    const catNote=`👨‍🍳 WEDDING CATERER BRIEF\n${'═'.repeat(38)}\nGuests: ${guests} | Budget: ₹${pp}/plate | Total: ${fmtINR(total)}\nCity: ${city} | Season: ${season}\nCuisine: ${cuisines.join(', ')}\nDietary: ${diets.join(', ')||'Veg + Non-Veg'}\nLive Counters: ${counters.join(', ')||'Chaat, Sweets, Paan'}\n\n📋 INSTRUCTIONS:\n${noteLines.map((l,i)=>`${i+1}. ${l}`).join('\n')}\n\n💰 SAVING TIPS:\n${savingTips.map(t=>'• '+t).join('\n')}\n\n⚖️ KEY QUANTITIES (with 15% buffer):\n${QTY.slice(0,6).map(q=>`• ${q.n}: ${Math.ceil(q.r*guests*1.15)} ${q.u}`).join('\n')}\n\n🔗 Generated: https://www.smartshaadi.online/ai-menu-planner.html`;
     document.getElementById('catBody').textContent=catNote;
     storedCatNote=catNote;
 
@@ -862,23 +862,23 @@ function copyCat(){navigator.clipboard.writeText(storedCatNote).then(()=>showToa
 function copyAll(){
   let t=`🍽️ Wedding Menu — SmartShaadi.online\n\n`;
   (storedMenu?.sections||[]).forEach(sec=>{t+=`\n═══ ${sec.name?.toUpperCase()} ═══\n`;(sec.dishes||[]).forEach((d,i)=>t+=`${i+1}. ${d.name}${d.desc?' — '+d.desc:''}\n`);});
-  t+='\n🔗 https://smartshaadi.online/ai-menu-planner.html';
+  t+='\n🔗 https://www.smartshaadi.online/ai-menu-planner.html';
   navigator.clipboard.writeText(t).then(()=>showToast('📋 Full menu copied!'));
 }
 function sendToCaterer(){
   const phone=document.getElementById('catPhone').value.replace(/\D/g,'');
   if(!storedCatNote){showToast('⚠️ Pehle menu generate karein!');return;}
-  const msg=storedCatNote.substring(0,3000)+'...\n\nFull tool: https://smartshaadi.online/ai-menu-planner.html';
+  const msg=storedCatNote.substring(0,3000)+'...\n\nFull tool: https://www.smartshaadi.online/ai-menu-planner.html';
   if(phone.length>=10)window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`,'_blank');
   else window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
   showToast('📱 WhatsApp Opened!');
 }
 function waShare(){
   const cuisines=[...document.querySelectorAll('.cpill.on')].map(p=>p.dataset.v).join(', ');
-  const t=`🍽️ Wedding Menu — ${guests} guests | ${cuisines}\n\n${storedCatNote.substring(0,500)}\n\n🔗 https://smartshaadi.online/ai-menu-planner.html`;
+  const t=`🍽️ Wedding Menu — ${guests} guests | ${cuisines}\n\n${storedCatNote.substring(0,500)}\n\n🔗 https://www.smartshaadi.online/ai-menu-planner.html`;
   window.open('https://wa.me/?text='+encodeURIComponent(t));
 }
-function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Menu Planner India!\n🍽️ Quantity calculator + caterer brief WhatsApp ready.\nhttps://smartshaadi.online/ai-menu-planner.html'));}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Menu Planner India!\n🍽️ Quantity calculator + caterer brief WhatsApp ready.\nhttps://www.smartshaadi.online/ai-menu-planner.html'));}
 
 function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
