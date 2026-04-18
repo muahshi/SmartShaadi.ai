@@ -6,11 +6,11 @@
 <title>Free AI Wedding Playlist Generator — Bollywood Sangeet Songs 2026 | SmartShaadi</title>
 <meta name="description" content="Free AI Wedding Playlist Generator — Mehendi, Haldi, Sangeet, Baraat, Vidai ke liye perfect Bollywood songs. DJ note WhatsApp ready. 50+ songs. 2026 latest hits!">
 <meta name="keywords" content="wedding playlist generator, sangeet songs list, bollywood wedding songs 2026, mehendi songs, baraat songs, haldi songs, vidai songs hindi, wedding DJ playlist india">
-<link rel="canonical" href="https://smartshaadi.online/ai-playlist-generator.html">
+<link rel="canonical" href="https://www.smartshaadi.online/ai-playlist-generator.html">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Free AI Wedding Playlist Generator — Bollywood 2026 | SmartShaadi">
 <meta property="og:description" content="Mehendi se Vidai tak perfect playlist. 50+ songs, DJ note, WhatsApp share. Free!">
-<meta property="og:url" content="https://smartshaadi.online/ai-playlist-generator.html">
+<meta property="og:url" content="https://www.smartshaadi.online/ai-playlist-generator.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Playlist Generator","applicationCategory":"EntertainmentApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sangeet ke liye best Bollywood songs kaunse hain?","acceptedAnswer":{"@type":"Answer","text":"Top sangeet songs: Kala Chashma, Gallan Goodiyaan, Nagada Sang Dhol, Desi Beat, Morni Banke, Naacho Naacho."}},{"@type":"Question","name":"Vidai ke liye emotional songs kaunse hain?","acceptedAnswer":{"@type":"Answer","text":"Vidai ke liye: Babul Ki Duaein, Mora Piya, Alvida, Tujhe Bhula Diya, Kanchi Re best hain."}},{"@type":"Question","name":"DJ ko playlist kaise dein?","acceptedAnswer":{"@type":"Answer","text":"DJ ko ceremony-wise list dein — Mehendi, Sangeet, Baraat order mein. Must-play clearly mark karo. Timing ke saath dena best practice."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -678,7 +678,7 @@ function buildDJNote(cers,tips){
     note+='\n';
   });
   if(tips.length){note+='💡 DJ TIPS:\n';tips.forEach((t,i)=>note+=`${i+1}. ${t}\n`);}
-  note+='\n'+'━'.repeat(42)+'\n📱 https://smartshaadi.online/ai-playlist-generator.html';
+  note+='\n'+'━'.repeat(42)+'\n📱 https://www.smartshaadi.online/ai-playlist-generator.html';
   document.getElementById('djTxt').textContent=note;
   storedDJNote=note;
 }
@@ -697,14 +697,14 @@ function copyAll(){
     t+=`\n═══ ${cer.toUpperCase()} ═══\n`;
     songs.forEach((s,i)=>t+=`${i+1}. ${s.title}${s.artist?' — '+s.artist:''}\n`);
   });
-  t+='\n🔗 https://smartshaadi.online/ai-playlist-generator.html';
+  t+='\n🔗 https://www.smartshaadi.online/ai-playlist-generator.html';
   navigator.clipboard.writeText(t).then(()=>showToast('📋 Full Playlist Copied!'));
 }
 function copyDJ(){navigator.clipboard.writeText(storedDJNote).then(()=>showToast('🎧 DJ Note Copied!'));}
 function sendToDJ(){
   const phone=document.getElementById('djPhone').value.replace(/\D/g,'');
   if(!storedDJNote){showToast('⚠️ Pehle playlist generate karein!');return;}
-  const msg=storedDJNote.substring(0,3000)+'...\n\nFull tool: https://smartshaadi.online/ai-playlist-generator.html';
+  const msg=storedDJNote.substring(0,3000)+'...\n\nFull tool: https://www.smartshaadi.online/ai-playlist-generator.html';
   if(phone.length>=10)window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`,'_blank');
   else window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
   showToast('📱 WhatsApp Opened!');
@@ -712,11 +712,11 @@ function sendToDJ(){
 function waShare(){
   let t='🎵 Wedding Playlist (SmartShaadi)\n\n';
   Object.entries(storedSections).forEach(([cer,songs])=>{if(!songs?.length)return;t+=`${cer}: ${songs.slice(0,3).map(s=>s.title).join(', ')}...\n`;});
-  t+='\n🔗 https://smartshaadi.online/ai-playlist-generator.html';
+  t+='\n🔗 https://www.smartshaadi.online/ai-playlist-generator.html';
   window.open('https://wa.me/?text='+encodeURIComponent(t));
 }
-function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Playlist Generator!\n🎵 Mehendi se Vidai tak perfect songs.\nhttps://smartshaadi.online/ai-playlist-generator.html'));}
-function copyLink(){navigator.clipboard.writeText('https://smartshaadi.online/ai-playlist-generator.html').then(()=>showToast('🔗 Link Copied!'));}
+function waShareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Playlist Generator!\n🎵 Mehendi se Vidai tak perfect songs.\nhttps://www.smartshaadi.online/ai-playlist-generator.html'));}
+function copyLink(){navigator.clipboard.writeText('https://www.smartshaadi.online/ai-playlist-generator.html').then(()=>showToast('🔗 Link Copied!'));}
 
 function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
