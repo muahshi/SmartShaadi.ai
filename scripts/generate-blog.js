@@ -40,12 +40,12 @@ function loadUrlMap() {
 function cleanAiResponse(raw) {
   let cleaned = raw;
 
-  // Layer 1 — Markdown fences
+  // Layer 1 — Markdown fences (```html ... ```)
   cleaned = cleaned.replace(/^```[\w]*\n?/gim, '');
   cleaned = cleaned.replace(/\n?```$/gim, '');
   cleaned = cleaned.trim();
 
-  // Layer 2 — Full HTML document tags (DOCTYPE, html, head, body)
+  // Layer 2 — Full HTML document wrapper tags
   cleaned = cleaned.replace(/<!DOCTYPE[^>]*>/gi, '');
   cleaned = cleaned.replace(/<html[^>]*>/gi, '');
   cleaned = cleaned.replace(/<\/html>/gi, '');
@@ -53,14 +53,25 @@ function cleanAiResponse(raw) {
   cleaned = cleaned.replace(/<body[^>]*>/gi, '');
   cleaned = cleaned.replace(/<\/body>/gi, '');
 
-  // Layer 3 — Personal name sanitization
+  // Layer 3 — CANONICAL FIX: www.smartshaadi.online → smartshaadi.online
+  // Yeh sabse important fix hai — AI kabhi kabhi www likh deta hai
+  cleaned = cleaned.replace(/https:\/\/www\.smartshaadi\.online/g, 'https://smartshaadi.online');
+  cleaned = cleaned.replace(/http:\/\/www\.smartshaadi\.online/g, 'https://smartshaadi.online');
+  cleaned = cleaned.replace(/http:\/\/smartshaadi\.online/g, 'https://smartshaadi.online');
+
+  // Layer 4 — Personal name sanitization (koi personal naam nahi)
   cleaned = cleaned.replace(/Mubashir\s*Hasan/gi, 'SmartShaadi Team');
   cleaned = cleaned.replace(/AI Systems Architect/gi, 'SmartShaadi AI');
   cleaned = cleaned.replace(/AI Automation Architect/gi, 'SmartShaadi AI');
 
-  // Layer 4 — AdSense tags (safety)
+  // Layer 5 — AdSense tags (approved nahi hai abhi)
   cleaned = cleaned.replace(/<ins class="adsbygoogle"[\s\S]*?<\/ins>/gi, '');
   cleaned = cleaned.replace(/adsbygoogle\.push\(\{.*?\}\);?/gi, '');
+
+  // Layer 6 — Remove any inline canonical/schema tags AI adds
+  // Yeh template mein properly inject hote hain, AI ke nahi chahiye
+  cleaned = cleaned.replace(/<link\s+rel="canonical"[^>]*>/gi, '');
+  cleaned = cleaned.replace(/<meta\s+property="og:[^"]*"[^>]*>/gi, '');
 
   return cleaned.trim();
 }
@@ -103,7 +114,13 @@ function injectInternalLinks(html, currentSlug, urlMap) {
  * - Dark footer with all links
  */
 function buildTemplate(topic, bodyHtml, date, schemaBlocks) {
+  // CANONICAL: non-www hardcoded — www se Google ranking drop hoti hai
   const canonical = `https://smartshaadi.online/${topic.slug}.html`;
+  // Verify no www crept in
+  if (canonical.includes('www.')) {
+    console.error('❌ CRITICAL: www found in canonical! This will break SEO.');
+    process.exit(1);
+  }
   const plainText = bodyHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const metaDesc = plainText.slice(0, 155) + '...';
 
@@ -710,7 +727,12 @@ Sirf body content deta hai — <html>, <head>, <body>, <nav>, <footer> tags bilk
 
 // ─── PROMPT BUILDER ───────────────────────────────────────────────────────────
 function buildPrompt(topic, date) {
-  return `Topic: ${topic.title}
+  return `⚠️ CANONICAL RULE (MOST IMPORTANT): 
+Koi bhi URL likhte waqt SIRF https://smartshaadi.online/ use karo.
+www.smartshaadi.online kabhi nahi — yeh Google ranking ke liye haanikaarak hai.
+Koi <link rel="canonical">, <meta og:url> tags mat likho — yeh alag se inject honge.
+
+Topic: ${topic.title}
 Date: ${date}
 Key Focus: ${topic.keyFocus}
 Case Study City: ${topic.caseStudyCity}
@@ -793,14 +815,17 @@ MANDATORY FORMAT:
 ]}
 </script>
 
-STRICT RULES:
-- Use ₹ for prices
-- Hinglish tone — Hindi + English natural mix
-- Real-sounding data (city names, specific prices, percentages)
-- SmartShaadi Team hi author hai — koi personal naam nahi
-- NO <html> <head> <body> <nav> <footer> tags
-- NO markdown backticks (no \`\`\`html)
-- ONLY pure HTML body content`;
+STRICT RULES — ZERO TOLERANCE:
+1. LANGUAGE: Hinglish (Hindi + English natural mix, jaise Indians bolte hain)
+2. WORD COUNT: MINIMUM 2500 words — count carefully, short response acceptable nahi
+3. AUTHOR: Sirf "SmartShaadi Team" — koi personal naam nahi, koi personal pronoun nahi
+4. PRICES: Hamesha ₹ symbol use karo (Rs. ya INR nahi)
+5. URLs: Agar koi URL likhni ho toh SIRF https://smartshaadi.online/ — www BILKUL NAHI
+6. CANONICAL RULE: www.smartshaadi.online kabhi nahi likhna — yeh site ranking ke liye haanikaarak hai
+7. HTML ONLY: NO markdown backticks (\`\`\`html), NO <html>, NO <head>, NO <body>, NO <nav>, NO <footer>
+8. SCHEMA: Koi bhi JSON-LD mat likho — schema alag se inject hoga
+9. INLINE META: Koi <link rel="canonical">, <meta og:> tags mat likho
+10. DATA: Real-sounding specific numbers — generic "varies" type answers acceptable nahi`;
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
@@ -851,13 +876,19 @@ async function main() {
   const linkedHtml = injectInternalLinks(cleanedHtml, topic.slug, urlMap);
 
 
+  // ── FINAL URL SAFETY PASS ────────────────────────────────────────────────
+  // Double-check: agar koi www URL reh gayi ho toh hata do
+  const safeLinkedHtml = linkedHtml
+    .replace(/https:\/\/www\.smartshaadi\.online/g, 'https://smartshaadi.online')
+    .replace(/http:\/\/smartshaadi\.online/g, 'https://smartshaadi.online');
+
   // ── GENERATE ALL SCHEMAS ─────────────────────────────────────────────────
   console.log('📊 Generating JSON-LD schemas (Article + FAQ + HowTo + SoftwareApp)...');
-  const schemaBlocks = buildAllSchemas(topic, linkedHtml, date);
+  const schemaBlocks = buildAllSchemas(topic, safeLinkedHtml, date);
 
   // ── WRAP IN MASTER TEMPLATE ──────────────────────────────────────────────
   console.log('🏗️  Building final HTML with master template...');
-  const finalHtml = buildTemplate(topic, linkedHtml, date, schemaBlocks);
+  const finalHtml = buildTemplate(topic, safeLinkedHtml, date, schemaBlocks);
 
   // ── SAVE HTML FILE (process.cwd() = repo root in GitHub Actions) ───
   fs.writeFileSync(outputPath, finalHtml, 'utf-8');
