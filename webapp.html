@@ -373,6 +373,7 @@ textarea.inp{resize:none;}
 @keyframes hbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.12);}28%{transform:scale(1);}}
 .hbeat{animation:hbeat 1.8s infinite;}
 </style>
+  <link rel="canonical" href="https://www.smartshaadi.online/webapp.html">
 </head>
 <body>
 
@@ -1927,7 +1928,7 @@ function shareWA(){
   const venue=document.getElementById('inv-venue')?.value||city;
   const msg=document.getElementById('inv-msg')?.value||'Hamare saath khushi mein shamil hain!';
   const dateStr=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';
-  const text=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n\n📅 ${dateStr}\n📍 ${venue}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
+  const text=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n\n📅 ${dateStr}\n📍 ${venue}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://www.smartshaadi.online/app`;
   window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
@@ -2064,7 +2065,7 @@ async function shareInviteImage(){
         await navigator.share({
           files:[file],
           title:b+' & '+g+' ki Shaadi',
-          text:'💍 '+b+' & '+g+' ki Shaadi Mein Aapka Swagat Hai!\n📅 '+dateStr2+'\nMade with SmartShaadi ❤️\nhttps://smartshaadi.online/app'
+          text:'💍 '+b+' & '+g+' ki Shaadi Mein Aapka Swagat Hai!\n📅 '+dateStr2+'\nMade with SmartShaadi ❤️\nhttps://www.smartshaadi.online/app'
         });
         toast('💬 Image share ho gayi!');
       } else {
@@ -2073,7 +2074,7 @@ async function shareInviteImage(){
         const a=document.createElement('a');a.href=url;a.download='SmartShaadi-Invite.png';
         document.body.appendChild(a);a.click();document.body.removeChild(a);
         setTimeout(()=>URL.revokeObjectURL(url),3000);
-        const text2=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n📅 ${dateStr}\n📍 ${city}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
+        const text2=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n📅 ${dateStr}\n📍 ${city}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://www.smartshaadi.online/app`;
         setTimeout(()=>window.open('https://wa.me/?text='+encodeURIComponent(text2),'_blank'),800);
         toast('📸 Image download + WhatsApp open ho raha hai!');
       }
