@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Embed SmartShaadi AI Tools — Free Widget Code | SmartShaadi</title>
 <meta name="description" content="SmartShaadi ke free AI wedding tools apne blog ya website pe embed karo. Budget Calculator, Invitation Writer, Kundali Matching — sab free iframe codes yahan hain.">
-<link rel="canonical" href="https://www.smartshaadi.online/embed.html">
+<link rel="canonical" href="https://smartshaadi.online/embed.html">
 <meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -242,7 +242,7 @@ footer{background:var(--bg2);border-top:1px solid var(--div);padding:1.8rem 1.5r
 <div class="toast" id="toast"></div>
 
 <script>
-const BASE='https://www.smartshaadi.online';
+const BASE='https://smartshaadi.online';
 
 const TOOLS=[
   {
@@ -345,7 +345,7 @@ function getIframeCode(tool,w,h){
   style="border:none;border-radius:12px;max-width:100%;display:block"
 ></iframe>
 <p style="text-align:center;font-size:12px;margin-top:6px;color:#888">
-  Powered by <a href="https://www.smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a> — Free AI Wedding Tools
+  Powered by <a href="https://smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a> — Free AI Wedding Tools
 </p>`;
 }
 
@@ -363,14 +363,14 @@ function getResponsiveCode(tool){
   ></iframe>
 </div>
 <p style="text-align:center;font-size:12px;margin-top:6px;color:#888">
-  Powered by <a href="https://www.smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a>
+  Powered by <a href="https://smartshaadi.online" target="_blank" rel="noopener" style="color:#E8B84B">SmartShaadi.online</a>
 </p>`;
 }
 
 function getWordPressCode(tool){
   return `[html]
 <iframe src="${BASE}${tool.url}" width="100%" height="${tool.defaultH}" frameborder="0" scrolling="yes" loading="lazy" title="${tool.name}" allow="clipboard-write" style="border:none;border-radius:12px;max-width:100%"></iframe>
-<p style="text-align:center;font-size:12px">Powered by <a href="https://www.smartshaadi.online">SmartShaadi.online</a></p>
+<p style="text-align:center;font-size:12px">Powered by <a href="https://smartshaadi.online">SmartShaadi.online</a></p>
 [/html]`;
 }
 
@@ -391,7 +391,7 @@ function getJsCode(tool){
   document.getElementById('ss-${tool.id}-widget').appendChild(iframe);
   var credit=document.createElement('p');
   credit.style.cssText='text-align:center;font-size:12px;margin-top:6px;color:#888';
-  credit.innerHTML='Powered by <a href="https://www.smartshaadi.online" target="_blank" style="color:#E8B84B">SmartShaadi.online</a>';
+  credit.innerHTML='Powered by <a href="https://smartshaadi.online" target="_blank" style="color:#E8B84B">SmartShaadi.online</a>';
   document.getElementById('ss-${tool.id}-widget').appendChild(credit);
 })();
 <\/script>`;

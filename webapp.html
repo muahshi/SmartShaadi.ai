@@ -12,8 +12,8 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta property="og:title" content="SmartShaadi — AI Wedding Planner"/>
 <meta property="og:description" content="India's #1 AI Wedding Planner. Budget, vendors, tools — sab ek jagah."/>
-<meta property="og:image" content="https://www.smartshaadi.online/icons/icon-512.png"/>
-<meta property="og:url" content="https://www.smartshaadi.online/app"/>
+<meta property="og:image" content="https://smartshaadi.online/icons/icon-512.png"/>
+<meta property="og:url" content="https://smartshaadi.online/app"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
@@ -373,7 +373,7 @@ textarea.inp{resize:none;}
 @keyframes hbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.12);}28%{transform:scale(1);}}
 .hbeat{animation:hbeat 1.8s infinite;}
 </style>
-  <link rel="canonical" href="https://www.smartshaadi.online/webapp.html">
+  <link rel="canonical" href="https://smartshaadi.online/webapp.html">
 </head>
 <body>
 
@@ -633,7 +633,7 @@ textarea.inp{resize:none;}
         <div style="font-family:var(--fd);font-size:30px;font-weight:700;line-height:1.1;">Smart<span style="color:var(--gold);">Shaadi</span> 💍</div>
         <div style="font-size:11px;color:var(--txt3);margin-top:4px;">AI Wedding Planner · Powered by Groq AI</div>
       </div>
-      <a href="https://www.smartshaadi.online" style="text-decoration:none;">
+      <a href="https://smartshaadi.online" style="text-decoration:none;">
         <div style="background:rgba(201,168,76,.1);border:1px solid var(--bdr);border-radius:var(--r1);padding:9px 12px;text-align:center;">
           <div style="font-size:16px;">🌐</div>
           <div style="font-size:9px;color:var(--gold);margin-top:2px;font-weight:700;">Website</div>
@@ -1374,7 +1374,7 @@ const SS_PRO=(function(){
       new Razorpay({
         key:key,amount:19900,currency:'INR',
         name:'SmartShaadi',description:'Pro Plan — 13 AI Tools · 1 Month',
-        image:'https://www.smartshaadi.online/icons/icon-192.png',
+        image:'https://smartshaadi.online/icons/icon-192.png',
         theme:{color:'#C9A84C'},
         prefill:{contact:''},
         modal:{ondismiss:function(){if(btn){btn.textContent='🔓 ₹199/mo — Abhi Unlock Karo';btn.disabled=false;}}},
@@ -1704,7 +1704,7 @@ function openRazorpay(key){
     currency: 'INR',
     name: 'SmartShaadi',
     description: 'AI Tools Pro Plan — 1 Month',
-    image: 'https://www.smartshaadi.online/icons/icon-192.png',
+    image: 'https://smartshaadi.online/icons/icon-192.png',
     prefill: {name:(A.bride||'')+' & '+(A.groom||''), email:'', contact:''},
     theme: {color:'#C9A84C'},
     modal: {ondismiss:()=>{}},
@@ -1928,7 +1928,7 @@ function shareWA(){
   const venue=document.getElementById('inv-venue')?.value||city;
   const msg=document.getElementById('inv-msg')?.value||'Hamare saath khushi mein shamil hain!';
   const dateStr=wdate?new Date(wdate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date TBD';
-  const text=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n\n📅 ${dateStr}\n📍 ${venue}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://www.smartshaadi.online/app`;
+  const text=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n\n📅 ${dateStr}\n📍 ${venue}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
   window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
 }
 
@@ -2065,7 +2065,7 @@ async function shareInviteImage(){
         await navigator.share({
           files:[file],
           title:b+' & '+g+' ki Shaadi',
-          text:'💍 '+b+' & '+g+' ki Shaadi Mein Aapka Swagat Hai!\n📅 '+dateStr2+'\nMade with SmartShaadi ❤️\nhttps://www.smartshaadi.online/app'
+          text:'💍 '+b+' & '+g+' ki Shaadi Mein Aapka Swagat Hai!\n📅 '+dateStr2+'\nMade with SmartShaadi ❤️\nhttps://smartshaadi.online/app'
         });
         toast('💬 Image share ho gayi!');
       } else {
@@ -2074,7 +2074,7 @@ async function shareInviteImage(){
         const a=document.createElement('a');a.href=url;a.download='SmartShaadi-Invite.png';
         document.body.appendChild(a);a.click();document.body.removeChild(a);
         setTimeout(()=>URL.revokeObjectURL(url),3000);
-        const text2=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n📅 ${dateStr}\n📍 ${city}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://www.smartshaadi.online/app`;
+        const text2=`💍 *${b} & ${g} ki Shaadi Mein Aapka Swagat Hai!*\n📅 ${dateStr}\n📍 ${city}\n\n${msg}\n\n_Made with SmartShaadi ❤️_\nhttps://smartshaadi.online/app`;
         setTimeout(()=>window.open('https://wa.me/?text='+encodeURIComponent(text2),'_blank'),800);
         toast('📸 Image download + WhatsApp open ho raha hai!');
       }

@@ -6,12 +6,12 @@
 <title>Free AI Wedding Planning Timeline — Month-wise Checklist 2026 | SmartShaadi</title>
 <meta name="description" content="Free AI Wedding Planning Timeline — month-by-month personalized checklist. Vendor booking schedule, task tracking, countdown, progress bar. Hindi mein. 100% Free!">
 <meta name="keywords" content="wedding planning timeline india, shaadi planning checklist, month wise wedding schedule, wedding task list india 2026, shaadi ki taiyari kaise karein">
-<link rel="canonical" href="https://www.smartshaadi.online/ai-planning-timeline.html">
+<link rel="canonical" href="https://smartshaadi.online/ai-planning-timeline.html">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Free AI Wedding Planning Timeline — Month-wise Checklist | SmartShaadi">
 <meta property="og:description" content="Month-by-month personalized wedding planning timeline. Task tracking, vendor schedule, countdown. Free!">
-<meta property="og:url" content="https://www.smartshaadi.online/ai-planning-timeline.html">
-<meta property="og:image" content="https://www.smartshaadi.online/og-image.jpg">
+<meta property="og:url" content="https://smartshaadi.online/ai-planning-timeline.html">
+<meta property="og:image" content="https://smartshaadi.online/og-image.jpg">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"AI Wedding Planning Timeline","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wedding planning kab se shuru karni chahiye?","acceptedAnswer":{"@type":"Answer","text":"Ideal timing 9-12 months pehle hai. Venue aur photographer sabse pehle book karo. 6 months mein bhi acchi planning ho sakti hai."}},{"@type":"Question","name":"Kaunsa kaam sabse pehle karna chahiye?","acceptedAnswer":{"@type":"Answer","text":"Pehle venue aur date confirm karo, phir photographer, phir caterer. Yeh teen sabse jaldi book ho jaate hain."}},{"@type":"Question","name":"Wedding planning timeline free hai?","acceptedAnswer":{"@type":"Answer","text":"Haan, SmartShaadi ka AI Planning Timeline 100% free hai. Koi registration nahi."}}]}]}</script>
 
@@ -877,17 +877,17 @@ function copyAll(){
   });
   if(storedTimeline.weekBefore){txt+=`\n═══ ${storedTimeline.weekBefore.title} ═══\n`;(storedTimeline.weekBefore.tasks||[]).forEach(t=>txt+=`☐ ${t.text}\n`);}
   if(storedTimeline.weddingDay){txt+=`\n═══ ${storedTimeline.weddingDay.title} ═══\n`;(storedTimeline.weddingDay.tasks||[]).forEach(t=>txt+=`☐ ${t.text}\n`);}
-  txt+='\n🔗 https://www.smartshaadi.online/ai-planning-timeline.html';
+  txt+='\n🔗 https://smartshaadi.online/ai-planning-timeline.html';
   navigator.clipboard.writeText(txt).then(()=>showToast('📋 Timeline Copied!'));
 }
 function waShare(){
   if(!storedTimeline){showToast('⚠️ Pehle timeline generate karein');return;}
   const firstMonth=storedTimeline.months?.[0];
-  const txt=`📅 Wedding Planning Timeline\n${storedTimeline.coupleName||''} • ${storedTimeline.city||''}\n\nMahina 1 ke tasks:\n${(firstMonth?.tasks||[]).slice(0,5).map(t=>'☐ '+t.text).join('\n')}\n\n...aur bahut kuch SmartShaadi.online pe!\n🔗 https://www.smartshaadi.online/ai-planning-timeline.html`;
+  const txt=`📅 Wedding Planning Timeline\n${storedTimeline.coupleName||''} • ${storedTimeline.city||''}\n\nMahina 1 ke tasks:\n${(firstMonth?.tasks||[]).slice(0,5).map(t=>'☐ '+t.text).join('\n')}\n\n...aur bahut kuch SmartShaadi.online pe!\n🔗 https://smartshaadi.online/ai-planning-timeline.html`;
   window.open('https://wa.me/?text='+encodeURIComponent(txt));
 }
 function printIt(){window.print();}
-function shareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Planning Timeline — month-by-month task tracker!\n📅 https://www.smartshaadi.online/ai-planning-timeline.html'));}
+function shareTool(){window.open('https://wa.me/?text='+encodeURIComponent('Free AI Wedding Planning Timeline — month-by-month task tracker!\n📅 https://smartshaadi.online/ai-planning-timeline.html'));}
 
 function showErr(m){const b=document.getElementById('errBox');b.textContent=m;b.style.display='block';b.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
