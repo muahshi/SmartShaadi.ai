@@ -1,0 +1,22 @@
+name: Run Fix WWW Script
+on:
+  workflow_dispatch: # Isse manual button aayega script chalane ke liye
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Run Script
+        run: node scripts/fix-www.js
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add -A
+          git commit -m "fix: www to non-www canonical automation" || echo "No changes to commit"
+          git push
