@@ -16,6 +16,11 @@ const fs   = require('fs');
 const path = require('path');
 const https = require('https');
 
+// ─── SMARTSHAADI MODULES ──────────────────────────────────────────────────────
+// Topics aur Schema generators — FILE KE TOP PE HONE CHAHIYE (hoisting issue avoid)
+const { getNextTopic } = require('./topics.js');
+const { buildAllSchemas } = require('./schema-generator.js');
+
 // ─── TOPIC QUEUE ──────────────────────────────────────────────────────────────
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
@@ -909,10 +914,6 @@ main().catch(err => {
   console.error('\n❌ FATAL ERROR:', err.message);
   if (err.stack) console.error(err.stack);
   process.exit(1);
-});// ─── TOPIC MANAGEMENT ────────────────────────────────────────────────────────
-// Topics scripts/topics.js se aate hain — wahan add karo naye topics
-// generate-blog.js ko touch karne ki zaroorat nahi
-const { getNextTopic } = require('./topics.js');
-const { buildAllSchemas } = require('./schema-generator.js');
+});
 
 
