@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShaadiBot AI — Smart Wedding Planner | SmartShaadi</title>
 <meta name="description" content="ShaadiBot — India ka best AI wedding planner. Budget, vendors, checklist, kundali — sab Hindi aur English mein. Free!">
-<link rel="canonical" href="https://www.smartshaadi.online/chatbot.html">
+<link rel="canonical" href="https://smartshaadi.online/chatbot.html">
 <meta property="og:title" content="ShaadiBot AI — Smart Wedding Planner">
 <meta property="og:description" content="India ka best AI wedding planner chatbot. Free, Hindi + English.">
 <meta property="og:url" content="https://www.smartshaadi.online/chatbot.html">
@@ -88,6 +88,12 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 .inpbox:focus{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.02)}
 .inpbox::placeholder{color:rgba(245,239,224,.14)}
 .sbtn{width:42px;height:42px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--gold),var(--gl));color:var(--dk);font-size:.95rem;cursor:pointer;transition:all .2s;flex-shrink:0;font-weight:700}
+.micbtn{width:40px;height:40px;border-radius:10px;border:1px solid rgba(126,211,160,.2);background:rgba(126,211,160,.07);color:var(--gr);font-size:1.1rem;cursor:pointer;transition:all .2s;flex-shrink:0}
+.micbtn.active{background:rgba(126,211,160,.2);border-color:var(--gr);animation:pulse 1s infinite}
+.micbtn:hover{background:rgba(126,211,160,.12);border-color:rgba(126,211,160,.4)}
+.spkbtn{width:40px;height:40px;border-radius:10px;border:1px solid rgba(201,168,76,.15);background:var(--gd2);color:rgba(201,168,76,.6);font-size:1rem;cursor:pointer;transition:all .2s;flex-shrink:0}
+.spkbtn.on{color:var(--gold);background:var(--gd);border-color:rgba(201,168,76,.35)}
+.spkbtn:hover{background:var(--gd);color:var(--gl)}
 .sbtn:hover{transform:scale(1.06);box-shadow:0 4px 16px rgba(201,168,76,.3)}
 .sbtn:disabled{background:rgba(201,168,76,.15);cursor:not-allowed;transform:none;box-shadow:none}
 .hint{font-size:.6rem;color:rgba(245,239,224,.1);margin-top:.32rem;text-align:center}
@@ -151,9 +157,13 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 
 <div class="msgs" id="msgs">
   <div class="welcome">
-    <h3>Namaste! Main hoon<br><em>ShaadiBot — Aapka AI Wedding Planner</em> 💍</h3>
-    <p>Apni wedding ki details batao — budget, date, city, guests<br>Main <strong style="color:var(--gold)">complete plan + vendors + PDF</strong> sab free mein dunga!</p>
-    <span class="ftag"><div class="dot" style="width:5px;height:5px"></div> Free · No Login · Hindi + English</span>
+    <h3>Namaste! Main hoon<br><em>ShaadiBot — Tumhara AI Wedding Planner</em> 💍</h3>
+    <p>Budget, vendors, checklist, timeline — sab ek jagah<br>Bas details batao, main <strong style="color:var(--gold)">free mein poora plan</strong> taiyaar kar dunga</p>
+    <div style="display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem">
+      <span class="ftag"><div class="dot" style="width:5px;height:5px"></div> Hindi + English</span>
+      <span class="ftag" style="color:var(--gold);border-color:rgba(201,168,76,.2);background:var(--gd2)">🎤 Voice Support</span>
+      <span class="ftag" style="color:var(--gold);border-color:rgba(201,168,76,.2);background:var(--gd2)">📊 PDF Export</span>
+    </div>
   </div>
 </div>
 
@@ -168,14 +178,115 @@ nav{height:56px;display:flex;align-items:center;justify-content:space-between;pa
 
 <div class="inpwrap">
   <div class="inprow">
-    <textarea class="inpbox" id="msgInp" placeholder="Kuch bhi poochho — Hindi ya English mein..." rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
+    <button class="micbtn" id="micBtn" onclick="toggleVoice()" title="Voice input">🎤</button>
+    <textarea class="inpbox" id="msgInp" placeholder="Kuch bhi poochho... ya mic dabo 🎤" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
+    <button class="spkbtn" id="spkBtn" onclick="toggleTTS()" title="Voice on/off">🔊</button>
     <button class="sbtn" id="sbtn" onclick="send()">➤</button>
   </div>
-  <p class="hint">Enter → Send &nbsp;•&nbsp; Shift+Enter → New Line &nbsp;•&nbsp; SmartShaadi.online</p>
+  <p class="hint" id="hintTxt">🎤 Mic dabo bolke poochho &nbsp;•&nbsp; 🔊 Jawab sunne ke liye speaker &nbsp;•&nbsp; SmartShaadi.online</p>
 </div>
 
 <script>
 'use strict';
+
+// ══════════════════════════════════════════════
+// VOICE — TTS + Speech Recognition
+// ══════════════════════════════════════════════
+var ttsOn = false;
+var ttsVoice = null;
+var recognizing = false;
+var recognition = null;
+
+// Load best Hindi/Indian voice
+function loadVoice(){
+  var voices = window.speechSynthesis.getVoices();
+  // Prefer Indian English or Hindi voice
+  ttsVoice = voices.find(function(v){
+    return v.lang.includes('hi') || v.lang.includes('IN') || v.name.includes('India');
+  }) || voices.find(function(v){
+    return v.lang.startsWith('en');
+  }) || voices[0] || null;
+}
+if(window.speechSynthesis){
+  loadVoice();
+  window.speechSynthesis.onvoiceschanged = loadVoice;
+}
+
+function toggleTTS(){
+  ttsOn = !ttsOn;
+  var btn = document.getElementById('spkBtn');
+  if(btn){ btn.classList.toggle('on', ttsOn); btn.textContent = ttsOn ? '🔊' : '🔇'; }
+  if(!ttsOn) window.speechSynthesis && window.speechSynthesis.cancel();
+}
+
+function speak(text){
+  if(!ttsOn || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  // Clean text for speech
+  var clean = text.replace(/<[^>]+>/g,'').replace(/[*_#`~]/g,'')
+    .replace(/Rs\./g,'rupees ').replace(/₹/g,'rupees ')
+    .replace(/→/g,' ').replace(/[①②③]/g,'').replace(/[📊💰🏆]/g,'')
+    .substring(0, 500); // max 500 chars for TTS
+  var utt = new SpeechSynthesisUtterance(clean);
+  if(ttsVoice) utt.voice = ttsVoice;
+  utt.rate = 0.92; utt.pitch = 1.02; utt.volume = 1;
+  window.speechSynthesis.speak(utt);
+}
+
+function toggleVoice(){
+  var btn = document.getElementById('micBtn');
+  var inp = document.getElementById('msgInp');
+  
+  if(recognizing){
+    if(recognition) recognition.stop();
+    recognizing = false;
+    if(btn){ btn.classList.remove('active'); btn.textContent = '🎤'; }
+    return;
+  }
+  
+  var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRec){
+    alert('Aapke browser mein voice recognition supported nahi hai. Chrome use karein.');
+    return;
+  }
+  
+  recognition = new SpeechRec();
+  recognition.lang = 'hi-IN';
+  recognition.interimResults = true;
+  recognition.continuous = false;
+  
+  recognition.onstart = function(){
+    recognizing = true;
+    if(btn){ btn.classList.add('active'); btn.textContent = '⏹'; }
+    if(inp) inp.placeholder = '🎤 Bol raha hoon...';
+  };
+  
+  recognition.onresult = function(e){
+    var transcript = '';
+    for(var i=e.resultIndex;i<e.results.length;i++){
+      transcript += e.results[i][0].transcript;
+    }
+    if(inp) inp.value = transcript;
+    ar(inp);
+  };
+  
+  recognition.onend = function(){
+    recognizing = false;
+    if(btn){ btn.classList.remove('active'); btn.textContent = '🎤'; }
+    if(inp) inp.placeholder = 'Kuch bhi poochho... ya mic dabo 🎤';
+    // Auto-send if got transcript
+    var val = inp ? inp.value.trim() : '';
+    if(val) setTimeout(send, 400);
+  };
+  
+  recognition.onerror = function(e){
+    recognizing = false;
+    if(btn){ btn.classList.remove('active'); btn.textContent = '🎤'; }
+    if(e.error === 'not-allowed') alert('Microphone permission do — browser settings mein.');
+  };
+  
+  recognition.start();
+}
 
 // ══════════════════════════════════════════════
 // CONFIG
@@ -194,135 +305,63 @@ var U = {
 // ══════════════════════════════════════════════
 // PROFESSIONAL SYSTEM PROMPT — Fully Trained
 // ══════════════════════════════════════════════
-var SYS = `Tum ShaadiBot ho — SmartShaadi.online ka professional AI Wedding Planner. Tum ek warm, knowledgeable dost ki tarah ho jo Indian weddings ka expert hai.
+var SYS = `Tu ShaadiBot hai — SmartShaadi ka AI wedding planner. Ek samajhdar dost ki tarah baat kar.
 
-LANGUAGE RULE:
-- Agar user Hindi mein likhe → pure Hindi
-- Agar user Hinglish mein likhe → Hinglish (Hindi + English mix)
-- Agar user English mein likhe → English with Indian context
-- Hamesha user ki language follow karo
+LANGUAGE: User jo language use kare, usi mein jawab de. Hindi → Hindi, Hinglish → Hinglish, English → English.
 
-CONVERSATION FLOW:
-Stage 1 — DETAILS COLLECT (pehle yeh lo):
-Aaram se ek ek sawaal poochho (sab ek saath mat poochho):
-1. "Dulha aur Dulhan ka naam kya hai?"
-2. "Wedding kab hai? (month/year)"
-3. "Kaunse city mein?"
-4. "Kitne mehman honge?"
-5. "Total budget kitna hai? (Rs. mein)"
+CONVERSATION RULES:
+1. Pehle details collect kar — ek ek sawaal, sab ek saath NAHI:
+   Naam → Date/Month → City → Guests → Budget
+2. Sab details milne ke baad hi plan de
+3. SHORT responses — 150-200 words max per reply
+4. KABHI BHI fake phone numbers, emails, ya addresses mat do — yeh GALAT hai
+5. Sirf 3 vendors per category — zyada NAHI
 
-Stage 2 — PLAN DELIVER (details milne ke baad):
-Hamesha yeh sab do:
-A) BUDGET BREAKDOWN with exact Rs. amounts
-B) VENDOR SUGGESTIONS (3 per category — based on city + budget)
-C) TIMELINE (month-wise)
-D) TIPS (specific to their city + budget)
+BUDGET BREAKDOWN FORMAT (jab budget mile):
+💰 Budget: Rs.[TOTAL] — [City]
+├ Venue 30% → Rs.[X]
+├ Catering 25% → Rs.[X]
+├ Decoration 15% → Rs.[X]
+├ Photography 10% → Rs.[X]
+├ Bridal Wear 10% → Rs.[X]
+├ Music 5% → Rs.[X]
+└ Misc 5% → Rs.[X]
 
-BUDGET BREAKDOWN FORMAT (always use this):
-📊 BUDGET BREAKDOWN — Rs.[TOTAL] ke liye:
+VENDOR FORMAT (sirf 3, budget ke hisaab se):
+🏆 [Category] — [City]:
+① [Package type] — Rs.[X-Y] — [ek line reason]
+② [Package type] — Rs.[X-Y] — [ek line reason]  
+③ [Package type] — Rs.[X-Y] — [ek line reason]
+💡 [1 negotiation tip]
 
-💰 Venue: Rs.[AMT] (30%)
-🍽️ Catering: Rs.[AMT] (25%)  
-🌸 Decoration: Rs.[AMT] (15%)
-📸 Photography: Rs.[AMT] (10%)
-🎵 Music/DJ: Rs.[AMT] (5%)
-👗 Bridal Wear: Rs.[AMT] (10%)
-✨ Misc/Buffer: Rs.[AMT] (5%)
+PRICES (2026):
+Venue/function: Delhi Rs.3-40L | Mumbai Rs.4-55L | Jaipur Rs.2-35L | Bhopal/Indore Rs.1.5-25L | Bangalore Rs.3-48L | Hyderabad Rs.3-40L | Tier-2 cities: Delhi se 25-30% kam
+Catering/plate: Metro Rs.600-2500 | Tier-2 Rs.400-1500
+Photography: Budget Rs.35-70K | Mid Rs.70K-1.5L | Premium Rs.1.5-4L
+Decoration: Basic Rs.50-120K | Mid Rs.1.2-3L | Premium Rs.3L+
+DJ/Music: Local Rs.15-35K | Pro Rs.35-80K | Band+DJ Rs.80K-2L
 
-VENDOR SUGGESTION FORMAT:
-🏆 [CATEGORY] Vendors — [CITY]:
-1. [Type/Package] — Rs.[X] to Rs.[Y] — [1 line why recommend]
-2. [Type/Package] — Rs.[X] to Rs.[Y] — [1 line why recommend]  
-3. [Type/Package] — Rs.[X] to Rs.[Y] — [1 line why recommend]
-💡 Tip: [Negotiation tip specific to this category]
+TIMELINE (jab pucha jaye ya automatically):
+⏳ [X] mahine pehle → [task]
+format mein do, max 6 points
 
-CITY-WISE PRICING (2026 real market rates):
+TOOLS — sirf tab mention karo jab relevant ho, baar baar NAHI:
+- Invitation chahiye → smartshaadi.online/ai-invitation-writer.html (Pro 🔒)
+- Kundali → smartshaadi.online/ai-kundali-matching.html (Pro 🔒)
+- Budget calculator → smartshaadi.online/wedding-budget-calculator-india-2026.html
+- Vendor negotiation → smartshaadi.online/wedding-vendor-negotiation-bot.html
+- Dashboard free → smartshaadi.online/app
 
-VENUES per function:
-- Delhi NCR: Budget Rs.3-8L | Mid Rs.8-18L | Luxury Rs.18-45L
-- Mumbai: Budget Rs.4-10L | Mid Rs.10-22L | Luxury Rs.22-60L
-- Jaipur: Budget Rs.2-6L | Mid Rs.6-14L | Luxury Rs.14-35L
-- Bhopal/Indore: Budget Rs.1.5-4L | Mid Rs.4-10L | Luxury Rs.10-25L
-- Bangalore: Budget Rs.3-8L | Mid Rs.8-20L | Luxury Rs.20-50L
-- Hyderabad: Budget Rs.3-7L | Mid Rs.7-16L | Luxury Rs.16-40L
-- Lucknow/Kanpur: Budget Rs.1.5-4L | Mid Rs.4-10L | Luxury Rs.10-22L
-- Chennai: Budget Rs.2-6L | Mid Rs.6-15L | Luxury Rs.15-38L
-- Ahmedabad: Budget Rs.2-5L | Mid Rs.5-12L | Luxury Rs.12-30L
-- Kolkata: Budget Rs.2-6L | Mid Rs.6-14L | Luxury Rs.14-35L
-- Pune: Budget Rs.2-6L | Mid Rs.6-15L | Luxury Rs.15-35L
-- Other cities: 20-30% less than Delhi
+PERSONALITY:
+- Warm, caring, specific — jaise best friend jo expert ho
+- Agar vendor contacts poocha jaaye → "Main specific contacts nahi de sakta kyunki verify nahi kar sakta. Vendor Negotiation Bot use karo ya local references lo."
+- After 3+ exchanges with full details: "📊 Tumhara plan ready hai! PDF banate hain?"
 
-CATERING (per plate):
-- Delhi: Veg Rs.600-1800/plate | Non-veg Rs.900-2500/plate
-- Mumbai: Veg Rs.700-2000/plate | Non-veg Rs.1000-2800/plate
-- Jaipur/Rajasthan: Veg Rs.500-1500/plate | Non-veg Rs.700-2000/plate
-- South India: Veg Rs.500-1400/plate | Non-veg Rs.800-2200/plate
-- Tier-2 cities: 25-35% less
-
-PHOTOGRAPHY:
-- Budget package: Rs.35,000-70,000 (1 photographer, basic editing)
-- Mid package: Rs.70,000-1,50,000 (2 photographers + videographer)
-- Premium: Rs.1,50,000-4,00,000 (full team, drone, cinematic)
-- Destination wedding premium: +30-50%
-
-DECORATION:
-- Basic: Rs.50,000-1,20,000
-- Mid: Rs.1,20,000-3,00,000
-- Premium: Rs.3,00,000-8,00,000+
-
-MUSIC/DJ:
-- Local DJ: Rs.15,000-35,000
-- Professional DJ: Rs.35,000-80,000
-- Premium DJ + band: Rs.80,000-2,00,000
-- Dhol wala: Rs.5,000-15,000 extra
-
-MAKEUP:
-- Local parlour: Rs.8,000-20,000
-- Professional makeup artist: Rs.20,000-60,000
-- Celebrity MUA: Rs.60,000-2,00,000+
-
-VENDOR TIPS (always give based on category):
-- Venue: "Off-season (May-June) mein 30-40% discount milta hai. 6 mahine pehle book karo — best venues jaldi bhar jaate hain."
-- Catering: "Per plate rate + service charge + GST sab include karo quote mein. 10% extra plates always rakhna."
-- Photography: "Album charge alag hota hai — pehle hi puchho. Raw files bhi maango."
-- DJ/Music: "Advance booking pe 15-20% discount milta hai. Sound system ka khud check karo venue pe."
-- Makeup: "Trial pehle lo — minimum 1 mahine pehle appointment lo."
-
-TIMELINE FORMAT:
-📅 WEDDING TIMELINE:
-[X mahine pehle] → [Task]
-[X mahine pehle] → [Task]
-...
-
-SMARTSHAADI TOOLS (naturally mention when relevant):
-- Budget Calculator: www.smartshaadi.online/wedding-budget-calculator-india-2026.html
-- AI Invitation Writer 🔒: www.smartshaadi.online/ai-invitation-writer.html
-- Kundali Matching 🔒: www.smartshaadi.online/ai-kundali-matching.html
-- Vendor Negotiation Bot: www.smartshaadi.online/wedding-vendor-negotiation-bot.html
-- Menu Planner 🔒: www.smartshaadi.online/ai-menu-planner.html
-- WhatsApp Invite: www.smartshaadi.online/whatsapp-invite-generator.html
-- Photo Shot List 🔒: www.smartshaadi.online/ai-photography-shots.html
-- Theme Generator 🔒: www.smartshaadi.online/ai-wedding-theme-generator.html
-
-PRO UPSELL RULES (mention naturally, not forcefully):
-- Kundali pooche → "Detailed 36-guna analysis ke liye AI Kundali Tool try karo 🔮 (Pro Plan ₹199/mo)"
-- Invitation pooche → "Beautiful AI-designed cards ke liye Invitation Writer try karo 💌 (Pro Plan)"
-- Menu pooche → "Full menu + quantity calculator ke liye AI Menu Planner try karo 🍽️ (Pro Plan)"
-- Always mention: "Dashboard bilkul free hai → www.smartshaadi.online/app"
-
-PERSONALITY TRAITS:
-- Warm aur caring — jaise best friend jo wedding expert ho
-- Specific amounts do, vague mat raho
-- City ke naam se refer karo — "Delhi mein aapke budget mein..."
-- Humorous touch kabhi kabhi — "Shaadi mein budget se zyada kharcha ho hi jaata hai, 10% buffer zaroor rakho! 😄"
-- Practical advice — real tips jo kaam aayein
-- Emotional moments acknowledge karo — "Congratulations! Yeh life ka sabse khubsoorat time hai ❤️"
-
-END OF CONVERSATION DETECTION:
-Jab conversation mein budget breakdown + vendors + timeline sab aa jaaye, automatically suggest karo:
-"📊 Aapka complete wedding plan taiyaar hai! Ek detailed PDF Summary banata hoon jisme sab kuch hoga — budget charts, vendors, timeline, checklist. Download karein?"
-
-IMPORTANT: Hamesha helpful, specific, aur action-oriented raho. Generic advice mat do.`;
+STRICT RULES:
+- Fake contacts/numbers BILKUL NAHI
+- Zyada vendors NAHI (max 3 per category)
+- Links baar baar repeat NAHI
+- Response concise rakho`;
 
 // ══════════════════════════════════════════════
 // VENDOR DATABASE (city-specific, budget-based)
@@ -714,6 +753,8 @@ async function send(){
     exchangeCount++;
 
     addMsg('ai', fmt(reply));
+    // Speak AI response if TTS on
+    setTimeout(function(){ speak(reply); }, 200);
     updateChips(reply);
 
     // Show summary offer after 3+ exchanges with budget data
@@ -732,7 +773,15 @@ async function send(){
 
 function retry(){ if(lastTxt){ document.getElementById('msgInp').value = lastTxt; send(); } }
 function sq(t){ document.getElementById('msgInp').value = t; send(); }
-function hk(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); } }
+function hk(e){
+  // Mobile mein Enter = newline (soft keyboard)
+  // Desktop mein Enter = send, Shift+Enter = newline
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(e.key==='Enter'){
+    if(isMobile){ return; } // mobile pe Enter se newline ho
+    if(!e.shiftKey){ e.preventDefault(); send(); }
+  }
+}
 function ar(el){ el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
 
 // ══════════════════════════════════════════════
