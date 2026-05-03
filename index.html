@@ -1523,74 +1523,74 @@ if('serviceWorker' in navigator){
 // ── PWA Install Banner — Android + iOS ──────────────
 (function(){
   var dp = null;
-  var banner  = document.getElementById('ss-pwa-banner');
+  var banner    = document.getElementById('ss-pwa-banner');
   var iosBanner = document.getElementById('ss-ios-banner');
   var installBtn = document.getElementById('ss-pwa-install-btn');
   var closeBtn   = document.getElementById('ss-pwa-close-btn');
 
+  // ── Show Logic: Once per day, never if installed ──
   function shouldShow(){
     try{
       if(localStorage.getItem('ss_pwa_installed')) return false;
       var d = localStorage.getItem('ss_pwa_dismissed');
-      if(d && Date.now()-parseInt(d) < 3*24*60*60*1000) return false; // 3 days
+      if(d && Date.now()-parseInt(d) < 24*60*60*1000) return false; // 1 day only
     }catch(e){}
     return true;
   }
 
-  // ── iOS Detection ──
-  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-  var isStandalone = window.navigator.standalone === true;
+  var isIOS        = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone = window.navigator.standalone === true
+                     || window.matchMedia('(display-mode: standalone)').matches;
 
+  // ── iOS: Show after 12 seconds ──
   if(isIOS && !isStandalone && iosBanner && shouldShow()){
-    // Check iOS dismissed
-    var iosDismissed = false;
-    try{ var id=localStorage.getItem('ss_ios_dismissed'); iosDismissed=id&&Date.now()-parseInt(id)<3*24*60*60*1000; }catch(e){}
-    if(!iosDismissed){
-      setTimeout(function(){ iosBanner.style.display='block'; }, 3000);
-    }
+    setTimeout(function(){
+      iosBanner.style.display = 'block';
+    }, 12000);
   }
 
-  // ── Android/Chrome ──
+  // ── Android/Chrome: Capture install prompt ──
   window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
     dp = e;
-    if(!shouldShow()) return;
-    var shown = false;
-    function show(){
-      if(!shown && banner){
-        shown = true;
-        banner.classList.add('show');
-      }
-    }
-    // Show after 3 seconds
-    setTimeout(show, 3000);
-    // Or on first scroll
-    window.addEventListener('scroll', function(){
-      if(window.scrollY > 80) show();
-    }, {once:true});
   });
 
-  // Already installed
-  window.addEventListener('appinstalled', function(){
-    try{ localStorage.setItem('ss_pwa_installed','1'); }catch(e){}
-    if(banner) banner.classList.remove('show');
-  });
+  // ── Show banner after 12 seconds regardless of scroll ──
+  if(!isIOS && !isStandalone && banner && shouldShow()){
+    setTimeout(function(){
+      banner.classList.add('show');
+    }, 12000);
+  }
 
+  // ── Install button click ──
   if(installBtn) installBtn.addEventListener('click', function(){
-    if(!dp) return;
-    dp.prompt();
-    dp.userChoice.then(function(r){
-      if(r.outcome==='accepted'){
-        try{ localStorage.setItem('ss_pwa_installed','1'); }catch(e){}
-      }
-      dp = null;
+    if(dp){
+      // Native install prompt available
+      dp.prompt();
+      dp.userChoice.then(function(r){
+        if(r.outcome === 'accepted'){
+          try{ localStorage.setItem('ss_pwa_installed','1'); }catch(e){}
+        }
+        dp = null;
+        if(banner) banner.classList.remove('show');
+      });
+    } else {
+      // Fallback: guide user manually
       if(banner) banner.classList.remove('show');
-    });
+      alert('Install karne ke liye:\nChrome menu (⋮) → "Add to Home Screen" tap karo!');
+    }
   });
 
+  // ── Close button: remember for 1 day ──
   if(closeBtn) closeBtn.addEventListener('click', function(){
     if(banner) banner.classList.remove('show');
     try{ localStorage.setItem('ss_pwa_dismissed', Date.now()); }catch(e){}
+  });
+
+  // ── Already installed ──
+  window.addEventListener('appinstalled', function(){
+    try{ localStorage.setItem('ss_pwa_installed','1'); }catch(e){}
+    if(banner) banner.classList.remove('show');
   });
 })();
 
@@ -1669,7 +1669,7 @@ function closeDateModal(){
 
 <!-- iOS PWA Banner -->
 <div id="ss-ios-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9001;background:linear-gradient(135deg,#1E1408,#2A1E0A);border-top:2px solid rgba(201,168,76,.5);padding:16px 20px;font-family:'DM Sans',sans-serif;box-shadow:0 -8px 32px rgba(0,0,0,.6);">
-  <button onclick="document.getElementById('ss-ios-banner').style.display='none';try{localStorage.setItem('ss_ios_dismissed',Date.now());}catch(e){}" style="position:absolute;top:10px;right:14px;background:none;border:none;color:rgba(245,239,224,.3);font-size:20px;cursor:pointer;">✕</button>
+  <button onclick="document.getElementById('ss-ios-banner').style.display='none';try{localStorage.setItem('ss_pwa_dismissed',Date.now());}catch(e){}" style="position:absolute;top:10px;right:14px;background:none;border:none;color:rgba(245,239,224,.3);font-size:20px;cursor:pointer;">✕</button>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
     <span style="font-size:32px;">💍</span>
     <div>
